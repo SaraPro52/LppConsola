@@ -1,0 +1,49 @@
+#logo{
+margin-left: 2%;
+
+}
+
+#formDatosCentro{
+border: 1px solid;
+border-radius: 10px;
+width: 40%; 
+position: relative;
+margin-left: 40px;
+margin-top: 5%;
+width: 30%;
+}
+
+#formDatosPerson{
+float: left; 
+border: 1px solid; 
+border-radius: 10px;
+width: 40%; 
+position: relative;
+margin-left: 80px; 
+margin-right: 40px;
+width: 30%;
+margin-top: 5%;
+}
+body{
+background: -moz-linear-gradient(left, rgba(221,221,221,0.65) 38%, rgba(181,181,181,0.65) 57%, rgba(137,137,137,0.3) 78%, rgba(137,137,137,0) 96%); /* FF3.6-15 */
+background: -webkit-linear-gradient(left, rgba(221,221,221,0.65) 38%,rgba(181,181,181,0.65) 57%,rgba(137,137,137,0.3) 78%,rgba(137,137,137,0) 96%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to right, rgba(221,221,221,0.65) 38%,rgba(181,181,181,0.65) 57%,rgba(137,137,137,0.3) 78%,rgba(137,137,137,0) 96%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a6dddddd', endColorstr='#00898989',GradientType=1 );
+}
+
+#btnRegistrar{
+margin-top: 4%;
+margin-right: 11%;
+margin-left: 11%;
+
+}
+
+footer{
+margin-top:157px;
+background:black;
+color: white;
+}
+#derechos{
+	font-family: "Myriad Pro Light";
+}
+

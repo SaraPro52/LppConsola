@@ -1,0 +1,48 @@
+#notificacion {
+position: absolute;
+z-index: 100;
+top:0;
+float: right;
+right: 10px;
+width:300px;
+height:100px;
+background: rgba(33, 30, 31, 0.7);
+text-align: center;
+line-height: 2.5;
+overflow: hidden;
+-webkit-box-shadow: 0 0 5px black;
+-moz-box-shadow: 0 0 5px black;
+box-shadow: 0 0 5px black;
+-webkit-transform: translateY(-450px);
+-webkit-animation: slideDown 4.5s 1.0s 1 ease;
+-moz-transform: translateY(-150px);
+-moz-animation: slideDown 4.5s 1.0s 1 ease;
+font-family:"Times New Roman",Times,serif;
+color:white;
+font-weight:bold;
+}
+
+#notificacion:hover{
+background: rgba(33, 30, 31, 1);
+}
+
+#close {
+position: absolute;
+right: 10px;
+top: 9px;
+text-indent: -9999px;
+background: url(images/close.png);
+height: 16px;
+width: 16px;
+cursor: pointer;
+}
+
+@-webkit-keyframes slideDown {
+0%, 100% { -webkit-transform: translateY(-150px); }
+10%, 90% { -webkit-transform: translateY(80px); }
+}
+
+@-moz-keyframes slideDown {
+0%, 100% { -moz-transform: translateY(-150px); }
+10%, 90% { -moz-transform: translateY(80px); }
+}
