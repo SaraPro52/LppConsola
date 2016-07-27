@@ -18,7 +18,7 @@ import modelo.Bean.EstadoBean;
  *
  * @author root
  */
-public class estadoServlet extends HttpServlet {
+public class estadosServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -33,20 +33,26 @@ public class estadoServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            /*Menu de opciones crud
+            /* TODO output your page here. You may use following sample code. */
+         /*Menu de opciones crud
             1.agregar
             2.actualizar
             3.consultar
             4.eliminar*/
             int opcion = Integer.parseInt(request.getParameter("Opcion"));
-            String estado = "pruebamain";//request.getParameter("Opcion");
+            String estado =request.getParameter("Estado");
 
             EstadoBean eb = new EstadoBean(0, estado, "2");
             EstadoDao ed = new EstadoDao(eb);
 
-            ed.AgregarRegistro();
             switch (opcion) {
                 case 1:
+                    if (ed.AgregarRegistro()) {
+                        request.setAttribute("exito", "<script>alert('EL estado FUE REGISTRADO CORRECTAMENTE')</script>");
+                    }else{
+                        request.setAttribute("error", "<script>alert('EL estado NO PUDO SER REGISTRADO')</script>");
+                    }
+                        request.getRequestDispatcher("administrador/estado/estado.jsp").forward(request, response);
                     break;
                 case 2:
                     break;
@@ -54,8 +60,7 @@ public class estadoServlet extends HttpServlet {
                     break;
                 case 4:
                     break;
-            }
-
+            }   
         }
     }
 
