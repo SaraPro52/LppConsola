@@ -1,0 +1,36 @@
+
+package modelo.Bean;
+
+public class Estado_Bean{
+    
+    private int Id_Estado;
+    private String Nom_Estado;
+
+    
+    public Estado_Bean(){}
+    
+    public Estado_Bean(int id_Estado, String nom){
+        
+        this.Id_Estado = id_Estado;
+        this.Nom_Estado = nom;
+        
+    
+    }
+
+    public int getId_Estado() {
+        return Id_Estado;
+    }
+
+    public void setId_Estado(int Id_Estado) {
+        this.Id_Estado = Id_Estado;
+    }
+
+    public String getNom_Estado() {
+        return Nom_Estado;
+    }
+
+    public void setNom_Estado(String Nom_Estado) {
+        this.Nom_Estado = Nom_Estado;
+    }
+
+}

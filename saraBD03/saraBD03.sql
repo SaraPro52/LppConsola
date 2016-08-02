@@ -4,39 +4,18 @@ CREATE DATABASE SARApro;
 USE SARApro;
 
 
-CREATE TABLE Tipo_Estado(
-	
-    Id_Tipo_Estado      INTEGER NOT NULL AUTO_INCREMENT,
-    Nom_Tipo_Estado     VARCHAR(45) NOT NULL,
-    
-    CONSTRAINT PK_Tipo_Estado PRIMARY KEY (Id_Tipo_Estado)
-
-);
 
 CREATE TABLE Estado(
 	
     Id_Estado         INTEGER NOT NULL AUTO_INCREMENT,
     Nom_Estado 	      VARCHAR(45) NOT NULL,
-    Id_Tipo_Estado    INTEGER NOT NULL,
+    
     
     CONSTRAINT PK_Estado      PRIMARY KEY (Id_Estado),
-    CONSTRAINT FK_Tipo_Estado FOREIGN KEY (Id_Tipo_Estado) REFERENCES Tipo_Estado(Id_Tipo_Estado)
-);
-
-CREATE TABLE Rankin(
-
-	Id_Rankin        INTEGER NOT NULL AUTO_INCREMENT,
-    Num_Visitas      INTEGER NOT NULL,
-    Num_Descargas	 INTEGER NOT NULL,
-    Cant_5			 INTEGER NOT NULL, 
-    Cant_4			 INTEGER NOT NULL,
-    Cant_3			 INTEGER NOT NULL,
-    Cant_2			 INTEGER NOT NULL,
-    Cant_1			 INTEGER NOT NULL,
-    Numero_Votos     INTEGER NOT NULL,
+    CONSTRAINT UN_Estado 	  UNIQUE(Nom_Estado)
     
-    CONSTRAINT PK_Rankin PRIMARY KEY (Id_Rankin)
 );
+
 
 CREATE TABLE Tipo_Version(
 	
@@ -54,7 +33,8 @@ CREATE TABLE Formato(
     Nom_Formato    VARCHAR(45) NOT NULL,
     Des_Formato    VARCHAR(100) NOT NULL,
     
-    CONSTRAINT PK_Formato PRIMARY KEY (Id_Formato)
+    CONSTRAINT PK_Formato PRIMARY KEY (Id_Formato),
+    CONSTRAINT UN_Formato UNIQUE(Nom_Formato,Des_Formato)
     
 );
 
@@ -67,6 +47,7 @@ CREATE TABLE Producto_Virtual(
     Id_Formato 	     INTEGER NOT NULL,
     
     CONSTRAINT PK_P_Virtual PRIMARY KEY (Id_P_Virtual),
+    CONSTRAINT UN_P_Virtual UNIQUE 		(Nom_P_Virtual,Des_P_Virtual),
     CONSTRAINT FK_Formato   FOREIGN KEY (Id_Formato)    REFERENCES Formato(Id_Formato)
 
 );
@@ -85,15 +66,34 @@ CREATE TABLE Version (
     Id_P_Virtual		 INTEGER NOT NULL,
 	Id_Estado			 INTEGER NOT NULL,
     Id_Tipo_Version      INTEGER NOT NULL,
-    Id_Rankin			 INTEGER NOT NULL,
 	
 	CONSTRAINT PK_Version      PRIMARY KEY (Id_Version),
     CONSTRAINT FK_P_Virtual_01 FOREIGN KEY (Id_P_Virtual)    REFERENCES Producto_Virtual(Id_P_Virtual),
-    CONSTRAINT FK_Estado       FOREIGN KEY (Id_Estado)       REFERENCES Estado(Id_Estado),
-    CONSTRAINT FK_Tipo_Version FOREIGN KEY (Id_Tipo_Version) REFERENCES Tipo_Version(Id_Tipo_Version),
-    CONSTRAINT FK_Rankin       FOREIGN KEY (Id_Rankin)       REFERENCES Rankin(Id_Rankin)
+    CONSTRAINT FK_Estado_01    FOREIGN KEY (Id_Estado)       REFERENCES Estado(Id_Estado),
+    CONSTRAINT FK_Tipo_Version FOREIGN KEY (Id_Tipo_Version) REFERENCES Tipo_Version(Id_Tipo_Version)
+
     
 );	
+
+CREATE TABLE Rankin(
+
+	Id_Rankin        INTEGER NOT NULL AUTO_INCREMENT,
+    Num_Visitas      INTEGER NOT NULL,
+    Num_Descargas	 INTEGER NOT NULL,
+    Cant_5			 INTEGER NOT NULL, 
+    Cant_4			 INTEGER NOT NULL,
+    Cant_3			 INTEGER NOT NULL,
+    Cant_2			 INTEGER NOT NULL,
+    Cant_1			 INTEGER NOT NULL,
+    Numero_Votos     INTEGER NOT NULL,
+    Id_Version		 INTEGER NOT NULL,
+    
+    CONSTRAINT PK_Rankin 	PRIMARY KEY (Id_Rankin),
+    
+    CONSTRAINT FK_Version 	FOREIGN KEY (Id_Version) REFERENCES Version (Id_Version),
+    CONSTRAINT UN_Rankin	UNIQUE		(Id_Version)
+    
+);
 
 CREATE TABLE Tema(
 
@@ -101,7 +101,8 @@ CREATE TABLE Tema(
     Nom_Tema   VARCHAR(45) NOT NULL,
     Des_Tema   VARCHAR(100) NOT NULL,
     
-    CONSTRAINT PK_Tema PRIMARY KEY (Id_Tema)
+    CONSTRAINT PK_Tema PRIMARY KEY (Id_Tema),
+    CONSTRAINT UN_Tema UNIQUE	   (Nom_Tema)	
     
 );
 
@@ -122,7 +123,7 @@ CREATE TABLE Programa(
 	Nom_Programa    VARCHAR(100) NOT NULL,
     Nivel_Formacion VARCHAR(45) NOT NULL,
     
-    CONSTRAINT PK_Programa PRIMARY KEY (Id_Programa)
+    CONSTRAINT PK_Programa PRIMARY KEY (Id_Programa)	
     
 );
 
@@ -166,7 +167,7 @@ CREATE TABLE Ciudad(
     Nom_Ciudad   VARCHAR(75) NOT NULL,
     
     CONSTRAINT PK_Ciudad    PRIMARY KEY (Id_Ciudad),
-    CONSTRAINT UN_Ciudad_01 UNIQUE (Nom_Ciudad) 
+    CONSTRAINT UN_Ciudad    UNIQUE (Nom_Ciudad) 
     
 );
 
@@ -202,13 +203,14 @@ CREATE TABLE Funcionario(
     Apellidos       VARCHAR(100) NOT NULL,
     Correo			VARCHAR(125) NOT NULL,
     Cargo 			VARCHAR(45) NOT NULL,
-    Estado 	       	BOOLEAN NOT NULL DEFAULT TRUE,
     Ip_Sena			VARCHAR(6) NOT NULL,
-    Contraseña      VARCHAR(255) NOT NULL,
+    Contraseña      VARCHAR(300) NOT NULL,
+    Id_Estado 	    INTEGER NOT NULL,
     Id_Area_Centro 	INTEGER NOT NULL,
     
     CONSTRAINT PK_Funcionario PRIMARY KEY (Id_Funcionario),
-    CONSTRAINT UN_Funcionario UNIQUE (Num_Documento,Correo,Ip_Sena,Contraseña),
+    CONSTRAINT UN_Funcionario UNIQUE 	  (Num_Documento,Correo,Ip_Sena),
+    CONSTRAINT FK_Estado_02	  FOREIGN KEY (Id_Estado) 	   REFERENCES Estado(Id_Estado), 	
     CONSTRAINT FK_Area_Centro FOREIGN KEY (Id_Area_Centro) REFERENCES Area_Centro(Id_Area_Centro)
     
 );	
@@ -219,7 +221,8 @@ CREATE TABLE Rol(
     Nom_Rol VARCHAR(45) NOT NULL,
     Des_Rol VARCHAR(100) NOT NULL,
     
-    CONSTRAINT PK_Rol PRIMARY KEY (Id_Rol)
+    CONSTRAINT PK_Rol PRIMARY KEY (Id_Rol),
+    CONSTRAINT UN_Rol UNIQUE      (Nom_Rol)
 );
 
 CREATE TABLE Rol_Funcionario(
@@ -229,7 +232,7 @@ CREATE TABLE Rol_Funcionario(
     Id_Funcionario     INTEGER NOT NULL,
     
     CONSTRAINT PK_Rol_Funcionario PRIMARY KEY (Id_Rol_Funcionario),
-    CONSTRAINT FK_Rol			  FOREIGN KEY (Id_Rol)         REFERENCES Rol(Id_Rol),
+    CONSTRAINT FK_Rol_01		  FOREIGN KEY (Id_Rol)         REFERENCES Rol(Id_Rol),
 	CONSTRAINT FK_Funcionario_01  FOREIGN KEY (Id_Funcionario) REFERENCES Funcionario (Id_Funcionario)
     
 );
@@ -249,7 +252,7 @@ CREATE TABLE Autor (
 CREATE TABLE Comentario(
 
 	Id_Comentario   INTEGER NOT NULL AUTO_INCREMENT,
-	Comentario      VARCHAR(350) NOT NULL,
+	Comentario      VARCHAR(500) NOT NULL,
 	Id_Funcionario  INTEGER NOT NULL,
     Id_Version      INTEGER NOT NULL,
     
@@ -269,7 +272,8 @@ CREATE TABLE Lista_Chequeo (
     Tipo_Lista		  VARCHAR(20) NOT NULL,
     Id_Funcionario    INTEGER NOT NULL,
     
-    CONSTRAINT PK_Lista_Chequeo PRIMARY KEY (Id_Lista_Chequeo),
+    CONSTRAINT PK_Lista_Chequeo  PRIMARY KEY (Id_Lista_Chequeo),
+    CONSTRAINT UN_Lista_Chequeo  UNIQUE	     (Nom_Lista_Chequeo),		
     CONSTRAINT FK_Funcionario_04 FOREIGN KEY (Id_Funcionario) REFERENCES Funcionario(Id_Funcionario)
     
 );
@@ -278,10 +282,11 @@ CREATE TABLE Item_Lista(
 
 	Id_Item_Lista 	INTEGER NOT NULL AUTO_INCREMENT,
     Des_Item_Lista 	VARCHAR(300) NOT NULL,
-    Tipo_Rol_Item	INTEGER NOT NULL,
+    Id_Rol			INTEGER NOT NULL,
     
     CONSTRAINT PK_Item_Lista PRIMARY KEY (Id_Item_Lista),
-    CONSTRAINT UN_Item_Lista UNIQUE (Des_Item_Lista)
+    CONSTRAINT FK_Rol_O2	 FOREIGN KEY (Id_Rol) 		  REFERENCES Rol(Id_Rol),
+    CONSTRAINT UN_Item_Lista UNIQUE      (Des_Item_Lista)
 );
 
 CREATE TABLE Detalles_Lista (
@@ -290,9 +295,9 @@ CREATE TABLE Detalles_Lista (
     Id_Lista_Chequeo  INTEGER NOT NULL,
     Id_Item_Lista     INTEGER NOT NULL,
     
-    CONSTRAINT PK_Detalles_Lista PRIMARY KEY (Id_Detalles_Lista),
-    CONSTRAINT FK_Lista_Chequeo_01 FOREIGN KEY (Id_Lista_Chequeo) REFERENCES Lista_Chequeo(Id_Lista_Chequeo),
-    CONSTRAINT FK_Item_Lista    FOREIGN KEY (Id_Item_Lista)	   REFERENCES Item_Lista(Id_Item_Lista)	
+    CONSTRAINT PK_Detalles_Lista 	PRIMARY KEY (Id_Detalles_Lista),
+    CONSTRAINT FK_Lista_Chequeo_01 	FOREIGN KEY (Id_Lista_Chequeo) REFERENCES Lista_Chequeo(Id_Lista_Chequeo),
+    CONSTRAINT FK_Item_Lista    	FOREIGN KEY (Id_Item_Lista)	   REFERENCES Item_Lista(Id_Item_Lista)	
     
 );
 CREATE TABLE Evaluacion_General(
@@ -306,9 +311,9 @@ CREATE TABLE Evaluacion_General(
     Id_Funcionario		  INTEGER NOT NULL,
 
 	CONSTRAINT PK_Evaluacion_General PRIMARY KEY (Id_Evaluacion_General),
-	CONSTRAINT FK_Version            FOREIGN KEY (Id_Version) REFERENCES Version (Id_Version),
+	CONSTRAINT FK_Version_03         FOREIGN KEY (Id_Version) REFERENCES Version (Id_Version),
     CONSTRAINT FK_Lista_Chequeo_02   FOREIGN KEY (Id_Lista_Chequeo) REFERENCES Lista_Chequeo(Id_Lista_Chequeo),
-    CONSTRAINT FK_Funcionario        FOREIGN KEY (Id_Funcionario) REFERENCES Funcionario(Id_Funcionario)
+    CONSTRAINT FK_Funcionario_05     FOREIGN KEY (Id_Funcionario) REFERENCES Funcionario(Id_Funcionario)
 );
 
 

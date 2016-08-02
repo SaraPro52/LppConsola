@@ -16,7 +16,7 @@ BEGIN
     EXECUTE sl;
 END;;
 
-s
+
 
 DELIMITER ;;
 CREATE PROCEDURE insertar(
@@ -32,8 +32,7 @@ CREATE PROCEDURE insertar(
     IN nom_Colum8 VARCHAR(100),	IN cont_colum8 VARCHAR(400),
     IN nom_Colum9 VARCHAR(100),	IN cont_colum9 VARCHAR(400),
     IN nom_Colum10 VARCHAR(100),IN cont_colum10 VARCHAR(400),
-    IN nom_Colum11 VARCHAR(100),IN cont_colum11 VARCHAR(400),
-    IN nom_Colum12 VARCHAR(100),IN cont_colum12 VARCHAR(400))
+    IN nom_Colum11 VARCHAR(100),IN cont_colum11 VARCHAR(400))
     
     
 BEGIN 
@@ -72,9 +71,7 @@ BEGIN
 		WHEN 11 THEN SET @ins = CONCAT("INSERT INTO ",tabla,"(",nom_Colum1,",",nom_Colum2,",",nom_Colum3,",",nom_Colum4,",",nom_Colum5,",",nom_Colum6,",",nom_Colum7,",",nom_Colum8,",",nom_Colum9,",",nom_Colum10,",",nom_Colum11,") 
 										VALUES('",cont_colum1,"','",cont_colum2,"','",cont_colum3,"','",cont_colum4,"','",cont_colum5,"','",cont_colum6,"','",cont_colum7,"','",cont_colum8,"','",cont_colum9,"','",cont_colum10,"','",cont_colum11,"')");
                                                                         
-		WHEN 12 THEN SET @ins = CONCAT("INSERT INTO ",tabla,"(",nom_Colum1,",",nom_Colum2,",",nom_Colum3,",",nom_Colum4,",",nom_Colum5,",",nom_Colum6,",",nom_Colum7,",",nom_Colum8,",",nom_Colum9,",",nom_Colum10,",",nom_Colum11,",",nom_Colum12,") 
-										VALUES('",cont_colum1,"','",cont_colum2,"','",cont_colum3,"','",cont_colum4,"','",cont_colum5,"','",cont_colum6,"','",cont_colum7,"','",cont_colum8,"','",cont_colum9,"','",cont_colum10,"','",cont_colum11,"','",cont_colum12,"')");
-                                        
+		
     END CASE;
  
     PREPARE insertar FROM @ins;
@@ -98,8 +95,7 @@ CREATE PROCEDURE actualizar(
     IN nom_Colum8 VARCHAR(100),	IN cont_colum8 VARCHAR(400),
     IN nom_Colum9 VARCHAR(100),	IN cont_colum9 VARCHAR(400),
     IN nom_Colum10 VARCHAR(100),IN cont_colum10 VARCHAR(400),
-    IN nom_Colum11 VARCHAR(100),IN cont_colum11 VARCHAR(400),
-    IN nom_Colum12 VARCHAR(100),IN cont_colum12 VARCHAR(400))
+    IN nom_Colum11 VARCHAR(100),IN cont_colum11 VARCHAR(400))
     
     
 BEGIN 
@@ -202,20 +198,7 @@ BEGIN
                                           ",nom_Colum11," = '",cont_colum11,"'
 									WHERE ",nom_ColumId," = ",id_colum,"");  
                                     
-		WHEN 12 THEN SET @act = CONCAT("UPDATE ",tabla,
-									" SET ",nom_Colum1," = '",cont_colum1,"',
-										  ",nom_Colum2," = '",cont_colum2,"',
-										  ",nom_Colum3," = '",cont_colum3,"',
-                                          ",nom_Colum4," = '",cont_colum4,"',
-                                          ",nom_Colum5," = '",cont_colum5,"',
-                                          ",nom_Colum6," = '",cont_colum6,"',
-                                          ",nom_Colum7," = '",cont_colum7,"',
-                                          ",nom_Colum8," = '",cont_colum8,"',
-                                          ",nom_Colum9," = '",cont_colum9,"',
-                                          ",nom_Colum10," = '",cont_colum10,"',
-                                          ",nom_Colum11," = '",cont_colum11,"',
-                                          ",nom_Colum12," = '",cont_colum12,"'
-									WHERE ",nom_ColumId," = ",id_colum,"");   
+  
     END CASE;
  
     PREPARE actualizar FROM @act;
