@@ -1,35 +1,40 @@
 
-package modelo.Bean;
+package modelo.Bean.Funcionario_Bean;
 
 public class Funcionario_Bean {
     
-    private int Id_Funcionario = 0;
-    private double Num_Documento;
-    private String Nom_Funcionario;
-    private String Apellidos;
-    private String Correo;
-    private String Cargo;
-    private String Ip_Sena;
-    private String Contraseña;
-    private int Id_Estado;
-    private int Id_Area_Centro;
-    
-    public Funcionario_Bean(){}
-    
-    public Funcionario_Bean(double num_Documento,String nom_Funcionario, String apellidos,
-                            String correo, String cargo, String ip_Sena, String contraseña, int id_Estado, int id_Area_Centro){
+    protected int           Id_Funcionario;
+    protected double        Num_Documento;
+    protected String        Nom_Funcionario;
+    protected String        Apellidos;
+    protected String        Correo;
+    protected String        Cargo;
+    protected String        Ip_Sena;
+    protected String        Contraseña;
+    protected int           Id_Area_Centro;
+    protected int           Id_Rol;
+            
+    public Funcionario_Bean(int Id_Funcionario,double Num_Documento,String Nom_Funcionario, String Apellidos, String Correo,String Cargo,String Ip_Sena,String Contraseña,int Id_Area_Centro,int Id_Rol){
         
+        this.Id_Funcionario =   Id_Funcionario;
+        this.Num_Documento =    Num_Documento;
+        this.Nom_Funcionario =  Nom_Funcionario;
+        this.Apellidos =        Apellidos;
+        this.Correo =           Correo;
+        this.Cargo =            Cargo;
+        this.Ip_Sena =          Ip_Sena;
+        this.Contraseña =       Contraseña;
+        this.Id_Area_Centro =   Id_Area_Centro;
+        this.Id_Rol =           Id_Rol;
         
-        this.Num_Documento = num_Documento;
-        this.Nom_Funcionario = nom_Funcionario;
-        this.Apellidos = apellidos;
-        this.Correo  = correo;
-        this.Cargo = cargo;
-        this.Ip_Sena = ip_Sena;
-        this.Contraseña = contraseña;
-        this.Id_Estado = id_Estado;
-        this.Id_Area_Centro = id_Area_Centro;
-        
+    }
+
+    public int getId_Rol() {
+        return Id_Rol;
+    }
+
+    public void setId_Rol(int Id_Rol) {
+        this.Id_Rol = Id_Rol;
     }
 
     public int getId_Funcionario() {
@@ -96,14 +101,6 @@ public class Funcionario_Bean {
         this.Contraseña = Contraseña;
     }
 
-    public int getId_Estado() {
-        return Id_Estado;
-    }
-
-    public void setId_Estado(int Id_Estado) {
-        this.Id_Estado = Id_Estado;
-    }
-
     public int getId_Area_Centro() {
         return Id_Area_Centro;
     }
@@ -111,7 +108,6 @@ public class Funcionario_Bean {
     public void setId_Area_Centro(int Id_Area_Centro) {
         this.Id_Area_Centro = Id_Area_Centro;
     }
-    
     
     
 }

@@ -2,8 +2,7 @@
 package modelo.Dao;
 
 import com.google.gson.Gson;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParser;
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -13,6 +12,7 @@ import util.ClaseConn;
 import util.InterfaceCrud;
 
 public class Estado_Dao extends InterfaceCrud{
+    
     public int Id_Estado;
     public String Nom_Estado;
 
@@ -24,7 +24,7 @@ public class Estado_Dao extends InterfaceCrud{
         this.Nom_Estado = est.getNom_Estado();
         
     }
-    public static Estado_Bean consultarRegistro(String nomEstado){
+    public static Estado_Bean consultarRegistro(int id){
         
         Estado_Bean estado = null;
         
@@ -32,10 +32,22 @@ public class Estado_Dao extends InterfaceCrud{
             ClaseConn c = new ClaseConn();
             Connection co = c.obtenerConn();
             Statement st = co.createStatement();
-            ResultSet rs = st.executeQuery("SELECT * FROM Estado WHERE Nom_Estado = '"+nomEstado+"'");
+            ResultSet rs    = null;
+            
+            CallableStatement cst = co.prepareCall("{call seleccionar(?,?,?,?)}");
+            
+            cst.setInt(1, 2);
+            cst.setString(2, "Estado");
+            cst.setString(3, "Id_Estado");
+            cst.setInt(4, id);
+            
+            cst.execute();
+            
+            rs = cst.getResultSet();
             
             while(rs.next()){
-                estado = new Estado_Bean(rs.getInt(1),nomEstado);
+                estado = new Estado_Bean(rs.getString(2));
+                estado.setId_Estado(id);
             }
             rs.close();
             st.close();
@@ -47,21 +59,25 @@ public class Estado_Dao extends InterfaceCrud{
         
     }
     
-    public String getEstados() throws Exception{
+    public String listar(){
+    
        ClaseConn co = new ClaseConn();
        ArrayList<Estado_Bean> listarEstados = new ArrayList<Estado_Bean>();
+       
         try {
             
             st = co.obtenerConn().createStatement();
-            procedure = "{call seleccionar(?)}";
+            procedure = "{call seleccionar(?,?,null,null)}";
+            
             cst = conn.prepareCall(procedure);
             
-            cst.setString(1,"Estado");
+            cst.setInt(1,1);
+            cst.setString(2,"Estado");
             
             cst.execute();
             
             rs = cst.getResultSet();
-           
+            
             while(rs.next()){
                 
                 Id_Estado = rs.getInt("Id_Estado");
@@ -78,11 +94,12 @@ public class Estado_Dao extends InterfaceCrud{
         } catch (Exception es) {
             es.printStackTrace();
         }
-        return new Gson().toJson(listarEstados); 
+       return new Gson().toJson(listarEstados);
     }
-      
+    
     @Override
     public boolean AgregarRegistro() {
+        
         listo = AgregarRegistroProce(1,"Estado", "Nom_Estado",this.Nom_Estado,
                                     "", "", "", "", "", "", "", "", "", "", "",
                                     "", "", "", "", "", "", "", "", "");

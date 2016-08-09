@@ -3,15 +3,14 @@ package modelo.Bean;
 
 public class Rol_Bean {
     
-    private int Id_Rol;
+    private int Id_Rol = 0;
     private String Nom_Rol;
     private String Des_Rol;
     
     public Rol_Bean(){}
     
-    public Rol_Bean(int id_Rol,String nom_Rol, String des_Rol){
+    public Rol_Bean(String nom_Rol, String des_Rol){
         
-        this.Id_Rol = id_Rol;
         this.Nom_Rol = nom_Rol;
         this.Des_Rol = des_Rol;
     }

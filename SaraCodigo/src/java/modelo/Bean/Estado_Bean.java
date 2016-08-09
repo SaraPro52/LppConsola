@@ -3,19 +3,17 @@ package modelo.Bean;
 
 public class Estado_Bean{
     
-    private int Id_Estado;
+    private int Id_Estado = 0;
     private String Nom_Estado;
+
+    
     public Estado_Bean(){}
     
-    public Estado_Bean(int id_Estado, String nom){
+    public Estado_Bean(String nom){
         
-        this.Id_Estado = id_Estado;
         this.Nom_Estado = nom;
         
     
-    }
-    public Estado_Bean(String nom){
-     this.Nom_Estado = nom;
     }
 
     public int getId_Estado() {

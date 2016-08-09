@@ -2,16 +2,15 @@ package modelo.Bean;
 
 public class Centro_Bean {
 
-    private int Id_Centro;
+    private int Id_Centro = 0;
     private String Nom_Centro;
     private String Direccion;
     private int Id_Ciudad;
     
     public Centro_Bean(){}
     
-    public Centro_Bean(int id_Centro,String nom_Centro,String direccion, int id_Ciudad){
+    public Centro_Bean(String nom_Centro,String direccion, int id_Ciudad){
     
-        this.Id_Centro = id_Centro;
         this.Nom_Centro = nom_Centro;
         this.Direccion = direccion;
         this.Id_Ciudad = id_Ciudad;

@@ -4,15 +4,14 @@ package modelo.Bean;
 
 public class Rol_Funcionario_Bean {
     
-    private int Id_Rol_Funcionario;
+    private int Id_Rol_Funcionario = 0;
     private int Id_Rol;
     private int Id_Funcionario;
     
     public Rol_Funcionario_Bean(){}
     
-    public Rol_Funcionario_Bean(int id_Rol_Funcionario,int id_Rol,int id_Funcionario){
+    public Rol_Funcionario_Bean(int id_Rol,int id_Funcionario){
         
-        this.Id_Rol_Funcionario = id_Rol_Funcionario;
         this.Id_Rol = id_Rol;
         this.Id_Funcionario = id_Funcionario;
         

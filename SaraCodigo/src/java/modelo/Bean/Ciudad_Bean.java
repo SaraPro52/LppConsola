@@ -3,14 +3,13 @@ package modelo.Bean;
 
 public class Ciudad_Bean {
     
-    private int Id_Ciudad;
+    private int Id_Ciudad = 0;
     private String Nom_Ciudad;
     
     public Ciudad_Bean(){}
     
-    public Ciudad_Bean(int id_Ciudad,String nom_Ciudad){
+    public Ciudad_Bean(String nom_Ciudad){
         
-        this.Id_Ciudad = id_Ciudad;
         this.Nom_Ciudad = nom_Ciudad;
     }
 

@@ -3,15 +3,15 @@ package modelo.Bean;
 
 public class Area_Centro_Bean {
     
-    private int Id_Area_Centro;
+    private int Id_Area_Centro = 0;
     private int Id_Area;
     private int Id_Centro;
     
     public Area_Centro_Bean(){}
     
-    public Area_Centro_Bean(int id_Area_Centro,int id_Area,int id_Centro){
+    public Area_Centro_Bean(int id_Area,int id_Centro){
     
-        this.Id_Area_Centro = id_Area_Centro;
+        
         this.Id_Area = id_Area;
         this.Id_Centro = id_Centro;
         
