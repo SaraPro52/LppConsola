@@ -5,7 +5,6 @@ import com.google.gson.Gson;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
-import java.sql.Statement;
 import java.util.ArrayList;
 import modelo.Bean.Area_Bean;
 import util.ClaseConn;
@@ -31,21 +30,15 @@ public class Area_Dao extends InterfaceCrud{
         Area_Bean areaB = null;
         
         try {
-            
             ClaseConn c = new ClaseConn();
             Connection co = c.obtenerConn();
-            Statement st = co.createStatement();
             ResultSet rs = null;
-            
             CallableStatement cst = co.prepareCall("{call seleccionar(?,?,?,?)}");
-            
             cst.setInt(1, 2);
             cst.setString(2, "Area");
             cst.setString(3, "Id_Area");
             cst.setInt(4, id);
-            
             cst.execute();
-            
             rs = cst.getResultSet();
             
             while(rs.next()){
@@ -54,14 +47,12 @@ public class Area_Dao extends InterfaceCrud{
                 areaB.setId_Area(id);
                 
             }
-            
             rs.close();
-            st.close();
+            cst.close();
             
         } catch (Exception are1) {
             are1.printStackTrace();
         }
-        
         return areaB;
     }
     
@@ -71,16 +62,12 @@ public class Area_Dao extends InterfaceCrud{
         ArrayList<Area_Bean> listarAreas = new ArrayList<Area_Bean>();
         
         try {
-            st = co.obtenerConn().createStatement();
+            
             procedure = "{call seleccionar(?,?,null,null)}";
-            
-            cst = conn.prepareCall(procedure);
-            
+            cst = co.obtenerConn().prepareCall(procedure);
             cst.setInt(1, 1);
             cst.setString(2,"Area");
-            
             cst.execute();
-            
             rs = cst.getResultSet();
             
             while(rs.next()){
@@ -89,15 +76,12 @@ public class Area_Dao extends InterfaceCrud{
                 Nom_Area = rs.getString("Nom_Area");
                 Lider_Area = rs.getString("Lider_Area");
                 
-                Area_Bean are = new Area_Bean();
+                Area_Bean are = new Area_Bean(Nom_Area,Lider_Area);
                 are.setId_Area(Id_Area);
-                are.setNom_Area(Nom_Area);
-                are.setLider_Area(Lider_Area);
                 
                 listarAreas.add(are);
-                
             }
-            procedure = "";
+            
         } catch (Exception are2) {
             are2.printStackTrace();
         }

@@ -3,7 +3,7 @@ USE SARApro;
 DROP PROCEDURE RegistrarCoordinador;
 DELIMITER ;;
 CREATE PROCEDURE RegistrarCoordinador(
-	
+IN Id_Rol			INTEGER,
 IN Num_Documento 	DOUBLE,
 IN Nom_Funcionario	VARCHAR(45),
 IN Apellidos 		VARCHAR(100),
@@ -16,7 +16,7 @@ IN Id_Area_Centro	INTEGER
 )
 BEGIN
 	
-    
+    SET @id_rol =       Id_Rol;
     SET @num_doc = 		Num_Documento;
     SET @nom_fun = 		Nom_Funcionario;
     SET @apell 	= 		Apellidos;
@@ -38,10 +38,10 @@ BEGIN
                                   'Id_Estado',      @id_estado,
 								  'Id_Area_Centro', @id_ar_ce,
 								null,null,null,null);
-                                
+									
    CALL ObtenerId(1,"Funcionario","Num_Documento",@num_doc,"","","Id_Funcionario",@id); 
    select @id;
-   CALL insertar(2,'Rol_Funcionario','Id_Rol','4','Id_Funcionario',@id,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null);
+   CALL insertar(2,'Rol_Funcionario','Id_Rol',@id_rol,'Id_Funcionario',@id,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null);
 
  
 END;;

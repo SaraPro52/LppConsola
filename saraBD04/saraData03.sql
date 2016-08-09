@@ -6,7 +6,7 @@ CALL insertar(2,'Detalles_Programa','Id_Tema','1','Id_Programa','1',null,null,nu
 CALL insertar(2,'Area','Nom_Area','Teleinformatica','Lider_Area','Gustabo',null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null);
 CALL insertar(2,'Detalles_Area','Id_Programa','1','Id_Area','1',null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null);
 CALL insertar(1,'Ciudad','Nom_Ciudad','Bogotá',null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null);
-CALL insertar(4,'Centro','Id_Centro','1','Nom_Centro','Centro de gestion, logistica y mescados','Direccion','Crr 52#','Id_Ciudad','1',null,null,null,null,null,null,null,null,null,null,null,null,null,null);
+CALL insertar(4,'Centro','Id_Centro','1','Nom_Centro','Centro de gestion, logistica y mescados','Direccion','Crr 52#','Id_Ciudad','1','Num_Centro','123',null,null,null,null,null,null,null,null,null,null,null,null);
 CALL insertar(2,'Area_Centro','Id_Area','1','Id_Centro','1',null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null);
 
 CALL insertar(2,'Formato','Nom_Formato','Documento','Des_Formato','Puede ser cualquier tipo de documento ofice',null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null);
@@ -62,7 +62,7 @@ CALL insertar(3,'Comentario','Comentario','En realidad la imagen es muy sencilla
 CALL insertar(3,'Comentario','Comentario','No estoy de acuerdo, en mi parecer le falta mucho ya que no contiene el tema de arrays el cual es muy importante para el aprendizaje de los nuevos aprendices','Id_Funcionario','1','Id_Version','1',null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null);
 
 
-CALL actualizar(2,'Ciudad','Id_Ciudad','1','Nom_Ciudad','armenia',null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null);
+CALL actualizar(1,'Ciudad','Id_Ciudad','1','Nom_Ciudad','armenia',null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null);
 CALL actualizar(1,'Ciudad','Id_Ciudad','1','Nom_Ciudad','VILLAVICENCIO',null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null);
 /*CALL RegistrarCoordinador(4,'Miguel Angel','Castiblanco Cabanzo',' miguel_acc@outlook.es','Aprendiz','135791','1019133595',1,1);
 

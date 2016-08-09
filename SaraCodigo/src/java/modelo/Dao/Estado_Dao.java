@@ -5,7 +5,6 @@ import com.google.gson.Gson;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
-import java.sql.Statement;
 import java.util.ArrayList;
 import modelo.Bean.Estado_Bean;
 import util.ClaseConn;
@@ -31,16 +30,12 @@ public class Estado_Dao extends InterfaceCrud{
         try {
             ClaseConn c = new ClaseConn();
             Connection co = c.obtenerConn();
-            Statement st = co.createStatement();
             ResultSet rs    = null;
-            
             CallableStatement cst = co.prepareCall("{call seleccionar(?,?,?,?)}");
-            
             cst.setInt(1, 2);
             cst.setString(2, "Estado");
             cst.setString(3, "Id_Estado");
             cst.setInt(4, id);
-            
             cst.execute();
             
             rs = cst.getResultSet();
@@ -50,7 +45,7 @@ public class Estado_Dao extends InterfaceCrud{
                 estado.setId_Estado(id);
             }
             rs.close();
-            st.close();
+            cst.close();
         } catch (Exception est1) {
             est1.printStackTrace();
         }
@@ -66,16 +61,11 @@ public class Estado_Dao extends InterfaceCrud{
        
         try {
             
-            st = co.obtenerConn().createStatement();
             procedure = "{call seleccionar(?,?,null,null)}";
-            
-            cst = conn.prepareCall(procedure);
-            
+            cst = co.obtenerConn().prepareCall(procedure);
             cst.setInt(1,1);
             cst.setString(2,"Estado");
-            
             cst.execute();
-            
             rs = cst.getResultSet();
             
             while(rs.next()){
@@ -83,14 +73,12 @@ public class Estado_Dao extends InterfaceCrud{
                 Id_Estado = rs.getInt("Id_Estado");
                 Nom_Estado = rs.getString("Nom_Estado");
                 
-                Estado_Bean esB = new Estado_Bean();
+                Estado_Bean esB = new Estado_Bean(Nom_Estado);
                 esB.setId_Estado(Id_Estado);
-                esB.setNom_Estado(Nom_Estado);
                 
                 listarEstados.add(esB);
             
             }
-            procedure = "";
         } catch (Exception es) {
             es.printStackTrace();
         }

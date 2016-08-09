@@ -173,13 +173,15 @@ CREATE TABLE Ciudad(
 
 CREATE TABLE Centro(
 	
-	Id_Centro    INTEGER NOT NULL,
+	Id_Centro    INTEGER NOT NULL AUTO_INCREMENT,
+    Num_Centro   VARCHAR(50) NOT NULL,
     Nom_Centro   VARCHAR(100) NOT NULL,
     Direccion    VARCHAR(100) NOT NULL,
     Id_Ciudad 	 INTEGER NOT NULL,
     
     CONSTRAINT PK_Centro PRIMARY KEY (Id_Centro),
-    CONSTRAINT FK_Ciudad FOREIGN KEY (Id_Ciudad) REFERENCES Ciudad(Id_Ciudad)
+    CONSTRAINT FK_Ciudad FOREIGN KEY (Id_Ciudad) REFERENCES Ciudad(Id_Ciudad),
+    CONSTRAINT UK_Centro UNIQUE	     (Num_Centro)
 );
 
 CREATE TABLE Area_Centro(
@@ -206,7 +208,7 @@ CREATE TABLE Funcionario(
     Ip_Sena			VARCHAR(6) NOT NULL,
     Contraseña      VARCHAR(300) NOT NULL,
     Id_Estado 	    INTEGER NOT NULL,
-    Id_Area_Centro 	INTEGER NOT NULL,Cliente
+    Id_Area_Centro 	INTEGER NOT NULL,
     
     CONSTRAINT PK_Funcionario PRIMARY KEY (Id_Funcionario),
     CONSTRAINT UN_Funcionario UNIQUE 	  (Num_Documento,Correo,Ip_Sena),

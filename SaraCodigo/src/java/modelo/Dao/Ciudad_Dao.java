@@ -5,7 +5,6 @@ import com.google.gson.Gson;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
-import java.sql.Statement;
 import java.util.ArrayList;
 import modelo.Bean.Ciudad_Bean;
 import util.ClaseConn;
@@ -31,17 +30,13 @@ public class Ciudad_Dao extends InterfaceCrud{
         try {
             ClaseConn c = new ClaseConn();
             Connection co = c.obtenerConn();
-            Statement st = co.createStatement();
             ResultSet rs = null;
             CallableStatement cst = co.prepareCall("{call seleccionar(?,?,?,?)}");
-            
             cst.setInt(1, 2);
             cst.setString(2,"Ciudad");
             cst.setString(3, "Id_Ciudad");
             cst.setInt(4, id);
-            
             cst.execute();
-            
             rs = cst.getResultSet();
             
             while(rs.next()){
@@ -49,9 +44,8 @@ public class Ciudad_Dao extends InterfaceCrud{
                 ciudadB = new Ciudad_Bean(rs.getString(2));
                 ciudadB.setId_Ciudad(id);
             }
-            
             rs.close();
-            st.close();
+            cst.close();
             
         } catch (Exception ciu1) {
             ciu1.printStackTrace();
@@ -67,15 +61,11 @@ public class Ciudad_Dao extends InterfaceCrud{
         
         try {
             
-            st = co.obtenerConn().createStatement();
             procedure = "{call seleccionar(?,?,null,null)}";
-            cst = conn.prepareCall(procedure);
-            
+            cst = co.obtenerConn().prepareCall(procedure);
             cst.setInt(1, 1);
             cst.setString(2,"Ciudad");
-            
             cst.execute();
-            
             rs = cst.getResultSet();
             
             while(rs.next()){
@@ -83,14 +73,11 @@ public class Ciudad_Dao extends InterfaceCrud{
                 Id_Ciudad = rs.getInt("Id_Ciudad");
                 Nom_Ciudad = rs.getString("Nom_Ciudad");
                 
-                Ciudad_Bean ciu = new Ciudad_Bean();
+                Ciudad_Bean ciu = new Ciudad_Bean(Nom_Ciudad);
                 ciu.setId_Ciudad(Id_Ciudad);
-                ciu.setNom_Ciudad(Nom_Ciudad);
-                
                 listarCiudades.add(ciu);
-                
             }
-            procedure = "";
+            
         } catch (Exception ciu2) {
             ciu2.printStackTrace();
         }
