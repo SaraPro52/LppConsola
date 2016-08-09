@@ -1,4 +1,3 @@
-
 package util;
 
 import java.util.ArrayList;
@@ -6,12 +5,10 @@ import java.util.Iterator;
 import modelo.Bean.Estado_Bean;
 import modelo.Dao.Estado_Dao;
 
-
-
 public class NewMain {
 
     public static void main(String[] args) {
-          /*
+        /*
           //p.ActualizarRegistroProce(2,"Area","Id_Area",3,"Nom_Area","HOLA QUE HACE","Lider_Area","MOVISTAR",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null);
           
           
@@ -30,20 +27,24 @@ public class NewMain {
           
           tedao.Nom_Tipo_Estado = "claro1";
           tedao.ActualizarRegistro();*/
-          
-          Estado_Bean estadoBean = new Estado_Bean(0, "Esper");
-          
-          
-          //estadoDao.AgregarRegistro();
-          
-          Estado_Bean e1 = Estado_Dao.consultarRegistro("mmm");
-          
-          Estado_Dao estadoDao = new Estado_Dao();
+ /*
+        Estado_Bean estadoBean = new Estado_Bean(0, "Esper");
 
-          System.out.println(e1.getNom_Estado());
-          System.out.println(e1.getId_Estado());
-          
-          
+        //estadoDao.AgregarRegistro();
+        Estado_Bean e1 = Estado_Dao.consultarRegistro("mmm");
+
+        Estado_Dao estadoDao = new Estado_Dao();
+
+        System.out.println(e1.getNom_Estado());
+        System.out.println(e1.getId_Estado());
+         */
+        int id = 25;
+        String estado = ("Segundo");
+        Estado_Bean eb = new Estado_Bean(estado);
+        Estado_Dao ed = new Estado_Dao(eb);
+        ed.AgregarRegistro();
+        System.out.println("estado " + ed);
+        /*
           ArrayList<Estado_Bean> listaE  = estadoDao.listar();
           
           Iterator<Estado_Bean> iteraE = listaE.iterator();
@@ -54,18 +55,9 @@ public class NewMain {
               
               System.out.println(estado.getId_Estado()+ " "+ estado.getNom_Estado());
               
-          }
-          
-          //estadoDao.AgregarRegistro();
-          
-          //estadoDao.Nom_Estado = "mmm";
-          //estadoDao.ActualizarRegistro();
-          
-    
+          }*/
+        //estadoDao.AgregarRegistro();
+        //estadoDao.Nom_Estado = "mmm";
+        //estadoDao.ActualizarRegistro();
     }
 }
-
-
-
-
-

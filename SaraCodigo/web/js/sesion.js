@@ -1,0 +1,15 @@
+$(document).on('ready',function(){
+    console.log("Vivo??");
+    $("#btninstrutor").on('click',function(){
+      $("#Opcion").val("1");
+    });
+  $("#btnadministrador").on('click',function(){
+    $("#Opcion").val("2");
+  });
+  $("#btnequipo").on('click',function(){
+    $("#Opcion").val("3");
+  });
+  $("#btncoordinador").on('click',function(){
+    $("#Opcion").val("4");
+  });
+});

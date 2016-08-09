@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
+    <servlet>
+        <servlet-name>administradorcontroller</servlet-name>
+        <servlet-class>Controller.administradorController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>	coordinadorcontroller</servlet-name>
+        <servlet-class>Controller.CoordinadorController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>instrutorcontroller</servlet-name>
+        <servlet-class>Controller.InstrutorController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>sesioncontroller</servlet-name>
+        <servlet-class>Controller.sesionController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EstadoController</servlet-name>
+        <servlet-class>Controller.EstadoController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>areacontronller</servlet-name>
+        <servlet-class>Controller.AreaContronller</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>administradorcontroller</servlet-name>
+        <url-pattern>/administradorcontroller</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>coordinadorcontroller</servlet-name>
+        <url-pattern>/coordinadorcontroller</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>instrutorcontroller</servlet-name>
+        <url-pattern>/instrutorcontroller</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>sesioncontroller</servlet-name>
+        <url-pattern>/sesioncontroller</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EstadoController</servlet-name>
+        <url-pattern>/EstadoController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>areacontronller</servlet-name>
+        <url-pattern>/areacontronller</url-pattern>
+    </servlet-mapping>
+</web-app>

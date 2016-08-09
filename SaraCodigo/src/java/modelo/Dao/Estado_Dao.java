@@ -1,6 +1,9 @@
 
 package modelo.Dao;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParser;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -10,7 +13,6 @@ import util.ClaseConn;
 import util.InterfaceCrud;
 
 public class Estado_Dao extends InterfaceCrud{
-    
     public int Id_Estado;
     public String Nom_Estado;
 
@@ -45,11 +47,9 @@ public class Estado_Dao extends InterfaceCrud{
         
     }
     
-    public ArrayList<Estado_Bean> listar(){
-    
+    public String getEstados() throws Exception{
        ClaseConn co = new ClaseConn();
        ArrayList<Estado_Bean> listarEstados = new ArrayList<Estado_Bean>();
-       
         try {
             
             st = co.obtenerConn().createStatement();
@@ -61,7 +61,7 @@ public class Estado_Dao extends InterfaceCrud{
             cst.execute();
             
             rs = cst.getResultSet();
-            
+           
             while(rs.next()){
                 
                 Id_Estado = rs.getInt("Id_Estado");
@@ -78,12 +78,11 @@ public class Estado_Dao extends InterfaceCrud{
         } catch (Exception es) {
             es.printStackTrace();
         }
-       return listarEstados;
+        return new Gson().toJson(listarEstados); 
     }
-    
+      
     @Override
     public boolean AgregarRegistro() {
-        
         listo = AgregarRegistroProce(1,"Estado", "Nom_Estado",this.Nom_Estado,
                                     "", "", "", "", "", "", "", "", "", "", "",
                                     "", "", "", "", "", "", "", "", "");

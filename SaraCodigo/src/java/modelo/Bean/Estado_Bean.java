@@ -5,8 +5,6 @@ public class Estado_Bean{
     
     private int Id_Estado;
     private String Nom_Estado;
-
-    
     public Estado_Bean(){}
     
     public Estado_Bean(int id_Estado, String nom){
@@ -15,6 +13,9 @@ public class Estado_Bean{
         this.Nom_Estado = nom;
         
     
+    }
+    public Estado_Bean(String nom){
+     this.Nom_Estado = nom;
     }
 
     public int getId_Estado() {

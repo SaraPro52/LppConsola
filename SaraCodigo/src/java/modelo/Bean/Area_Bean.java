@@ -8,7 +8,9 @@ public class Area_Bean {
     private String Lider_Area;
     
     public Area_Bean(){}
-    
+    public Area_Bean(String nom){
+        this.Nom_Area= nom;
+    }
     public Area_Bean(int id_Area, String nom_Area, String lider_Area){
         
         this.Id_Area = id_Area;
