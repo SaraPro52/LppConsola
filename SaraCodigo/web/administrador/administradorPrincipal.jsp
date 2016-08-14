@@ -23,7 +23,7 @@
                 </form>
             </article>
             <article>
-                <table border="1" class="table table-hover  table-bordered">
+                <table id="tabla" border="1" class="table table-hover  table-bordered">
                     <thead>
                     <th class="info">Nombre</th>
                     <th class="info">Cargo</th>

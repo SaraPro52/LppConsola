@@ -15,17 +15,17 @@ public class vasos {
         this.vaso = vaso;
     }
     public void AVasos() {
-        String cadenaAleatoria = "";
+        String vasos = "";
         long milis = new java.util.GregorianCalendar().getTimeInMillis();
         Random r = new Random(milis);
         int i = 0;
         while (i < 15) {
             char c = (char) r.nextInt(255);
             if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z') || (c >= '!' && c <= '@')) {
-                cadenaAleatoria += c;
+                vasos += c;
                 i++;
             }
-            this.vaso = cadenaAleatoria;
+            this.vaso = vasos;
         }
     }
 }
