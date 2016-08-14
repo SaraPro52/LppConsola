@@ -21,16 +21,20 @@ public class AreaContronller extends HttpServlet {
             3.consultar
             4.eliminar*/
             int opcion = Integer.parseInt(request.getParameter("Opcion"));
-            String area = request.getParameter("area");
-            Area_Bean abean = new Area_Bean(area);
+            String area = request.getParameter("Nombrea");
+            String lider = request.getParameter("Lider");
+            Area_Bean abean = new Area_Bean(area, lider);
             Area_Dao adao = new Area_Dao(abean);
-
             switch (opcion) {
                 case 1:
                     if (adao.AgregarRegistro()) {
-                        request.setAttribute("exito", "<script>alert('la area fue registrada correctamente')</script>");
-                    } else {
-                        request.setAttribute("error", "masterpage/ErrorS.jsp");
+                        response.setContentType("application/json;charset=UTF-8");
+                        PrintWriter devuelta = response.getWriter();
+                        try {
+                            devuelta.println(adao.listar());
+                        } catch (Exception e) {
+                            devuelta.println("Error: " + e.getMessage());
+                        }
                     }
                     break;
                 case 2:
@@ -39,12 +43,10 @@ public class AreaContronller extends HttpServlet {
                     response.setContentType("application/json;charset=UTF-8");
                     PrintWriter devuelta = response.getWriter();
                     try {
-                        devuelta.println(adao.getAreas());
-
+                        devuelta.println(adao.listar());
                     } catch (Exception e) {
                         devuelta.println("Error: " + e.getMessage());
                     }
-
                     break;
                 case 4:
                     break;

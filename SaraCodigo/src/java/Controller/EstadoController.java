@@ -1,4 +1,5 @@
 package Controller;
+
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -8,7 +9,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import modelo.Bean.Estado_Bean;
 import modelo.Dao.Estado_Dao;
+
 public class EstadoController extends HttpServlet {
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -19,29 +22,32 @@ public class EstadoController extends HttpServlet {
             3.consultar
             4.eliminar*/
             int opcion = Integer.parseInt(request.getParameter("Opcion"));
-            String estado = request.getParameter("Estado");
+            String estado = request.getParameter("estado");
             Estado_Bean ebean = new Estado_Bean(estado);
             Estado_Dao edao = new Estado_Dao(ebean);
 
             switch (opcion) {
                 case 1:
                     if (edao.AgregarRegistro()) {
-                        request.setAttribute("exito", "<script>alert('El estado fue registrdo correctamente')</script>");
-                        request.getRequestDispatcher("administrador/estado/estado.jsp").forward(request, response);
-                    } else {
-                        request.setAttribute("error", "masterpage/ErrorS.jsp");
+                        response.setContentType("application/json;charset=UTF-8");
+                        PrintWriter devuelta = response.getWriter();
+                        try {
+                            devuelta.println(edao.listar());
+                        } catch (Exception e) {
+                            devuelta.println("Error: " + e.getMessage());
+                        }
                     }
                     break;
                 case 2:
                     break;
                 case 3:
-                        response.setContentType("application/json;charset=UTF-8");
-                        PrintWriter devuelta = response.getWriter();
-                        try {
-                            devuelta.println(edao.getEstados());
-                        } catch (Exception e) {
-                            devuelta.println("Error: " + e.getMessage());
-                        }
+                    response.setContentType("application/json;charset=UTF-8");
+                    PrintWriter devuelta = response.getWriter();
+                    try {
+                        devuelta.println(edao.listar());
+                    } catch (Exception e) {
+                        devuelta.println("Error: " + e.getMessage());
+                    }
                     break;
                 case 4:
                     break;

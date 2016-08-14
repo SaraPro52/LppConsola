@@ -6,31 +6,31 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import modelo.Bean.Estado_Bean;
-import modelo.Dao.Estado_Dao;
+import modelo.Bean.Centro_Bean;
+import modelo.Dao.Centro_Dao;
 
-public class administradorController extends HttpServlet {
+public class CentroController extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             int opcion = Integer.parseInt(request.getParameter("Opcion"));
+            Centro_Bean cBean = new Centro_Bean();
+            Centro_Dao cDao = new Centro_Dao(cBean);
             switch (opcion) {
                 case 1:
-                    request.getRequestDispatcher("administrador/estado/estado.jsp").forward(request, response);
                     break;
                 case 2:
-                    request.getRequestDispatcher("administrador/area/area.jsp").forward(request, response);
                     break;
                 case 3:
-                    request.getRequestDispatcher("administrador/ciudad/ciudad.jsp").forward(request, response);
-                    break;
-                case 4:
-                    request.getRequestDispatcher("administrador/registroCoordinador/registroCoordinador.jsp").forward(request, response);
-                    break;
-                case 5:
-                    request.getRequestDispatcher("instrutor/instrutorPrincipal.jsp").forward(request, response);
+                    response.setContentType("application/json;charset=UTF-8");
+                    PrintWriter devuelta = response.getWriter();
+                    try {
+                        devuelta.println(cDao.listar());
+                    } catch (Exception e) {
+                        devuelta.println("Error: " + e.getMessage());
+                    }
                     break;
             }
         }

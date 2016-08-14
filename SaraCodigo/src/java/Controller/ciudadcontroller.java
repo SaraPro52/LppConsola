@@ -6,31 +6,47 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import modelo.Bean.Estado_Bean;
-import modelo.Dao.Estado_Dao;
+import modelo.Bean.Ciudad_Bean;
+import modelo.Dao.Ciudad_Dao;
 
-public class administradorController extends HttpServlet {
+public class ciudadcontroller extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
+            /*Menu de opciones crud
+            1.agregar
+            2.actualizar
+            3.consultar
+            4.eliminar*/
             int opcion = Integer.parseInt(request.getParameter("Opcion"));
+            String ciudad = request.getParameter("ciudad");
+            Ciudad_Bean cBean = new Ciudad_Bean(ciudad);
+            Ciudad_Dao cDao = new Ciudad_Dao(cBean);
+
             switch (opcion) {
                 case 1:
-                    request.getRequestDispatcher("administrador/estado/estado.jsp").forward(request, response);
+                    if (cDao.AgregarRegistro()) {
+                        response.setContentType("application/json;charset=UTF-8");
+                        PrintWriter devuelta = response.getWriter();
+                        try {
+                            devuelta.println(cDao.listar());
+                        } catch (Exception e) {
+                            devuelta.println("Error: " + e.getMessage());
+                        }
+                    }
                     break;
                 case 2:
-                    request.getRequestDispatcher("administrador/area/area.jsp").forward(request, response);
                     break;
                 case 3:
-                    request.getRequestDispatcher("administrador/ciudad/ciudad.jsp").forward(request, response);
-                    break;
-                case 4:
-                    request.getRequestDispatcher("administrador/registroCoordinador/registroCoordinador.jsp").forward(request, response);
-                    break;
-                case 5:
-                    request.getRequestDispatcher("instrutor/instrutorPrincipal.jsp").forward(request, response);
+                    response.setContentType("application/json;charset=UTF-8");
+                    PrintWriter devuelta = response.getWriter();
+                    try {
+                        devuelta.println(cDao.listar());
+                    } catch (Exception e) {
+                        devuelta.println("Error: " + e.getMessage());
+                    }
                     break;
             }
         }
