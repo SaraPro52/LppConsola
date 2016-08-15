@@ -14,54 +14,54 @@ public class FuncionarioController extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-            /*Menu de opciondes de crud de funcionario...
+
+        /*Menu de opciondes de crud de funcionario...
             1. Agregar funcionario
             2. Actualizar
             3. Consultar
             4. Eliminar*/
-            int opcion = Integer.parseInt(request.getParameter("Opcion"));
-            switch (opcion) {
-                case 1:
-                    int tipo = Integer.parseInt(request.getParameter("STipoUsuario"));
-                    String nombre = (request.getParameter("CNombre"));
-                    String apellido=(request.getParameter("CApellido"));
-                    Double identificacion=(Double.parseDouble(request.getParameter("CIdentificacion")));
-                    String correo=(request.getParameter("CEmail"));
-                    String cargo=(request.getParameter("SCargo"));
-                    String sena=(request.getParameter("CSena"));
-                    vasos contra = new vasos();
-                    contra.AVasos();
-                    String contr = (contra.getVaso());
-                    int estado=(Integer.parseInt(request.getParameter("SEstado")));
-                    int area=(Integer.parseInt(request.getParameter("SArea")));
-                    Funcionario_Bean fBean = new Funcionario_Bean(identificacion,nombre,apellido,correo,cargo,sena,contr,estado,area);
-                    Funcionario_Dao fDao = new Funcionario_Dao(fBean);
-                    if (fDao.AgregarFuncionario(tipo)) {
-                        Correo c = new Correo();
-                        String destino = (fBean.getCorreo());
-                        String asunto = "¿Nuevo en saraPro?";
-                        String descripcion = "Hola: Este es un correo con un usuario y contraseña temporales son Usuario" + fBean.getNum_Documento() + " contraseña: " + fBean.getContraseña()+"PD:Hay que cambiar este mensaje";
-                        c.setMensaje(descripcion);
-                        c.setAsunto(asunto);
-                        c.setDestino(destino);
-                        CorreoController ce = new CorreoController();
-                        if (ce.enviarCorreo(c)) {
-                            System.out.println("Envio correcto, mira tu correo ;)");
-                        } else {
-                            System.out.println("Error");
-                        }
-                        response.setContentType("application/json;charset=UTF-8");
-                        PrintWriter devuelta = response.getWriter();
-                        try {
-                            devuelta.println("Envio Correcto");
-                        } catch (Exception e) {
-                            devuelta.println("Error: " + e.getMessage());
-                        }
+        int opcion = Integer.parseInt(request.getParameter("Opcion"));
+        switch (opcion) {
+            case 1:
+                int tipo = Integer.parseInt(request.getParameter("STipoUsuario"));
+                Funcionario_Bean fBean = new Funcionario_Bean();
+                fBean.setNom_Funcionario(request.getParameter("CNombre"));
+                fBean.setApellidos((request.getParameter("CApellido")));
+                fBean.setNum_Documento(Double.parseDouble(request.getParameter("CIdentificacion")));
+                fBean.setCorreo(request.getParameter("CEmail"));
+                fBean.setCargo(request.getParameter("SCargo"));
+                fBean.setIp_Sena(request.getParameter("CSena"));
+                vasos contra = new vasos();
+                contra.AVasos();
+                fBean.setContraseña(contra.getVaso());
+                fBean.setId_Estado(Integer.parseInt(request.getParameter("SEstado")));
+                fBean.setId_Area_Centro(Integer.parseInt(request.getParameter("SArea")));
+                Funcionario_Dao fDao = new Funcionario_Dao(fBean);
+                if (fDao.AgregarFuncionario(tipo)) {
+                    Correo c = new Correo();
+                    String destino = (fBean.getCorreo());
+                    String asunto = "¿Nuevo en saraPro?";
+                    String descripcion = "Hola: Este es un correo con un usuario y contraseña temporales son Usuario" + fBean.getNum_Documento() + " contraseña: " + fBean.getContraseña() + "PD:Hay que cambiar este mensaje";
+                    c.setMensaje(descripcion);
+                    c.setAsunto(asunto);
+                    c.setDestino(destino);
+                    CorreoController ce = new CorreoController();
+                    response.setContentType("application/json;charset=UTF-8");
+                    PrintWriter devuelta = response.getWriter();
+                    try {
+                        devuelta.println("Envio Correcto");
+                    } catch (Exception e) {
+                        devuelta.println("Error: " + e.getMessage());
                     }
-                    break;
-            }
-        
+                    if (ce.enviarCorreo(c)) {
+                        System.out.println("Envio correcto, mira tu correo ;)");
+                    } else {
+                        System.out.println("Error");
+                    }
+                }
+                break;
+        }
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

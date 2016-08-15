@@ -44,6 +44,10 @@
         <servlet-name>recontroller</servlet-name>
         <servlet-class>Controller.reController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>imagencontroller</servlet-name>
+        <servlet-class>Controller.imagenController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>administradorcontroller</servlet-name>
         <url-pattern>/administradorcontroller</url-pattern>
@@ -87,5 +91,9 @@
     <servlet-mapping>
         <servlet-name>recontroller</servlet-name>
         <url-pattern>/recontroller</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>imagencontroller</servlet-name>
+        <url-pattern>/imagencontroller</url-pattern>
     </servlet-mapping>
 </web-app>

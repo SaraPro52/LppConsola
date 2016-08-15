@@ -1,4 +1,5 @@
 package Controller;
+
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -18,6 +19,7 @@ public class InstrutorController extends HttpServlet {
                     request.getRequestDispatcher("instrutor/registroOA/registroOA.jsp").forward(request, response);
                     break;
                 case 2:
+                    request.getRequestDispatcher("instrutor/registroOA/imagenes.jsp").forward(request, response);
                     break;
                 case 3:
                     break;

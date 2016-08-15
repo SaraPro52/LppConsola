@@ -1,16 +1,12 @@
 package Controller;
 import java.util.Random;
 public class vasos {
-
     private String vaso;
-
     public vasos() {
     }
-
     public String getVaso() {
         return vaso;
     }
-
     public void setVaso(String vaso) {
         this.vaso = vaso;
     }

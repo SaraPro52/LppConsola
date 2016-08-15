@@ -21,9 +21,10 @@ public class AreaContronller extends HttpServlet {
             3.consultar
             4.eliminar*/
             int opcion = Integer.parseInt(request.getParameter("Opcion"));
-            String area = request.getParameter("Nombrea");
-            String lider = request.getParameter("Lider");
-            Area_Bean abean = new Area_Bean(area, lider);
+            Area_Bean abean = new Area_Bean();
+            abean.setNom_Area(request.getParameter("Nombrea"));
+            abean.setLider_Area(request.getParameter("Lider"));
+            
             Area_Dao adao = new Area_Dao(abean);
             switch (opcion) {
                 case 1:

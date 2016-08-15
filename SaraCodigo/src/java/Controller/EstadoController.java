@@ -22,10 +22,9 @@ public class EstadoController extends HttpServlet {
             3.consultar
             4.eliminar*/
             int opcion = Integer.parseInt(request.getParameter("Opcion"));
-            String estado = request.getParameter("estado");
-            Estado_Bean ebean = new Estado_Bean(estado);
+            Estado_Bean ebean = new Estado_Bean();
+            ebean.setNom_Estado(request.getParameter("estado"));
             Estado_Dao edao = new Estado_Dao(ebean);
-
             switch (opcion) {
                 case 1:
                     if (edao.AgregarRegistro()) {
