@@ -22,12 +22,14 @@ public class administradorController extends HttpServlet {
                     break;
                 case 2:
                     request.getRequestDispatcher("administrador/area/area.jsp").forward(request, response);
-
                     break;
                 case 3:
-                    request.getRequestDispatcher("administrador/registroCoordinador/registroCoordinador.jsp").forward(request, response);
+                    request.getRequestDispatcher("administrador/ciudad/ciudad.jsp").forward(request, response);
                     break;
                 case 4:
+                    request.getRequestDispatcher("administrador/registroCoordinador/registroCoordinador.jsp").forward(request, response);
+                    break;
+                case 5:
                     request.getRequestDispatcher("instrutor/instrutorPrincipal.jsp").forward(request, response);
                     break;
             }

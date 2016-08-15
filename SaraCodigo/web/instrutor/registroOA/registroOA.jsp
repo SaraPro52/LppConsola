@@ -4,9 +4,10 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">            <link rel="stylesheet" type="text/css" href="css/HojaEstilos.css">
-        <script type="text/javascript" src="js/jquery.js"></script>
-        <script type="text/javascript" src="js/logico.js"></script>
+
         <script type="text/javascript" src="instrutor/registroOA/js/SubirOa.js"></script>
+        
+        <script type="text/javascript" src="instrutor/registroOA/js/imagenes.js"></script>
         <title>Subir OA</title>
     </head>
     <body>
@@ -14,6 +15,7 @@
             <article class="col-md-12">
                 <form class="" action="InstrutorController" method="post">
 
+                    <div id="cargar"> Cargar..</div> 
                     <div class="col-md-8">
                         <label for="Titulo">Titulo de la publicacion</label><span id="ITitulo" class="glyphicon glyphicon-sunglasses"></span>
                         <div class="col-md-offset-12" id="notificacion"> La peor informacion del mundo...</div>    

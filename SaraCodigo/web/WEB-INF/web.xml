@@ -5,10 +5,6 @@
         <servlet-class>Controller.administradorController</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>	coordinadorcontroller</servlet-name>
-        <servlet-class>Controller.CoordinadorController</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>instrutorcontroller</servlet-name>
         <servlet-class>Controller.InstrutorController</servlet-class>
     </servlet>
@@ -23,6 +19,34 @@
     <servlet>
         <servlet-name>areacontronller</servlet-name>
         <servlet-class>Controller.AreaContronller</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>	coordinadorcontroller</servlet-name>
+        <servlet-class>Controller.CoordinadorController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CentroController</servlet-name>
+        <servlet-class>Controller.CentroController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CIudadController</servlet-name>
+        <servlet-class>Controller.CIudadController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ciudadcontroller</servlet-name>
+        <servlet-class>Controller.ciudadcontroller</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>funcionariocontroller</servlet-name>
+        <servlet-class>Controller.FuncionarioController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>recontroller</servlet-name>
+        <servlet-class>Controller.reController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>imagencontroller</servlet-name>
+        <servlet-class>Controller.imagenController</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>administradorcontroller</servlet-name>
@@ -47,5 +71,29 @@
     <servlet-mapping>
         <servlet-name>areacontronller</servlet-name>
         <url-pattern>/areacontronller</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CentroController</servlet-name>
+        <url-pattern>/CentroController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CIudadController</servlet-name>
+        <url-pattern>/CIudadController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ciudadcontroller</servlet-name>
+        <url-pattern>/ciudadcontroller</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>funcionariocontroller</servlet-name>
+        <url-pattern>/funcionariocontroller</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>recontroller</servlet-name>
+        <url-pattern>/recontroller</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>imagencontroller</servlet-name>
+        <url-pattern>/imagencontroller</url-pattern>
     </servlet-mapping>
 </web-app>

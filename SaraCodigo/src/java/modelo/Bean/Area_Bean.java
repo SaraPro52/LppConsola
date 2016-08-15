@@ -10,7 +10,7 @@ public class Area_Bean {
     public Area_Bean(){}
     
     public Area_Bean(String nom_Area, String lider_Area){
-        
+    
         this.Nom_Area = nom_Area;
         this.Lider_Area = lider_Area;
     }

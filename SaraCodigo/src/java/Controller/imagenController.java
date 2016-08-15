@@ -1,57 +1,44 @@
 package Controller;
 
+import java.io.File;
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.ServletException;
-import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import modelo.Bean.Estado_Bean;
-import modelo.Dao.Estado_Dao;
 
-public class EstadoController extends HttpServlet {
+import org.apache.commons.fileupload.FileItem;
+import org.apache.commons.fileupload.FileItemFactory;
+import org.apache.commons.fileupload.disk.DiskFileItemFactory;
+import org.apache.commons.fileupload.servlet.ServletFileUpload;
+
+public class imagenController extends HttpServlet {
+
+    private static final long serialVersionID = 1L;
+    private final String UPLOAD_DIRECTORY = "C:/Files/";
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /*Menu de opciones crud
-            1.agregar
-            2.actualizar
-            3.consultar
-            4.eliminar*/
-            int opcion = Integer.parseInt(request.getParameter("Opcion"));
-            Estado_Bean ebean = new Estado_Bean();
-            ebean.setNom_Estado(request.getParameter("estado"));
-            Estado_Dao edao = new Estado_Dao(ebean);
-            switch (opcion) {
-                case 1:
-                    if (edao.AgregarRegistro()) {
-                        response.setContentType("application/json;charset=UTF-8");
-                        PrintWriter devuelta = response.getWriter();
-                        try {
-                            devuelta.println(edao.listar());
-                        } catch (Exception e) {
-                            devuelta.println("Error: " + e.getMessage());
-                        }
+        boolean isMultipart = ServletFileUpload.isMultipartContent(request);
+
+        if (isMultipart) {
+            FileItemFactory factory = new DiskFileItemFactory();
+            ServletFileUpload upload = new ServletFileUpload(factory);
+            try {
+                List<FileItem> multiparts = upload.parseRequest(request);
+                for (FileItem item : multiparts) {
+                    if (!item.isFormField()) {
+                        String name = new File(item.getName()).getName();
+                        item.write(new File(UPLOAD_DIRECTORY + File.separator + name));
                     }
-                    break;
-                case 2:
-                    break;
-                case 3:
-                    response.setContentType("application/json;charset=UTF-8");
-                    PrintWriter devuelta = response.getWriter();
-                    try {
-                        devuelta.println(edao.listar());
-                    } catch (Exception e) {
-                        devuelta.println("Error: " + e.getMessage());
-                    }
-                    break;
-                case 4:
-                    break;
+                }
+            } catch (Exception e) {
+
+                System.out.println("Error al cargar el archivo" + e);
             }
         }
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -81,6 +68,7 @@ public class EstadoController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
+
     }
 
     /**

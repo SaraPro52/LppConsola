@@ -2,22 +2,20 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="utf-8">
-        <title>estados</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="css/bootstrap.css" media="screen" title="no title" charset="utf-8">
-        <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.12/css/jquery.dataTables.css">
         <script type="text/javascript" src="js/jquery.js"></script>
-        <script type="text/javascript" src="administrador/estado/js/estado.js"></script>
-        <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.12/js/jquery.dataTables.js"></script>
+        <script type="text/javascript" src="administrador/ciudad/js/ciudad.js"></script>
+
+        <title>Ciudades</title>
     </head>
     <body>
-        <header></header>
         <section class="col-md-12">
             <article class="col-md-8">
                 <form id = "formularioEstado">
-                    <label for="EstadoC">Nombrestado</label>
-                    <input type="text"  name="Estado" id="EstadoC">
-                    <button type="button" id="btnEstado"  name="button">Guardar estado</button>
+                    <label for="EstadoC">Nombre de la ciudad</label>
+                    <input type="text"  name="Ciudad" id="Ciudad">
+                    <button type="button" id="btnEstado"  name="button">Guardar Ciudad</button>
                 </form>
             </article>
             <article class="col-md-6 col-offset-2s">
@@ -25,9 +23,9 @@
                     <thead>
                         <tr class="active">
                             <td id ="id">Id</td>
-                            <td id="Nombre">Nombre estado</td>
-                            <td ></td>
-                            <td ></td>
+                            <td id="Ciudad">Nombre ciudad</td>
+                            <td></td>
+                            <td></td>
                         </tr>
                     </thead>
                     <tbody>
@@ -35,6 +33,5 @@
                 </table>
             </article>
         </section>
-        <footer></footer>
     </body>
 </html>

@@ -1,5 +1,5 @@
 USE SARApro;
-
+select *from Funcionario;
 DROP PROCEDURE RegistrarFuncionario;
 DELIMITER ;;
 CREATE PROCEDURE RegistrarFuncionario(

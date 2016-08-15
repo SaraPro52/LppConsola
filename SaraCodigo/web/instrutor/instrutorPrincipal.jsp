@@ -15,6 +15,7 @@
                     <label for="Opcion">Seleciona el caso de uso ;)</label>
                     <select name="Opcion" value="blanco" >
                         <option value="1">Registro de OA</option>
+                        <option value="2">imagenes</option>
                     </select>
                     <input type="submit" name="btnenviar" value="Aceptar">
                 </form>

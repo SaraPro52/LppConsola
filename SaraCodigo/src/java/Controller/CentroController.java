@@ -6,37 +6,20 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import modelo.Bean.Area_Bean;
-import modelo.Dao.Area_Dao;
+import modelo.Bean.Centro_Bean;
+import modelo.Dao.Centro_Dao;
 
-public class AreaContronller extends HttpServlet {
+public class CentroController extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            /*Menu de opciones crud
-            1.agregar
-            2.actualizar
-            3.consultar
-            4.eliminar*/
             int opcion = Integer.parseInt(request.getParameter("Opcion"));
-            Area_Bean abean = new Area_Bean();
-            abean.setNom_Area(request.getParameter("Nombrea"));
-            abean.setLider_Area(request.getParameter("Lider"));
-            
-            Area_Dao adao = new Area_Dao(abean);
+            Centro_Bean cBean = new Centro_Bean();
+            Centro_Dao cDao = new Centro_Dao(cBean);
             switch (opcion) {
                 case 1:
-                    if (adao.AgregarRegistro()) {
-                        response.setContentType("application/json;charset=UTF-8");
-                        PrintWriter devuelta = response.getWriter();
-                        try {
-                            devuelta.println(adao.listar());
-                        } catch (Exception e) {
-                            devuelta.println("Error: " + e.getMessage());
-                        }
-                    }
                     break;
                 case 2:
                     break;
@@ -44,18 +27,16 @@ public class AreaContronller extends HttpServlet {
                     response.setContentType("application/json;charset=UTF-8");
                     PrintWriter devuelta = response.getWriter();
                     try {
-                        devuelta.println(adao.listar());
+                        devuelta.println(cDao.listar());
                     } catch (Exception e) {
                         devuelta.println("Error: " + e.getMessage());
                     }
                     break;
-                case 4:
-                    break;
             }
         }
     }
-// <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
 
+    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
      *

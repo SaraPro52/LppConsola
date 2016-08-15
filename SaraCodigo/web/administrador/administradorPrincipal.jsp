@@ -15,14 +15,15 @@
                     <select name="Opcion" value="blanco" >
                         <option value="1">Estados</option>
                         <option value="2">Areas</option>
-                        <option value="3">Registrar coordinador</option>
-                        <option value="4">Principal instrutor</option>
+                        <option value="3">Ciudad</option>
+                        <option value="4">Registrar coordinador</option>
+                        <option value="5">Principal instrutor</option>
                     </select>
                     <input type="submit" name="btnenviar" value="Aceptar">
                 </form>
             </article>
             <article>
-                <table border="1" class="table table-hover  table-bordered">
+                <table id="tabla" border="1" class="table table-hover  table-bordered">
                     <thead>
                     <th class="info">Nombre</th>
                     <th class="info">Cargo</th>
