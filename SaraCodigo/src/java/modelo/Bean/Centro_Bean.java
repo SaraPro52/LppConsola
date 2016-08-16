@@ -1,7 +1,8 @@
 package modelo.Bean;
 
 public class Centro_Bean {
-   private int Id_Centro = 0;
+
+    private int Id_Centro;
     private String Num_Centro;
     private String Nom_Centro;
     private String Direccion;
@@ -55,5 +56,7 @@ public class Centro_Bean {
 
     public void setId_Ciudad(int Id_Ciudad) {
         this.Id_Ciudad = Id_Ciudad;
-    }    
+    }
+    
+    
 }

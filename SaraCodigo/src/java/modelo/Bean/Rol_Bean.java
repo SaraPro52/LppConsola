@@ -3,7 +3,7 @@ package modelo.Bean;
 
 public class Rol_Bean {
     
-    private int Id_Rol = 0;
+    private int Id_Rol;
     private String Nom_Rol;
     private String Des_Rol;
     

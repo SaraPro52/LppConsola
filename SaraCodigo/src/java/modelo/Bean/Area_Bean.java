@@ -3,14 +3,14 @@ package modelo.Bean;
 
 public class Area_Bean {
     
-    private int Id_Area = 0;
+    private int Id_Area;
     private String Nom_Area;
     private String Lider_Area;
     
     public Area_Bean(){}
     
     public Area_Bean(String nom_Area, String lider_Area){
-    
+        
         this.Nom_Area = nom_Area;
         this.Lider_Area = lider_Area;
     }

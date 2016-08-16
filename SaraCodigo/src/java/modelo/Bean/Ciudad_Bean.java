@@ -3,7 +3,7 @@ package modelo.Bean;
 
 public class Ciudad_Bean {
     
-    private int Id_Ciudad = 0;
+    private int Id_Ciudad;
     private String Nom_Ciudad;
     
     public Ciudad_Bean(){}

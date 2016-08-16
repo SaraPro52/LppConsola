@@ -15,7 +15,7 @@ public class ClaseConn{
         driver = "com.mysql.jdbc.Driver";
         usuario = "root";
         contraseña = "";
-        bd = "SARApro";
+        bd = "SARA";
         url = "jdbc:mysql://localhost:3306/"+bd;
         
         try{

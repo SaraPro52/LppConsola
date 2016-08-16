@@ -2,12 +2,8 @@
 package modelo.Dao;
 
 import com.google.gson.Gson;
-import java.sql.CallableStatement;
-import java.sql.Connection;
-import java.sql.ResultSet;
 import java.util.ArrayList;
 import modelo.Bean.Centro_Bean;
-import util.ClaseConn;
 import util.InterfaceCrud;
 
 public class Centro_Dao extends InterfaceCrud{
@@ -18,6 +14,8 @@ public class Centro_Dao extends InterfaceCrud{
     public String Nom_Centro;
     public String Direccion;
     public int Id_Ciudad;
+    private ArrayList<Centro_Bean> listarCentros = new ArrayList<Centro_Bean>();
+    private Centro_Bean cenB1 = null;
     
     public Centro_Dao(){}
     
@@ -30,84 +28,49 @@ public class Centro_Dao extends InterfaceCrud{
         this.Id_Ciudad = cenB.getId_Ciudad();
     }
     
-    public static Centro_Bean consultarRegistro(int id){
-    
-        Centro_Bean cen = null;
-        
-        try {
-            
-            ClaseConn c = new ClaseConn();
-            Connection co = c.obtenerConn();
-            ResultSet rs = null;
-            CallableStatement cst = co.prepareCall("{call seleccionar(?,?,?,?)}");
-            cst.setInt(1, 2);
-            cst.setString(2, "Centro");
-            cst.setString(3,"Id_Centro");
-            cst.setInt(4, id);
-            cst.execute();
-            rs = cst.getResultSet();
-            
-            while(rs.next()){
-                
-                cen = new Centro_Bean(rs.getString("Num_Centro"),rs.getString("Nom_Centro"),rs.getString("Direccion"),rs.getInt("Id_Ciudad"));
-                cen.setId_Centro(id);
-            }
-            rs.close();
-            cst.close();
-            
-        } catch (Exception cen1) {
-            cen1.printStackTrace();
-        }
-        return cen;
-    }
-    
-    public String listar(){
-    
-        ClaseConn c = new ClaseConn();
-        ArrayList<Centro_Bean> listarCentros = new ArrayList<Centro_Bean>();
-        
-        try {
-            procedure = "{call seleccionar(?,?,null,null)}";
-            cst = c.obtenerConn().prepareCall(procedure);
-            cst.setInt(1, 1);
-            cst.setString(2, "Centro");
-            cst.execute();
-            rs = cst.getResultSet();
-            
-            while(rs.next()){
-            
-                Id_Centro = rs.getInt("Id_Centro");
-                Num_Centro = rs.getString("Num_Centro");
-                Nom_Centro = rs.getString("Nom_Centro");
-                Direccion = rs.getString("Direccion");
-                Id_Ciudad = rs.getInt("Id_Ciudad");
-                
-                Centro_Bean cen = new Centro_Bean(Num_Centro,Nom_Centro,Direccion,Id_Ciudad);
-                cen.setId_Centro(Id_Centro);
-                listarCentros.add(cen);
-            }
-            
-        } catch (Exception cen2) {
-            cen2.printStackTrace();
-        }
-        return new Gson().toJson(listarCentros);
-    }
-    
-    @Override
-    public boolean AgregarRegistro() {
-        
-        listo = AgregarRegistroProce(4,"Centro", "Nom_Centro",this.Nom_Centro,"Direccion",this.Direccion, "Id_Ciudad", ""+this.Id_Ciudad+"", 
-                                    "Num_Centro",this.Num_Centro, "", "", "", "", "","", "", "", "", "", "", "", "", "");
-        return listo;
-    }
 
     @Override
-    public boolean ActualizarRegistro() {
-        
-        listo = ActualizarRegistroProce(4, "Centro", "Id_Centro",this.Id_Centro , "Nom_Centro", this.Nom_Centro, 
-                                         "Direccion", this.Direccion, "Id_Ciudad", ""+this.Id_Ciudad+"", 
-                                         "Num_Centro", this.Num_Centro, "", "", "", "", "", "", "", "", "", "", "", "","", "");
-        return listo;
+    public Object  OperacionRegistro(String val, int num,int id) {
+       
+        try {
+            switch (val) {
+                case "SELECT":
+                    rs = saraCrud(val,num,"Centro","Id_Centro",id,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null);
+            
+                    while(rs.next()){
+
+                        cenB1 = new Centro_Bean(rs.getString("Nom_Centro"),rs.getString("Num_Centro"),rs.getString("Direccion"),rs.getInt("Id_Ciudad"));
+                        cenB1.setId_Centro(rs.getInt("Id_Centro"));
+                        if(num == 1)
+                        listarCentros.add(cenB1);
+                    }
+                    rs.close();
+                    cst.close();
+                    break;
+                case "INSERT":
+                case "UPDATE":    
+                    this.saraCrud(val,4,"Centro","Id_Centro",this.Id_Centro,"Nom_Centro",this.Nom_Centro,"Direccion",this.Direccion, "Id_Ciudad", ""+this.Id_Ciudad+"", 
+                         "Num_Centro",this.Num_Centro, "", "", "", "", "","", "", "", "", "", "", "", "", "");
+                    listo = true;
+                    break;
+            }
+            
+        } catch (Exception s1) {
+            s1.printStackTrace();
+        }
+        System.out.println("siii");
+        if(num == 1 && val == "SELECT"){
+            return new Gson().toJson(listarCentros);            
+        }else{
+            if(num == 2 && val == "SELECT"){
+                return  cenB1;
+            }else
+            {
+                return listo;
+            }
+        }
     }
+
+
     
 }

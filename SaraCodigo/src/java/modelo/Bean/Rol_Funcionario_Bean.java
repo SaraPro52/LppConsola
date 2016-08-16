@@ -4,7 +4,7 @@ package modelo.Bean;
 
 public class Rol_Funcionario_Bean {
     
-    private int Id_Rol_Funcionario = 0;
+    private int Id_Rol_Funcionario;
     private int Id_Rol;
     private int Id_Funcionario;
     

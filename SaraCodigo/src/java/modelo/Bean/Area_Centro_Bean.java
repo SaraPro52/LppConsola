@@ -3,7 +3,7 @@ package modelo.Bean;
 
 public class Area_Centro_Bean {
     
-    private int Id_Area_Centro = 0;
+    private int Id_Area_Centro;
     private int Id_Area;
     private int Id_Centro;
     

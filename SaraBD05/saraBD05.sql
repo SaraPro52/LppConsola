@@ -1,18 +1,26 @@
-DROP DATABASE SARApro;
-CREATE DATABASE SARApro;
+DROP DATABASE SARA;
+CREATE DATABASE SARA;
 
-USE SARApro;
+USE SARA;
 
-
+CREATE TABLE Tipo_Estado(
+	
+    Id_Tipo_Estado INTEGER NOT NULL AUTO_INCREMENT,
+    Nom_Tipo_Estado VARCHAR(50) NOT NULL,
+    
+    CONSTRAINT PK_Tipo_Estado PRIMARY KEY (Id_Tipo_Estado),
+    CONSTRAINT UN_Tipo_Estado UNIQUE	  (Nom_Tipo_Estado)
+);
 
 CREATE TABLE Estado(
 	
     Id_Estado         INTEGER NOT NULL AUTO_INCREMENT,
     Nom_Estado 	      VARCHAR(45) NOT NULL,
-    
+    Id_Tipo_Estado 	  INTEGER NOT NULL,
     
     CONSTRAINT PK_Estado      PRIMARY KEY (Id_Estado),
-    CONSTRAINT UN_Estado 	  UNIQUE(Nom_Estado)
+    CONSTRAINT UN_Estado 	  UNIQUE(Nom_Estado),
+    CONSTRAINT FK_Tipo_Estado FOREIGN KEY (Id_Tipo_Estado) REFERENCES Tipo_Estado(Id_Tipo_Estado)
     
 );
 
@@ -55,10 +63,10 @@ CREATE TABLE Producto_Virtual(
 CREATE TABLE Version (
 
 	Id_Version           INTEGER NOT NULL AUTO_INCREMENT,
-    Fecha_Envio          DATE NOT NULL,
-    Fecha_Publicacion 	 DATE,
+    Fecha_Envio          TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    Fecha_Publicacion 	 DATETIME,
     Num_Version 		 INTEGER NOT NULL,
-	Fecha_Vigencia 		 DATE,
+	Fecha_Vigencia 		 DATETIME,
     Url_Version			 VARCHAR (500),
     Url_Img				 VARCHAR (500),				
     Inst_Instalacion	 VARCHAR (800) NOT NULL,
@@ -196,24 +204,35 @@ CREATE TABLE Area_Centro(
      
 );
 
+CREATE TABLE Tipo_Documento(
+
+	Id_Tipo_Documento INTEGER NOT NULL AUTO_INCREMENT,
+    Nom_Tipo_Documento VARCHAR (100) NOT NULL,--
+    
+    CONSTRAINT PK_Tipo_Documento PRIMARY KEY (Id_Tipo_Documento),
+    CONSTRAINT UN_Tipo_Documento UNIQUE (Nom_Tipo_Documento)
+);
+
 
 CREATE TABLE Funcionario(
 
-	Id_Funcionario  INTEGER NOT NULL AUTO_INCREMENT,
-    Num_Documento   DOUBLE NOT NULL,
-	Nom_Funcionario VARCHAR(45) NOT NULL,
-    Apellidos       VARCHAR(100) NOT NULL,
-    Correo			VARCHAR(125) NOT NULL,
-    Cargo 			VARCHAR(45) NOT NULL,
-    Ip_Sena			VARCHAR(6) NOT NULL,
-    Contraseña      VARCHAR(300) NOT NULL,
-    Id_Estado 	    INTEGER NOT NULL,
-    Id_Area_Centro 	INTEGER NOT NULL,
+	Id_Funcionario  	INTEGER NOT NULL AUTO_INCREMENT,
+    Id_Tipo_Documento	INTEGER NOT NULL,
+    Num_Documento   	DOUBLE NOT NULL,
+	Nom_Funcionario 	VARCHAR(45) NOT NULL,
+    Apellidos       	VARCHAR(100) NOT NULL,
+    Correo				VARCHAR(125) NOT NULL,
+    Cargo 				VARCHAR(45) NOT NULL,
+    Ip_Sena				VARCHAR(6) NOT NULL,
+    Contraseña      	VARCHAR(300) NOT NULL,
+    Id_Estado 	    	INTEGER NOT NULL,
+    Id_Area_Centro 		INTEGER NOT NULL,
     
-    CONSTRAINT PK_Funcionario PRIMARY KEY (Id_Funcionario),
-    CONSTRAINT UN_Funcionario UNIQUE 	  (Num_Documento,Correo,Ip_Sena),
-    CONSTRAINT FK_Estado_02	  FOREIGN KEY (Id_Estado) 	   REFERENCES Estado(Id_Estado), 	
-    CONSTRAINT FK_Area_Centro FOREIGN KEY (Id_Area_Centro) REFERENCES Area_Centro(Id_Area_Centro)
+    CONSTRAINT PK_Funcionario 		PRIMARY KEY (Id_Funcionario),
+    CONSTRAINT UN_Funcionario 		UNIQUE 	  	(Num_Documento,Correo,Ip_Sena),
+    CONSTRAINT FK_Tipo_Documento 	FOREIGN KEY (Id_Tipo_Documento) 	REFERENCES Tipo_Documento(Id_Tipo_Documento),
+    CONSTRAINT FK_Estado_02	  		FOREIGN KEY (Id_Estado) 	   		REFERENCES Estado(Id_Estado), 	
+    CONSTRAINT FK_Area_Centro 		FOREIGN KEY (Id_Area_Centro) 		REFERENCES Area_Centro(Id_Area_Centro)
     
 );	
 
@@ -270,12 +289,11 @@ CREATE TABLE Lista_Chequeo (
 	Id_Lista_Chequeo  INTEGER NOT NULL AUTO_INCREMENT,
     Nom_Lista_Chequeo VARCHAR(100) NOT NULL,
     Des_Lista_Chequeo VARCHAR(200) NOT NULL,
-	Fecha_Creacion    DATE NOT NULL,
-    Tipo_Lista		  VARCHAR(20) NOT NULL,
+	Fecha_Creacion    TIMESTAMP DEFAULT CURRENT_TIMESTAMP, 
     Id_Funcionario    INTEGER NOT NULL,
     
     CONSTRAINT PK_Lista_Chequeo  PRIMARY KEY (Id_Lista_Chequeo),
-    CONSTRAINT UN_Lista_Chequeo  UNIQUE	     (Nom_Lista_Chequeo),		
+    CONSTRAINT UN_Lista_Chequeo  UNIQUE	     (Nom_Lista_Chequeo),
     CONSTRAINT FK_Funcionario_04 FOREIGN KEY (Id_Funcionario) REFERENCES Funcionario(Id_Funcionario)
     
 );
@@ -284,10 +302,9 @@ CREATE TABLE Item_Lista(
 
 	Id_Item_Lista 	INTEGER NOT NULL AUTO_INCREMENT,
     Des_Item_Lista 	VARCHAR(300) NOT NULL,
-    Id_Rol			INTEGER NOT NULL,
+    Tipo_Item		BOOLEAN NOT NULL, 
     
     CONSTRAINT PK_Item_Lista PRIMARY KEY (Id_Item_Lista),
-    CONSTRAINT FK_Rol_O2	 FOREIGN KEY (Id_Rol) 		  REFERENCES Rol(Id_Rol),
     CONSTRAINT UN_Item_Lista UNIQUE      (Des_Item_Lista)
 );
 
@@ -305,7 +322,7 @@ CREATE TABLE Detalles_Lista (
 CREATE TABLE Evaluacion_General(
 
 	Id_Evaluacion_General INTEGER NOT NULL AUTO_INCREMENT,
-    Fecha_Evaluacion      DATE NOT NULL,
+    Fecha_Evaluacion      TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     Observacion			  VARCHAR(250) NOT NULL,
     Resultado 			  BOOLEAN NOT NULL,
     Id_Version            INTEGER NOT NULL,

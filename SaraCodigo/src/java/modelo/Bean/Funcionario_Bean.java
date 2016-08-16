@@ -3,22 +3,24 @@ package modelo.Bean;
 
 public class Funcionario_Bean {
     
-    private int Id_Funcionario = 0;
-    private double Num_Documento;    
-    private String Nom_Funcionario;  
-    private String Apellidos;        
-    private String Correo;           
-    private String Cargo;            
+    private int Id_Funcionario;
+    private int Id_Tipo_Documento;
+    private double Num_Documento;
+    private String Nom_Funcionario;
+    private String Apellidos;
+    private String Correo;
+    private String Cargo;
     private String Ip_Sena;
-    private String Contraseña;       
-    private int Id_Estado;             
+    private String Contraseña;
+    private int Id_Estado;
     private int Id_Area_Centro;
     
     public Funcionario_Bean(){}
     
-    public Funcionario_Bean(double num_Documento,String nom_Funcionario, String apellidos,
+    public Funcionario_Bean(int id_tipo_Documento,double num_Documento,String nom_Funcionario, String apellidos,
                             String correo, String cargo, String ip_Sena, String contraseña, int id_Estado, int id_Area_Centro){
         
+        this.Id_Tipo_Documento = id_tipo_Documento;
         this.Num_Documento = num_Documento;
         this.Nom_Funcionario = nom_Funcionario;
         this.Apellidos = apellidos;
@@ -31,6 +33,15 @@ public class Funcionario_Bean {
         
     }
 
+    public int getId_Tipo_Documento() {
+        return Id_Tipo_Documento;
+    }
+
+    public void setId_Tipo_Documento(int Id_Tipo_Documento) {
+        this.Id_Tipo_Documento = Id_Tipo_Documento;
+    }
+
+    
     public int getId_Funcionario() {
         return Id_Funcionario;
     }
@@ -110,5 +121,7 @@ public class Funcionario_Bean {
     public void setId_Area_Centro(int Id_Area_Centro) {
         this.Id_Area_Centro = Id_Area_Centro;
     }
-   
+    
+    
+    
 }

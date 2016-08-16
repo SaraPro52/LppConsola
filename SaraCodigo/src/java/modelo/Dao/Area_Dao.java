@@ -2,12 +2,8 @@
 package modelo.Dao;
 
 import com.google.gson.Gson;
-import java.sql.CallableStatement;
-import java.sql.Connection;
-import java.sql.ResultSet;
 import java.util.ArrayList;
 import modelo.Bean.Area_Bean;
-import util.ClaseConn;
 import util.InterfaceCrud;
 
 public class Area_Dao extends InterfaceCrud{
@@ -15,6 +11,8 @@ public class Area_Dao extends InterfaceCrud{
     public int Id_Area;
     public String Nom_Area;
     public String Lider_Area;
+    private ArrayList<Area_Bean> listarArea = new ArrayList<Area_Bean>();
+    private Area_Bean area = null;
     
     public Area_Dao (){}
     
@@ -25,84 +23,43 @@ public class Area_Dao extends InterfaceCrud{
         this.Lider_Area = areB.getLider_Area();
     }
     
-    public static Area_Bean consultarRegistro(int id){
-    
-        Area_Bean areaB = null;
+    @Override
+    public Object OperacionRegistro(String val, int num, int id) {
         
         try {
-            ClaseConn c = new ClaseConn();
-            Connection co = c.obtenerConn();
-            ResultSet rs = null;
-            CallableStatement cst = co.prepareCall("{call seleccionar(?,?,?,?)}");
-            cst.setInt(1, 2);
-            cst.setString(2, "Area");
-            cst.setString(3, "Id_Area");
-            cst.setInt(4, id);
-            cst.execute();
-            rs = cst.getResultSet();
-            
-            while(rs.next()){
-                
-                areaB = new Area_Bean(rs.getString(2),rs.getString(3));
-                areaB.setId_Area(id);
-                
+            switch(val){
+                case "SELECT":
+                        rs = saraCrud(val,num,"Area","Id_Area",id,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null);
+                        
+                        while(rs.next()){
+                            
+                            area = new Area_Bean(rs.getString("Nom_Area"),rs.getString("Lider_Area"));
+                            area.setId_Area(rs.getInt("Id_Area"));
+                            if(num == 1)
+                                listarArea.add(area);
+                        }
+                        rs.close();
+                        cst.close();
+                    break;
+                case "INSERT":
+                case "UPDATE":
+                    this.saraCrud(val,2,"Area","Id_Area",this.Id_Area,"Nom_Area",this.Nom_Area,"Lider_Area",this.Lider_Area,
+                                  "","","","","","","","","","","","","","","","","","");
+                    listo = true;
+                    break;
             }
-            rs.close();
-            cst.close();
-            
-        } catch (Exception are1) {
-            are1.printStackTrace();
+        } catch (Exception a1) {
+            a1.printStackTrace();
         }
-        return areaB;
-    }
-    
-    public String listar(){
-    
-        ClaseConn co = new ClaseConn();
-        ArrayList<Area_Bean> listarAreas = new ArrayList<Area_Bean>();
-        
-        try {
-            
-            procedure = "{call seleccionar(?,?,null,null)}";
-            cst = co.obtenerConn().prepareCall(procedure);
-            cst.setInt(1, 1);
-            cst.setString(2,"Area");
-            cst.execute();
-            rs = cst.getResultSet();
-            
-            while(rs.next()){
-                
-                Id_Area = rs.getInt("Id_Area");
-                Nom_Area = rs.getString("Nom_Area");
-                Lider_Area = rs.getString("Lider_Area");
-                
-                Area_Bean are = new Area_Bean(Nom_Area,Lider_Area);
-                are.setId_Area(Id_Area);
-                
-                listarAreas.add(are);
+        if(num == 1 && val == "SELECT"){
+            return new Gson().toJson(listarArea);
+        }else{
+            if(num == 2 && val == "SELECT"){
+                return area;
+            }else{
+                return listo;
             }
-            
-        } catch (Exception are2) {
-            are2.printStackTrace();
         }
-        return new Gson().toJson(listarAreas);
-    }
-    
-    @Override
-    public boolean AgregarRegistro() {
-        listo = AgregarRegistroProce(2,"Area", "Nom_Area",this.Nom_Area,
-                                    "Lider_Area", this.Lider_Area, "", "", "", "", "", "", "", "", "",
-                                    "", "", "", "", "", "", "", "", "");
-        return listo;
-    }
-
-    @Override
-    public boolean ActualizarRegistro() {
-        
-        listo = ActualizarRegistroProce(2, "Area", "Id_Area",this.Id_Area , "Nom_Area", this.Nom_Area, 
-                                         "Lider_Area", this.Lider_Area, "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "",
-                                         "", "");
-        return listo;
     }
     
     
