@@ -85,10 +85,12 @@ CALL Sara('INSERT',2,'Detalles_Lista',null,null,'Id_Lista_Chequeo',2,'Id_Item_Li
 CALL Sara('UPDATE',1,'Ciudad','Id_Ciudad','1','Nom_Ciudad','Armenia',null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null);
 CALL Sara('UPDATE',1,'Ciudad','Id_Ciudad','2','Nom_Ciudad','VILLAVICENCIO',null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null);
 
+CALL Sara('INSERT',5,'Evaluacion_General',null,null,'Observacion','el oa no cumple con los items','Resultado',false,'Id_Version',1,'Id_Lista_Chequeo',1,'Id_Funcionario',2,null,null,null,null,null,null,null,null,null,null,null,null);
+CALL Sara('INSERT',4,'Detalles_Evaluacion',null,null,'Valorizacion','1','Observacion','Si cumple con lo acordado en el item','Id_Detalles_Lista',1,'Id_Evaluacion_General',1,null,null,null,null,null,null,null,null,null,null,null,null,null,null);
 CALL Sara('SELECT',1,'Funcionario',null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null);
 
-CALL Sara('SELECT',1,'Detalles_Area',null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null);
-
+CALL Sara('SELECT',1,'Lista_Chequeo',null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null);
+	
 /*CALL RegistrarCoordinador(4,'Miguel Angel','Castiblanco Cabanzo',' miguel_acc@outlook.es','Aprendiz','135791','1019133595',1,1);
 
 CALL Sara('DELETE',null,'Ciudad','Id_Ciudad','1',null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null);

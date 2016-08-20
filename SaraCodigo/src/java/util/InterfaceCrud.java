@@ -10,16 +10,17 @@ public abstract class InterfaceCrud extends ClaseConn{
     
             protected CallableStatement cst = null;
             protected ResultSet rs    = null;
-            private   final String procedure = "{Call Sara(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)}";
+            private   final String p = "{Call Sara(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)}";
             private   final String p1 = "{Call Sara(?,?,?,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null)}";
-            protected final String p2 = "{Call Sara(?,?,?,?,?,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null)}";
+            private   final String p2 = "{Call Sara(?,?,?,?,?,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null)}";
             public boolean listo = false;
+            protected String json;
 
         public InterfaceCrud(){
             super();
         }
         
-        public abstract Object OperacionRegistro(String val, int num, int id);
+        public abstract Object OperacionRegistro(String val, int num, Object objeto);
         
         public  ResultSet saraCrud(
                 String sentencia,
@@ -52,7 +53,7 @@ public abstract class InterfaceCrud extends ClaseConn{
                       
                     }else{
                         if(sentencia == "UPDATE" || sentencia == "INSERT"){
-                            cst = this.obtenerConn().prepareCall(procedure);
+                            cst = this.obtenerConn().prepareCall(p);
                             cst.setString(1, sentencia);
                             cst.setInt(2, num_Colums);       cst.setString(3, tabla);
                             cst.setString(4,nom_ColumId);    cst.setInt(5,id_colum);   

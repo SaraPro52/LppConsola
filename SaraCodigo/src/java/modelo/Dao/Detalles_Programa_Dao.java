@@ -24,11 +24,11 @@ public class Detalles_Programa_Dao extends InterfaceCrud{
     }
 
     @Override
-    public Object OperacionRegistro(String val, int num, int id) {
+    public Object OperacionRegistro(String val, int num, Object objeto) {
         try {
             switch(val){
                 case "SELECT":
-                        rs = saraCrud(val,num,"Detalles_Programa","Id_Detalles_Programa",id,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null);
+                        rs = saraCrud(val,num,"Detalles_Programa","Id_Detalles_Programa",(int) objeto,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null);
                         while(rs.next()){
                             
                             detaP = new Detalles_Programa_Bean(rs.getInt("Id_Tema"),rs.getInt("Id_Programa"));
@@ -50,7 +50,7 @@ public class Detalles_Programa_Dao extends InterfaceCrud{
             dp1.printStackTrace();
         }
         if(num == 1 && val == "SELECT"){
-            return new Gson().toJson(listarDP);
+            return json = new Gson().toJson(listarDP);
         }else{
             if(num == 2 && val == "SELECT"){
                 return detaP;

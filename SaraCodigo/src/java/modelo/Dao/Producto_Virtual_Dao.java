@@ -28,12 +28,12 @@ public class Producto_Virtual_Dao extends InterfaceCrud{
     }
 
     @Override
-    public Object OperacionRegistro(String val, int num, int id) {
+    public Object OperacionRegistro(String val, int num, Object objeto) {
         
         try {
             switch(val){
                 case "SELECT":
-                        rs = saraCrud(val,num,"Producto_Virtual","Id_P_Virtual",id,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null);
+                        rs = saraCrud(val,num,"Producto_Virtual","Id_P_Virtual",(int) objeto,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null);
                         while(rs.next()){
                             proVir = new Producto_Virtual_Bean(rs.getString("Nom_P_Virtual"),rs.getString("Des_P_Virtual"),rs.getString("Palabras_Clave"),rs.getInt("Id_Formato"));
                             proVir.setId_P_Virtual(rs.getInt("Id_P_Virtual"));
@@ -54,7 +54,7 @@ public class Producto_Virtual_Dao extends InterfaceCrud{
             pv1.printStackTrace();
         }
         if(num == 1 && val == "SELECT"){
-            return new Gson().toJson(listarPV);
+            return json = new Gson().toJson(listarPV);
         }else{
             if(num == 2 && val == "SELECT"){
                 return proVir;

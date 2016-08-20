@@ -22,12 +22,12 @@ public class Ciudad_Dao extends InterfaceCrud{
     }
     
     @Override
-    public Object OperacionRegistro(String val, int num, int id) {
+    public Object OperacionRegistro(String val, int num, Object objeto) {
         
         try {
             switch(val){
                 case "SELECT":
-                    rs = saraCrud(val,num,"Ciudad","Id_Ciudad",id,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null);
+                    rs = saraCrud(val,num,"Ciudad","Id_Ciudad",(int) objeto,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null);
                     
                     while(rs.next()){
                         
@@ -51,7 +51,7 @@ public class Ciudad_Dao extends InterfaceCrud{
             c1.printStackTrace();
         }
         if(num == 1 && val == "SELECT"){
-            return new Gson().toJson(listarCiudad);
+            return json = new Gson().toJson(listarCiudad);
         }else{
             if(num == 2 && val == "SELECT")
             {

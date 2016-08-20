@@ -5,11 +5,11 @@ public class Item_Lista_Bean {
     
     private int Id_Item_Lista;
     private String Des_Item_Lista;
-    private int Tipo_Item;
+    private String Tipo_Item;
     
     public Item_Lista_Bean(){}
     
-    public Item_Lista_Bean(String des_itemL,int tipo_item){
+    public Item_Lista_Bean(String des_itemL,String tipo_item){
         
         this.Des_Item_Lista = des_itemL;
         this.Tipo_Item = tipo_item;
@@ -32,13 +32,15 @@ public class Item_Lista_Bean {
         this.Des_Item_Lista = Des_Item_Lista;
     }
 
-    public int getTipo_Item() {
+    public String getTipo_Item() {
         return Tipo_Item;
     }
 
-    public void setTipo_Item(int Tipo_Item) {
+    public void setTipo_Item(String Tipo_Item) {
         this.Tipo_Item = Tipo_Item;
     }
+
+
 
 
     

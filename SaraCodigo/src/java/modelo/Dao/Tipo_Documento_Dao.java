@@ -1,6 +1,7 @@
 
 package modelo.Dao;
 
+import com.google.gson.Gson;
 import java.util.ArrayList;
 import modelo.Bean.Tipo_Documento_Bean;
 import util.InterfaceCrud;
@@ -21,12 +22,12 @@ public class Tipo_Documento_Dao extends InterfaceCrud{
     }
     
     @Override
-    public Object OperacionRegistro(String val, int num, int id) {
+    public Object OperacionRegistro(String val, int num, Object objeto) {
         
         try {
             switch(val){
                 case "SELECT":
-                        rs = saraCrud(val,num,"Tipo_Documento","Id_Tipo_Documento",id,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null);
+                        rs = saraCrud(val,num,"Tipo_Documento","Id_Tipo_Documento",(int) objeto,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null);
                         while(rs.next()){
                             
                             tipoD = new Tipo_Documento_Bean(rs.getString("Nom_Tipo_Documento"));
@@ -48,7 +49,7 @@ public class Tipo_Documento_Dao extends InterfaceCrud{
             td1.printStackTrace();
         }
         if(num == 1 && val == "SELECT"){
-            return listarTD;
+            return json = new Gson().toJson(listarTD);
         }else{
             if(num == 2 && val == "SELECT"){
                 return tipoD;

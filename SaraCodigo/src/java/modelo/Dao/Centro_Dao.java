@@ -30,16 +30,16 @@ public class Centro_Dao extends InterfaceCrud{
     
 
     @Override
-    public Object  OperacionRegistro(String val, int num,int id) {
+    public Object  OperacionRegistro(String val, int num,Object objeto) {
        
         try {
             switch (val) {
                 case "SELECT":
-                    rs = saraCrud(val,num,"Centro","Id_Centro",id,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null);
+                    rs = saraCrud(val,num,"Centro","Id_Centro",(int) objeto,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null);
             
                     while(rs.next()){
 
-                        cenB1 = new Centro_Bean(rs.getString("Nom_Centro"),rs.getString("Num_Centro"),rs.getString("Direccion"),rs.getInt("Id_Ciudad"));
+                        cenB1 = new Centro_Bean(rs.getString("Num_Centro"),rs.getString("Nom_Centro"),rs.getString("Direccion"),rs.getInt("Id_Ciudad"));
                         cenB1.setId_Centro(rs.getInt("Id_Centro"));
                         if(num == 1)
                         listarCentros.add(cenB1);
@@ -58,9 +58,8 @@ public class Centro_Dao extends InterfaceCrud{
         } catch (Exception s1) {
             s1.printStackTrace();
         }
-        System.out.println("siii");
         if(num == 1 && val == "SELECT"){
-            return new Gson().toJson(listarCentros);            
+            return json = new Gson().toJson(listarCentros);            
         }else{
             if(num == 2 && val == "SELECT"){
                 return  cenB1;

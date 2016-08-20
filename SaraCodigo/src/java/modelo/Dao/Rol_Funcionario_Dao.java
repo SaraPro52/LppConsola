@@ -24,11 +24,11 @@ public class Rol_Funcionario_Dao extends InterfaceCrud {
     }
 
     @Override
-    public Object OperacionRegistro(String val, int num, int id) {
+    public Object OperacionRegistro(String val, int num, Object objeto) {
         try {
             switch(val){
                 case "SELECT":
-                        rs = saraCrud(val,num,"Rol_Funcionario","Id_Rol_Funcionario",id,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null);
+                        rs = saraCrud(val,num,"Rol_Funcionario","Id_Rol_Funcionario",(int) objeto,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null);
                         while(rs.next()){
                             
                             rfun = new Rol_Funcionario_Bean(rs.getInt("Id_Rol"),rs.getInt("Id_Funcionario"));
@@ -51,7 +51,7 @@ public class Rol_Funcionario_Dao extends InterfaceCrud {
             rf1.printStackTrace();
         }
         if(num == 1 && val == "SELECT"){
-            return new Gson().toJson(listarRF);
+            return json = new Gson().toJson(listarRF);
         }else{
             if(num ==2 && val == "SELECT"){
                 return rfun;

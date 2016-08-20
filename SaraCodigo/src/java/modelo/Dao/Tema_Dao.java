@@ -24,11 +24,11 @@ public class Tema_Dao extends InterfaceCrud{
     }
 
     @Override
-    public Object OperacionRegistro(String val, int num, int id) {
+    public Object OperacionRegistro(String val, int num, Object objeto) {
         try {
             switch(val){
                 case "SELECT":
-                        rs = saraCrud(val,num,"Tema","Id_Tema",id,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null);
+                        rs = saraCrud(val,num,"Tema","Id_Tema",(int) objeto,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null);
                         while(rs.next()){
                             
                             tema = new Tema_Bean(rs.getString("Nom_Tema"),rs.getString("Des_Tema"));
@@ -50,7 +50,7 @@ public class Tema_Dao extends InterfaceCrud{
             t1.printStackTrace();
         }
         if(num == 1 && val == "SELECT"){
-            return new Gson().toJson(listarTema);
+            return json = new Gson().toJson(listarTema);
         }else{
             if(num == 2 && val == "SELECT"){
                 return tema;

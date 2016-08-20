@@ -44,11 +44,11 @@ public class Funcionario_Dao extends InterfaceCrud{
     
     
     @Override
-    public Object OperacionRegistro(String val, int num, int id) {
+    public Object OperacionRegistro(String val, int num, Object objeto) {
         try {
             switch(val){
                 case "SELECT":
-                    rs = saraCrud(val,num,"Funcionario","Id_Funcionario",id,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null);    
+                    rs = saraCrud(val,num,"Funcionario","Id_Funcionario",(int)objeto,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null);    
                     
                     while(rs.next()){
                         
@@ -71,7 +71,10 @@ public class Funcionario_Dao extends InterfaceCrud{
                     break;
                 case "INSERT":
                 case "UPDATE":
-                    this.saraCrud(val,10,"Funcionario", "Id_Funcionario",this.Id_Funcionario ,
+                    if(val == "INSERT" && num == 1){
+                    listo = AgregarFuncionario((int)objeto);}
+                    else{
+                        this.saraCrud(val,10,"Funcionario", "Id_Funcionario",this.Id_Funcionario ,
                                         "Id_Tipo_Documento",""+this.Id_Tipo_Documento+"",
                                         "Num_Documento",""+this.Num_Documento+"",
                                         "Nom_Funcionario",this.Nom_Funcionario,
@@ -83,14 +86,16 @@ public class Funcionario_Dao extends InterfaceCrud{
                                         "Id_Estado", ""+this.Id_Estado+"",
                                         "Id_Area_Centro", ""+this.Id_Area_Centro+"",
                                         "","");
-                    listo = true;
+                        listo = true;
+                    }
+                    
                     break;
             }
         } catch (Exception f1) {
             f1.printStackTrace();
         }
         if(num == 1 && val == "SELECT"){
-            return new Gson().toJson(listarFun);
+            return json = new Gson().toJson(listarFun);
         }else{
             if(num == 2 && val == "SELECT"){
                 return fun;
@@ -101,7 +106,7 @@ public class Funcionario_Dao extends InterfaceCrud{
     }
     
     
-    public boolean AgregarFuncionario(int id_Rol){
+    private boolean AgregarFuncionario(int id_Rol){
     
         try {
             cst = this.obtenerConn().prepareCall(procedure);
@@ -121,7 +126,6 @@ public class Funcionario_Dao extends InterfaceCrud{
             listo = true;
             
         } catch (Exception f2) {
-            System.out.println("no listo");
             Logger.getLogger(InterfaceCrud.class.getName()).log(Level.SEVERE,null,f2);
         }
         return listo;

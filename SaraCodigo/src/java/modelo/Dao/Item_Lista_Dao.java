@@ -10,7 +10,7 @@ public class Item_Lista_Dao extends InterfaceCrud{
 
     public int Id_Item_Lista;
     public String Des_Item_Lista;
-    public int Tipo_Item;
+    public String Tipo_Item;
     private ArrayList<Item_Lista_Bean> listarItem = new ArrayList<Item_Lista_Bean>();
     private Item_Lista_Bean item = null;
     
@@ -24,14 +24,14 @@ public class Item_Lista_Dao extends InterfaceCrud{
     }
             
     @Override
-    public Object OperacionRegistro(String val, int num, int id) {
+    public Object OperacionRegistro(String val, int num, Object objeto) {
         try {
             switch(val){
                 case "SELECT":
-                        rs = saraCrud(val,num,"Item_Lista","Id_Item_Lista",id,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null);
+                        rs = saraCrud(val,num,"Item_Lista","Id_Item_Lista",(int) objeto,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null);
                         while(rs.next()){
                             
-                            item = new Item_Lista_Bean(rs.getString("Des_Item_Lista"),rs.getInt("Tipo_Item"));
+                            item = new Item_Lista_Bean(rs.getString("Des_Item_Lista"),rs.getString("Tipo_Item"));
                             item.setId_Item_Lista(rs.getInt("Id_Item_Lista"));
                             if(num == 1)
                                 listarItem.add(item);
@@ -50,7 +50,7 @@ public class Item_Lista_Dao extends InterfaceCrud{
             it1.printStackTrace();
         }
         if(num == 1 && val == "SELECT"){
-            return new Gson().toJson(listarItem);
+            return json = new Gson().toJson(listarItem);
         }else{
             if(num == 2 && val == "SELECT"){
                 return item;

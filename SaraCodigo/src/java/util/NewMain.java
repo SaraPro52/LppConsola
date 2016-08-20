@@ -8,42 +8,58 @@ import javax.script.ScriptEngineManager;
 import javax.script.ScriptException;
 import modelo.Bean.Area_Bean;
 import modelo.Bean.Area_Centro_Bean;
+import modelo.Bean.Autor_Bean;
 import modelo.Bean.Centro_Bean;
 import modelo.Bean.Ciudad_Bean;
+import modelo.Bean.Comentario_Bean;
 import modelo.Bean.Detalles_Area_Bean;
+import modelo.Bean.Detalles_Evaluacion_Bean;
 import modelo.Bean.Detalles_Lista_Bean;
 import modelo.Bean.Detalles_Programa_Bean;
+import modelo.Bean.Detalles_Tema_Bean;
 import modelo.Bean.Estado_Bean;
+import modelo.Bean.Evaluacion_General_Bean;
 import modelo.Bean.Formato_Bean;
 import modelo.Bean.Funcionario_Bean;
 import modelo.Bean.Item_Lista_Bean;
 import modelo.Bean.Lista_Chequeo_Bean;
 import modelo.Bean.Producto_Virtual_Bean;
 import modelo.Bean.Programa_Bean;
+import modelo.Bean.Rankin_Bean;
 import modelo.Bean.Rol_Bean;
 import modelo.Bean.Rol_Funcionario_Bean;
 import modelo.Bean.Tema_Bean;
 import modelo.Bean.Tipo_Documento_Bean;
 import modelo.Bean.Tipo_Estado_Bean;
+import modelo.Bean.Tipo_Version_Bean;
+import modelo.Bean.Version_Bean;
 import modelo.Dao.Area_Centro_Dao;
 import modelo.Dao.Area_Dao;
+import modelo.Dao.Autor_Dao;
 import modelo.Dao.Centro_Dao;
 import modelo.Dao.Ciudad_Dao;
+import modelo.Dao.Comentario_Dao;
 import modelo.Dao.Detalles_Area_Dao;
+import modelo.Dao.Detalles_Evaluacion_Dao;
 import modelo.Dao.Detalles_Lista_Dao;
 import modelo.Dao.Detalles_Programa_Dao;
+import modelo.Dao.Detalles_Tema_Dao;
 import modelo.Dao.Estado_Dao;
+import modelo.Dao.Evaluacion_General_Dao;
 import modelo.Dao.Formato_Dao;
 import modelo.Dao.Funcionario_Dao;
 import modelo.Dao.Item_Lista_Dao;
 import modelo.Dao.Lista_Chequeo_Dao;
 import modelo.Dao.Producto_Virtual_Dao;
 import modelo.Dao.Programa_Dao;
+import modelo.Dao.Rankin_Dao;
 import modelo.Dao.Rol_Dao;
 import modelo.Dao.Rol_Funcionario_Dao;
 import modelo.Dao.Tema_Dao;
 import modelo.Dao.Tipo_Documento_Dao;
 import modelo.Dao.Tipo_Estado_Dao;
+import modelo.Dao.Tipo_Version_Dao;
+import modelo.Dao.Version_Dao;
 
 public class NewMain {
 
@@ -512,16 +528,18 @@ public class NewMain {
 //            
 //            it1 = new Item_Lista_Dao();
 //            
-//            Item_Lista_Bean i = (Item_Lista_Bean) it1.OperacionRegistro("SELECT", 2, 7);
+//            Item_Lista_Bean i = (Item_Lista_Bean) it1.OperacionRegistro("SELECT", 2, 10);
 //            
-//            i.setDes_Item_Lista("siiii");
-//            i.setTipo_Item(1);
+//            
+//            i.setTipo_Item("0");
 //            System.out.println(i.getTipo_Item());
 //            
 //            it2 = new Item_Lista_Dao(i);
 //            
-//            it2.OperacionRegistro("INSERT", 0, 0);
+//            it2.OperacionRegistro("UPDATE", 0, 0);
 //            
+//            System.out.println(it2.OperacionRegistro("SELECT", 1, 0));
+            
 //            ArrayList<Item_Lista_Bean> ta1 = (ArrayList<Item_Lista_Bean>) it2.OperacionRegistro("SELECT", 1, 0);
 //            Iterator<Item_Lista_Bean> ite = ta1.iterator();
 //
@@ -710,35 +728,244 @@ public class NewMain {
 //
 //              }
 
-            Producto_Virtual_Dao pv1,pv2;
-            
-            pv1 = new Producto_Virtual_Dao();
-            
-            Producto_Virtual_Bean p = (Producto_Virtual_Bean) pv1.OperacionRegistro("SELECT", 2, 1);
-            
-            
-            System.out.println(p.getNom_P_Virtual());
-            
-            p.setNom_P_Virtual("hh");
-            p.setDes_P_Virtual("wwww");
-            p.setPalabras_Clave("sss");
-            
-            pv2 = new Producto_Virtual_Dao(p);
-            
-            pv2.OperacionRegistro("INSERT", 0, 0);
-            
-            ArrayList<Producto_Virtual_Bean> ta1 = (ArrayList<Producto_Virtual_Bean>) pv2.OperacionRegistro("SELECT", 1, 0);
-               Iterator<Producto_Virtual_Bean> ite = ta1.iterator();
+//            Producto_Virtual_Dao pv1,pv2;
+//            
+//            pv1 = new Producto_Virtual_Dao();
+//            
+//            Producto_Virtual_Bean p = (Producto_Virtual_Bean) pv1.OperacionRegistro("SELECT", 2, 1);
+//            
+//            
+//            System.out.println(p.getNom_P_Virtual());
+//            
+//            p.setNom_P_Virtual("hh");
+//            p.setDes_P_Virtual("wwww");
+//            p.setPalabras_Clave("sss");
+//            
+//            pv2 = new Producto_Virtual_Dao(p);
+//            
+//            pv2.OperacionRegistro("INSERT", 0, 0);
+//            
+//            ArrayList<Producto_Virtual_Bean> ta1 = (ArrayList<Producto_Virtual_Bean>) pv2.OperacionRegistro("SELECT", 1, 0);
+//               Iterator<Producto_Virtual_Bean> ite = ta1.iterator();
+//
+//              while(ite.hasNext()){
+//
+//                  Producto_Virtual_Bean tt = ite.next();
+//
+//                  System.out.println(tt.getId_P_Virtual() +" "+ tt.getNom_P_Virtual()+" "+ tt.getPalabras_Clave());
+//
+//              }
 
-              while(ite.hasNext()){
-
-                  Producto_Virtual_Bean tt = ite.next();
-
-                  System.out.println(tt.getId_P_Virtual() +" "+ tt.getNom_P_Virtual()+" "+ tt.getPalabras_Clave());
-
-              }
+//    
+//            Detalles_Tema_Dao dt1,dt2;
+//            
+//            dt1 = new Detalles_Tema_Dao();
+//            
+//           Detalles_Tema_Bean d = (Detalles_Tema_Bean) dt1.OperacionRegistro("SELECT", 2, 1);
+//           
+//           System.out.println(d.getId_Detalles_Tema());
+//           
+//           dt2 = new Detalles_Tema_Dao(d);
+//           
+//           dt2.OperacionRegistro("INSERT", 0, 0);
+//           
+//           ArrayList<Detalles_Tema_Bean> ta1 = (ArrayList<Detalles_Tema_Bean>) dt2.OperacionRegistro("SELECT", 1, 0);
+//               Iterator<Detalles_Tema_Bean> ite = ta1.iterator();
+//
+//              while(ite.hasNext()){
+//
+//                  Detalles_Tema_Bean tt = ite.next();
+//
+//                  System.out.println(tt.getId_Detalles_Tema() +" "+ tt.getId_Tema()+" "+ tt.getId_P_Virtual());
+//
+//              }
             
-            
+//
+//            Tipo_Version_Dao tv1, tv2;
+//            
+//            tv1 = new Tipo_Version_Dao();
+//            
+//            Tipo_Version_Bean t = (Tipo_Version_Bean) tv1.OperacionRegistro("SELECT", 2, 3);
+//            
+//            
+//            System.out.println(t.getNom_Tipo_Version());
+//            
+//            t.setNom_Tipo_Version("HO");
+//            t.setDes_Version("dd");
+//            tv2 = new Tipo_Version_Dao(t);
+//            
+//            tv2.OperacionRegistro("UPDATE", 0, 0);
+//            
+//            ArrayList<Tipo_Version_Bean> ta1 = (ArrayList<Tipo_Version_Bean>) tv2.OperacionRegistro("SELECT", 1, 0);
+//               Iterator<Tipo_Version_Bean> ite = ta1.iterator();
+//
+//              while(ite.hasNext()){
+//
+//                  Tipo_Version_Bean tt = ite.next();
+//
+//                  System.out.println(tt.getId_Tipo_Version() +" "+ tt.getNom_Tipo_Version()+" "+ tt.getDes_Version());
+//
+//              }
+//
+//            Version_Dao v1, v2;
+//            
+//            v1 = new Version_Dao();
+//            
+//            Version_Bean v = (Version_Bean) v1.OperacionRegistro("SELECT", 2, 6);
+//            
+//            
+//            System.out.println(v.getId_Version());
+//            
+//            v.setNum_Version(5);
+//            
+//            v2 = new Version_Dao(v);
+//            
+//            v2.OperacionRegistro("UPDATE", 0, 0);
+//            
+//            
+//            ArrayList<Version_Bean> ta1 = (ArrayList<Version_Bean>) v2.OperacionRegistro("SELECT", 1, 0);
+//               Iterator<Version_Bean> ite = ta1.iterator();
+//
+//              while(ite.hasNext()){
+//
+//                  Version_Bean tt = ite.next();
+//
+//                  System.out.println(tt.getId_Version()+" "+ tt.getNum_Version()+" "+ tt.getFecha_Envio()+" "+ tt.getFecha_Publicacion());
+//
+//              }
                 
+                
+//              Rankin_Dao ra1,ra2;
+//              
+//              ra1 = new Rankin_Dao();
+//              
+//              Rankin_Bean r = (Rankin_Bean) ra1.OperacionRegistro("SELECT", 2, 4);
+//              
+//              r.setCant_5(1);
+//              
+//              ra2 = new Rankin_Dao(r);
+//              
+//              ra2.OperacionRegistro("UPDATE", 0, 0);
+//              
+//              ArrayList<Rankin_Bean> ta1 = (ArrayList<Rankin_Bean>) ra2.OperacionRegistro("SELECT", 1, 0);
+//               Iterator<Rankin_Bean> ite = ta1.iterator();
+//
+//              while(ite.hasNext()){
+//
+//                  Rankin_Bean tt = ite.next();
+//
+//                  System.out.println(tt.getId_Version()+" "+ tt.getNum_Descargas()+" "+ tt.getCant_5()+" "+ tt.getId_Rankin());
+//
+//              }
+
+//                Comentario_Dao co1,co2;
+//                
+//                co1 = new Comentario_Dao();
+//                
+//                Comentario_Bean c = (Comentario_Bean) co1.OperacionRegistro("SELECT", 2, 1);
+//                
+//                System.out.println(c.getComentario());
+//                
+//                c.setComentario("MIGUEL");
+//                co2 = new Comentario_Dao(c);
+//                
+//                co2.OperacionRegistro("UPDATE",0, 0);
+//                
+//                System.out.println(co2.OperacionRegistro("SELECT", 1, 0));
+//              ArrayList<Comentario_Bean> ta1 = (ArrayList<Comentario_Bean>) co2.OperacionRegistro("SELECT", 1, 0);
+//               Iterator<Comentario_Bean> ite = ta1.iterator();
+//
+//              while(ite.hasNext()){
+//
+//                  Comentario_Bean tt = ite.next();
+//
+//                  System.out.println(tt.getId_Comentario()+" "+ tt.getComentario()+" "+ tt.getId_Funcionario()+" "+ tt.getId_Version());
+//
+//              }
+
+//              Autor_Dao a1, a2;
+//              
+//              a1 = new Autor_Dao();
+//              
+//              Autor_Bean a = (Autor_Bean) a1.OperacionRegistro("SELECT", 2, 1);
+//              a.setId_Version(2);
+//              
+//              a2 = new Autor_Dao(a);
+//              
+//              
+//              a2.OperacionRegistro("UPDATE", 0, 0);
+//              
+//              System.out.println(a2.OperacionRegistro("SELECT", 1, 0));
+//              
+//              
+//              Funcionario_Dao fun = new Funcionario_Dao();
+              
+              
+
+//                Evaluacion_General_Dao eg1,eg2;
+//                
+//                eg1 = new Evaluacion_General_Dao();
+//                
+//                Evaluacion_General_Bean e = (Evaluacion_General_Bean) eg1.OperacionRegistro("SELECT", 2, 2);
+//                
+//                e.setObservacion("NO S");
+//                e.setResultado("1");
+//                
+//                eg2 = new Evaluacion_General_Dao(e);
+//                
+//                eg2.OperacionRegistro("INSERT", 0, 0);
+//                
+//                System.out.println(eg2.OperacionRegistro("SELECT", 1, 0));
+//                
+                
+//              Detalles_Evaluacion_Dao dt1, dt2;
+//              
+//              dt1 = new Detalles_Evaluacion_Dao();
+//              
+//              Detalles_Evaluacion_Bean d = (Detalles_Evaluacion_Bean) dt1.OperacionRegistro("SELECT", 2, 1);
+//              
+//              d.setObservacion("SIIIIIII");
+//              
+//              dt2 = new Detalles_Evaluacion_Dao(d);
+//              
+//              dt2.OperacionRegistro("UPDATE", 0, 0);
+//              System.out.println(dt2.OperacionRegistro("SELECT", 1, 0));
+//              
+              
+//        Lista_Chequeo_Dao lc1,lc2;
+//        
+//        int[] i = new int[3];
+//        i[0] = 1;
+//        i[1] = 2;
+//        i[2] = 3;
+//        lc1 = new Lista_Chequeo_Dao();
+//        
+//        Lista_Chequeo_Bean l = (Lista_Chequeo_Bean) lc1.OperacionRegistro("SELECT", 2, 1);
+//        
+//        l.setNom_Lista_Chequeo("migeee");
+//        l.setDes_Lista_Chequeo("NNN");
+//        
+//        lc2 = new Lista_Chequeo_Dao(l);
+//        
+//        boolean loo = (boolean) lc2.OperacionRegistro("INSERT", 1, i);
+//        
+//        if(loo == true)
+//            System.out.println("sooooooo");
+
+        Funcionario_Dao f1,f2;
+        f1 = new Funcionario_Dao();
+        Funcionario_Bean funB = (Funcionario_Bean) f1.OperacionRegistro("SELECT", 2, 2);
+        
+        
+        funB.setNom_Funcionario("a");
+        funB.setNum_Documento(1);
+        funB.setIp_Sena("3");
+        funB.setCorreo("maro@ho");
+        funB.setApellidos("R");
+        
+        f2 = new Funcionario_Dao(funB);
+        boolean  loo = (boolean)f2.OperacionRegistro("INSERT", 0, 0);
+        if(loo == true)
+           System.out.println("sooooooo");
     }
 }

@@ -64,9 +64,9 @@ CREATE TABLE Version (
 
 	Id_Version           INTEGER NOT NULL AUTO_INCREMENT,
     Fecha_Envio          TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    Fecha_Publicacion 	 DATETIME,
+    Fecha_Publicacion 	 TIMESTAMP,
     Num_Version 		 INTEGER NOT NULL,
-	Fecha_Vigencia 		 DATETIME,
+	Fecha_Vigencia 		 TIMESTAMP,
     Url_Version			 VARCHAR (500),
     Url_Img				 VARCHAR (500),				
     Inst_Instalacion	 VARCHAR (800) NOT NULL,
@@ -97,7 +97,6 @@ CREATE TABLE Rankin(
     Id_Version		 INTEGER NOT NULL,
     
     CONSTRAINT PK_Rankin 	PRIMARY KEY (Id_Rankin),
-    
     CONSTRAINT FK_Version 	FOREIGN KEY (Id_Version) REFERENCES Version (Id_Version),
     CONSTRAINT UN_Rankin	UNIQUE		(Id_Version)
     
