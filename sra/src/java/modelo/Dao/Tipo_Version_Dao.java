@@ -24,11 +24,11 @@ public class Tipo_Version_Dao extends InterfaceCrud{
     }
 
     @Override
-    public Object OperacionRegistro(String val, int num, int id) {
+    public Object OperacionRegistro(String val, int num, Object objeto) {
         try {
             switch(val){
                 case "SELECT":
-                        rs = saraCrud(val,num,"Tipo_Version","Id_Tipo_Version",id,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null);
+                        rs = saraCrud(val,num,"Tipo_Version","Id_Tipo_Version",(int) objeto,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null);
                         while(rs.next()){
                             tipoV = new Tipo_Version_Bean(rs.getString("Nom_Tipo_Version"),rs.getString("Des_Version"));
                             tipoV.setId_Tipo_Version(rs.getInt("Id_Tipo_Version"));

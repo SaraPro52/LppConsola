@@ -25,11 +25,11 @@ public class Detalles_Tema_Dao extends InterfaceCrud{
     }
 
     @Override
-    public Object OperacionRegistro(String val, int num, int id) {
+    public Object OperacionRegistro(String val, int num, Object objeto) {
         try {
             switch(val){
                 case "SELECT":
-                    rs = saraCrud(val,num,"Detalles_Tema","Id_Detalles_Tema",id,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null);
+                    rs = saraCrud(val,num,"Detalles_Tema","Id_Detalles_Tema",(int) objeto,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null);
                     while(rs.next()){
                         
                         detaT = new Detalles_Tema_Bean(rs.getInt("Id_Tema"),rs.getInt("Id_P_Virtual"));

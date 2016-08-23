@@ -11,7 +11,6 @@ import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
 
 public class CorreoController {
-
     public void obtenerMensaje(String correo, Double Documento, String Contraseña) {
         boolean a = false;
         try {
@@ -23,7 +22,7 @@ public class CorreoController {
             c.setAsunto(asunto);
             c.setDestino(destino);
             a = enviarCorreo(c);
-            if (a = true) {
+            if (a == true) {
                 System.out.println("Envio correcto, mira tu correo ;)");
             }else{
                 System.out.println("Ups...");
@@ -34,6 +33,7 @@ public class CorreoController {
     }
 
     public boolean enviarCorreo(Correo c) {
+        Boolean a=false;
         try {
             Properties p = new Properties();
             p.put("mail.smtp.host", "smtp.gmail.com");
@@ -68,10 +68,11 @@ public class CorreoController {
             t.connect(c.getUsuarioCorreo(), c.getContrasenia());
             t.sendMessage(mensaje, mensaje.getAllRecipients());
             t.close();
-            return true;
+            a= true;
         } catch (Exception e) {
             System.out.println("Error" + e);
+            a= false;
         }
-        return false;
+        return a;
     }
 }

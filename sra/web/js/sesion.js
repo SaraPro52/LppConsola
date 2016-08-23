@@ -1,5 +1,4 @@
 $(document).on('ready',function(){
-    console.log("Vivo??");
     $("#btninstrutor").on('click',function(){
       $("#Opcion").val("1");
     });

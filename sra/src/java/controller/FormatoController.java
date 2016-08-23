@@ -6,13 +6,52 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import modelo.Bean.Formato_Bean;
+import modelo.Dao.Formato_Dao;
 
 public class FormatoController extends HttpServlet {
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
+            /*Menu de opciones crud
+            1.agregar
+            2.actualizar
+            3.consultar
+            4.eliminar*/
+            int opcion = Integer.parseInt(request.getParameter("Opcion"));
+            Formato_Bean Fbean = new Formato_Bean();
+            Fbean.setDes_Formato("");
+            Fbean.setNom_Formato("");
+            Formato_Dao edao = new Formato_Dao(Fbean);
+            switch (opcion) {
+                case 1:
+                    if ((Boolean) edao.OperacionRegistro("INSERT", 0, 0)) {
+                        response.setContentType("application/json;charset=UTF-8");
+                        PrintWriter devuelta = response.getWriter();
+                        try {
+                            devuelta.println(edao.OperacionRegistro("SELECT", 1, 0));
+                        } catch (Exception e) {
+                            devuelta.println("Error: " + e.getMessage());
+                        }
+                    }
+                    break;
+                case 2:
+                    break;
+                case 3:
+                    response.setContentType("application/json;charset=UTF-8");
+                    PrintWriter devuelta = response.getWriter();
+                    try {
+                        devuelta.println(edao.OperacionRegistro("SELECT", 1, 0));
+                    } catch (Exception e) {
+                        devuelta.println("Error: " + e.getMessage());
+                    }
+                    break;
 
+                case 4:
+                    break;
+            }
 
         }
     }

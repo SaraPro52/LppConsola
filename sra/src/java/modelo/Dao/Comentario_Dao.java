@@ -26,11 +26,11 @@ public class Comentario_Dao extends InterfaceCrud{
     }
 
     @Override
-    public Object OperacionRegistro(String val, int num, int id) {
+    public Object OperacionRegistro(String val, int num, Object objeto) {
         try{
             switch(val){
                 case "SELECT":
-                     rs = saraCrud(val,num,"Comentario","Id_Comentario",id,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null);
+                     rs = saraCrud(val,num,"Comentario","Id_Comentario",(int) objeto,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null);
                      while(rs.next()){
                          
                          comentario = new Comentario_Bean(rs.getString("Comentario"),rs.getInt("Id_Funcionario"),rs.getInt("Id_Version"));

@@ -1,8 +1,5 @@
 package util;
 
-import controller.CorreoController;
-import controller.vasos;
-import java.io.PrintWriter;
 import java.sql.Array;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -266,7 +263,8 @@ public class NewMain {
        
         String suma = "100 + 10";
         System.out.println();*/
-
+        
+     
 //        Centro_Bean hola = (Centro_Dao.class.newInstance().consultarRegistro(5));
 //        hola.setNum_Centro("255");
 //       
@@ -275,6 +273,9 @@ public class NewMain {
 //        
 //        h.OperacionRegistro("UPDATE");
 //        System.out.println(hola.getId_Centro());
+        
+        
+           
 //
 //           Centro_Dao cD = new Centro_Dao();
 //
@@ -300,6 +301,7 @@ public class NewMain {
 //            
 //            
 //        }
+
 //        Area_Centro_Dao acb = new Area_Centro_Dao();
 //        
 //        Area_Centro_Bean are = (Area_Centro_Bean) acb.OperacionRegistro("SELECT",2, 2);
@@ -334,6 +336,7 @@ public class NewMain {
 //        Area_Dao a = new Area_Dao(aB);
 //        
 //        a.OperacionRegistro("INSERT", 0, 0);
+        
 //        ArrayList<Area_Bean>  listaA = (ArrayList<Area_Bean>) a.OperacionRegistro("SELECT", 1, 0);
 //          
 //          Iterator<Area_Bean> iteraA = listaA.iterator();
@@ -346,6 +349,7 @@ public class NewMain {
 //          
 //              
 //          }
+
 //    
 //          Ciudad_Dao cD1, cD2;
 //          
@@ -371,6 +375,7 @@ public class NewMain {
 //            System.out.println(ci.getId_Ciudad() + " " + ci.getNom_Ciudad());
 //
 //        }
+
 //        Estado_Dao eD1, eD2;
 //        
 //        eD1 = new Estado_Dao();
@@ -392,6 +397,7 @@ public class NewMain {
 //              System.out.println(estado.getId_Estado()+ " "+ estado.getNom_Estado());
 //              
 //          }
+
 //
 //        
 //        Funcionario_Dao f1,f2;
@@ -422,6 +428,7 @@ public class NewMain {
 //            
 //            
 //        }
+
 //        
 //        Rol_Dao r1, r2 ;
 //        
@@ -445,6 +452,7 @@ public class NewMain {
 //            Rol_Bean rol = iteraR.next();
 //            System.out.println(rol.getId_Rol() +" "+ rol.getNom_Rol()+" "+rol.getDes_Rol());
 //        }
+
 //        Rol_Funcionario_Dao rf1, rf2;
 //        
 //        rf1 = new Rol_Funcionario_Dao();
@@ -492,6 +500,7 @@ public class NewMain {
 //              System.out.println(tt.getId_Tipo_Estado() +" "+ tt.getNom_Tipo_Estado());
 //          
 //          }
+
 //        Tipo_Documento_Dao td1, td2;
 //        
 //        td1 = new Tipo_Documento_Dao();
@@ -514,6 +523,7 @@ public class NewMain {
 //              System.out.println(tt.getId_Tipo_Documento() +" "+ tt.getNom_Tipo_Documento());
 //          
 //          }
+
 //            Item_Lista_Dao it1, it2;
 //            
 //            it1 = new Item_Lista_Dao();
@@ -540,6 +550,7 @@ public class NewMain {
 //                  System.out.println(tt.getId_Item_Lista()+" "+tt.getDes_Item_Lista() +" "+ tt.getTipo_Item());
 //
 //              }
+
 //             Lista_Chequeo_Dao lc1,lc2;
 //             
 //             lc1 = new Lista_Chequeo_Dao();
@@ -564,6 +575,7 @@ public class NewMain {
 //                  System.out.println(tt.getId_Lista_Chequeo()+" "+tt.getNom_Lista_Chequeo() +" "+ tt.getFecha_Creacion());
 //
 //              }
+
 //        Detalles_Lista_Dao dt1, dt2;
 //        
 //        dt1 = new Detalles_Lista_Dao();
@@ -587,6 +599,7 @@ public class NewMain {
 //                  System.out.println(tt.getId_Detalles_Lista()+" "+tt.getId_Lista_Chequeo() +" "+ tt.getId_Item_Lista());
 //
 //              }
+
 //        Programa_Dao pro1,pro2;
 //        
 //        pro1 = new Programa_Dao();
@@ -610,6 +623,7 @@ public class NewMain {
 //                  System.out.println(tt.getId_Programa()+" "+tt.getNom_Programa() +" "+ tt.getNivel_Formacion());
 //
 //              }
+        
 //            Detalles_Area_Dao da1,da2;
 //            
 //            da1 = new Detalles_Area_Dao();
@@ -633,6 +647,7 @@ public class NewMain {
 //                  System.out.println(tt.getId_Detalles_Area() +" "+ tt.getId_Programa()+" "+ tt.getId_Area());
 //
 //              }
+
 //
 //            Tema_Dao te1,te2;
 //            
@@ -659,6 +674,7 @@ public class NewMain {
 //                  System.out.println(tt.getId_Tema() +" "+ tt.getNom_Tema()+" "+ tt.getDes_Tema());
 //
 //              }
+
 //                Detalles_Programa_Dao dp1,dp2;
 //                
 //                dp1 = new Detalles_Programa_Dao();
@@ -684,6 +700,7 @@ public class NewMain {
 //                  System.out.println(tt.getId_Detalles_Programa() +" "+ tt.getId_Tema()+" "+ tt.getId_Programa());
 //
 //              }
+
 //
 //                Formato_Dao ft1,ft2;
 //                
@@ -710,135 +727,7 @@ public class NewMain {
 //                  System.out.println(tt.getId_Formato() +" "+ tt.getNom_Formato()+" "+ tt.getDes_Formato());
 //
 //              }
-//            Producto_Virtual_Dao pv1,pv2;
-//            
-//            pv1 = new Producto_Virtual_Dao();
-//            
-//            Producto_Virtual_Bean p = (Producto_Virtual_Bean) pv1.OperacionRegistro("SELECT", 2, 1);
-//            
-//            
-//            System.out.println(p.getNom_P_Virtual());
-//            
-//            p.setNom_P_Virtual("hh");
-//            p.setDes_P_Virtual("wwww");
-//            p.setPalabras_Clave("sss");
-//            
-//            pv2 = new Producto_Virtual_Dao(p);
-//            
-//            pv2.OperacionRegistro("INSERT", 0, 0);
-//            
-//            ArrayList<Producto_Virtual_Bean> ta1 = (ArrayList<Producto_Virtual_Bean>) pv2.OperacionRegistro("SELECT", 1, 0);
-//               Iterator<Producto_Virtual_Bean> ite = ta1.iterator();
-//
-//              while(ite.hasNext()){
-//
-//                  Producto_Virtual_Bean tt = ite.next();
-//
-//                  System.out.println(tt.getId_P_Virtual() +" "+ tt.getNom_P_Virtual()+" "+ tt.getPalabras_Clave());
-//
-//              }
-//    
-//            Detalles_Tema_Dao dt1,dt2;
-//            
-//            dt1 = new Detalles_Tema_Dao();
-//            
-//           Detalles_Tema_Bean d = (Detalles_Tema_Bean) dt1.OperacionRegistro("SELECT", 2, 1);
-//           
-//           System.out.println(d.getId_Detalles_Tema());
-//           
-//           dt2 = new Detalles_Tema_Dao(d);
-//           
-//           dt2.OperacionRegistro("INSERT", 0, 0);
-//           
-//           ArrayList<Detalles_Tema_Bean> ta1 = (ArrayList<Detalles_Tema_Bean>) dt2.OperacionRegistro("SELECT", 1, 0);
-//               Iterator<Detalles_Tema_Bean> ite = ta1.iterator();
-//
-//              while(ite.hasNext()){
-//
-//                  Detalles_Tema_Bean tt = ite.next();
-//
-//                  System.out.println(tt.getId_Detalles_Tema() +" "+ tt.getId_Tema()+" "+ tt.getId_P_Virtual());
-//
-//              }
-//
-//            Tipo_Version_Dao tv1, tv2;
-//            
-//            tv1 = new Tipo_Version_Dao();
-//            
-//            Tipo_Version_Bean t = (Tipo_Version_Bean) tv1.OperacionRegistro("SELECT", 2, 3);
-//            
-//            
-//            System.out.println(t.getNom_Tipo_Version());
-//            
-//            t.setNom_Tipo_Version("HO");
-//            t.setDes_Version("dd");
-//            tv2 = new Tipo_Version_Dao(t);
-//            
-//            tv2.OperacionRegistro("UPDATE", 0, 0);
-//            
-//            ArrayList<Tipo_Version_Bean> ta1 = (ArrayList<Tipo_Version_Bean>) tv2.OperacionRegistro("SELECT", 1, 0);
-//               Iterator<Tipo_Version_Bean> ite = ta1.iterator();
-//
-//              while(ite.hasNext()){
-//
-//                  Tipo_Version_Bean tt = ite.next();
-//
-//                  System.out.println(tt.getId_Tipo_Version() +" "+ tt.getNom_Tipo_Version()+" "+ tt.getDes_Version());
-//
-//              }
-//
-//            Version_Dao v1, v2;
-//            
-//            v1 = new Version_Dao();
-//            
-//            Version_Bean v = (Version_Bean) v1.OperacionRegistro("SELECT", 2, 6);
-//            
-//            
-//            System.out.println(v.getId_Version());
-//            
-//            v.setNum_Version(5);
-//            
-//            v2 = new Version_Dao(v);
-//            
-//            v2.OperacionRegistro("UPDATE", 0, 0);
-//            
-//            
-//            ArrayList<Version_Bean> ta1 = (ArrayList<Version_Bean>) v2.OperacionRegistro("SELECT", 1, 0);
-//               Iterator<Version_Bean> ite = ta1.iterator();
-//
-//              while(ite.hasNext()){
-//
-//                  Version_Bean tt = ite.next();
-//
-//                  System.out.println(tt.getId_Version()+" "+ tt.getNum_Version()+" "+ tt.getFecha_Envio()+" "+ tt.getFecha_Publicacion());
-//
-//              }
-//              Rankin_Dao ra1,ra2;
-//              
-//              ra1 = new Rankin_Dao();
-//              
-//              Rankin_Bean r = (Rankin_Bean) ra1.OperacionRegistro("SELECT", 2, 4);
-//              
-//              r.setCant_5(1);
-//              
-//              ra2 = new Rankin_Dao(r);
-//              
-//              ra2.OperacionRegistro("UPDATE", 0, 0);
-//              
-//              ArrayList<Rankin_Bean> ta1 = (ArrayList<Rankin_Bean>) ra2.OperacionRegistro("SELECT", 1, 0);
-//               Iterator<Rankin_Bean> ite = ta1.iterator();
-//
-//              while(ite.hasNext()){
-//
-//                  Rankin_Bean tt = ite.next();
-//
-//                  System.out.println(tt.getId_Version()+" "+ tt.getNum_Descargas()+" "+ tt.getCant_5()+" "+ tt.getId_Rankin());
-//
-//              }
-/*
-        Estado_Dao co1, co2;
 
-<<<<<<< HEAD:SaraCodigo/src/java/util/NewMain.java
 //            Producto_Virtual_Dao pv1,pv2;
 //            
 //            pv1 = new Producto_Virtual_Dao();
@@ -1078,59 +967,5 @@ public class NewMain {
         boolean  loo = (boolean)f2.OperacionRegistro("INSERT", 0, 0);
         if(loo == true)
            System.out.println("sooooooo");
-=======
-        Estado_Bean a = new Estado_Bean();
-        a.setNom_Estado("Prueba");
-        a.setId_Tipo_Estado(1);
-        co1 = new Estado_Dao(a);
-        co1.OperacionRegistro("INSERT", 0, 0);*/
-        //System.out.println(co1.OperacionRegistro("SELECT", 1, 0));
-//              ArrayList<Comentario_Bean> ta1 = (ArrayList<Comentario_Bean>) co2.OperacionRegistro("SELECT", 1, 0);
-//               Iterator<Comentario_Bean> ite = ta1.iterator();
-//
-//              while(ite.hasNext()){
-//
-//                  Comentario_Bean tt = ite.next();
-//
-//                  System.out.println(tt.getId_Comentario()+" "+ tt.getComentario()+" "+ tt.getId_Funcionario()+" "+ tt.getId_Version());
-//
-//              }
-
-            Item_Lista_Bean itemBean = new Item_Lista_Bean();
-            itemBean.setDes_Item_Lista(("Descripcion"));
-            itemBean.setTipo_Item(1);
-            Item_Lista_Dao itemDao = new Item_Lista_Dao(itemBean);
-                
-            if ((Boolean)itemDao.OperacionRegistro("INSERT", 0, 0)) {
-                System.out.println("Funciono");
-            }
-            System.out.println(itemDao.OperacionRegistro("SELECT", 1, 0));
-
-    /*  int tipo = (1);
-        Funcionario_Bean fBean = new Funcionario_Bean();
-        fBean.setNom_Funcionario(("CNombre"));
-        fBean.setId_Tipo_Documento(1);
-        fBean.setApellidos(("CApellido"));
-        fBean.setNum_Documento(7);
-        fBean.setCorreo("mago1230-@hotmail.es");
-        fBean.setCargo("SCargo");
-        fBean.setIp_Sena("CSena");
-        vasos contra = new vasos();
-        contra.AVasos();
-        fBean.setContraseña(contra.getVaso());
-        fBean.setId_Estado((1));
-        fBean.setId_Area_Centro(1);
-        Funcionario_Dao fDao = new Funcionario_Dao(fBean);
-        fDao.AgregarFuncionario(tipo);
-        if (fDao.AgregarFuncionario(tipo)) {
-            CorreoController ce = new CorreoController();
-            try {
-                ce.obtenerMensaje(fBean.getCorreo(), fBean.getNum_Documento(), fBean.getContraseña());
-            } catch (Exception e) {
-                System.out.println("Error: " + e.getMessage());
-            }
-        }*/
-
->>>>>>> a870a0532d1182a100a9ac5f47b83eff5d410837:sra/src/java/util/NewMain.java
     }
 }

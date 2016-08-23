@@ -21,10 +21,10 @@
                         <option value="4">Coordinador</option>
                     </select>
                     <label class="col-md-12" for="CampoNombre">Nombre</label>
-                    <input class="form-control" type="text" id="CampoNombre" name="Nombre">
+                    <input class="form-control" type="text" id="CampoNombre" name="Nombre" placeholder="Ingresa el nombre">
                     <label class="col-md-12" for="CampoApellido">Apellido</label>
-                    <input class="form-control" type="text" id="CampoApellido" name="Apellido" >
-                    <label class="col-md-12"  for="selectionTIdentificacion"> tipo Identificacion</label>
+                    <input class="form-control" type="text" id="CampoApellido" name="Apellido" placeholder="Ingresa el apellido">
+                    <label class="col-md-12"  for="selectionTIdentificacion" > tipo Identificacion</label>
                     <select class="form-control" id="selectionTIdentificacion" name="TipoIdentificacion"  value="blanco">
                         <option value="0">Seleciona...</option>
                         <option value="1">Cedula Ciudadania</option>
@@ -32,18 +32,18 @@
                         <option value="2">registro civil</option>
                     </select>
                     <label class="col-md-12" for="campIdentificacion">N° identificacion</label>
-                    <input class="form-control" type="text" id="campIdentificacion" name="identificacion">
-
+                    <input class="form-control" type="text" id="campIdentificacion" name="identificacion" placeholder="Ingresa el numero de identificacion">
                     <label class="col-md-12"  for="campEmail">Email</label>
-                    <input class="form-control" type="text" id="campEmail" name="Email">
+                    <input class="form-control" type="email" id="campEmail" name="Email" placeholder="Ingresa el Email">
                     </article>
                     <article class="col-md-6">
                         <label class="col-md-12"  for="campoSena">Ip Sena</label>
-                        <input class="form-control" type="text" id="campSena" name="Sena">
-
+                        <input class="form-control" type="text" id="campSena" name="Sena" placeholder="Ingresa identificacion sena ">
                         <label  class="col-md-12" for="cargo">cargo</label>
                         <select class="form-control" id="cargo" name="Cargo" value="blanco">
                             <option value="0">selecciona...</option>
+                            <option value="1">Instructor</option>
+                            <option value="2">Coordinador</option>
                         </select>
                         <label  class="col-md-12"  for="Centro">Centro de formacion</label>
                         <select class="form-control" id="Centro" name="Centro">
@@ -57,6 +57,7 @@
                         <select class="form-control" id="Estado" name="Estado">
                             <option>selecciona...</option>
                         </select>
+                        <br>
                         <button class="btn btn-block" type="button" id="btnRegistrar" >Registrar funcionario</button>   
                     </article>
                 </form>

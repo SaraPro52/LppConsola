@@ -2,36 +2,35 @@ $(document).on('ready', function () {
     console.log("Vivo?");
     var objeto = {Opcion: 3};
     obtenerDatos(objeto);
-    function CargarTabla(areas) {
-        if (areas != "") {
-            var modificar;
-            var eliminar;
-            for (var i = 0; i < areas.length; i++) {
-                modificar = "<td><button type='button'id='modificar" + areas[i].Id_Area + "'><span >M</button></span></td>";
-                eliminar = "<td><button type='button'id='eliminar" + areas[i].Id_Area + "'><span >E</button></span></td>";
-                $('#tabla tbody').append('<tr class="child"><td>' + areas[i].Id_Area + '</td><td>' + areas[i].Nom_Area + '</td><td>' + areas[i].Lider_Area + '</td>' + modificar + eliminar + ' </tr>');
-            }
-        } else {
-            $('#tabla tbody').append('<tr class="child"><td> No hay </td><td>ninguna area</td></tr>');
-        }
-    }
     $("#btnArea").on('click', function () {
-        var o = {
+        var objeto = {
             Opcion: 1,
             Nombrea: $("#areaC").val(),
             Lider: $("#areaL").val()
         };
-        $(".child").remove();
-        obtenerDatos(o);
+        obtenerDatos(objeto);
         $("#areaC").val("");
         $("#areaL").val("");
     });
-
-    $('.child').on('click',function () {
+    $("#tablaarea").DataTable({
+        language: {
+            paginate: {
+                first: "Primera",
+                previous: "Anterior",
+                next: "Siguiente",
+                last: "Anterior"
+            },
+            lengthMenu: "Mostrar _MENU_ areas",
+            info: "Se encontaron _TOTAL_ areas",
+            loadingRecords: "Cargando...",
+            emptyTable: "No hay ninguna area",
+            search: "Buscar:"
+        }
+    });
+    $('.child').on('click', function () {
         var evento = jQuery(this).attr("id");
         alert("Click en " + evento);
     });
-
     function obtenerDatos(datos) {
         $.ajax({
             url: 'areacontroller',
@@ -41,11 +40,38 @@ $(document).on('ready', function () {
             datatype: 'json',
             data: datos,
             success: function (json) {
-                CargarTabla(json);
+                cargarTabla(json);
             },
             error: function () {
                 alert("Disculpa, pero existe un error :/");
             }
         });
     }
+    function cargarTabla(json) {
+
+        for (var i = 0; i < json.length; i++) {
+            table = $("#tablaarea").dataTable().fnAddData([
+                json[i].Id_Area,
+                json[i].Lider_Area,
+                json[i].Nom_Area,
+                "<button class='btn btn-success'>modificar</button>",
+                "<button class='btn btn-danger'>eliminar</button>"
+            ]);
+        }
+    }
+    $("#tablalista").DataTable({
+        language: {
+            paginate: {
+                first: "Primera",
+                previous: "Anterior",
+                next: "Siguiente",
+                last: "Anterior"
+            },
+            lengthMenu: "Mostrar _MENU_ areas",
+            info: "Se encontaron _TOTAL_ areas",
+            loadingRecords: "Cargando...",
+            emptyTable: "No hay ninguna areas",
+            search: "Buscar:"
+        }
+    });
 });

@@ -1,14 +1,33 @@
 $(document).ready(function () {
     console.log("Vivio??SubirOA");
     cargarDatos();
-    
+
+    $("#btnaceptar").on('ready', function () {
+        var selector = ("guardando");
+        var objeto = {
+            Opcion: 1,
+            url: "areacontroller",
+            nombre: "Area",
+            titulo: $("#Titulo").val(),
+            autores : $("#Autores").val(),
+            descripcion: $("#Descripcion").val(),
+            area: $("#Area").val(),
+            programa: $("#Programa").val(),
+            tema: $("#Tema").val(),
+            palabras: $("#PalabrasClave").val(),
+            formato: $("#Formato").val(),
+            requisitos: $("#Requisitos").val(),
+            instruciones: $("#Instruciones").val()
+        };
+        obtenerDatos(objeto,selector);
+    });
     function cargarDatos() {
         var selector;
         var objeto;
         selector = $("#Area");
         objeto = {
             Opcion: 3,
-            url: "areacontroller",
+            url: "archivoscontroller",
             nombre: "Area"
         };
         obtenerDatos(objeto, selector);
@@ -23,7 +42,7 @@ $(document).ready(function () {
         objeto = {
             Opcion: 3,
             url: "temacontroller",
-            nombre: "Area"
+            nombre: "Tema"
         };
         obtenerDatos(objeto, selector);
         selector = $("#Formato");
@@ -43,7 +62,31 @@ $(document).ready(function () {
                         text: Datos[i].Nom_Area
                     }));
                 }
-                break;            
+                break;
+            case "Programa":
+                for (var i = 0; i < Datos.length; i++) {
+                    Selector.append($('<option>', {
+                        value: Datos[i].Id_Programa,
+                        text: Datos[i].Nom_Programa
+                    }));
+                }
+                break;
+            case "Tema":
+                for (var i = 0; i < Datos.length; i++) {
+                    Selector.append($('<option>', {
+                        value: Datos[i].Id_Tema,
+                        text: Datos[i].Nom_Tema
+                    }));
+                }
+                break;
+            case "Formato":
+                for (var i = 0; i < Datos.length; i++) {
+                    Selector.append($('<option>', {
+                        value: Datos[i].Id_Formato,
+                        text: Datos[i].Nom_Formato
+                    }));
+                }
+                break;
         }
     }
     function obtenerDatos(datos, selector) {
@@ -54,8 +97,8 @@ $(document).ready(function () {
             cache: false,
             datatype: "Json",
             data: datos,
-           success: function (json) {
-                console.log("Peticion completa con respuesta  selector:" + datos.nombre + " Respuesta " + json);
+            success: function (json) {
+                //console.log("Peticion completa con respuesta  selector:" + datos.nombre + " Respuesta " + json);
                 AddOption(json, datos.nombre, selector);
             },
             error: function (request, status, error) {
@@ -63,4 +106,5 @@ $(document).ready(function () {
             }
         });
     }
+
 });

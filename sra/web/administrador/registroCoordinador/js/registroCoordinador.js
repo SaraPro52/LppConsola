@@ -67,7 +67,7 @@ $(document).on('ready', function () {
                 for (var i = 0; i < Datos.length; i++) {
                     Selector.append($('<option>', {
                         value: Datos[i].Id_Centro,
-                        text: Datos[i].Num_Centro
+                        text: Datos[i].Nom_Centro
                     }));
                 }
                 break;
@@ -89,7 +89,7 @@ $(document).on('ready', function () {
                 AddOption(json, datos.nombre, selector);
             },
             error: function (request, status, error) {
-                alert("Funcionario registrado correctamente :)" + request.responseText);
+                alert("error" + request.responseText);
             }
         });
     }

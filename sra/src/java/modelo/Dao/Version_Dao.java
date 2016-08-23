@@ -42,11 +42,11 @@ public class Version_Dao extends InterfaceCrud{
     }
 
     @Override
-    public Object OperacionRegistro(String val, int num, int id) {
+    public Object OperacionRegistro(String val, int num, Object objeto) {
         try {
             switch(val){
                 case "SELECT":
-                        rs = saraCrud(val,num,"Version","Id_Version",id,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null);
+                        rs = saraCrud(val,num,"Version","Id_Version",(int) objeto,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null);
                         while(rs.next()){
                             ver = new Version_Bean( rs.getTimestamp("Fecha_Envio"),
                                                     rs.getTimestamp("Fecha_Publicacion"),    

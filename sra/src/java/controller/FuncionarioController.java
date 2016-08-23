@@ -26,7 +26,6 @@ public class FuncionarioController extends HttpServlet {
                 case 1:
                     int tipo = Integer.parseInt(request.getParameter("STipoUsuario"));
                     Funcionario_Bean fBean = new Funcionario_Bean();
-
                     fBean.setNom_Funcionario(request.getParameter("CNombre"));
                     fBean.setId_Tipo_Documento(Integer.parseInt(request.getParameter("StipoIdentificacion")));
                     fBean.setApellidos((request.getParameter("CApellido")));
@@ -36,24 +35,36 @@ public class FuncionarioController extends HttpServlet {
                     fBean.setIp_Sena(request.getParameter("CSena"));
                     vasos contra = new vasos();
                     contra.AVasos();
-                    
                     fBean.setContraseña(contra.getVaso());
                     fBean.setId_Estado(Integer.parseInt(request.getParameter("SEstado")));
                     fBean.setId_Area_Centro(Integer.parseInt(request.getParameter("SArea")));
                     Funcionario_Dao fDao = new Funcionario_Dao(fBean);
-                    if (fDao.AgregarFuncionario(tipo)) {
-                        CorreoController ce = new CorreoController();
-                        response.setContentType("application/json;charset=UTF-8");
-                        PrintWriter devuelta = response.getWriter();
-                        try {
-                            ce.obtenerMensaje(fBean.getCorreo(), fBean.getNum_Documento(), fBean.getContraseña());
-                        } catch (Exception e) {
-                            devuelta.println("Error: " + e.getMessage());
-                        }
+                    Boolean a = (Boolean) fDao.OperacionRegistro("INSERT", 1, tipo);
+                    CorreoController ce = new CorreoController();
+                    response.setContentType("application/json;charset=UTF-8");
+                    PrintWriter devuelta = response.getWriter();
+                    try {
+                        ce.obtenerMensaje(fBean.getCorreo(), fBean.getNum_Documento(), fBean.getContraseña());
+                    } catch (Exception e) {
+                        System.out.println("Error: " + e.getMessage());
                     }
+                    devuelta.println(a);
+                    break;
+                case 2:
+                    break;
+                case 3:
+                    Funcionario_Bean fBean1 = new Funcionario_Bean();
+                    Funcionario_Dao fDao1 = new Funcionario_Dao(fBean1);
+                    response.setContentType("application/json;charset=UTF-8");
+                    PrintWriter devuelta1 = response.getWriter();
+                    try {
+                        devuelta1.println(fDao1.OperacionRegistro("SELECT", 1, 0));
+                    } catch (Exception e) {
+                        devuelta1.println("Error: " + e.getMessage());
+                    }
+
                     break;
             }
-
         }
     }
 

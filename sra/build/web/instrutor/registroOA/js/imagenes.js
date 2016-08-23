@@ -29,44 +29,44 @@ $(document).on('ready', function () {
      }
      };*/
     //$("#UploadForm").ajaxForm(opcion);
-    function Limpiar() {
-        if (window.File && window.FileReader && window.FileList && window.Blob) {
-            console.log("Navegador compatible");
-        } else {
-            console.log('Navegador no compatible.');
-        }
-        titulo = $("#Titulo").val("");
-        descripcion = $("#Descripcion").val("");
-        area = $("#Area").val("");
-        programa = $("#Programa").val("");
-        tema = $("#Tema").val("");
-        imagen = $("#Imagen").val("");
-        palabrasClave = $("#PalabrasClave").val("");
-        formato = $("#Formato").val("");
-        requisitos = $("#Requisitos").val("");
-        instruciones = $("#Instruciones").val("");
-        anniadir = $("#Anniadir").val("");
-    }
+//    function Limpiar() {
+//        if (window.File && window.FileReader && window.FileList && window.Blob) {
+//            console.log("Navegador compatible");
+//        } else {
+//            console.log('Navegador no compatible.');
+//        }
+//        titulo = $("#Titulo").val("");
+//        descripcion = $("#Descripcion").val("");
+//        area = $("#Area").val("");
+//        programa = $("#Programa").val("");
+//        tema = $("#Tema").val("");
+//        imagen = $("#Imagen").val("");
+//        palabrasClave = $("#PalabrasClave").val("");
+//        formato = $("#Formato").val("");
+//        requisitos = $("#Requisitos").val("");
+//        instruciones = $("#Instruciones").val("");
+//        anniadir = $("#Anniadir").val("");
+//    }
+//
 
-
-    $("#formuploadajax").on("submit", function (e) {
-        e.preventDefault();
-        //var f = $(this);
+    $("#btnEnviar").on("click",function () {
+        
         var formData = new FormData(document.getElementById("formuploadajax"));
         formData.append("dato", "valor");
-        //formData.append(f.attr("name"), $(this)[0].files[0]);
-        $.ajax({
-            url: "archivoscontroller",
-            type: "post",
-            dataType: "html",
-            data: formData,
-            cache: false,
-            contentType: false,
-            processData: false
-        })
-                .done(function (res) {
-                    $("#mensaje").html("Respuesta: " + res);
-        });
-                
+        console.log(formData.getPrototypeOf());
+                //formData.append(f.attr("name"), $(this)[0].files[0]);
+//        $.ajax({
+//            url: "archivoscontroller",
+//            type: "post",
+//            dataType: "html",
+//            data: formData,
+//            cache: false,
+//            contentType: false,
+//            processData: false
+//        })
+//                .done(function (res) {
+//                    $("#mensaje").html("Respuesta: " + res);
+//        });
+
     });
 });

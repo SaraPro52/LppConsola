@@ -16,18 +16,19 @@ public class CentroController extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             int opcion = Integer.parseInt(request.getParameter("Opcion"));
-            Centro_Bean cBean = new Centro_Bean();
-            Centro_Dao cDao = new Centro_Dao(cBean);
+
             switch (opcion) {
                 case 1:
                     break;
                 case 2:
                     break;
                 case 3:
+                    Centro_Bean cBean = new Centro_Bean();
+                    Centro_Dao cDao = new Centro_Dao(cBean);
                     response.setContentType("application/json;charset=UTF-8");
                     PrintWriter devuelta = response.getWriter();
                     try {
-                        devuelta.println(cDao.OperacionRegistro("SELECT", 1,0));
+                        devuelta.println(cDao.OperacionRegistro("SELECT", 1, 0));
                     } catch (Exception e) {
                         devuelta.println("Error: " + e.getMessage());
                     }

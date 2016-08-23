@@ -1,6 +1,5 @@
 package controller;
 
-import com.google.gson.Gson;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -28,7 +27,7 @@ public class EstadoController extends HttpServlet {
             Estado_Dao edao = new Estado_Dao(ebean);
             switch (opcion) {
                 case 1:
-                    if ((Boolean)edao.OperacionRegistro("INSERT", 0, 0)) {
+                    if ((Boolean) edao.OperacionRegistro("INSERT", 0, 0)) {
                         response.setContentType("application/json;charset=UTF-8");
                         PrintWriter devuelta = response.getWriter();
                         try {
@@ -41,15 +40,18 @@ public class EstadoController extends HttpServlet {
                 case 2:
                     break;
                 case 3:
+                    Estado_Bean ebean1 = new Estado_Bean();
+
+                    Estado_Dao edao1 = new Estado_Dao(ebean1);
                     response.setContentType("application/json;charset=UTF-8");
                     PrintWriter devuelta = response.getWriter();
                     try {
-                        devuelta.println(edao.OperacionRegistro("SELECT", 1, 0));
+                        devuelta.println(edao1.OperacionRegistro("SELECT", 1, 0));
                     } catch (Exception e) {
                         devuelta.println("Error: " + e.getMessage());
                     }
                     break;
-                    
+
                 case 4:
                     break;
             }

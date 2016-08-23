@@ -9,7 +9,7 @@ public class Correo {
     private String mensaje;
     public Correo(){
         this.usuarioCorreo="jalopez173@misena.edu.co";
-        this.contrasenia="ahnrilwahnafcael";
+        this.contrasenia="oekmozmhjigipkzs";
     }
     public String getUsuarioCorreo() {
         return usuarioCorreo;

@@ -39,11 +39,11 @@ public class Rankin_Dao extends InterfaceCrud{
     }
 
     @Override
-    public Object OperacionRegistro(String val, int num, int id) {
+    public Object OperacionRegistro(String val, int num, Object objeto) {
         try {
             switch(val){
                 case "SELECT":
-                        rs = saraCrud(val,num,"Rankin","Id_Rankin",id,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null);
+                        rs = saraCrud(val,num,"Rankin","Id_Rankin",(int) objeto,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null);
                         while(rs.next()){
                             
                             rankin = new Rankin_Bean(rs.getInt("Num_Visitas"),

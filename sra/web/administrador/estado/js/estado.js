@@ -6,7 +6,6 @@ $(document).on('ready', function () {
         if (estados != "") {
             var modificar;
             var eliminar;
-            
                 for (var i = 0; i < estados.length; i++) {
                     modificar = "<td><button type='button'id='modificar" + estados[i].Id_Estado + "'><span'>M</button></span></td>";
                     eliminar = "<td><button type='button'  id='eliminar" + estados[i].Id_Estado + "'><span '>E</button></span></td>";
