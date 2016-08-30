@@ -6,10 +6,10 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
         <link rel="stylesheet" type="text/css" href="css/estilo.css">
         <link rel="shotrcut icon" href="flavicon.ico">
-        <script type="text/javascript" src="js/jquery.js"></script>
-        <script type="text/javascript" src="Equipo/ModificarLista/js/modificarLista.js"></script>
+        <script type="text/javascript" src="js/jquery.js"></script>        
         <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.12/js/jquery.dataTables.js"></script>
         <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.12/css/jquery.dataTables.css">
+        <script type="text/javascript" src="Equipo/ModificarLista/js/modificarLista.js"></script>
         <title>Crear lista de chequeo</title>
     </head>
     <body class="col-md-12">
@@ -39,7 +39,7 @@
                     <textarea class="form-control" placeholder="Descripcion lista" rows="1" id="Descripcion"></textarea>
                 </div>
                 <div class="col-md-10"> 
-                        <button  class="btn btn-info" id="btnItem">Agregar Item</button>
+                    <button  class="btn btn-info" id="btnItem">Agregar Item</button>
                 </div>
             </article>
             <article class="col-md-8 col-md-offset-1" id="tabla">
@@ -57,7 +57,19 @@
                     </tbody>
                 </table>
             </article>
-            <article class="col-md-12" id="lista">
+            <article class="col-md-12" id="tablaItems">
+                <table class="table table-striped" id="tablaItem">
+                    <thead>
+                        <tr>
+                            <th> # </th>
+                            <th>item</th>
+                            <th>¿Asignar?</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </article>
         </section>
     </body>
 </html>

@@ -64,6 +64,23 @@ public class FuncionarioController extends HttpServlet {
                     }
 
                     break;
+                case 4:
+                    Funcionario_Dao fDao4 = new Funcionario_Dao();
+                    Funcionario_Bean fBean4 = (Funcionario_Bean) fDao4.OperacionRegistro("SELECT", 2, (Integer.parseInt(request.getParameter("Id_Fun"))));
+                    fBean4.setId_Estado(3);
+                    fDao4 = new Funcionario_Dao(fBean4);
+                    response.setContentType("application/json;charset=UTF-8");
+                    PrintWriter devuelta4 = response.getWriter();
+                    try {
+                        if((Boolean)fDao4.OperacionRegistro("UPDATE", 0, 0)){
+                            devuelta4.println("Verdadero");
+                        }else{
+                            devuelta4.println("Falso");
+                        }
+                    } catch (Exception e) {
+                        devuelta4.println("Error: " + e.getMessage());
+                    }
+                    break;
             }
         }
     }

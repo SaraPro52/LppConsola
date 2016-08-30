@@ -1,36 +1,38 @@
 $(document).on('ready', function () {
     console.log("Vivo??ModificarLista");
+    $("#tablaItems").hide();
     var objeto = {Opcion: 3, nombre: "lista", url: "listachequeo", tipo: 1}
     obtenerDatos(objeto);
-    function cargarTabla(Datos, selector) {
-        switch (selector) {
-            case "item":
-                break;
-            case "lista":
-                if (Datos != "") {
-                    for (var i = 0; i < Datos.length; i++) {
-//                       
-                        var  label = ('<td><button class="btn btn-info">Modificar</buttont></td>');
-                        var  elemento = $('<tr class="child" id="'+Datos[i].Id_Lista_Chequeo+'" ><td class="qw">' + Datos[i].Id_Lista_Chequeo + '</td><td>' + Datos[i].Nom_Lista_Chequeo + '</td><td>' + Datos[i].Des_Lista_Chequeo + '</td><td>' + Datos[i].Fecha_Creacion+'</td>'+label+'</tr>');
-                        //elemento.append(label);    
-                        $('#tablalista tbody').append(elemento);
-                    }
-                } else {
-                    $('#tablaItems tbody').append('<tr class="child"><td> No hay </td><td>ningun Item</td></tr>');
-                }
-                break;
-        }
-    }
-    $("#tablaItems tbody").on('click', "tr", function () {
-        if ($("#Descripcion").val() == "") {
-            alert("Campos vacios =/");
-        } else {
-            var objeto = {Opcion: "1", nombre: "tabla", url: "itemcontroller", tipo: 1, descripcion: $("#Descripcion").val()}
-            $(".child").remove();
-            obtenerDatos(objeto);
+    $("#tablalista").DataTable({
+        language: {
+            paginate: {
+                first: "Primera",
+                previous: "Anterior",
+                next: "Siguiente",
+                last: "Anterior"
+            },
+            lengthMenu: "Mostrar _MENU_ listas",
+            info: "Se encontaron _TOTAL_ listas",
+            loadingRecords: "Cargando...",
+            emptyTable: "No hay ninguna listas",
+            search: "Buscar:"
         }
     });
-
+    $("#tablaItem").DataTable({
+        language: {
+            paginate: {
+                first: "Primera",
+                previous: "Anterior",
+                next: "Siguiente",
+                last: "Anterior"
+            },
+            lengthMenu: "Mostrar _MENU_ items",
+            info: "Se encontaron _TOTAL_ items",
+            loadingRecords: "Cargando...",
+            emptyTable: "No hay ninguna item",
+            search: "Buscar:"
+        }
+    });
     function obtenerDatos(datos) {
         $.ajax({
             url: datos.url,
@@ -48,51 +50,55 @@ $(document).on('ready', function () {
             }
         });
     }
+    function cargarTabla(json, selector) {
+        switch (selector) {
+            case "itemlis":
+                for (var i = 0; i < json.length; i++) {
+                    json[i].Id_Item_Lista
+                    json[i].Des_Item_Lista
+                    table = $("#tablaItem").dataTable().fnAddData([
+                        json[i].Id_Item_Lista,
+                        json[i].Des_Item_Lista,
+                        ("<input type='checkbox' value='" + json[i].Id_Item_Lista + "'>")
+                    ]);
+                }
+                break;
+            case "lista":
+                for (var i = 0; i < json.length; i++) {
+                    var listaO = new Array(
+                            json[i].Nom_Lista_Chequeo,
+                            json[i].Des_Lista_Chequeo,
+                            json[i].Fecha_Creacion
+                            );
+                    table = $("#tablalista").dataTable().fnAddData([
+                        json[i].Id_Lista_Chequeo,
+                        json[i].Nom_Lista_Chequeo,
+                        json[i].Des_Lista_Chequeo,
+                        json[i].Fecha_Creacion,
+                        ("<button class='botonclick btn btn-success' id='" + json[i].Id_Lista_Chequeo + "' value='" + listaO + "'>modificar</button>")
+                    ]);
+                }
+                break;
+        }
+    }
+    $("#btnItem").on('click', function () {
+        if ($("#Descripcion").val() == "") {
+            alert("Campos vacios =/");
+        } else {
+            var objeto = {Opcion: "1", nombre: "itemlis", url: "itemcontroller", tipo: 1, descripcion: $("#Descripcion").val()}
+            obtenerDatos(objeto);
+        }
+    });
+    $(document).on('click', '.botonclick', function (e) {
+        var valor = (this.value);
+        var ids = (this.id);
+        var datos = valor.split(",");
+        $("#NombreL").val(datos[0]);
+        $("#DescripcionL").val(datos[1]);
+        $("#calen").val(datos[2] + datos[3]);
+        $("#tabla").hide();
+        $("#tablaItems").show();
+        var objeto = {Opcion: "3", nombre: "itemlis", url: "itemcontroller", tipo: 1};
+        obtenerDatos(objeto);
+    });
 });
-
-// var btn = $('<button>Modificar</button>');
-//                        btn.on('click', function () {
-//                            alert("evento");
-//                            alert('El valor es: ' + $(this).data('val'));
-//                        });
-//                        
-//                        label.append(btn); 
-//    });
-//    $("#btnItem").on('click', function () {
-
-//    var table = $('#tablalista').DataTable({
-//        "processing": true,
-//        "serverSide": true,
-//        "ajax": {
-//            "url": "/sra/alistacontroller",
-//            "type": "POST"
-//        },
-//        "columns": [
-//            {"data": "Id_Lista_Chequeo"},
-//            {"data": "Nom_Lista_Chequeo"},
-//            {"data": "Des_Lista_Chequeo"},
-//            {"data": "Fecha_Creacion"},
-//            {
-//                "defaultContent": "<button>Click!</button>"
-//            }]
-//    });
-//var table;
-//$('#tablalista tbody').on('click', 'button', function () {
-//    var data = table.row($(this).parents('tr').data());
-//    alert( data[0] +"'s salary is: "+ data[ 2 ] );
-//});
-//    
-//    
-//    function cargarTabla(json) {
-//        for (var i = 0; i < json.length; i++) {
-//            table = $("#tablalista").dataTable().fnAddData([
-//                json[i].Id_Lista_Chequeo,
-//                json[i].Nom_Lista_Chequeo,
-//                json[i].Des_Lista_Chequeo,
-//                json[i].Fecha_Creacion,
-//                "<button>modificar</button>"
-//            ]);
-//        }
-//}
-//
-

@@ -3,7 +3,7 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>estados</title>
+        <title>Areas</title>
         <link rel="stylesheet" href="css/bootstrap.css" media="screen" title="no title" charset="utf-8">
         <script type="text/javascript" src="js/jquery.js"></script>
         <script type="text/javascript" src="administrador/area/js/area.js"></script>
@@ -11,7 +11,6 @@
         <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.12/css/jquery.dataTables.css">
     </head>
     <body class="col-md-12">
-        
             <article class="col-md-10">
                 <form id = "formularioEstado">
                     <label for="areaC">Nombre Area</label>

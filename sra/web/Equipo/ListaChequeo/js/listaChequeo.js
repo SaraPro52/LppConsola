@@ -1,6 +1,5 @@
 $(document).on('ready', function () {
-    /*Votar en esta dirrecion.  http://www.smartfilms.com.co/*/
-    console.log("Vivo??");
+    console.log("Vivo??Lista de chequeo");
     var objeto = {Opcion: "3", nombre: "tabla", url: "itemcontroller", tipo: 1}
     obtenerDatos(objeto);
     $("#btnItem").on('click', function () {
@@ -8,27 +7,29 @@ $(document).on('ready', function () {
             alert("Campos vacios =/");
         } else {
             var objeto = {Opcion: "1", nombre: "tabla", url: "itemcontroller", tipo: 1, descripcion: $("#Descripcion").val()}
-            $(".child").remove();
             obtenerDatos(objeto);
         }
     });
     function respuesta(Datos, selector) {
         switch (selector) {
             case "btnGuardado":
-                if (Datos="false") {
+                if (Datos = "false") {
                     alert("Error al registar la lista");
-                }else if(Datos="true"){
+                } else if (Datos = "true") {
                     alert("La lista fue Registrada");
                 }
                 break;
             case "tabla":
+                console.log(Datos);
                 if (Datos != "") {
-                    var chex;
-                    var item;
                     for (var i = 0; i < Datos.length; i++) {
-                        chex = "<td><input type='checkbox' value='" + Datos[i].Id_Item_Lista + "'></td>";
-                        item = ('<tr class="child" id="a" ><td class="qw">' + Datos[i].Id_Item_Lista + '</td><td>' + Datos[i].Des_Item_Lista + '</td>' + chex + '</tr > ');
-                        $('#tablaItems tbody').append(item);
+                        Datos[i].Id_Item_Lista
+                        Datos[i].Des_Item_Lista
+                        table = $("#tablaItems").dataTable().fnAddData([
+                            Datos[i].Id_Item_Lista,
+                            Datos[i].Des_Item_Lista,
+                            ("<input type='checkbox' value='" + Datos[i].Id_Item_Lista + "'>")
+                        ]);
                     }
                 } else {
                     $('#tablaItems tbody').append('<tr class="child"><td> No hay </td><td>ningun Item</td></tr>');
@@ -61,7 +62,6 @@ $(document).on('ready', function () {
         return array;
     }
     function obtenerDatos(datos) {
-        //alert("a"+datos.array);
         $.ajax({
             url: datos.url,
             type: 'POST',
@@ -70,7 +70,7 @@ $(document).on('ready', function () {
             datatype: 'json',
             data: datos,
             success: function (json) {
-                console.log("Peticion completa con respuesta " + json);
+                //console.log("Peticion completa con respuesta " + json);
                 respuesta(json, datos.nombre);
             },
             error: function (jqXHR, textStatus, errorThrown) {
@@ -78,7 +78,21 @@ $(document).on('ready', function () {
             }
         });
     }
-    
+        $("#tablaItems").DataTable({
+            language: {
+                paginate: {
+                    first: "Primera",
+                    previous: "Anterior",
+                    next: "Siguiente",
+                    last: "Anterior"
+                },
+                lengthMenu: "Mostrar _MENU_ items",
+                info: "Se encontaron _TOTAL_ items",
+                loadingRecords: "Cargando...",
+                emptyTable: "No hay ninguna item",
+                search: "Buscar:"
+            }
+        });
     var d = new Date();
     var fecha = d.getFullYear() + "/" + (d.getMonth() + 1) + "/" + d.getDate();
     $("#calen").val(fecha);

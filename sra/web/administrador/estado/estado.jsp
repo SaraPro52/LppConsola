@@ -9,6 +9,7 @@
         <script type="text/javascript" src="js/jquery.js"></script>
         <script type="text/javascript" src="administrador/estado/js/estado.js"></script>
         <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.12/js/jquery.dataTables.js"></script>
+        <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.12/css/jquery.dataTables.css">
     </head>
     <body>
         <header></header>
@@ -24,13 +25,13 @@
                 </form>
             </article>
             <article class="col-md-6 col-offset-2s">
-                <table id="tabla" class="display table table-hover">
+                <table id="tablaestado" class="display table table-hover">
                     <thead>
                         <tr class="active">
                             <td id ="id">Id</td>
-                            <td id="Nombre">Nombre estado</td>
-                            <td id="TipoEstado">Tipo de estado</td>
-                            <td></td>
+                            <td id="Nombre">Nombre estados</td>
+                            <td>Modificar</td>
+                            <td>Eliminar</td>
                         </tr>
                     </thead>
                     <tbody>

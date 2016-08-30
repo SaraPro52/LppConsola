@@ -3,19 +3,26 @@ package controller;
 import java.io.File;
 import java.sql.Timestamp;
 import modelo.Bean.Area_Bean;
+import modelo.Bean.Funcionario_Bean;
 import modelo.Bean.Item_Lista_Bean;
 import modelo.Bean.Lista_Chequeo_Bean;
 import modelo.Dao.Area_Dao;
+import modelo.Dao.Funcionario_Dao;
 import modelo.Dao.Item_Lista_Dao;
 import modelo.Dao.Lista_Chequeo_Dao;
 
 public class pruebas {
 
     public static void main(String[] args) {
+        Funcionario_Dao fDao4 = new Funcionario_Dao();
+        Funcionario_Bean fBean4 = (Funcionario_Bean) fDao4.OperacionRegistro("SELECT", 2,5);
+        fBean4.setId_Estado(3);
+        fDao4 = new Funcionario_Dao(fBean4);
+        fDao4.OperacionRegistro("UPDATE", 0, 0);
 
-        Area_Bean abean = new Area_Bean();
-        Area_Dao adao = new Area_Dao(abean);
-        System.out.println(adao.OperacionRegistro("SELECT", 1, 0));
+//        Area_Bean abean = new Area_Bean();
+//        Area_Dao adao = new Area_Dao(abean);
+//        System.out.println(adao.OperacionRegistro("SELECT", 1, 0));
         //System.out.println(new File ("Archivos\\").getAbsolutePath());
 //        
 //        Archivos a = new Archivos();       

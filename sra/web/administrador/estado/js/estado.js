@@ -2,21 +2,16 @@ $(document).on('ready', function () {
     console.log("Vivo?");    
     var objeto= {Opcion:3, tipo:1}
     obtenerDatos(objeto);
-    function CargarTabla(estados) {
-        if (estados != "") {
-            var modificar;
-            var eliminar;
-                for (var i = 0; i < estados.length; i++) {
-                    modificar = "<td><button type='button'id='modificar" + estados[i].Id_Estado + "'><span'>M</button></span></td>";
-                    eliminar = "<td><button type='button'  id='eliminar" + estados[i].Id_Estado + "'><span '>E</button></span></td>";
-                    $('#tabla tbody').append('<tr class="child" id="a" ><td class="qw">' + estados[i].Id_Estado + '</td><td>' + estados[i].Nom_Estado + '</td>' + modificar + eliminar + ' </tr>');
-                }
-        } else {
-            $('#tabla tbody').append('<tr class="child"><td> No hay </td><td>ningun estado</td></tr>');
+    function cargarTabla(json) {
+        for (var i = 0; i < json.length; i++) {
+            table = $("#tablaestado").dataTable().fnAddData([
+                json[i].Id_Estado,
+                json[i].Nom_Estado,
+                "<button class='btn btn-success'>Modificar</button>",
+                "<button class='btn btn-danger'>Eliminar</button>"
+            ]);
         }
     }
-
-
     $("#btnEstado").on('click', function () {
         var o = {
             Opcion: 1,
@@ -27,12 +22,6 @@ $(document).on('ready', function () {
         obtenerDatos(o);
         $("#EstadoC").val("");
     });
-
-    $('.qw').on('click', function () {
-        var evento = jQuery(this).attr("id");
-        alert("Click en " + evento);
-    });
-
     function obtenerDatos(datos) {
         $.ajax({
             url: 'estadocontroller',
@@ -43,11 +32,26 @@ $(document).on('ready', function () {
             data: datos,
             success: function (json) {
                 console.log("Peticion completa con respuesta " + json);
-                CargarTabla(json);
+                cargarTabla(json);
             },
             error: function (jqXHR, textStatus, errorThrown) {
                 console.log("Disculpa, pero existe un error :/" + textStatus + errorThrown);
             }
         });
     }
+    $("#tablaestado").DataTable({
+        language: {
+            paginate: {
+                first: "Primera",
+                previous: "Anterior",
+                next: "Siguiente",
+                last: "Anterior"
+            },
+            lengthMenu: "Mostrar _MENU_ Estados",
+            info: "Se encontaron _TOTAL_ Estados",
+            loadingRecords: "Cargando...",
+            emptyTable: "No hay ningun estado",
+            search: "Buscar:"
+        }
+    });
 });

@@ -1,20 +1,17 @@
 package controller;
 
 public class alista {
-
     private int draw;
     private int recordsTotal;
     private int recordsFiltered;
     private String error;
     private String[][] data;
-
-    public alista() {
-    }
-
-    public alista(int draw, int recordsTotal, int recordsFiltered, String error) {
+  
+    public alista(int draw, int recordsTotal, int recordsFiltered,String[][] datas, String error) {
         this.draw = draw;
         this.recordsTotal = recordsTotal;
         this.recordsFiltered = recordsFiltered;
+        this.data= datas;
         this.error = error;
     }
 
@@ -45,7 +42,6 @@ public class alista {
     public String getError() {
         return error;
     }
-
     public void setError(String error) {
         this.error = error;
     }
@@ -57,5 +53,4 @@ public class alista {
     public void setData(String[][] data) {
         this.data = data;
     }
-
 }

@@ -27,10 +27,6 @@ $(document).on('ready', function () {
             search: "Buscar:"
         }
     });
-    $('.child').on('click', function () {
-        var evento = jQuery(this).attr("id");
-        alert("Click en " + evento);
-    });
     function obtenerDatos(datos) {
         $.ajax({
             url: 'areacontroller',
@@ -48,7 +44,6 @@ $(document).on('ready', function () {
         });
     }
     function cargarTabla(json) {
-
         for (var i = 0; i < json.length; i++) {
             table = $("#tablaarea").dataTable().fnAddData([
                 json[i].Id_Area,

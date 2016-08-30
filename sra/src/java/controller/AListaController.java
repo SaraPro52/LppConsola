@@ -14,10 +14,10 @@ public class AListaController extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             Lista_Chequeo_Bean lBean = new Lista_Chequeo_Bean();
-            Lista_Chequeo_Dao lDao1 = new Lista_Chequeo_Dao(lBean);
-            alista ls = new alista();
-            String[][] data=(String[][])(lDao1.OperacionRegistro("SELECT", 1, 0));
-            
+            Lista_Chequeo_Dao  lDao1 = new Lista_Chequeo_Dao(lBean);
+            String[][] arr =(String[][])(lDao1.OperacionRegistro("SELECT", 1, 0));
+            int a= arr.length;            
+            alista ls = new alista(1, a,a,arr,"Error");
             response.setContentType("application/json;charset=UTF-8");
             PrintWriter devuelta = response.getWriter();
             try {
@@ -27,7 +27,6 @@ public class AListaController extends HttpServlet {
             }
         }
     }
-
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -66,5 +65,4 @@ public class AListaController extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-
 }
