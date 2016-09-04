@@ -27,11 +27,11 @@ public class FormatoController extends HttpServlet {
             Formato_Dao edao = new Formato_Dao(Fbean);
             switch (opcion) {
                 case 1:
-                    if ((Boolean) edao.OperacionRegistro("INSERT", 0, 0)) {
+                    if ((Boolean) edao.OperacionRegistro("INSERT","", 0)) {
                         response.setContentType("application/json;charset=UTF-8");
                         PrintWriter devuelta = response.getWriter();
                         try {
-                            devuelta.println(edao.OperacionRegistro("SELECT", 1, 0));
+                            devuelta.println(edao.OperacionRegistro("SELECT","-", 0));
                         } catch (Exception e) {
                             devuelta.println("Error: " + e.getMessage());
                         }
@@ -40,10 +40,12 @@ public class FormatoController extends HttpServlet {
                 case 2:
                     break;
                 case 3:
+                    Formato_Bean Fbean3 = new Formato_Bean();
+                    Formato_Dao FDao3 = new Formato_Dao(Fbean3);
                     response.setContentType("application/json;charset=UTF-8");
                     PrintWriter devuelta = response.getWriter();
                     try {
-                        devuelta.println(edao.OperacionRegistro("SELECT", 1, 0));
+                        devuelta.println(FDao3.OperacionRegistro("SELECT","-", 0));
                     } catch (Exception e) {
                         devuelta.println("Error: " + e.getMessage());
                     }

@@ -1,4 +1,5 @@
 package controller;
+
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -20,17 +21,17 @@ public class ProgramaController extends HttpServlet {
             3.consultar
             4.eliminar*/
             int opcion = Integer.parseInt(request.getParameter("Opcion"));
-            Programa_Bean  Pbean = new Programa_Bean();
+            Programa_Bean Pbean = new Programa_Bean();
             Pbean.setNivel_Formacion("");
             Pbean.setNom_Programa("");
-            Programa_Dao  Pdao = new Programa_Dao(Pbean);
+            Programa_Dao Pdao = new Programa_Dao(Pbean);
             switch (opcion) {
                 case 1:
-                    if ((Boolean) Pdao.OperacionRegistro("INSERT", 0, 0)) {
+                    if ((Boolean) Pdao.OperacionRegistro("INSERT", "", 0)) {
                         response.setContentType("application/json;charset=UTF-8");
                         PrintWriter devuelta = response.getWriter();
                         try {
-                            devuelta.println(Pdao.OperacionRegistro("SELECT", 1, 0));
+                            devuelta.println(Pdao.OperacionRegistro("SELECT", "-", 0));
                         } catch (Exception e) {
                             devuelta.println("Error: " + e.getMessage());
                         }
@@ -39,10 +40,12 @@ public class ProgramaController extends HttpServlet {
                 case 2:
                     break;
                 case 3:
+                    Programa_Bean Pbean3 = new Programa_Bean();
+                    Programa_Dao Pdao3 = new Programa_Dao(Pbean3);
                     response.setContentType("application/json;charset=UTF-8");
                     PrintWriter devuelta = response.getWriter();
                     try {
-                        devuelta.println(Pdao.OperacionRegistro("SELECT", 1, 0));
+                        devuelta.println(Pdao3.OperacionRegistro("SELECT", "-", 0));
                     } catch (Exception e) {
                         devuelta.println("Error: " + e.getMessage());
                     }

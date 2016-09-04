@@ -24,11 +24,11 @@ public class ItemController extends HttpServlet {
             Item_Lista_Dao edao = new Item_Lista_Dao(ebean);
             switch (opcion) {
                 case 1:
-                    if ((Boolean) edao.OperacionRegistro("INSERT", 0, 0)) {
+                    if ((Boolean) edao.OperacionRegistro("INSERT","", 0)) {
                         response.setContentType("application/json;charset=UTF-8");
                         PrintWriter devuelta = response.getWriter();
                         try {
-                            devuelta.println(edao.OperacionRegistro("SELECT", 1, 0));
+                            devuelta.println(edao.OperacionRegistro("SELECT","-", 0));
                         } catch (Exception e) {
                             devuelta.println("Error: " + e.getMessage());
                         }
@@ -40,7 +40,7 @@ public class ItemController extends HttpServlet {
                     response.setContentType("application/json;charset=UTF-8");
                     PrintWriter devuelta = response.getWriter();
                     try {
-                        devuelta.println(edao.OperacionRegistro("SELECT", 1, 0));
+                        devuelta.println(edao.OperacionRegistro("SELECT","-", 0));
                     } catch (Exception e) {
                         devuelta.println("Error: " + e.getMessage());
                     }

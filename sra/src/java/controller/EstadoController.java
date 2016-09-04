@@ -8,7 +8,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import modelo.Bean.Estado_Bean;
 import modelo.Dao.Estado_Dao;
-
 public class EstadoController extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
@@ -27,11 +26,11 @@ public class EstadoController extends HttpServlet {
             Estado_Dao edao = new Estado_Dao(ebean);
             switch (opcion) {
                 case 1:
-                    if ((Boolean) edao.OperacionRegistro("INSERT", 0, 0)) {
+                    if ((Boolean) edao.OperacionRegistro("INSERT", "", 0)) {
                         response.setContentType("application/json;charset=UTF-8");
                         PrintWriter devuelta = response.getWriter();
                         try {
-                            devuelta.println(edao.OperacionRegistro("SELECT", 1, 0));
+                            devuelta.println(edao.OperacionRegistro("SELECT","-", 0));
                         } catch (Exception e) {
                             devuelta.println("Error: " + e.getMessage());
                         }
@@ -46,12 +45,11 @@ public class EstadoController extends HttpServlet {
                     response.setContentType("application/json;charset=UTF-8");
                     PrintWriter devuelta = response.getWriter();
                     try {
-                        devuelta.println(edao1.OperacionRegistro("SELECT", 1, 0));
+                        devuelta.println(edao1.OperacionRegistro("SELECT","-", 0));
                     } catch (Exception e) {
                         devuelta.println("Error: " + e.getMessage());
                     }
                     break;
-
                 case 4:
                     break;
             }

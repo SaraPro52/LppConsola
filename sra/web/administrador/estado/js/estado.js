@@ -1,22 +1,36 @@
 $(document).on('ready', function () {
-    console.log("Vivo?");    
-    var objeto= {Opcion:3, tipo:1}
+    console.log("Vivo??Estados");
+    var objeto = {Opcion: 3, tipo: $("#tipo").val()}
     obtenerDatos(objeto);
-    function cargarTabla(json) {
+    function cargarTabla(json, tipo) {
         for (var i = 0; i < json.length; i++) {
-            table = $("#tablaestado").dataTable().fnAddData([
-                json[i].Id_Estado,
-                json[i].Nom_Estado,
-                "<button class='btn btn-success'>Modificar</button>",
-                "<button class='btn btn-danger'>Eliminar</button>"
-            ]);
+            if (json[i].Id_Tipo_Estado == tipo) {
+                table = $("#tablaestado").dataTable().fnAddData([
+                    json[i].Id_Estado,
+                    json[i].Nom_Estado,
+                    "<button value='m' id='"+json[i].Id_Estado+"' class='btn btn-success'>Modificar</button>",
+                    "<button value='e' id='"+json[i].Id_Estado+"' class='btn btn-danger'>Eliminar</button>"
+                ]);
+            }
         }
     }
+    $(document).on('click', '.btn', function (e) {
+        var objeto;
+        switch (this.value){
+            case "m":
+                 objeto ={Opcion:2,id:this.id}
+                break;
+            case "e":
+                objeto ={Opcion:4,id:this.id}
+                break;
+        }  
+        obtenerDatos(objeto);
+    });
     $("#btnEstado").on('click', function () {
         var o = {
             Opcion: 1,
             estado: $("#EstadoC").val(),
-            tipo: "2"
+            tipo: $("#tipo").val()
         };
         $(".child").remove();
         obtenerDatos(o);
@@ -32,7 +46,7 @@ $(document).on('ready', function () {
             data: datos,
             success: function (json) {
                 console.log("Peticion completa con respuesta " + json);
-                cargarTabla(json);
+                cargarTabla(json, datos.tipo);
             },
             error: function (jqXHR, textStatus, errorThrown) {
                 console.log("Disculpa, pero existe un error :/" + textStatus + errorThrown);

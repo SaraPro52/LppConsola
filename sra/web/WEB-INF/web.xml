@@ -64,6 +64,10 @@
         <servlet-name>alistacontroller</servlet-name>
         <servlet-class>controller.AListaController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>masterpage</servlet-name>
+        <servlet-class>controller.masterPage</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>estadocontroller</servlet-name>
         <url-pattern>/estadocontroller</url-pattern>
@@ -127,6 +131,10 @@
     <servlet-mapping>
         <servlet-name>alistacontroller</servlet-name>
         <url-pattern>/alistacontroller</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>masterpage</servlet-name>
+        <url-pattern>/masterpage</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

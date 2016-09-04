@@ -13,6 +13,9 @@ public class Programa_Dao extends InterfaceCrud{
     public String Nivel_Formacion;
     private ArrayList<Programa_Bean> listarPro = new ArrayList<Programa_Bean>();
     private Programa_Bean pro = null;
+    private String tabla = "Programa";
+    private String columnaId = "Id_Programa";
+    public char ope = 'N';
     
     public Programa_Dao(){}
     
@@ -24,16 +27,21 @@ public class Programa_Dao extends InterfaceCrud{
     }
     
     @Override
-    public Object OperacionRegistro(String val, int num, Object objeto) {
+    public Object OperacionRegistro(String val, String operador, Object objeto) {
         try {
             switch(val){
                 case "SELECT":
-                    rs = saraCrud(val,num,"Programa","Id_Programa",(int) objeto,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null);
+                    if(ope == 'S'){
+                        this.tabla = "V_Detalles_Area";
+                        this.columnaId = "Id_Area";
+                    }
+                        
+                    rs = saraCrud(val,operador+"4",this.tabla,this.columnaId,(int) objeto,"Id_Programa",null,"Nom_Programa",null,"Nivel_Formacion",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null);
                     while(rs.next()){
                         
                         pro = new Programa_Bean(rs.getString("Nom_Programa"),rs.getString("Nivel_Formacion"));
                         pro.setId_Programa(rs.getInt("Id_Programa"));
-                        if(num == 1)
+                        if((operador == "-") || (operador == "" && ope == 'S'))
                             listarPro.add(pro);
                     }
                     rs.close();
@@ -41,7 +49,7 @@ public class Programa_Dao extends InterfaceCrud{
                     break;
                 case "INSERT":
                 case "UPDATE":
-                        this.saraCrud(val,2,"Programa","Id_Programa",this.Id_Programa,"Nom_Programa",this.Nom_Programa,"Nivel_Formacion",this.Nivel_Formacion,
+                        this.saraCrud(val,"2","Programa","Id_Programa",this.Id_Programa,"Nom_Programa",this.Nom_Programa,"Nivel_Formacion",this.Nivel_Formacion,
                                         "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "");
                         listo = true;
                     break;
@@ -49,10 +57,10 @@ public class Programa_Dao extends InterfaceCrud{
         } catch (Exception p1) {
             p1.printStackTrace();
         }
-        if(num == 1 && val == "SELECT"){
+        if((operador == "-" && val == "SELECT") || (operador == "" && val == "SELECT" && ope == 'S')){
             return json = new Gson().toJson(listarPro);
         }else{
-            if(num == 2 && val == "SELECT"){
+            if(operador == "" && val == "SELECT" && ope == 'N'){
                 return pro;
             }else{
                 return listo;

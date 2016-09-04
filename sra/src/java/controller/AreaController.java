@@ -27,11 +27,11 @@ public class AreaController extends HttpServlet {
             Area_Dao adao = new Area_Dao(abean);
             switch (opcion) {
                 case 1:
-                    if ((Boolean) adao.OperacionRegistro("INSERT", 0, 0)) {
+                    if ((Boolean) adao.OperacionRegistro("INSERT", "", 0)) {
                         response.setContentType("application/json;charset=UTF-8");
                         PrintWriter devuelta = response.getWriter();
                         try {
-                            devuelta.println(adao.OperacionRegistro("SELECT", 1, 0));
+                            devuelta.println(adao.OperacionRegistro("SELECT","-", 0));
                         } catch (Exception e) {
                             devuelta.println("Error: " + e.getMessage());
                         }
@@ -45,7 +45,7 @@ public class AreaController extends HttpServlet {
                     Area_Bean abean1 = new Area_Bean();
                     Area_Dao adao1 = new Area_Dao(abean1);    
                     try {
-                        devuelta.println(adao1.OperacionRegistro("SELECT", 1, 0));
+                        devuelta.println(adao1.OperacionRegistro("SELECT","-", 0));
                     } catch (Exception e) {
                         devuelta.println("Error: " + e.getMessage());
                     }

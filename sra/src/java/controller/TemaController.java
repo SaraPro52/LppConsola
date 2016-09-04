@@ -27,11 +27,11 @@ public class TemaController extends HttpServlet {
             Tema_Dao Tdao = new Tema_Dao(Tbean);
             switch (opcion) {
                 case 1:
-                    if ((Boolean) Tdao.OperacionRegistro("INSERT", 0, 0)) {
+                    if ((Boolean) Tdao.OperacionRegistro("INSERT", "", 0)) {
                         response.setContentType("application/json;charset=UTF-8");
                         PrintWriter devuelta = response.getWriter();
                         try {
-                            devuelta.println(Tdao.OperacionRegistro("SELECT", 1, 0));
+                            devuelta.println(Tdao.OperacionRegistro("SELECT","-", 0));
                         } catch (Exception e) {
                             devuelta.println("Error: " + e.getMessage());
                         }
@@ -40,10 +40,12 @@ public class TemaController extends HttpServlet {
                 case 2:
                     break;
                 case 3:
+                    Tema_Bean TBean3 = new Tema_Bean();
+                    Tema_Dao  TDao3= new Tema_Dao(TBean3);
                     response.setContentType("application/json;charset=UTF-8");
                     PrintWriter devuelta = response.getWriter();
                     try {
-                        devuelta.println(Tdao.OperacionRegistro("SELECT", 1, 0));
+                        devuelta.println(TDao3.OperacionRegistro("SELECT","-", 0));
                     } catch (Exception e) {
                         devuelta.println("Error: " + e.getMessage());
                     }

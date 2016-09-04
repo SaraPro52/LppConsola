@@ -10,6 +10,7 @@
     </head>
     <body>
         <form enctype="multipart/form-data" id="formuploadajax" method="post" action="archivoscontroller">
+        
             Nombre: <input type="text" name="nombre" placeholder="Escribe tu nombre">
             <br />
             <input  type="file" id="archivo1" name="archivo1"/>

@@ -14,9 +14,9 @@
             <article class="col-md-10">
                 <form id = "formularioEstado">
                     <label for="areaC">Nombre Area</label>
-                    <input  placeholder="Nombre del area"type="text"  name="areac" id="areaC" required="">
+                    <input  placeholder="Nombre del area"type="text"  name="areac" id="areaC" required="true">
                     <label for="areaC">Lider de area</label>
-                    <input placeholder="Lider del area" type="text"  name="areaL" id="areaL" required="">
+                    <input placeholder="Lider del area" type="text"  name="areaL" id="areaL" required="true">
                     <button type="button" class="btn btn-info" id="btnArea"  name="button">Guardar area</button>
                 </form>
             </article>

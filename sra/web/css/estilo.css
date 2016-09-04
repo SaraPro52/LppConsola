@@ -1,42 +1,86 @@
 #formularioTotal{
-margin-left: 3%;
-margin-top: 2%;	
+    margin-left: 3%;
+    margin-top: 2%;	
 }
 #tablas{
-margin-left: 16%;
+    margin-left: 16%;
 }
 
 form p {
-margin-right: 60%;
+    margin-right: 60%;
 }
 
 form  {
-  font-size:30px;
+    font-size:30px;
 }
 
 input[type="radio"] {
-  display: none;
+    display: none;
 }
 
 #labelEstrella {
-  color: grey;
+    color: grey;
 }
 
 .clasificacion {
-  direction: rtl;
-  unicode-bidi: bidi-override;
+    direction: rtl;
+    unicode-bidi: bidi-override;
 }
 
 #labelEstrella:hover,
 #labelEstrella:hover ~ #labelEstrella {
-  color: orange;
+    color: orange;
 }
 
 input[type="radio"]:checked ~ #labelEstrella {
-  color: orange;
+    color: orange;
 }
 
 #seccionComentarios{
-margin-left: 16%;
+    margin-left: 16%;
+}
+#formularioTotal{
+    margin-left: 3%;
+    margin-top: 2%;	
+}
+#tablas{
+    margin-left: 16%;
+}
+
+form p {
+    margin-right: 60%;
+}
+
+form  {
+    font-size:30px;
+}
+
+input[type="radio"] {
+    display: none;
+}
+
+#labelEstrella {
+    color: grey;
+}
+
+.clasificacion {
+    direction: rtl;
+    unicode-bidi: bidi-override;
+}
+
+#labelEstrella:hover,
+#labelEstrella:hover ~ #labelEstrella {
+    color: orange;
+}
+
+input[type="radio"]:checked ~ #labelEstrella {
+    color: orange;
+}
+
+#seccionComentarios{
+    margin-left: 16%;
 
 }
+
+
+

@@ -28,7 +28,7 @@ public class CentroController extends HttpServlet {
                     response.setContentType("application/json;charset=UTF-8");
                     PrintWriter devuelta = response.getWriter();
                     try {
-                        devuelta.println(cDao.OperacionRegistro("SELECT", 1, 0));
+                        devuelta.println(cDao.OperacionRegistro("SELECT","-", 0));
                     } catch (Exception e) {
                         devuelta.println("Error: " + e.getMessage());
                     }

@@ -2,6 +2,7 @@ package controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -18,20 +19,9 @@ public class ArchivosController extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-            /*Menu de opciones crud
-            1.agregar
-            2.actualizar
-            3.consultar
-            4.eliminar*/
-            int opcion = Integer.parseInt(request.getParameter("Opcion"));
-            
-             
-           
-            
         boolean isMultipart = ServletFileUpload.isMultipartContent(request);
         Archivos a = new Archivos();
         a.setRuta("Teleinformatica", "ADSI", "JAVA");
-      
         if (isMultipart) {
             FileItemFactory factory = new DiskFileItemFactory();
             ServletFileUpload upload = new ServletFileUpload(factory);
@@ -39,15 +29,15 @@ public class ArchivosController extends HttpServlet {
                 List<FileItem> multiparts = upload.parseRequest(request);
                 for (FileItem item : multiparts) {
                     if (!item.isFormField()) {
-                        String name = new File(item.getName()).getName();    
-                        item.write(new File(a.rutas() + name));         
+                        String name = new File(item.getName()).getName();
+                        item.write(new File(a.getBase() + name));
                     }
                 }
             } catch (Exception e) {
                 System.out.println("Error al cargar el archivo" + e);
             }
-        }
-
+            request.getRequestDispatcher("instrutor/registroOA/registroOA.jsp").forward(request, response);
+        } 
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

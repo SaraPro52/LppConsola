@@ -18,10 +18,9 @@
                 <form id = "formularioEstado">
                     <label for="EstadoC">Estados de funcionario</label>
                     <label for="EstadoC">Nombre estado</label>
-                    <input type="text"  name="Estado" id="EstadoC" >
+                    <input type="text" name="Estado" id="EstadoC" >
                     <input type="hidden" id="tipo" value="1">
-                    
-                    <button type="button" id="btnFuncionario"  name="button">Guardar estado</button>
+                    <button type="button" id="btnFuncionario" class="btn btn-success" name="button">Guardar estado</button>
                 </form>
             </article>
             <article class="col-md-6 col-offset-2s">

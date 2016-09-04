@@ -934,38 +934,129 @@ public class NewMain {
               
 //        Lista_Chequeo_Dao lc1,lc2;
 //        
-//        int[] i = new int[3];
-//        i[0] = 1;
-//        i[1] = 2;
-//        i[2] = 3;
+////        int[] i = new int[3];
+////        i[0] = 1;
+////        i[1] = 2;
+////        i[2] = 3;
 //        lc1 = new Lista_Chequeo_Dao();
 //        
-//        Lista_Chequeo_Bean l = (Lista_Chequeo_Bean) lc1.OperacionRegistro("SELECT", 2, 1);
+////        Lista_Chequeo_Bean l = (Lista_Chequeo_Bean) lc1.OperacionRegistro("SELECT", 2, 1);
+////        
+////        l.setNom_Lista_Chequeo("migeee");
+////        l.setDes_Lista_Chequeo("NNN");
+////        
+////        lc2 = new Lista_Chequeo_Dao(l);
 //        
-//        l.setNom_Lista_Chequeo("migeee");
-//        l.setDes_Lista_Chequeo("NNN");
-//        
-//        lc2 = new Lista_Chequeo_Dao(l);
-//        
-//        boolean loo = (boolean) lc2.OperacionRegistro("INSERT", 1, i);
-//        
-//        if(loo == true)
-//            System.out.println("sooooooo");
+////        boolean loo = (boolean) lc2.OperacionRegistro("INSERT", 1, i);
+////        
+////        if(loo == true)
+////            System.out.println("sooooooo");
 
-        Funcionario_Dao f1,f2;
-        f1 = new Funcionario_Dao();
-        Funcionario_Bean funB = (Funcionario_Bean) f1.OperacionRegistro("SELECT", 2, 2);
+//        Funcionario_Dao f1,f2;
+//        f1 = new Funcionario_Dao();
+//        Funcionario_Bean funB = (Funcionario_Bean) f1.OperacionRegistro("SELECT", "", 2);
+//        
+//        
+//        funB.setNom_Funcionario("aww");
+//        funB.setNum_Documento(111);
+//        funB.setIp_Sena("3ww");
+//        funB.setCorreo("maro@howw");
+//        funB.setApellidos("Rww");
+//        
+//        f2 = new Funcionario_Dao(funB);
+//        boolean  loo = (boolean) f2.OperacionRegistro("INSERT", "", 1);
+//        if(loo == true)
+//           System.out.println("sooooooo");
+
+
+//        Detalles_Lista_Dao dl1;
+//        
+//        dl1 = new Detalles_Lista_Dao();
+//        
+//        System.out.println(dl1.OperacionRegistro("SELECT","-", 1));
+        
+//        Area_Centro_Dao ac1,ac2;
+//        
+//        ac1 = new Area_Centro_Dao();
+//        
+//        Area_Centro_Bean a = (Area_Centro_Bean) ac1.OperacionRegistro("SELECT", "", 1);
+//        
+//        System.out.println(a.getId_Area_Centro());
+//        
+//        a.setId_Area(2);
+//        
+//        ac2 = new Area_Centro_Dao(a);
+//        
+//        ac2.OperacionRegistro("UPDATE","", 0);
+//        
+//        System.out.println(ac2.OperacionRegistro("SELECT", "-", 0));
+
+//        Lista_Chequeo_Dao lc1,lc2;
+        
+//        lc1 = new Lista_Chequeo_Dao();
+//        
+//        
+//        Lista_Chequeo_Bean l = (Lista_Chequeo_Bean) lc1.OperacionRegistro("SELECT", "", 1);
+//        
+//        System.out.println(l.getId_Lista_Chequeo() + " " + l.getNom_Lista_Chequeo());
+//        
+//        System.out.println(lc1.ope);
+//        lc2 = new Lista_Chequeo_Dao(l);
+        
+//        lc2.OperacionRegistro("UPDATE", "", 0);   
+//lc2 = new Lista_Chequeo_Dao();
+//    s
+//        System.out.println(lc2.OperacionRegistro("SELECT", "-", 0));
         
         
-        funB.setNom_Funcionario("a");
-        funB.setNum_Documento(1);
-        funB.setIp_Sena("3");
-        funB.setCorreo("maro@ho");
-        funB.setApellidos("R");
+//        Item_Lista_Dao it = new Item_Lista_Dao();
+//        
+//        it.ope = ' ';
+//
+//        System.out.println(it.OperacionRegistro("SELECT","", 2));
+
+          
+//Detalles_Area_Dao d1 = new Detalles_Area_Dao();
+//
+//        System.out.println(d1.OperacionRegistro("SELECT", "-", 0));
+//        
+//        Detalles_Area_Bean b = (Detalles_Area_Bean) d1.OperacionRegistro("SELECT", "", 1);
+//        
+//        System.out.println(b.getId_Programa());
+//        b.setId_Programa(2);
+//        
+//        d1 = new Detalles_Area_Dao(b);
+//        
+//        d1.OperacionRegistro("UPDATE", "", 0);
+//        
+//        System.out.println(d1.OperacionRegistro("SELECT", "-", 0));
+
+//Detalles_Programa_Dao dp = new Detalles_Programa_Dao();
+//
+//        System.out.println(dp.OperacionRegistro("SELECT", "-", 0));
+
+
+
+// LLAMO LOS PROGRAMAS QUE ESTEN REGISTRADOS EN EL AREA NUMERO 1
+    
+//        Programa_Dao pr = new Programa_Dao();
+//        
+//        System.out.println(pr.OperacionRegistro("SELECT", "", 1));//EL 1 ESPECIFICA EL ID DEL AREA
+
+//
+//Tema_Dao td = new Tema_Dao();
+//    
+//td.ope = 'S';
+//
+//        System.out.println(td.OperacionRegistro("SELECT", "", 1));
+//        
         
-        f2 = new Funcionario_Dao(funB);
-        boolean  loo = (boolean)f2.OperacionRegistro("INSERT", 0, 0);
-        if(loo == true)
-           System.out.println("sooooooo");
+        Version_Dao ver =  new Version_Dao();
+        
+//        int[] fun = {1,2,3};
+//        int[] tem = {3,4,2};
+//        
+        ver.RegistrarOA("Merooo","UN eCHrwooooooo" , "HOLAweroooo, QUE Hre",1,1,"CARPETAA/Dwerroooo","CATPETIIE/wreroooo","INICwreroooooo","FINALIrerwoooo","1,2",2,"2,3,4",3);
     }
 }
+

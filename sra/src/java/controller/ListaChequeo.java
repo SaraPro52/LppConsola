@@ -36,21 +36,22 @@ public class ListaChequeo extends HttpServlet {
                     lBean.setId_Funcionario(Integer.parseInt(request.getParameter("funcionario")));
                     Lista_Chequeo_Dao lDao = new Lista_Chequeo_Dao(lBean);
                     PrintWriter devueltas = response.getWriter();
-                    if ((Boolean) lDao.OperacionRegistro("INSERT", 1, arr1)) {
+                    if ((Boolean) lDao.OperacionRegistro("INSERT","", arr1)) {
                         response.setContentType("application/json;charset=UTF-8");
-                        devueltas.println(lDao.OperacionRegistro("INSERT", 1, arr1));
+                        devueltas.println(lDao.OperacionRegistro("INSERT","", arr1));
                     } else {
-                        devueltas.println(lDao.OperacionRegistro("INSERT", 1, arr));
+                        devueltas.println(lDao.OperacionRegistro("INSERT","", arr));
                     }
                     break;
                 case 2:
+                    
                     break;
                 case 3:
                     Lista_Chequeo_Dao lDao1 = new Lista_Chequeo_Dao(lBean);
                     response.setContentType("application/json;charset=UTF-8");
                     PrintWriter devuelta = response.getWriter();
                     try {
-                        devuelta.println(lDao1.OperacionRegistro("SELECT", 1, 0));
+                        devuelta.println(lDao1.OperacionRegistro("SELECT","-", 0));
                     } catch (Exception e) {
                         devuelta.println("Error: " + e.getMessage());
                     }

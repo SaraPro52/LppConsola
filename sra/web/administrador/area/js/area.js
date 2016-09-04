@@ -8,10 +8,12 @@ $(document).on('ready', function () {
             Nombrea: $("#areaC").val(),
             Lider: $("#areaL").val()
         };
+        $("#tablaarea").remove();
         obtenerDatos(objeto);
         $("#areaC").val("");
         $("#areaL").val("");
     });
+    
     $("#tablaarea").DataTable({
         language: {
             paginate: {

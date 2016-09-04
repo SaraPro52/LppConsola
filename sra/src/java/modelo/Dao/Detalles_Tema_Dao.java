@@ -25,16 +25,16 @@ public class Detalles_Tema_Dao extends InterfaceCrud{
     }
 
     @Override
-    public Object OperacionRegistro(String val, int num, Object objeto) {
+    public Object OperacionRegistro(String val, String operador, Object objeto) {
         try {
             switch(val){
                 case "SELECT":
-                    rs = saraCrud(val,num,"Detalles_Tema","Id_Detalles_Tema",(int) objeto,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null);
+                    rs = saraCrud(val,operador+"1","Detalles_Tema","Id_Detalles_Tema",(int) objeto,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null);
                     while(rs.next()){
                         
                         detaT = new Detalles_Tema_Bean(rs.getInt("Id_Tema"),rs.getInt("Id_P_Virtual"));
                         detaT.setId_Detalles_Tema(rs.getInt("Id_Detalles_Tema"));
-                        if(num == 1)
+                        if(operador == "-")
                             listarDT.add(detaT);
                     }
                     rs.close();
@@ -42,7 +42,7 @@ public class Detalles_Tema_Dao extends InterfaceCrud{
                     break;
                 case "INSERT":
                 case "UPDATE":
-                        this.saraCrud(val,2,"Detalles_Tema","Id_Detalles_Tema",this.Id_Detalles_Tema,"Id_Tema",""+this.Id_Tema+"","Id_P_Virtual",""+this.Id_P_Virtual+"",
+                        this.saraCrud(val,"2","Detalles_Tema","Id_Detalles_Tema",this.Id_Detalles_Tema,"Id_Tema",""+this.Id_Tema+"","Id_P_Virtual",""+this.Id_P_Virtual+"",
                                      "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""); 
                         listo = true;
                     break;
@@ -50,10 +50,10 @@ public class Detalles_Tema_Dao extends InterfaceCrud{
         } catch (Exception dt1) {
             dt1.printStackTrace();
         }
-        if(num == 1 && val == "SELECT"){
+        if(operador == "-" && val == "SELECT"){
             return json = new Gson().toJson(listarDT);
         }else{
-            if(num == 2 && val == "SELECT"){
+            if(operador == "" && val == "SELECT"){
                 return detaT;
             }else{
                 return listo;

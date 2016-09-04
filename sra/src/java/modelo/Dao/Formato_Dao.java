@@ -24,16 +24,16 @@ public class Formato_Dao extends InterfaceCrud{
     }
 
     @Override
-    public Object OperacionRegistro(String val, int num, Object objeto) {
+    public Object OperacionRegistro(String val, String operador, Object objeto) {
         try {
             switch(val){
                 case "SELECT":
-                        rs = saraCrud(val,num,"Formato","Id_Formato",(int) objeto,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null);
+                        rs = saraCrud(val,operador+"1","Formato","Id_Formato",(int) objeto,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null);
                         while(rs.next()){
                             
                             formato = new Formato_Bean(rs.getString("Nom_Formato"),rs.getString("Des_Formato"));
                             formato.setId_Formato(rs.getInt("Id_Formato"));
-                            if(num == 1)
+                            if(operador == "-")
                                 listarFormato.add(formato);
                         }
                         rs.close();
@@ -41,7 +41,7 @@ public class Formato_Dao extends InterfaceCrud{
                     break;
                 case "INSERT":
                 case "UPDATE":
-                     this.saraCrud(val,2,"Formato","Id_Formato",this.Id_Formato,"Nom_Formato",this.Nom_Formato,"Des_Formato",this.Des_Formato,
+                     this.saraCrud(val,"2","Formato","Id_Formato",this.Id_Formato,"Nom_Formato",this.Nom_Formato,"Des_Formato",this.Des_Formato,
                              "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "");
                      listo = true;
                     break;
@@ -49,10 +49,10 @@ public class Formato_Dao extends InterfaceCrud{
         } catch (Exception fmt1) {
             fmt1.printStackTrace();
         }
-        if(num == 1 && val == "SELECT"){
+        if(operador == "-" && val == "SELECT"){
             return json = new Gson().toJson(listarFormato);
         }else{
-            if(num == 2 && val == "SELECT"){
+            if(operador == "" && val == "SELECT"){
                 return formato;
             }else{
                 return listo;

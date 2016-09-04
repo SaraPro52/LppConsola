@@ -24,16 +24,16 @@ public class Rol_Funcionario_Dao extends InterfaceCrud {
     }
 
     @Override
-    public Object OperacionRegistro(String val, int num, Object objeto) {
+    public Object OperacionRegistro(String val, String operador, Object objeto) {
         try {
             switch(val){
                 case "SELECT":
-                        rs = saraCrud(val,num,"Rol_Funcionario","Id_Rol_Funcionario",(int) objeto,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null);
+                        rs = saraCrud(val,operador+"","Rol_Funcionario","Id_Rol_Funcionario",(int) objeto,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null);
                         while(rs.next()){
                             
                             rfun = new Rol_Funcionario_Bean(rs.getInt("Id_Rol"),rs.getInt("Id_Funcionario"));
                             rfun.setId_Rol_Funcionario(rs.getInt("Id_Rol_Funcionario"));
-                            if(num == 1)
+                            if(operador == "-")
                                 listarRF.add(rfun);
                         }
                         rs.close();
@@ -41,7 +41,7 @@ public class Rol_Funcionario_Dao extends InterfaceCrud {
                     break;
                 case "INSERT":
                 case "UPDATE":
-                        this.saraCrud(val,2, "Rol_Funcionario", "Id_Rol_Funcionario",this.Id_Rol_Funcionario , "Id_Rol", ""+this.Id_Rol+"", 
+                        this.saraCrud(val,"2", "Rol_Funcionario", "Id_Rol_Funcionario",this.Id_Rol_Funcionario , "Id_Rol", ""+this.Id_Rol+"", 
                                          "Id_Funcionario", ""+this.Id_Funcionario+"", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "",
                                          "", "");
                         listo = true;
@@ -50,10 +50,10 @@ public class Rol_Funcionario_Dao extends InterfaceCrud {
         } catch (Exception rf1) {
             rf1.printStackTrace();
         }
-        if(num == 1 && val == "SELECT"){
+        if(operador == "-" && val == "SELECT"){
             return json = new Gson().toJson(listarRF);
         }else{
-            if(num ==2 && val == "SELECT"){
+            if(operador == "" && val == "SELECT"){
                 return rfun;
             }else{
                 return listo;

@@ -28,16 +28,16 @@ public class Detalles_Evaluacion_Dao extends InterfaceCrud{
     }
 
     @Override
-    public Object OperacionRegistro(String val, int num, Object objeto) {
+    public Object OperacionRegistro(String val, String operador, Object objeto) {
         try {
             switch(val){
                 case "SELECT":
-                        rs = saraCrud(val,num,"Detalles_Evaluacion","Id_Detalles_Evaluacion",(int) objeto,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null);
+                        rs = saraCrud(val,operador+"1","Detalles_Evaluacion","Id_Detalles_Evaluacion",(int) objeto,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null);
                         while(rs.next()){
                             
                             detaEval = new Detalles_Evaluacion_Bean(rs.getString("Valorizacion"),rs.getString("Observacion"),rs.getInt("Id_Detalles_Lista"),rs.getInt("Id_Evaluacion_General"));
                             detaEval.setId_Detalles_Evaluacion(rs.getInt("Id_Detalles_Evaluacion"));
-                            if(num == 1)
+                            if(operador == "-")
                                 listarDE.add(detaEval);
                         }
                         rs.close();
@@ -45,7 +45,7 @@ public class Detalles_Evaluacion_Dao extends InterfaceCrud{
                     break;
                 case "INSERT":
                 case "UPDATE":
-                        this.saraCrud(val,4,"Detalles_Evaluacion","Id_Detalles_Evaluacion",this.Id_Detalles_Evaluacion,"Valorizacion",this.Valorizacion,"Observacion",this.Observacion,"Id_Detalles_Lista",""+this.Id_Detalles_Lista+"","Id_Evaluacion_General",""+this.Id_Evaluacion_General+"",
+                        this.saraCrud(val,"4","Detalles_Evaluacion","Id_Detalles_Evaluacion",this.Id_Detalles_Evaluacion,"Valorizacion",this.Valorizacion,"Observacion",this.Observacion,"Id_Detalles_Lista",""+this.Id_Detalles_Lista+"","Id_Evaluacion_General",""+this.Id_Evaluacion_General+"",
                                         "","","","","","","","","","","","","","");
                         listo = true;
                     break;
@@ -53,11 +53,11 @@ public class Detalles_Evaluacion_Dao extends InterfaceCrud{
         } catch (Exception dt1) {
             dt1.printStackTrace();
         }
-        if(num == 1 && val == "SELECT"){
+        if(operador == "-" && val == "SELECT"){
             
             return json = new Gson().toJson(listarDE);
         }else{
-            if(num == 2 && val == "SELECT"){
+            if(operador == "" && val == "SELECT"){
                 return detaEval;
             }else{
                 return listo;

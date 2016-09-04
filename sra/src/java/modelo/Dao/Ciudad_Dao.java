@@ -22,18 +22,18 @@ public class Ciudad_Dao extends InterfaceCrud{
     }
     
     @Override
-    public Object OperacionRegistro(String val, int num, Object objeto) {
+    public Object OperacionRegistro(String val, String operador, Object objeto) {
         
         try {
             switch(val){
                 case "SELECT":
-                    rs = saraCrud(val,num,"Ciudad","Id_Ciudad",(int) objeto,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null);
+                    rs = saraCrud(val,operador+"1","Ciudad","Id_Ciudad",(int) objeto,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null);
                     
                     while(rs.next()){
                         
                         ciuB = new Ciudad_Bean(rs.getString("Nom_Ciudad"));
                         ciuB.setId_Ciudad(rs.getInt("Id_Ciudad"));
-                        if(num == 1)
+                        if(operador == "-")
                             listarCiudad.add(ciuB);
                     }
                     rs.close();
@@ -41,7 +41,7 @@ public class Ciudad_Dao extends InterfaceCrud{
                     break;
                 case "INSERT":
                 case "UPDATE":   
-                    this.saraCrud(val,1,"Ciudad", "Id_Ciudad",this.Id_Ciudad , "Nom_Ciudad", this.Nom_Ciudad, 
+                    this.saraCrud(val,"1","Ciudad", "Id_Ciudad",this.Id_Ciudad , "Nom_Ciudad", this.Nom_Ciudad, 
                                                  "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "",
                                                  "", "");
                     listo = true;
@@ -50,10 +50,10 @@ public class Ciudad_Dao extends InterfaceCrud{
         } catch (Exception c1) {
             c1.printStackTrace();
         }
-        if(num == 1 && val == "SELECT"){
+        if(operador == "-" && val == "SELECT"){
             return json = new Gson().toJson(listarCiudad);
         }else{
-            if(num == 2 && val == "SELECT")
+            if(operador == "" && val == "SELECT")
             {
                 return ciuB;
             }else{

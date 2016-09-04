@@ -10,11 +10,9 @@
         <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.12/css/jquery.dataTables.css">
         <title>Pagina pricipal administrador</title>
     </head>
+    
     <body class="col-md-12">
-        
-            <article class="col-md-10 col-md-offset-2">
-                <center><label>casos de uso</label></center>
-                <form class="col-md-8" action="administradocontroller" method="post">
+   <form class="col-md-8" action="administradocontroller" method="post">
                     <label for="Opcion">Seleciona el caso de uso ;)</label>
                     <select class="" name="Opcion" value="blanco" >
                         <option value="1">Estados de funcionario</option>
@@ -25,11 +23,12 @@
                         <option value="6">Principal instrutor</option>
                     </select>
                     <input type="submit" class="btn btn-info" name="btnenviar" value="Aceptar">
-                </form>
+</form>    
+        <article class="col-md-10 col-md-offset-2">
             </article>
             <article class="col-md-10 col-md-offset-1">
                 <table id="tablaAdmi" class="table table-hover ">
-                    <thead>
+                    <thead>z
                     <th >Nombre</th>
                     <th >Cargo</th>
                     <th >Area</th>
@@ -39,7 +38,6 @@
                     <tbody>
                     </tbody>
                 </table>
-            </article>
-        
+            </article>        
     </body>
 </html>

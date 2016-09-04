@@ -39,7 +39,7 @@ public class FuncionarioController extends HttpServlet {
                     fBean.setId_Estado(Integer.parseInt(request.getParameter("SEstado")));
                     fBean.setId_Area_Centro(Integer.parseInt(request.getParameter("SArea")));
                     Funcionario_Dao fDao = new Funcionario_Dao(fBean);
-                    Boolean a = (Boolean) fDao.OperacionRegistro("INSERT", 1, tipo);
+                    Boolean a = (Boolean) fDao.OperacionRegistro("INSERT","", tipo);
                     CorreoController ce = new CorreoController();
                     response.setContentType("application/json;charset=UTF-8");
                     PrintWriter devuelta = response.getWriter();
@@ -58,7 +58,7 @@ public class FuncionarioController extends HttpServlet {
                     response.setContentType("application/json;charset=UTF-8");
                     PrintWriter devuelta1 = response.getWriter();
                     try {
-                        devuelta1.println(fDao1.OperacionRegistro("SELECT", 1, 0));
+                        devuelta1.println(fDao1.OperacionRegistro("SELECT", "-", 0));
                     } catch (Exception e) {
                         devuelta1.println("Error: " + e.getMessage());
                     }
@@ -66,13 +66,13 @@ public class FuncionarioController extends HttpServlet {
                     break;
                 case 4:
                     Funcionario_Dao fDao4 = new Funcionario_Dao();
-                    Funcionario_Bean fBean4 = (Funcionario_Bean) fDao4.OperacionRegistro("SELECT", 2, (Integer.parseInt(request.getParameter("Id_Fun"))));
+                    Funcionario_Bean fBean4 = (Funcionario_Bean) fDao4.OperacionRegistro("SELECT","", (Integer.parseInt(request.getParameter("Id_Fun"))));
                     fBean4.setId_Estado(3);
                     fDao4 = new Funcionario_Dao(fBean4);
                     response.setContentType("application/json;charset=UTF-8");
                     PrintWriter devuelta4 = response.getWriter();
                     try {
-                        if((Boolean)fDao4.OperacionRegistro("UPDATE", 0, 0)){
+                        if((Boolean)fDao4.OperacionRegistro("UPDATE","", 0)){
                             devuelta4.println("Verdadero");
                         }else{
                             devuelta4.println("Falso");

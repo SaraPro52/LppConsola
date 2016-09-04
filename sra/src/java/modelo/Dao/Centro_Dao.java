@@ -30,18 +30,18 @@ public class Centro_Dao extends InterfaceCrud{
     
 
     @Override
-    public Object  OperacionRegistro(String val, int num,Object objeto) {
+    public Object  OperacionRegistro(String val, String operador,Object objeto) {
        
         try {
             switch (val) {
                 case "SELECT":
-                    rs = saraCrud(val,num,"Centro","Id_Centro",(int) objeto,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null);
+                    rs = saraCrud(val,operador+"1","Centro","Id_Centro",(int) objeto,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null);
             
                     while(rs.next()){
 
                         cenB1 = new Centro_Bean(rs.getString("Num_Centro"),rs.getString("Nom_Centro"),rs.getString("Direccion"),rs.getInt("Id_Ciudad"));
                         cenB1.setId_Centro(rs.getInt("Id_Centro"));
-                        if(num == 1)
+                        if(operador == "-")
                         listarCentros.add(cenB1);
                     }
                     rs.close();
@@ -49,7 +49,7 @@ public class Centro_Dao extends InterfaceCrud{
                     break;
                 case "INSERT":
                 case "UPDATE":    
-                    this.saraCrud(val,4,"Centro","Id_Centro",this.Id_Centro,"Nom_Centro",this.Nom_Centro,"Direccion",this.Direccion, "Id_Ciudad", ""+this.Id_Ciudad+"", 
+                    this.saraCrud(val,"4","Centro","Id_Centro",this.Id_Centro,"Nom_Centro",this.Nom_Centro,"Direccion",this.Direccion, "Id_Ciudad", ""+this.Id_Ciudad+"", 
                          "Num_Centro",this.Num_Centro, "", "", "", "", "","", "", "", "", "", "", "", "", "");
                     listo = true;
                     break;
@@ -58,10 +58,10 @@ public class Centro_Dao extends InterfaceCrud{
         } catch (Exception s1) {
             s1.printStackTrace();
         }
-        if(num == 1 && val == "SELECT"){
+        if(operador == "-" && val == "SELECT"){
             return json = new Gson().toJson(listarCentros);            
         }else{
-            if(num == 2 && val == "SELECT"){
+            if(operador == "" && val == "SELECT"){
                 return  cenB1;
             }else
             {

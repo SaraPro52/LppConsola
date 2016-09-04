@@ -25,16 +25,16 @@ public class Autor_Dao extends InterfaceCrud{
     }
 
     @Override
-    public Object OperacionRegistro(String val, int num, Object objeto) {
+    public Object OperacionRegistro(String val, String operador, Object objeto) {
         try {
             switch(val){
                 case "SELECT":
-                        rs = saraCrud(val,num,"Autor","Id_Autor",(int) objeto,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null);
+                        rs = saraCrud(val,operador+"1","Autor","Id_Autor",(int) objeto,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null);
                         while(rs.next()){
                             
                             autor = new Autor_Bean(rs.getInt("Id_Version"),rs.getInt("Id_Funcionario"));
                             autor.setId_Autor(rs.getInt("Id_Autor"));
-                            if(num == 1)
+                            if(operador == "-")
                                 listarAutor.add(autor);
                         }
                         rs.close();
@@ -42,7 +42,7 @@ public class Autor_Dao extends InterfaceCrud{
                     break;
                 case "INSERT":
                 case "UPDATE":
-                        this.saraCrud(val,2,"Autor","Id_Autor",this.Id_Autor,"Id_Version",""+this.Id_Version+"","Id_Funcionario",""+this.Id_Funcinario+"",
+                        this.saraCrud(val,"2","Autor","Id_Autor",this.Id_Autor,"Id_Version",""+this.Id_Version+"","Id_Funcionario",""+this.Id_Funcinario+"",
                                 "","","","","","","","","","","","","","","","","","");
                         listo = true;
                     break;
@@ -50,10 +50,10 @@ public class Autor_Dao extends InterfaceCrud{
         } catch (Exception au1) {
             au1.printStackTrace();
         }
-        if(num == 1 && val == "SELECT"){
+        if(operador == "-" && val == "SELECT"){
             return json = new Gson().toJson(listarAutor);
         }else{
-            if(num == 2 && val == "SELECT"){
+            if(operador == "" && val == "SELECT"){
                 return autor;
             }else{
                 return listo;
