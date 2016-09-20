@@ -39,11 +39,11 @@ public class Rankin_Dao extends InterfaceCrud{
     }
 
     @Override
-    public Object OperacionRegistro(String val, int num, int id) {
+    public Object OperacionRegistro(String val, String operador, Object objeto) {
         try {
             switch(val){
                 case "SELECT":
-                        rs = saraCrud(val,num,"Rankin","Id_Rankin",id,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null);
+                        rs = saraCrud(val,operador+"","Rankin","Id_Rankin",(int) objeto,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null);
                         while(rs.next()){
                             
                             rankin = new Rankin_Bean(rs.getInt("Num_Visitas"),
@@ -56,7 +56,7 @@ public class Rankin_Dao extends InterfaceCrud{
                                                     rs.getInt("Numero_Votos"),
                                                     rs.getInt("Id_Version"));
                             rankin.setId_Rankin(rs.getInt("Id_Rankin"));
-                            if(num == 1)
+                            if(operador == "-")
                                 listarRan.add(rankin);
                         }
                         rs.close();
@@ -64,7 +64,7 @@ public class Rankin_Dao extends InterfaceCrud{
                     break;
                 case "INSERT":
                 case "UPDATE":
-                        this.saraCrud(val,9,"Rankin","Id_Rankin",this.Id_Rankin,
+                        this.saraCrud(val,"9","Rankin","Id_Rankin",this.Id_Rankin,
                                                     "Num_Visitas",""+this.Num_Visitas+"",
                                                     "Num_Descargas",""+this.Num_Descargas+"",
                                                     "Cant_5",""+this.Cant_5+"",
@@ -81,10 +81,10 @@ public class Rankin_Dao extends InterfaceCrud{
         } catch (Exception ran1) {
             ran1.printStackTrace();
         }
-        if(num == 1 && val == "SELECT"){
+        if(operador == "-" && val == "SELECT"){
             return json = new Gson().toJson(listarRan);
         }else{
-            if(num == 2 && val == "SELECT"){
+            if(operador == "" && val == "SELECT"){
                 return rankin;
             }else{
                 return listo;

@@ -19,6 +19,8 @@ public class Lista_Chequeo_Dao extends InterfaceCrud{
     private ArrayList<Lista_Chequeo_Bean> listarLChequeo = new ArrayList<Lista_Chequeo_Bean>();
     private Lista_Chequeo_Bean lChequeo;
     private final String procedure = "{call RegistrarListaChequeo(?,?,?,?,?)}";
+    private String tabla = "Lista_Chequeo";
+    public  char ope = 'N';
 
     public Lista_Chequeo_Dao(){}
     
@@ -32,17 +34,22 @@ public class Lista_Chequeo_Dao extends InterfaceCrud{
     }
     
     @Override
-    public Object OperacionRegistro(String val, int num, Object objeto) {
+    public Object OperacionRegistro(String val, String operador, Object objeto) {
+        
         try {
             switch(val){
                 case "SELECT":
-                        rs = saraCrud(val,num,"Lista_Chequeo","Id_Lista_Chequeo",(int)objeto,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null);
+                        if(ope == 'S')
+                            this.tabla = "V_Detalles_Lista";
+                            
+                        rs = saraCrud(val,operador+"6",this.tabla,"Id_Lista_Chequeo",(int)objeto,"Nom_Lista_Chequeo",null,"Des_Lista_Chequeo",null,"Id_Funcionario",null,"Id_Lista_Chequeo",null,"Fecha_Creacion",null,null,null,null,null,null,null,null,null,null,null,null,null);
                         while(rs.next()){
                             
                             lChequeo = new Lista_Chequeo_Bean(rs.getString("Nom_Lista_Chequeo"),rs.getString("Des_Lista_Chequeo"),rs.getInt("Id_Funcionario"));
                             lChequeo.setId_Lista_Chequeo(rs.getInt("Id_Lista_Chequeo"));
                             lChequeo.setFecha_Creacion(rs.getTimestamp("Fecha_Creacion"));
-                            if(num == 1)
+                            
+                            if((operador == "-") || (operador == "" && ope == 'S'))
                                listarLChequeo.add(lChequeo);
                         }
                         rs.close();
@@ -50,10 +57,10 @@ public class Lista_Chequeo_Dao extends InterfaceCrud{
                     break;
                 case "INSERT":
                 case "UPDATE":
-                        if(val == "INSERT" && num == 1){
-                            listo = RegistrarListaChequeo((int[]) objeto);}
+                        if(val == "INSERT" && operador == ""){
+                            listo = RegistrarListaChequeo((String[]) objeto);}
                         else{    
-                        this.saraCrud(val,3,"Lista_Chequeo","Id_Lista_Chequeo",this.Id_Lista_Chequeo,"Nom_Lista_Chequeo",this.Nom_Lista_Chequeo,"Des_Lista_Chequeo",this.Des_Lista_Chequeo,
+                        this.saraCrud(val,"3","Lista_Chequeo","Id_Lista_Chequeo",this.Id_Lista_Chequeo,"Nom_Lista_Chequeo",this.Nom_Lista_Chequeo,"Des_Lista_Chequeo",this.Des_Lista_Chequeo,
                                       "Id_Funcionario",""+this.Id_Funcionario+"","", "", "", "", "","", "", "", "", "", "", "", "", "","","");
                         listo = true;}
                     break;
@@ -61,10 +68,10 @@ public class Lista_Chequeo_Dao extends InterfaceCrud{
         } catch (Exception lc1) {
             lc1.printStackTrace();
         }
-        if(num == 1 && val == "SELECT"){
+        if((operador == "-" && val == "SELECT") || (operador == "" && val == "SELECT" && ope == 'S') ){
             return  json = new Gson().toJson(listarLChequeo);
         }else{
-            if(num == 2 && val == "SELECT"){
+            if(operador == "" && val == "SELECT" && ope == 'N'){
                 return lChequeo;
             }else{
                 return listo;
@@ -72,7 +79,7 @@ public class Lista_Chequeo_Dao extends InterfaceCrud{
         }
     }
     
-    private boolean RegistrarListaChequeo(int[] array){
+    private boolean RegistrarListaChequeo(String[] array){
         
         String items = "";
         for (int i = 0; i < array.length; i++) {

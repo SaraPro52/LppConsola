@@ -7,19 +7,18 @@
         <script type="text/javascript" src="js/jquery.js"></script>
         <script type="text/javascript" src="js/jquery.form.js"></script>
         <script type="text/javascript" src="instrutor/registroOA/js/imagenes.js"></script>
-
     </head>
     <body>
-        <form enctype="multipart/form-data" id="formuploadajax" method="post">
+        <form enctype="multipart/form-data" id="formuploadajax" method="post" action="archivoscontroller">
+        
             Nombre: <input type="text" name="nombre" placeholder="Escribe tu nombre">
             <br />
             <input  type="file" id="archivo1" name="archivo1"/>
-            <br />
+        <br />
             <input  type="file" id="archivo2" name="archivo2"/>
             <br />
-            <input type="submit" value="Subir archivos"/>
+            <button id="btnEnviar" >Aceptar</button>
+
         </form>
-        <div id="mensaje"></div>
-        
     </body>
 </html>

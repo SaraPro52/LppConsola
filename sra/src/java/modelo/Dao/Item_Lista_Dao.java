@@ -13,6 +13,9 @@ public class Item_Lista_Dao extends InterfaceCrud{
     public String Tipo_Item;
     private ArrayList<Item_Lista_Bean> listarItem = new ArrayList<Item_Lista_Bean>();
     private Item_Lista_Bean item = null;
+    public char ope = 'N';
+    private String tabla = "Item_Lista";
+    private String columnaId = "Id_Item_Lista";
     
     public Item_Lista_Dao(){}
     
@@ -24,16 +27,22 @@ public class Item_Lista_Dao extends InterfaceCrud{
     }
             
     @Override
-    public Object OperacionRegistro(String val, int num, Object objeto) {
+    public Object OperacionRegistro(String val, String operador, Object objeto) {
         try {
             switch(val){
                 case "SELECT":
-                        rs = saraCrud(val,num,"Item_Lista","Id_Item_Lista",(int) objeto,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null);
+                    if(ope == 'S'){
+                        this.tabla = "V_Detalles_Lista";
+                        this.columnaId = "Id_Lista_Chequeo";
+                    }
+                        
+                        rs = saraCrud(val,operador+"4",this.tabla,this.columnaId,(int) objeto,"Id_Item_Lista",null,"Des_Item_Lista",null,"Tipo_Item",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null);
                         while(rs.next()){
                             
                             item = new Item_Lista_Bean(rs.getString("Des_Item_Lista"),rs.getString("Tipo_Item"));
                             item.setId_Item_Lista(rs.getInt("Id_Item_Lista"));
-                            if(num == 1)
+                            
+                            if((operador == "-") || (operador == "" && ope == 'S'))
                                 listarItem.add(item);
                         }
                         rs.close();
@@ -41,7 +50,7 @@ public class Item_Lista_Dao extends InterfaceCrud{
                     break;
                 case "INSERT":
                 case "UPDATE":
-                        this.saraCrud(val,2,"Item_Lista","Id_Item_Lista",this.Id_Item_Lista,"Des_Item_Lista",this.Des_Item_Lista,"Tipo_Item",""+this.Tipo_Item+"",
+                        this.saraCrud(val,"2","Item_Lista","Id_Item_Lista",this.Id_Item_Lista,"Des_Item_Lista",this.Des_Item_Lista,"Tipo_Item",""+this.Tipo_Item+"",
                                     "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "");
                         listo = true;
                     break;
@@ -49,10 +58,10 @@ public class Item_Lista_Dao extends InterfaceCrud{
         } catch (Exception it1) {
             it1.printStackTrace();
         }
-        if(num == 1 && val == "SELECT"){
+        if((operador == "-" && val == "SELECT") || (operador == "" && val == "SELECT" && ope == 'S')){
             return json = new Gson().toJson(listarItem);
         }else{
-            if(num == 2 && val == "SELECT"){
+            if(operador == "" && val == "SELECT" && ope == 'N'){
                 return item;
             }else{
                 return listo;

@@ -20,16 +20,17 @@
                     <label for="EstadoC">Nombre estado</label>
                     <input type="text"  name="Estado" id="EstadoC">
                     <input type="hidden" id="tipo" value="2">
-                    <button type="button" id="btnEstado" name="button">Guardar estado</button>
+                    <button type="button" id="btnEstado" class="btn btn-success"  name="button">Guardar estado</button>
                 </form>
             </article>
             <article class="col-md-6 col-offset-2s">
-                <table id="tabla" class="display table table-hover">
+                <table id="tablaestado" class="display table table-hover">
                     <thead>
                         <tr class="active">
                             <td id ="id">Id</td>
                             <td id="Nombre">Nombre estado</td>
-                            <td></td>
+                            <td>Modificar</td>
+                            <td>Eliminar</td>
                         </tr>
                     </thead>
                     <tbody>

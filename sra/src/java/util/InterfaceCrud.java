@@ -11,8 +11,6 @@ public abstract class InterfaceCrud extends ClaseConn{
             protected CallableStatement cst = null;
             protected ResultSet rs    = null;
             private   final String p = "{Call Sara(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)}";
-            private   final String p1 = "{Call Sara(?,?,?,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null)}";
-            private   final String p2 = "{Call Sara(?,?,?,?,?,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null)}";
             public boolean listo = false;
             protected String json;
 
@@ -20,11 +18,11 @@ public abstract class InterfaceCrud extends ClaseConn{
             super();
         }
         
-        public abstract Object OperacionRegistro(String val, int num, Object objeto);
+        public abstract Object OperacionRegistro(String val, String operador, Object objeto);
         
         public  ResultSet saraCrud(
                 String sentencia,
-                int num_Colums,         String tabla,
+                String num_Colums,         String tabla,
                 String nom_ColumId,     int id_colum,     
                 String nom_Colum1,      String cont_colum1 , 
                 String nom_Colum2 ,     String cont_colum2,
@@ -39,23 +37,10 @@ public abstract class InterfaceCrud extends ClaseConn{
                 String nom_Colum11 ,    String cont_colum11){
             
             try {
-                if(sentencia == "SELECT" && num_Colums == 1){
-                    cst = this.obtenerConn().prepareCall(p1);
-                    cst.setString(1, sentencia);
-                    cst.setInt(2, num_Colums);       cst.setString(3, tabla);
-                }else{
-                    if(sentencia == "SELECT" && num_Colums == 2){
-                       
-                        cst = this.obtenerConn().prepareCall(p2);
-                        cst.setString(1, sentencia);
-                        cst.setInt(2, num_Colums);       cst.setString(3, tabla);
-                        cst.setString(4,nom_ColumId);    cst.setInt(5,id_colum); 
-                      
-                    }else{
-                        if(sentencia == "UPDATE" || sentencia == "INSERT"){
+
                             cst = this.obtenerConn().prepareCall(p);
                             cst.setString(1, sentencia);
-                            cst.setInt(2, num_Colums);       cst.setString(3, tabla);
+                            cst.setString(2, num_Colums);       cst.setString(3, tabla);
                             cst.setString(4,nom_ColumId);    cst.setInt(5,id_colum);   
                             cst.setString(6, nom_Colum1);    cst.setString(7, cont_colum1);
                             cst.setString(8, nom_Colum2);    cst.setString(9, cont_colum2);
@@ -68,11 +53,7 @@ public abstract class InterfaceCrud extends ClaseConn{
                             cst.setString(22, nom_Colum9);   cst.setString(23, cont_colum9);
                             cst.setString(24, nom_Colum10);  cst.setString(25, cont_colum10);
                             cst.setString(26, nom_Colum11);  cst.setString(27, cont_colum11);
-                        }
-                        
-                    }
-                }
-                
+                      
                 cst.execute();
                 
                 rs = cst.getResultSet();

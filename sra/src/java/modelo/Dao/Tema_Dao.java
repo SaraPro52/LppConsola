@@ -13,7 +13,9 @@ public class Tema_Dao extends InterfaceCrud{
     public String Des_Tema;
     private ArrayList<Tema_Bean> listarTema = new ArrayList<Tema_Bean>();
     private Tema_Bean tema = null;
-    
+    private String tabla = "Tema";
+    private String columnaId = "Id_Tema";
+    public char ope = 'N';
     public Tema_Dao(){}
     
     public Tema_Dao(Tema_Bean tm){
@@ -24,16 +26,22 @@ public class Tema_Dao extends InterfaceCrud{
     }
 
     @Override
-    public Object OperacionRegistro(String val, int num, Object objeto) {
+    public Object OperacionRegistro(String val, String operador, Object objeto) {
         try {
             switch(val){
                 case "SELECT":
-                        rs = saraCrud(val,num,"Tema","Id_Tema",(int) objeto,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null);
+                    
+                    if(ope == 'S'){
+                        this.tabla = "V_Detalles_Programa";
+                        this.columnaId = "Id_Programa";
+                    }
+                        
+                        rs = saraCrud(val,operador+"4",this.tabla,this.columnaId,(int) objeto,"Id_Tema",null,"Nom_Tema",null,"Des_Tema",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null);
                         while(rs.next()){
                             
                             tema = new Tema_Bean(rs.getString("Nom_Tema"),rs.getString("Des_Tema"));
                             tema.setId_Tema(rs.getInt("Id_Tema"));
-                            if(num == 1)
+                            if((operador == "-") || (operador == "" && ope == 'S'))
                                 listarTema.add(tema);
                         }
                         rs.close();
@@ -41,7 +49,7 @@ public class Tema_Dao extends InterfaceCrud{
                     break;
                 case "INSERT":
                 case "UPDATE":
-                        this.saraCrud(val,2,"Tema","Id_Tema",this.Id_Tema,"Nom_Tema",this.Nom_Tema,"Des_Tema",this.Des_Tema,
+                        this.saraCrud(val,"2","Tema","Id_Tema",this.Id_Tema,"Nom_Tema",this.Nom_Tema,"Des_Tema",this.Des_Tema,
                                 "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "");
                         listo = true;
                     break;
@@ -49,10 +57,10 @@ public class Tema_Dao extends InterfaceCrud{
         } catch (Exception t1) {
             t1.printStackTrace();
         }
-        if(num == 1 && val == "SELECT"){
+        if((operador == "-" && val == "SELECT") || (operador == "" && val == "SELECT" && ope == 'S')){
             return json = new Gson().toJson(listarTema);
         }else{
-            if(num == 2 && val == "SELECT"){
+            if(operador == "" && val == "SELECT" && ope == 'N'){
                 return tema;
             }else{
                 return listo;

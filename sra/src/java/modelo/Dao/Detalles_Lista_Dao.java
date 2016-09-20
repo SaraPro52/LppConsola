@@ -24,16 +24,17 @@ public class Detalles_Lista_Dao extends InterfaceCrud{
     }
     
     @Override
-    public Object OperacionRegistro(String val, int num, Object objeto) {
+    public Object OperacionRegistro(String val, String operador, Object objeto) {
+        
         try {
             switch(val){
                 case "SELECT":
-                        rs = saraCrud(val,num,"Detalles_Lista","Id_Detalles_Lista",(int) objeto,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null);
+                        rs = saraCrud(val,operador+"4","V_Detalles_Lista","Id_Detalles_Lista",(int) objeto,"Id_Lista_Chequeo",null,"Id_Item_Lista",null,"Id_Detalles_Lista",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null);
                         while(rs.next()){
                             
                             detaL = new Detalles_Lista_Bean(rs.getInt("Id_Lista_Chequeo"),rs.getInt("Id_Item_Lista"));
                             detaL.setId_Detalles_Lista(rs.getInt("Id_Detalles_Lista"));
-                            if(num == 1)
+                            if(operador == "-")
                                 listarDeLista.add(detaL);
                         }
                         rs.close();
@@ -41,7 +42,7 @@ public class Detalles_Lista_Dao extends InterfaceCrud{
                     break;
                 case "INSERT":
                 case "UPDATE":
-                        this.saraCrud(val,2,"Detalles_Lista","Id_Detalles_Lista",this.Id_Detalles_Lista,"Id_Lista_Chequeo",""+this.Id_Lista_Chequeo+"","Id_Item_Lista",""+this.Id_Item_Lista+"",
+                        this.saraCrud(val,"2","Detalles_Lista","Id_Detalles_Lista",this.Id_Detalles_Lista,"Id_Lista_Chequeo",""+this.Id_Lista_Chequeo+"","Id_Item_Lista",""+this.Id_Item_Lista+"",
                                   "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "");
                         listo = true;
                     break;
@@ -49,10 +50,10 @@ public class Detalles_Lista_Dao extends InterfaceCrud{
         } catch (Exception dt1) {
             dt1.printStackTrace();
         }
-        if(num == 1 && val == "SELECT"){
+        if(operador == "-" && val == "SELECT"){
             return json = new Gson().toJson(listarDeLista);
         }else{
-            if(num == 2 && val == "SELECT"){
+            if(operador == "" && val == "SELECT"){
                 return detaL;
             }else{
                 return listo;

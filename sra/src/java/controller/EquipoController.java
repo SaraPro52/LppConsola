@@ -19,9 +19,9 @@ public class EquipoController extends HttpServlet {
                     request.getRequestDispatcher("Equipo/ListaChequeo/listaChequeo.jsp").forward(request, response);
                     break;
                 case 2:
+                    request.getRequestDispatcher("Equipo/ModificarLista/modificarLista.jsp").forward(request, response);
                     break;
             }
-
         }
     }
 

@@ -22,17 +22,17 @@ public class Tipo_Documento_Dao extends InterfaceCrud{
     }
     
     @Override
-    public Object OperacionRegistro(String val, int num, Object objeto) {
+    public Object OperacionRegistro(String val, String operador, Object objeto) {
         
         try {
             switch(val){
                 case "SELECT":
-                        rs = saraCrud(val,num,"Tipo_Documento","Id_Tipo_Documento",(int) objeto,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null);
+                        rs = saraCrud(val,operador+"","Tipo_Documento","Id_Tipo_Documento",(int) objeto,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null);
                         while(rs.next()){
                             
                             tipoD = new Tipo_Documento_Bean(rs.getString("Nom_Tipo_Documento"));
                             tipoD.setId_Tipo_Documento(rs.getInt("Id_Tipo_Documento"));
-                            if(num == 1)
+                            if(operador == "-")
                                 listarTD.add(tipoD);
                         }
                         rs.close();
@@ -40,7 +40,7 @@ public class Tipo_Documento_Dao extends InterfaceCrud{
                     break;
                 case "INSERT":
                 case "UPDATE":
-                        this.saraCrud(val,1,"Tipo_Documento","Id_Tipo_Documento",this.Id_Tipo_Documento,"Nom_Tipo_Documento",this.Nom_Tipo_Documento,
+                        this.saraCrud(val,"1","Tipo_Documento","Id_Tipo_Documento",this.Id_Tipo_Documento,"Nom_Tipo_Documento",this.Nom_Tipo_Documento,
                                     "","","","","","","","","","","","","","","","","","","","");
                         listo = true;
                     break;
@@ -48,10 +48,10 @@ public class Tipo_Documento_Dao extends InterfaceCrud{
         } catch (Exception td1) {
             td1.printStackTrace();
         }
-        if(num == 1 && val == "SELECT"){
+        if(operador == "-" && val == "SELECT"){
             return json = new Gson().toJson(listarTD);
         }else{
-            if(num == 2 && val == "SELECT"){
+            if(operador == "" && val == "SELECT"){
                 return tipoD;
             }else{
                 return listo;

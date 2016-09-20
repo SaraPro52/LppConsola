@@ -26,16 +26,16 @@ public class Comentario_Dao extends InterfaceCrud{
     }
 
     @Override
-    public Object OperacionRegistro(String val, int num, int id) {
+    public Object OperacionRegistro(String val,String operador, Object objeto) {
         try{
             switch(val){
                 case "SELECT":
-                     rs = saraCrud(val,num,"Comentario","Id_Comentario",id,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null);
+                     rs = saraCrud(val,operador+"1","Comentario","Id_Comentario",(int) objeto,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null);
                      while(rs.next()){
                          
                          comentario = new Comentario_Bean(rs.getString("Comentario"),rs.getInt("Id_Funcionario"),rs.getInt("Id_Version"));
                          comentario.setId_Comentario(rs.getInt("Id_Comentario"));
-                         if(num == 1)
+                         if(operador == "-")
                              listarCo.add(comentario);
                      }
                      rs.close();
@@ -43,7 +43,7 @@ public class Comentario_Dao extends InterfaceCrud{
                     break;
                 case "INSERT":
                 case "UPDATE":
-                        this.saraCrud(val,3,"Comentario","Id_Comentario",this.Id_Comentario,"Comentario", this.Comentario,"Id_Funcionario",""+this.Id_Funcionario+"","Id_Version",""+this.Id_Version+"",
+                        this.saraCrud(val,"3","Comentario","Id_Comentario",this.Id_Comentario,"Comentario", this.Comentario,"Id_Funcionario",""+this.Id_Funcionario+"","Id_Version",""+this.Id_Version+"",
                                 "", "", "", "", "", "", "", "", "", "", "", "", "", "","","");
                         listo = true;
                     break;
@@ -51,11 +51,11 @@ public class Comentario_Dao extends InterfaceCrud{
         } catch (Exception co1) {
             co1.printStackTrace();
         }
-        if(num == 1 && val == "SELECT"){
+        if(operador == "-" && val == "SELECT"){
             
             return json = new Gson().toJson(listarCo);
         }else{
-            if(num == 2 && val == "SELECT"){
+            if(operador == "" && val == "SELECT"){
                 return comentario;
             }else{
                 return listo;

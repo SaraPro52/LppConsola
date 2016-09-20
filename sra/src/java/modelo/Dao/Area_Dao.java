@@ -24,18 +24,18 @@ public class Area_Dao extends InterfaceCrud{
     }
     
     @Override
-    public Object OperacionRegistro(String val, int num, Object objeto) {
+    public Object OperacionRegistro(String val, String operador, Object objeto) {
         
         try {
             switch(val){
                 case "SELECT":
-                        rs = saraCrud(val,num,"Area","Id_Area",(int) objeto,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null);
+                        rs = saraCrud(val,operador+"1","Area","Id_Area",(int) objeto,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null);
                         
                         while(rs.next()){
                             
                             area = new Area_Bean(rs.getString("Nom_Area"),rs.getString("Lider_Area"));
                             area.setId_Area(rs.getInt("Id_Area"));
-                            if(num == 1)
+                            if(operador == "-")
                                 listarArea.add(area);
                         }
                         rs.close();
@@ -43,7 +43,7 @@ public class Area_Dao extends InterfaceCrud{
                     break;
                 case "INSERT":
                 case "UPDATE":
-                    this.saraCrud(val,2,"Area","Id_Area",this.Id_Area,"Nom_Area",this.Nom_Area,"Lider_Area",this.Lider_Area,
+                    this.saraCrud(val,"2","Area","Id_Area",this.Id_Area,"Nom_Area",this.Nom_Area,"Lider_Area",this.Lider_Area,
                                   "","","","","","","","","","","","","","","","","","");
                     listo = true;
                     break;
@@ -51,10 +51,10 @@ public class Area_Dao extends InterfaceCrud{
         } catch (Exception a1) {
             a1.printStackTrace();
         }
-        if(num == 1 && val == "SELECT"){
+        if(operador == "-" && val == "SELECT"){
             return json = new Gson().toJson(listarArea);
         }else{
-            if(num == 2 && val == "SELECT"){
+            if(operador == "" && val == "SELECT"){
                 return area;
             }else{
                 return listo;

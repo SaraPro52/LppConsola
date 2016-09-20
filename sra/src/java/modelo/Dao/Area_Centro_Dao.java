@@ -24,18 +24,18 @@ public class Area_Centro_Dao extends InterfaceCrud {
     
     
     @Override
-    public Object OperacionRegistro(String val, int num, Object objeto) {
+    public Object OperacionRegistro(String val, String operador, Object objeto) {
         
         try {
             switch(val){
                 case "SELECT":
-                    rs = saraCrud(val,num,"Area_Centro","Id_Area_Centro",(int) objeto,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null);
+                    rs = saraCrud(val,operador+"1","Area_Centro","Id_Area_Centro",(int) objeto,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null);
                     
                     while(rs.next()){
                         
                         areaCB = new Area_Centro_Bean(rs.getInt("Id_Area"),rs.getInt("Id_Centro"));
                         areaCB.setId_Area_Centro(rs.getInt("Id_Area_Centro"));
-                        if(num == 1)
+                        if(operador == "-")
                         listarAreasC.add(areaCB);
                         
                     }
@@ -44,7 +44,7 @@ public class Area_Centro_Dao extends InterfaceCrud {
                     break;
                 case "INSERT":
                 case "UPDATE":
-                     this.saraCrud(val,2, "Area_Centro", "Id_Area_Centro",this.Id_Area_Centro , "Id_Area",""+this.Id_Area+"",
+                     this.saraCrud(val,"2", "Area_Centro", "Id_Area_Centro",this.Id_Area_Centro , "Id_Area",""+this.Id_Area+"",
                                     "Id_Centro", ""+this.Id_Centro+"", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "",
                                          "", "");
                      listo = true;
@@ -53,10 +53,10 @@ public class Area_Centro_Dao extends InterfaceCrud {
         } catch (Exception ac1) {
             ac1.printStackTrace();
         }
-        if(num == 1 && val == "SELECT"){
+        if(operador == "-" && val == "SELECT"){
             return json = new Gson().toJson(listarAreasC);
         }else{
-            if(num == 2 && val == "SELECT"){
+            if(operador == "" && val == "SELECT"){
                 return areaCB;
             }else{
                 return listo;

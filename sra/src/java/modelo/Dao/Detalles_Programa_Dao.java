@@ -24,16 +24,16 @@ public class Detalles_Programa_Dao extends InterfaceCrud{
     }
 
     @Override
-    public Object OperacionRegistro(String val, int num, Object objeto) {
+    public Object OperacionRegistro(String val, String operador, Object objeto) {
         try {
             switch(val){
                 case "SELECT":
-                        rs = saraCrud(val,num,"Detalles_Programa","Id_Detalles_Programa",(int) objeto,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null);
+                        rs = saraCrud(val,operador+"4","V_Detalles_Programa","Id_Detalles_Programa",(int) objeto,"Id_Detalles_Programa",null,"Id_Tema",null,"Id_Programa",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null);
                         while(rs.next()){
                             
                             detaP = new Detalles_Programa_Bean(rs.getInt("Id_Tema"),rs.getInt("Id_Programa"));
                             detaP.setId_Detalles_Programa(rs.getInt("Id_Detalles_Programa"));
-                            if(num == 1)
+                            if(operador == "-")
                                 listarDP.add(detaP);
                         }
                         rs.close();
@@ -41,7 +41,7 @@ public class Detalles_Programa_Dao extends InterfaceCrud{
                     break;
                 case "INSERT":
                 case "UPDATE":
-                        this.saraCrud(val,2,"Detalles_Programa","Id_Detalles_Programa",this.Id_Detalles_Programa,"Id_Tema",""+this.Id_Tema+"","Id_Programa",""+this.Id_Programa+"",
+                        this.saraCrud(val,"2","Detalles_Programa","Id_Detalles_Programa",this.Id_Detalles_Programa,"Id_Tema",""+this.Id_Tema+"","Id_Programa",""+this.Id_Programa+"",
                                 "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "");
                         listo = true;
                     break;
@@ -49,10 +49,10 @@ public class Detalles_Programa_Dao extends InterfaceCrud{
         } catch (Exception dp1) {
             dp1.printStackTrace();
         }
-        if(num == 1 && val == "SELECT"){
+        if(operador == "-" && val == "SELECT"){
             return json = new Gson().toJson(listarDP);
         }else{
-            if(num == 2 && val == "SELECT"){
+            if(operador == "" && val == "SELECT"){
                 return detaP;
             }else{
                 return listo;

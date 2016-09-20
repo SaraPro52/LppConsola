@@ -2,6 +2,7 @@ package controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -15,10 +16,12 @@ import org.apache.commons.fileupload.servlet.ServletFileUpload;
 public class ArchivosController extends HttpServlet {
 
     private static final long serialVersionID = 1L;
-    private final String UPLOAD_DIRECTORY = "/home/judini/NetBeansProjects/sra/Archivos/";
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         boolean isMultipart = ServletFileUpload.isMultipartContent(request);
+        Archivos a = new Archivos();
+        a.setRuta("Teleinformatica", "ADSI", "JAVA");
         if (isMultipart) {
             FileItemFactory factory = new DiskFileItemFactory();
             ServletFileUpload upload = new ServletFileUpload(factory);
@@ -27,15 +30,14 @@ public class ArchivosController extends HttpServlet {
                 for (FileItem item : multiparts) {
                     if (!item.isFormField()) {
                         String name = new File(item.getName()).getName();
-                        item.write(new File(UPLOAD_DIRECTORY + File.separator + name));
+                        item.write(new File(a.getBase() + name));
                     }
                 }
             } catch (Exception e) {
-
                 System.out.println("Error al cargar el archivo" + e);
             }
-        }
-
+            request.getRequestDispatcher("instrutor/registroOA/registroOA.jsp").forward(request, response);
+        } 
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

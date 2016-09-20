@@ -44,11 +44,11 @@ public class Funcionario_Dao extends InterfaceCrud{
     
     
     @Override
-    public Object OperacionRegistro(String val, int num, Object objeto) {
+    public Object OperacionRegistro(String val, String operador, Object objeto) {
         try {
             switch(val){
                 case "SELECT":
-                    rs = saraCrud(val,num,"Funcionario","Id_Funcionario",(int)objeto,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null);    
+                    rs = saraCrud(val,operador+"1","Funcionario","Id_Funcionario",(int)objeto,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null);    
                     
                     while(rs.next()){
                         
@@ -63,7 +63,7 @@ public class Funcionario_Dao extends InterfaceCrud{
                                                     rs.getInt("Id_Estado"),
                                                     rs.getInt("Id_Area_Centro"));
                         fun.setId_Funcionario(rs.getInt("Id_Funcionario"));
-                        if(num == 1)
+                        if(operador == "-")
                             listarFun.add(fun);
                     }
                     rs.close();
@@ -71,10 +71,10 @@ public class Funcionario_Dao extends InterfaceCrud{
                     break;
                 case "INSERT":
                 case "UPDATE":
-                    if(val == "INSERT" && num == 1){
+                    if(val == "INSERT" && operador == ""){
                     listo = AgregarFuncionario((int)objeto);}
                     else{
-                        this.saraCrud(val,10,"Funcionario", "Id_Funcionario",this.Id_Funcionario ,
+                        this.saraCrud(val,"10","Funcionario", "Id_Funcionario",this.Id_Funcionario ,
                                         "Id_Tipo_Documento",""+this.Id_Tipo_Documento+"",
                                         "Num_Documento",""+this.Num_Documento+"",
                                         "Nom_Funcionario",this.Nom_Funcionario,
@@ -94,10 +94,10 @@ public class Funcionario_Dao extends InterfaceCrud{
         } catch (Exception f1) {
             f1.printStackTrace();
         }
-        if(num == 1 && val == "SELECT"){
+        if(operador == "-" && val == "SELECT"){
             return json = new Gson().toJson(listarFun);
         }else{
-            if(num == 2 && val == "SELECT"){
+            if(operador == "" && val == "SELECT"){
                 return fun;
             }else{
                 return listo;

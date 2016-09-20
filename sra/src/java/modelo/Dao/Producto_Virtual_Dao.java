@@ -28,16 +28,16 @@ public class Producto_Virtual_Dao extends InterfaceCrud{
     }
 
     @Override
-    public Object OperacionRegistro(String val, int num, Object objeto) {
+    public Object OperacionRegistro(String val, String operador, Object objeto) {
         
         try {
             switch(val){
                 case "SELECT":
-                        rs = saraCrud(val,num,"Producto_Virtual","Id_P_Virtual",(int) objeto,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null);
+                        rs = saraCrud(val,operador+"1","Producto_Virtual","Id_P_Virtual",(int) objeto,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null);
                         while(rs.next()){
                             proVir = new Producto_Virtual_Bean(rs.getString("Nom_P_Virtual"),rs.getString("Des_P_Virtual"),rs.getString("Palabras_Clave"),rs.getInt("Id_Formato"));
                             proVir.setId_P_Virtual(rs.getInt("Id_P_Virtual"));
-                            if(num == 1)
+                            if(operador == "-")
                                 listarPV.add(proVir);
                         }
                         rs.close();
@@ -45,7 +45,7 @@ public class Producto_Virtual_Dao extends InterfaceCrud{
                     break;
                 case "INSERT":
                 case "UPDATE":
-                        this.saraCrud(val,4,"Producto_Virtual","Id_P_Virtual",this.Id_P_Virtual,"Nom_P_Virtual",this.Nom_P_Virtual,"Des_P_Virtual",this.Des_P_Virtual,"Palabras_Clave",this.Palabras_Clave,"Id_Formato",""+this.Id_Formato+"",
+                        this.saraCrud(val,"4","Producto_Virtual","Id_P_Virtual",this.Id_P_Virtual,"Nom_P_Virtual",this.Nom_P_Virtual,"Des_P_Virtual",this.Des_P_Virtual,"Palabras_Clave",this.Palabras_Clave,"Id_Formato",""+this.Id_Formato+"",
                                 "", "", "", "", "","", "", "", "", "", "", "", "", "");
                         listo = true;
                     break;
@@ -53,10 +53,10 @@ public class Producto_Virtual_Dao extends InterfaceCrud{
         } catch (Exception pv1) {
             pv1.printStackTrace();
         }
-        if(num == 1 && val == "SELECT"){
+        if(operador == "-" && val == "SELECT"){
             return json = new Gson().toJson(listarPV);
         }else{
-            if(num == 2 && val == "SELECT"){
+            if(operador == "" && val == "SELECT"){
                 return proVir;
             }else{
                 return listo;

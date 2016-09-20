@@ -42,11 +42,11 @@ public class Version_Dao extends InterfaceCrud{
     }
 
     @Override
-    public Object OperacionRegistro(String val, int num, int id) {
+    public Object OperacionRegistro(String val, String operador, Object objeto) {
         try {
             switch(val){
                 case "SELECT":
-                        rs = saraCrud(val,num,"Version","Id_Version",id,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null);
+                        rs = saraCrud(val,operador+"","Version","Id_Version",(int) objeto,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null);
                         while(rs.next()){
                             ver = new Version_Bean( rs.getTimestamp("Fecha_Envio"),
                                                     rs.getTimestamp("Fecha_Publicacion"),    
@@ -61,7 +61,7 @@ public class Version_Dao extends InterfaceCrud{
                                                     rs.getInt("Id_Tipo_Version")
                                                     );
                             ver.setId_Version(rs.getInt("Id_Version"));
-                            if(num == 1)
+                            if(operador == "-")
                                 listarVer.add(ver);
                         }
                         rs.close();
@@ -69,7 +69,7 @@ public class Version_Dao extends InterfaceCrud{
                     break;
                 case "INSERT":
                 case "UPDATE":
-                        this.saraCrud(val,8,"Version","Id_Version",         this.Id_Version,
+                        this.saraCrud(val,"8","Version","Id_Version",         this.Id_Version,
                                                       "Num_Version",        ""+this.Num_Version+"",
                                                       "Url_Version",        this.Url_Version,
                                                       "Url_Img",            this.Url_Img,
@@ -85,15 +85,68 @@ public class Version_Dao extends InterfaceCrud{
         } catch (Exception v1) {
             v1.printStackTrace();
         }
-        if(num == 1 && val == "SELECT"){
+        if(operador == "-" && val == "SELECT"){
             return json = new Gson().toJson(listarVer);
         }else{
-            if(num == 2 && val == "SELECT"){
+            if(operador == "" && val == "SELECT"){
                 return ver;
             }else{
                 return listo;
             }
         }
+    }
+    
+    
+    public boolean  RegistrarOA(
+            String nomVirtual,String desVirtual,
+            String palabras,int    idFormato,int    numVersion,
+            String urlVersion,String urlImg,String instrucciones,
+            String requisitos,String todoFun, int numFun ,String todoTem,int numTem 
+            
+    ){
+//        String todoFun = "";
+//        String todoTem = "";
+//        for (int i = 0; i < funcionarios.length; i++) {
+//            
+//            if(i == 0)
+//                todoFun += funcionarios[i];
+//            else
+//                todoFun += ","+funcionarios[i];
+//        }
+//        
+//        for (int i = 0; i < temas.length; i++) {
+//            
+//            if(i == 0)
+//                todoTem += temas[i];
+//            else
+//                todoTem += ","+temas[i];
+//        }
+        
+        
+        try {
+            cst =conn.prepareCall("{call Registrar_OA(?,?,?,?,?,?,?,?,?,?,?,?,?)}");
+            
+            cst.setString(1, nomVirtual);
+            cst.setString(2, desVirtual);
+            cst.setString(3, palabras);
+            cst.setInt(4, idFormato);
+            cst.setInt(5, numVersion);
+            cst.setString(6, urlVersion);
+            cst.setString(7, urlImg);
+            cst.setString(8, instrucciones);
+            cst.setString(9, requisitos);
+            cst.setString(10, todoFun);
+            cst.setInt(11, numFun);
+            cst.setString(12, todoTem);
+            cst.setInt(13, numTem);
+            cst.execute();
+            
+            listo = true;
+            
+        } catch (Exception oa) {
+            oa.printStackTrace();
+        }
+        return listo;
     }
     
 }

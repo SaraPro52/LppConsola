@@ -6,7 +6,8 @@
         <link rel="stylesheet" href="css/bootstrap.css" media="screen" title="no title" charset="utf-8">
         <script type="text/javascript" src="js/jquery.js"></script>
         <script type="text/javascript" src="administrador/ciudad/js/ciudad.js"></script>
-
+        <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.12/js/jquery.dataTables.js"></script>
+        <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.12/css/jquery.dataTables.css">
         <title>Ciudades</title>
     </head>
     <body>
@@ -19,13 +20,13 @@
                 </form>
             </article>
             <article class="col-md-6 col-offset-2s">
-                <table id="tabla" class="display table table-hover">
+                <table id="tablaCiudad" class="display table table-hover">
                     <thead>
                         <tr class="active">
                             <td id ="id">Id</td>
                             <td id="Ciudad">Nombre ciudad</td>
-                            <td></td>
-                            <td></td>
+                            <td>Modificar</td>
+                            <td>Eliminar</td>
                         </tr>
                     </thead>
                     <tbody>

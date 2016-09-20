@@ -1,39 +1,41 @@
 $(document).on('ready', function () {
-    console.log("Vivo?");    
-    var objeto= {Opcion:3, tipo:1}
+    console.log("Vivo??Estados");
+    var objeto = {Opcion: 3, tipo: $("#tipo").val()}
     obtenerDatos(objeto);
-    function CargarTabla(estados) {
-        if (estados != "") {
-            var modificar;
-            var eliminar;
-            
-                for (var i = 0; i < estados.length; i++) {
-                    modificar = "<td><button type='button'id='modificar" + estados[i].Id_Estado + "'><span'>M</button></span></td>";
-                    eliminar = "<td><button type='button'  id='eliminar" + estados[i].Id_Estado + "'><span '>E</button></span></td>";
-                    $('#tabla tbody').append('<tr class="child" id="a" ><td class="qw">' + estados[i].Id_Estado + '</td><td>' + estados[i].Nom_Estado + '</td>' + modificar + eliminar + ' </tr>');
-                }
-        } else {
-            $('#tabla tbody').append('<tr class="child"><td> No hay </td><td>ningun estado</td></tr>');
+    function cargarTabla(json, tipo) {
+        for (var i = 0; i < json.length; i++) {
+            if (json[i].Id_Tipo_Estado == tipo) {
+                table = $("#tablaestado").dataTable().fnAddData([
+                    json[i].Id_Estado,
+                    json[i].Nom_Estado,
+                    "<button value='m' id='"+json[i].Id_Estado+"' class='btn btn-success'>Modificar</button>",
+                    "<button value='e' id='"+json[i].Id_Estado+"' class='btn btn-danger'>Eliminar</button>"
+                ]);
+            }
         }
     }
-
-
+    $(document).on('click', '.btn', function (e) {
+        var objeto;
+        switch (this.value){
+            case "m":
+                 objeto ={Opcion:2,id:this.id}
+                break;
+            case "e":
+                objeto ={Opcion:4,id:this.id}
+                break;
+        }  
+        obtenerDatos(objeto);
+    });
     $("#btnEstado").on('click', function () {
         var o = {
             Opcion: 1,
             estado: $("#EstadoC").val(),
-            tipo: "2"
+            tipo: $("#tipo").val()
         };
         $(".child").remove();
         obtenerDatos(o);
         $("#EstadoC").val("");
     });
-
-    $('.qw').on('click', function () {
-        var evento = jQuery(this).attr("id");
-        alert("Click en " + evento);
-    });
-
     function obtenerDatos(datos) {
         $.ajax({
             url: 'estadocontroller',
@@ -44,11 +46,26 @@ $(document).on('ready', function () {
             data: datos,
             success: function (json) {
                 console.log("Peticion completa con respuesta " + json);
-                CargarTabla(json);
+                cargarTabla(json, datos.tipo);
             },
             error: function (jqXHR, textStatus, errorThrown) {
                 console.log("Disculpa, pero existe un error :/" + textStatus + errorThrown);
             }
         });
     }
+    $("#tablaestado").DataTable({
+        language: {
+            paginate: {
+                first: "Primera",
+                previous: "Anterior",
+                next: "Siguiente",
+                last: "Anterior"
+            },
+            lengthMenu: "Mostrar _MENU_ Estados",
+            info: "Se encontaron _TOTAL_ Estados",
+            loadingRecords: "Cargando...",
+            emptyTable: "No hay ningun estado",
+            search: "Buscar:"
+        }
+    });
 });

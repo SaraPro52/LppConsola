@@ -1,31 +1,36 @@
 $(document).on('ready', function () {
     var objeto = {Opcion: 3};
     obtenerObejto(objeto);
-    function CargarTabla(ciudad) {
-        if (ciudad != "") {
-            var modificar;
-            var eliminar;
-            for (var i = 0; i < ciudad.length; i++) {
-                modificar = "<td><button type='button'id='modificar" + ciudad[i].Id_Ciudad + "'><span'>M</button></span></td>";
-                eliminar = "<td><button type='button'  id='eliminar" + ciudad[i].Id_Ciudad + "'><span '>E</button></span></td>";
-                $('#tabla tbody').append('<tr class="child"><td>' + ciudad[i].Id_Ciudad + '</td><td>' + ciudad[i].Nom_Ciudad + '</td>' + modificar + eliminar + ' </tr>');
-            }
-        } else {
-            $('#tabla tbody').append('<tr class="child"><td> No hay </td><td>ningun estado</td></tr>');
+    $(document).on('click', '.btn', function (e) {
+        var objeto;
+        switch (this.value) {
+            case "m":
+                objeto = {Opcion: 2, id: this.id}
+                break;
+            case "e":
+                objeto = {Opcion: 4, id: this.id}
+                break;
+        }
+        obtenerDatos(objeto);
+    });
+    function cargarTabla(json) {
+        for (var i = 0; i < json.length; i++) {
+            table = $("#tablaCiudad").dataTable().fnAddData([
+                json[i].Id_Ciudad,
+                json[i].Nom_Ciudad,
+                "<button class='btn btn-success'>modificar</button>",
+                "<button class='btn btn-danger'>eliminar</button>"
+            ]);
         }
     }
     $("#btnEstado").on('click', function () {
         var objeto = {
             Opcion: 1,
             ciudad: $("#Ciudad").val()
+            
         };
-        $(".child").remove();
         obtenerObejto(objeto);
         $("#Ciudad").val("");
-    });
-    $(".child").on('click', function () {
-        var evento = jQuery(this).attr("id");
-        alert("Envento " + evento);
     });
     function obtenerObejto(objeto) {
         $.ajax({
@@ -36,11 +41,27 @@ $(document).on('ready', function () {
             datatype: "json",
             data: objeto,
             success: function (json) {
-                CargarTabla(json);
+                cargarTabla(json);
             },
             error: function (request, status, error) {
-                alert("Disculpa, Pero existe un error"+request.responseText);
+                alert("Disculpa, Pero existe un error" + request.responseText);
             }
         });
     }
+    $("#tablaCiudad").DataTable({
+        language: {
+            paginate: {
+                first: "Primera",
+                previous: "Anterior",
+                next: "Siguiente",
+                last: "Anterior"
+            },
+            lengthMenu: "Mostrar _MENU_ ciudades",
+            info: "Se encontaron _TOTAL_ ciudades",
+            loadingRecords: "Cargando...",
+            emptyTable: "No hay ninguna ciudad",
+            search: "Buscar:"
+        }
+    });
 });
+//46 lineas  a nivel noob bueno cargar datos a lo bastardo

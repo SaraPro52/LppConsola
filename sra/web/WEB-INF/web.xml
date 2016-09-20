@@ -56,6 +56,18 @@
         <servlet-name>FormatoController</servlet-name>
         <servlet-class>controller.FormatoController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>itemcontroller</servlet-name>
+        <servlet-class>controller.ItemController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>alistacontroller</servlet-name>
+        <servlet-class>controller.AListaController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>masterpage</servlet-name>
+        <servlet-class>controller.masterPage</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>estadocontroller</servlet-name>
         <url-pattern>/estadocontroller</url-pattern>
@@ -111,6 +123,18 @@
     <servlet-mapping>
         <servlet-name>FormatoController</servlet-name>
         <url-pattern>/FormatoController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>itemcontroller</servlet-name>
+        <url-pattern>/itemcontroller</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>alistacontroller</servlet-name>
+        <url-pattern>/alistacontroller</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>masterpage</servlet-name>
+        <url-pattern>/masterpage</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

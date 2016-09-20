@@ -15,16 +15,32 @@ public class sesionController extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             int opcion = Integer.parseInt(request.getParameter("Opcion"));
             switch (opcion) {
-                case 1:
+                case 0:
                     request.getRequestDispatcher("administrador/administradorPrincipal.jsp").forward(request, response);
                     break;
+                case 1:
+                    request.getRequestDispatcher("administrador/estado/estado.jsp").forward(request, response);
+                    break;
                 case 2:
-                    request.getRequestDispatcher("instrutor/instrutorPrincipal.jsp").forward(request, response);
+                    request.getRequestDispatcher("administrador/estado/versionEstado.jsp").forward(request, response);
                     break;
                 case 3:
-                    request.getRequestDispatcher("Equipo/equipoPrincipal.jsp").forward(request, response);
+                    request.getRequestDispatcher("administrador/area/area.jsp").forward(request, response);
                     break;
                 case 4:
+                    request.getRequestDispatcher("administrador/ciudad/ciudad.jsp").forward(request, response);
+                    break;
+                case 5:
+                    request.getRequestDispatcher("administrador/registroCoordinador/registroCoordinador.jsp").forward(request, response);
+                    break;
+                case 6:
+                    request.getRequestDispatcher("instrutor/registroOA/registroOA.jsp").forward(request, response);
+                    break;
+                case 7:
+                      request.getRequestDispatcher("Equipo/ListaChequeo/listaChequeo.jsp").forward(request, response);
+                    break;
+                case 8:
+                    request.getRequestDispatcher("Equipo/ModificarLista/modificarLista.jsp").forward(request, response);
                     break;
             }
 

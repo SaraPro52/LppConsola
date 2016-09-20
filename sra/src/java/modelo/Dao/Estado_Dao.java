@@ -25,16 +25,16 @@ public class Estado_Dao extends InterfaceCrud{
     }
     
     @Override
-    public Object OperacionRegistro(String val, int num, Object objeto) {
+    public Object OperacionRegistro(String val, String operador, Object objeto) {
         try {
             switch(val){
                 case "SELECT":
-                    rs = saraCrud(val,num,"Estado","Id_Estado",(int) objeto,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null);
+                    rs = saraCrud(val,operador+"1","Estado","Id_Estado",(int) objeto,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null);
                     while(rs.next()){
                         
                         estado = new Estado_Bean(rs.getString("Nom_Estado"),rs.getInt("Id_Tipo_Estado"));
                         estado.setId_Estado(rs.getInt("Id_Estado"));
-                        if(num == 1)
+                        if(operador == "-")
                             listarEstado.add(estado);
                     }
                     rs.close();
@@ -42,7 +42,7 @@ public class Estado_Dao extends InterfaceCrud{
                     break;
                 case "INSERT":
                 case "UPDATE":
-                    this.saraCrud(val,2, "Estado", "Id_Estado",this.Id_Estado , "Nom_Estado", this.Nom_Estado, 
+                    this.saraCrud(val,"2", "Estado", "Id_Estado",this.Id_Estado , "Nom_Estado", this.Nom_Estado, 
                                          "Id_Tipo_Estado",""+this.Id_Tipo_Estado+"", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "",
                                          "", "");
                     listo = true;
@@ -51,10 +51,10 @@ public class Estado_Dao extends InterfaceCrud{
         } catch (Exception e1) {
             e1.printStackTrace();
         }
-        if(num == 1 && val == "SELECT"){
+        if(operador == "-" && val == "SELECT"){
             return json = new Gson().toJson(listarEstado);
         }else{
-            if(num == 2 && val == "SELECT"){
+            if(operador == "" && val == "SELECT"){
                 return estado;
             }else{
                 return listo;

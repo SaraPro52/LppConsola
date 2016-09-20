@@ -1,13 +1,15 @@
 package controller;
 
+import com.google.gson.Gson;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Arrays;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import modelo.Bean.Item_Lista_Bean;
-import modelo.Dao.Item_Lista_Dao;
+import modelo.Bean.Lista_Chequeo_Bean;
+import modelo.Dao.Lista_Chequeo_Dao;
 
 public class ListaChequeo extends HttpServlet {
 
@@ -16,40 +18,47 @@ public class ListaChequeo extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /*Menu de opciones crud
-            1.agregar
+            1.agregar item
             2.actualizar
             3.consultar
-            4.eliminar*/
+            4.eliminar
+            5. Agregar lista de chequeo*/
+            
             int opcion = Integer.parseInt(request.getParameter("Opcion"));
-            Item_Lista_Bean ebean = new Item_Lista_Bean();
-            ebean.setDes_Item_Lista(request.getParameter("descripcion"));
-            ebean.setId_Item_Lista(Integer.parseInt(request.getParameter("tipo")));
-            Item_Lista_Dao edao = new Item_Lista_Dao(ebean);
+            Lista_Chequeo_Bean lBean = new Lista_Chequeo_Bean();
             switch (opcion) {
                 case 1:
-                    if ((Boolean) edao.OperacionRegistro("INSERT", 0, 0)) {
+                    lBean.setNom_Lista_Chequeo(request.getParameter("nombreL"));
+                    lBean.setId_Lista_Chequeo(Integer.parseInt(request.getParameter("tipoLista")));
+                    lBean.setDes_Lista_Chequeo(request.getParameter("descripcion"));
+                    String arr = request.getParameter("array");
+                    String[] arr1 = new Gson().fromJson(arr,  String[].class);
+                    lBean.setId_Funcionario(Integer.parseInt(request.getParameter("funcionario")));
+                    Lista_Chequeo_Dao lDao = new Lista_Chequeo_Dao(lBean);
+                    PrintWriter devueltas = response.getWriter();
+                    if ((Boolean) lDao.OperacionRegistro("INSERT","", arr1)) {
                         response.setContentType("application/json;charset=UTF-8");
-                        PrintWriter devuelta = response.getWriter();
-                        try {
-                            devuelta.println(edao.OperacionRegistro("SELECT", 1, 0));
-                        } catch (Exception e) {
-                            devuelta.println("Error: " + e.getMessage());
-                        }
+                        devueltas.println(lDao.OperacionRegistro("INSERT","", arr1));
+                    } else {
+                        devueltas.println(lDao.OperacionRegistro("INSERT","", arr));
                     }
                     break;
                 case 2:
+                    
                     break;
                 case 3:
+                    Lista_Chequeo_Dao lDao1 = new Lista_Chequeo_Dao(lBean);
                     response.setContentType("application/json;charset=UTF-8");
                     PrintWriter devuelta = response.getWriter();
                     try {
-                        devuelta.println(edao.OperacionRegistro("SELECT", 1, 0));
+                        devuelta.println(lDao1.OperacionRegistro("SELECT","-", 0));
                     } catch (Exception e) {
                         devuelta.println("Error: " + e.getMessage());
                     }
                     break;
-
                 case 4:
+                    break;
+                case 5:
                     break;
             }
         }

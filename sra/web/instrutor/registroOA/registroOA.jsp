@@ -9,77 +9,66 @@
         <title>Subir OA</title>
     </head>
     <body>
-        <section>
-            <article class="col-md-12">
-                
-                    <div class="col-md-7">
-                        <input class="form-control" type="text" id="Titulo" value="">
-                    </div>  
-                    <article class="col-md-6">
-                        <div class="col-md-6">
+        <p>
+        <h2 class="dark-grey">Subir Objeto de aprendizaje </h2>
+    </p>
+    <div id="formulario1">
+        <section class="col col-md-4">
+            <font FACE="arial" SIZE=4>Titulo publicacion</font>
+            <input type="text" class="form-control" placeholder="Titulo de publicacion" id="Titulo_Publicacion" maxlength="20">
 
-                            <div class="col-md-12">
-                                <label for="Autores">Autores de la publicacion</label><span id="IAutores" class=" glyphicon glyphicon-sunglasses"></span></div>
-                            <div class="col-md-12">
-                                <input class="form-control" type="text" id="Autores" value="">
-                            </div>
-                        </div> 
-                        <div class="col-md-12"><label for="Descripcion">Descripcion </label><span id="IDescripcion" class=" glyphicon glyphicon-sunglasses"></span></div>
-                        <textarea id="Descripcion" rows="6" cols="50"></textarea>
-                        <div class="col-md-12"><label for="Area">Area </label><span id="IArea" class=" glyphicon glyphicon-sunglasses"></span></div>
-                        <select class="col-md-8" id="Area" value="">
-                            <option value="SelectArea">Seleciona...</option>
-                        </select>
-                        <div class="col-md-12"><label for="Programa">Programa </label><span id="IPrograma" class=" glyphicon glyphicon-sunglasses"></span></div>
-                        <select class="col-md-8" id="Programa" value="Valueblanco">
-                            <option value="SelectPrograma">Seleciona...</option>
-                        </select>
+            <font FACE="arial" SIZE=4>Autores</font>
+            <input type="text" class="form-control" placeholder="Autores" id="autores" maxlength="20" required="text">
 
-                        <div class="col-md-12"><label for="Tema"></label>Tema <span id="ITema" class=" glyphicon glyphicon-sunglasses"></span></div>
-                        <select class="col-md-8" id="Tema" value="Valueblanco">
-                            <option value="SelectTema">Seleciona...</option>
-                        </select>
-                        <div class="col-md-12">
-                            <label for="Imagen">Imagen del documento</label>  
-                            <input type="file" size="60" id="Imagen" name="myfile">
-                            <div id="progressbox">
-                                <div id="progressbar"></div>
-                                <div id="precent"></div>
-                            </div>
-                            <br/>
-                            <div id="message"></div             
-                        </div>
-                        <div class="col-md-12">
-                            <label for="Documento">archivo</label>
-                            <input type="file" size="60" id="Documento" name="myfile">
-                            <div id="progressbox">
-                                <div id="progressbar"></div>
-                                <div id="precent"></div>
-                            </div>
-                            <br/>
-                            <div id="message"></div             
-                        </div>
-                    </article>
-                    <article class="col-md-6">
-                        <div class="col-md-12"><label for="PalabrasClave">Palabras clave </label> <span id="IPalabrasClave" class="glyphicon glyphicon-sunglasses"></span></div>
-                        <input type="text" id="PalabrasClave" value="">
-                        <div class=""><label for="Formato">Formato </label><span id="IFormato" class="glyphicon glyphicon-sunglasses"></span></div>
-                        <select class="" id="Formato" value="Valueblanco">
-                            <option value="Valueblanco">Seleciona...</option>
-                        </select>
+            <font FACE="arial" SIZE=4>Area</font>
+            <div class="form-group">
+                <select class="form-control" name="options" id="options1">
+                    <option value="" selected="selected">Selecciona...</option>
+                </select>
+            </div>
+            <font FACE="arial" SIZE=4>Programa de formacion</font>
+            <div class="form-group">
+                <select class="form-control" name="options" id="options2">
+                    <option value="" selected="selected">Selecciona...</option>
+                </select>
+            </div>
+            <div class="col-md-12"><label for="Tema"></label>Tema</div>
+            <select class="form-control" id="Tema" value="Valueblanco">
+                <option value="" selected="selected">Selecciona...</option>
+            </select>
+            <font FACE="arial" SIZE=4>palabras claves</font>
+            <input type="text" class="form-control" placeholder="Palabras claves" id="palabras_claves" maxlength="50">
 
-                        <div > <label for="Requisitos">Requisitos de instalacion </label> <span id="IRequisitos" class=" glyphicon glyphicon-sunglasses"></span> </div>
-                        <textarea id="Requisitos" rows="6" cols="50"></textarea>
-                        <div class="col-md-12"> <label for="Instruciones">Instruciones </label> <span id="IInstruciones" class=" glyphicon glyphicon-sunglasses"></span> </div>
-                        <textarea id="Instruciones" rows="6" cols="50"></textarea>
-                        <div > <label for="Añadir">Añadir OA </label> <span id="IAnniadir" class="glyphicon glyphicon-sunglasses"></span> </div>
-                        <input id="Anniadir"></input>    
-                    </article>
-                    <article class="col-md-2 col-md-offset-8">
-                        <input class="btn btn-block" type="submit" name="btnenviar" value="Aceptar">
-                        <input type="hidden" name="textOpcion" value="1">
-                    </article>
-            </article>
+            <font FACE="arial" SIZE=4>Decripcion OA</font>
+            <textarea class="form-control"placeholder="Descripcion OA"  rows="5" id="descripcion_oa" maxlength="50"></textarea>
         </section>
-    </body>
+
+        <section class="col col-md-5">
+
+            <font FACE="arial" SIZE=4>Formato</font>
+            <select class="form-control" id="formato" value="Valueblanco">
+                <option value="" selected="selected">Selecciona...</option>
+            </select>
+
+            <font FACE="arial" SIZE=4>Requisitos instalacion</font>
+            <textarea class="form-control" placeholder="Requisitos instalacion" rows="5" id="requisitos_instalacion" maxlength="40"></textarea>
+
+            <font FACE="arial" SIZE=4>Instrucciones</font>
+            <textarea class="form-control" placeholder="Instrucciones" rows="5" id="instrucciones" maxlength="40"></textarea>
+
+            <form enctype="multipart/form-data" id="formuploadajax" method="post" action="archivoscontroller">
+                <div class="col-md-12">
+                    <label for="Imagen">Imagen del documento</label>  
+                    <input type="file" size="60" id="Imagen" name="myfile">
+                </div>
+                <font FACE="arial" for="ejemplo_archivo_1">añadir OA</label>
+                <div class="col-md-12">
+                    <input type="file" size="60" id="Documento" name="myfile">
+                </div>
+                <input  type="submit" value="Subir OA" class=" btn btn-info  col-md-4" id="subir_oa">
+            </form>
+        </section>
+    </div>
+</div>
+</body>
 </html>

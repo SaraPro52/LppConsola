@@ -4,15 +4,17 @@ package modelo.Bean;
 public class Autor_Bean {
     
     private int Id_Autor;
-    private int Id_Funcionario;
     private int Id_Version;
+    private int Id_Funcionario;
+    
     
     public Autor_Bean(){}
     
-    public Autor_Bean(int id_fun, int id_ver){
+    public Autor_Bean(int id_ver,int id_fun){
         
-        this.Id_Funcionario = id_fun;
         this.Id_Version = id_ver;
+        this.Id_Funcionario = id_fun;
+        
     }
 
     public int getId_Autor() {
