@@ -21,17 +21,17 @@ public class FormatoController extends HttpServlet {
             3.consultar
             4.eliminar*/
             int opcion = Integer.parseInt(request.getParameter("Opcion"));
-            Formato_Bean Fbean = new Formato_Bean();
-            Fbean.setDes_Formato("");
-            Fbean.setNom_Formato("");
-            Formato_Dao edao = new Formato_Dao(Fbean);
             switch (opcion) {
                 case 1:
-                    if ((Boolean) edao.OperacionRegistro("INSERT","", 0)) {
+                    Formato_Bean Fbean = new Formato_Bean();
+                    Fbean.setDes_Formato(request.getParameter("descripcin"));
+                    Fbean.setNom_Formato(request.getParameter("nombre"));
+                    Formato_Dao edao = new Formato_Dao(Fbean);
+                    if ((Boolean) edao.OperacionRegistro("INSERT", "", 0)) {
                         response.setContentType("application/json;charset=UTF-8");
                         PrintWriter devuelta = response.getWriter();
                         try {
-                            devuelta.println(edao.OperacionRegistro("SELECT","-", 0));
+                            devuelta.println(edao.OperacionRegistro("SELECT", "-", 0));
                         } catch (Exception e) {
                             devuelta.println("Error: " + e.getMessage());
                         }
@@ -45,7 +45,7 @@ public class FormatoController extends HttpServlet {
                     response.setContentType("application/json;charset=UTF-8");
                     PrintWriter devuelta = response.getWriter();
                     try {
-                        devuelta.println(FDao3.OperacionRegistro("SELECT","-", 0));
+                        devuelta.println(FDao3.OperacionRegistro("SELECT", "-", 0));
                     } catch (Exception e) {
                         devuelta.println("Error: " + e.getMessage());
                     }

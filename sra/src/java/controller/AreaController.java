@@ -15,11 +15,14 @@ public class AreaController extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
+            response.setContentType("application/json;charset=UTF-8");
+            PrintWriter devuelta = response.getWriter();
             /*Menu de opciones crud
             1.agregar
             2.actualizar
             3.consultar
-            4.eliminar*/
+            4.eliminar
+            5.selectores*/
             int opcion = Integer.parseInt(request.getParameter("Opcion"));
             Area_Bean abean = new Area_Bean();
             abean.setNom_Area(request.getParameter("Nombrea"));
@@ -28,10 +31,8 @@ public class AreaController extends HttpServlet {
             switch (opcion) {
                 case 1:
                     if ((Boolean) adao.OperacionRegistro("INSERT", "", 0)) {
-                        response.setContentType("application/json;charset=UTF-8");
-                        PrintWriter devuelta = response.getWriter();
                         try {
-                            devuelta.println(adao.OperacionRegistro("SELECT","-", 0));
+                            devuelta.println(adao.OperacionRegistro("SELECT", "-", 0));
                         } catch (Exception e) {
                             devuelta.println("Error: " + e.getMessage());
                         }
@@ -40,17 +41,29 @@ public class AreaController extends HttpServlet {
                 case 2:
                     break;
                 case 3:
-                    response.setContentType("application/json;charset=UTF-8");
-                    PrintWriter devuelta = response.getWriter();
+                  
                     Area_Bean abean1 = new Area_Bean();
-                    Area_Dao adao1 = new Area_Dao(abean1);    
+                    Area_Dao adao1 = new Area_Dao(abean1);
                     try {
-                        devuelta.println(adao1.OperacionRegistro("SELECT","-", 0));
+                        devuelta.println(adao1.OperacionRegistro("SELECT", "-", 0));
                     } catch (Exception e) {
                         devuelta.println("Error: " + e.getMessage());
                     }
                     break;
                 case 4:
+                    Area_Bean aBean4 = new Area_Bean();
+                    aBean4.setId_Area(Integer.parseInt(request.getParameter("id")));
+                    Area_Dao aDao4 = new Area_Dao(aBean4);
+                    break;
+                case 5:
+                    Area_Bean abean5 = new Area_Bean();
+                    Area_Dao adao5 = new Area_Dao(abean5);
+                    
+                    try {
+                        devuelta.println(adao5.OperacionRegistro("SELECT", "-", 0));
+                    } catch (Exception e) {
+                        devuelta.println("Error: " + e.getMessage());
+                    }
                     break;
             }
         }

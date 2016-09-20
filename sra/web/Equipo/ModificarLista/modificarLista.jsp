@@ -10,6 +10,21 @@
         <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.12/js/jquery.dataTables.js"></script>
         <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.12/css/jquery.dataTables.css">
         <script type="text/javascript" src="Equipo/ModificarLista/js/modificarLista.js"></script>
+        <script type="text/javascript" src="js/jqueryUi.js"></script>
+
+
+
+        <link rel="stylesheet" href="css/common.css" type="text/css" />
+        <link type="text/css" rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.10/themes/ui-lightness/jquery-ui.css" />
+        <link type="text/css" href="css/ui.multiselect.css" rel="stylesheet" />
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.10/jquery-ui.min.js"></script>
+        <script type="text/javascript" src="js/plugins/localisation/jquery.localisation-min.js"></script>
+        <script type="text/javascript" src="js/plugins/scrollTo/jquery.scrollTo-min.js"></script>
+        <script type="text/javascript" src="js/multiselect/ui.multiselect.js"></script>
+        <script type="text/javascript" src="js/locale/ui-multiselect-es.js"></script>
+
+        <script type="text/javascript" src="js/logico1.js"></script>
+
         <title>Crear lista de chequeo</title>
     </head>
     <body class="col-md-12">
@@ -32,7 +47,10 @@
                 <textarea class="form-control"  id="DescripcionL" placeholder="Descripcion lista" rows="1" id="comment"></textarea>
                 <button class="btn btn-info col-md-6" id="BtnLista">Modificar lista</button>
             </article>
+
+
             <article class="col-md-6" id="items">
+
                 <p><h3 class="dark-grey"><b>Items de lista de chequeo</b></h3></p>
                 <label for="Descripcion">Descripcion de item</label>
                 <div class="col-md-10"> 
@@ -57,25 +75,22 @@
                     </tbody>
                 </table>
             </article>
-            <article class="col-md-12" id="tablaItems">
-                <table class="table table-striped" id="tablaItem">
-                    <thead>
-                        <tr>
-                            <th> # </th>
-                            <th>item</th>
-                            <th>¿Asignar?</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    </tbody>
-                </table>
-            </article>
-        </section>
+        </section> 
+        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+        <article class="col-md-16" id="tablaItems">
+            <center>
+                <select id="countries" class="multiselect" multiple="multiple" name="countries[]">
+                    <option value="AFG">Afghanistan</option>
+                    <option value="ALB">Albania</option>
+                    <option value="DZA">Algeria</option>
+                    <option value="AND">Andorra</option>
+                    <option value="ARG">Argentina</option>
+                    <option value="ARM">Armenia</option>
+                    <option value="ABW">Aruba</option>
+                    <option value="AUS">Australia</option>
+
+                </select>
+            </center>
+        </article>
     </body>
 </html>
-
-
-
-
-
-

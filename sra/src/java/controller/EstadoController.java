@@ -40,7 +40,6 @@ public class EstadoController extends HttpServlet {
                     break;
                 case 3:
                     Estado_Bean ebean1 = new Estado_Bean();
-
                     Estado_Dao edao1 = new Estado_Dao(ebean1);
                     response.setContentType("application/json;charset=UTF-8");
                     PrintWriter devuelta = response.getWriter();

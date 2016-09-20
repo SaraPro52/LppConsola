@@ -34,23 +34,27 @@
                         <li class="btntt" value="3">Areas</li>
                         <li class="btntt" value="4">Ciudad</li>
                         <li class="btntt" value="5">Registro funcionario</li>
+                        <li class="btntt" value="11">Formato</li>
                     </ul>
                 </li>
-                <li class=" dropdown"><a href="#" class="dropdown-toggle">Instrutor<span class="caret"></span></a>
+                <li class=" dropdown"><a href="#" class="dropdown-toggle">instructor<span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li class="btntt" value="6">Registro de OA</li>
+                        <li class="btntt" value="9">Consultar de OA</li>
                     </ul>
                 </li>
                 <li class=" down"><a href="#" class="dropdown-toggle">Equipo tecnico <span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li class="btntt" value="7">Crear lista de chequeo</li>
                         <li class="btntt" value="8">Modificar lista de chequeo</li>
+                        <li class="btntt" value="10">Calificar OA</li>
                     </ul>
                 </li>
                 <li class=" down"><a href="#" class="dropdown-toggle" >Equipo pedagogico<span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li class="btntt" value="7">Crear lista de chequeo</li>
                         <li class="btntt" value="8">Modificar lista de chequeo</li>
+                        <li class="btntt" value="10">Calificar OA</li
                     </ul>
                 </li>
                 <li class=" down"><a href="#" class="dropdown-toggle">Coordinador<span class="caret"></span></a>

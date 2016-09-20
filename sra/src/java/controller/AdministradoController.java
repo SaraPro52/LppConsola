@@ -33,6 +33,16 @@ public class AdministradoController extends HttpServlet {
                 case 6:
                     request.getRequestDispatcher("instrutor/instrutorPrincipal.jsp").forward(request, response);
                     break;
+                case 7:
+                    request.getRequestDispatcher("Equipo/ModificarLista/modificarLista.jsp").forward(request, response);
+                    break;
+                case 8:
+                    request.getRequestDispatcher("instrutor/ConsultaOa/consultarOa.jsp").forward(request, response);
+                    break;
+                case 11:
+                    request.getRequestDispatcher("instrutor/registroOA/registroOA.jsp").forward(request, response);
+                    break;
+
             }
         }
     }

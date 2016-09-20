@@ -42,8 +42,16 @@ public class sesionController extends HttpServlet {
                 case 8:
                     request.getRequestDispatcher("Equipo/ModificarLista/modificarLista.jsp").forward(request, response);
                     break;
+                case 9:
+                    request.getRequestDispatcher("instrutor/ConsultaOa/consultarOa.jsp").forward(request, response);
+                    break;
+                case 10:
+                    request.getRequestDispatcher("Equipo/CalificarOa/calificarOa.jsp").forward(request, response);
+                    break;
+                case 11:
+                    request.getRequestDispatcher("administrador/Formato/Formato.jsp").forward(request, response);
+                    break;    
             }
-
         }
     }
 

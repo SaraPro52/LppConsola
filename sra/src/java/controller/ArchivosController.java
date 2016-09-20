@@ -26,18 +26,28 @@ public class ArchivosController extends HttpServlet {
             FileItemFactory factory = new DiskFileItemFactory();
             ServletFileUpload upload = new ServletFileUpload(factory);
             try {
+                String nombreArchivo="";
                 List<FileItem> multiparts = upload.parseRequest(request);
                 for (FileItem item : multiparts) {
                     if (!item.isFormField()) {
-                        String name = new File(item.getName()).getName();
-                        item.write(new File(a.getBase() + name));
+                        nombreArchivo = new File(item.getName()).getName();
+                        item.write(new File(a.getBase() + nombreArchivo));
                     }
                 }
+                Nombre(a.getBase(),nombreArchivo);
             } catch (Exception e) {
                 System.out.println("Error al cargar el archivo" + e);
             }
-            request.getRequestDispatcher("instrutor/registroOA/registroOA.jsp").forward(request, response);
-        } 
+            //request.getRequestDispatcher("instrutor/registroOA/registroOA.jsp").forward(request, response);
+        }
+
+    }
+    public void Nombre(String ruta,String nombre){
+        
+        System.out.println("Ruta del archivo "+ruta+"Nombre"+nombre);
+    }
+    public void CambiarRuta() {
+        System.out.println("Metodos ??");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

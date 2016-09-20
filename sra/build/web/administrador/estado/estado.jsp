@@ -19,7 +19,6 @@
                     <label for="EstadoC">Estados de funcionario</label>
                     <label for="EstadoC">Nombre estado</label>
                     <input type="text" name="Estado" id="EstadoC" >
-                    <input type="hidden" id="tipo" value="1">
                     <button type="button" id="btnFuncionario" class="btn btn-success" name="button">Guardar estado</button>
                 </form>
             </article>
@@ -27,8 +26,9 @@
                 <table id="tablaestado" class="display table table-hover">
                     <thead>
                         <tr class="active">
-                            <td id ="id">Id</td>
+                            <td id ="">#</td>
                             <td id="Nombre">Nombre estados</td>
+                            <td>Tipo estado</td>
                             <td>Modificar</td>
                             <td>Eliminar</td>
                         </tr>
