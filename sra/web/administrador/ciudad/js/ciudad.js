@@ -1,28 +1,29 @@
 $(document).on('ready', function () {
     var objeto = {Opcion: 3};
     obtenerObejto(objeto);
-    $(document).on('click', '.btn', function (e) {
-        var objeto;
+    $(document).on('click', '.btnclick', function (e) {
         switch (this.value) {
             case "m":
-                objeto = {Opcion: 2, id: this.id}
+                objeto = {Opcion: 2, id: this.id};
                 break;
             case "e":
-                objeto = {Opcion: 4, id: this.id}
+                objeto = {Opcion: 4, id: this.id};
                 break;
         }
-        obtenerDatos(objeto);
+        alert(objeto.Opcion +" s "+objeto.id );
+        obtenerObejto(objeto);
     });
     function cargarTabla(json) {
         for (var i = 0; i < json.length; i++) {
             table = $("#tablaCiudad").dataTable().fnAddData([
-                json[i].Id_Ciudad,
+                i+1,
                 json[i].Nom_Ciudad,
-                "<button class='btn btn-success'>modificar</button>",
-                "<button class='btn btn-danger'>eliminar</button>"
+                "<button id='"+json[i].Id_Ciudad+"' value='m' class='btnclick btn btn-success'>modificar</button>",
+                "<button id='"+json[i].Id_Ciudad+"' value='e' class='btnclick btn btn-danger'>eliminar</button>"
             ]);
         }
     }
+    
     $("#btnEstado").on('click', function () {
         var objeto = {
             Opcion: 1,

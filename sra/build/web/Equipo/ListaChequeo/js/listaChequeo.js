@@ -26,7 +26,7 @@ $(document).on('ready', function () {
                         Datos[i].Id_Item_Lista
                         Datos[i].Des_Item_Lista
                         table = $("#tablaItems").dataTable().fnAddData([
-                            Datos[i].Id_Item_Lista,
+                            i+1,
                             Datos[i].Des_Item_Lista,
                             ("<input type='checkbox' value='" + Datos[i].Id_Item_Lista + "'>")
                         ]);

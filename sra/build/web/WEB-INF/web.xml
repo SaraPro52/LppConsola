@@ -68,6 +68,14 @@
         <servlet-name>masterpage</servlet-name>
         <servlet-class>controller.masterPage</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>oacontroller</servlet-name>
+        <servlet-class>controller.oaController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>programafor</servlet-name>
+        <servlet-class>controller.programaFor</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>estadocontroller</servlet-name>
         <url-pattern>/estadocontroller</url-pattern>
@@ -135,6 +143,14 @@
     <servlet-mapping>
         <servlet-name>masterpage</servlet-name>
         <url-pattern>/masterpage</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>oacontroller</servlet-name>
+        <url-pattern>/oacontroller</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>programafor</servlet-name>
+        <url-pattern>/programafor</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

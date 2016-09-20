@@ -1,17 +1,16 @@
 $(document).on('ready', function () {
     console.log("Vivo??Estados");
-    var objeto = {Opcion: 3, tipo: $("#tipo").val()}
+    var objeto = {Opcion: 3}
     obtenerDatos(objeto);
-    function cargarTabla(json, tipo) {
+    function cargarTabla(json) {
         for (var i = 0; i < json.length; i++) {
-            if (json[i].Id_Tipo_Estado == tipo) {
                 table = $("#tablaestado").dataTable().fnAddData([
-                    json[i].Id_Estado,
+                    i,
                     json[i].Nom_Estado,
+                    json[i].Id_Tipo_Estado,
                     "<button value='m' id='"+json[i].Id_Estado+"' class='btn btn-success'>Modificar</button>",
                     "<button value='e' id='"+json[i].Id_Estado+"' class='btn btn-danger'>Eliminar</button>"
                 ]);
-            }
         }
     }
     $(document).on('click', '.btn', function (e) {
@@ -46,7 +45,7 @@ $(document).on('ready', function () {
             data: datos,
             success: function (json) {
                 console.log("Peticion completa con respuesta " + json);
-                cargarTabla(json, datos.tipo);
+                cargarTabla(json);
             },
             error: function (jqXHR, textStatus, errorThrown) {
                 console.log("Disculpa, pero existe un error :/" + textStatus + errorThrown);

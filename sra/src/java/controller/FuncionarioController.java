@@ -15,7 +15,6 @@ public class FuncionarioController extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-
             /*Menu de opciondes de crud de funcionario...
             1. Agregar funcionario
             2. Actualizar
@@ -39,16 +38,23 @@ public class FuncionarioController extends HttpServlet {
                     fBean.setId_Estado(Integer.parseInt(request.getParameter("SEstado")));
                     fBean.setId_Area_Centro(Integer.parseInt(request.getParameter("SArea")));
                     Funcionario_Dao fDao = new Funcionario_Dao(fBean);
-                    Boolean a = (Boolean) fDao.OperacionRegistro("INSERT","", tipo);
-                    CorreoController ce = new CorreoController();
-                    response.setContentType("application/json;charset=UTF-8");
-                    PrintWriter devuelta = response.getWriter();
-                    try {
-                        ce.obtenerMensaje(fBean.getCorreo(), fBean.getNum_Documento(), fBean.getContraseña());
-                    } catch (Exception e) {
-                        System.out.println("Error: " + e.getMessage());
+                    if ((Boolean) fDao.OperacionRegistro("INSERT", "", tipo)) {
+                        CorreoController ce = new CorreoController();
+                        response.setContentType("application/json;charset=UTF-8");
+                        PrintWriter devuelta = response.getWriter();
+                        try {
+                            ce.obtenerMensaje(fBean.getCorreo(), fBean.getNum_Documento(), fBean.getContraseña());
+                            devuelta.println(fDao.OperacionRegistro("INSERT", "", tipo));
+                        } catch (Exception e) {
+                            devuelta.println(e.getMessage());
+                        }
+                    }else{
+                        int v=2;
+                        int a=1;
+                        String sd = (String)fDao.OperacionRegistro("INSERT", "", tipo);
+                        
+                        
                     }
-                    devuelta.println(a);
                     break;
                 case 2:
                     break;
@@ -62,23 +68,19 @@ public class FuncionarioController extends HttpServlet {
                     } catch (Exception e) {
                         devuelta1.println("Error: " + e.getMessage());
                     }
-
                     break;
                 case 4:
                     Funcionario_Dao fDao4 = new Funcionario_Dao();
-                    Funcionario_Bean fBean4 = (Funcionario_Bean) fDao4.OperacionRegistro("SELECT","", (Integer.parseInt(request.getParameter("Id_Fun"))));
+                    Funcionario_Bean fBean4 = (Funcionario_Bean) fDao4.OperacionRegistro("SELECT", "", (Integer.parseInt(request.getParameter("Id_Fun"))));
                     fBean4.setId_Estado(3);
                     fDao4 = new Funcionario_Dao(fBean4);
                     response.setContentType("application/json;charset=UTF-8");
                     PrintWriter devuelta4 = response.getWriter();
                     try {
-                        if((Boolean)fDao4.OperacionRegistro("UPDATE","", 0)){
-                            devuelta4.println("Verdadero");
-                        }else{
-                            devuelta4.println("Falso");
-                        }
+                        fDao4.OperacionRegistro("UPDATE", "", 0);
+                        devuelta4.println(fDao4.OperacionRegistro("SELECT", "-", 0));
                     } catch (Exception e) {
-                        devuelta4.println("Error: " + e.getMessage());
+                        devuelta4.println(e.getMessage());
                     }
                     break;
             }
