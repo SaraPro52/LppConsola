@@ -1,7 +1,6 @@
 package M_Controller;
 
 import M_Modelo.Lista_Chequeo;
-import com.google.gson.Gson;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -9,46 +8,36 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class ListaChequeo extends HttpServlet {
+public class ListaChequeo_Controller extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /*Menu de opciones crud
-            1.agregar item
+            1.Agregar lista de chequeo
             2.actualizar
             3.consultar
             4.eliminar
-            5. Agregar lista de chequeo*/
+            5.Agregar Items*/
             
             int opcion = Integer.parseInt(request.getParameter("Opcion"));
-            Lista_Chequeo listaChe = new Lista_Chequeo();
+            response.setContentType("application/json;charset=UTF-8");
+            PrintWriter respuesta = response.getWriter();
             switch (opcion) {
                 case 1:
-                    String[] infoLista = null;
-                    infoLista[0] = request.getParameter("nombreL");
-                    infoLista[1] = request.getParameter("descripcion");
-                    infoLista[2] = request.getParameter("funcionario");
-                    String[] items = new Gson().fromJson(request.getParameter("array"),  String[].class);
-                    PrintWriter devueltas = response.getWriter();
-                    if (listaChe.RegistrarLista(infoLista, items)) {
-                        response.setContentType("application/json;charset=UTF-8");
-                        devueltas.println(listaChe.RegistrarLista(infoLista, items));
-                    } else {
-                        devueltas.println(listaChe.RegistrarLista(infoLista, items));
-                    }
+                    String[] lista = request.getParameterValues("lista[]");
+                    String[] items = request.getParameterValues("items[]");
+                    respuesta.println(new Lista_Chequeo().RegistrarLista(lista, items));
                     break;
                 case 2:
                     
                     break;
                 case 3:
-                    response.setContentType("application/json;charset=UTF-8");
-                    PrintWriter devuelta = response.getWriter();
                     try {
-                        devuelta.println(listaChe.Select());
+                        respuesta.println(new Lista_Chequeo().Select());
                     } catch (Exception e) {
-                        devuelta.println("Error: " + e.getMessage());
+                        respuesta.println("Falla: " + e.getMessage());
                     }
                     break;
                 case 4:

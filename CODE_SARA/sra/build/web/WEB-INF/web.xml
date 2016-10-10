@@ -22,7 +22,7 @@
     </servlet>
     <servlet>
         <servlet-name>funcionariocontroller</servlet-name>
-        <servlet-class>M_Controller.FuncionarioController</servlet-class>
+        <servlet-class>M_Controller.Funcionario_Controller</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>ciudadController</servlet-name>
@@ -42,7 +42,7 @@
     </servlet>
     <servlet>
         <servlet-name>listachequeo</servlet-name>
-        <servlet-class>M_Controller.ListaChequeo</servlet-class>
+        <servlet-class>M_Controller.ListaChequeo_Controller</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>programacontroller</servlet-name>

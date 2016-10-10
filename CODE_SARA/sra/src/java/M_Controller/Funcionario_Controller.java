@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import M_Modelo.Funcionario;
 
-public class FuncionarioController extends HttpServlet {
+public class Funcionario_Controller extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -21,60 +21,45 @@ public class FuncionarioController extends HttpServlet {
             1. Agregar funcionario
             2. Actualizar
             3. Consultar
-            4. Eliminar*/
+            4. Deshabilitar*/
             int opcion = Integer.parseInt(request.getParameter("Opcion"));
+            response.setContentType("application/json;charset=UTF-8");
+            PrintWriter respuesta = response.getWriter();
+            
             switch (opcion) {
                 case 1:
-                    String [] fun = null;
-                    fun[0] = ""+(request.getParameter("STipoUsuario"))+"";
-                    fun[1] = ""+(request.getParameter("StipoIdentificacion"))+"";
-                    fun[2] = ""+(request.getParameter("CIdentificacion"))+"";
-                    fun[3] = ""+(request.getParameter("CNombre"))+"";
-                    fun[4] = ""+(request.getParameter("CApellido"))+"";
-                    fun[5] = ""+(request.getParameter("CEmail"))+"";
-                    fun[6] = ""+(request.getParameter("SCargo"))+"";
-                    fun[7] = ""+(request.getParameter("CSena"))+"";
-                    fun[8] = ""+(new vasos().getVaso())+"";
-                    fun[9] = ""+(request.getParameter("SEstado"))+"";
-                    fun[10] = "1";
-                    fun[11] = "1";
+                    String[] fun = request.getParameterValues("array[]");
                     boolean a = (new Funcionario().RegistrarFuncionario(fun));
-                    
-                    response.setContentType("application/json;charset=UTF-8");
-                    PrintWriter devuelta = response.getWriter();
-                    try {
-                        new CorreoController().obtenerMensaje(fun[5],fun[2],fun[8]);
-                    } catch (Exception e) {
-                        System.out.println("Error: " + e.getMessage());
+                    if(a){
+                        try {
+                           new CorreoController().obtenerMensaje(fun[5],fun[2],fun[8]);
+                        } catch (Exception e) {
+                            System.out.println("Error: " + e.getMessage());
+                        }
                     }
-                    devuelta.println(a);
+                    respuesta.println(a);
                     break;
                 case 2:
                     break;
                 case 3:
-                    response.setContentType("application/json;charset=UTF-8");
                     try {
-                        devuelta1.println(new Funcionario().Select());
+                        respuesta.println(new Funcionario().Select());
                     } catch (Exception e) {
-                        devuelta1.println("Error: " + e.getMessage());
+                        respuesta.println("Falla: " + e.getMessage());
                     }
-
                     break;
                 case 4:
                     Funcionario fun1 = new Funcionario();
-                    fun1.load(new Funcionario().Select(Integer.parseInt(request.getParameter("Id_Fun"))));
+                    fun1.load(fun1.Select(Integer.parseInt(request.getParameter("Id_Fun"))));
                     fun1.atributos.replace("Id_Estado", 3);
-                    
-                    response.setContentType("application/json;charset=UTF-8");
-                    PrintWriter devuelta4 = response.getWriter();
                     try {
                         if(fun1.Update()){
-                            devuelta4.println("Verdadero");
+                            respuesta.println("Verdadero");
                         }else{
-                            devuelta4.println("Falso");
+                            respuesta.println("Falso");
                         }
                     } catch (Exception e) {
-                        devuelta4.println("Error: " + e.getMessage());
+                        respuesta.println("Falla: " + e.getMessage());
                     }
                     break;
             }

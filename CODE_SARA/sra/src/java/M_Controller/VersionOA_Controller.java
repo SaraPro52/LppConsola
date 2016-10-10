@@ -1,7 +1,7 @@
 
 package M_Controller;
 
-import M_Util.Elomac;
+import M_Modelo.Version;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -10,48 +10,37 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(name = "Crud_Controller", urlPatterns = {"/Crud_Controller"})
-public class Crud_Controller extends HttpServlet {
-    public Elomac elo;
+@WebServlet(name = "ProductoVirtual_Controller", urlPatterns = {"/ProductoVirtual_Controller"})
+public class VersionOA_Controller extends HttpServlet {
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-     
-            String[] json = request.getParameterValues("array[]");
-            int option = Integer.parseInt(request.getParameter("Opcion"));
-            int tabla = Integer.parseInt(request.getParameter("tabla"));
             
-           elo = new Elomac(tabla,json);
-           switch(option){
-               case 1:
-                   if(elo.Insert()){ recargarDatos(response);}
-                   break;
-               case 2:
-                    elo = new Elomac(tabla);
-                    if(elo.Update(elo.Select(Integer.parseInt(request.getParameter("id"))),request.getParameter("multi"))){
-                        recargarDatos(response);
+            int option = Integer.parseInt(request.getParameter("Opcion"));
+            String[] infoVersion = request.getParameterValues("info[]");
+            String[] arrayFun = request.getParameterValues("arrayFun[]");
+            String[] arrayTemas = request.getParameterValues("arrayTemas[]");
+            
+            response.setContentType("application/json;charset=UTF-8");
+            PrintWriter respuesta = response.getWriter();
+            
+            Version ver = new Version();
+            switch(option){
+                case 1:
+                    if(ver.RegistrarOA(infoVersion, arrayFun, arrayTemas)){
+                        respuesta.println("Exito");
+                    }else{
+                        respuesta.println("Falla");
                     }
-                   break;
-               case 3:
-                    recargarDatos(response);
-                   break;
-               case 4:
-                   break;
-           }
+                    break;
+                case 2:
+                    break; 
+            }
         }
     }
-    
-    public void recargarDatos(HttpServletResponse response) throws IOException{
-        
-        response.setContentType("application/json;charset=UTF-8");
-        PrintWriter respuesta = response.getWriter();
-        try {
-            respuesta.println(elo.Select());
-        } catch (Exception e) {
-            respuesta.println("Falla: "+e.getMessage());
-        }
-    }
+
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
