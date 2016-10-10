@@ -1,0 +1,156 @@
+
+package M_Util;
+
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+public class Elomac extends M_Crud{
+    
+    public Map<String,Object> atributos = new LinkedHashMap<String, Object>();
+    private String tabla;
+    private String primaryKey;
+    public String arrayTablas[]= null;
+    public String arrayAtributos[] = null;
+    
+    public Elomac(int tab){
+        this.arrayTablas = cargarTablas();
+        this.tabla = arrayTablas[tab];
+        cargarAtributos();
+    }
+
+    public Elomac(String tab){
+        this.tabla = tab;
+        cargarAtributos();
+    }
+    public Elomac(int tab,String[] datos){
+        this.arrayTablas = cargarTablas();
+        this.tabla = arrayTablas[tab];
+        cargarAtributos(datos);
+    }
+    
+    private void cargarAtributos(){
+        atributosLista(null);
+    }
+    
+    private void cargarAtributos(String[] datos){
+        atributosLista(datos);
+    }
+    
+    private void atributosLista(Object[] obj){
+        try {
+            rs = (ResultSet)this.Registar("DESCRIBE "+this.tabla+"",4);
+            int i = 0;
+            while(rs.next()){
+                if(i == 0) this.primaryKey = rs.getString("Field");
+                if(obj == null)atributos.put(rs.getString("Field")," ");
+                else atributos.put(rs.getString("Field"),obj[i]);
+                i++;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    
+    }
+    
+    private String[] cargarArrayAtributos(){
+        String[] array  = new String[atributos.size()];
+        int i = 0;
+        for (Entry<String, Object> enti : atributos.entrySet()) {
+            array[i] = enti.getKey();
+            i++;
+        }
+        return array;
+    }
+    private String[] cargarTablas(){
+        List<String> tablas = new ArrayList<String>();
+         try {
+            rs = (ResultSet)this.Registar("SHOW TABLES",4);
+            while(rs.next()){
+                tablas.add(rs.getString(1));
+            }
+            return  tablas.toArray(new String[tablas.size()]);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+    
+    public void load(String json){
+        cargarLoad(json,1);
+    }
+    private void cargarLoad(String var, int a){
+        try {
+            JSONObject jso = new JSONArray(var).getJSONObject(0);
+            for(int i = 0; i < jso.names().length(); i++){
+                for(Entry<String,Object> enti : atributos.entrySet()){
+                    switch(a){
+                        case 1 :
+                            if(((String)jso.names().get(i)).equals((String)enti.getKey())){
+                                atributos.replace(enti.getKey(), jso.getString(enti.getKey()));
+                                System.out.println(enti.getKey()+"  "+jso.getString(enti.getKey()));
+                                break;
+                            }
+                            break;
+                        case 2:
+                            if(((String)arrayAtributos[Integer.parseInt((String)jso.names().get(i))]).equals((String)enti.getKey())){
+                                atributos.replace(enti.getKey(), jso.getString((String)jso.names().get(i)));
+                                System.out.println(enti.getKey()+ " "+enti.getValue() +"  "+ (String)jso.names().get(i) +"--" +jso.getString((String)jso.names().get(i)));
+                                break;
+                            }
+                            break;
+                    }                
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    
+    
+    //------------------------- SELECT -----------------------------
+    public String Select(int id){
+        return (String)this.SuperP("SELECT",this.tabla,atributos,""+primaryKey+" = "+id+"");
+    }
+    public String Select(){
+        return (String)this.SuperP("SELECT",this.tabla,atributos,"");
+    }
+    public String Select(String colum, String operador,String valor){
+        return (String)this.SuperP("SELECT",this.tabla,atributos,""+colum+" "+operador+" "+valor+"");
+    }
+    
+    //------------------------- INSERT -----------------------------
+    public boolean Insert(){
+        return (boolean)this.SuperP("INSERT",this.tabla,atributos,"");
+    }
+    
+    //------------------------- UPDATE -----------------------------
+    public boolean Update(){
+        return (boolean)this.SuperP("UPDATE",this.tabla,atributos,""+primaryKey+" = "+atributos.get(primaryKey)+"");
+    }
+    public boolean Update(String colum, String operador ,String valor){
+        return (boolean)this.SuperP("UPDATE",this.tabla,atributos,""+colum+" "+operador+" "+valor+"");
+    }
+    
+    public boolean Update(String json,String jsonUpdate){
+        this.load(json);this.arrayAtributos = cargarArrayAtributos();this.cargarLoad(jsonUpdate, 2);
+        return this.Update();
+    }
+    
+    //------------------------- DELETE -----------------------------
+    public boolean Delete(){
+        return (boolean)this.SuperP("DELETE",this.tabla,atributos,""+primaryKey+" = "+atributos.get(primaryKey)+"");
+    }
+    public boolean Delete(int id){
+        return (boolean)this.SuperP("DELETE",this.tabla,atributos,""+primaryKey+" = "+id+"");
+    }
+    public boolean Delete(String colum, String operador ,String valor){
+        return (boolean)this.SuperP("DELETE",this.tabla,atributos,""+colum+" "+operador+" "+valor+"");
+    }
+
+}
