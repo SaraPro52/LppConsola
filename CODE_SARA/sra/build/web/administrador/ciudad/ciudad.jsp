@@ -23,8 +23,8 @@
                 <table id="tablaCiudad" class="display table table-hover">
                     <thead>
                         <tr class="active">
-                            <td id ="id">Id</td>
-                            <td id="Ciudad">Nombre ciudad</td>
+                            <td>#</td>
+                            <td>Nombre</td>
                             <td>Modificar</td>
                             <td>Eliminar</td>
                         </tr>

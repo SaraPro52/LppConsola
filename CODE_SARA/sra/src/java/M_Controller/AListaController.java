@@ -11,18 +11,18 @@ public class AListaController extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            Lista_Chequeo_Bean lBean = new Lista_Chequeo_Bean();
-            Lista_Chequeo_Dao  lDao1 = new Lista_Chequeo_Dao(lBean);
-            String[][] arr =(String[][])(lDao1.Crud("SELECT","",""));
-            int a= arr.length;            
-            alista ls = new alista(1, a,a,arr,"Error");
-            response.setContentType("application/json;charset=UTF-8");
-            PrintWriter devuelta = response.getWriter();
-            try {
-                devuelta.println(ls);
-            } catch (Exception e) {
-                devuelta.println("Error: " + e.getMessage());
-            }
+            //Lista_Chequeo_Bean lBean = new Lista_Chequeo_Bean();
+            //Lista_Chequeo_Dao  lDao1 = new Lista_Chequeo_Dao(lBean);
+//            String[][] arr =(String[][])(lDao1.Crud("SELECT","",""));
+//            int a= arr.length;            
+//            alista ls = new alista(1, a,a,arr,"Error");
+//            response.setContentType("application/json;charset=UTF-8");
+//            PrintWriter devuelta = response.getWriter();
+//            try {
+//                devuelta.println(ls);
+//            } catch (Exception e) {
+//                devuelta.println("Error: " + e.getMessage());
+//            }
         }
     }
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

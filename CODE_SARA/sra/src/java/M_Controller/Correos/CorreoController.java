@@ -18,7 +18,7 @@ public class CorreoController {
             Correo c = new Correo();
             String destino = (correo);
             String asunto = "¿Nuevo en saraPro?";
-            String descripcion = "Hola: Este es un correo con un usuario y contraseña temporales son Usuario" + Documento + " contraseña: " + Contraseña + "PD:Hay que cambiar este mensaje";
+            String descripcion = "Hola: Este es un correo con un usuario y contraseña temporales son Usuario" + Documento + " contraseña: " + Contraseña + " PD:Hay que cambiar este mensaje";
             c.setMensaje(descripcion);
             c.setAsunto(asunto);
             c.setDestino(destino);

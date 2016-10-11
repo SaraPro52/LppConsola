@@ -2,71 +2,87 @@
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
     <servlet>
         <servlet-name>estadocontroller</servlet-name>
-        <servlet-class>M_Controller.EstadoController</servlet-class>
+        <servlet-class>controller.EstadoController</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>sesioncontroller</servlet-name>
-        <servlet-class>M_Controller.Linkeos.sesionController</servlet-class>
+        <servlet-class>controller.sesionController</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>administradocontroller</servlet-name>
-        <servlet-class>M_Controller.Linkeos.AdministradoController</servlet-class>
+        <servlet-class>controller.AdministradoController</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>instrutorcontroller</servlet-name>
-        <servlet-class>M_Controller.Linkeos.InstrutorController</servlet-class>
+        <servlet-class>controller.InstrutorController</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>archivoscontroller</servlet-name>
-        <servlet-class>M_Controller.Archivos.ArchivosController</servlet-class>
+        <servlet-class>controller.ArchivosController</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>funcionariocontroller</servlet-name>
-        <servlet-class>M_Controller.Funcionario_Controller</servlet-class>
+        <servlet-class>controller.FuncionarioController</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>ciudadController</servlet-name>
-        <servlet-class>M_Controller.ciudadController</servlet-class>
+        <servlet-class>controller.ciudadController</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>centrocontroller</servlet-name>
-        <servlet-class>M_Controller.CentroController</servlet-class>
+        <servlet-class>controller.CentroController</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>areacontroller</servlet-name>
-        <servlet-class>M_Controller.AreaController</servlet-class>
+        <servlet-class>controller.AreaController</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>equipocontroller</servlet-name>
-        <servlet-class>M_Controller.Linkeos.EquipoController</servlet-class>
+        <servlet-class>controller.EquipoController</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>listachequeo</servlet-name>
-        <servlet-class>M_Controller.ListaChequeo_Controller</servlet-class>
+        <servlet-class>controller.ListaChequeo</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>programacontroller</servlet-name>
-        <servlet-class>M_Controller.ProgramaController</servlet-class>
+        <servlet-class>controller.ProgramaController</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>temacontroller</servlet-name>
-        <servlet-class>M_Controller.TemaController</servlet-class>
+        <servlet-class>controller.TemaController</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>FormatoController</servlet-name>
-        <servlet-class>M_Controller.FormatoController</servlet-class>
+        <servlet-class>controller.FormatoController</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>itemcontroller</servlet-name>
-        <servlet-class>M_Controller.ItemController</servlet-class>
+        <servlet-class>controller.ItemController</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>alistacontroller</servlet-name>
-        <servlet-class>M_Controller.AListaController</servlet-class>
+        <servlet-class>controller.AListaController</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>masterpage</servlet-name>
-        <servlet-class>M_Controller.Linkeos.masterPage</servlet-class>
+        <servlet-class>controller.masterPage</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>oacontroller</servlet-name>
+        <servlet-class>controller.oaController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>programafor</servlet-name>
+        <servlet-class>controller.programaFor</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>sesioncontrollers</servlet-name>
+        <servlet-class>M_Controller.sesioncontroller</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>funcionariocontrollers</servlet-name>
+        <servlet-class>M_Controller.FuncionarioController</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>estadocontroller</servlet-name>
@@ -135,6 +151,22 @@
     <servlet-mapping>
         <servlet-name>masterpage</servlet-name>
         <url-pattern>/masterpage</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>oacontroller</servlet-name>
+        <url-pattern>/oacontroller</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>programafor</servlet-name>
+        <url-pattern>/programafor</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>sesioncontrollers</servlet-name>
+        <url-pattern>/sesioncontrollers</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>funcionariocontrollers</servlet-name>
+        <url-pattern>/funcionariocontrollers</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

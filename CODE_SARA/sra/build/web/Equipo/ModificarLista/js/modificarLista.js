@@ -18,21 +18,7 @@ $(document).on('ready', function () {
             search: "Buscar:"
         }
     });
-    $("#tablaItem").DataTable({
-        language: {
-            paginate: {
-                first: "Primera",
-                previous: "Anterior",
-                next: "Siguiente",
-                last: "Anterior"
-            },
-            lengthMenu: "Mostrar _MENU_ items",
-            info: "Se encontaron _TOTAL_ items",
-            loadingRecords: "Cargando...",
-            emptyTable: "No hay ninguna item",
-            search: "Buscar:"
-        }
-    });
+    
     function obtenerDatos(datos) {
         $.ajax({
             url: datos.url,
@@ -50,17 +36,19 @@ $(document).on('ready', function () {
             }
         });
     }
+    
     function cargarTabla(json, selector) {
         switch (selector) {
+            case "itemlisMo":
+                for (var i = 0; i < json.length; i++) {
+                    var item = $('<label class="col-md-12 elemento" id="' + json[i].Id_Item_Lista + '">' + json[i].Des_Item_Lista + '</label>');
+                    $("#ListaMOdificada").append(item);
+                }
+                break;
             case "itemlis":
                 for (var i = 0; i < json.length; i++) {
-                    json[i].Id_Item_Lista
-                    json[i].Des_Item_Lista
-                    table = $("#tablaItem").dataTable().fnAddData([
-                        json[i].Id_Item_Lista,
-                        json[i].Des_Item_Lista,
-                        ("<input type='checkbox' value='" + json[i].Id_Item_Lista + "'>")
-                    ]);
+                    var item = $('<label class="col-md-12 elemento" id="' + json[i].Id_Item_Lista + '">"' + json[i].Des_Item_Lista + '"</label>');
+                    $("#ListaItem").append(item);   
                 }
                 break;
             case "lista":
@@ -68,12 +56,11 @@ $(document).on('ready', function () {
                     var listaO = new Array(
                             json[i].Nom_Lista_Chequeo,
                             json[i].Des_Lista_Chequeo,
-                            json[i].Fecha_Creacion
-                            );
+                            json[i].Fecha_Creacion);
                     table = $("#tablalista").dataTable().fnAddData([
-                        json[i].Id_Lista_Chequeo,
+                        i + 1,
                         json[i].Nom_Lista_Chequeo,
-                        json[i].Des_Lista_Chequeo,
+                         json[i].Des_Lista_Chequeo,
                         json[i].Fecha_Creacion,
                         ("<button class='botonclick btn btn-success' id='" + json[i].Id_Lista_Chequeo + "' value='" + listaO + "'>modificar</button>")
                     ]);
@@ -97,8 +84,10 @@ $(document).on('ready', function () {
         $("#DescripcionL").val(datos[1]);
         $("#calen").val(datos[2] + datos[3]);
         $("#tabla").hide();
-        $("#tablaItems").show();
+        $("#tablaItems").show();        
         var objeto = {Opcion: "3", nombre: "itemlis", url: "itemcontroller", tipo: 1};
-        obtenerDatos(objeto);
+        //obtenerDatos(objeto);
+        var objeto = {Opcion: "5", nombre: "itemlisMo", url: "itemcontroller", tipo: 1, idLista: ids};
+        //obtenerDatos(objeto);
     });
 });

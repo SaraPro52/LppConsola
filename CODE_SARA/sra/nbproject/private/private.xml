@@ -14,6 +14,25 @@
             <file>file:/home/macc/Escritorio/Escritorito/SARAPRO/SARA08/sra/src/java/util/M_Crud.java</file>
             <file>file:/home/macc/Escritorio/Escritorito/SARAPRO/SARA08/sra/src/java/modelo/Dao/Lista_Chequeo_Dao.java</file>
         </group>
-        <group/>
+        <group>
+            <file>file:/C:/Users/Judini/Documents/Proyectos/LppConsola/CODE_SARA/sra/src/java/M_Controller/Crud_Controller.java</file>
+            <file>file:/C:/Users/Judini/Documents/Proyectos/LppConsola/CODE_SARA/sra/web/administrador/area/js/area.js</file>
+            <file>file:/C:/Users/Judini/Documents/Proyectos/LppConsola/CODE_SARA/sra/web/administrador/admiPrincipal.js</file>
+            <file>file:/C:/Users/Judini/Documents/Proyectos/LppConsola/CODE_SARA/sra/src/java/M_Modelo/Funcionario.java</file>
+            <file>file:/C:/Users/Judini/Documents/Proyectos/LppConsola/CODE_SARA/sra/src/java/M_Controller/Correos/CorreoController.java</file>
+            <file>file:/C:/Users/Judini/Documents/Proyectos/LppConsola/CODE_SARA/sra/web/WEB-INF/web.xml</file>
+            <file>file:/C:/Users/Judini/Documents/Proyectos/LppConsola/CODE_SARA/sra/web/js/logico.js</file>
+            <file>file:/C:/Users/Judini/Documents/Proyectos/LppConsola/CODE_SARA/sra/src/java/M_Controller/FuncionarioController.java</file>
+            <file>file:/C:/Users/Judini/Documents/Proyectos/LppConsola/CODE_SARA/sra/src/java/M_Controller/Archivos/ArchivosController.java</file>
+            <file>file:/C:/Users/Judini/Documents/Proyectos/LppConsola/CODE_SARA/sra/src/java/M_Controller/Correos/Correo.java</file>
+            <file>file:/C:/Users/Judini/Documents/Proyectos/LppConsola/CODE_SARA/sra/web/js/jquery.dataTables.js</file>
+            <file>file:/C:/Users/Judini/Documents/Proyectos/LppConsola/CODE_SARA/sra/web/administrador/ciudad/js/ciudad.js</file>
+            <file>file:/C:/Users/Judini/Documents/Proyectos/LppConsola/CODE_SARA/sra/src/java/M_Controller/Funcionario_Controller.java</file>
+            <file>file:/C:/Users/Judini/Documents/Proyectos/LppConsola/CODE_SARA/sra/src/java/M_Controller/AdministradoController.java</file>
+            <file>file:/C:/Users/Judini/Documents/Proyectos/LppConsola/CODE_SARA/sra/src/java/M_Controller/AListaController.java</file>
+            <file>file:/C:/Users/Judini/Documents/Proyectos/LppConsola/CODE_SARA/sra/web/js/sesion.js</file>
+            <file>file:/C:/Users/Judini/Documents/Proyectos/LppConsola/CODE_SARA/sra/src/java/M_Controller/Archivos/Archivos.java</file>
+            <file>file:/C:/Users/Judini/Documents/Proyectos/LppConsola/CODE_SARA/sra/src/java/M_Controller/sesioncontroller.java</file>
+        </group>
     </open-files>
 </project-private>

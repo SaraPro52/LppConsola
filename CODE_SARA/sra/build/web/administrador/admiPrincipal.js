@@ -1,62 +1,14 @@
 $(document).on('ready', function () {
-
-    var objeto = {Opcion: 3, nombre: "tabla"};
-    obtenerDatos(objeto);
-    function obtenerDatos(datos) {
-        $.ajax({
-            url: 'funcionariocontroller',
-            type: 'POST',
-            async: true,
-            cache: false,
-            datatype: 'json',
-            data: datos,
-            success: function (json) {
-                console.log(json);
-                cargarTabla(json, datos.nombre);
-            },
-            error: function () {
-                alert("Disculpa, pero existe un error :/");
-            }
-        });
-    }
-    function cargarTabla(json, nom) {
-        switch (nom) {
-            case "tabla":
-                for (var i = 0; i < json.length; i++) {
-                    if (json[i].Id_Estado == 1) {
-                        table = $("#tablaAdmi").dataTable().fnAddData([
-                            json[i].Nom_Funcionario,
-                            json[i].Cargo,
-                            json[i].Id_Area_Centro,
-                            json[i].Id_Estado="Activo",
-                            "<button id='" + json[i].Id_Funcionario + "' class='botonclick btn btn-danger'>Desabilitar</button>"
-                        ]);
-                    }
-                }
-                break;
-            case "eli":
-                console.log(json);
-                alert("Su registro fue" + json);
-                break;
-        }
-    }
+    var tabla = {selector: $("#tablaAdmi")};
+    var objet = {Opcion: 3, url:"funcionariocontrollers", nombre: "Funcionario"};
+    var selector = {selector: $("#tablaAdmi")};
+    var ob = new $.Luna(objet.nombre,selector);
+    ob.Vivo("EstadoFuncionario");
+    ob.TablaEspa(tabla);
+    ob.ajax(objet, selector);
     $(document).on('click', '.botonclick', function (e) {
-        var objeto = {Opcion: 4, nombre: "eli", Id_Fun: this.id}
-        obtenerDatos(objeto);
-    });
-    $("#tablaAdmi").DataTable({
-        language: {
-            paginate: {
-                first: "Primera",
-                previous: "Anterior",
-                next: "Siguiente",
-                last: "Anterior"
-            },
-            lengthMenu: "Mostrar _MENU_ funcionarios",
-            info: "Se encontaron _TOTAL_ funcionarios",
-            loadingRecords: "Cargando...",
-            emptyTable: "No hay ningun funcionario",
-            search: "Buscar:"
-        }
+        objeto = {Opcion: 4, Id_Fun: this.id,nombre: "Funcionario",url:"funcionariocontrollers"};
+        ob.limpiarTabla();
+        ob.ajax(objeto,selector);
     });
 });

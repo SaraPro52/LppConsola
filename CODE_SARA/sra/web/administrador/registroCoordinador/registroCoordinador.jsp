@@ -6,23 +6,20 @@
         <title>Registrar de funcionario</title>
         <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
         <link rel="stylesheet" type="text/css" href="css/estilo.css">
-        <script type="text/javascript" src="js/jquery.js"></script>
-        <script type="text/javascript" src="administrador/registroCoordinador/js/registroCoordinador.js"></script>
-
-    </head>
+  </head>
     <body>
         <div id="formularioTotal">
             <hr>
             <div id="formulario1">
-                <p><h2 class="dark-grey">Registrar coordinador</h2></p>
+                <p><h2 class="dark-grey">Registrar funcionario</h2></p>
                 <section class="col col-md-4">
                     <p><h3>Datos SENA</h3> </p>
-                    
+
                     <label>Correo electronico</label>
                     <input type="text" class="form-control" placeholder="Correo electronico" id="email" maxlength="70">
 
                     <label>Ip SENA</label>
-                    <input type="number" class="form-control" placeholder="Ip SENA" id="Ip_sena" maxlength="10">
+                    <input type="text" class="form-control" placeholder="Ip SENA" id="Ip_sena" maxlength="10">
 
                     <label  for="cargo">Cargo</label>
                     <select class="form-control" id="cargo" name="Cargo" value="blanco">
@@ -30,7 +27,6 @@
                         <option value="1">Instructor</option>
                         <option value="2">Coordinador</option>
                     </select>
-
                     <label  class="col-md-12"  for="Area">Area</label>
                     <select class="form-control" id="Area" name="Area">
                         <option>selecciona...</option>
@@ -38,12 +34,14 @@
                     <label  class="col-md-12"  for="Estado">Estado</label>
                     <select class="form-control" id="Estado" name="Estado">
                         <option>selecciona...</option>
+                        <option value="1">Instructor</option>
                     </select>
 
                     <label>centro de formacion</label>
                     <div class="form-group">
                         <select class="form-control" name="options" id="options2">
                             <option value="" selected="selected">Selecciona...</option>
+                            <option value="1">Instructor</option>
                         </select>
                     </div>
                 </section>
@@ -67,14 +65,13 @@
                     <label>Tipo identificacion</label>
                     <select class="form-control"  name="options" id="options">
                         <option value="" selected="selected">Seleccione...</option>
-                        <option value="opcion1">Cedula ciudadania</option>
-                        <option value="opcion2">Cedula extrangeria</option>
+                        <option value="1">Cedula ciudadania</option>
+                        <option value="2">Cedula extrangeria</option>
                     </select>
                     <label>Numero identificacion</label>
-                    <input type="number" class="form-control" placeholder="Numero de identificacion" id="Numero_identificacion" maxlength="10">
+                    <input type="text" class="form-control" placeholder="Numero de identificacion" id="Numero_identificacion" maxlength="10">
                     <center>
                         <br>
-                        <input type="button" value="Cancelar" class="btn btn-danger" >
                         <input type="button" value="Registrar coordinador"  id="boton1" class="btn btn-info">
                     </center>
                 </section>
@@ -82,4 +79,8 @@
             </div>
         </div>
     </body>
+        <script type="text/javascript" src="js/jquery.js"></script>
+        <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.12/js/jquery.dataTables.js"></script>
+        <script type="text/javascript" src="js/jquery.cecily.js"></script>
+        <script type="text/javascript" src="administrador/registroCoordinador/js/registroCoordinador.js"></script>
 </html>

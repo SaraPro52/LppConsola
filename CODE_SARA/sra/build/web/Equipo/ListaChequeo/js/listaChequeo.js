@@ -1,6 +1,5 @@
 $(document).on('ready', function () {
     console.log("Vivo??Lista de chequeo");
-    
     var objeto = {Opcion: "3", nombre: "tabla", url: "itemcontroller", tipo: 1}
     obtenerDatos(objeto);
     $("#btnItem").on('click', function () {
@@ -11,7 +10,6 @@ $(document).on('ready', function () {
             obtenerDatos(objeto);
         }
     });
-    
     function respuesta(Datos, selector) {
         switch (selector) {
             case "btnGuardado":
@@ -28,7 +26,7 @@ $(document).on('ready', function () {
                         Datos[i].Id_Item_Lista
                         Datos[i].Des_Item_Lista
                         table = $("#tablaItems").dataTable().fnAddData([
-                            Datos[i].Id_Item_Lista,
+                            i+1,
                             Datos[i].Des_Item_Lista,
                             ("<input type='checkbox' value='" + Datos[i].Id_Item_Lista + "'>")
                         ]);
