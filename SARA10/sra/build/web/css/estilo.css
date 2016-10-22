@@ -1,0 +1,111 @@
+#formularioTotal{
+    margin-left: 3%;
+    margin-top: 2%;	
+}
+#tablas{
+    margin-left: 16%;
+}
+
+form p {
+    margin-right: 60%;
+}
+
+form  {
+    font-size:30px;
+}
+
+input[type="radio"] {
+    display: none;
+}
+
+#labelEstrella {
+    color: grey;
+}
+
+.clasificacion {
+    direction: rtl;
+    unicode-bidi: bidi-override;
+}
+
+#labelEstrella:hover,
+#labelEstrella:hover ~ #labelEstrella {
+    color: orange;
+}
+
+input[type="radio"]:checked ~ #labelEstrella {
+    color: orange;
+}
+
+#seccionComentarios{
+    margin-left: 16%;
+}
+#formularioTotal{
+    margin-left: 3%;
+    margin-top: 2%;	
+}
+#tablas{
+    margin-left: 16%;
+}
+
+form p {
+    margin-right: 60%;
+}
+
+form  {
+    font-size:30px;
+}
+
+input[type="radio"] {
+    display: none;
+}
+
+#labelEstrella {
+    color: grey;
+}
+
+.clasificacion {
+    direction: rtl;
+    unicode-bidi: bidi-override;
+}
+
+#labelEstrella:hover,
+#labelEstrella:hover ~ #labelEstrella {
+    color: orange;
+}
+
+input[type="radio"]:checked ~ #labelEstrella {
+    color: orange;
+}
+
+#seccionComentarios{
+    margin-left: 16%;
+
+}
+.destino{
+
+  border-style: solid;
+}
+.elemento{
+  background-color: #8080ff;
+ 
+  padding: 5px;
+  margin: 5px;
+}
+.ui-widget {
+	font-family: Arial,Helvetica,sans-serif;
+	font-size: 1em;
+}
+.ui-widget .ui-widget {
+	font-size: 1em;
+}
+.ui-widget input,
+.ui-widget select,
+.ui-widget textarea,
+.ui-widget button {
+	font-family: Arial,Helvetica,sans-serif;
+	font-size: 1em;
+}
+
+
+
+
