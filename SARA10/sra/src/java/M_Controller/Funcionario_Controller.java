@@ -35,7 +35,7 @@ public class Funcionario_Controller extends HttpServlet {
                     fun[8]= new vasos().getVaso();
                     try {
                         if(new Funcionario().RegistrarFuncionario(fun)){
-                            //new CorreoController().obtenerMensaje(fun[5],fun[2],fun[8]);PRUEBAAAA
+                            //new CorreoController().obtenerMensaje(fun[5],fun[2],fun[8]);Listo vamos a ver que coños
                             respuesta.println("SI");
                         }else{
                             respuesta.println("NO");
