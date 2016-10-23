@@ -1,6 +1,5 @@
 package M_Controller;
 
-import M_Controller.Correos.CorreoController;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
