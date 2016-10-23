@@ -1,7 +1,7 @@
 $(document).on('ready',function(){
     console.log("Vivo??EquipoPrincipal");
     
-    
+    //Exactamente
     $("ul:li ").click(
                 function () {
                     alert($(this).val());
