@@ -18,7 +18,7 @@ public class Funcionario_Controller extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-
+            //Cambio previsto ahora no se tlvez toque esperar 1 minuto
              PrintWriter devuelta1 = response.getWriter();
             /*Menu de opciondes de crud de funcionario...
             1. Agregar funcionario
