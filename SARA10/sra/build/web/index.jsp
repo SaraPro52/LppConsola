@@ -194,29 +194,29 @@
             <form name="sentMessage" id="contactForm" novalidate>
                 <div class="row control-group">
                     <div class="form-group col-xs-12 floating-label-form-group controls">
-                        <label>Name</label>
-                        <input type="text" class="form-control" placeholder="Name" id="name" required data-validation-required-message="Please enter your name.">
+                        <label>Nombre</label>
+                        <input type="text" class="form-control" placeholder="Nombre" id="name" required data-validation-required-message="Ingresa tu nombre.">
                         <p class="help-block text-danger"></p>
                     </div>
                 </div>
                 <div class="row control-group">
                     <div class="form-group col-xs-12 floating-label-form-group controls">
-                        <label>Email Address</label>
-                        <input type="email" class="form-control" placeholder="Email Address" id="email" required data-validation-required-message="Please enter your email address.">
+                        <label>Email</label>
+                        <input type="email" class="form-control" placeholder="Email" id="email" required data-validation-required-message="Ingresa tu email.">
                         <p class="help-block text-danger"></p>
                     </div>
                 </div>
                 <div class="row control-group">
                     <div class="form-group col-xs-12 floating-label-form-group controls">
-                        <label>Phone Number</label>
-                        <input type="tel" class="form-control" placeholder="Phone Number" id="phone" required data-validation-required-message="Please enter your phone number.">
+                        <label>Numero telefonico</label>
+                        <input type="tel" class="form-control" placeholder="Numero telefonico" id="phone" required data-validation-required-message="Ingresa tu numero de telefonico.">
                         <p class="help-block text-danger"></p>
                     </div>
                 </div>
                 <div class="row control-group">
                     <div class="form-group col-xs-12 floating-label-form-group controls">
-                        <label>Message</label>
-                        <textarea rows="5" class="form-control" placeholder="Message" id="message" required data-validation-required-message="Please enter a message."></textarea>
+                        <label>Mensaje</label>
+                        <textarea rows="5" class="form-control" placeholder="dejanos tu Mensaje" id="message" required data-validation-required-message="Ingresa un mensaje."></textarea>
                         <p class="help-block text-danger"></p>
                     </div>
                 </div>
@@ -224,7 +224,7 @@
                 <div id="success"></div>
                 <div class="row">
                     <div class="form-group col-xs-12">
-                        <button type="submit" class="btn btn-success btn-lg">Send</button>
+                        <button type="submit" class="btn btn-success btn-lg">Enviar</button>
                     </div>
                 </div>
             </form>
@@ -239,20 +239,11 @@
                         <div class="footer-col col-md-4">
                             <h3>Siguenos en:</h3>
                             <ul class="list-inline">
-
                                 <li>
-                                    <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-facebook"></i></a>
-                                </li>
-
-                                <li>
-                                    <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-google-plus"></i></a>
+                                    <a href="https://plus.google.com/u/0/101782866518065902776" class="btn-social btn-outline"><i class="fa fa-fw fa-google-plus"></i></a>
                                 </li>
                                 <li>
-                                    <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-twitter"></i></a>
-                                </li>
-
-                                <li>
-                                    <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-github"></i></a>
+                                    <a href="https://github.com/SaraPro52/LppConsola" class="btn-social btn-outline"><i class="fa fa-fw fa-github"></i></a>
                                 </li>
                             </ul>
                         </div>

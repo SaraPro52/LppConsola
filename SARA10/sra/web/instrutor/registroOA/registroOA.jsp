@@ -10,7 +10,6 @@
         <link href="css/tagit.ui-zendesk.css" rel="stylesheet" type="text/css">
         <link rel="stylesheet" href="//code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css">
         <link rel="stylesheet" href="css/freelancer.css" media="screen" title="no title" charset="utf-8">
-
         <title>Subir OA</title>
     </head>
     <body>
@@ -33,7 +32,6 @@
                         <input type="text"  name="palabras_claves" id="palabras_claves" placeholder="Palabras claves " required data-validation-required-message="Ingresa las palabras clave de la publicacion.">
                         <p class="help-block text-danger"></p>
                     </div>
-
                     <div class="form-group col-xs-12 floating-label-form-group controls">   
                         <label>Decripcion del producto</label>
                         <input type="text"  name="palabras_claves" id="descripcion_oa" placeholder="Descripcion del P.V" required data-validation-required-message="Ingresa la descripcion del producto virtual.">
@@ -97,7 +95,6 @@
                         <div class="col-md-12">
                             <input type="file" size="60" id="Documento" name="myfile" class="input-file">
                         </div>
-
                         <button class=" btn btn-info  col-md-4" id="subir_oa" >Aceptar</button>
                     </form>
                 </div>
