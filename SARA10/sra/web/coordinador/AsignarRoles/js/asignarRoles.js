@@ -1,8 +1,8 @@
 $(document).on('ready', function () {
     var objet = {opcion: 5 , url :"Crud_Controller",nombre: "Habilitar",tabla:"9",datos :[""],elegir:[""],id : 0, opSelect: 1};//HABILITAR_P
-    var selector = $("#tablaAprobar"); 
-    var ob = new $.Luna("Producto virtual", selector);
-    ob.Vivo("Habilitar Producto");
+    var selector = $("#tablaARoles"); 
+    var ob = new $.Luna("usuario", selector);
+    ob.Vivo("Asignar Roles");
     ob.TablaEspa(selector);
     ob.ajax(objet, selector);
     $(document).on('click', '.btnclick', function (e) {
@@ -15,5 +15,4 @@ $(document).on('ready', function () {
         ob.ajax(objeto, selector);
     });
 });
-
-
+    

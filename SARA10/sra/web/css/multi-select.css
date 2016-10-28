@@ -2,7 +2,9 @@
   background: transparent url('../recursos/switch.png') no-repeat 50% 50%;
   width: 370px;
 }
-
+section{
+    margin: 20px;
+}
 .ms-container:after{
   content: ".";
   display: block;

@@ -39,17 +39,37 @@ jQuery.Luna = function (Datos, selector) {
                     next: "Siguiente",
                     last: "Anterior"
                 },
+                processing: "Cargando datos...",
                 lengthMenu: "Mostrar _MENU_ " + this.Cons + "s",
-                "infoFiltered": "(filtrada a partir de  _MAX_ registro)",
                 info: "Se encontaron _TOTAL_ " + this.Cons + "s",
+                infoEmpty: "Mostradas 0 de _MAX_ entradas",
+                "infoFiltered": "(filtrada a partir de  _MAX_ registro)",
+                infoPostFix: "",
                 loadingRecords: "Cargando...",
-                "zeroRecords": "Ninguna " + this.Cons + "encontrada - Disculpa :/",
+                "zeroRecords": "Ningun@ " + this.Cons + " encontrada - Disculpa :/",
                 emptyTable: "No hay ningun@ " + this.Cons,
                 search: "Buscar:"
             }
         });
     };
-
+    this.archivosAjax = function (selector) {
+        var formData = new FormData(document.getElementById(selector));
+        formData.append("dato", "valor");
+        console.log(formData.getPrototypeOf());
+        formData.append(f.attr("name"), $(this)[0].files[0]);
+        $.ajax({
+            url: "archivos",
+            type: "post",
+            dataType: "html",
+            data: formData,
+            cache: false,
+            contentType: false,
+            processData: false
+        })
+                .done(function (res) {
+                    alert("Funciona" + res);
+                });
+    }
     this.ajax = function (datos, selector) {
         $.ajax({
             url: datos.url,
@@ -129,12 +149,13 @@ jQuery.Luna = function (Datos, selector) {
                 break;
             case "Lista":
                 for (var i = 0; i < json.length; i++) {
+                    yu = [json[i].Nom_Lista_Chequeo+"$$$"+json[i].Des_Lista_Chequeo];
                     table = selector.dataTable().fnAddData([
                         i + 1,
                         json[i].Nom_Lista_Chequeo,
                         json[i].Des_Lista_Chequeo,
                         json[i].Fecha_Creacion.substring(0, 11),
-                        "<button id='" + json[i].Id_Lista_Chequeo + "' value='m' class='btnclick btn btn-success'>Modificar</button>"
+                        "<button id='" + json[i].Id_Lista_Chequeo + "' value='"+yu+"' class='btnclick btn btn-success'>Modificar</button>"
                     ]);
                 }
                 break;
@@ -143,8 +164,8 @@ jQuery.Luna = function (Datos, selector) {
                     table = selector.dataTable().fnAddData([
                         i + 1,
                         json[i].Nom_Ciudad,
-                        "<button id='" + json[i].Id_Ciudad + "' value='m' class='btnclick btn btn-success'>modificar</button>",
-                        "<button id='" + json[i].Id_Ciudad + "' value='e' class='btnclick btn btn-danger'>eliminar</button>"
+                        "<button id='" + json[i].Id_Ciudad + "' value='m' class='btnclick btn btn-success'>Modificar</button>",
+                        "<button id='" + json[i].Id_Ciudad + "' value='e' class='btnclick btn btn-danger'>Eliminar</button>"
                     ]);
                 }
                 break;
