@@ -4,6 +4,9 @@ package M_Controller;
 import M_Util.Elomac;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -72,6 +75,12 @@ public class Crud_Controller extends HttpServlet {
            }
         }catch(Exception falla){
             respuesta.println("Falla: "+ falla.getMessage());
+        }finally {
+            try {
+                elo.cerrarConexiones();
+            } catch (SQLException ex) {
+                respuesta.println("Falla: "+ ex.getMessage());
+            }
         }
     }
     

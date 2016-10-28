@@ -13,10 +13,14 @@ public class M_Procedure extends M_Connection{
             private     final String[] procedure = {"{Call SARA_CRUD(?,?,?,?)}",
                                                   "{call RegistrarLista(?)}",
                                                   "{call RegistrarFuncionario(?)}",
-                                                  "{call Registrar_OA(?)}",
+                                                  "{call Registrar_PV(?)}",
                                                   "{call MACC(?)}",
                                                   "{call RegistrarEvaluacion(?)}",
-                                                  "{call RegistrarCategoria(?)}"};    
+                                                  "{call RegistrarCategoria(?)}",
+                                                  "{call RegistrarVersion(?)}",
+                                                  "{call CorreccionVersion(?)}",
+                                                  "{call AprobarPV(?)}"
+                                                  };    
                                                   
             public boolean listo = false;
             protected String json;
@@ -51,6 +55,9 @@ public class M_Procedure extends M_Connection{
                 case 4 : p = procedure[4];break;
                 case 5 : p = procedure[5];break;
                 case 6 : p = procedure[6];break;
+                case 7 : p = procedure[7];break;
+                case 8 : p = procedure[8];break;
+                case 9 : p = procedure[9];break;
             }
             try {
             cst = this.obtenerConn().prepareCall(p);

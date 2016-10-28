@@ -19,6 +19,12 @@ public class Version_Controller extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             
+            /*Menu controlador Version
+                1. Registrar Producto virtual desde 0.
+                2. Registrar Una nueva Version.
+                3. Correccion - Actualiza solo el url.
+                4. Realiza la aprovacion del producto virtual.
+            */
             int option = Integer.parseInt(request.getParameter("Opcion"));
             String[] infoVersion = request.getParameterValues("info[]");
             String[] arrayFun = request.getParameterValues("arrayFun[]");
@@ -30,14 +36,35 @@ public class Version_Controller extends HttpServlet {
             Version ver = new Version();
             switch(option){
                 case 1:
-                    if(ver.RegistrarOA(infoVersion, arrayFun, arrayTemas)){
+                    if(ver.RegistrarPV(infoVersion, arrayFun, arrayTemas)){
                         respuesta.println("Exito");
                     }else{
                         respuesta.println("Falla");
                     }
                     break;
                 case 2:
+                    if(ver.RegistrarVersion(infoVersion, arrayFun)){
+                        respuesta.println("Exito");
+                    }else{
+                        respuesta.println("Falla");
+                    }
                     break; 
+                case 3:
+                    String[] correccion = request.getParameterValues("correcion");
+                    if(ver.CorreccionVersion(correccion)){
+                        respuesta.println("Exito");
+                    }else{
+                        respuesta.println("Falla");
+                    }
+                    break;
+                case 4:
+                    String[] aprobacion = request.getParameterValues("aprobacion");
+                    if(ver.CorreccionVersion(aprobacion)){
+                        respuesta.println("Exito");
+                    }else{
+                        respuesta.println("Falla");
+                    }
+                    break;
             }
         }
     }

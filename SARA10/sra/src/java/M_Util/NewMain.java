@@ -1,6 +1,7 @@
 package M_Util;
 
 import M_Modelo.Categoria;
+import M_Modelo.Version;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
@@ -1143,8 +1144,22 @@ public class NewMain {
 //        
 //        System.out.println(c.RegistrarCategoria(ca, "1,2"));
 //        System.out.println(c.Select());
-        Elomac e = new Elomac(10, 2);
-        System.out.println(e.Select());
+//        Elomac e = new Elomac(10, 2);
+//        System.out.println(e.Select());
+
+//          Version v = new Version();
+//          String[] info = {"1","JAVAURL/1","JAVAURL/2","INTRUCCION JAVA 1","REQUISITOS JAVA 1"};
+//          String[] func = {"1","5"};
+//          v.RegistrarVersion(info, func);
+
+//Version v = new Version();
+//
+//String[] correccion = {"1","8","Prueba desde java/ si"};
+//v.CorreccionVersion(correccion);
+
+    Version v = new Version();
+    String[] publicar = {"4","5"}; 
+    v.AprobarPV(publicar);
 
     }
 }

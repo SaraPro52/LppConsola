@@ -2,6 +2,7 @@
 package M_Util;
 
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -20,6 +21,10 @@ public class Elomac extends M_Crud{
     public String[] opRelacional = {"=",">","<",">=","<=","!=","IN","NOT IN","BETWEEN","LIKE"};
     public String[] opLogico = {"AND","OR","NOT"};
     private int tipoElo = 1;
+    
+    public void cerrarConexiones() throws SQLException{
+        this.CerrarConn();
+    }
     
     public Elomac(int tab, int tipo){
         this.tipoElo = tipo;
