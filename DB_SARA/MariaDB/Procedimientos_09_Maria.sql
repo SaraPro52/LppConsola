@@ -72,9 +72,9 @@ DECLARE columnas VARCHAR(500) DEFAULT "";DECLARE conjunto VARCHAR(500) DEFAULT "
     END WHILE;
     
 	CASE Sentencia
-		WHEN "INSERT" THEN SET @EXEC = (CONCAT("INSERT INTO ",Tabla," ",columnas," VALUES(",valores,")"));
+		WHEN "INSERT" THEN SET @EXEC = 	(CONCAT("INSERT INTO ",Tabla," ",columnas," VALUES(",valores,")"));
         WHEN "UPDATE" THEN SET @EXEC =	(CONCAT("UPDATE ",Tabla," SET ",conjunto," ",Array_Datos2,""));
-        WHEN "SELECT" THEN SET @EXEC =	(CONCAT("SELECT ",columnas," FROM ",Tabla," ",Array_Datos2,""));
+        WHEN "SELECT" THEN SET @EXEC =	(CONCAT("SELECT DISTINCT ",columnas," FROM ",Tabla," ",Array_Datos2,""));
         WHEN "DELETE" THEN SET @EXEC =	(CONCAT("DELETE FROM ",Tabla," ",Array_Datos2,""));
     END CASE;
     
@@ -126,7 +126,6 @@ BEGIN
 		SET @valor = SUBSTRING_INDEX(Array,Separador,1);
         SET @cant = CHAR_LENGTH(Array) - CHAR_LENGTH(@valor);
         SET Array = RIGHT(Array,@cant-1);
-        SELECT @valor;
         CALL MACC(Contenido);
         
         IF(CHAR_LENGTH(Array) = 0) THEN
