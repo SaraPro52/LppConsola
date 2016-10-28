@@ -1,4 +1,7 @@
 $(document).on('ready', function () {
+    $("#btnI").click(function(){
+        
+    });
     objeto = {url: 'masterpage', Opcion: 0, name: 'cabeza'}
     //obtenerP(objeto);
     //objeto = {url: 'masterpage', Opcion: 1, name: 'pies'}
