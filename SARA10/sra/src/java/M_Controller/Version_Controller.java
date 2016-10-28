@@ -1,6 +1,6 @@
-
 package M_Controller;
 
+import M_Controller.Archivos.ArchivosController;
 import M_Modelo.Version;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -18,50 +18,56 @@ public class Version_Controller extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            
+
             /*Menu controlador Version
                 1. Registrar Producto virtual desde 0.
                 2. Registrar Una nueva Version.
                 3. Correccion - Actualiza solo el url.
                 4. Realiza la aprovacion del producto virtual.
-            */
+             */
             int option = Integer.parseInt(request.getParameter("Opcion"));
             String[] infoVersion = request.getParameterValues("info[]");
             String[] arrayFun = request.getParameterValues("arrayFun[]");
             String[] arrayTemas = request.getParameterValues("arrayTemas[]");
-            
+            String imagenNom = request.getParameter("imagenNom");
+            String archivoNom = request.getParameter("archivoNom");
             response.setContentType("application/json;charset=UTF-8");
             PrintWriter respuesta = response.getWriter();
-            
+            ArchivosController arch = new ArchivosController();
             Version ver = new Version();
-            switch(option){
+            switch (option) {
                 case 1:
-                    if(ver.RegistrarPV(infoVersion, arrayFun, arrayTemas)){
+                    if (ver.RegistrarPV(infoVersion, arrayFun, arrayTemas)) {
+                        
+                        arch.CambiarNombre(imagenNom, archivoNom);
+                        
                         respuesta.println("Exito");
-                    }else{
+                    } else {
+                        arch.EliminarArchivo(imagenNom);
+                        arch.EliminarArchivo(archivoNom);
                         respuesta.println("Falla");
                     }
                     break;
                 case 2:
-                    if(ver.RegistrarVersion(infoVersion, arrayFun)){
+                    if (ver.RegistrarVersion(infoVersion, arrayFun)) {
                         respuesta.println("Exito");
-                    }else{
+                    } else {
                         respuesta.println("Falla");
                     }
-                    break; 
+                    break;
                 case 3:
                     String[] correccion = request.getParameterValues("correcion");
-                    if(ver.CorreccionVersion(correccion)){
+                    if (ver.CorreccionVersion(correccion)) {
                         respuesta.println("Exito");
-                    }else{
+                    } else {
                         respuesta.println("Falla");
                     }
                     break;
                 case 4:
                     String[] aprobacion = request.getParameterValues("aprobacion");
-                    if(ver.CorreccionVersion(aprobacion)){
+                    if (ver.CorreccionVersion(aprobacion)) {
                         respuesta.println("Exito");
-                    }else{
+                    } else {
                         respuesta.println("Falla");
                     }
                     break;

@@ -29,7 +29,7 @@ public class ArchivosController extends HttpServlet {
             FileItemFactory factory = new DiskFileItemFactory();
             ServletFileUpload upload = new ServletFileUpload(factory);
             try {
-                String nombreArchivo="";
+                String nombreArchivo = "";
                 List<FileItem> multiparts = upload.parseRequest(request);
                 for (FileItem item : multiparts) {
                     if (!item.isFormField()) {
@@ -37,7 +37,6 @@ public class ArchivosController extends HttpServlet {
                         item.write(new File(a.getBase() + nombreArchivo));
                     }
                 }
-                Nombre(a.getBase(),nombreArchivo);
             } catch (Exception e) {
                 System.out.println("Error al cargar el archivo" + e);
             }
@@ -45,12 +44,18 @@ public class ArchivosController extends HttpServlet {
         }
 
     }
-    public void Nombre(String ruta,String nombre){
-        
-        System.out.println("Ruta del archivo "+ruta+"Nombre"+nombre);
+
+    public void EliminarArchivo(String nombre) {
+        File archivo = new File(nombre);
+        archivo.delete();
     }
-    public void CambiarRuta() {
-        System.out.println("Metodos ??");
+
+    public boolean CambiarNombre(String AnNombre,String NuevoNombre) {
+        boolean res = false;
+        File archivo = new File(AnNombre);
+        File NuNombre = new File(NuevoNombre);
+        archivo.renameTo(NuNombre);
+        return res;
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

@@ -1,7 +1,7 @@
 $(document).on('ready', function () {
     var vista = $("#vista").val();
-    var objet = {opcion: 5, url: "Crud_Controller", nombre: "consutarOa", tabla: "16", datos: [""], elegir: [""],
-        delimitador: "[{colum:5, operador:0 , valor1:4}]", id: 0, opSelect: 3};
+    var objet = {opcion: 5, url: "Crud_Controller", nombre: "consutarOa", tabla: "17", datos: [""], elegir: ["4","5","6"],
+        delimitador: "[{colum:2, operador:0, valor1:2}]", id: 0, opSelect: 6};
     var selector = $("#tablaConsultarOa");
     var ob = new $.Luna("Producto virtual", selector);
     ob.Vivo("Producto virtual" + $("#vista").val());

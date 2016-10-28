@@ -88,7 +88,7 @@
                     <p class="help-block text-danger"></p>
                 </div>
                 <div>
-                    <form  id="formuploadajax">
+                    <form enctype="multipart/form-data" id="formuploadajax" method="post" action="archivos">
                         <div class="col-md-12">
                             <label for="Imagen">Imagen del documento</label>  
                             <input type="file" size="60" id="Imagen" name="myfile" class="input-file">
@@ -97,6 +97,7 @@
                         <div class="col-md-12">
                             <input type="file" size="60" id="Documento" name="myfile" class="input-file">
                         </div>
+
                         <button class=" btn btn-info  col-md-4" id="subir_oa" >Aceptar</button>
                     </form>
                 </div>

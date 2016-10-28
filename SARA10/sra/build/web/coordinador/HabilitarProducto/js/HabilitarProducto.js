@@ -1,7 +1,7 @@
 $(document).on('ready', function () {
     var objet = {opcion: 5 , url :"Crud_Controller",nombre: "Habilitar",tabla:"9",datos :[""],elegir:[""],id : 0, opSelect: 1};//HABILITAR_P
-    var selector = $("#tablaAprobar");
-    var ob = new $.Luna(objet.nombre, selector);
+    var selector = $("#tablaAprobar"); 
+    var ob = new $.Luna("Producto virtual", selector);
     ob.Vivo("Habilitar Producto");
     ob.TablaEspa(selector);
     ob.ajax(objet, selector);

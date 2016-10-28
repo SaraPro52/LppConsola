@@ -1,5 +1,4 @@
 package M_Util;
-
 import M_Modelo.Categoria;
 import M_Modelo.Version;
 import java.io.File;
@@ -1134,32 +1133,32 @@ public class NewMain {
 //        System.out.println(e2.Select());
 //        String basePath = "D:/dev/workspace/MyProject/WebContent";
 //        String absolutePath = "D:/dev/workspace/MyProject/WebContent/stats/stats.csv";
+////
+////        String relativePath = new File(basePath).toURI().
+////                relativize(new File(absolutePath).toURI()).getPath();
+////
+////        System.out.println(relativePath);   // stats/stats.csv
+////        String[] ca = {"Prueba Juan","Descripcion Juan","2"};
+////        Categoria c = new Categoria();
+////        
+////        System.out.println(c.RegistrarCategoria(ca, "1,2"));
+////        System.out.println(c.Select());
+////        Elomac e = new Elomac(10, 2);
+////        System.out.println(e.Select());
 //
-//        String relativePath = new File(basePath).toURI().
-//                relativize(new File(absolutePath).toURI()).getPath();
+////          Version v = new Version();
+////          String[] info = {"1","JAVAURL/1","JAVAURL/2","INTRUCCION JAVA 1","REQUISITOS JAVA 1"};
+////          String[] func = {"1","5"};
+////          v.RegistrarVersion(info, func);
 //
-//        System.out.println(relativePath);   // stats/stats.csv
-//        String[] ca = {"Prueba Juan","Descripcion Juan","2"};
-//        Categoria c = new Categoria();
-//        
-//        System.out.println(c.RegistrarCategoria(ca, "1,2"));
-//        System.out.println(c.Select());
-//        Elomac e = new Elomac(10, 2);
-//        System.out.println(e.Select());
-
-//          Version v = new Version();
-//          String[] info = {"1","JAVAURL/1","JAVAURL/2","INTRUCCION JAVA 1","REQUISITOS JAVA 1"};
-//          String[] func = {"1","5"};
-//          v.RegistrarVersion(info, func);
-
-//Version v = new Version();
+////Version v = new Version();
+////
+////String[] correccion = {"1","8","Prueba desde java/ si"};
+////v.CorreccionVersion(correccion);
 //
-//String[] correccion = {"1","8","Prueba desde java/ si"};
-//v.CorreccionVersion(correccion);
-
-    Version v = new Version();
-    String[] publicar = {"4","5"}; 
-    v.AprobarPV(publicar);
+//    Version v = new Version();
+//    String[] publicar = {"4","5"}; 
+//    v.AprobarPV(publicar);
 
     }
 }
