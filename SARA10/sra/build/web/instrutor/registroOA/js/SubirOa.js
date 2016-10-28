@@ -73,14 +73,8 @@ $(document).ready(function () {
 
     });
     $("#subir_oa").on('click', function () {
-        var select = $("#formuploadajax");
         datosV();
-        //archivos(select);
-        
     });
-    function archivos(select) {
-        ob.archivosAjax(select);
-    }
     function datosV() {
         var s = $("#Documento");
         var selector = ("btn");
@@ -89,12 +83,6 @@ $(document).ready(function () {
             palabras: $("#palabras_claves").val(), formato: $("#formato").val(), requisitos: $("#requisitos_instalacion").val(),
             instruciones: $("#instrucciones").val(),imagenNom:$("#Imagen").val(),archivoNom:$("#Documento").val()
         };
-<<<<<<< HEAD
         ob.ajax(objeto, selector);
-=======
-        console.log(objeto);
-        //ob.ajax(objeto, selector);
-        //ob.archivos() ;
->>>>>>> 1ce84603d61c5418d316a1676311e68c1c764a2c
     }
 });

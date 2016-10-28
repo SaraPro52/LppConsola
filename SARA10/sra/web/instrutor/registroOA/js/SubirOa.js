@@ -5,11 +5,14 @@ $(document).ready(function () {
     $("#SelecEstrutura").hide();
     $("#SelecCategoria").hide();
     var objet = {opcion: 5, url: "Crud_Controller", nombre: "AutoComplet", tabla: "13", datos: [""], elegir: ["0", "1"], id: 0, opSelect: 4};
-    var selector = $("#Titulo_Publicacion");
+    var selector = $("#Titulo_Publicacion");//NO SE NECESITA EL AUTO COMPLETAR EN EL TITULO
     var ob = new $.Luna(objet.nombre, selector);
     ob.Vivo("SubirOa");
     ob.ajax(objet, selector);
-    var objet = {opcion: 5, url: "Crud_Controller", nombre: "AutoComplet", tabla: "14", datos: [""], elegir: ["0", "1"], id: 0, opSelect: 4};
+    
+    
+    var objet = {opcion: 5, url: "Crud_Controller", nombre: "AutoComplet", tabla: "14", datos: [""], elegir: ["0", "1"], 
+        delimitar:"[{comlum:2,operador:0,valor1:1}]",id: 0, opSelect: 6};
     $("#formato").hover(function () {
         if (c == 0) {
             objet = {opcion: 3, url: "Crud_Controller", nombre: "Select", tabla: "16", datos: [""], elegir: ["0", "1"], id: 0, opSelect: 4};
@@ -34,7 +37,7 @@ $(document).ready(function () {
     $("#btnCategoria").click(function () {
         $("#seCa").accordion();
         var as = $("#Categoria_Datos").val().split(",");
-        var objet = {arr: "1", contenedor: "#TemaCategoria", opcion: 5, url: "Crud_Controller", tabla: "8", datos: [""], elegir: ["6", "7"], delimitador: "[{colum:1,operador:0,valor1:'\"" + as + "\"'}]", id: 0, opSelect: 6};
+        var objet = {arr: "1", contenedor: "#TemaCategoria", opcion: 5, url: "Crud_Controller", tabla: "4", datos: [""], elegir: ["6", "7"], delimitador: "[{colum:1,operador:0,valor1:'\"" + as + "\"'}]", id: 0, opSelect: 6};
         x = $("#Categoria_Datos");
         var js = ['Colombia', 'ecuador', 'Chile', 'Bolivia', 'Argentina', 'Brasil'];
         var s = $("#TemaCategoria");
@@ -54,7 +57,12 @@ $(document).ready(function () {
     $("#Estruturas").change(function (e) {
         if ($("#Estruturas").is(':checked')) {
             var autoCategoria1 = new $.GAutoTags();
-            var objet = {opcion: 5, url: "Crud_Controller", mensaje: "Programa de formacion...", Constante: "Estrutura", arr: "0", tabla: "6", datos: [""], elegir: ["0", "1"], id: 0, opSelect: 4};
+            var objet = {opcion: 5, url: "Crud_Controller", mensaje: "Programa de formacion...", Constante: "Estrutura", arr: "0", tabla: "2", datos: [""], elegir: ["1", "2"], id: 0, opSelect: 4};
+            var objet = {opcion: 5, url: "Crud_Controller", mensaje: "Programa de formacion...", Constante: "Estrutura", arr: "0", tabla: "2", datos: [""], elegir: ["4", "5"], 
+                delimitador:"[{colum:1,operador:0,valor1:1}]", id: 0, opSelect: 4};//DEBE OPTENER EL VALOR DEL AREA
+            var objet = {opcion: 5, url: "Crud_Controller", mensaje: "Programa de formacion...", Constante: "Estrutura", arr: "0", tabla: "3", datos: [""], elegir: ["4", "5"], 
+                delimitador:"[{colum:1,operador:0,valor1:1}]", id: 0, opSelect: 4};//DEBE OPTENER EL VALOR DEL PROGRAMA
+
             var x = $("#Estrutura");
             autoCategoria1.ajax(objet, x);
             $("#SelecEstrutura").show();

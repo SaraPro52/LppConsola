@@ -1009,8 +1009,8 @@ exists or setup the property manually. For example like this:
     </target>
     <target depends="init" name="library-inclusion-in-archive" unless="dist.ear.dir">
         <copyfiles files="${libs.MySQLDriver.classpath}" todir="${build.web.dir}/WEB-INF/lib"/>
-        <copyfiles files="${libs.javamail.classpath}" todir="${build.web.dir}/WEB-INF/lib"/>
-        <copyfiles files="${libs.commons-io.classpath}" todir="${build.web.dir}/WEB-INF/lib"/>
+        
+        
         <copyfiles files="${file.reference.gson-2.2.4.jar-3}" todir="${build.web.dir}/WEB-INF/lib"/>
         <copyfiles files="${file.reference.org.json.jar-1}" todir="${build.web.dir}/WEB-INF/lib"/>
         <copyfiles files="${file.reference.org.apache.commons.fileupload.jar}" todir="${build.web.dir}/WEB-INF/lib"/>
