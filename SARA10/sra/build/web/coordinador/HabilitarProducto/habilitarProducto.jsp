@@ -10,6 +10,8 @@
     </head>
     <body>
         <section>
+            <label class="col-md-12 col-md-offset-3"><h2>Habilitar producto virtual</h2></label>
+            <br>
             <article class="col-md-8 col-md-offset-1" id="tabla">
                 <table class="table table-striped" id="tablaAprobar">
                     <thead>
@@ -27,7 +29,6 @@
             </article>
             <article class="col-md-12" id="lista">
         </section>
-
     </body>
     <script type="text/javascript" src="js/jquery.js"></script>
     <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.12/js/jquery.dataTables.js"></script>

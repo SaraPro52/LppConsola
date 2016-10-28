@@ -1,4 +1,6 @@
 $(document).ready(function () {
+    //35    
+    $('#myModal').modal('hide');
     var arraySelecion = [];
     var objet = {opcion: 3, url: "Crud_Controller", nombre: "MultiSelect", tabla: "26", datos: [""], elegir: ["0", "1"], id: 0, opSelect: 4};
     var selector = $("#SelectTemas");
@@ -16,8 +18,8 @@ $(document).ready(function () {
     });
     $("#btnTema").click(function () {
         var objeto = {opcion: 1, nombre: "MultiSelect", opt: "Div",
-            url: "Crud_Controller", tabla:"26", datos: ["",$("#NombreTema").val(), $("#DescripcionTema").val(), "1"], elegir: ["0", "1"],
-             id: 0, opSelect: 4}        
+            url: "Crud_Controller", tabla: "26", datos: ["", $("#NombreTema").val(), $("#DescripcionTema").val(), "1"], elegir: ["0", "1"],
+            id: 0, opSelect: 4}
         ob.ajax(objeto, selector);
     });
     $("#btnCategoria").click(function () {

@@ -1,118 +1,91 @@
 jQuery.GAutoTags = function () {
     this.Json1;
-    this.Json2;
+    this.Json3;
     function setArray(json) {
+        j = [];
         this.Json1 = json;
     }
-    ;
-    function setArray1(json) {
-        this.Json2 = json;
+    function getArray() {
+        return this.Json1;
     }
-    ;
-    var http_request = false;
-    this.puroAjax = function (json) {
-        http_request = false;
-        if (window.XMLHttpRequest) {
-            http_request = new XMLHttpRequest();
-            if (http_request.overrideMimeType) {
-                http_request.overrideMimeType('text/xml');
-                //application/json;charset=UTF-8
-            }
-        } else if (window.ActiveXObject) { // IE
-            try {
-                http_request = new ActiveXObject("Msxml2.XMLHTTP");
-            } catch (e) {
-                try {
-                    http_request = new ActiveXObject("Microsoft.XMLHTTP");
-                } catch (e) {
-                }
-            }
-        }
-        if (!http_request) {
-            alert('Falla :( No es posible crear una instancia XMLHTTP');
-            return false;
-        }
-        http_request.open('POST', json.url, true);
-        http_request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-        http_request.send("opcion=3&tabla=16&elegir=0&elegir1=1&id=0&opSelect=4&datos=" + JSON.stringify(json.datos));
-        http_request.onreadystatechange = alertContents;
-    }
-    function alertContents() {
-        if (http_request.readyState == 4) {
-            if (http_request.status == 200) {
-                console.log(http_request.responseText);
-            } else {
-                console.log('Hubo problemas con la petición.');
-            }
-        }
-    }
-    this.ajax = function (datos, selecion) {
-        if (this.getSemaforo = false) {
-            $.ajax({
-                url: datos.url,
-                type: 'POST',
-                async: true,
-                cache: false,
-                datatype: 'json',
-                data: datos,
-                success: function (json) {
-                    console.log(json);
-                    CagarHijos(datos, selecion, json);
-                },
-                error: function () {
-                    alert = ("Disculpa, pero existe un error al cargar datos del servidor :/");
-                },
-                complete: function () {
-                    console.log("Peticion completada");
-                }
-            });
-        }
 
-    };
-
-    function CagarHijos(datos, selecion, json) {
-        var s = [];
+    function setArray3(json) {
+        var j = [];
         for (var i = 0; i < json.length; i++) {
-            s.push(json[i].Nom_Categoria);
+            j.push(json[i].Nom_Formato);
+        }
+        this.Json3 = j;
+    }
+    function getArray3() {
+        return this.Json3;
+    }
+
+
+
+    this.ajax = function (datos, selecion) {
+        $.ajax({
+            url: datos.url,
+            type: 'POST',
+            async: true,
+            cache: false,
+            datatype: 'json',
+            data: datos,
+            success: function (json) {
+
+                CagarHijos(datos, selecion, "nnul", json);
+
+            },
+            error: function () {
+                alert = ("Disculpa, pero existe un error al cargar datos del servidor :/");
+            }
+        });
+    };
+    this.CagarHijo = function (datos, selecion, contenedor, json) {
+        CagarHijos(datos, selecion, contenedor, json)
+    }
+    function CagarHijos(datos, selecion, contenedor, json) {
+        var s = [];
+        var ar = [];
+        var ja = Object.keys(json[0]);
+        for (var i = 0; i < json.length; i++) {
+            s.push(json[i][ja[1]]);
         }
         if (datos.arr == 0) {
             setArray(s);
             autocomplete(selecion, datos);
         } else if (datos.arr == 1) {
-            //console.log(datos);
-            setArray1(json);
             $("#seCa").empty();
-            var contes = "$('" + datos.contenedor + "')";
-            var ar = selecion.val().split(",");
-            console.log(json);
-            console.log(ar);
-//            for (var i = 0; i < ar.length; i++) {
-//                for (var j = 0; j < this.Json1.length; j++) {
-//                    if (this.Json2[j].trim() == ar[i].trim()) {
-//                        var conte = contenedor.clone();
-//                        conte.find(".contenedor").attr("id", ar[i] + "_Contenedor");
-//                        conte.find("#espacio").text("Tema: " + ar[i]);
-//                        conte.find(".view").attr("id", ar[i]);
-//                        conte.find(".datos").attr("id", ar[i] + "_Datos");
-//                        conte.children().appendTo("#seCa");
-//                        this.setMen("un@" + ar[i]);
-//                        this.autocomplete($("#" + ar[i]), 1);
-//                    }
-//                }
-//            }
+            var dat = getArray();
+            ar = selecion.val().split(",");
+            for (var i = 0; i < ar.length; i++) {
+                for (var j = 0; j < dat.length; j++) {
+                    if (dat[j].trim() == ar[i].trim()) {
+                        var u = ar[i].replace(/\s/g, "_");
+                        var conte = contenedor.clone();
+                        conte.find(".contenedor").attr("id", ar[i] + "_Contenedor");
+                        conte.find(".accordion").text("Tema: " + ar[i]);
+                        conte.find(".accordion").attr("id", u);
+                        conte.find(".view").attr("id", ar[i]);
+                        conte.find(".datos").attr("id", ar[i] + "_Datos");
+                        conte.children().appendTo("#seCa");
+                    }
+                }
+            }
         }
     }
-    ;
+
     function autocomplete(selector, elecion) {
+        console.log(selector);
+        console.log(elecion);
         var dat;
         if (elecion.arr == 0) {
             dat = this.Json1;
-        } else if (elecion == 1) {
-            dat = this.Json2;
+        } else if (elecion.arr == 1) {
+            dat = getArray3();
         }
         var datos = selector;
         datos = (datos.selector + "_Datos");
-        var x = elecion.Constante;
+        console.log(dat);
         selector.tagit({
             availableTags: dat,
             singleField: true,
@@ -120,7 +93,7 @@ jQuery.GAutoTags = function () {
             placeholderText: "Ingresa " + elecion.mensaje + "...",
             singleFieldNode: datos,
             beforeTagRemoved: function (evt, ui) {
-                if (ui.tag.context.id.trim() == x) {
+                if (ui.tag.context.id.trim() == elecion.Constante) {
                     $("#" + ui.tagLabel + "_Contenedor").remove();
                 }
             }

@@ -25,18 +25,6 @@ CREATE TABLE Estado(
 );
 
 
-CREATE TABLE Tipo_Version(
-	
-	Id_Tipo_Version    INTEGER NOT NULL AUTO_INCREMENT,
-    Nom_Tipo_Version   VARCHAR(50) NOT NULL,
-    Des_Tipo_Version   VARCHAR(100) NOT NULL,
-    
-    CONSTRAINT PK_Tipo_Version 		PRIMARY KEY (Id_Tipo_Version),
-    CONSTRAINT UN_Tipo_Version_01 	UNIQUE 		(Nom_Tipo_Version),
-    CONSTRAINT UN_Tipo_Version_02 	UNIQUE 		(Des_Tipo_Version)
-
-);
-
 CREATE TABLE Formato(
 	
     Id_Formato     INTEGER NOT NULL AUTO_INCREMENT,
@@ -69,23 +57,20 @@ CREATE TABLE Version (
 	Id_Version           INTEGER NOT NULL AUTO_INCREMENT,
     Fecha_Envio          TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     Fecha_Publicacion 	 TIMESTAMP DEFAULT "2016-01-01",
-    Num_Version 		 INTEGER ,
+    Num_Version 		 INTEGER DEFAULT 1,
 	Fecha_Vigencia 		 TIMESTAMP DEFAULT "2016-01-01",
     Url_Version			 VARCHAR (500),
     Url_Img				 VARCHAR (500),				
     Inst_Instalacion	 VARCHAR (800),
     Reqst_Instalacion    VARCHAR (500),
     Id_P_Virtual		 INTEGER NOT NULL,
-	Id_Estado			 INTEGER NOT NULL,
-    Id_Tipo_Version      INTEGER NOT NULL,
+	Id_Estado			 INTEGER NOT NULL DEFAULT 3,
 	
 	CONSTRAINT PK_Version      PRIMARY KEY (Id_Version),
     CONSTRAINT FK_P_Virtual_01 FOREIGN KEY (Id_P_Virtual)    REFERENCES Producto_Virtual(Id_P_Virtual),
-    CONSTRAINT FK_Estado_01    FOREIGN KEY (Id_Estado)       REFERENCES Estado(Id_Estado),
-    CONSTRAINT FK_Tipo_Version FOREIGN KEY (Id_Tipo_Version) REFERENCES Tipo_Version(Id_Tipo_Version)
-
-    
+    CONSTRAINT FK_Estado_01    FOREIGN KEY (Id_Estado)       REFERENCES Estado(Id_Estado)
 );	
+
 
 CREATE TABLE Rankin(
 
@@ -243,7 +228,7 @@ CREATE TABLE Funcionario(
     Cargo 				VARCHAR(45) NOT NULL,
     Ip_Sena				VARCHAR(6) NOT NULL,
     Contraseña      	VARCHAR(300) NOT NULL,
-    Id_Estado 	    	INTEGER NOT NULL,
+    Id_Estado 	    	INTEGER NOT NULL DEFAULT 2,
     Id_Area_Centro 		INTEGER NOT NULL,
     
     CONSTRAINT PK_Funcionario 			PRIMARY KEY (Id_Funcionario),
@@ -272,12 +257,11 @@ CREATE TABLE Notificacion(
     Id_Notificacion 		INTEGER NOT NULL AUTO_INCREMENT,
     Fecha_Envio				TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     Conte_Notificacion 		VARCHAR(600) NOT NULL,
-    Archivos_Adjuntos		VARCHAR(500),
+    Ides_Proceso			INTEGER NOT NULL,
     Id_Tipo_Notificacion	INTEGER NOT NULL,
     Id_Funcionario 			INTEGER NOT NULL,
     
     CONSTRAINT PK_Notificacion 		PRIMARY KEY (Id_Notificacion),
-    CONSTRAINT UN_Notificacion 		UNIQUE 		(Conte_Notificacion),
     CONSTRAINT FK_Tipo_Notificacion FOREIGN KEY (Id_Tipo_Notificacion) REFERENCES Tipo_Notificacion(Id_Tipo_Notificacion),
     CONSTRAINT FK_Funcionario_06	FOREIGN KEY (Id_Funcionario)	   REFERENCES Funcionario(Id_Funcionario)
 );
@@ -325,6 +309,7 @@ CREATE TABLE Autor (
 	Id_Autor       INTEGER NOT NULL AUTO_INCREMENT,
     Id_Version     INTEGER NOT NULL,
     Id_Funcionario INTEGER NOT NULL,
+    Principal      BOOLEAN NOT NULL,
     
     CONSTRAINT PK_Autor          PRIMARY KEY (Id_Autor),
     CONSTRAINT UN_Autor		     UNIQUE 	 (Id_Version,Id_Funcionario),
