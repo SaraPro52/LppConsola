@@ -1,4 +1,5 @@
 package M_Util;
+import M_Controller.Archivos.ArchivosController;
 import M_Modelo.Categoria;
 import M_Modelo.Version;
 import java.io.File;
@@ -1159,6 +1160,10 @@ public class NewMain {
 //    Version v = new Version();
 //    String[] publicar = {"4","5"}; 
 //    v.AprobarPV(publicar);
+
+                        ArchivosController arch = new ArchivosController();
+                        String nruta = "nevoDoc";
+                        arch.CambiarNombre("GUIA DE APRENDIZAJE Calidad II - Razones, Proporciones, Porcentajes(1)", nruta, "A");
 
     }
 }

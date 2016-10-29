@@ -79,7 +79,6 @@ jQuery.Luna = function (Datos, selector) {
             datatype: 'json',
             data: datos,
             success: function (json) {
-                //console.log(json);
                 cargarTabla(json, selector, datos);
             },
             error: function () {
@@ -88,9 +87,7 @@ jQuery.Luna = function (Datos, selector) {
         });
     };
     function cargarTabla(json, selector, datos) {
-        var c = 1;
-        console.log(datos.nombre);
-        switch (datos.nombre) {
+        var c = 1;        switch (datos.nombre) {
             case "btn":
                 alert(json);
                 break;
@@ -113,6 +110,15 @@ jQuery.Luna = function (Datos, selector) {
                     }));
                 }
                 break;
+            case "calificar":
+                var j= $("#divContainer");
+                for (var i = 0; i < json.length; i++) {
+                    var conte = $("#clone").clone();
+                    conte.find('.observacion').text(json[i].Id_Item_Lista);
+                    conte.find('.locura').text(json[i].Des_Item_Lista);
+                    conte.children().appendTo(j);
+                }
+                break;
             case "AutoComplet":
                 var j = Object.keys(json[0]);
                 var s = [];
@@ -128,11 +134,9 @@ jQuery.Luna = function (Datos, selector) {
                 for (var i = 0; i < json.length; i++) {
                     table = selector.dataTable().fnAddData([
                         i + 1,
-                        json[i].Nom_P_Virtual,
-                        json[i].Nom_Estado,
-                        json[i].Num_Version,
-                        json[i].Fecha_Vigencia.substring(0, 11),
-                        "<button  type='button' id='" + json[i].Id_P_Virtual + "' class='btn btn-info btn-lg' data-toggle='modal' data-target='#myModal'>Evaluar Producto</button>"
+                        json[i].Conte_Notificacion,
+                        json[i].Fecha_Envio,
+                        "<button  type='button' id='" + json[i].Ides_Proceso + "' class='btn btn-info btn-lg' data-toggle='modal' data-target='#myModal'>Evaluar Producto</button>"
                     ]);
                 }
                 break;
@@ -149,13 +153,13 @@ jQuery.Luna = function (Datos, selector) {
                 break;
             case "Lista":
                 for (var i = 0; i < json.length; i++) {
-                    yu = [json[i].Nom_Lista_Chequeo+"$$$"+json[i].Des_Lista_Chequeo];
+                    yu = [json[i].Nom_Lista_Chequeo + "$$$" + json[i].Des_Lista_Chequeo];
                     table = selector.dataTable().fnAddData([
                         i + 1,
                         json[i].Nom_Lista_Chequeo,
                         json[i].Des_Lista_Chequeo,
                         json[i].Fecha_Creacion.substring(0, 11),
-                        "<button id='" + json[i].Id_Lista_Chequeo + "' value='"+yu+"' class='btnclick btn btn-success'>Modificar</button>"
+                        "<button id='" + json[i].Id_Lista_Chequeo + "' value='" + yu + "' class='btnclick btn btn-success'>Modificar</button>"
                     ]);
                 }
                 break;

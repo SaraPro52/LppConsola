@@ -30,9 +30,9 @@ public class EvaluacionGeneral_Controller extends HttpServlet {
             switch(option){
                 case 1:
                     if(evaluacion.RegistrarEvaluacion(infoEva, infoItem)){
-                        respuesta.println("Exito");
+                        respuesta.println("Si Registro");
                     }else{
-                        respuesta.println("Falla");
+                        respuesta.println("No Registro");
                     }
                     break;
             }

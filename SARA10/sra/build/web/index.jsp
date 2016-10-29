@@ -33,6 +33,21 @@
 
                         </form>
                         <button type="submit" class="btn btn-default ubicacionLoginBoton">Iniciar sesión</button>
+                        <div>
+                            <form action="sesion_controller" method="post" class="form-control">
+                                <select name="Opcion" value="blanco" >
+                                    <option value="0">Administrador</option>
+                                    <option value="1">Coordinador</option>
+                                    <option value="2">Equipo tecnico</option>
+                                    <option value="3">Equipo pedagogico</option>
+                                    <option value="4">Instrutor</option>
+                                    <option value="5">Subir oa</option>
+                                    <option value="6">Modificar</option>
+                                    <option value="7">Imagenes</option>
+                                </select>
+                                <input type="submit" name="btnenviar" value="Aceptar">
+                            </form>
+                        </div>
                     </div>
                 </div>
             </nav>
@@ -174,19 +189,7 @@
             </div>
         </div>
         <!--FIN EQUIPO-->
-        <form action="sesion_controller" method="post">
-            <select name="Opcion" value="blanco" >
-                <option value="0">Administrador</option>
-                <option value="1">Coordinador</option>
-                <option value="2">Equipo tecnico</option>
-                <option value="3">Equipo pedagogico</option>
-                <option value="4">Instrutor</option>
-                <option value="5">Subir oa</option>
-                <option value="6">Modificar</option>
-                <option value="7">Imagenes</option>
-            </select>
-            <input type="submit" name="btnenviar" value="Aceptar">
-        </form>
+
         <div class="col-lg-8 col-lg-offset-2">
             <h2 class="textContacto">Contáctenos</h2>
             <div class="lineaHorizontalContacto"></div>

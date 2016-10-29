@@ -9,19 +9,9 @@ jQuery.GAutoTags = function () {
         return this.Json1;
     }
 
-    function setArray3(json) {
-        var j = [];
-        for (var i = 0; i < json.length; i++) {
-            j.push(json[i].Nom_Formato);
-        }
-        this.Json3 = j;
-    }
     function getArray3() {
         return this.Json3;
     }
-
-
-
     this.ajax = function (datos, selecion) {
         $.ajax({
             url: datos.url,
@@ -64,12 +54,16 @@ jQuery.GAutoTags = function () {
                         var conte = contenedor.clone();
                         conte.find(".contenedor").attr("id", ar[i] + "_Contenedor");
                         conte.find(".accordion").text("Tema: " + ar[i]);
-                        conte.find(".accordion").attr("id", u);
-                        conte.find(".view").attr("id", ar[i]);
-                        conte.find(".datos").attr("id", ar[i] + "_Datos");
-                        conte.children().appendTo("#seCa");
+                        conte.find(".accordion").attr("id", "L" + datos.opSelect + u);
+                        conte.find(".view").attr("id", u);
+                        conte.find(".datos").attr("id", u + "_Datos");
+                        conte.children().appendTo(json);
                     }
                 }
+            }
+            if (datos.opSelect == 4) {
+                var bu = "<button type='button' class='btnRebus' id='valorPrograma'>Agregar tema</button>";
+                $("#seEs").append(bu);
             }
         }
     }
@@ -80,8 +74,6 @@ jQuery.GAutoTags = function () {
         var dat;
         if (elecion.arr == 0) {
             dat = this.Json1;
-        } else if (elecion.arr == 1) {
-            dat = getArray3();
         }
         var datos = selector;
         datos = (datos.selector + "_Datos");

@@ -29,11 +29,12 @@ $(document).on('ready', function () {
         $("#tabla").hide();
         $("#tablaItems").show();
         $("#SelectItem").show();
-        objeto = {opcion: 5, url: "Crud_Controller", nombre: "MultiSelect", tabla: "15",
-            elegir: ["0", "1"], delimitador: "[{'colum':'3','operador':'0','valor1':'" + this.id + "',añadir:0},{'colum':'2','operador':'0','valor1':'1'}]", id: this.id, opSelect: 6};
+        var objeto = {opcion: 5, url: "Crud_Controller", nombre: "MultiSelect", tabla: "15",
+            elegir: ["0", "1"], delimitador: "[{colum:3,operador:0,valor1:"+ this.id +",añadir:0},{colum:2,operador:0,valor1:0}]", id:0, opSelect: 6};
         selector = $("#SelectItem");
         ob.ajax(objeto, selector);
         //cuidado con el manejo de los tipos de item 1 y 0
-
+            var objeto = {opcion: 3, url: "Crud_Controller", nombre: "MultiSelect", tabla: "18",
+            elegir: ["0", "1"], delimitador: "[{colum:0,operador:7,valor1:"+stringitems+",añadir:0},{colum:2,operador:0,valor1:0}]", id:this.id, opSelect: 6};
     });
 });

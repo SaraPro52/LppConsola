@@ -39,7 +39,7 @@ public class sesion_controller extends HttpServlet {
                     request.getRequestDispatcher("Equipo/ModificarLista/modificarLista.jsp").forward(request, response);
                     break;
                 case 7:
-                    request.getRequestDispatcher("Equipo/ListaChequeo/listaChequeo.jsp").forward(request, response);
+                    request.getRequestDispatcher("Equipo/CalificarOa/calificarOa.jsp").forward(request, response);
                     break;
             }
         }

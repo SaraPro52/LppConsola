@@ -22,10 +22,15 @@
                         <input type="text"  name="Titulo_Publicacion" id="Titulo_Publicacion" placeholder="Titulo de la publicacion" required data-validation-required-message="Ingresa el titulo de la publicacion.">
                         <p class="help-block text-danger"></p>
                     </div>
-                    <div class="form-group col-xs-12 floating-label-form-group controls">   
-                        <label>Autores</label>
-                        <input type="text"  name="autores" id="autores" placeholder="Autores de la publicacion" required data-validation-required-message="Ingresa los autores de la publicacion.">
-                        <p class="help-block text-danger"></p>
+                    <div>
+                        <div id="SelecAutores">
+                            <label>Autores</label>
+                            <input type="hidden" id="Autores_Datos" value="" >
+                            <ul id="Autores"></ul>
+
+                            <div id="seAutores">
+                            </div>
+                        </div>
                     </div>
                     <div class="form-group col-xs-12 floating-label-form-group controls">   
                         <label>Palabras claves de busqueda</label>
@@ -41,7 +46,7 @@
                         <label>Definir de objecto de aprendizaje</label> <br/>
                         <div class="control" id="TemaCategoria">
                             <div class="contenedor">
-                                <button class="accordion" id="espacio"></button>
+                                <label class="accordion" id="espacio"></label>
                                 <div class="panel"> 
                                     <input type="hidden" class="datos" value="">
                                     <ul class="view"></ul>
@@ -53,7 +58,7 @@
                             <label>Categorias</label>
                             <input type="hidden" id="Categoria_Datos" value="" >
                             <ul id="Categoria"></ul>
-                            <button class="btn" type="button" id="btnCategoria">Todas las Categorias</button>
+                            <!--button class="btn" type="button" id="btnCategoria">Todas las Categorias</button-->
                             <div id="seCa">
                             </div>
                         </div>
@@ -62,7 +67,9 @@
                             <label for="">Estrutura </label>
                             <input type="hidden" id="Estrutura_Datos" value="">
                             <ul id="Estrutura"></ul>
-                            <button class="btn" type="button" id="btnEstrutura">TodasEstrutura</button>
+                            <!--button class="btn" type="button" id="btnEstrutura">TodasEstrutura</button-->
+                            <div id="seEs">
+                            </div>
                         </div>
                     </div>
                 </form>

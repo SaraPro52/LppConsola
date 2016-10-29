@@ -5,7 +5,7 @@
   border: 1px solid #000;
   margin: 10px 5px 0 0;
 }
-button.accordion {
+label.accordion {
    background-color: #99B3DF;/*Color cuando paso el mouse pro la section*/
    color: #444;
    cursor: pointer;
@@ -16,7 +16,7 @@ button.accordion {
    outline: none;
    transition: 0.4s;
 }
-button.accordion.active, button.accordion:hover {
+label.accordion.active, button.accordion:hover {
    background-color: #7693C6;/*Color cuando la section esta selecionada*/
 }
 div.panel {
@@ -27,14 +27,14 @@ div.panel {
 div.panel.show {
    display: block;
 }
-button.accordion:after {
+label.accordion:after {
     content: '\02795'; /* Unicode character for "plus" sign (+) */
     font-size: 13px;
     color: #777;
     float: right;
     margin-left: 5px;
 }
-button.accordion.active:after {
+label.accordion.active:after {
     content: "\2796"; /* Unicode character for "minus" sign (-) */
 }
 

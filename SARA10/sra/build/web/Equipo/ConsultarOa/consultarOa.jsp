@@ -16,10 +16,8 @@
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th>Nombre producto</th>
-                            <th>Nombre estado</th>   
-                            <th>Numero version</th>   
-                            <th>Fecha vigencia</th>   
+                            <th>Descripcion</th>   
+                            <th>Fecha envio</th>   
                             <th>Evaluar</th>   
                         </tr>
                     </thead>

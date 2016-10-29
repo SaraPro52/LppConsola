@@ -13,6 +13,7 @@ import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.FileItemFactory;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
+import org.apache.commons.io.FilenameUtils;
 
 @WebServlet(name = "archivos", urlPatterns = {"/archivos"})
 
@@ -50,11 +51,21 @@ public class ArchivosController extends HttpServlet {
         archivo.delete();
     }
 
-    public boolean CambiarNombre(String AnNombre,String NuevoNombre) {
+    public boolean CambiarNombre(String AnNombre, String NuevoNombre, String tip) {
+        Archivos bs = new Archivos();
         boolean res = false;
-        File archivo = new File(AnNombre);
-        File NuNombre = new File(NuevoNombre);
-        archivo.renameTo(NuNombre);
+        if (tip.equals("I")) {
+            String ext2 = FilenameUtils.getExtension(AnNombre);
+            File archivo = new File(bs.getBase()+ AnNombre);
+            File NuNombre = new File(NuevoNombre+tip + ext2);
+            archivo.renameTo(NuNombre);
+        } else {
+            String ext2 = FilenameUtils.getExtension(AnNombre);
+            File archivo = new File(AnNombre);
+            File NuNombre = new File(NuevoNombre + ext2);
+            archivo.renameTo(NuNombre);
+        }
+
         return res;
     }
 

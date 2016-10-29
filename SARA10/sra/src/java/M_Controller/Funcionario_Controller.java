@@ -1,5 +1,6 @@
 package M_Controller;
 
+import M_Controller.Correos.CorreoController;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -8,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import M_Modelo.Funcionario;
 import javax.servlet.annotation.WebServlet;
- 
+
 @WebServlet(name = "Funcionario_Controller", urlPatterns = {"/Funcionario_Controller"})
 
 public class Funcionario_Controller extends HttpServlet {
@@ -18,7 +19,7 @@ public class Funcionario_Controller extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             //Cambio previsto ahora no se tlvez toque esperar 1 minuto
-             PrintWriter devuelta1 = response.getWriter();
+            PrintWriter devuelta1 = response.getWriter();
             /*Menu de opciondes de crud de funcionario...
             1. Agregar funcionario
             2. Actualizar
@@ -27,17 +28,19 @@ public class Funcionario_Controller extends HttpServlet {
             int opcion = Integer.parseInt(request.getParameter("opcion"));
             response.setContentType("application/json;charset=UTF-8");
             PrintWriter respuesta = response.getWriter();
-            
+
             switch (opcion) {
                 case 1:
                     String[] fun = request.getParameterValues("datos[]");
-                    fun[8]= new vasos().getVaso();
+                    fun[8] = new vasos().getVaso();
                     try {
-                        if(new Funcionario().RegistrarFuncionario(fun)){
-                            //new CorreoController().obtenerMensaje(fun[5],fun[2],fun[8]);Listo vamos a ver que coños no se hasta que punto sea bueno
-                            respuesta.println("SI");
-                        }else{
-                            respuesta.println("NO");
+                        if (new Funcionario().RegistrarFuncionario(fun)) {
+                            CorreoController jj = new CorreoController();
+                            jj.sendEmail("Sara ", "Buen dia ::::::: eres un nuevo funcionario de Sara pro\n Tu usuario es:"+fun[2]+" \ttu contraseña: "+fun[8]+"", fun[5]);
+                            respuesta.println("Si Registro");
+
+                        } else {
+                            respuesta.println("No Registro");
                         }
                     } catch (Exception e) {
                         respuesta.println(e.getMessage());

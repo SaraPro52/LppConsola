@@ -31,8 +31,8 @@ public class ListaChequeo_Controller extends HttpServlet {
                     String[] lista = request.getParameterValues("lista[]");
                     String items = request.getParameter("items");
                     if(new Lista_Chequeo().RegistrarLista(lista, items))
-                        respuesta.println("Si inserto");
-                    else respuesta.println("No inserto");
+                        respuesta.println("Si Registro");
+                    else respuesta.println("No Registro");
                     break;
                 case 2:
                     

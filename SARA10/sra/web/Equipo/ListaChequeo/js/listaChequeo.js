@@ -26,7 +26,7 @@ $(document).on('ready', function () {
             arraySelecion.splice(busqueda, 1);
         }
     });
-    $("#btnItem").on('click', function () {
+    $("#btnItem").on('click', function () { 
         var val= $("#vista").val();
         var objeto = {opcion: 1, nombre: "MultiSelect", opt: "Div",
             url: "Crud_Controller", tabla: "18", datos: ["", $("#Descripcion").val(), val], elegir: ["0", "1"],
