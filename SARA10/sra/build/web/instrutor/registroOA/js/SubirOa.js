@@ -100,11 +100,25 @@ $(document).ready(function () {
         var s = $("#Documento");
         var selector = ("btn");
         var objeto = {opcion: 1, url: "ProductoVirtual_Controller", nombre: "Area",
+<<<<<<< HEAD
+            info: [$("#Titulo_Publicacion").val(), 
+                   $("#descripcion_oa").val(), 
+                   $("#palabras_claves").val(), 
+                   $("#formato").val(),
+                   "0", "0", 
+                   $("#instrucciones").val(), 
+                   $("#requisitos_instalacion").val()], 
+               arrayFun: $("#autores").val(), 
+               arrayTemas: arrayTemas, 
+               imagenNom: $("#Imagen").val(), 
+               archivoNom: $("#Documento").val()
+=======
             info: [$("#Titulo_Publicacion").val(),
                 $("#descripcion_oa").val(),
                 $("#palabras_claves").val(),
                 $("#formato").val(),
                 "0", "0", $("#instrucciones").val(), $("#requisitos_instalacion").val()], arrayFun: $("#autores").val(), arrayTemas: arrayTemas, imagenNom: $("#Imagen").val(), archivoNom: $("#Documento").val()
+>>>>>>> 298e2a32555f98db1ed4082b1964553d69edefb4
         };
         ob.ajax(objeto, selector);
     }
