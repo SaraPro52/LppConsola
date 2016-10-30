@@ -61,15 +61,19 @@ $(document).ready(function () {
         datosV();
     });
     function datosV() {
-        arraySelecionEstr
-        arraySelecionCate
+        var arrayTemas = [];
+        for(var i = 0; i < arraySelecionEstr.length;i++){
+            arrayTemas.push(arraySelecionEstr[i] + "-0");
+        }
+        for (var i = 0; i < arraySelecionCate.length; i++){
+            arrayTemas.push(arraySelecionCate[i] + "-1");
+        }
         var s = $("#Documento");
         var selector = ("btn");
         var objeto = {opcion: 1, url: "ProductoVirtual_Controller", nombre: "Area",
             info: [$("#Titulo_Publicacion").val(), $("#descripcion_oa").val(), $("#palabras_claves").val(), $("#formato").val(),
-                "0", "0", $("#instrucciones").val(), $("#requisitos_instalacion").val()], arrayFun: $("#autores").val(), arrayTemas: arrays, imagenNom: $("#Imagen").val(), archivoNom: $("#Documento").val()
+                "0", "0", $("#instrucciones").val(), $("#requisitos_instalacion").val()], arrayFun: $("#autores").val(), arrayTemas: arrayTemas, imagenNom: $("#Imagen").val(), archivoNom: $("#Documento").val()
         };
-        alert("saljdklksajd");
         ob.ajax(objeto, selector);
     }
 });

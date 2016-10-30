@@ -1,5 +1,6 @@
 package M_Controller.Linkeos;
 
+import M_Util.Elomac;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -20,12 +21,10 @@ public class sesion_controller extends HttpServlet {
             String ususrio = request.getParameter("usuario");
             String contraseña = request.getParameter("contraseña");
 
-            String[] numsTablas = {""}
+            String[] numsTablas = {""};
             Elomac elo = new Elomac(7,2);
 
-            if(elo.Select(numsTablas, ususrio)){
             
-            }
 
 
 
