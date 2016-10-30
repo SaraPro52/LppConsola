@@ -59,8 +59,8 @@ $(document).ready(function () {
         autoCategoria.ajax(objet, se);
     });
     $(document).on('click', '.accordion', function (e) {
-        var objet = {opcion: 5, url: "Crud_Controller", mensaje: "Programa de formacion...", Constante: "Estrutura", arr: "0", tabla: "3", datos: [""], elegir: ["4", "5"],
-            delimitador: "[{colum:1,operador:0,valor1:1}]", id: 0, opSelect: 4};//DEBE OPTENER EL VALOR DEL PROGRAMA
+        var objet = {opcion: 5, url: "Crud_Controller", mensaje: "Programa de formacion...", Constante: "Estrutura", arr: "0", tabla: "4", datos: [""], elegir: ["4", "5"]
+            ,id: 0, opSelect: 4};//DEBE OPTENER EL VALOR DEL PROGRAMA
     });
     $("#Estruturas").change(function (e) {
         if ($("#Estruturas").is(':checked')) {
