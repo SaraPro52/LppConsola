@@ -75,7 +75,13 @@ $(document).ready(function () {
                    $("#descripcion_oa").val(), 
                    $("#palabras_claves").val(), 
                    $("#formato").val(),
-                    "0", "0", $("#instrucciones").val(), $("#requisitos_instalacion").val()], arrayFun: $("#autores").val(), arrayTemas: arrayTemas, imagenNom: $("#Imagen").val(), archivoNom: $("#Documento").val()
+                   "0", "0", 
+                   $("#instrucciones").val(), 
+                   $("#requisitos_instalacion").val()], 
+               arrayFun: $("#autores").val(), 
+               arrayTemas: arrayTemas, 
+               imagenNom: $("#Imagen").val(), 
+               archivoNom: $("#Documento").val()
         };
         ob.ajax(objeto, selector);
     }
