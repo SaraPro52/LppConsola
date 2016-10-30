@@ -13,6 +13,7 @@ import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.FileItemFactory;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
+
 import org.apache.commons.io.FilenameUtils;
 
 @WebServlet(name = "archivos", urlPatterns = {"/archivos"})
@@ -25,7 +26,6 @@ public class ArchivosController extends HttpServlet {
             throws ServletException, IOException {
         boolean isMultipart = ServletFileUpload.isMultipartContent(request);
         Archivos a = new Archivos();
-        a.setRuta("Teleinformatica", "ADSI", "JAVA");
         if (isMultipart) {
             FileItemFactory factory = new DiskFileItemFactory();
             ServletFileUpload upload = new ServletFileUpload(factory);

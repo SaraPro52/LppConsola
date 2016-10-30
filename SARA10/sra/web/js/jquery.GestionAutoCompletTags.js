@@ -21,9 +21,7 @@ jQuery.GAutoTags = function () {
             datatype: 'json',
             data: datos,
             success: function (json) {
-
                 CagarHijos(datos, selecion, "nnul", json);
-
             },
             error: function () {
                 alert = ("Disculpa, pero existe un error al cargar datos del servidor :/");
@@ -31,7 +29,7 @@ jQuery.GAutoTags = function () {
         });
     };
     this.CagarHijo = function (datos, selecion, contenedor, json) {
-        CagarHijos(datos, selecion, contenedor, json)
+                    CagarHijos(datos, selecion, contenedor, json);
     }
     function CagarHijos(datos, selecion, contenedor, json) {
         var s = [];
