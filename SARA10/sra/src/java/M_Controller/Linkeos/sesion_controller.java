@@ -16,6 +16,19 @@ public class sesion_controller extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             int opcion = Integer.parseInt(request.getParameter("Opcion"));
+
+            String ususrio = request.getParameter("usuario");
+            String contraseña = request.getParameter("contraseña");
+
+            String[] numsTablas = {""}
+            Elomac elo = new Elomac(7,2);
+
+            if(elo.Select(numsTablas, ususrio)){
+            
+            }
+
+
+
             switch (opcion) {
                 case 0:
                     request.getRequestDispatcher("administrador/administradorPrincipal.jsp").forward(request, response);

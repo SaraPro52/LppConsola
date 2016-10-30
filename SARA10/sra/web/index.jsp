@@ -273,6 +273,7 @@
         </div>
         <script type="text/javascript" src="js/jquery.js"></script>
         <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-        <script type="text/javascript" src="js/sesion.js"></script>        
+        <script type="text/javascript" src="js/sesion.js"></script>
+        <script type="text/javascript" src="_JS/Login.js"></script>
     </body>
 </html>
