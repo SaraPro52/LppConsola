@@ -65,7 +65,8 @@ jQuery.GAutoTags = function () {
             }
         }
     }
-
+    
+    
     function autocomplete(selector, elecion) {
         console.log(selector);
         console.log(elecion);
@@ -74,6 +75,7 @@ jQuery.GAutoTags = function () {
             dat = this.Json1;
         }
         var datos = selector;
+        
         datos = (datos.selector + "_Datos");
         console.log(dat);
         selector.tagit({

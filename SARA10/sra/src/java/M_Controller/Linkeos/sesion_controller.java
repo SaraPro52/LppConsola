@@ -24,10 +24,6 @@ public class sesion_controller extends HttpServlet {
             String[] numsTablas = {""};
             Elomac elo = new Elomac(7,2);
 
-            
-
-
-
             switch (opcion) {
                 case 0:
                     request.getRequestDispatcher("administrador/administradorPrincipal.jsp").forward(request, response);

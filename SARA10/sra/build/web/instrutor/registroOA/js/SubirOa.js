@@ -17,7 +17,7 @@ $(document).ready(function () {
         c++;
     });
     var autoCategoria = new $.GAutoTags();
-    objet = {nombre: "MultiSelect", opcion: 5, url: "Crud_Controller", tabla: "7", datos: [""], elegir: ["4", "8"], delimitador: "[{colum:0,operador:0,valor1:1}]", id: 0, opSelect: 4};
+    objet = {Constante: "Autores",mensaje:"Autores",arr:0 ,opcion: 5, url: "Crud_Controller", tabla: "7", datos: [""], elegir: ["4", "8"], delimitador: "[{colum:0,operador:0,valor1:1}]", id: 0, opSelect: 4};
     var selector = $("#Autores");
     autoCategoria.ajax(objet, selector);
     
@@ -71,8 +71,11 @@ $(document).ready(function () {
         var s = $("#Documento");
         var selector = ("btn");
         var objeto = {opcion: 1, url: "ProductoVirtual_Controller", nombre: "Area",
-            info: [$("#Titulo_Publicacion").val(), $("#descripcion_oa").val(), $("#palabras_claves").val(), $("#formato").val(),
-                "0", "0", $("#instrucciones").val(), $("#requisitos_instalacion").val()], arrayFun: $("#autores").val(), arrayTemas: arrayTemas, imagenNom: $("#Imagen").val(), archivoNom: $("#Documento").val()
+            info: [$("#Titulo_Publicacion").val(), 
+                   $("#descripcion_oa").val(), 
+                   $("#palabras_claves").val(), 
+                   $("#formato").val(),
+                    "0", "0", $("#instrucciones").val(), $("#requisitos_instalacion").val()], arrayFun: $("#autores").val(), arrayTemas: arrayTemas, imagenNom: $("#Imagen").val(), archivoNom: $("#Documento").val()
         };
         ob.ajax(objeto, selector);
     }
