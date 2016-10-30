@@ -1,16 +1,11 @@
 $(document).on('ready', function () {
     $("#btnI").click(function(){
         
-    });
-    objeto = {url: 'masterpage', Opcion: 0, name: 'cabeza'}
-    //obtenerP(objeto);
-    //objeto = {url: 'masterpage', Opcion: 1, name: 'pies'}
-    //obtenerP(objeto);
-    //objeto = {url: 'masterpage', Opcion: 2, name: 'home'}
-    //obtenerP(objeto);
+    });    
     $(document).on('click', 'li .btntt', function (e) {
         objeto = {url: $("#controller").val(), Opcion: this.value, name: 'cuerpo', vista: $("#vista").val()};
-        obtenerP(objeto);
+        console.log(objeto);
+        //obtenerP(objeto);
     });
     function obtenerP(datos) {
         console.log(datos.url);

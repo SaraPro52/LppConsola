@@ -6,9 +6,7 @@
         <link rel="stylesheet" href="css/hojaestilo.css">
         <link rel="stylesheet" href="//code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">                    
-        <link href="css/jquery.tagit.css" rel="stylesheet" type="text/css">
-        <link href="css/tagit.ui-zendesk.css" rel="stylesheet" type="text/css">
-        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css">
+        <link rel="stylesheet" href=    "//code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css">
         <link rel="stylesheet" type="text/css" href="css/multi-select.css">
         <link rel="stylesheet" href="css/freelancer.css" media="screen" title="no title" charset="utf-8">
         <title>Subir OA</title>
@@ -24,14 +22,11 @@
                         <p class="help-block text-danger"></p>
                     </div>
                     <div>
-                        <div id="SelecAutores">
-                            <label>Autores</label>
-                            <input type="hidden" id="Autores_Datos" value="" >
-                            <ul id="Autores"></ul>
-
-                            <div id="seAutores">
-                            </div>
+                        <div id="SelectAutoresDiv">
+                            <section  id="SelectAutores">
+                            </section>
                         </div>
+
                     </div>
                     <div class="form-group col-xs-12 floating-label-form-group controls">   
                         <label>Palabras claves de busqueda</label>
@@ -45,15 +40,6 @@
                     </div>
                     <div>
                         <label>Definir de objecto de aprendizaje</label> <br/>
-                        <div class="control" id="TemaCategoria">
-                            <div class="contenedor">
-                                <label class="accordion" id="espacio"></label>
-                                <div class="panel"> 
-                                    <input type="hidden" class="datos" value="">
-                                    <ul class="view"></ul>
-                                </div>
-                            </div>
-                        </div>  
                         <input type="checkbox" id="Categorias"  >Categoria<br/>
                         <div id="SelectCategoriaDiv">
                             <section  id=SelectCategoria>
@@ -86,15 +72,15 @@
                     <p class="help-block text-danger"></p>
                 </div>
                 <div>
-                        <div class="col-md-12">
-                            <label for="Imagen">Imagen del documento</label>  
-                            <input type="file" size="60" id="Imagen" name="myfile" class="input-file">
-                        </div>
-                        <label for="ejemplo_archivo_1">añadir OA</label>
-                        <div class="col-md-12">
-                            <input type="file" size="60" id="Documento" name="myfile" class="input-file">
-                        </div>
-                        <button class=" btn btn-info  col-md-4" id="subir_oa" >Aceptar</button>
+                    <div class="col-md-12">
+                        <label for="Imagen">Imagen del documento</label>  
+                        <input type="file" size="60" id="Imagen" name="myfile" class="input-file">
+                    </div>
+                    <label for="ejemplo_archivo_1">añadir OA</label>
+                    <div class="col-md-12">
+                        <input type="file" size="60" id="Documento" name="myfile" class="input-file">
+                    </div>
+                    <button class=" btn btn-info  col-md-4" id="subir_oa" >Aceptar</button>
                 </div>
             </article>
         </section>       
@@ -106,7 +92,6 @@
 <script type="text/javascript" src="js/jquery.cecily.js"></script>
 <script type="text/javascript" src="js/tag-it.js"></script>
 <script type="text/javascript" src="js/jqueryUi.js"></script>
-<script type="text/javascript" src="js/jquery.GestionAutoCompletTags.js"></script>
 <script type="text/javascript" src="js/bootstrap.js"></script>
 <script type="text/javascript" src="js/jqBootstrapValidation.js"></script>
 <script src="js/jquery.multi-select.js"></script>
