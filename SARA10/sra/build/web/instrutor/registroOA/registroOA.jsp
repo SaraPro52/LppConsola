@@ -58,7 +58,7 @@
                             <label>Categorias</label>
                             <input type="hidden" id="Categoria_Datos" value="" >
                             <ul id="Categoria"></ul>
-                            <!--button class="btn" type="button" id="btnCategoria">Todas las Categorias</button-->
+                            <button class="btn" type="button" id="btnCategoria">Todas las Categorias</button>
                             <div id="seCa">
                             </div>
                         </div>
@@ -67,7 +67,7 @@
                             <label for="">Estrutura </label>
                             <input type="hidden" id="Estrutura_Datos" value="">
                             <ul id="Estrutura"></ul>
-                            <!--button class="btn" type="button" id="btnEstrutura">TodasEstrutura</button-->
+                            <button class="btn" type="button" id="btnEstrutura">TodasEstrutura</button>
                             <div id="seEs">
                             </div>
                         </div>
