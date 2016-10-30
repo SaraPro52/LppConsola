@@ -22,9 +22,12 @@ $(document).ready(function () {
     autoCategoria.ajax(objet, selector);
 
     $("#Categorias").change(function (e) {
+        objet = {opcion: 5, url:"Crud_Controller",tabla:"4",datos:[""],elegir:["6","7"],id:0,opSelect:4};
+        
     });
     $("#Estruturas").change(function (e) {
-
+        objet = {opcion: 5, url:"Crud_Controller",tabla:"18",datos:[""],elegir:["0","1"],
+            delimitador:"[{colum:2,operador:0,valor1:1}]",id:0,opSelect:4};//En valor1 se debe poner el centro de formacion que tiene el usuario
     });
     $("#subir_oa").on('click', function () {
         datosV();
