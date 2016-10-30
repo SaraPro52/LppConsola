@@ -1,6 +1,5 @@
 $(document).on('ready', function () {
     var val= $("#vista").val();
-    var arraySelecion = [];
     var objet = {opcion: 3, url: "Crud_Controller", nombre: "MultiSelect",
         tabla: "18", datos: [""], elegir: ["0", "1"],
         delimitador: "[{colum: 2,operador: 0,valor1:"+val+"}]", id: 0, opSelect: 6};
@@ -10,13 +9,11 @@ $(document).on('ready', function () {
     var view = $("#lista");
     ob.tipoUsuario($("#vista").val(), view);
     ob.ajax(objet, selector);   
-
-    
     $('#myModal').modal('hide');  
     $("#myModal").on('show.bs.modal', function (e) {
         
     });
-
+    var arraySelecion = [];
     $('#SelectItem').multiSelect({
         afterSelect: function (valor) {
             arraySelecion.push(valor);

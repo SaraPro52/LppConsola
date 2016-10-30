@@ -9,6 +9,7 @@
         <link href="css/jquery.tagit.css" rel="stylesheet" type="text/css">
         <link href="css/tagit.ui-zendesk.css" rel="stylesheet" type="text/css">
         <link rel="stylesheet" href="//code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css">
+        <link rel="stylesheet" type="text/css" href="css/multi-select.css">
         <link rel="stylesheet" href="css/freelancer.css" media="screen" title="no title" charset="utf-8">
         <title>Subir OA</title>
     </head>
@@ -54,22 +55,14 @@
                             </div>
                         </div>  
                         <input type="checkbox" id="Categorias"  >Categoria<br/>
-                        <div id="SelecCategoria">
-                            <label>Categorias</label>
-                            <input type="hidden" id="Categoria_Datos" value="" >
-                            <ul id="Categoria"></ul>
-                            <button class="btn" type="button" id="btnCategoria">Todas las Categorias</button>
-                            <div id="seCa">
-                            </div>
+                        <div id="SelectCategoriaDiv">
+                            <section  id=SelectCategoria>
+                            </section>
                         </div>
                         <input type="checkbox" id="Estruturas" >Estrura de formacion
-                        <div id="SelecEstrutura">
-                            <label for="">Estrutura </label>
-                            <input type="hidden" id="Estrutura_Datos" value="">
-                            <ul id="Estrutura"></ul>
-                            <button class="btn" type="button" id="btnEstrutura">TodasEstrutura</button>
-                            <div id="seEs">
-                            </div>
+                        <div id="SelectEstruturaDiv">
+                            <section  id=SelectEstrutura>
+                            </section>
                         </div>
                     </div>
                 </form>
@@ -118,5 +111,6 @@
 <script type="text/javascript" src="js/jquery.GestionAutoCompletTags.js"></script>
 <script type="text/javascript" src="js/bootstrap.js"></script>
 <script type="text/javascript" src="js/jqBootstrapValidation.js"></script>
+<script src="js/jquery.multi-select.js"></script>
 <script type="text/javascript" src="instrutor/registroOA/js/SubirOa.js"></script>
 </html>

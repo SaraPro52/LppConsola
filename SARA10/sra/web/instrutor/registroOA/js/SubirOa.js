@@ -17,28 +17,59 @@ $(document).ready(function () {
         c++;
     });
     var autoCategoria = new $.GAutoTags();
-    objet = {mensaje: "un autor...", Constante: "Autores", arr: "0",opcion: 5, url: "Crud_Controller", nombre: "AutoComplet", tabla: "7", datos: [""], elegir: ["4", "8"], delimitador: "[{colum:0,operador:0,valor1:1}]", id: 0, opSelect: 4};
+    objet = {nombre: "MultiSelect", opcion: 5, url: "Crud_Controller", tabla: "7", datos: [""], elegir: ["4", "8"], delimitador: "[{colum:0,operador:0,valor1:1}]", id: 0, opSelect: 4};
     var selector = $("#Autores");
     autoCategoria.ajax(objet, selector);
+    
+    var arraySelecionCate = [];
+    $('#SelectCategoria').multiSelect({
+        afterSelect: function (valor) {
+            arraySelecionCate.push(valor);
+        },
+        afterDeselect: function (val) {
+            var busqueda = $.inArray(val, arraySelecionCate);
+            arraySelecionCate.splice(busqueda, 1);
+        }
+    });
 
     $("#Categorias").change(function (e) {
-        objet = {opcion: 5, url:"Crud_Controller",tabla:"4",datos:[""],elegir:["6","7"],id:0,opSelect:4};
-        
+        selector= $("#SelectCategoria");
+        objet = {nombre: "MultiSelect", opcion: 5, url: "Crud_Controller", tabla: "4", datos: [""], elegir: ["6", "7"], id: 0, opSelect: 4};
+        ob.ajax(objet, selector);
+
     });
+    
+    
+    var arraySelecionEstr = [];
+    $('#SelectEstrutura').multiSelect({
+        afterSelect: function (valor) {
+            arraySelecionEstr.push(valor);
+        },
+        afterDeselect: function (val) {
+            var busqueda = $.inArray(val, arraySelecionEstr);
+            arraySelecionEstr.splice(busqueda, 1);
+        }
+    });
+    
     $("#Estruturas").change(function (e) {
-        objet = {opcion: 5, url:"Crud_Controller",tabla:"18",datos:[""],elegir:["0","1"],
-            delimitador:"[{colum:2,operador:0,valor1:1}]",id:0,opSelect:4};//En valor1 se debe poner el centro de formacion que tiene el usuario
+        selector= $("#SelectEstrutura");
+        objet = {nombre: "MultiSelect",opcion: 5, url: "Crud_Controller", tabla: "18", datos: [""], elegir: ["0", "1"],
+            delimitador: "[{colum:2,operador:0,valor1:1}]", id: 0, opSelect: 4};
+        ob.ajax(objet, selector);
     });
     $("#subir_oa").on('click', function () {
         datosV();
     });
     function datosV() {
+        arraySelecionEstr
+        arraySelecionCate
         var s = $("#Documento");
         var selector = ("btn");
         var objeto = {opcion: 1, url: "ProductoVirtual_Controller", nombre: "Area",
             info: [$("#Titulo_Publicacion").val(), $("#descripcion_oa").val(), $("#palabras_claves").val(), $("#formato").val(),
-                "0", "0", $("#instrucciones").val(), $("#requisitos_instalacion").val()], arrayFun: $("#autores").val(), arrayTemas:  arrays, imagenNom: $("#Imagen").val(), archivoNom: $("#Documento").val()
+                "0", "0", $("#instrucciones").val(), $("#requisitos_instalacion").val()], arrayFun: $("#autores").val(), arrayTemas: arrays, imagenNom: $("#Imagen").val(), archivoNom: $("#Documento").val()
         };
+        alert("saljdklksajd");
         ob.ajax(objeto, selector);
     }
 });
