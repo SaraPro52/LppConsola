@@ -1,14 +1,13 @@
 $(document).ready(function(){
 
   $('#btnLogin').on('click',function(){
-    console.log("ENTRO");
     var objetoJson =
     {url:'sesion_controller',
     usuario:$('#user').val(),
     contraseña:$('#pwd').val()};
-    Login(objetoJson);
-  });
 
+
+  });
 
   function Login(objeto){
     $.ajax({

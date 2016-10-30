@@ -30,8 +30,9 @@
                                 <label for="pwd">Contraseña</label>
                                 <input type="password" class="form-control" placeholder="Contraseña" id="pwd">
                             </div>
-                            <button type="submit" class="btn btn-default ubicacionLoginBoton">Iniciar sesión</button>
+
                         </form>
+                        <button type="submit" class="btn btn-default ubicacionLoginBoton">Iniciar sesión</button>
                         <div>
                             <form action="sesion_controller" method="post" class="form-control">
                                 <select name="Opcion" value="blanco" >
