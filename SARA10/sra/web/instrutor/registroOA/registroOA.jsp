@@ -71,7 +71,7 @@
                     <input type="text"  name="palabras_claves" id="instrucciones" placeholder="Instrucciones de instalacion" required data-validation-required-message="Ingresa instrucciones de instalacion.">
                     <p class="help-block text-danger"></p>
                 </div>
-                <div>
+                <div> 
                     <div class="col-md-12">
                         <label for="Imagen">Imagen del documento</label>  
                         <input type="file" size="60" id="Imagen" name="myfile" class="input-file">
