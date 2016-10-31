@@ -90,6 +90,7 @@ $(document).ready(function () {
         datosV();
     });
     function datosV() {
+        alert("Heur");
         var arrayTemas = [];
         for (var i = 0; i < arraySelecionEstr.length; i++) {
             arrayTemas.push(arraySelecionEstr[i] + "-0");

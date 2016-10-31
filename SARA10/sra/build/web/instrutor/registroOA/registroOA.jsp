@@ -71,17 +71,19 @@
                     <input type="text"  name="palabras_claves" id="instrucciones" placeholder="Instrucciones de instalacion" required data-validation-required-message="Ingresa instrucciones de instalacion.">
                     <p class="help-block text-danger"></p>
                 </div>
-                <div> 
-                    <div class="col-md-12">
-                        <label for="Imagen">Imagen del documento</label>  
-                        <input type="file" size="60" id="Imagen" name="myfile" class="input-file">
+                <form enctype="multipart/form-data" id="formuploadajax" method="post" action="archivos">
+                    <div> 
+                        <div class="col-md-12">
+                            <label for="Imagen">Imagen del documento</label>  
+                            <input type="file" size="60" id="Imagen" name="myfile" class="input-file">
+                        </div>
+                        <label for="ejemplo_archivo_1">añadir OA</label>
+                        <div class="col-md-12">
+                            <input type="file" size="60" id="Documento" name="myfile" class="input-file">
+                        </div>
+                        <button class=" btn btn-info  col-md-4" id="subir_oa" >Aceptar</button>
                     </div>
-                    <label for="ejemplo_archivo_1">añadir OA</label>
-                    <div class="col-md-12">
-                        <input type="file" size="60" id="Documento" name="myfile" class="input-file">
-                    </div>
-                    <button class=" btn btn-info  col-md-4" id="subir_oa" >Aceptar</button>
-                </div>
+                </form> 
             </article>
         </section>       
     </div>
