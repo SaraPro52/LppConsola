@@ -70,8 +70,8 @@
                     <label>Instrucciones de instalacion</label>
                     <input type="text"  name="palabras_claves" id="instrucciones" placeholder="Instrucciones de instalacion" required data-validation-required-message="Ingresa instrucciones de instalacion.">
                     <p class="help-block text-danger"></p>
+
                 </div>
-                <form enctype="multipart/form-data" id="formuploadajax" method="post" action="archivos">
                     <div> 
                         <div class="col-md-12">
                             <label for="Imagen">Imagen del documento</label>  
@@ -81,9 +81,9 @@
                         <div class="col-md-12">
                             <input type="file" size="60" id="Documento" name="myfile" class="input-file">
                         </div>
-                        <button class=" btn btn-info  col-md-4" id="subir_oa" >Aceptar</button>
+
                     </div>
-                </form> 
+                        <button class=" btn btn-info  col-md-4" id="subir_oa" >Agregar Archivos</button>
             </article>
         </section>       
     </div>

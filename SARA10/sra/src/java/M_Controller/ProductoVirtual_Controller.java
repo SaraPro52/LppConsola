@@ -27,7 +27,7 @@ public class ProductoVirtual_Controller extends HttpServlet {
              */
             int option = Integer.parseInt(request.getParameter("opcion"));
             String[] infoVersion = request.getParameterValues("info[]");
-            String[] arrayFun = request.getParameterValues("arrayFun[]");
+            String[] arrayFun = request.getParameterValues("arrayFun");
             String[] arrayTemas = request.getParameterValues("arrayTemas[]");
             String imagenNom = request.getParameter("imagenNom");
             String archivoNom = request.getParameter("archivoNom");
@@ -37,17 +37,28 @@ public class ProductoVirtual_Controller extends HttpServlet {
             Version ver = new Version();
             switch (option) {
                 case 1:
-                    infoVersion[4] =archivoNom;
+                    infoVersion[4] = archivoNom;
                     infoVersion[5] = imagenNom;
-                    
-                    if (ver.RegistrarPV(infoVersion, arrayFun, arrayTemas)) {
+//                    try {
+         
                         String nruta = infoVersion[0];
-                        arch.CambiarNombre(archivoNom, nruta,"A");
-                        arch.CambiarNombre(imagenNom, nruta,"I");
+//                        if (arch.CambiarNombre(archivoNom, nruta, "A")) {
+//                            if (arch.CambiarNombre(imagenNom, nruta, "I")) {
+//
+//                            } else {
+//                                arch.EliminarArchivo(imagenNom);
+//                            }
+//                        } else {
+//                            arch.EliminarArchivo(archivoNom);
+//                        }
+//                    } catch (Exception e) {
+//                        System.out.println(e.getMessage());
+//                    }
+
+                    if (ver.RegistrarPV(infoVersion, arrayFun, arrayTemas)) {
+
                         respuesta.println("Si Registro");
                     } else {
-                        arch.EliminarArchivo(imagenNom);
-                        arch.EliminarArchivo(archivoNom);
                         respuesta.println("No Registro");
                     }
                     break;
