@@ -12,12 +12,12 @@ $(document).ready(function () {
 
     ob.ajax(objets, selector);
     var arraySelecionAutor = [];
-    
+
     $('#SelectAutores').multiSelect({
         afterSelect: function (valor) {
             arraySelecionAutor.push(valor);
         },
-        afterDeselect: function (val){
+        afterDeselect: function (val) {
             var busqueda = $.inArray(val, arraySelecionAutor);
             arraySelecionAutor.splice(busqueda, 1);
         }
@@ -36,7 +36,7 @@ $(document).ready(function () {
         c++;
     });
     var arraySelecionCate = [];
-    $('#SelectAutores').multiSelect({
+    $('#SelectCategoria').multiSelect({
         afterSelect: function (valor) {
             arraySelecionCate.push(valor);
         },
@@ -91,9 +91,15 @@ $(document).ready(function () {
         datosV();
     });
     function datosV() {
-        alert("Heur");
-        
+        var arrayAutor = "";
         var arrayTemas = [];
+        for (var i = 0; i < arraySelecionAutor.length; i++) {
+            if (i == 0) {
+                arrayAutor = arraySelecionAutor[i];
+            } else {
+                arrayAutor = arrayAutor + "," + (arraySelecionAutor[i]);
+            }
+        }
         for (var i = 0; i < arraySelecionEstr.length; i++) {
             arrayTemas.push(arraySelecionEstr[i] + "-0");
         }
@@ -107,7 +113,7 @@ $(document).ready(function () {
                 $("#descripcion_oa").val(),
                 $("#palabras_claves").val(),
                 $("#formato").val(),
-                "", "", $("#instrucciones").val(), $("#requisitos_instalacion").val()], arrayFun:arraySelecionAutor, arrayTemas: arrayTemas, imagenNom: $("#Imagen").val(), archivoNom: $("#Documento").val()
+                "", "", $("#instrucciones").val(), $("#requisitos_instalacion").val()], arrayFun: arrayAutor, arrayTemas: arrayTemas, imagenNom: $("#Imagen").val(), archivoNom: $("#Documento").val()
         };
         ob.ajax(objeto, selector);
     }

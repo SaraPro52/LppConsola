@@ -62,7 +62,7 @@ public class ArchivosController extends HttpServlet {
         } else {
             String ext2 = FilenameUtils.getExtension(AnNombre);
             File archivo = new File(AnNombre);
-            File NuNombre = new File(NuevoNombre + ext2);
+            File    NuNombre = new File(NuevoNombre + ext2);
             archivo.renameTo(NuNombre);
         }
 
