@@ -23,16 +23,16 @@
                     <div class="collapse navbar-collapse ubicacionLogin" id="bs-example-navbar-collapse-1">
                         <form>
                             <div class="form-group col-md-3">
-                                <label for="email">Usuario</label>
-                                <input type="email" class="form-control" placeholder="Usuario" id="user">
+                                <label for="user">Usuario</label>
+                                <input type="text" class="form-control" placeholder="Usuario" id="user">
                             </div>
                             <div class="form-group col-md-3">
                                 <label for="pwd">Contraseña</label>
                                 <input type="password" class="form-control" placeholder="Contraseña" id="pwd">
                             </div>
+                            <button type="submit" class="btn btn-default ubicacionLoginBoton" id="btnLogin">Iniciar sesión</button>
 
                         </form>
-                        <button type="submit" class="btn btn-default ubicacionLoginBoton">Iniciar sesión</button>
                         <div>
                             <form action="sesion_controller" method="post" class="form-control">
                                 <select name="Opcion" value="blanco" >
