@@ -1,6 +1,7 @@
 $(document).on('ready', function () {
 //Cam
 //denueo
+//hollaaaa
     var objet = {opcion: 3, url: "Crud_Controller", nombre: "Formato", tabla: "16", datos:[""], elegir:["0","1","2"],id:0, opSelect: 4};
     var selector = $("#tablaformato");
     var ob = new $.Luna(objet.nombre, selector);
