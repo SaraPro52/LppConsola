@@ -37,25 +37,17 @@ public class ProductoVirtual_Controller extends HttpServlet {
             Version ver = new Version();
             switch (option) {
                 case 1:
-                    String nruta = infoVersion[0];
-                    infoVersion[4] = archivoNom;
+                    infoVersion[4] =archivoNom;
                     infoVersion[5] = imagenNom;
-                    try {
-                        if (arch.CambiarNombre(archivoNom, nruta, "A")) {
-                        } else {
-                            arch.CambiarNombre(imagenNom, nruta, "I");
-                        }
-                    } catch (Exception e) {
-                        System.out.println(e.getMessage());
-                        arch.EliminarArchivo(imagenNom);
-                        arch.EliminarArchivo(archivoNom);
-                    }
-
+                    
                     if (ver.RegistrarPV(infoVersion, arrayFun, arrayTemas)) {
-
+                        String nruta = infoVersion[0];
+                        arch.CambiarNombre(archivoNom, nruta,"A");
+                        arch.CambiarNombre(imagenNom, nruta,"I");
                         respuesta.println("Si Registro");
                     } else {
-
+                        arch.EliminarArchivo(imagenNom);
+                        arch.EliminarArchivo(archivoNom);
                         respuesta.println("No Registro");
                     }
                     break;
