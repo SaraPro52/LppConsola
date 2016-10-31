@@ -8,6 +8,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 @WebServlet(name = "sesion_controller", urlPatterns = {"/sesion_controller"})
 public class sesion_controller extends HttpServlet {
@@ -16,40 +19,82 @@ public class sesion_controller extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            int opcion = Integer.parseInt(request.getParameter("Opcion"));
+//            int opcion = 8;
+//            opcion = Integer.parseInt(request.getParameter("Opcion"));
+            
+            response.setContentType("application/json;charset=UTF-8");
+            PrintWriter respuesta = response.getWriter();
+            
+            String usuario = request.getParameter("user");
+            String contraseña = request.getParameter("pwd");
 
-            String ususrio = request.getParameter("usuario");
-            String contraseña = request.getParameter("contraseña");
-
-            String[] numsTablas = {""};
-            Elomac elo = new Elomac(7,2);
-
-            switch (opcion) {
-                case 0:
-                    request.getRequestDispatcher("administrador/administradorPrincipal.jsp").forward(request, response);
-                    break;
-                case 1:
-                    request.getRequestDispatcher("coordinador/coordinadorPrincipal.jsp").forward(request, response);
-                    break;
-                case 2:
-                    request.getRequestDispatcher("Equipo/equipoTecnicoPrincipal.jsp").forward(request, response);
-                    break;
-                case 3:
-                    request.getRequestDispatcher("Equipo/equipoPedagogicoPrincipal.jsp").forward(request, response);
-                    break;
-                case 4:
-                    request.getRequestDispatcher("instrutor/instrutorPrincipal.jsp").forward(request, response);
-                    break;
-                case 5:
-                    request.getRequestDispatcher("instrutor/registroOA/registroOA.jsp").forward(request, response);
-                    break;
-                case 6:
-                    request.getRequestDispatcher("Equipo/ModificarLista/modificarLista.jsp").forward(request, response);
-                    break;
-                case 7:
-                    request.getRequestDispatcher("Equipo/CalificarOa/calificarOa.jsp").forward(request, response);
-                    break;
+            String delimitador = "[{colum:4,operador:0,valor1:'\""+usuario+"\"',añadir:0},{colum:5,operador:0,valor1:'\""+contraseña+"\"'}]";
+            Elomac elo = new Elomac(19,2);
+            HttpSession sesion = request.getSession();
+            try {
+                String fun = elo.Select(delimitador);
+                
+                if(fun != ""){                    
+                    JSONObject funJ = new JSONArray(fun).getJSONObject(0);
+                    int rol = funJ.getInt("Id_Rol");
+                    sesion.setAttribute("idUser", funJ.getInt("Id_Funcionario"));
+                    sesion.setAttribute("nomUser", funJ.getString("Nom_Funcionario"));
+                    sesion.setAttribute("idRol", rol);
+                    sesion.setAttribute("idCentro", funJ.getInt("Id_Centro"));
+                    
+                    switch(rol){
+                        case 1:
+                            request.getRequestDispatcher("instructor/instructorPrincipal.jsp").forward(request, response);
+                            break;
+                        case 2:
+                            request.getRequestDispatcher("Equipo/equipoTecnicoPrincipal.jsp").forward(request, response);
+                            break;
+                        case 3:
+                            request.getRequestDispatcher("Equipo/equipoPedagogicoPrincipal.jsp").forward(request, response);
+                            break;
+                        case 4:
+                            request.getRequestDispatcher("coordinador/coordinadorPrincipal.jsp").forward(request, response);
+                            break;
+                        default:
+                            request.getRequestDispatcher("administrador/administradorPrincipal.jsp").forward(request, response);
+                            break;
+                    }
+                    
+                }
+                if(request.getParameter("cerrar") != null){
+                        sesion.invalidate();
+                    }
+            } catch (Exception e) {
+                    request.getRequestDispatcher("index.jsp").forward(request, response);
+                    sesion.invalidate();
             }
+
+//            switch (opcion) {
+//                case 0:
+//                    request.getRequestDispatcher("administrador/administradorPrincipal.jsp").forward(request, response);
+//                    break;
+//                case 1:
+//                    request.getRequestDispatcher("coordinador/coordinadorPrincipal.jsp").forward(request, response);
+//                    break;
+//                case 2:
+//                    request.getRequestDispatcher("Equipo/equipoTecnicoPrincipal.jsp").forward(request, response);
+//                    break;
+//                case 3:
+//                    request.getRequestDispatcher("Equipo/equipoPedagogicoPrincipal.jsp").forward(request, response);
+//                    break;
+//                case 4:
+//                    request.getRequestDispatcher("instrutor/instrutorPrincipal.jsp").forward(request, response);
+//                    break;
+//                case 5:
+//                    request.getRequestDispatcher("instrutor/registroOA/registroOA.jsp").forward(request, response);
+//                    break;
+//                case 6:
+//                    request.getRequestDispatcher("Equipo/ModificarLista/modificarLista.jsp").forward(request, response);
+//                    break;
+//                case 7:
+//                    request.getRequestDispatcher("Equipo/CalificarOa/calificarOa.jsp").forward(request, response);
+//                    break;
+//            }
         }
     }
 

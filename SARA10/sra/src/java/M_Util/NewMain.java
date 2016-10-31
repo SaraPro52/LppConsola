@@ -7,6 +7,8 @@ import java.io.FileInputStream;
 import java.io.InputStream;
 import org.json.JSONException;
 import javax.script.ScriptException;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class NewMain {
 
@@ -1160,10 +1162,32 @@ public class NewMain {
 //    Version v = new Version();
 //    String[] publicar = {"4","5"}; 
 //    v.AprobarPV(publicar);
+//
+//                        ArchivosController arch = new ArchivosController();
+//                        String nruta = "nevoDoc";
+//                        arch.CambiarNombre("GUIA DE APRENDIZAJE Calidad II - Razones, Proporciones, Porcentajes(1)", nruta, "A");
 
-                        ArchivosController arch = new ArchivosController();
-                        String nruta = "nevoDoc";
-                        arch.CambiarNombre("GUIA DE APRENDIZAJE Calidad II - Razones, Proporciones, Porcentajes(1)", nruta, "A");
+//            String usuario = "1019133595";
+//            String contraseña = "con1";
+//            
+//            String[] numsTablas = {"1","4","8","7","13"};
+//            String delimitador = "[{colum:7,operador:0,valor1:'\""+usuario+"\"',añadir:0},{colum:13,operador:0,valor1:'\""+contraseña+"\"'}]";
+//            Elomac elo = new Elomac(7,2);
+//            
+//            try {
+//                String fun = elo.Select(numsTablas,delimitador);
+//                if(fun != ""){
+//                    
+//                    JSONObject funJ = new JSONArray(fun).getJSONObject(0);
+//                    (funJ.getString("Nom_Funcionario"));
+//                }
+//        } catch (Exception e) {
+//                System.out.println("claro que no");
+//        }
+//            
+//        new Elomac(1,1).Prueba(2);
+            
 
+            
     }
 }

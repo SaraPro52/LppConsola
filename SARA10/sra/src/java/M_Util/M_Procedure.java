@@ -45,6 +45,18 @@ public class M_Procedure extends M_Connection{
             }
             return rs;
         }  
+        protected void Prueba(int valor){
+            try {
+                cst = this.obtenerConn().prepareCall("{call Pruebita(?,?)}");
+                cst.setInt(1,valor);
+                cst.registerOutParameter(2, java.sql.Types.VARCHAR);
+                cst.execute();
+                System.out.println(cst.getString(2));
+            } catch (Exception e) {
+                e.printStackTrace();
+                System.out.println("no se pudo");
+            }
+        }
         
         protected Object Registar(String todo,int val){
             String p = "";

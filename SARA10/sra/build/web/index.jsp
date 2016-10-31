@@ -1,8 +1,9 @@
+<%@page session = "true" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="utf-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
         <link rel="stylesheet" type="text/css" href="css/saraestilo.css">
@@ -21,33 +22,19 @@
                         <img src="imagenes/sara4.png">
                     </div>
                     <div class="collapse navbar-collapse ubicacionLogin" id="bs-example-navbar-collapse-1">
-                        <form>
-                            <div class="form-group col-md-3">
-                                <label for="email">Usuario</label>
-                                <input type="email" class="form-control" placeholder="Usuario" id="user">
-                            </div>
-                            <div class="form-group col-md-3">
-                                <label for="pwd">Contraseña</label>
-                                <input type="password" class="form-control" placeholder="Contraseña" id="pwd">
-                            </div>
+                      <form action="sesion_controller" method="POST" class="form-control">
+                          <div class="form-group col-md-3">
+                              <label for="user">Usuario</label>
+                              <input type="text" class="form-control" placeholder="Usuario" name="user" id="user">
+                          </div>
+                          <div class="form-group col-md-3">
+                              <label for="pwd">Contraseña</label>
+                              <input type="password" class="form-control" placeholder="Contraseña" name="pwd" id="pwd">
+                          </div>
+                          <button type="submit" class="btn btn-default ubicacionLoginBoton" id="btnLogin">Iniciar sesión</button>
 
-                        </form>
-                        <button type="submit" class="btn btn-default ubicacionLoginBoton">Iniciar sesión</button>
-                        <div>
-                            <form action="sesion_controller" method="post" class="form-control">
-                                <select name="Opcion" value="blanco" >
-                                    <option value="0">Administrador</option>
-                                    <option value="1">Coordinador</option>
-                                    <option value="2">Equipo tecnico</option>
-                                    <option value="3">Equipo pedagogico</option>
-                                    <option value="4">Instrutor</option>
-                                    <option value="5">Subir oa</option>
-                                    <option value="6">Modificar</option>
-                                    <option value="7">Imagenes</option>
-                                </select>
-                                <input type="submit" name="btnenviar" value="Aceptar">
-                            </form>
-                        </div>
+                      </form>
+
                     </div>
                 </div>
             </nav>
