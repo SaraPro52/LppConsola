@@ -17,12 +17,23 @@ public class sesion_controller extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             int opcion = Integer.parseInt(request.getParameter("Opcion"));
-
-            String ususrio = request.getParameter("usuario");
+            response.setContentType("appication/json;charset=UTF-8");
+            PrintWriter respuesta = response.getWriter();
+            
+            String usuario = request.getParameter("usuario");
             String contraseña = request.getParameter("contraseña");
 
-            String[] numsTablas = {""};
+            String[] numsTablas = {"1","4","7","13"};
+            String delimitador = "[{colum:7,operador:0,valor1:'\""+usuario+"\"',anadir:0},{colum:13,operador:0,valor1:"+contraseña+"}]";
             Elomac elo = new Elomac(7,2);
+
+            String user = "null";
+            user = elo.Select(numsTablas,delimitador);
+            if(user != "null"){
+                respuesta.println(user);
+            }else{
+                respuesta.println(user);
+            }
 
             switch (opcion) {
                 case 0:

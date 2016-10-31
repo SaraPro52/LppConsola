@@ -5,8 +5,6 @@ $(document).ready(function(){
     {url:'sesion_controller',
     usuario:$('#user').val(),
     contraseña:$('#pwd').val()};
-
-
   });
 
   function Login(objeto){
