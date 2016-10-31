@@ -34,6 +34,7 @@
     </body>
     <script type="text/javascript" src="js/jquery.js"></script>
     <script type="text/javascript" src="js/sesion.js"></script>  
+    <script src="ConsultarOa/js/consultarOa.js" type="text/javascript"></script>
     <script>
         var nomUser =   '<%= session.getAttribute("nomUser") %>';
         var idUser =    '<%= session.getAttribute("idUser") %>';
@@ -49,6 +50,10 @@
         }else {
           location.replace('index.jsp');
         };
+        
+        
+        
+        
     </script>
         </div>
         <input id="vista" value="0" type="hidden">

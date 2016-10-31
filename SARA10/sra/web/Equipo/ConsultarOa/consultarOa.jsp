@@ -51,4 +51,8 @@
     <script type="text/javascript" src="js/jquery.cecily.js"></script>  
     <script type="text/javascript" src="js/bootstrap-modal.js"></script>
     <script type="text/javascript" src="Equipo/ConsultarOa/js/consultarOa.js"></script>
+    <script>
+        this.consultar(this.idRol);
+        alert("Consultar");
+    </script>
 </div>

@@ -1,4 +1,5 @@
-$(document).on('ready', function () {
+function consultar(idRol){
+    
     alert(idRol);
     var vista = $("#vista").val();
     var objet = {opcion: 5, url: "Crud_Controller", nombre: "consutarOa", tabla: "17", datos: [""], elegir: ["4","5","6"],
@@ -77,5 +78,6 @@ $(document).on('ready', function () {
                 break;
         }
     }
-});
-
+    
+};
+    
