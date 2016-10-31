@@ -53,6 +53,6 @@
     <script type="text/javascript" src="Equipo/ConsultarOa/js/consultarOa.js"></script>
     <script>
         this.consultar(this.idRol);
-        alert("Consultar");
+        alert("Consultar"+ this.idRol);
     </script>
 </div>

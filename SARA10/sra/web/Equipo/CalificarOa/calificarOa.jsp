@@ -20,7 +20,7 @@
                 <input type="radio" id="Resultado" name="Resultado" value="1"> Aprovado<br>
                 <input type="radio" id="Resultado" name="Resultado" value="0"> Reprovado<br>
             </form>
-            <div col-md-4 col-md-offset-1>
+            <div class="col-md-4 col-md-offset-1">
                 <button type="button" class="btn btn-block" id="btnEvaluar">Evaluar</button>
             </div>
         </article>
@@ -28,4 +28,9 @@
     <script type="text/javascript" src="js/jquery.js"></script>
     <script type="text/javascript" src="js/jquery.cecily.js"></script>
     <script type="text/javascript" src="Equipo/CalificarOa/js/calificarOa.js"></script>
+    <script>
+        this.calificarPV(this.idLista);
+        alert("Calificar" + idLista);
+        
+    </script>
 </div>     

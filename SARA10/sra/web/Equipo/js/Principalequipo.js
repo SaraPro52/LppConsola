@@ -4,7 +4,7 @@ $(document).on('ready', function () {
         console.log(this);
         objeto = {url: "Equipo_Controller", Opcion: this.value, name: 'cuerpo', vista: $("#vista").val()};
         console.log(objeto);
-        obtenerP(objeto);
+        obtenerP(objeto);//cambiar el valor de vista por una de las variables de sesion
     });
     function obtenerP(datos) {
         console.log(datos.url);
