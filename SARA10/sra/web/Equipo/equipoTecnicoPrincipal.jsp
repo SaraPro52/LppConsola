@@ -24,25 +24,9 @@
                 <li class="activado" value="0"><a><i class="icono izquierda  fa fa-check" aria-hidden="true"></i>Evaluar Objetos</a></li>
                 <li class="activado" value="2"><a><i class="icono izquierda  fa fa-eye" aria-hidden="true"></i>consultar objetos</a></li>
             </ul>
-
-<<<<<<< HEAD
         <section>
             <div id="link">
             </div>
-            <header id="navbar" class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li class="dropdown"><a class="dropdown-toggle">Equipo Tecnico<span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li class="btntt" value="0">Evaluar Producto Virtual</li>
-                            <li class="btntt" value="1">Crear Lista Chequeo</li>
-                            <li class="btntt" value="2">Consultar P.V</li>
-                            <li class="btntt" value="3">Modificar lista</li>
-                        </ul>
-                    </li>
-                </ul>
-                <input id="controller" value="Equipo_Controller" type="hidden">
-                <input id="vista" value="0" type="hidden">
-            </header>           
             <div id="cuerpo" >
 
             </div>
@@ -66,7 +50,6 @@
           location.replace('index.jsp');
         };
     </script>
-=======
         </div>
         <input id="vista" value="0" type="hidden">
         <div id="cuerpo" >
@@ -74,5 +57,4 @@
     </body>
     <script type="text/javascript" src="js/jquery.js"></script>
     <script type="text/javascript" src="Equipo/js/Principalequipo.js"></script>  
->>>>>>> db0bf837eea292c0ee92ba10379fa52718269f63
 </html>

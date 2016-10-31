@@ -1,9 +1,9 @@
-<link rel="stylesheet" href="css/estilo.css" media="screen" title="no title">
-<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.12/css/jquery.dataTables.css">
-
 <div id="ContenedoraBody" class="col-md-12">
+    <link rel="stylesheet" href="css/estilo.css" media="screen" title="no title">
+    <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.12/css/jquery.dataTables.css">
+
     <section>
-        <article class="col-md-8 col-md-offset-1" id="tabla">
+        <article class="" id="tabla">
             <table class="table table-striped" id="tablaConsultarOa">
                 <thead>
                     <tr>

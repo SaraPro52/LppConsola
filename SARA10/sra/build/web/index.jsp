@@ -32,9 +32,7 @@
                               <input type="password" class="form-control" placeholder="Contraseña" name="pwd" id="pwd">
                           </div>
                           <button type="submit" class="btn btn-default ubicacionLoginBoton" id="btnLogin">Iniciar sesión</button>
-
                       </form>
-
                     </div>
                 </div>
             </nav>
