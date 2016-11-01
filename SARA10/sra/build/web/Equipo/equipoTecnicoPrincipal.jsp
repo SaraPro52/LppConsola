@@ -10,7 +10,7 @@
         <title>Equipo Tecnico</title>
     </head>
     <body class="col-md-12">
-        <div class="contenedor-menu ">
+        <div class="contenedor-menu col-md-6">
             <ul class="menu">
                 <li class=" activado"><a href="index.html"><i class="icono izquierda fa fa-home" aria-hidden="true"></i> inicio</a></li>
                 <li><a href="#"><i class="icono izquierda fa fa-user-plus" aria-hidden="true"></i>Roles <i class=" icono derecha fa fa-chevron-down" aria-hidden="true"></i></a>
@@ -24,13 +24,7 @@
                 <li class="activado" value="0"><a><i class="icono izquierda  fa fa-check" aria-hidden="true"></i>Evaluar Objetos</a></li>
                 <li class="activado" value="2"><a><i class="icono izquierda  fa fa-eye" aria-hidden="true"></i>consultar objetos</a></li>
             </ul>
-        <section>
-            <div id="link">
-            </div>
-            <div id="cuerpo" >
-
-            </div>
-        </section>    
+           
     </body>
     <script type="text/javascript" src="js/jquery.js"></script>
     <script type="text/javascript" src="js/sesion.js"></script>  
@@ -54,6 +48,13 @@
         <input id="vista" value="0" type="hidden">
         <div id="cuerpo" >
         </div>
+        <section>
+            <div id="link">
+            </div>
+            <div id="cuerpo" class="col-md-9">
+
+            </div>
+        </section> 
     </body>
     <script type="text/javascript" src="js/jquery.js"></script>
     <script type="text/javascript" src="Equipo/js/Principalequipo.js"></script>  

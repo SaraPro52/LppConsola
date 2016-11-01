@@ -22,7 +22,7 @@
                         <img src="imagenes/sara4.png">
                     </div>
                     <div class="collapse navbar-collapse ubicacionLogin" id="bs-example-navbar-collapse-1">
-                      <form action="sesion_controller" method="POST" class="form-control">
+                        <form action="sesion_controller" method="POST">
                           <div class="form-group col-md-3">
                               <label for="user">Usuario</label>
                               <input type="text" class="form-control" placeholder="Usuario" name="user" id="user">

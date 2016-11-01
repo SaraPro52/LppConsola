@@ -12,6 +12,7 @@ $(document).on('ready', function () {
     ob.ajax(objet, selector);
     var rol = $("#vista").val() + 2;
     $("#myModal").on('show.bs.modal', function (e) {
+        console.log(this);
         selector = $("#tablaListaChequeo");
         var objet = {opcion: 5, nombre: "ConsultarLista", url: "Crud_Controller", tabla: "12", datos: [""], elegir: ["0", "1", "2", "3"],
             delimitador: "[{colum:5,operador:0 ,valor1:"+idRol+"}]", id: 0, opSelect: 6};
@@ -20,6 +21,7 @@ $(document).on('ready', function () {
         ob.limpiarTabla(selector);
         ob.ajax(objet, selector);
     });
+    
 
     $('#myModal').modal('hide');
     $(document).on('click', '.btnclick', function (e) {

@@ -1,9 +1,9 @@
-<div class="col-md-12">
+<div class="">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="css/estilo.css">
     <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.12/css/jquery.dataTables.css">
     <link rel="stylesheet" type="text/css" href="css/multi-select.css">
-    <section class="col-md-10">
+    <section class="col-md-6">
         <h2 class="dark-grey">Modificar lista de chequeo</h2>
         <div class="col-md-16" id="tablaItems">
             <article class="col-md-6" id="item">

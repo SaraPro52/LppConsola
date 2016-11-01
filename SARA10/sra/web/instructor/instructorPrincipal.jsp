@@ -9,10 +9,9 @@
         <link rel="stylesheet" href="css/estilo.css" media="screen" title="no title">
         <title>Instructor</title>
     </head>
-    <body class="col-md-12">
+    <body>
         <section>
-            <div id="link">
-            </div>
+            
             <div class="contenedor-menu">
                 <ul class="menu">
                     <li class=" activado"><a href="index.html"><i class="icono izquierda fa fa-home" aria-hidden="true"></i>Inicio</a></li>
@@ -26,10 +25,14 @@
                     <li class="btntt" value="0"><a><i class="icono izquierda  fa fa-eye" aria-hidden="true"></i>Consultar objetos v.</a></li>
                 </ul>
             </div>
-            <div id="cuerpo" >
+            
+        </section>
+        <div id="link">
+        
+        </div>
+        <div id="cuerpo">
 
             </div>
-        </section>
     </body>
     <script type="text/javascript" src="js/jquery.js"></script>
     <script type="text/javascript" src="instructor/js/InstrutorPrincipal.js"></script>
@@ -40,16 +43,13 @@
         var idCentro = '<%= session.getAttribute("idCentro")%>';
 
         if (idUser != null && idRol != null && nomUser != null && idCentro != null) {
-            alert(nomUser);
-            alert(idUser);
-            alert(idRol);
-            alert(idCentro);
+            console.log(nomUser);
+            console.log(idUser);
+            console.log(idRol);
+            console.log(idCentro);
             $("#link").append("<a href='index.jsp?cerrar=true'><h5>Cerrar Sesion</h5></a>");
         } else {
             location.replace('index.jsp');
         }
-        ;
-
-
     </script>
 </html>

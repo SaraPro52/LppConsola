@@ -3,11 +3,10 @@ $(document).on('ready', function () {
     $('.menu li').click(function (e) {
         console.log(this);
         objeto = {url: "Equipo_Controller", Opcion: this.value, name: 'cuerpo', vista: $("#vista").val()};
-        console.log(objeto);
         obtenerP(objeto);
     });
     function obtenerP(datos) {
-        console.log(datos.url);
+        console.log(datos);
         $.ajax({
             url: datos.url,
             type: 'POST',

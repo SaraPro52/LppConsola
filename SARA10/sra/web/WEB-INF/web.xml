@@ -13,10 +13,6 @@
         <servlet-class>controller.AdministradoController</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>instrutorcontroller</servlet-name>
-        <servlet-class>controller.InstrutorController</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>funcionariocontroller</servlet-name>
         <servlet-class>controller.FuncionarioController</servlet-class>
     </servlet>
@@ -104,10 +100,6 @@
         <servlet-name>ArchivosController</servlet-name>
         <servlet-class>M_Controller.Archivos.ArchivosController</servlet-class>
     </servlet>
-    <servlet>
-        <servlet-name>narchivos</servlet-name>
-        <servlet-class>M_Controller.NArchivos</servlet-class>
-    </servlet>
     <servlet-mapping>
         <servlet-name>estadocontroller</servlet-name>
         <url-pattern>/estadocontroller</url-pattern>
@@ -119,10 +111,6 @@
     <servlet-mapping>
         <servlet-name>administradocontroller</servlet-name>
         <url-pattern>/administradocontroller</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>instrutorcontroller</servlet-name>
-        <url-pattern>/instrutorcontroller</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>funcionariocontroller</servlet-name>
@@ -197,10 +185,6 @@
         <url-pattern>/Equipo_Controller</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>Instrutor_Controller</servlet-name>
-        <url-pattern>/Instrutor_Controller</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
         <servlet-name>DController</servlet-name>
         <url-pattern>/DController</url-pattern>
     </servlet-mapping>
@@ -211,10 +195,6 @@
     <servlet-mapping>
         <servlet-name>ArchivosController</servlet-name>
         <url-pattern>/ArchivosController</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>narchivos</servlet-name>
-        <url-pattern>/narchivos</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

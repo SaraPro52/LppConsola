@@ -1,6 +1,7 @@
 *{
   margin:0;
   padding:0;
+  list-style: none;
   -webkit-box-sizing: border-box;
   -moz-box-sizing:border-box;
   -ms-box-sizing:border-box;
@@ -38,7 +39,7 @@ li{
 .btn-menu{
   display: none;
   padding: 20px;
-  background: #0d2c44;
+  background: #0d2c 44;
   color: #fff;
   height: 100%;
 }

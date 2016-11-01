@@ -1,8 +1,8 @@
-<div class="col-md-12">
+<div class="">
 
-    <section class="col-md-10">
-        <label class="col-md-12" id="lista"><h2>Crear lista de chequeo</h2></label>
-        <article class="col-md-6" id="item">
+    <section class="col-md-6">
+        <label class="" id="lista"><h2>Crear lista de chequeo</h2></label>
+        <article class="" id="item">
             <input type="hidden" value="1" id="tipoLis">
             <label>Nombre Lista</label>
             <input type="text" class="form-control" id="NombreL"  placeholder="Nombre de lista">
@@ -11,7 +11,7 @@
 
         </article>
 
-        <article class="col-md-8 col-md-offset-1" id="tabla">
+        <article class=" col-md-offset-1" id="tabla">
             <div id="SelectItemDiv">
                 <section  id=SelectItem>
                 </section>

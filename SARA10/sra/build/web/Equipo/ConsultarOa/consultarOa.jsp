@@ -1,8 +1,7 @@
-<div id="ContenedoraBody" class="col-md-12">
+<div id="ContenedoraBody">
     <link rel="stylesheet" href="css/estilo.css" media="screen" title="no title">
     <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.12/css/jquery.dataTables.css">
-
-    <section>
+    <section class="col-md-6">
         <article class="" id="tabla">
             <table class="table table-striped" id="tablaConsultarOa">
                 <thead>

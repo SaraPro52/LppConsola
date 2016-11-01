@@ -1,5 +1,5 @@
 <div id="contenedoraBody">
-    <section class="col-md-10">
+    <section class="col-md-6">
         <article class="col-md-12">
             <input id="listaSelec" value="1" type="hidden">
             <label class="col-md-6" id="LabelEquipo"></label>
