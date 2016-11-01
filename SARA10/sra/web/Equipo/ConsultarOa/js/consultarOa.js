@@ -1,8 +1,9 @@
-$(document).on('ready', function () {
+function consultar(idRol){
+    //la variable vista debe ser cambieada
     alert(idRol);
     var vista = $("#vista").val();
     var objet = {opcion: 5, url: "Crud_Controller", nombre: "consutarOa", tabla: "17", datos: [""], elegir: ["4","5","6"],
-        delimitador: "[{colum:2, operador:0, valor1:2}]", id: 0, opSelect: 6};
+        delimitador: "[{colum:2, operador:0, valor1:"+idRol+"}]", id: 0, opSelect: 6};
     
     var selector = $("#tablaConsultarOa");
     var ob = new $.Luna("Producto virtual", selector);
@@ -38,6 +39,8 @@ $(document).on('ready', function () {
         $('#myModal').modal('hide');
         objeto = {url: "Equipo_Controller", Opcion: 0, name: "cuerpo", vista: $("#vista").val(), nomLista: "Nombrelista",listaSele:this.id};
         obtenerP(objeto);
+        alert("Prueba  "+ this.id);
+        this.idLista = this.id;
     });
 
     function obtenerP(datos) {
@@ -63,7 +66,8 @@ $(document).on('ready', function () {
                 $("#cuerpo").append(body);
                 $("#Nombrelista").val(datos.nomLista);
                 $("#listaSelec").val(datos.listaSele);
-                var cabeza = ("<input id='equipo' value='" + datos.vista + "' type='hidden'>");
+                var cabeza = ("<input id='equipo' value='" + datos.vista + "' type='hidden'>");//cambiar las variables que estan en
+                //los impusts y ponerlos en una variable global
                 $("#header").append(cabeza);
                 break;
             case 'cabeza':
@@ -79,5 +83,6 @@ $(document).on('ready', function () {
                 break;
         }
     }
-});
-
+    
+};
+    
