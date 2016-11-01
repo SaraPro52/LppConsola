@@ -1,7 +1,6 @@
 $(document).on('ready', function () {
     console.log("Vivo??EquipoPrincipal");
     $('.menu li').click(function (e) {
-        console.log(this);
         objeto = {url: "Equipo_Controller", Opcion: this.value, name: 'cuerpo', vista: $("#vista").val()};
         obtenerP(objeto);
     });

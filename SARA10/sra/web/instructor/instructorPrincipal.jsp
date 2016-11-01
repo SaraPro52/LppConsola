@@ -9,10 +9,8 @@
         <link rel="stylesheet" href="css/estilo.css" media="screen" title="no title">
         <title>Instructor</title>
     </head>
-    <body>
-        <section>
-            
-            <div class="contenedor-menu">
+    <body class="col-md-12">  
+        <div class="contenedor-menu col-md-6">
                 <ul class="menu">
                     <li class=" activado"><a href="index.html"><i class="icono izquierda fa fa-home" aria-hidden="true"></i>Inicio</a></li>
                     <li><a href="#"><i class="icono izquierda fa fa-user-plus" aria-hidden="true"></i>Roles <i class=" icono derecha fa fa-chevron-down" aria-hidden="true"></i></a>
@@ -25,15 +23,8 @@
                     <li class="btntt" value="0"><a><i class="icono izquierda  fa fa-eye" aria-hidden="true"></i>Consultar objetos v.</a></li>
                 </ul>
             </div>
-            
-        </section>
-        <div id="link">
-        
-        </div>
-        <div id="cuerpo">
-
-            </div>
     </body>
+        
     <script type="text/javascript" src="js/jquery.js"></script>
     <script type="text/javascript" src="instructor/js/InstrutorPrincipal.js"></script>
     <script>
@@ -52,4 +43,11 @@
             location.replace('index.jsp');
         }
     </script>
+    <div id="cuerpo" class="col-md-9" >
+        </div>
+        <section>
+            <div id="link">
+            </div>
+    </body>
+        
 </html>

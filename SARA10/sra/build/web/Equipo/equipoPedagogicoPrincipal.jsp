@@ -21,7 +21,6 @@
                 </li>
                 <li class="activado" value="1"><a><i class="icono izquierda  fa fa-book" aria-hidden="true"></i>Crear lista chequeo</a></li>
                 <li class="activado" value="3"><a><i class="icono izquierda  fa fa-edit" aria-hidden="true"></i>Modificar Lista chequeo</a></li>
-                <li class="activado" value="0"><a><i class="icono izquierda  fa fa-check" aria-hidden="true"></i>Evaluar Objetos</a></li>
                 <li class="activado" value="2"><a><i class="icono izquierda  fa fa-eye" aria-hidden="true"></i>consultar objetos</a></li>
             </ul>
         </div>

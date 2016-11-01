@@ -1,6 +1,6 @@
-function consultar(idRol){
+
     //la variable vista debe ser cambieada
-    alert(idRol);
+   
     var vista = $("#vista").val();
     var objet = {opcion: 5, url: "Crud_Controller", nombre: "consutarOa", tabla: "17", datos: [""], elegir: ["4","5","6"],
         delimitador: "[{colum:2, operador:0, valor1:"+idRol+"}]", id: 0, opSelect: 6};
@@ -36,11 +36,12 @@ function consultar(idRol){
         }
     });
     $(document).on('click', '.btnclickca', function (e) {
+        var con= $(this);
         $('#myModal').modal('hide');
-        objeto = {url: "Equipo_Controller", Opcion: 0, name: "cuerpo", vista: $("#vista").val(), nomLista: "Nombrelista",listaSele:this.id};
+        objeto = {url: "Equipo_Controller", Opcion: 0, name: "cuerpo", nomLista: "Nombrelista",listaSele:con.val()};
+        console.log(objeto);    
+        idLista = con.val();
         obtenerP(objeto);
-        alert("Prueba  "+ this.id);
-        this.idLista = this.id;
     });
 
     function obtenerP(datos) {
@@ -83,6 +84,5 @@ function consultar(idRol){
                 break;
         }
     }
-    
-};
+
     

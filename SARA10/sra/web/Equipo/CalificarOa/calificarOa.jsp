@@ -6,18 +6,20 @@
             <label class="col-md-6" id="LabelVersion"></label>
             <label class="col-md-6" id="Nombrelista"></label>
             <div id="clone" class="col-md-8">
-                <label class="locura col-md-12"> </label>
-                <input class="col-md-6" type="radio" checked="checked"   name="validado" value="0"><label>No cumple</label><br>
-                <input class="col-md-6" type="radio" name="validado" value="1"><label>Cumple</label><br>
-                <label class="col-md-8" for="areaObservacion">Observaciones</label>
-                <textarea class="col-md-8 col-md-offset-3 observacion" id="areaObservacion" rows="1" cols="40"></textarea>
+                <div class="col-md-12">
+                    <input class="col-md-2 chex" type="checkbox" id="" value="">
+                    <label class="locura col-md-10"> </label></br>
+                    
+                    <label class="col-md-12" for="areaObservacion">Observaciones</label>
+                    <textarea class="form-control col-md-offset-3 textarea" id="areaObservacion" rows="2" cols="40" ></textarea>
+                </div>
             </div>
             <div class="col-md-8" id="divContainer">
 
             </div>
 
             <form class="col-md-5 col-md-offset-3" action="">
-                <input type="radio" id="Resultado" name="Resultado" value="1"> Aprovado<br>
+                <input type="radio" id="Resultado" name="Resultado" value="1" "> Aprovado<br>
                 <input type="radio" id="Resultado" name="Resultado" value="0"> Reprovado<br>
             </form>
             <div class="col-md-4 col-md-offset-1">
@@ -29,8 +31,7 @@
     <script type="text/javascript" src="js/jquery.cecily.js"></script>
     <script type="text/javascript" src="Equipo/CalificarOa/js/calificarOa.js"></script>
     <script>
-        this.calificarPV(this.idLista);
-        alert("Calificar" + idLista);
-        
+        calificarPV(this.idLista);
+
     </script>
 </div>     

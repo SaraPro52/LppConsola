@@ -114,10 +114,12 @@ jQuery.Luna = function (Datos, selector) {
                 var j= $("#divContainer");
                 for (var i = 0; i < json.length; i++) {
                     var conte = $("#clone").clone();
-                    conte.find('.observacion').text(json[i].Id_Item_Lista);
+                    conte.find('.chex').attr('value', json[i].Id_Item_Lista);
+                    conte.find('.textarea').attr('id',json[i].Id_Item_Lista);
+
                     conte.find('.locura').text(json[i].Des_Item_Lista);
                     conte.children().appendTo(j);
-                }
+                }   
                 break;
             case "AutoComplet":
                 var j = Object.keys(json[0]);
@@ -151,7 +153,7 @@ jQuery.Luna = function (Datos, selector) {
                     ]);
                 }
                 break;
-            case "Lista":
+            case "Lista":   
                 for (var i = 0; i < json.length; i++) {
                     yu = [json[i].Nom_Lista_Chequeo + "$$$" + json[i].Des_Lista_Chequeo];
                     table = selector.dataTable().fnAddData([

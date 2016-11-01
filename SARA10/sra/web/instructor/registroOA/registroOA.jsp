@@ -11,7 +11,7 @@
         <title>Subir OA</title>
     </head>
     <body>
-        <section>
+        <section class="col-md-6">
             <label><h3>Subir producto virtual</h3></label>
             <article>
                 <form id = "formulario1">
@@ -51,7 +51,7 @@
                     </div>
                 </form>
             </article>
-            <article class="col-md-6">
+            <article>
                 <div>
                     <label>Formato del archivo</label>
                     <select class="form-control" id="formato" value="Valueblanco">
@@ -70,7 +70,7 @@
                     
                 </div>
                     <div> 
-                        <div class="col-md-12">
+                        <div class="">
                             <label for="Imagen">Imagen del documento</label>  
                             <input type="file" size="60" id="Imagen" name="myfile" class="input-file">
                         </div>
