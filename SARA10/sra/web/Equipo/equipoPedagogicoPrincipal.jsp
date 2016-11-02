@@ -26,18 +26,6 @@
         </div>
         <input id="vista" value="0" type="hidden">
         <div id="cuerpo" >
-            <article class="col-md-8 col-md-offset-1" id="tabla">
-                <table class="table table-striped" id="tablaNotificacion">
-                    <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>Visualizar</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    </tbody>
-                </table>
-            </article>
         </div>
     </body>
     <script type="text/javascript" src="js/jquery.js"></script>
