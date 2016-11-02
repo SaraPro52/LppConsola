@@ -7,7 +7,7 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" media="screen" title="no title">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="css/estilo.css" media="screen" title="no title">
-        <title>Equipo Tecnico</title>
+        <title>Equipo Pedagogicco</title>
     </head>
     <body class="col-md-12">
         <div class="contenedor-menu ">
@@ -26,26 +26,39 @@
         </div>
         <input id="vista" value="0" type="hidden">
         <div id="cuerpo" >
+            <article class="col-md-8 col-md-offset-1" id="tabla">
+                <table class="table table-striped" id="tablaNotificacion">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Visualizar</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </article>
         </div>
     </body>
     <script type="text/javascript" src="js/jquery.js"></script>
     <script type="text/javascript" src="js/sesion.js"></script>
     <script>
-        var nomUser =   '<%= session.getAttribute("nomUser") %>';
-        var idUser =    '<%= session.getAttribute("idUser") %>';
-        var idRol =     '<%= session.getAttribute("idRol") %>';
-        var idCentro =  '<%= session.getAttribute("idCentro") %>';
-        if(idUser != null && idRol != null && nomUser != null && idCentro != null){
-          alert(nomUser);
-          alert(idUser);
-          alert(idRol);
-          alert(idCentro);
-          $("#link").append("<a href='index.jsp?cerrar=true'><h5>Cerrar Sesion</h5></a>");
-        }else {
-          location.replace('index.jsp');
-        };
+        var nomUser = '<%= session.getAttribute("nomUser")%>';
+        var idUser = '<%= session.getAttribute("idUser")%>';
+        var idRol = '<%= session.getAttribute("idRol")%>';
+        var idCentro = '<%= session.getAttribute("idCentro")%>';
+        if (idUser != null && idRol != null && nomUser != null && idCentro != null) {
+            alert(nomUser);
+            alert(idUser);
+            alert(idRol);
+            alert(idCentro);
+            $("#link").append("<a href='index.jsp?cerrar=true'><h5>Cerrar Sesion</h5></a>");
+        } else {
+            location.replace('index.jsp');
+        }
+        ;
     </script>
 </html>
 =======
-    <script type="text/javascript" src="Equipo/js/Principalequipo.js"></script>  
+<script type="text/javascript" src="Equipo/js/Principalequipo.js"></script>  
 </html>
