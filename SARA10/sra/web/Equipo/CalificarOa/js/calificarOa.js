@@ -10,33 +10,31 @@ function calificarPV(idLista) {
 
 }
 $("#btnEvaluar").click(function () {
-    var resultado;
-    var itemsOk = [];
-    var itemsFail = [];
-    var ite = [];
+    var campo="";
     var object = {itemsText: []};
     $("input:checkbox:checked").each(function () {
-        var campo = $(this).val();
+        campo = $(this).val();
         if (campo !== "") {
-            itemsOk.push($(this).val());
-            ite.push($(this).val());
+            object.itemsText.push({
+                id: campo,
+                valor: 1,
+                text: $("#" + campo).val()
+            });
         }
     });
     $("input:checkbox:not(:checked)").each(function () {
-        var campo = $(this).val();
+        campo = $(this).val();
         if (campo !== "") {
-            itemsFail.push($(this).val());
-            ite.push($(this).val());
+            object.itemsText.push({
+                id: campo,
+                valor: 0,
+                text: $("#" + campo).val()
+            });
         }
     });
-    for (var i = 0; i < ite.length; i++) {
-        object.itemsText.push({id: ite[i], text: $("#" + ite[i]).val()});
-    }
 
+    console.log($("#ObservacionCompleta").val());
     console.log(object);
-    console.log($('input[name=Resultado]:checked', '#myForm').val());
-    console.log(itemsOk);
-    console.log(itemsFail);
-
+    console.log($('input[name=Resultado]:checked', '#res').val());
 });
     

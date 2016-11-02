@@ -9,7 +9,7 @@
                 <div class="col-md-12">
                     <input class="col-md-2 chex" type="checkbox" id="" value="">
                     <label class="locura col-md-10"> </label></br>
-                    
+
                     <label class="col-md-12" for="areaObservacion">Observaciones</label>
                     <textarea class="form-control col-md-offset-3 textarea" id="areaObservacion" rows="2" cols="40" ></textarea>
                 </div>
@@ -17,14 +17,18 @@
             <div class="col-md-8" id="divContainer">
 
             </div>
-
-            <form class="col-md-5 col-md-offset-3" id="res">
-                <input type="radio" id="Resultado" name="Resultado" value="1"> Aprovado<br>
-                <input type="radio" id="Resultado" name="Resultado" value="0" checked> Reprovado<br>
-            </form>
-            <div class="col-md-4 col-md-offset-1">
-                <button type="button" class="btn btn-block" id="btnEvaluar">Evaluar</button>
+            <div class="col-md-8">
+                <form class="col-md-12" id="res">
+                    <input type="radio" id="Resultado" name="Resultado" value="1"> Aprovado<br>
+                    <input type="radio" id="Resultado" name="Resultado" value="0" checked> Reprovado<br>
+                </form>
+                <label class="col-md-12">Observacion general</label>
+                <textarea class="form-control textarea" id="ObservacionCompleta" rows="2" cols="40" ></textarea>
+                <div class="col-md-12 col-md-offset-2">
+                    <button type="button" class="btn btn-block" id="btnEvaluar">Evaluar</button>
+                </div>                
             </div>
+
         </article>
     </section>
     <script type="text/javascript" src="js/jquery.js"></script>

@@ -22,7 +22,7 @@
                 </li>
                 <li class="btntt" value="0"><a><i class=" icono izquierda fa fa-area-chart" aria-hidden="true"></i>Consultar estadisticas</a></li>
                 <li class="btntt" value="1"><a><i class=" icono izquierda fa fa-check" aria-hidden="true"></i>Habilitar producto virtual</a></li>
-                <li class="btntt" value="2"><><i class=" icono izquierda fa fa-credit-card-alt" aria-hidden="true"></i>Asignar roles</a></li>
+                <li class="btntt" value="2"><a><i class=" icono izquierda fa fa-credit-card-alt" aria-hidden="true"></i>Asignar roles</a></li>
                 <li class="btntt" value="3"><a><i class=" icono izquierda fa fa-edit" aria-hidden="true"></i>Crear categorias</a></li>
             </ul>
         </div>
@@ -38,12 +38,7 @@
         var idUser = '<%= session.getAttribute("idUser")%>';
         var idRol = '<%= session.getAttribute("idRol")%>';
         var idCentro = '<%= session.getAttribute("idCentro")%>';
-
         if (idUser != null && idRol != null && nomUser != null && idCentro != null) {
-            alert(nomUser);
-            alert(idUser);
-            alert(idRol);
-            alert(idCentro);
             $("#link").append("<a href='index.jsp?cerrar=true'><h5>Cerrar Sesion</h5></a>");
         } else {
             location.replace('index.jsp');
