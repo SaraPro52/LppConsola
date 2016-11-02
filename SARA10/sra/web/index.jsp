@@ -23,16 +23,16 @@
                     </div>
                     <div class="collapse navbar-collapse ubicacionLogin" id="bs-example-navbar-collapse-1">
                         <form action="sesion_controller" method="POST">
-                          <div class="form-group col-md-3">
-                              <label for="user">Usuario</label>
-                              <input type="text" class="form-control" placeholder="Usuario" name="user" id="user">
-                          </div>
-                          <div class="form-group col-md-3">
-                              <label for="pwd">Contraseña</label>
-                              <input type="password" class="form-control" placeholder="Contraseña" name="pwd" id="pwd">
-                          </div>
-                          <button type="submit" class="btn btn-default ubicacionLoginBoton" id="btnLogin">Iniciar sesión</button>
-                      </form>
+                            <div class="form-group col-md-3">
+                                <label for="user">Usuario</label>
+                                <input type="text" class="form-control" placeholder="Usuario" name="user" id="user">
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label for="pwd">Contraseña</label>
+                                <input type="password" class="form-control" placeholder="Contraseña" name="pwd" id="pwd">
+                            </div>
+                            <button type="submit" class="btn btn-default ubicacionLoginBoton" id="btnLogin">Iniciar sesión</button>
+                        </form>
                     </div>
                 </div>
             </nav>
@@ -69,10 +69,6 @@
             </div>
         </div>
 
-        <!-- ESPACIO QUE ES SARAPRO-->
-
-
-
         <div id="queessara" class=" col-md-12 queEstilo">
             <img src="imagenes/preguntaS.png" class="queimagen">
             <h2 class="titleSARA">¿Que es SARApro?</h2>
@@ -107,6 +103,12 @@
                     y las tecnologias de la informacion de la regional distrito capital
                 </p>
                 <table class="table">
+                    <form action="Equipo_Controller" method="post" class="form-control">
+                        <select name="Opcion" value="blanco" >
+                            <option value="2">Imagenes</option>
+                        </select>
+                        <input type="submit" name="btnenviar" value="Aceptar">
+                    </form>
                     <tbody>
                         <tr>
                             <td>

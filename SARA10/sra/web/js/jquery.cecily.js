@@ -138,7 +138,7 @@ jQuery.Luna = function (Datos, selector) {
                         i + 1,
                         json[i].Conte_Notificacion,
                         json[i].Fecha_Envio,
-                        "<button  type='button' id='" + json[i].Ides_Proceso + "' class='btn btn-info btn-lg' data-toggle='modal' data-target='#myModal'>Evaluar Producto</button>"
+                        "<button  type='button' id='" + json[i].Ides_Proceso + "' class='btn btn-info btn-lg btnEvaluar'>Evaluar Producto</button>"
                     ]);
                 }
                 break;
