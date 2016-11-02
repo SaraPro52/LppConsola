@@ -18,9 +18,9 @@
 
             </div>
 
-            <form class="col-md-5 col-md-offset-3" action="">
-                <input type="radio" id="Resultado" name="Resultado" value="1" "> Aprovado<br>
-                <input type="radio" id="Resultado" name="Resultado" value="0"> Reprovado<br>
+            <form class="col-md-5 col-md-offset-3" id="res">
+                <input type="radio" id="Resultado" name="Resultado" value="1"> Aprovado<br>
+                <input type="radio" id="Resultado" name="Resultado" value="0" checked> Reprovado<br>
             </form>
             <div class="col-md-4 col-md-offset-1">
                 <button type="button" class="btn btn-block" id="btnEvaluar">Evaluar</button>

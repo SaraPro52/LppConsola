@@ -10,6 +10,7 @@ function calificarPV(idLista) {
 
 }
 $("#btnEvaluar").click(function () {
+    var resultado;
     var itemsOk = [];
     var itemsFail = [];
     var ite = [];
@@ -31,8 +32,9 @@ $("#btnEvaluar").click(function () {
     for (var i = 0; i < ite.length; i++) {
         object.itemsText.push({id: ite[i], text: $("#" + ite[i]).val()});
     }
+
     console.log(object);
-    console.log($("#Resultado").val());
+    console.log($('input[name=radioName]:checked', '#myForm').val());
     console.log(itemsOk);
     console.log(itemsFail);
 
