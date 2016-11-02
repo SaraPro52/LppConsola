@@ -34,7 +34,7 @@ $("#btnEvaluar").click(function () {
     }
 
     console.log(object);
-    console.log($('input[name=radioName]:checked', '#myForm').val());
+    console.log($('input[name=Resultado]:checked', '#myForm').val());
     console.log(itemsOk);
     console.log(itemsFail);
 
