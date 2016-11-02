@@ -27,7 +27,7 @@ public class ProductoVirtual_Controller extends HttpServlet {
              */
             int option = Integer.parseInt(request.getParameter("opcion"));
             String[] infoVersion = request.getParameterValues("info[]");
-            String[] arrayFun = request.getParameterValues("arrayFun");
+            String[] arrayFun = request.getParameterValues("arrayFun[]");
             String[] arrayTemas = request.getParameterValues("arrayTemas[]");
             String imagenNom = request.getParameter("imagenNom");
             String archivoNom = request.getParameter("archivoNom");
@@ -70,7 +70,7 @@ public class ProductoVirtual_Controller extends HttpServlet {
                     }
                     break;
                 case 3:
-                    String[] correccion = request.getParameterValues("correcion");
+                    String[] correccion = request.getParameterValues("correcion[]");
                     if (ver.CorreccionVersion(correccion)) {
                         respuesta.println("Si Registro");
                     } else {
@@ -78,8 +78,8 @@ public class ProductoVirtual_Controller extends HttpServlet {
                     }
                     break;
                 case 4:
-                    String[] aprobacion = request.getParameterValues("aprobacion");
-                    if (ver.CorreccionVersion(aprobacion)) {
+                    String[] aprobacion = request.getParameterValues("aprobacion[]");
+                    if (ver.AprobarPV(aprobacion)) {
                         respuesta.println("Si Registro");
                     } else {
                         respuesta.println("No Registro");

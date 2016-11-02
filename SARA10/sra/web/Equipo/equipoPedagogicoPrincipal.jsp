@@ -31,7 +31,6 @@
     <script type="text/javascript" src="js/jquery.js"></script>
     <script type="text/javascript" src="js/sesion.js"></script>
     <script>
-<<<<<<< HEAD
         var nomUser =   '<%= session.getAttribute("nomUser") %>';
         var idUser =    '<%= session.getAttribute("idUser") %>';
         var idRol =     '<%= session.getAttribute("idRol") %>';
@@ -41,24 +40,8 @@
         }else {
           location.replace('index.jsp');
         };
-=======
-        var nomUser = '<%= session.getAttribute("nomUser")%>';
-        var idUser = '<%= session.getAttribute("idUser")%>';
-        var idRol = '<%= session.getAttribute("idRol")%>';
-        var idCentro = '<%= session.getAttribute("idCentro")%>';
-        if (idUser != null && idRol != null && nomUser != null && idCentro != null) {
-            alert(nomUser);
-            alert(idUser);
-            alert(idRol);
-            alert(idCentro);
-            $("#link").append("<a href='index.jsp?cerrar=true'><h5>Cerrar Sesion</h5></a>");
-        } else {
-            location.replace('index.jsp');
-        }
-        ;
->>>>>>> 156a3d64ea60db4d58eb59db229125f27c07164c
+
     </script>
 </html>
-=======
 <script type="text/javascript" src="Equipo/js/Principalequipo.js"></script>  
 </html>

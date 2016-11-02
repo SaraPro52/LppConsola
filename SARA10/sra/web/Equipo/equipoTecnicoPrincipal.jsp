@@ -58,9 +58,6 @@
     var idUser = '<%= session.getAttribute("idUser")%>';
     var idRol = '<%= session.getAttribute("idRol")%>';
     var idCentro = '<%= session.getAttribute("idCentro")%>';
-    var idLista = 0;
-    var idVersion = 0;
-    var idTipoItem = 0;
 
     if (idUser != null && idRol != null && nomUser != null && idCentro != null) {
         $("#link").append("<a href='index.jsp?cerrar=true'><h5>Cerrar Sesion</h5></a>");

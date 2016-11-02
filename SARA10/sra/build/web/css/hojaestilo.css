@@ -1,0 +1,40 @@
+
+
+.thumb {
+  height: 75px;
+  border: 1px solid #000;
+  margin: 10px 5px 0 0;
+}
+label.accordion {
+   background-color: #99B3DF;/*Color cuando paso el mouse pro la section*/
+   color: #444;
+   cursor: pointer;
+   padding: 18px;
+   width: 100%;
+   text-align: left;
+   border: none;
+   outline: none;
+   transition: 0.4s;
+}
+label.accordion.active, button.accordion:hover {
+   background-color: #7693C6;/*Color cuando la section esta selecionada*/
+}
+div.panel {
+   padding: 0 18px;
+   background-color: white;
+   display: none;
+}
+div.panel.show {
+   display: block;
+}
+label.accordion:after {
+    content: '\02795'; /* Unicode character for "plus" sign (+) */
+    font-size: 13px;
+    color: #777;
+    float: right;
+    margin-left: 5px;
+}
+label.accordion.active:after {
+    content: "\2796"; /* Unicode character for "minus" sign (-) */
+}
+

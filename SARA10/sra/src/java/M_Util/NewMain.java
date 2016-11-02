@@ -1186,12 +1186,16 @@ public class NewMain {
 //        }
 //            
 //        new Elomac(1,1).Prueba(2);
-        String[] numsTablas = {"0", "1", "2", "3"};
-        String delimitador = "[{colum:4,operador:0,valor1:1}]";
-
-        Elomac e = new Elomac(9, 2);
-
-        System.out.println(e.Select(numsTablas, delimitador));
+//        String[] numsTablas = {"0", "1", "2", "3"};
+//        String delimitador = "[{colum:4,operador:0,valor1:1}]";
+//
+//        Elomac e = new Elomac(9, 2);
+//
+//        System.out.println(e.Select(numsTablas, delimitador));
+        
+        String[] e = {"4","2"};
+        Version v = new Version();
+        v.AprobarPV(e);
 
     }
 }
