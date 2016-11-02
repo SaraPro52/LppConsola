@@ -24,6 +24,10 @@
                 </form>
                 <label class="col-md-12">Observacion general</label>
                 <textarea class="form-control textarea" id="ObservacionCompleta" rows="2" cols="40" ></textarea>
+                <div id="dFecha">
+                    <label>Fecha Vigencia</label>
+                    <input type="text" id="iFecha" name="iFecha">
+                </div>
                 <div class="col-md-12 col-md-offset-2">
                     <button type="button" class="btn btn-block" id="btnEvaluar">Evaluar</button>
                 </div>                
@@ -34,8 +38,11 @@
     <script type="text/javascript" src="js/jquery.js"></script>
     <script type="text/javascript" src="js/jquery.cecily.js"></script>
     <script type="text/javascript" src="Equipo/CalificarOa/js/calificarOa.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script>
         calificarPV(this.idLista);
-
+          $( function() {
+            $( "#iFecha" ).datepicker();
+          } );
     </script>
 </div>     

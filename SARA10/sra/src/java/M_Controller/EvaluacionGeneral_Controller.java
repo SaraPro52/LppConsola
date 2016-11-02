@@ -19,7 +19,7 @@ public class EvaluacionGeneral_Controller extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
 
-            int option = Integer.parseInt(request.getParameter("Opcion"));
+            int option = Integer.parseInt(request.getParameter("opcion"));
             String[] infoEva = request.getParameterValues("infoEva[]");
             String[] infoItem = request.getParameterValues("infoItem[]");
             
@@ -29,9 +29,10 @@ public class EvaluacionGeneral_Controller extends HttpServlet {
             
             switch(option){
                 case 1:
-                    if(evaluacion.RegistrarEvaluacion(infoEva, infoItem)){
+                    try {
+                        evaluacion.RegistrarEvaluacion(infoEva, infoItem);
                         respuesta.println("Si Registro");
-                    }else{
+                    } catch (Exception e) {
                         respuesta.println("No Registro");
                     }
                     break;

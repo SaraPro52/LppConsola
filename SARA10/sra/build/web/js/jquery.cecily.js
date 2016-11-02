@@ -114,9 +114,9 @@ jQuery.Luna = function (Datos, selector) {
                 var j= $("#divContainer");
                 for (var i = 0; i < json.length; i++) {
                     var conte = $("#clone").clone();
-                    conte.find('.chex').attr('value', json[i].Id_Item_Lista);
-                    conte.find('.textarea').attr('id',json[i].Id_Item_Lista);
-
+                    conte.find('.chex').attr('value', json[i].Id_Detalles_Lista);//SE cambio el id
+                    conte.find('.textarea').attr('id',json[i].Id_Detalles_Lista);
+                    
                     conte.find('.locura').text(json[i].Des_Item_Lista);
                     conte.children().appendTo(j);
                 }   

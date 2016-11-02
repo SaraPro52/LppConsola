@@ -5,6 +5,8 @@
     <head>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" media="screen" title="no title">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" media="screen" title="no title">
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+        <link rel="stylesheet" href="/resources/demos/style.css"> 
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="css/estilo.css" media="screen" title="no title">
         <title>Equipo Tecnico</title>
@@ -45,6 +47,7 @@
     var idRol = '<%= session.getAttribute("idRol")%>';
     var idCentro = '<%= session.getAttribute("idCentro")%>';
     var idLista = 0;
+    var idVersion = 0;
 
     if (idUser != null && idRol != null && nomUser != null && idCentro != null) {
         $("#link").append("<a href='index.jsp?cerrar=true'><h5>Cerrar Sesion</h5></a>");

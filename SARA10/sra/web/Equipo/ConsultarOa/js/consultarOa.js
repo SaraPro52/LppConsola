@@ -14,6 +14,7 @@ ob.ajax(objet, selector);
 var rol = $("#vista").val() + 2; 
 $(document).on('click', '.btnEvaluar', function (e) {
     console.log(this.id);
+    idVersion = this.id;
     $('#myModal').modal('show');
     selector = $("#tablaListaChequeo");
     var objet = {opcion: 5, nombre: "ConsultarLista", url: "Crud_Controller", tabla: "12", datos: [""], elegir: ["0", "1", "2", "3"],
