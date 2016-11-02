@@ -182,7 +182,7 @@ jQuery.Luna = function (Datos, selector) {
                         json[i].Nom_P_Virtual,
                         json[i].Num_Version,
                         json[i].Fecha_Vigencia.substring(0, 11),
-                        "<button id='" + json[i].Id_Ciudad + "' value='H' class='btnclick btn btn-info'>Habilitar</button>"
+                        "<button id='" + json[i].Id_Version + "' value='H' class='btnclick btn btn-info'>Habilitar</button>"
                     ]);
                 }
                 break;

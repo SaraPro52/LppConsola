@@ -36,10 +36,6 @@
         var idRol =     '<%= session.getAttribute("idRol") %>';
         var idCentro =  '<%= session.getAttribute("idCentro") %>';
         if(idUser != null && idRol != null && nomUser != null && idCentro != null){
-          alert(nomUser);
-          alert(idUser);
-          alert(idRol);
-          alert(idCentro);
           $("#link").append("<a href='index.jsp?cerrar=true'><h5>Cerrar Sesion</h5></a>");
         }else {
           location.replace('index.jsp');

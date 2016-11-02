@@ -1,4 +1,5 @@
 package M_Util;
+
 import M_Controller.Archivos.ArchivosController;
 import M_Modelo.Categoria;
 import M_Modelo.Version;
@@ -1166,7 +1167,6 @@ public class NewMain {
 //                        ArchivosController arch = new ArchivosController();
 //                        String nruta = "nevoDoc";
 //                        arch.CambiarNombre("GUIA DE APRENDIZAJE Calidad II - Razones, Proporciones, Porcentajes(1)", nruta, "A");
-
 //            String usuario = "1019133595";
 //            String contraseña = "con1";
 //            
@@ -1186,8 +1186,12 @@ public class NewMain {
 //        }
 //            
 //        new Elomac(1,1).Prueba(2);
-            
+        String[] numsTablas = {"0", "1", "2", "3"};
+        String delimitador = "[{colum:4,operador:0,valor1:1}]";
 
-            
+        Elomac e = new Elomac(9, 2);
+
+        System.out.println(e.Select(numsTablas, delimitador));
+
     }
 }
