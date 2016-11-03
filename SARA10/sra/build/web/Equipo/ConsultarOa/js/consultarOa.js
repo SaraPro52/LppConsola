@@ -3,7 +3,8 @@
 
 var vista = $("#vista").val();
 var objet = {opcion: 5, url: "Crud_Controller", nombre: "consutarOa", tabla: "17", datos: [""], elegir: ["4", "5", "6"],
-    delimitador: "[{colum:2, operador:0, valor1:" + idRol + "}]", id: 0, opSelect: 6};
+    delimitador: "[{colum:2, operador:0, valor1:" + idRol + ",añadir:0},{colum:8,operador:0,valor1:"+idCentro+",añadir:0},\n\
+                   {colum:0,operador:0,valor1:"+idUser+"}]", id: 0, opSelect: 6};
 
 var selector = $("#tablaConsultarOa");
 var ob = new $.Luna("Producto virtual", selector);

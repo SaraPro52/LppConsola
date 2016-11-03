@@ -23,6 +23,18 @@
                     <li class="btntt" value="0"><a><i class="icono izquierda  fa fa-eye" aria-hidden="true"></i>Consultar objetos v.</a></li>
                 </ul>
             </div>
+        <article class="col-md-8 col-md-offset-1" id="tabla">
+            <table class="table table-striped" id="tablaNotificacion">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Visualizar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </article>
     </body>
         
     <script type="text/javascript" src="js/jquery.js"></script>
@@ -34,10 +46,6 @@
         var idCentro = '<%= session.getAttribute("idCentro")%>';
 
         if (idUser != null && idRol != null && nomUser != null && idCentro != null) {
-            console.log(nomUser);
-            console.log(idUser);
-            console.log(idRol);
-            console.log(idCentro);
             $("#link").append("<a href='index.jsp?cerrar=true'><h5>Cerrar Sesion</h5></a>");
         } else {
             location.replace('index.jsp');
