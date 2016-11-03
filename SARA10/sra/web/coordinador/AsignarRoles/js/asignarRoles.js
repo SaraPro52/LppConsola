@@ -1,5 +1,7 @@
 $(document).on('ready', function () {
-    var objet = {opcion: 5 , url :"Crud_Controller",nombre: "Habilitar",tabla:"9",datos :[""],elegir:[""],id : 0, opSelect: 1};//HABILITAR_P
+    var objet = {opcion: 5 , url :"Crud_Controller",nombre: "Habilitar",tabla:"20",datos :[""],
+        elegir:["0","1","2","4","6","8"],
+        delimitador:"[{colum:3,operador:0,valor1:"+idCentro+"},]",id : 0, opSelect:6};
     var selector = $("#tablaARoles"); 
     var ob = new $.Luna("usuario", selector);
     ob.Vivo("Asignar Roles");
