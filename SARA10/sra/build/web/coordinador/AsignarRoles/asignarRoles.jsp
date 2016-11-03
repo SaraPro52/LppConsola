@@ -17,10 +17,13 @@
                     <thead>
                         <tr>
                             <th> # </th>
-                            <th></th>
-                            <th></th>
-                            <th></th>  
-                            <th></th>   
+                            <th>Nombre Funcionario</th>
+                            <th>Cargo</th>
+                            <th>Area</th>  
+                            <th>Centro</th>
+                            <th>Ciudad</th>
+                            <th>Rol</th>
+                            <th>Asignar</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -29,6 +32,7 @@
             </article>
             <article class="col-md-12" id="lista">
         </section>
+        
     </body>
     <script type="text/javascript" src="js/jquery.js"></script>
     <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.12/js/jquery.dataTables.js"></script>

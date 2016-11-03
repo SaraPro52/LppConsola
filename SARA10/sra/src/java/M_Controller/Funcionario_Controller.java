@@ -36,12 +36,20 @@ public class Funcionario_Controller extends HttpServlet {
                     try {
                         if (new Funcionario().RegistrarFuncionario(fun)) {
                             CorreoController jj = new CorreoController();
-                            jj.sendEmail("Sara ", "Buen dia ::::::: eres un nuevo funcionario de Sara pro\n Tu usuario es:"+fun[2]+" \ttu contraseña: "+fun[8]+"", fun[5]);
+                            jj.sendEmail("Sara ", "Buen dia ::::::: es un nuevo funcionario de Sara pro\n Su usuario es:"+fun[2]+" \tSu contraseña: "+fun[8]+"", fun[5]);
                             respuesta.println("Si Registro");
 
                         } else {
                             respuesta.println("No Registro");
                         }
+                    } catch (Exception e) {
+                        respuesta.println(e.getMessage());
+                    }
+                    break;
+                case 2:
+                    String centro = request.getParameter("centro");
+                    try {
+                        respuesta.println(new Funcionario().ListaAsignarRoles(centro));
                     } catch (Exception e) {
                         respuesta.println(e.getMessage());
                     }

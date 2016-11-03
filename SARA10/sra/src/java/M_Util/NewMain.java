@@ -2,10 +2,12 @@ package M_Util;
 
 import M_Controller.Archivos.ArchivosController;
 import M_Modelo.Categoria;
+import M_Modelo.Funcionario;
 import M_Modelo.Version;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
+import java.util.logging.Logger;
 import org.json.JSONException;
 import javax.script.ScriptException;
 import org.json.JSONArray;
@@ -1192,10 +1194,13 @@ public class NewMain {
 //        Elomac e = new Elomac(9, 2);
 //
 //        System.out.println(e.Select(numsTablas, delimitador));
-        
-        String[] e = {"4","2"};
-        Version v = new Version();
-        v.AprobarPV(e);
+//        
+//        String[] e = {"4","2"};
+//        Version v = new Version();
+//        v.AprobarPV(e);
 
+        System.out.println(new Funcionario().ListaAsignarRoles("1"));
+            
+       
     }
 }
