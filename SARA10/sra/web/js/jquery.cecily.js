@@ -244,6 +244,7 @@ jQuery.Luna = function (Datos, selector) {
             case "AsignarRol":
 
                 for (var i = 0; i < json.length; i++) {
+                    var select =("' name='select'><option value='1'>Intructor</option><option value='2'>Equipo Tecnico</option><option value='3'>Equipo Pedagogico</option></select>");
                     table = $("#tablaARoles").dataTable().fnAddData([
                         i + 1,
                         json[i].NombreCompleto,
@@ -251,18 +252,11 @@ jQuery.Luna = function (Datos, selector) {
                         json[i].Nom_Area,
                         json[i].Nom_Centro,
                         json[i].Nom_Ciudad,
-                        "<select id='" + json[i].Id_Funcionario + "' name='select'><option value='1'>Intructor</option><option value='2'>Equipo Tecnico</option><option value='3'>Equipo Pedagogico</option></select>",
+                        "<select id='" + json[i].Id_Funcionario + select,
                         "<button id='" + json[i].Id_Funcionario + "' class='btnclick btn btn-success botonclick'value='A' >Asignar</button>"
-
                     ]);
-
                 }
                 break;
         }
     }
 };
-//"<select id='"+json[i].Id_Funcionario+"' name='select'></select><script>\n\
-//                        \n\""+for(var j = 0; j < json1.length;j++){
-//                            $('#'+json[i].Id_Funcionario+'').append("<option value='"+json1[j].Id_Rol+"'>"+json1[j].Nom_Rol+"</option>");
-//                        }
-//                        +"</script>"
