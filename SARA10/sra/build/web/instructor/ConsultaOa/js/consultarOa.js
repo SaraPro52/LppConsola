@@ -4,10 +4,9 @@ $(document).on('ready', function () {
         {Titulo: "kira", Autores: "valeM", FechaPublicacion: "31/11/1234", Descripcion: "Esta es una prueba 2;)", IdOa: 2},
         {Titulo: "kiras", Autores: "valeM", FechaPublicacion: "31/11/1234", Descripcion: "Esta es una prueba 2;)", IdOa: 2}
     ];
-    var nombre = "carga";
-
-    objeto = {Opcion: 3, url: "programafor", nombre: "Formacion"};
-    obtenerDatos(objeto);
+    var nombre = "ConsOaP";
+    var datos= $("#resultados");
+    cargarOa(objeto, nombre,datos);
     var constan = true;
     $("#BusquedaAvanzada").on('click', function () {
         if (constan == true) {
@@ -20,37 +19,7 @@ $(document).on('ready', function () {
             constan = true;
         }
     });
-    function cargarOa(Datos, nombre) {
-        switch (nombre) {
-            case "carga":
-                var oAItem;
-                oAItem = $("#formulario1").clone();
-                oAItem.find("#TituloOa").text(Datos.Titulo);
-                oAItem.find("#AutoresOa").text(Datos.Autores);
-                oAItem.find("#FechaPublicacionOa").text(Datos.FechaPublicacion);
-                oAItem.find("#DescripcionOa").text(Datos.Descripcion);
-                oAItem.find("#BtnDescargar").val(Datos.IdOa);
-                oAItem.children().appendTo("#resultados");
-                break;
-            case "Titulo":
-                var json = $(Datos).map(function () {
-                    return {value: this.Nom_P_Virtual, id: this.Id_Formato}
-                }).get();
-                $("#txtBuscar").autocomplete({
-                    source: json,
-                    minLength: 2
-                });
-                break;
-            case "Formacion":
-                for (var i = 0; i < Datos.length; i++) {
-                    $("#Formacion").append($('<option>', {
-                        value: Datos[i].Id_Programa,
-                        text: Datos[i].Nom_Programa
-                    }));
-                }
-                break;
-        }
-    }
+    
     $("#Categoria").on('change', function () {
         if ($("#Categoria").val() == "A0") {
             $("#CategoriaTem").hide();
@@ -64,7 +33,6 @@ $(document).on('ready', function () {
     $(document).on('change', '.clickformacion', function (e) {
         var obj = $(this);
         console.log(obj.val());
-        var objeto = {id: obj, url: ""};
 
     });
 
@@ -87,22 +55,6 @@ $(document).on('ready', function () {
         var objeto = {valor: this.id, id: estrella.val()};
         console.log(objeto);
     });
-    function obtenerDatos(datos) {
-        $.ajax({
-            url: datos.url,
-            type: 'POST',
-            async: true,
-            cache: false,
-            datatype: 'json',
-            data: datos,
-            success: function (json) {
-                //console.log(json);
-                cargarOa(json, datos.nombre);
-            },
-            error: function () {
-                alert("Disculpa, pero existe un error :/");
-            }
-        });
-    }
+
 });
 

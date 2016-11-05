@@ -26,7 +26,7 @@
                             <th>Asignar</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="bus">
                     </tbody>
                 </table>
             </article>

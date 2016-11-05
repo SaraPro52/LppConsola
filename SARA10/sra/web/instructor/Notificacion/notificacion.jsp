@@ -22,8 +22,6 @@
                 </tbody>
             </table>
         </article>
-        
-
     </body>
     <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.12/js/jquery.dataTables.js"></script>
     <script type="text/javascript" src="js/bootstrap-modal.js"></script>

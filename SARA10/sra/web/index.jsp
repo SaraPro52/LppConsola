@@ -103,8 +103,8 @@
                     y las tecnologias de la informacion de la regional distrito capital
                 </p>
                 <table class="table">
-                    <form action="Instrutor_Controller" method="post" class="form-control">
-                        <select name="Opcion" value="1" >
+                    <form action="coordinador_Controller" method="post" class="form-control">
+                        <select name="Opcion" value="0" >
                             <option value="2">Imagenes12</option>
                         </select>
                         <input type="submit" name="btnenviar" value="Aceptar">

@@ -111,6 +111,18 @@ jQuery.Luna = function (Datos, selector) {
                     }));
                 }
                 break;
+            case "ConsOaP":
+                var oAItem;
+                for (var i = 0; i < Datos.length; i++) {
+                    oAItem = $("#formulario1").clone();
+                    oAItem.find("#TituloOa").text(Datos[i].Titulo);
+                    oAItem.find("#AutoresOa").text(Datos[i].Autores);
+                    oAItem.find("#FechaPublicacionOa").text(Datos[i].FechaPublicacion);
+                    oAItem.find("#DescripcionOa").text(Datos[i].Descripcion);
+                    oAItem.find("#BtnDescargar").val(Datos[i].IdOa);
+                    oAItem.children().appendTo(selec);
+                }
+                break;
             case "calificar":
                 var j = $("#divContainer");
                 for (var i = 0; i < json.length; i++) {
@@ -242,9 +254,8 @@ jQuery.Luna = function (Datos, selector) {
                 }
                 break;
             case "AsignarRol":
-
                 for (var i = 0; i < json.length; i++) {
-                    var select =("' name='select'><option value='1'>Intructor</option><option value='2'>Equipo Tecnico</option><option value='3'>Equipo Pedagogico</option></select>");
+                    var select=("'><option value='1'>Intructor</option><option value='2'>Equipo Tecnico</option><option value='3'>Equipo Pedagogico</option></select>");
                     table = $("#tablaARoles").dataTable().fnAddData([
                         i + 1,
                         json[i].NombreCompleto,
@@ -252,7 +263,7 @@ jQuery.Luna = function (Datos, selector) {
                         json[i].Nom_Area,
                         json[i].Nom_Centro,
                         json[i].Nom_Ciudad,
-                        "<select id='" + json[i].Id_Funcionario + select,
+                        "<select id='Select" + json[i].Id_Funcionario +"'value='0'"+ select,
                         "<button id='" + json[i].Id_Funcionario + "' class='btnclick btn btn-success botonclick'value='A' >Asignar</button>"
                     ]);
                 }
