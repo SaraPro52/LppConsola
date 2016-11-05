@@ -1,5 +1,6 @@
 $(document).on('ready', function () {
     var val= $("#vista").val();
+    alert(val);
     var objet = {opcion: 3, url: "Crud_Controller", nombre: "MultiSelect",
         tabla: "18", datos: [""], elegir: ["0", "1"],
         delimitador: "[{colum: 2,operador: 0,valor1:"+val+"}]", id: 0, opSelect: 6};

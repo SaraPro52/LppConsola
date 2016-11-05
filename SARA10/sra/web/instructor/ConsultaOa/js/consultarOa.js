@@ -8,7 +8,7 @@ $(document).on('ready', function () {
     objeto = {Titulo: "kira", Autores: "valeM", FechaPublicacion: "31/11/1234", Descripcion: "Esta es una prueba 2;)", IdOa: 2};
     cargarOa(objeto, nombre);
     var objeto = {Opcion: 3, url: "oacontroller", nombre: "Titulo"};
-    obtenerDatos(objeto);
+    obtenerDatos(objeto);  
 
     objeto={Opcion:3,url:"programafor",nombre:"Formacion"};
     obtenerDatos(objeto);

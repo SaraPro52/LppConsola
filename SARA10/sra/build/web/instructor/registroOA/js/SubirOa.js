@@ -3,6 +3,7 @@ $(document).ready(function () {
     $("#SelectCategoriaDiv").hide();
     $("#SelectEstruturaDiv").hide();
     var objet = {opcion: 5, url: "Crud_Controller", nombre: "AutoComplet", tabla: "7", datos: [""], elegir: ["4", "6"], delimitador: "[{colum:0,operador:0,valor1:1}]", id: 0, opSelect: 4};
+    
     var ob = new $.Luna(objet.nombre, selector);
     ob.Vivo("SubirOa");
 
@@ -25,11 +26,11 @@ $(document).ready(function () {
 
 
     var objet = {opcion: 5, url: "Crud_Controller", nombre: "AutoComplet", tabla: "14", datos: [""], elegir: ["0", "1"],
-        delimitar: "[{comlum:2,operador:0,valor1:1}]", id: 0, opSelect: 6};
+        delimitar: "[{comlum:2,operador:0,valor1:1}]", id: 0, opSelect: 6} ;
 
     $("#formato").hover(function () {
         if (c == 0) {
-            objet = {opcion: 3, url: "Crud_Controller", nombre: "Select", tabla: "16", datos: [""], elegir: ["0", "1"], id: 0, opSelect: 4};
+            objet = {opcion: 3, url: "Crud_Controller", nombre: "Select", tabla: "17", datos: [""], elegir: ["0", "1"], id: 0, opSelect: 4};
             selector = $("#formato");
             ob.ajax(objet, selector);
         }
@@ -78,7 +79,7 @@ $(document).ready(function () {
             $("#SelectEstruturaDiv").show();
             selector = $("#SelectEstrutura");
             objet = {nombre: "MultiSelect", opcion: 5, url: "Crud_Controller", tabla: "18", datos: [""], elegir: ["0", "1"],
-                delimitador: "[{colum:2,operador:0,valor1:1}]", id: 0, opSelect: 4};
+            delimitador: "[{colum:2,operador:0,valor1:1}]", id: 0, opSelect: 4};
             ob.ajax(objet, selector);
             es++;
         } else if (es == 1) {

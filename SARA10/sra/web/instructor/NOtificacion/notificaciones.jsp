@@ -18,5 +18,7 @@
                 </tbody>
             </table>
         </article>
+        
     </body>
+    <script src="Notifiaciones.js" type="text/javascript"></script>
 </html>

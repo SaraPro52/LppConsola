@@ -39,6 +39,7 @@
         
     <script type="text/javascript" src="js/jquery.js"></script>
     <script type="text/javascript" src="instructor/js/InstrutorPrincipal.js"></script>
+    <script src="NOtificacion/Notifiaciones.js" type="text/javascript"></script>
     <script>
         var nomUser = '<%= session.getAttribute("nomUser")%>';
         var idUser = '<%= session.getAttribute("idUser")%>';
@@ -50,6 +51,7 @@
         } else {
             location.replace('index.jsp');
         }
+       
     </script>
     <div id="cuerpo" class="col-md-9" >
         </div>

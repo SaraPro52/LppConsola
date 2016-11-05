@@ -8,7 +8,7 @@ $(document).on('ready', function () {
         this.idTipoItem = 1;
     }
     console.log("Vivo??EquipoPrincipal");
-
+    
     $(document).on('click','btnnotofica',function(e){
        console.log(this); 
     });

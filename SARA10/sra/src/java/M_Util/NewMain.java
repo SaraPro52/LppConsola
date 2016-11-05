@@ -1199,7 +1199,15 @@ public class NewMain {
 //        Version v = new Version();
 //        v.AprobarPV(e);
 
-        System.out.println(new Funcionario().ListaAsignarRoles("1"));
+//        System.out.println(new Funcionario().ListaAsignarRoles("1"));
+          String usuario = "1019133595";
+          String contraseña = "con1";
+          
+          String delimitador1 = "[{colum:0,operador:0,valor1:'\""+usuario+"\"',añadir:0},{colum:1,operador:0,valor1:'\""+contraseña+"\"'}]";
+          Elomac e = new Elomac(0,1);
+          System.out.println(e.Select(delimitador1));
+          
+          
             
        
     }

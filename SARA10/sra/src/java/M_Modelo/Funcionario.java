@@ -16,7 +16,7 @@ public class Funcionario extends Elomac{
         
         public String ListaAsignarRoles(String idCentro){
             String[] campos ={"2"};
-            String listaFun1 = new Elomac(25,1).Select(campos);
+            String listaFun1 = new Elomac(26,1).Select(campos);
             String listaNegativa = "";
             try {
                 for (int i = 0; i < new JSONArray(listaFun1).length(); i++) {
