@@ -3,6 +3,8 @@ package M_Controller.Linkeos;
 import M_Util.Elomac;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -10,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 @WebServlet(name = "sesion_controller", urlPatterns = {"/sesion_controller"})
@@ -17,8 +20,7 @@ public class sesion_controller extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
+        response.setContentType("text/html;charset=UTF-8");        try (PrintWriter out = response.getWriter()) {
 //            int opcion = 8;
 //            opcion = Integer.parseInt(request.getParameter("Opcion"));
             
@@ -66,24 +68,26 @@ public class sesion_controller extends HttpServlet {
 //                    
 //                    request.getRequestDispatcher("administrador/administradorPrincipal.jsp").forward(request, response);
 //                    
-                }else{
-                    String delimitador1 = "[{colum:0,operador:0,valor1:'\""+usuario+"\"',añadir:0},{colum:1,operador:0,valor1:'\""+contraseña+"\"'}]";
-                    Elomac elo1 = new Elomac(0,1);
-                    String ad = elo1.Select(delimitador1);
-                    if(ad != ""){
-                        JSONObject adJ = new JSONArray(ad).getJSONObject(0);
-                        sesion.setAttribute("a", adJ.getInt("Id_Funcionario"));
-                        sesion.setAttribute("nomUser", adJ.getString("Nom_Funcionario"));
-                    }
-                    respuesta.println("Datos Incorrectos");
                 }
                 
                 if(request.getParameter("cerrar") != null){
                         sesion.invalidate();
                     }
             } catch (Exception e) {
-                    request.getRequestDispatcher("index.jsp").forward(request, response);
-                    sesion.invalidate();
+                    String delimitador1 = "[{colum:0,operador:0,valor1:'\""+usuario+"\"',añadir:0},{colum:1,operador:0,valor1:'\""+contraseña+"\"'}]";
+                    Elomac elo1 = new Elomac(0,1);
+                    String ad = elo1.Select(delimitador1);
+                    if(ad != ""){
+                        try {
+                            request.getRequestDispatcher("administrador/administradorPrincipal.jsp").forward(request, response);
+                        } catch (Exception ex) {
+                            request.getRequestDispatcher("index.jsp").forward(request, response);
+                            sesion.invalidate();
+                        }
+                    }else{
+                        respuesta.println("Datos Incorrectos");
+                    }
+                    
             }
 
 //            switch (opcion) {
