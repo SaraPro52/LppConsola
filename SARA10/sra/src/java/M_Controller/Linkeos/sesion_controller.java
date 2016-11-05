@@ -3,8 +3,6 @@ package M_Controller.Linkeos;
 import M_Util.Elomac;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -12,7 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 @WebServlet(name = "sesion_controller", urlPatterns = {"/sesion_controller"})
@@ -21,73 +18,65 @@ public class sesion_controller extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");        try (PrintWriter out = response.getWriter()) {
-//            int opcion = 8;
-//            opcion = Integer.parseInt(request.getParameter("Opcion"));
-            
+       
             response.setContentType("application/json;charset=UTF-8");
             PrintWriter respuesta = response.getWriter();
+            HttpSession sesion = request.getSession();
             
             String usuario = request.getParameter("user");
             String contraseña = request.getParameter("pwd");
-
-            String delimitador = "[{colum:4,operador:0,valor1:'\""+usuario+"\"',añadir:0},{colum:5,operador:0,valor1:'\""+contraseña+"\"'}]";
-            Elomac elo = new Elomac(19,2);
-            
-            HttpSession sesion = request.getSession();
-            try {
-                String fun = elo.Select(delimitador);
-                
-                if(fun != ""){                    
-                    JSONObject funJ = new JSONArray(fun).getJSONObject(0);
-                    int rol = funJ.getInt("Id_Rol");
-                    sesion.setAttribute("idUser", funJ.getInt("Id_Funcionario"));
-                    sesion.setAttribute("nomUser", funJ.getString("Nom_Funcionario"));
-                    sesion.setAttribute("idRol", rol);
-                    sesion.setAttribute("idCentro", funJ.getInt("Id_Centro"));
-                    
-                    switch(rol){
-                        case 1:
-                            request.getRequestDispatcher("instructor/instructorPrincipal.jsp").forward(request, response);
-                            break;
-                        case 2:
-                            request.getRequestDispatcher("Equipo/equipoTecnicoPrincipal.jsp").forward(request, response);
-                            break;
-                        case 3:
-                            request.getRequestDispatcher("Equipo/equipoPedagogicoPrincipal.jsp").forward(request, response);
-                            break;
-                        case 4:
-                            request.getRequestDispatcher("coordinador/coordinadorPrincipal.jsp").forward(request, response);
-                            break;
-                    }
-                    
-//                }else if(ad != ""){
-//                    
-//                    JSONObject admin = new JSONArray(ad).getJSONObject(0);
-//                    sesion.setAttribute("usuAdmin",admin.getString("Usuario"));
-//                    sesion.setAttribute("contra",admin.getString("Contraseña"));
-//                    
-//                    request.getRequestDispatcher("administrador/administradorPrincipal.jsp").forward(request, response);
-//                    
-                }
-                
+            if(usuario.equals("1019") && contraseña.equals("Sena")){
+                sesion.setAttribute("ami", "1019");
+                request.getRequestDispatcher("administrador/administradorPrincipal.jsp").forward(request, response);
                 if(request.getParameter("cerrar") != null){
-                        sesion.invalidate();
-                    }
-            } catch (Exception e) {
-                    String delimitador1 = "[{colum:0,operador:0,valor1:'\""+usuario+"\"',añadir:0},{colum:1,operador:0,valor1:'\""+contraseña+"\"'}]";
-                    Elomac elo1 = new Elomac(0,1);
-                    String ad = elo1.Select(delimitador1);
-                    if(ad != ""){
-                        try {
-                            request.getRequestDispatcher("administrador/administradorPrincipal.jsp").forward(request, response);
-                        } catch (Exception ex) {
-                            request.getRequestDispatcher("index.jsp").forward(request, response);
                             sesion.invalidate();
+                }
+            }else{
+                String delimitador = "[{colum:4,operador:0,valor1:'\""+usuario+"\"',añadir:0},{colum:5,operador:0,valor1:'\""+contraseña+"\"'}]";
+                Elomac elo = new Elomac(19,2);
+
+                try {
+                    String fun = elo.Select(delimitador);
+
+                    if(fun != ""){                    
+                        JSONObject funJ = new JSONArray(fun).getJSONObject(0);
+                        int rol = funJ.getInt("Id_Rol");
+                        sesion.setAttribute("idUser", funJ.getInt("Id_Funcionario"));
+                        sesion.setAttribute("nomUser", funJ.getString("Nom_Funcionario"));
+                        sesion.setAttribute("idRol", rol);
+                        sesion.setAttribute("idCentro", funJ.getInt("Id_Centro"));
+
+                        switch(rol){
+                            case 1:
+                                request.getRequestDispatcher("instructor/instructorPrincipal.jsp").forward(request, response);
+                                break;
+                            case 2:
+                                request.getRequestDispatcher("Equipo/equipoTecnicoPrincipal.jsp").forward(request, response);
+                                break;
+                            case 3:
+                                request.getRequestDispatcher("Equipo/equipoPedagogicoPrincipal.jsp").forward(request, response);
+                                break;
+                            case 4:
+                                request.getRequestDispatcher("coordinador/coordinadorPrincipal.jsp").forward(request, response);
+                                break;
                         }
-                    }else{
-                        respuesta.println("Datos Incorrectos");
+
+    //                }else if(ad != ""){
+    //                    
+    //                    JSONObject admin = new JSONArray(ad).getJSONObject(0);
+    //                    sesion.setAttribute("usuAdmin",admin.getString("Usuario"));
+    //                    sesion.setAttribute("contra",admin.getString("Contraseña"));
+    //                    
+    //                    request.getRequestDispatcher("administrador/administradorPrincipal.jsp").forward(request, response);
+    //                    
                     }
-                    
+                    if(request.getParameter("cerrar") != null){
+                            sesion.invalidate();
+                    }
+                } catch (Exception e) {
+                    request.getRequestDispatcher("index.jsp").forward(request, response);
+                    sesion.invalidate();
+                }
             }
 
 //            switch (opcion) {

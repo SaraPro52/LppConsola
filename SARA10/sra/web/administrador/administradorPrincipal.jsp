@@ -38,19 +38,12 @@
     <script type="text/javascript" src="js/jquery.js"></script>
     <script type="text/javascript" src="administrador/js/administradorPricipal.js"></script>
     <script>
-        var nomUser = '<%= session.getAttribute("nomUser")%>';
-        var idUser = '<%= session.getAttribute("idUser")%>';
-        var idRol = '<%= session.getAttribute("idRol")%>';
-        var idCentro = '<%= session.getAttribute("idCentro")%>';
+        var ami = '<%= session.getAttribute("ami")%>';
 
-        if (idUser != null && idRol != null && nomUser != null && idCentro != null) {
-            alert(nomUser);
-            alert(idUser);
-            alert(idRol);
-            alert(idCentro);
+        if (ami != null) {
             $("#link").append("<a href='index.jsp?cerrar=true'><h5>Cerrar Sesion</h5></a>");
         } else {
-            location.replace('index.jsp');
+            location.replace('./index.jsp');
         }
         ;
     </script>

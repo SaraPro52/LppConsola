@@ -16,6 +16,7 @@
                         <th>#</th>
                         <th>Contenido</th>
                         <th>Fecha de envio</th>
+                        <th>¿Correguir?</th>
                 </tr>
                 </thead>
                 <tbody>
