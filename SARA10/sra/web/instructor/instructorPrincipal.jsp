@@ -23,18 +23,6 @@
                     <li class="btntt" value="0"><a><i class="icono izquierda  fa fa-eye" aria-hidden="true"></i>Consultar objetos v.</a></li>
                 </ul>
             </div>
-        <article class="col-md-8 col-md-offset-1" id="tabla">
-            <table class="table table-striped" id="tablaNotificacion">
-                <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>Visualizar</th>
-                    </tr>
-                </thead>
-                <tbody>
-                </tbody>
-            </table>
-        </article>
     </body>
         
     <script type="text/javascript" src="js/jquery.js"></script>

@@ -1,4 +1,5 @@
 $(document).ready(function () {
+    console.log("Funl");
     var c = 0;
     $("#SelectCategoriaDiv").hide();
     $("#SelectEstruturaDiv").hide();
@@ -43,7 +44,7 @@ $(document).ready(function () {
         },
         afterDeselect: function (val) {
             var busqueda = $.inArray(val, arraySelecionCate);
-            arraySelecionCate.splice(busqueda, 1);
+             arraySelecionCate.splice(busqueda, 1);
         }
     });
 
