@@ -2,7 +2,7 @@ $(document).ready(function () {
     //35    
     $('#myModal').modal('hide');
     var arraySelecion = [];
-    var objet = {opcion: 3, url: "Crud_Controller", nombre: "MultiSelect", tabla: "26", datos: [""], elegir: ["0", "1"], id: 0, opSelect: 4};
+    var objet = {opcion: 3, url: "Crud_Controller", nombre: "MultiSelect", tabla: "27", datos: [""], elegir: ["0", "1"], id: 0, opSelect: 4};
     var selector = $("#SelectTemas");
     var ob = new $.Luna(objet.nombre, selector);
     ob.Vivo("Categorias");
