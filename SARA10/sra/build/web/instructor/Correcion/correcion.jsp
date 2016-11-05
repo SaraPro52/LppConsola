@@ -16,8 +16,7 @@
                         <th>#</th>
                         <th>Contenido</th>
                         <th>Fecha de envio</th>
-                        <th>Detalles PV</th>
-                    </tr>
+                </tr>
                 </thead>
                 <tbody>
                 </tbody>

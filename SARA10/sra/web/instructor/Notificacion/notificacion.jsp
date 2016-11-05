@@ -16,16 +16,17 @@
                         <th>#</th>
                         <th>Contenido</th>
                         <th>Fecha de envio</th>
-                </tr>
+                    </tr>
                 </thead>
                 <tbody>
                 </tbody>
             </table>
         </article>
+        
 
     </body>
     <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.12/js/jquery.dataTables.js"></script>
     <script type="text/javascript" src="js/bootstrap-modal.js"></script>
     <script type="text/javascript" src="js/jquery.cecily.js"></script>
-    <script src="instructor/Correcion/js/Correcion.js" type="text/javascript"></script>
+    <script src="instructor/Notificacion/js/notificacion.js" type="text/javascript"></script>
 </html>

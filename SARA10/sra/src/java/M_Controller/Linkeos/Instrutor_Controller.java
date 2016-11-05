@@ -26,6 +26,9 @@ public class Instrutor_Controller extends HttpServlet {
             case 2:
                 request.getRequestDispatcher("instructor/Correcion/correcion.jsp").forward(request, response);
                 break;
+            case 3:
+                request.getRequestDispatcher("instructor/Notificacion/notificacion.jsp").forward(request, response);
+                break;    
         }
     }
 

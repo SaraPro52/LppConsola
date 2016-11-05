@@ -11,23 +11,23 @@
     </head>
     <body class="col-md-12">  
         <div class="contenedor-menu col-md-6">
-                <ul class="menu">
-                    <li class=" activado"><a href="index.html"><i class="icono izquierda fa fa-home" aria-hidden="true"></i>Inicio</a></li>
-                    <li><a href="#"><i class="icono izquierda fa fa-user-plus" aria-hidden="true"></i>Roles <i class=" icono derecha fa fa-chevron-down" aria-hidden="true"></i></a>
-                        <ul class="lineaHorizontal">
-                            <li><a href="index.html"><i class="icono izquierda  fa fa-group" aria-hidden="true"></i>Instructor</a></li>
-                            <li><a href="cerrarSesion.html"><i class="icono izquierda  fa fa-sign-out" aria-hidden="true"></i>Cambiar de rol</a></li>
-                        </ul>
-                    </li>
-                    <li class="btntt" value="1"><a><i class="icono izquierda  fa fa-upload" aria-hidden="true"></i>Subir Objeto v.</a></li>
-                    <li class="btntt" value="0"><a><i class="icono izquierda  fa fa-eye" aria-hidden="true"></i>Consultar objetos v.</a></li>
-                </ul>
-            </div>
+            <ul class="menu">
+                <li class=" activado"><a href="index.html"><i class="icono izquierda fa fa-home" aria-hidden="true"></i>Inicio</a></li>
+                <li><a href="#"><i class="icono izquierda fa fa-user-plus" aria-hidden="true"></i>Roles <i class=" icono derecha fa fa-chevron-down" aria-hidden="true"></i></a>
+                    <ul class="lineaHorizontal">
+                        <li><a href="index.html"><i class="icono izquierda  fa fa-group" aria-hidden="true"></i>Instructor</a></li>
+                        <li><a href="cerrarSesion.html"><i class="icono izquierda  fa fa-sign-out" aria-hidden="true"></i>Cambiar de rol</a></li>
+                    </ul>
+                </li>
+                <li class="btntt" value="1"><a><i class="icono izquierda  fa fa-upload" aria-hidden="true"></i>Subir P.V.</a></li>
+                <li class="btntt" value="0"><a><i class="icono izquierda  fa fa-eye" aria-hidden="true"></i>Consultar P.V.</a></li>
+                <li class="btntt" value="3"><a><i class="icono izquierda  fa fa-eye" aria-hidden="true"></i>Notificaciones P.V</a></li>
+                <li class="btntt" value="2"><a><i class="icono izquierda  fa fa-upload" aria-hidden="true"></i>Correguir P.V</a></li>
+            </ul>
+        </div>
     </body>
-        
     <script type="text/javascript" src="js/jquery.js"></script>
     <script type="text/javascript" src="instructor/js/InstrutorPrincipal.js"></script>
-    <script src="NOtificacion/Notifiaciones.js" type="text/javascript"></script>
     <script>
         var nomUser = '<%= session.getAttribute("nomUser")%>';
         var idUser = '<%= session.getAttribute("idUser")%>';
@@ -39,13 +39,13 @@
         } else {
             location.replace('index.jsp');
         }
-       
+
     </script>
     <div id="cuerpo" class="col-md-9" >
+    </div>
+    <section>
+        <div id="link">
         </div>
-        <section>
-            <div id="link">
-            </div>
     </body>
-        
+
 </html>

@@ -130,8 +130,17 @@ jQuery.Luna = function (Datos, selector) {
                 }
                 selector.autocomplete({
                     source: s,
-                    minChars: 2  
+                    minChars: 2
                 });
+                break;
+            case "Notificacion":
+                for (var i = 0; i < json.length; i++) {
+                    table = selector.dataTable().fnAddData([
+                        i + 1,
+                        json[i].Conte_Notificacion,
+                        json[i].Fecha_Envio
+                    ]);
+                }
                 break;
             case "correcion":
                 for (var i = 0; i < json.length; i++) {

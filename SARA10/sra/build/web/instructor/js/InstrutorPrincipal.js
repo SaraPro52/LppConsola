@@ -1,7 +1,6 @@
 $(document).on('ready', function () {
     console.log("Vivo??Instrutor");
-
-    var objeto = {url: "Instrutor_Controller", Opcion: 2, name: 'cuerpo'};
+    var objeto = {url: "Instrutor_Controller", Opcion: 3, name: 'cuerpo'};
         obtenerP(objeto);
     $('.menu li').click(function (e) {
         var objeto = {url: "Instrutor_Controller", Opcion: this.value, name: 'cuerpo'};
