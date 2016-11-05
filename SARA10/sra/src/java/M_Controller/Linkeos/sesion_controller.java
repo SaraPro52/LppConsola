@@ -31,13 +31,8 @@ public class sesion_controller extends HttpServlet {
             String delimitador = "[{colum:4,operador:0,valor1:'\""+usuario+"\"',añadir:0},{colum:5,operador:0,valor1:'\""+contraseña+"\"'}]";
             Elomac elo = new Elomac(19,2);
             
-            String delimitador1 = "[{colum:0,operador:0,valor1:'\""+usuario+"\"',añadir:0},{colum:1,operador:0,valor1:'\""+contraseña+"\"'}]";
-            Elomac elo1 = new Elomac(0,1);
-            
-            
             HttpSession sesion = request.getSession();
             try {
-                //String ad = elo1.Select(delimitador1);
                 String fun = elo.Select(delimitador);
                 
                 if(fun != ""){                    
@@ -72,6 +67,14 @@ public class sesion_controller extends HttpServlet {
 //                    request.getRequestDispatcher("administrador/administradorPrincipal.jsp").forward(request, response);
 //                    
                 }else{
+                    String delimitador1 = "[{colum:0,operador:0,valor1:'\""+usuario+"\"',añadir:0},{colum:1,operador:0,valor1:'\""+contraseña+"\"'}]";
+                    Elomac elo1 = new Elomac(0,1);
+                    String ad = elo1.Select(delimitador1);
+                    if(ad != ""){
+                        JSONObject adJ = new JSONArray(ad).getJSONObject(0);
+                        sesion.setAttribute("a", adJ.getInt("Id_Funcionario"));
+                        sesion.setAttribute("nomUser", adJ.getString("Nom_Funcionario"));
+                    }
                     respuesta.println("Datos Incorrectos");
                 }
                 
