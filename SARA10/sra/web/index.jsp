@@ -105,7 +105,7 @@
                 <table class="table">
                     <form action="Instrutor_Controller" method="post" class="form-control">
                         <select name="Opcion" value="1" >
-                            <option value="1">Imagenes12</option>
+                            <option value="2">Imagenes12</option>
                         </select>
                         <input type="submit" name="btnenviar" value="Aceptar">
                     </form>

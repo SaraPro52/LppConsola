@@ -130,8 +130,18 @@ jQuery.Luna = function (Datos, selector) {
                 }
                 selector.autocomplete({
                     source: s,
-                    minChars: 2
+                    minChars: 2  
                 });
+                break;
+            case "correcion":
+                for (var i = 0; i < json.length; i++) {
+                    table = selector.dataTable().fnAddData([
+                        i + 1,
+                        json[i].Conte_Notificacion,
+                        json[i].Fecha_Envio,
+                        "<button  type='button' id='" + json[i].Ides_Proceso + "' class='btn btn-info btn-lg btnCorrecion'>Correguir P.V</button>"
+                    ]);
+                }
                 break;
             case "consutarOa":
                 for (var i = 0; i < json.length; i++) {
@@ -153,10 +163,6 @@ jQuery.Luna = function (Datos, selector) {
                         "<button id='ca' value='" + json[i].Id_Lista_Chequeo + "' class='btnclickca btn btn-info'>Escojer </button>"
                     ]);
                 }
-                break;
-            case "Notificaciones":
-                console.log(json);
-                
                 break;
             case "Lista":
                 for (var i = 0; i < json.length; i++) {
@@ -227,8 +233,8 @@ jQuery.Luna = function (Datos, selector) {
                 }
                 break;
             case "AsignarRol":
-                
-                for(var i = 0;i < json.length;i++){
+
+                for (var i = 0; i < json.length; i++) {
                     table = $("#tablaARoles").dataTable().fnAddData([
                         i + 1,
                         json[i].NombreCompleto,
@@ -236,11 +242,11 @@ jQuery.Luna = function (Datos, selector) {
                         json[i].Nom_Area,
                         json[i].Nom_Centro,
                         json[i].Nom_Ciudad,
-                        "<select id='"+json[i].Id_Funcionario+"' name='select'><option value='1'>Intructor</option><option value='2'>Equipo Tecnico</option><option value='3'>Equipo Pedagogico</option></select>",
-                        "<button id='"+json[i].Id_Funcionario+"' class='btnclick btn btn-success botonclick'value='A' >Asignar</button>"
-                        
+                        "<select id='" + json[i].Id_Funcionario + "' name='select'><option value='1'>Intructor</option><option value='2'>Equipo Tecnico</option><option value='3'>Equipo Pedagogico</option></select>",
+                        "<button id='" + json[i].Id_Funcionario + "' class='btnclick btn btn-success botonclick'value='A' >Asignar</button>"
+
                     ]);
-                    
+
                 }
                 break;
         }
