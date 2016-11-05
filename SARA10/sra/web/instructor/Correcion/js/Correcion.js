@@ -7,3 +7,7 @@ var ob = new $.Luna("producto", selector);
 ob.Vivo("CorrecionInstrutor");
 ob.TablaEspa(selector);
 ob.ajax(objet, selector); 
+
+$(document).on('click','btnCorrecion',function(e){
+    
+});

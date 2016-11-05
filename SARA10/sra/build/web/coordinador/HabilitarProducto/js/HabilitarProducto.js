@@ -12,7 +12,6 @@ $(document).on('ready', function () {
                 objeto = {opcion: 4, url:"ProductoVirtual_Controller",aprobacion:[idUser,this.id],nombre: "BtnModal"};
                 break;
         }
-        alert(objeto.opcion + " s " + this.id);
         ob.ajax(objeto, selector);
     });
 });
