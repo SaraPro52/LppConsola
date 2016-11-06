@@ -4,9 +4,9 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Deshabilitar Funcionario</title>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-        <link rel="stylesheet" type="text/css" href="css/HojaEstilos.css">
+        <link rel="stylesheet" href="css/bootstrap.css" media="screen" title="no title" charset="utf-8">
         <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.12/css/jquery.dataTables.css">
+        <link href="assets/css/paper-dashboard.css" rel="stylesheet"/>
     </head>
     <body>
         <section>
@@ -28,7 +28,7 @@
     </body>
     <input type="hidden" id="ajaxComplet">
     <script type="text/javascript" src="js/jquery.js"></script>
-    <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.12/js/jquery.dataTables.js"></script>
+    <script type="text/javascript" charset="utf8" src="js/jquery.dataTables.js"></script>
     <script type="text/javascript" src="js/jquery.cecily.js"></script>
     <script type="text/javascript" src="administrador/deshabilitarFuncionario/js/admiPrincipal.js"></script>
 

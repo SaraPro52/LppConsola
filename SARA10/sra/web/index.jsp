@@ -103,7 +103,7 @@
                     y las tecnologias de la informacion de la regional distrito capital
                 </p>
                 <table class="table">
-                    <form action="coordinador_Controller" method="post" class="form-control">
+                    <form action="Administrador_Controller" method="post" class="form-control">
                         <select name="Opcion" value="0" >
                             <option value="2">Imagenes12</option>
                         </select>

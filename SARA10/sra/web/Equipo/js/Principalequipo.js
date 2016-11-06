@@ -1,12 +1,7 @@
 $(document).on('ready', function () {
     var idLista = 0;
     var idVersion = 0;
-    var idTipoItem = 0;
-    if(idRol == 2){
-        this.idTipoItem = 0;
-    }else{
-        this.idTipoItem = 1;
-    }
+    
     console.log("Vivo??EquipoPrincipal");
     
     $(document).on('click','btnnotofica',function(e){

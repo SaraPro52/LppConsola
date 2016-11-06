@@ -7,12 +7,12 @@ public class Version extends Elomac{
 		super("Version",1);
 	}
         
-        public boolean RegistrarPV(String[] infoOa,String[] funA,String[] temA){
-            return (boolean)this.Registar(Group(infoOa,'~')+"~"+Group(funA,',')+"~"+Group(temA,','), 3);
+        public boolean RegistrarPV(String[] infoOa,String funA,String[] temA){
+            return (boolean)this.Registar(Group(infoOa,'~')+"~"+funA+"~"+Group(temA,','), 3);
         }
         
-        public boolean RegistrarVersion(String[] infoVer,String[] funA){
-            return (boolean)this.Registar(Group(infoVer, '~')+"~"+Group(funA, ','), 7);
+        public boolean RegistrarVersion(String[] infoVer,String funA){
+            return (boolean)this.Registar(Group(infoVer, '~')+"~"+funA, 7);
         }
         
         public boolean CorreccionVersion(String[] correccion){

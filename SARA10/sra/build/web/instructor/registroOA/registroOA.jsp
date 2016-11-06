@@ -68,17 +68,15 @@
                     <input type="text"  name="palabras_claves" id="instrucciones" placeholder="Instrucciones de instalacion" required data-validation-required-message="Ingresa instrucciones de instalacion.">
                     
                 </div>
+                <form enctype="multipart/form-data" id="formuploadajax" method="post" action="archivos">
                     <div> 
-                        <div class="">
-                            <label for="Imagen">Imagen del documento</label>  
-                            <input type="file" size="60" id="Imagen" name="myfile" class="input-file">
-                        </div>
                         <div>
                             <label for="Documento">añadir OA</label>
                             <input type="file" size="60" id="Documento" name="myfile" class="input-file">
                         </div>    
                     </div>
                         <button class=" btn btn-info  col-md-4" id="subir_oa" >Agregar Archivos</button>
+                </form>        
             </article>
         </section>       
     </div>
@@ -88,5 +86,6 @@
 <script type="text/javascript" src="js/jquery.cecily.js"></script>
 <script type="text/javascript" src="js/jqueryUi.js"></script>
 <script src="js/jquery.multi-select.js"></script>
+ <script src="assets/js/bootstrap-notify.js"></script>
 <script type="text/javascript" src="instructor/registroOA/js/SubirOa.js"></script>
 </html>

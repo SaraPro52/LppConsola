@@ -33,7 +33,7 @@ public class Categoria_Controller extends HttpServlet {
             switch(opcion){
                 case 1: 
                     if(cate.RegistrarCategoria(categoria, temas))
-                        respuesta.println("Si Registro");
+                         respuesta.println("Si Registro");
                     else respuesta.println("No Registro");
                     break;
             }

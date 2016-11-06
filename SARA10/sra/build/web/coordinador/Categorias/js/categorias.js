@@ -9,7 +9,7 @@ $(document).ready(function () {
     ob.ajax(objet, selector);
     $('#SelectTemas').multiSelect({
         afterSelect: function (valor) {
-            arraySelecion.push(valor)
+            arraySelecion.push(valor);
         },
         afterDeselect: function (val) {
             var busqueda = $.inArray(val, arraySelecion);
@@ -31,7 +31,7 @@ $(document).ready(function () {
                 arrayS = arrayS + "," + arraySelecion[j];
             }
         }
-        objet = {opcion: 1, url: "Categoria_Controller", catego: [$("#NombreCategoria").val(), $("#DescripcionCategoria").val(), "2"], temas: arrayS};
+        objet = {nombre:"btn",opcion: 1, url: "Categoria_Controller", catego: [$("#NombreCategoria").val(), $("#DescripcionCategoria").val(), "2"], temas: arrayS};
         ob.ajax(objet, selector);
     });
 });

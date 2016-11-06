@@ -3,8 +3,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-        <link rel="stylesheet" type="text/css" href="css/estilo.css">
+        <link rel="stylesheet" href="css/bootstrap.css" media="screen" title="no title" charset="utf-8">
         <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.12/css/jquery.dataTables.css">
         <title>Habilitar Producto</title>
     </head>
@@ -19,7 +18,6 @@
                             <th> # </th>
                             <th>Nombre producto</th>
                             <th>Numero version</th>
-                            <th>Fecha de vigencia</th>  
                             <th></th>   
                         </tr>
                     </thead>
@@ -31,7 +29,7 @@
         </section>
     </body>
     <script type="text/javascript" src="js/jquery.js"></script>
-    <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.12/js/jquery.dataTables.js"></script>
+    <script type="text/javascript" charset="utf8" src="js/jquery.dataTables.js"></script>
     <script type="text/javascript" src="js/jquery.cecily.js"></script>
     <script type="text/javascript" src="coordinador/HabilitarProducto/js/HabilitarProducto.js"></script>
 </html>

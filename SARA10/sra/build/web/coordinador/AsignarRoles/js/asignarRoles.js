@@ -2,7 +2,7 @@ $(document).on('ready', function () {
     var objet = {opcion: 2, url: "Funcionario_Controller", nombre: "AsignarRol", centro: idCentro};
     var selector = $("#tablaARoles");
     var ob = new $.Luna("usuario", selector);
-    ob.Vivo("Asignar Roles");
+    ob.Vivo("Asignar R oles");
     ob.TablaEspa(selector);
     ob.ajax(objet, selector);
     $(document).on('click', '.btnclick', function (e) {

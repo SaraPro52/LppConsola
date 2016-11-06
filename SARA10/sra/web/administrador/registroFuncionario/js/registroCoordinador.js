@@ -9,7 +9,7 @@ $(document).on('ready', function () {
     $("#tipoUsuario").hover(function () {
         if (c == 1) {
             selector = $("#tipoUsuario"); 
-            var objet = {opcion: 3, url: "Crud_Controller", nombre: "Select", tabla: "24", datos: [""], elegir: ["0", "1"], id: 0, opSelect: 4};
+            var objet = {opcion: 3, url: "Crud_Controller", nombre: "Select", tabla: "25", datos: [""], elegir: ["0", "1"], id: 0, opSelect: 4};
             ob.ajax(objet, selector);
         }
         c++;
@@ -17,7 +17,7 @@ $(document).on('ready', function () {
     $("#tipoIdenti").hover(function () {
         if (cc==1) {
             selector = $("#tipoIdenti");
-            var objet = {opcion: 3, url: "Crud_Controller", nombre: "Select", tabla: "27", datos: [""],elegir: [""],id: 0, opSelect: 1};
+            var objet = {opcion: 3, url: "Crud_Controller", nombre: "Select", tabla: "28", datos: [""],elegir: [""],id: 0, opSelect: 1};
             ob.ajax(objet, selector);
         }
         cc++;

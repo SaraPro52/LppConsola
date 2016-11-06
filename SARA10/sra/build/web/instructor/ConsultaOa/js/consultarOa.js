@@ -1,4 +1,5 @@
 $(document).on('ready', function () {
+    console.log("VIvo??");
     var objeto = [
         {Titulo: "Juan", Autores: "Nose,valeM", FechaPublicacion: "31/10/1234", Descripcion: "Esta es una prueba ;)", IdOa: 1},
         {Titulo: "kira", Autores: "valeM", FechaPublicacion: "31/11/1234", Descripcion: "Esta es una prueba 2;)", IdOa: 2},

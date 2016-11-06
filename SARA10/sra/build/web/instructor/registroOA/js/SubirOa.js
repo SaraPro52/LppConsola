@@ -1,15 +1,15 @@
 $(document).ready(function () {
-    console.log("Funl");
     var c = 0;
     $("#SelectCategoriaDiv").hide();
     $("#SelectEstruturaDiv").hide();
     var objet = {opcion: 5, url: "Crud_Controller", nombre: "AutoComplet", tabla: "7", datos: [""], elegir: ["4", "6"], delimitador: "[{colum:0,operador:0,valor1:1}]", id: 0, opSelect: 4};
     
     var ob = new $.Luna(objet.nombre, selector);
-    ob.Vivo("SubirOa");
+    ob.Vivo("SubirOa s");
 
-
-    var objets = {nombre: "MultiSelect", arr: 0, opcion: 5, url: "Crud_Controller", tabla: "7", datos: [""], elegir: ["4", "8"], delimitador: "[{colum:0,operador:0,valor1:1}]", id: 0, opSelect: 4};
+ 
+    var objets = {nombre: "MultiSelect", arr: 0, opcion: 5, url: "Crud_Controller", tabla: "7", datos: [""], elegir: ["4", "8"], 
+        delimitador: "[{colum:16,operador:0,valor1:"+idCentro+",añadir:0},{colum:4,operador:7,valor1:'"+idUser+"',añadir:0},{colum:1,operador:0,valor1:1}]", id: 0, opSelect: 6};
     var selector = $("#SelectAutores");
 
     ob.ajax(objets, selector);
@@ -97,7 +97,7 @@ $(document).ready(function () {
         var arrayTemas = [];
         for (var i = 0; i < arraySelecionAutor.length; i++) {
             if (i == 0) {
-                arrayAutor = arraySelecionAutor[i];
+                arrayAutor = idUser +","+ arraySelecionAutor[i];
             } else {
                 arrayAutor = arrayAutor + "," + (arraySelecionAutor[i]);
             }
@@ -115,8 +115,10 @@ $(document).ready(function () {
                 $("#descripcion_oa").val(),
                 $("#palabras_claves").val(),
                 $("#formato").val(),
-                "", "", $("#instrucciones").val(), $("#requisitos_instalacion").val()], arrayFun: arrayAutor, arrayTemas: arrayTemas, imagenNom: $("#Imagen").val(), archivoNom: $("#Documento").val()
+                "", "", $("#instrucciones").val(), $("#requisitos_instalacion").val()], arrayFun: arrayAutor, arrayTemas: arrayTemas,  archivoNom: $("#Documento").val()
         };
+        console.log(objeto);
+        
         ob.ajax(objeto, selector);
     }
 });

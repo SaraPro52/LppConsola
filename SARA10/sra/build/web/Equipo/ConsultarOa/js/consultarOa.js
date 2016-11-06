@@ -1,6 +1,5 @@
 
-//la variable vista debe ser cambieada
-
+console.log("sa");
 var vista = $("#vista").val();
 var objet = {opcion: 5, url: "Crud_Controller", nombre: "consutarOa", tabla: "17", datos: [""], elegir: ["4", "5", "6"],
     delimitador: "[{colum:2, operador:0, valor1:" + idRol + ",añadir:0},{colum:8,operador:0,valor1:"+idCentro+",añadir:0},\n\

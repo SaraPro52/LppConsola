@@ -27,9 +27,8 @@ public class ProductoVirtual_Controller extends HttpServlet {
              */
             int option = Integer.parseInt(request.getParameter("opcion"));
             String[] infoVersion = request.getParameterValues("info[]");
-            String[] arrayFun = request.getParameterValues("arrayFun[]");
+            String arrayFun = request.getParameter("arrayFun");
             String[] arrayTemas = request.getParameterValues("arrayTemas[]");
-            String imagenNom = request.getParameter("imagenNom");
             String archivoNom = request.getParameter("archivoNom");
             response.setContentType("application/json;charset=UTF-8");
             PrintWriter respuesta = response.getWriter();
@@ -38,7 +37,6 @@ public class ProductoVirtual_Controller extends HttpServlet {
             switch (option) {
                 case 1:
                     infoVersion[4] = archivoNom;
-                    infoVersion[5] = imagenNom;
 //                    try {
          
                         String nruta = infoVersion[0];

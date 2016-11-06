@@ -5,9 +5,12 @@ jQuery.Luna = function (Datos, selector) {
     this.setCons = function (dato) {
         this.Cons = dato
     };
-    this.setNombre = function (dato) {
+    function setNombre (dato) {
         this.Nombre = dato
     };
+    function getNombre() {
+        return this.Nombre;
+    }
     this.Vivo = function (mensaje) {
         console.log("Vivo??Cecily." + mensaje + " ");
     };
@@ -80,9 +83,20 @@ jQuery.Luna = function (Datos, selector) {
             data: datos,
             success: function (json) {
                 cargarTabla(json, selector, datos);
+
             },
             error: function () {
                 alert = ("Disculpa, pero existe un error al cargar datos del servidor :/");
+            }, complete: function (jqXHR, textStatus) {
+                var a = jqXHR.responseText;
+                console.log(a);
+                if ($.trim(a) == "Si Registro") {
+                    $.notify(a, "success");
+                }
+                if ($.trim(a) == "No Registro") {
+                    $.notify(a, "error");
+
+                }
             }
         });
     };
@@ -213,7 +227,6 @@ jQuery.Luna = function (Datos, selector) {
                         i + 1,
                         json[i].Nom_P_Virtual,
                         json[i].Num_Version,
-                        json[i].Fecha_Vigencia.substring(0, 11),
                         "<button id='" + json[i].Id_Version + "' value='H' class='btnclick btn btn-info'>Habilitar</button>"
                     ]);
                 }
@@ -243,6 +256,13 @@ jQuery.Luna = function (Datos, selector) {
                 }
                 break;
             case "Formato" :
+                var w = getNombre();
+                if ((datos.d == 1) && (w == json.length)) {
+                    $.notify("Formato guardado", "success");
+                } else if (datos.d == 1) {
+                    $.notify("El formato ya existe, intenta de nuevo", "info");
+                }
+
                 for (var i = 0; i < json.length; i++) {
                     table = $("#tablaformato").dataTable().fnAddData([
                         i + 1,
@@ -252,10 +272,11 @@ jQuery.Luna = function (Datos, selector) {
                         "<button id='" + json[i].Id_Formato + "' class='btn btn-danger botonclick' value='e'>eliminar</button>"
                     ]);
                 }
+                setNombre(i + 1);
                 break;
             case "AsignarRol":
                 for (var i = 0; i < json.length; i++) {
-                    var select=("'><option value='1'>Intructor</option><option value='2'>Equipo Tecnico</option><option value='3'>Equipo Pedagogico</option></select>");
+                    var select = ("'><option value='1'>Intructor</option><option value='2'>Equipo Tecnico</option><option value='3'>Equipo Pedagogico</option></select>");
                     table = $("#tablaARoles").dataTable().fnAddData([
                         i + 1,
                         json[i].NombreCompleto,
@@ -263,7 +284,7 @@ jQuery.Luna = function (Datos, selector) {
                         json[i].Nom_Area,
                         json[i].Nom_Centro,
                         json[i].Nom_Ciudad,
-                        "<select id='Select" + json[i].Id_Funcionario +"'value='0'"+ select,
+                        "<select id='Select" + json[i].Id_Funcionario + "'value='0'" + select,
                         "<button id='" + json[i].Id_Funcionario + "' class='btnclick btn btn-success botonclick'value='A' >Asignar</button>"
                     ]);
                 }

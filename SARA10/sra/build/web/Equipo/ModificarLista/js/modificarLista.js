@@ -1,15 +1,11 @@
 function modificar(idTipoItem){
     $("#tablaItems").hide(); 
-    $('#myModal').modal('hide');
-    $("#myModal").on('show.bs.modal', function (e) {
-
-    });
     selector = $("#tablalista");
     var objet = {opcion: 5, nombre: "Lista", url: "Crud_Controller", tabla: "12", datos: [""], elegir: ["0", "1", "2", "3"],
-        delimitador: "[{'colum':'5','operador':'0' ,'valor1':2}]", id: 0, opSelect: 6};
+        delimitador: "[{'colum':'5','operador':'0' ,'valor1':"+idRol+"}]", id: 0, opSelect: 6};
     var ob = new $.Luna(objet.nombre, selector);
-    ob.Vivo("ModificarListaDeChequeo" + $("#vista").val());
-    var view = $("#lista");
+    ob.Vivo("ModificarListaDeChequeo");
+    var view = $("#lista"); 
     ob.tipoUsuario($("#vista").val(), view);
     ob.TablaEspa(selector);
     ob.ajax(objet, selector);

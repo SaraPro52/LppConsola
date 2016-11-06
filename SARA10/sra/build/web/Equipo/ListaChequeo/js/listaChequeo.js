@@ -1,19 +1,16 @@
-$(document).on('ready', function () {
+function listaChequeo(idTipoItem){
     var val= $("#vista").val();
-    alert(val);
+    //alert(idTipoItem);
     var objet = {opcion: 3, url: "Crud_Controller", nombre: "MultiSelect",
         tabla: "19", datos: [""], elegir: ["0", "1"],
-        delimitador: "[{colum: 2,operador: 0,valor1:"+val+"}]", id: 0, opSelect: 6};
+        delimitador: "[{colum: 2,operador: 0,valor1:"+idTipoItem+"}]", id: 0, opSelect: 6};
     var selector = $("#SelectItem"); 
     var ob = new $.Luna(objet.nombre, selector);
-    ob.Vivo("ListaDeChequeo" + $("#vista").val());
+    ob.Vivo("ListaDeChequeo");
     var view = $("#lista");
     ob.tipoUsuario($("#vista").val(), view);
     ob.ajax(objet, selector);   
-    $('#myModal').modal('hide');  
-    $("#myModal").on('show.bs.modal', function (e) {
-        
-    });
+    
     var arraySelecion = [];
     $('#SelectItem').multiSelect({
         afterSelect: function (valor) {
@@ -36,7 +33,7 @@ $(document).on('ready', function () {
         var arrayS = [];
         for (var j = 0; j < arraySelecion.length; j++) {
             if (j == 0) {
-                arrayS = "" + arraySelecion[j];
+                arrayS = "" + arraySelecion[j]; 
             } else {
                 arrayS = arrayS + "," + arraySelecion[j];
             }
@@ -44,4 +41,5 @@ $(document).on('ready', function () {
         var objeto = {opcion: 1, nombre: "btn", url: "ListaChequeo_Controller", lista: [$("#NombreL").val(), $("#DescripcionL").val(), "2"], items: arrayS};
         ob.ajax(objeto, "null");
     });
-})
+    
+}

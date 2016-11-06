@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import M_Modelo.Funcionario;
+import com.google.gson.Gson;
 import javax.servlet.annotation.WebServlet;
 
 @WebServlet(name = "Funcionario_Controller", urlPatterns = {"/Funcionario_Controller"})
@@ -38,7 +39,6 @@ public class Funcionario_Controller extends HttpServlet {
                             CorreoController jj = new CorreoController();
                             jj.sendEmail("Sara ", "Buen dia ::::::: es un nuevo funcionario de Sara pro\n Su usuario es:"+fun[2]+" \tSu contraseña: "+fun[8]+"", fun[5]);
                             respuesta.println("Si Registro");
-
                         } else {
                             respuesta.println("No Registro");
                         }
