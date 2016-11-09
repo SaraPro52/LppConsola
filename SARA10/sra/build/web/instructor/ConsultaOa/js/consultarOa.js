@@ -1,13 +1,9 @@
 $(document).on('ready', function () {
-    console.log("VIvo??");
-    var objeto = [
-        {Titulo: "Juan", Autores: "Nose,valeM", FechaPublicacion: "31/10/1234", Descripcion: "Esta es una prueba ;)", IdOa: 1},
-        {Titulo: "kira", Autores: "valeM", FechaPublicacion: "31/11/1234", Descripcion: "Esta es una prueba 2;)", IdOa: 2},
-        {Titulo: "kiras", Autores: "valeM", FechaPublicacion: "31/11/1234", Descripcion: "Esta es una prueba 2;)", IdOa: 2}
-    ];
-    var nombre = "ConsOaP";
-    var datos= $("#resultados");
-    cargarOa(objeto, nombre,datos);
+    var objet = {opcion: 5, url: "ProductoVirtual_Controller", nombre: "ConsOaP"};
+    var selector = $("#formulario1");
+    var ob = new $.Luna(objet.nombre, selector);
+    ob.Vivo("ConsultarOA");
+    ob.ajax(objet, selector);
     var constan = true;
     $("#BusquedaAvanzada").on('click', function () {
         if (constan == true) {
@@ -20,7 +16,11 @@ $(document).on('ready', function () {
             constan = true;
         }
     });
-    
+    $("#Categoria").hover(function(){
+        selector = $("#Categoria");
+        objet = {opcion: 3, url: "Crud_Controller", nombre: "ConsOaP", tabla: "4", datos: [""], elegir: ["0", "1"], id: 0, opSelect: 4};
+        //ob.ajax(objet,selector);
+    });
     $("#Categoria").on('change', function () {
         if ($("#Categoria").val() == "A0") {
             $("#CategoriaTem").hide();
@@ -36,7 +36,13 @@ $(document).on('ready', function () {
         console.log(obj.val());
 
     });
-
+    
+    $("#Formacion").hover(function(){
+        selector = $("#Formacion");
+        objet = {opcion: 3, url: "Crud_Controller", nombre: "ConsOaP", tabla: "0", datos: [""], elegir: ["0", "1", "2"], id: 0, opSelect: 4};
+        //ob.ajax(objet,selector);
+    });
+    
     $("#Formacion").on('change', function () {
         if ($("#Formacion").val() == "A0") {
             $("#formacionC").hide();

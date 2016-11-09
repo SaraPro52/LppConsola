@@ -3,11 +3,12 @@
 <!doctype html>
 <html lang="en">
     <head>
+
         <meta charset="utf-8" />
         <link rel="apple-touch-icon" sizes="76x76" href="assets/img/apple-icon.png">
         <link rel="icon" type="image/png" sizes="96x96" href="assets/img/favicon.png">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-        <title>Sara Pro...</title>
+        <title>Sara Pro....</title>
         <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
         <meta name="viewport" content="width=device-width" />
         <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
@@ -20,6 +21,34 @@
     </head>
     <body>
         <div class="wrapper">
+            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="myModalLabel">Lista de chequeo para evaluar Producto virtual</h4>
+                        </div>
+                        <div class="modal-body">
+                            <article  id="tabla">
+                                <table class="table table-striped" id="tablaListaChequeo">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Nombre producto</th>
+                                            <th>Nombre estado</th>
+                                            <th>Numero version</th>
+                                            <th>Fecha vigencia</th>
+                                            <th>Evaluar</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    </tbody>
+                                </table>
+                            </article>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="sidebar" data-background-color="white" data-active-color="danger">
                 <div class="sidebar-wrapper">
                     <div class="logo">
@@ -81,7 +110,9 @@
                         </div>
                     </div>
                 </nav>
-                <div id="cuerpo" ></div>
+                <div id="cuerpo" >
+
+                </div>
                 <footer class="footer">
                     <div class="container-fluid">
                         <nav class="pull-left">
@@ -112,6 +143,7 @@
 
             </div>
         </div>
+
     </body>
     <script type="text/javascript" src="js/jquery.js"></script>
     <script src="assets/js/bootstrap.min.js" type="text/javascript"></script>

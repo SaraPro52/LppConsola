@@ -3,6 +3,7 @@ package M_Util;
 import M_Controller.Archivos.ArchivosController;
 import M_Modelo.Categoria;
 import M_Modelo.Funcionario;
+import M_Modelo.Producto_Virtual;
 import M_Modelo.Version;
 import java.io.File;
 import java.io.FileInputStream;
@@ -1198,17 +1199,18 @@ public class NewMain {
 //        String[] e = {"4","2"};
 //        Version v = new Version();
 //        v.AprobarPV(e);
-
 //        System.out.println(new Funcionario().ListaAsignarRoles("1"));
-          String usuario = "1019133595";
-          String contraseña = "con1";
-          
-          String delimitador1 = "[{colum:0,operador:0,valor1:'\""+usuario+"\"',añadir:0},{colum:1,operador:0,valor1:'\""+contraseña+"\"'}]";
-          Elomac e = new Elomac(0,1);
-          System.out.println(e.Select(delimitador1));
-          
-          
-            
-       
+//          String usuario = "1019133595";
+//          String contraseña = "con1";
+//          
+//          String delimitador1 = "[{colum:0,operador:0,valor1:'\""+usuario+"\"',añadir:0},{colum:1,operador:0,valor1:'\""+contraseña+"\"'}]";
+//          Elomac e = new Elomac(0,1);
+//          System.out.println(e.Select(delimitador1));
+
+
+//            System.out.println(new Producto_Virtual().ConsultraProducto());
+
+           Elomac e = new Elomac(4,1);
+           System.out.println(e.Select());
     }
 }

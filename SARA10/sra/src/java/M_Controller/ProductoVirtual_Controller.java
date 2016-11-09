@@ -1,6 +1,7 @@
 package M_Controller;
 
 import M_Controller.Archivos.ArchivosController;
+import M_Modelo.Producto_Virtual;
 import M_Modelo.Version;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -24,6 +25,7 @@ public class ProductoVirtual_Controller extends HttpServlet {
                 2. Registrar Una nueva Version.
                 3. Correccion - Actualiza solo el url.
                 4. Realiza la aprovacion del producto virtual.
+                5. Consultar Productos virtuales Aprovados.
              */
             int option = Integer.parseInt(request.getParameter("opcion"));
             String[] infoVersion = request.getParameterValues("info[]");
@@ -82,6 +84,9 @@ public class ProductoVirtual_Controller extends HttpServlet {
                     } else {
                         respuesta.println("No Registro");
                     }
+                    break;
+                case 5:
+                    respuesta.println(new Producto_Virtual().ConsultraProducto());
                     break;
             }
         }

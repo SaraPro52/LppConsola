@@ -128,12 +128,12 @@ jQuery.Luna = function (Datos, selector) {
             case "ConsOaP":
                 var oAItem;
                 for (var i = 0; i < Datos.length; i++) {
-                    oAItem = $("#formulario1").clone();
-                    oAItem.find("#TituloOa").text(Datos[i].Titulo);
+                    oAItem = selector.clone();
+                    oAItem.find("#TituloOa").text(Datos[i].Nom_P_Virtual);
                     oAItem.find("#AutoresOa").text(Datos[i].Autores);
-                    oAItem.find("#FechaPublicacionOa").text(Datos[i].FechaPublicacion);
-                    oAItem.find("#DescripcionOa").text(Datos[i].Descripcion);
-                    oAItem.find("#BtnDescargar").val(Datos[i].IdOa);
+                    oAItem.find("#FechaPublicacionOa").text(Datos[i].Fecha_Publicacion);
+                    oAItem.find("#DescripcionOa").text(Datos[i].Des_P_Virtual);
+                    oAItem.find("#BtnDescargar").val(Datos[i].Id_P_Virtual);
                     oAItem.children().appendTo(selec);
                 }
                 break;
