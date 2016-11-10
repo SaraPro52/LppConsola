@@ -1209,8 +1209,13 @@ public class NewMain {
 
 
 //            System.out.println(new Producto_Virtual().ConsultraProducto());
+//           String deli = "[{colum:0,operador:0,valor1:'\"con7\"'}]";
+//           Elomac e = new Elomac(23,2);
+//           String w = e.Select(deli);
+//           System.out.println(w);
 
-           Elomac e = new Elomac(4,1);
-           System.out.println(e.Select());
+            Elomac elo = new Elomac(6,1);
+            elo.Update(elo.Select(2),"[{'1':'ciudad21'}]");
+            System.out.println(elo.Select());
     }
 }

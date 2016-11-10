@@ -13,25 +13,40 @@
                 <label for="txtBuscar">Buscar titulo</label>
                 <input type="text" id="txtBuscar" value="">
             </div>
-            <div id="ElementoFormacion">
-                <label>Programa de formacion</label>
-                <select class="clickformacion" id="Formacion">
+            <form class="col-md-5 col-md-offset-3" id="Resultado">
+                <input type="radio" id="Resultado1" name="Resultado" value="1"> Programa de formacion<br>
+                <input type="radio" id="Resultado0" name="Resultado" value="0"> Categoria<br>
+            </form>
+            <div id="ElementoFormacion" style="display: none;">
+                <label for="CiudadFormacion">Ciudad</label>
+                <select id="CiudadFormacion">
                     <option value="A0">Seleciona...</option>
                 </select>
-                <div id="formacionC" style="display: none;">
-                    <label>area de formacion</label>
-                    <select class="" id="AreaF">
-                        <option value="A0">Seleciona...</option>
-                    </select>
-                </div>
+
+                <label>centro de formacion</label>
+                <select  id="CentroF">
+                    <option value="A0">Seleciona...</option>
+                </select>
+
+                <label>Area de formacion</label>
+                <select  id="Area">
+                    <option value="A0">Seleciona...</option>
+                </select>
+
+                <label>Programa de formacion</label>
+                <select  id="Programa">
+                    <option value="A0">Seleciona...</option>
+                </select>
+                <select  id="TemaPrograma">
+                    <option value="A0">Seleciona...</option>
+                </select>
             </div>
             <div id="ElementoCategoria">
-                <label>categoria</label>
-                <select class="" id="Categoria">
-                    <option value="A0">Seleciona...</option>
-                    <option value="0">...</option>
-                </select>
                 <div  id="CategoriaTem" style="display: none;">
+                    <label>categoria</label>
+                    <select class="" id="Categoria">
+                        <option value="A0">Seleciona...</option>
+                    </select>
                     <label>Tema de categoria</label>
                     <select class="" id="TemaC">
                         <option value="A0">Seleciona...</option>

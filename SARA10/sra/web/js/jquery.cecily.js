@@ -127,14 +127,14 @@ jQuery.Luna = function (Datos, selector) {
                 break;
             case "ConsOaP":
                 var oAItem;
-                for (var i = 0; i < Datos.length; i++) {
+                for (var i = 0; i < json.length; i++) {
                     oAItem = selector.clone();
-                    oAItem.find("#TituloOa").text(Datos[i].Nom_P_Virtual);
-                    oAItem.find("#AutoresOa").text(Datos[i].Autores);
-                    oAItem.find("#FechaPublicacionOa").text(Datos[i].Fecha_Publicacion);
-                    oAItem.find("#DescripcionOa").text(Datos[i].Des_P_Virtual);
-                    oAItem.find("#BtnDescargar").val(Datos[i].Id_P_Virtual);
-                    oAItem.children().appendTo(selec);
+                    oAItem.find("#TituloOa").text(json[i].Nom_P_Virtual);
+                    oAItem.find("#AutoresOa").text(json[i].Autores);
+                    oAItem.find("#FechaPublicacionOa").text(json[i].Fecha_Publicacion);
+                    oAItem.find("#DescripcionOa").text(json[i].Des_P_Virtual);
+                    oAItem.find("#BtnDescargar").val(json[i].Id_P_Virtual);
+                    oAItem.children().appendTo($("#resultados"));
                 }
                 break;
             case "calificar":

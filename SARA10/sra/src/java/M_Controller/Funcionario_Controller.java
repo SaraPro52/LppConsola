@@ -1,6 +1,6 @@
 package M_Controller;
 
-import M_Controller.Correos.CorreoController;
+import M_Controller.Correos.DJCorreoHTML;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -8,7 +8,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import M_Modelo.Funcionario;
-import com.google.gson.Gson;
 import javax.servlet.annotation.WebServlet;
 
 @WebServlet(name = "Funcionario_Controller", urlPatterns = {"/Funcionario_Controller"})
@@ -36,8 +35,8 @@ public class Funcionario_Controller extends HttpServlet {
                     fun[8] = new vasos().getVaso();
                     try {
                         if (new Funcionario().RegistrarFuncionario(fun)) {
-                            CorreoController jj = new CorreoController();
-                            jj.sendEmail("Sara ", "Buen dia ::::::: es un nuevo funcionario de Sara pro\n Su usuario es:"+fun[2]+" \tSu contraseña: "+fun[8]+"", fun[5]);
+                            DJCorreoHTML correoHTML = new DJCorreoHTML();
+                            correoHTML.mandarCorreo(fun[5], "Confirmacion de Cuenta SARA PRO",fun[2],fun[8]);
                             respuesta.println("Si Registro");
                         } else {
                             respuesta.println("No Registro");
