@@ -1214,8 +1214,10 @@ public class NewMain {
 //           String w = e.Select(deli);
 //           System.out.println(w);
 
-            Elomac elo = new Elomac(6,1);
-            elo.Update(elo.Select(2),"[{'1':'ciudad21'}]");
-            System.out.println(elo.Select());
+//            Elomac elo = new Elomac(6,1);
+//            elo.Update(elo.Select(2),"[{'1':'ciudad21'}]");
+//            System.out.println(elo.Select());
+            File archivo = new File("C:\\Users\\migue\\Desktop\\LppConsola\\SARA10\\sra\\src\\java\\M_Controller\\Correos\\prueba.html");
+            archivo.delete();
     }
 }

@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import M_Modelo.Funcionario;
+import java.io.File;
 import javax.servlet.annotation.WebServlet;
 
 @WebServlet(name = "Funcionario_Controller", urlPatterns = {"/Funcionario_Controller"})
@@ -36,8 +37,9 @@ public class Funcionario_Controller extends HttpServlet {
                     try {
                         if (new Funcionario().RegistrarFuncionario(fun)) {
                             DJCorreoHTML correoHTML = new DJCorreoHTML();
-                            correoHTML.mandarCorreo(fun[5], "Confirmacion de Cuenta SARA PRO",fun[2],fun[8]);
-                            respuesta.println("Si Registro");
+                                correoHTML.mandarCorreo(fun[5], "Confirmacion de Cuenta SARA PRO1",fun[2],fun[8]);
+                                respuesta.println("Si Registro");
+                            
                         } else {
                             respuesta.println("No Registro");
                         }
