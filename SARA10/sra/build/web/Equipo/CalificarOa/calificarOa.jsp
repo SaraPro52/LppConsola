@@ -3,6 +3,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
+
                     <section class="col-md-10">
                         <article class="col-md-12">
                             <label class="col-md-6" id="LabelEquipo"></label>
@@ -17,6 +18,7 @@
                                 <input type="radio" id="Resultado" name="Resultado" value="1"> Aprovado<br>
                                 <input type="radio" id="Resultado" name="Resultado" value="0"> Reprovado<br>
                             </form>
+                            <p>Date: <input type="text" id="iFecha"></p>
                             <div col-md-4 col-md-offset-1>
                                 <button type="button" class="btn btn-block" id="btnEvaluar">Evaluar</button>
                             </div>
@@ -28,9 +30,11 @@
     </div>
     <script type="text/javascript" src="js/jquery.js"></script>
     <script type="text/javascript" src="js/jquery.cecily.js"></script>
-    <script type="text/javascript" src="assets/js/bootstrap-notify.js"></script>
+    <script type="text/javascript" src="js/Notify.js"></script>
     <script type="text/javascript" src="Equipo/CalificarOa/js/calificarOa.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
     <script>
         calificarPV(this.idLista);
         $fecha = $('#iFecha');

@@ -20,6 +20,8 @@ $(document).on('click', '.btnEvaluar', function (e) {
     ob.TablaEspa(selector);
     ob.limpiarTabla(selector);
     ob.ajax(objet, selector);  
+    
+    
 });
 
 
