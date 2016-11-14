@@ -8,25 +8,27 @@
             <div class="row">
                 <div class="col-md-12">
                     <section class="col-md-10">
-                        <article class="col-md-6" id="item">
-                            <input type="hidden" value="1" id="tipoLis">
-                            <label>Nombre Lista</label>
-                            <input type="text" class="form-control" id="NombreL"  placeholder="Nombre de lista">
-                            <label>Decripcion</label>
-                            <textarea class="form-control"  id="DescripcionL" placeholder="Descripcion lista" rows="1" id="comment"></textarea>
-                            <button class="btn btn-info col-md-6" id="BtnLista">Modificar lista</button>
-                        </article>
-                        <article class="col-md-6" id="items">
-                            <p><h3 class="dark-grey"><b>Items de lista de chequeo</b></h3></p>
-                            <label for="Descripcion">Descripcion de item</label>
-                            <div class="col-md-10">
-                                <textarea class="form-control" placeholder="Descripcion lista" rows="1" id="Descripcion"></textarea>
-                            </div>
-                            <div class="col-md-10">
-                                <button  class="btn btn-info" id="btnItem">Agregar Item</button>
-                            </div>
-                        </article>
-                        <article class="col-md-10 col-md-offset-1" id="tabla">
+                        <div class="EspacioItems">
+                            <article class="col-md-6" id="item">
+                                <input type="hidden" value="1" id="tipoLis">
+                                <label>Nombre Lista</label>
+                                <input type="text" class="form-control" id="NombreL"  placeholder="Nombre de lista">
+                                <label>Decripcion</label>
+                                <textarea class="form-control"  id="DescripcionL" placeholder="Descripcion lista" rows="1" id="comment"></textarea>
+                                <button class="btn btn-info col-md-6" id="BtnLista">Modificar lista</button>
+                            </article>
+                            <article class="col-md-6" id="items">
+                                <p><h3 class="dark-grey"><b>Items de lista de chequeo</b></h3></p>
+                                <label for="Descripcion">Descripcion de item</label>
+                                <div class="col-md-10">
+                                    <textarea class="form-control" placeholder="Descripcion lista" rows="1" id="Descripcion"></textarea>
+                                </div>
+                                <div class="col-md-10">
+                                    <button  class="btn btn-info" id="btnItem">Agregar Item</button>
+                                </div>
+                            </article>
+                        </div>
+                        <article class="col-md-10 col-md-offset-1" id="CompoLista">
                             <table class="table table-striped" id="tablalista">
                                 <thead>
                                     <tr>
@@ -42,7 +44,7 @@
                             </table>
                         </article>
                     </section>
-                    <article class="col-md-16" id="tablaItems">
+                    <article class="col-md-16" class="EspacioItems">
                         <div id="SelectItemDiv">
                             <section  id=SelectItem>
                             </section>

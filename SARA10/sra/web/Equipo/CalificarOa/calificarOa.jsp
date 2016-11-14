@@ -1,4 +1,5 @@
 <div id="contenedoraBody">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <div class="content">
         <div class="container-fluid">
             <div class="row">
@@ -8,9 +9,17 @@
                             <label class="col-md-6" id="LabelEquipo"></label>
                             <label class="col-md-6" id="LabelVersion"></label>
                             <label class="col-md-6" id="Nombrelista"></label>
+                            <div id="clone">
+                                <div class="col-md-12">
+                                    <input type="checkbox" class="chex col-md-1"> 
+                                    <label class="locura col-md-11"></label>
+                                </div>
+                                <textarea class="textarea form-control"></textarea>
+                            </div>
                             <div class="col-md-8" id="divContainer">
 
                             </div>
+                            <p>Fecha: <input type="text" id="iFecha"></p>
                             <label class="col-md-5" for="areaObservacion">Observaciones</label>
                             <textarea class="col-md-5 col-md-offset-3" id="areaObservacion" rows="1" cols="40"></textarea>
                             <form class="col-md-5 col-md-offset-3" action="">
@@ -33,9 +42,5 @@
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script>
         calificarPV(this.idLista);
-        $fecha = $('#iFecha');
-        if ($fecha[0].type != "date") {
-            $("#iFecha").datepicker();
-        }
     </script>
 </div>     
