@@ -158,7 +158,7 @@ BEGIN
 			 INNER JOIN Rol_Funcionario v3 ON v1.Id_Funcionario = v3.Id_Funcionario
 			WHERE Id_Centro = @idCentro AND Id_Rol = @rol;
         
-			CALL SARA_CRUD("UPDATE","Version",CONCAT("Url_Version~",@urlVersion,""),"Id_Version = @idVersion");
+			CALL SARA_CRUD("UPDATE","Version",CONCAT("Url_Version~",@urlVersion,"|Fecha_Envio~",CURRENT_TIMESTAMP,""),"Id_Version = @idVersion");
 			CALL RegistarNotificaion(CONCAT("Nuevo Producto Virtual Corregido ha evaluar para Equipo~1~",@idFun,"~",@idEval,"~",@idVersion,""));
 
         END IF;

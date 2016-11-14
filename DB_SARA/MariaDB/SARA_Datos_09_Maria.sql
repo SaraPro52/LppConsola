@@ -65,3 +65,4 @@ CALL SARA_CRUD("INSERT","Tipo_Notificacion","Nom_Tipo_Notif~Evaluativa|Des_Tipo_
 CALL SARA_CRUD("INSERT","Tipo_Notificacion","Nom_Tipo_Notif~Retroalimentativa|Des_Tipo_Notif~Solo podran recibirlas los intructores","");
 CALL SARA_CRUD("INSERT","Tipo_Notificacion","Nom_Tipo_Notif~Publicativa|Des_Tipo_Notif~Lo recibiran tanto los instructores como el coordinador","");
 
+

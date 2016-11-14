@@ -227,7 +227,7 @@ CREATE TABLE Funcionario(
     Correo				VARCHAR(125) NOT NULL,
     Cargo 				VARCHAR(45) NOT NULL,
     Ip_Sena				VARCHAR(6) NOT NULL,
-    Contraseña      	VARCHAR(300) NOT NULL,
+    Contraseña      	VARCHAR(300),
     Id_Estado 	    	INTEGER NOT NULL DEFAULT 2,
     Id_Area_Centro 		INTEGER NOT NULL,
     
@@ -425,5 +425,28 @@ CREATE TABLE Detalles_Categoria(
     CONSTRAINT FK_Categoria		     FOREIGN KEY (Id_Categoria) REFERENCES Categoria (Id_Categoria),
     CONSTRAINT FK_Tema_03		     FOREIGN KEY (Id_Tema)		REFERENCES Tema		 (Id_Tema)
 );
+
+
+CREATE TABLE Admin(
+	Usuario INTEGER NOT NULL DEFAULT 12345,
+    Clave   VARCHAR(200) NOT NULL DEFAULT 'sena123',
+    CONSTRAINT UN_Admin UNIQUE(Usuario,Clave)
+);
+
+CREATE TABLE Toquen(
+	Numero_Toquen VARCHAR(20) NOT NULL,
+	Funcionario   INTEGER NOT NULL,
+    FechaVigencia TIMESTAMP NOT NULL,
+    
+    CONSTRAINT PK_Toquen PRIMARY KEY (Numero_Toquen),
+    CONSTRAINT UN_Toquen UNIQUE (Funcionario)
+);
+
+CALL SARA_CRUD("INSERT ","Admin","Usuario~1019|Clave~Sena","");
+CALL SARA_CRUD("SELECT","Admin","","");
+
+
+
+
 
 
