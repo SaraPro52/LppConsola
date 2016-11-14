@@ -3,7 +3,7 @@ $(document).on('ready', function () {
     var selector = $("#tablaCiudad");
     var ob = new $.Luna(objet.nombre, selector);
     ob.Vivo("Ciudad Modificar");
-    ob.TablaEspa(selector);
+    ob.TablaEspa(selector); 
     ob.ajax(objet, selector);
     $(document).on('click', '.btnclick', function (e) {
         switch (this.value) {

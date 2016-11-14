@@ -3,7 +3,6 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
-
                     <section class="col-md-10">
                         <article class="col-md-12">
                             <label class="col-md-6" id="LabelEquipo"></label>
@@ -29,7 +28,7 @@
     </div>
     <script type="text/javascript" src="js/jquery.js"></script>
     <script type="text/javascript" src="js/jquery.cecily.js"></script>
-    <script type="text/javascript" src="js/Notify.js"></script>
+    <script type="text/javascript" src="assets/js/bootstrap-notify.js"></script>
     <script type="text/javascript" src="Equipo/CalificarOa/js/calificarOa.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script>

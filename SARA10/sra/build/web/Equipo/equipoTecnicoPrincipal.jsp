@@ -34,11 +34,10 @@
                                     <thead>
                                         <tr>
                                             <th>#</th>
-                                            <th>Nombre producto</th>
-                                            <th>Nombre estado</th>
-                                            <th>Numero version</th>
+                                            <th>Nombre lista</th>
+                                            <th>Descripcion lista</th>
                                             <th>Fecha vigencia</th>
-                                            <th>Evaluar</th>
+                                            <th></th>
                                         </tr>
                                     </thead>
                                     <tbody>

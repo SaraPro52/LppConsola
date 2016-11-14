@@ -1,4 +1,7 @@
 $(document).on('ready', function () {
+    //centro del area / temas  Cosas que hay que hacer
+    
+    
     var objet = {d: 0, opcion: 3, url: "Crud_Controller", nombre: "Formato", tabla: "17", datos: [""], elegir: ["0", "1", "2"], id: 0, opSelect: 4};
     var selector = $("#tablaformato");
     var ob = new $.Luna(objet.nombre, selector);

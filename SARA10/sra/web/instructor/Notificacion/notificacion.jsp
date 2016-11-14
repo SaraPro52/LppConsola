@@ -8,19 +8,29 @@
         <link href="assets/css/paper-dashboard.css" rel="stylesheet"/>
     </head>
     <body>
-        <article class="col-md-8 col-md-offset-1" id="tabla">
-            <table class="table table-striped" id="tablaNotificacion">
-                <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>Contenido</th>
-                        <th>Fecha de envio</th>
-                    </tr>
-                </thead>
-                <tbody>
-                </tbody>
-            </table>
-        </article>
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <section class="col-md-12">
+                            <article class="col-md-8">
+                                <table class="table table-striped" id="tablaNotificacion">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Contenido</th>
+                                            <th>Fecha de envio</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    </tbody>
+                                </table>
+                            </article>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </div>
     </body>
     <script type="text/javascript" charset="utf8" src="js/jquery.dataTables.js"></script>
     <script type="text/javascript" src="js/bootstrap-modal.js"></script>

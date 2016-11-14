@@ -4,9 +4,8 @@ function calificarPV(idLista) {
         delimitador: "[{colum:3, operador:0, valor1:" + idLista + "}]", id: 0, opSelect: 6};
     var selector = $("#divContainer");
     var ob = new $.Luna("Producto virtual", selector);
-    ob.Vivo("Producto virtua l" + $("#vista").val());
+    ob.Vivo("CalificarOA");
     ob.ajax(objet, selector);
-
 }
 $("#btnEvaluar").click(function () {
     var campo="";

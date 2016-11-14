@@ -118,7 +118,6 @@ $(document).ready(function () {
                 "", "", $("#instrucciones").val(), $("#requisitos_instalacion").val()], arrayFun: arrayAutor, arrayTemas: arrayTemas,  archivoNom: $("#Documento").val()
         };
         console.log(objeto);
-        
         ob.ajax(objeto, selector);
     }
 });

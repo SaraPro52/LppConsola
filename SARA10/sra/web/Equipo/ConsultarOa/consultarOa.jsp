@@ -1,7 +1,5 @@
 <div id="ContenedoraBody">
-
     <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.12/css/jquery.dataTables.css">
-
     <div class="content">
         <div class="container-fluid">
             <div class="row">

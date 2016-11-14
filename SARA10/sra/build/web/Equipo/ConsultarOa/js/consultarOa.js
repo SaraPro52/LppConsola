@@ -1,5 +1,3 @@
-
-console.log("sa");
 var vista = $("#vista").val();
 var objet = {opcion: 5, url: "Crud_Controller", nombre: "consutarOa", tabla: "17", datos: [""], elegir: ["4", "5", "6"],
     delimitador: "[{colum:2, operador:0, valor1:" + idRol + ",añadir:0},{colum:8,operador:0,valor1:"+idCentro+",añadir:0},\n\
@@ -13,7 +11,6 @@ ob.limpiarTabla(selector);
 ob.ajax(objet, selector); 
 var rol = $("#vista").val() + 2; 
 $(document).on('click', '.btnEvaluar', function (e) {
-    console.log(this.id);
     idVersion = this.id;
     $('#myModal').modal('show');
     selector = $("#tablaListaChequeo");
@@ -40,7 +37,7 @@ $(document).on('click', '.btnclick', function (e) {
 $(document).on('click', '.btnclickca', function (e) {
     var con = $(this);
     $('#myModal').modal('hide');
-    objeto = {url: "Equipo_Controller", Opcion: 0, name: "cuerpo", nomLista: "Nombrelista", listaSele: con.val()};
+    objeto = {url: "Equipo_Controller", Opcion: 4, name: "cuerpo", nomLista: "Nombrelista", listaSele: con.val()};
     console.log(objeto);
     idLista = con.val();
     obtenerP(objeto);
