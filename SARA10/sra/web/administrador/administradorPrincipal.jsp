@@ -30,7 +30,7 @@
                     </div>
                     <ul class="nav menu">
                         <li class="active"><a href="inicio.html"><i class="ti-home"></i><p>Administrador</p></a></li>
-                        <li><a href="perfil.html"><i class="ti-user"></i><p>Perfil de usuario</p></a></li>
+                        <li class="btntt" value="6"><a><i class="ti-user"></i><p>Perfil de usuario</p></a></li>
                         <li class="btntt" value="0"><a><i class="ti-marker-alt"></i><p>Registrar usuario</p></a></li>
                         <li class="btntt" value="1"><a><i class="ti-close"></i><p>Deshabilitar usuario</p></a></li>
                         <li class="btntt" value="2"><a><i class="ti-file"></i><p>Formato</p></a></li>

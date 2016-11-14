@@ -30,7 +30,7 @@
 
                     <ul class="nav menu">
                         <li class="active"><a><i class="ti-home"></i><p>Inicio</p></a></li>
-                        <li><a href="perfil.html"><i class="ti-user"></i><p>Perfil de usuario</p></a></li>
+                        <li class="btntt" value="4"><a><i class="ti-user"></i><p>Perfil de usuario</p></a></li>
                         <li class="btntt" value="1"><a><i class="icono izquierda  fa fa-upload" aria-hidden="true"></i>Subir P.V.</a></li>
                         <li class="btntt" value="0"><a><i class="icono izquierda  fa fa-eye" aria-hidden="true"></i>Consultar P.V.</a></li>
                         <li class="btntt" value="3"><a><i class="icono izquierda  fa fa-eye" aria-hidden="true"></i>Notificaciones P.V</a></li>

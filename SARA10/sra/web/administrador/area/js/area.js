@@ -1,7 +1,7 @@
 $(document).on('ready', function () {
     var c=0;
     var tabla = $("#tablaarea");
-    var objet = {opcion: 3, url: "Crud_Controller", nombre: "Area", tabla: "0", datos: [""], elegir: ["0", "1", "2"], id: 0, opSelect: 4};//TABLA Area
+    var objet = {opcion: 3, url: "Crud_Controller", nombre: "Area", tabla: "1", datos: [""], elegir: ["0", "1", "2"], id: 0, opSelect: 4};//TABLA Area
     var selector = $("#tablaarea");
     var ob = new $.Luna(objet.nombre, selector);
     ob.Vivo("Area");

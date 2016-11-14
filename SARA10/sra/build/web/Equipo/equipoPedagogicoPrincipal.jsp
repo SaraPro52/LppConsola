@@ -27,8 +27,8 @@
                             <img src="assets/img/logo.png" alt="" />
                         </a>
                     </div>
-                    <ul class="nav menu"><li class="active"><a href="inicio.html"><i class="ti-home"></i><p>Equipo tecnico</p></a></li>
-                        <li><a href="perfil.html"><i class="ti-user"></i><p>Perfil de usuario</p></a></li>
+                    <ul class="nav menu"><li class="active"><a href="inicio.html"><i class="ti-home"></i><p>Equipo pedagogico</p></a></li>
+                        <li class="activado" value="0"><a><i class="ti-user"></i><p>Perfil de usuario</p></a></li>
                         <li class="activado" value="1"><a><i class="icono izquierda  fa fa-book" aria-hidden="true"></i>Crear lista de chequeo</a></li>
                         <li class="activado" value="3"><a><i class="icono izquierda  fa fa-edit" aria-hidden="true"></i>Modificar Lista  de chequeo</a></li>
                         <li class="activado" value="2"><a><i class="icono izquierda  fa fa-eye" aria-hidden="true"></i>consultar objetos</a></li>

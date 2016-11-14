@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import org.apache.commons.codec.digest.DigestUtils;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -32,6 +33,7 @@ public class sesion_controller extends HttpServlet {
                             sesion.invalidate();
                 }
             }else{
+                contraseña = DigestUtils.md5Hex(request.getParameter("pwd"));
                 String delimitador = "[{colum:4,operador:0,valor1:'\""+usuario+"\"',añadir:0},{colum:5,operador:0,valor1:'\""+contraseña+"\"'}]";
                 Elomac elo = new Elomac(19,2);
 

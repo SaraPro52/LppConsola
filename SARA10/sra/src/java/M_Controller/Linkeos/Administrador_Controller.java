@@ -16,10 +16,10 @@ public class Administrador_Controller extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             int opcion = Integer.parseInt(request.getParameter("Opcion"));
-            switch (opcion) {                
+            switch (opcion) {
                 case 0:
                     request.getRequestDispatcher("administrador/registroFuncionario/registrofuncionario.jsp").forward(request, response);
-                    break; 
+                    break;
                 case 1:
                     request.getRequestDispatcher("administrador/deshabilitarFuncionario/deshabilitarFuncionario.jsp").forward(request, response);
                     break;
@@ -34,6 +34,9 @@ public class Administrador_Controller extends HttpServlet {
                     break;
                 case 5:
                     request.getRequestDispatcher("administrador/programa/Programa.jsp").forward(request, response);
+                    break;
+                case 6:
+                    request.getRequestDispatcher("perfil/perfilUsuario.jsp").forward(request, response);
                     break;
             }
         }

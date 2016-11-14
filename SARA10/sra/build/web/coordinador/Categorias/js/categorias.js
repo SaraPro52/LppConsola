@@ -18,8 +18,8 @@ $(document).ready(function () {
     });
     $("#btnTema").click(function () {
         var objeto = {opcion: 1, nombre: "MultiSelect", opt: "Div",
-            url: "Crud_Controller", tabla: "26", datos: ["", $("#NombreTema").val(), $("#DescripcionTema").val(), "1"], elegir: ["0", "1"],
-            id: 0, opSelect: 4}
+            url: "Crud_Controller", tabla: "27", datos: ["", $("#NombreTema").val(), $("#DescripcionTema").val(), "1"], elegir: ["0", "1"],
+            id: 0, opSelect: 4};
         ob.ajax(objeto, selector);
     });
     $("#btnCategoria").click(function () {

@@ -32,8 +32,9 @@
         $(document).ready(function(){
             var fun = '<%= session.getAttribute("fun")%>';
             $("#btnContra").click(function(){
+                
                 if($("#cont1").val() == $("#cont2").val()){
-                    var objeto = {opcion: 2, url: "Crud_Controller",tabla: "18",elegir: [""], actualizar: "[{'8':'"+$('#cont1').val()+"'}]", id: fun, opSelect: 2};
+                    var objeto = {opcion: 3, url: "Funcionario_Controller",con: $('#cont1').val(), id: fun};
                     $.ajax({
                          url:objeto.url,
                          type:"POST",

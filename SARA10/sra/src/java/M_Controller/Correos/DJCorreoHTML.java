@@ -1,9 +1,6 @@
 package M_Controller.Correos;
 
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.util.Properties;
 
 import javax.mail.Message;
@@ -30,7 +27,7 @@ public class DJCorreoHTML {
         Properties properties = new Properties();
         properties.put("mail.smtp.host", "smtp.gmail.com");
         properties.put("mail.smtp.starttls.enable", "true");
-        properties.put("mail.smtp.port", "587");
+        properties.put("mail.smtp.port", "25");
         properties.put("mail.smtp.auth", "true");
         properties.put("mail.user", correoEnvia);
         properties.put("mail.password", claveCorreo);
@@ -61,7 +58,7 @@ public class DJCorreoHTML {
         "            Estimado Funcionario, le informamos que su usuario es: "+user+"\n" +
         "            <br>\n" +
         "            Para confirmar la cuenta debe ingresar al link que se encuentra"
-                + "acontinuacion LINK: <a href='http://localhost:8080/sra/ActivacionCuenta_Controller?t="+toq+"&c=1'>http://localhost:8080/sra/ActivacionCuenta_Controller?t="+toq+"&c=1</a>. \n" +
+                + "acontinuacion LINK: <a href='http://localhost:8080/sra/ActivacionCuenta_Controller?t="+toq+"&c=1'>link</a>. \n" +
         "            <br>\n" +
         "            <br>\n" +
         "            Gracias por su atencion.\n" +

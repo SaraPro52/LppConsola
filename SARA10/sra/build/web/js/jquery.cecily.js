@@ -250,7 +250,7 @@ jQuery.Luna = function (Datos, selector) {
                         json[i].Cargo,
                         json[i].Nom_Area,
                         json[i].Nom_Estado,
-                        "<button id='" + json[i].Id_Funcionario + "' class='botonclick btn btn-danger'>Deshabilitar</button>"
+                        "<button id='" + json[i].Id_Funcionario + "' class='botonclick btn btn-danger'>Deshabilitar Usuario</button>"
                     ]);
                     c++;
                 }

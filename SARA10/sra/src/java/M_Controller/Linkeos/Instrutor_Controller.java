@@ -27,7 +27,10 @@ public class Instrutor_Controller extends HttpServlet {
                 break;
             case 3:
                 request.getRequestDispatcher("instructor/Notificacion/notificacion.jsp").forward(request, response);
-                break;    
+                break;
+            case 4:
+                request.getRequestDispatcher("perfil/perfilUsuario.jsp").forward(request, response);
+                break;
         }
     }
 

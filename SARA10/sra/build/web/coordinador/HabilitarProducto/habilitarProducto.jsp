@@ -8,25 +8,31 @@
         <title>Habilitar Producto</title>
     </head>
     <body>
-        <section>
-            <label class="col-md-12 col-md-offset-3"><h2>Habilitar producto virtual</h2></label>
-            <br>
-            <article class="col-md-8 col-md-offset-1" id="tabla">
-                <table class="table table-striped" id="tablaAprobar">
-                    <thead>
-                        <tr>
-                            <th> # </th>
-                            <th>Nombre producto</th>
-                            <th>Numero version</th>
-                            <th></th>   
-                        </tr>
-                    </thead>
-                    <tbody>
-                    </tbody>
-                </table>
-            </article>
-            <article class="col-md-12" id="lista">
-        </section>
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <section>
+                            <article class="col-md-8 col-md-offset-1" id="tabla">
+                                <table class="table table-striped" id="tablaAprobar">
+                                    <thead>
+                                        <tr>
+                                            <th> # </th>
+                                            <th>Nombre producto</th>
+                                            <th>Numero version</th>
+                                            <th></th>   
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    </tbody>
+                                </table>
+                            </article>
+                            <article class="col-md-12" id="lista">
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </div>
     </body>
     <script type="text/javascript" src="js/jquery.js"></script>
     <script type="text/javascript" charset="utf8" src="js/jquery.dataTables.js"></script>

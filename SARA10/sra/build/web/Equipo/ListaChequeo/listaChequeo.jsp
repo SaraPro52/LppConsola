@@ -43,6 +43,7 @@
 <script type="text/javascript" src="js/jquery.cecily.js"></script>
 <script type="text/javascript" src="Equipo/ListaChequeo/js/listaChequeo.js"></script>
 <script>
-    listaChequeo(idTipoItem);
+    alert(idUser);
+    listaChequeo(idTipoItem,idUser);
 </script>
 </div>

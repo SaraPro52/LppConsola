@@ -8,8 +8,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import M_Modelo.Funcionario;
-import java.io.File;
+import M_Util.Elomac;
 import javax.servlet.annotation.WebServlet;
+import org.apache.commons.codec.digest.DigestUtils;
 
 @WebServlet(name = "Funcionario_Controller", urlPatterns = {"/Funcionario_Controller"})
 
@@ -54,6 +55,15 @@ public class Funcionario_Controller extends HttpServlet {
                     } catch (Exception e) {
                         respuesta.println(e.getMessage());
                     }
+                    break;
+                case 3:
+                    Elomac fun1 = new Elomac(18,1);
+                    if(fun1.Update(fun1.Select(Integer.parseInt(request.getParameter("id"))),"[{'8':'"+DigestUtils.md5Hex(request.getParameter("con"))+"','9':'1'}]")){
+                        respuesta.println("actualizado");
+                    }  
+                    else{
+                        respuesta.println("no actualizado");
+                    } 
                     break;
             }
         }

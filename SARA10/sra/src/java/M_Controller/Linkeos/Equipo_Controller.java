@@ -18,7 +18,7 @@ public class Equipo_Controller extends HttpServlet {
             int opcion = Integer.parseInt(request.getParameter("Opcion"));
             switch (opcion) {
                 case 0:
-                    request.getRequestDispatcher("Equipo/CalificarOa/calificarOa.jsp").forward(request, response);
+                    request.getRequestDispatcher("perfil/perfilUsuario.jsp").forward(request, response);
                     break;
                 case 1:
                     request.getRequestDispatcher("Equipo/ListaChequeo/listaChequeo.jsp").forward(request, response);

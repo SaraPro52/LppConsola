@@ -33,7 +33,7 @@
 
                     <ul class="nav menu">
                         <li class="active"><a href="inicio.html"><i class="ti-home"></i><p>Coordinador</p></a></li>
-                        <li><a href="perfil.html"><i class="ti-user"></i><p>Perfil de usuario</p></a></li>
+                        <li class="btntt" value="4"><a><i class="ti-user"></i><p>Perfil de usuario</p></a></li>
                         <li class="btntt" value="0"><a><i class=" icono izquierda fa fa-area-chart" aria-hidden="true"></i>Consultar estadisticas</a></li>
                         <li class="btntt" value="1"><a><i class=" icono izquierda fa fa-check" aria-hidden="true"></i>Habilitar producto virtual</a></li>
                         <li class="btntt" value="2"><a><i class=" icono izquierda fa fa-credit-card-alt" aria-hidden="true"></i>Asignar roles</a></li>

@@ -1,4 +1,4 @@
-function listaChequeo(idTipoItem){
+function listaChequeo(idTipoItem,idUser){
     var val= $("#vista").val();
     //alert(idTipoItem);
     var objet = {opcion: 3, url: "Crud_Controller", nombre: "MultiSelect",
@@ -22,10 +22,9 @@ function listaChequeo(idTipoItem){
         }
     });
     $("#btnItem").on('click', function () { 
-        var val= $("#vista").val();
         var objeto = {opcion: 1, nombre: "MultiSelect", opt: "Div",
-            url: "Crud_Controller", tabla: "18", datos: ["", $("#Descripcion").val(), val], elegir: ["0", "1"],
-            delimitador: "[{colum:2,operador:0,valor1:"+val+"}]", id: 0, opSelect: 6};
+            url: "Crud_Controller",tabla: "19", datos: ["", $("#Descripcion").val(), idTipoItem], elegir: ["0", "1"],
+            delimitador: "[{colum:2,operador:0,valor1:"+idTipoItem+"}]", id: 0, opSelect: 6};
         console.log(objeto); 
         ob.ajax(objeto, selector);
     });
@@ -38,7 +37,7 @@ function listaChequeo(idTipoItem){
                 arrayS = arrayS + "," + arraySelecion[j];
             }
         } 
-        var objeto = {opcion: 1, nombre: "btn", url: "ListaChequeo_Controller", lista: [$("#NombreL").val(), $("#DescripcionL").val(), "2"], items: arrayS};
+        var objeto = {opcion: 1, nombre: "btn", url: "ListaChequeo_Controller", lista: [$("#NombreL").val(), $("#DescripcionL").val(), idUser], items: arrayS};
         ob.ajax(objeto, "null");
     });
     

@@ -1,18 +1,8 @@
 package M_Util;
 
-import M_Controller.Archivos.ArchivosController;
-import M_Modelo.Categoria;
-import M_Modelo.Funcionario;
-import M_Modelo.Producto_Virtual;
-import M_Modelo.Version;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.InputStream;
-import java.util.logging.Logger;
 import org.json.JSONException;
 import javax.script.ScriptException;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import org.apache.commons.codec.digest.DigestUtils;
 
 public class NewMain {
 
@@ -1217,7 +1207,14 @@ public class NewMain {
 //            Elomac elo = new Elomac(6,1);
 //            elo.Update(elo.Select(2),"[{'1':'ciudad21'}]");
 //            System.out.println(elo.Select());
-            File archivo = new File("C:\\Users\\migue\\Desktop\\LppConsola\\SARA10\\sra\\src\\java\\M_Controller\\Correos\\prueba.html");
-            archivo.delete();
+//            File archivo = new File("C:\\Users\\migue\\Desktop\\LppConsola\\SARA10\\sra\\src\\java\\M_Controller\\Correos\\prueba.html");
+//            archivo.delete();
+
+              String contraSin = "123456";
+              String contraCon = DigestUtils.md5Hex(contraSin);
+              
+              System.out.println(contraCon);
+              
+              
     }
 }

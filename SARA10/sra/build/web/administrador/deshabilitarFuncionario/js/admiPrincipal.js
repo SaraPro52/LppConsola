@@ -7,9 +7,9 @@ $(document).on('ready', function () {
     ob.TablaEspa(selector);
     ob.ajax(objet, selector);
     $(document).on('click', '.botonclick', function (e) {
-        objeto = {opcion: 2, url: "Crud_Controller", nombre: "FuncionarioRecarga", tabla: "17",
+        objeto = {opcion: 2, url: "Crud_Controller", nombre: "FuncionarioRecarga", tabla: "18",
             elegir: [""], actualizar: "[{'9':'2'}]", id: this.id, opSelect: 2};
-        ob.limpiarTabla();
+        ob.limpiarTabla(selector);
         ob.ajax(objeto, selector);
     });
     //objet = {opcion: 5, url: "Crud_Controller", nombre: "Funcionario", tabla: "2",

@@ -1,5 +1,5 @@
 $(document).on('ready', function () {
-    var objet = {opcion: 3, url:"Crud_Controller", nombre: "Ciudad",tabla:"5",datos:[""],elegir:["0","1"],id:0,opSelect: 4};//TABLA Ciudad
+    var objet = {opcion: 3, url:"Crud_Controller", nombre: "Ciudad",tabla:"6",datos:[""],elegir:["0","1"],id:0,opSelect: 4};//TABLA Ciudad
     var selector = $("#tablaCiudad");
     var ob = new $.Luna(objet.nombre, selector);
     ob.Vivo("Ciudad Modificar");
