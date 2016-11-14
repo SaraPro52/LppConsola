@@ -1,5 +1,29 @@
 USE SARA;
 
+DELIMITER ;;
+CREATE TRIGGER Version_BU_Trigger BEFORE UPDATE ON Version FOR EACH ROW
+BEGIN
+	SELECT COUNT(*) INTO @lineas
+    FROM Rankin
+    WHERE Id_Version = NEW.Id_Version; 
+    
+	IF(NEW.Id_Estado = 6)THEN
+        INSERT INTO Rankin(Id_Version) VALUES(OLD.Id_Version);
+    END IF;
+END;;
+DELIMITER ;
+
+DROP TRIGGER Funcionario_AU_Trigger;
+DELIMITER ;;
+CREATE TRIGGER Funcionario_AU_Trigger AFTER UPDATE ON Funcionario FOR EACH ROW
+BEGIN
+	IF(OLD.Contraseña != NEW.Contraseña)THEN
+		UPDATE Funcionario SET Id_Estado = 1 WHERE Id_Funcionario = OLD.Id_Funcionario; 
+    END IF;
+END;;
+DELIMITER ;
+
+
 DROP TRIGGER IF EXISTS Version_AU_Trigger;
 DELIMITER ;;
 CREATE TRIGGER  Version_AU_Trigger AFTER UPDATE ON Version FOR EACH ROW
@@ -85,26 +109,6 @@ BEGIN
             ORDER BY Num_Version DESC LIMIT 1;
     
 			IF(@fecha >= CURRENT_TIMESTAMP)THEN
-				
-				SELECT COUNT(*) INTO @lineas 
-				FROM Version v INNER JOIN Evaluacion_General eg ON v.Id_Version = eg.Id_Version 
-				WHERE Id_P_Virtual = NEW.Id_P_Virtual AND Id_Estado = 4 AND Resultado = 1;
-				
-				IF(@lineas = 1) THEN
-					SET NEW.Id_Estado = 4;
-				END IF;
-				
-				SELECT COUNT(*) INTO @lineas 
-				FROM Version v INNER JOIN Evaluacion_General eg ON v.Id_Version = eg.Id_Version 
-				WHERE Id_P_Virtual = NEW.Id_P_Virtual AND Id_Estado = 5 AND Resultado = 1;
-				
-				IF(@lineas = 1) THEN
-					SET NEW.Id_Estado = 5;
-				END IF;
-				
-				SELECT COUNT(*) INTO @lineas 
-				FROM Version 
-				WHERE Id_P_Virtual = NEW.Id_P_Virtual AND Id_Estado = NEW.Id_Estado; 
 				
 				IF((@lineas > 0 AND @lineas < 3 AND NEW.Id_Estado = 3) OR (@lineas > 0 AND @lineas < 4 AND NEW.Id_Estado = 4)) THEN
 				

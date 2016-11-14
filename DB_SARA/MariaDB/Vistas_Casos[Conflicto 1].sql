@@ -28,7 +28,7 @@ CREATE VIEW 03_V_Detalles_Area AS(
 		  INNER JOIN Programa pr ON da.Id_Programa = pr.Id_Programa)
 );
 
--- PROGRAMA ------- DETALLES_PROGRAMA ------- TEMA ---- 0
+-- PROGRAMA ------- DETALLES_PROGRAMA ------- TEMA ----
 DROP VIEW IF EXISTS 04_V_Detalles_Programa;
 CREATE VIEW 04_V_Detalles_Programa AS(
 	
@@ -37,7 +37,7 @@ CREATE VIEW 04_V_Detalles_Programa AS(
           INNER JOIN Tema te ON dp.Id_Tema = te.Id_Tema)
 );
 
--- CATEGORIA ------ DETALLES_CATEGORIA ------ TEMA---- 1
+-- CATEGORIA ------ DETALLES_CATEGORIA ------ TEMA----
 DROP VIEW IF EXISTS 05_V_Detalles_Categoria;
 CREATE VIEW 05_V_Detalles_Categoria AS
 (
@@ -76,16 +76,13 @@ CREATE VIEW 07_V_Version AS (
 DROP VIEW IF EXISTS 08_V_Funcionario;
 CREATE VIEW 08_V_Funcionario AS
 (
-	SELECT  Id_Rol_Funcionario, RF.Id_Rol, Nom_Rol,Des_Rol,
+	SELECT Id_Rol_Funcionario, RF.Id_Rol, Nom_Rol,Des_Rol,
 			RF.Id_Funcionario,td.Id_Tipo_Documento, Nom_Tipo_Documento,Num_Documento,Nom_Funcionario,Apellidos,
-            Correo,Cargo,Ip_Sena,Contraseña,Id_Estado,Fu.Id_Area_Centro,Id_Centro
+            Correo,Cargo,Ip_Sena,Contraseña,Id_Estado,Id_Area_Centro
 	FROM (((Rol Ro INNER JOIN Rol_Funcionario RF ON Ro.Id_Rol = RF.Id_Rol) INNER JOIN
 		   Funcionario Fu ON RF.Id_Funcionario = Fu.Id_Funcionario) INNER JOIN 
-           Tipo_Documento td ON td.Id_Tipo_Documento = Fu.Id_Tipo_Documento)INNER JOIN 
-           Area_Centro ac ON Fu.Id_Area_Centro = ac.Id_Area_Centro
+           Tipo_Documento td ON td.Id_Tipo_Documento = Fu.Id_Tipo_Documento)
 );    
-
-
 
 -- AUTOR -------- V_FUNCIONARIO -------- V_VERSION--------
 DROP VIEW IF EXISTS 09_V_Autor;
@@ -107,12 +104,10 @@ CREATE VIEW 09_V_Autor AS(
 -- HABILITAR PRODUCTO VIRTUAL 
 DROP VIEW IF EXISTS 10_Habilitar_P;
 CREATE VIEW 10_Habilitar_P AS(
-	SELECT DISTINCT v2.Id_Version,Nom_P_Virtual,Num_Version,Fecha_Vigencia, Id_Centro
-	FROM Producto_Virtual v1 INNER JOIN Version v2 ON v1.Id_P_Virtual = v2.Id_P_Virtual
-    INNER JOIN Autor v3 ON v2.Id_Version = v3.Id_Version INNER JOIN Funcionario v4 ON v3.Id_Funcionario = v4.Id_Funcionario
-	INNER JOIN Area_Centro v5 ON v4.Id_Area_Centro = v5.Id_Area_Centro
-	WHERE v2.Id_Estado = 5
-);
+	SELECT v2.Id_P_Virtual,Nom_P_Virtual,Num_Version,Fecha_Vigencia
+	FROM Producto_Virtual v1 INNER JOIN Version v2 ON v1.Id_P_Virtual = v2.Id_P_Virtual 
+	WHERE Id_Estado = 5
+)
 
 
 -- VISTA PARA LISTAR LAS AREAS Y EL CENTRO QUE TIENE UNA RELACION
@@ -154,7 +149,6 @@ CREATE VIEW 14_V_Titulos AS (
     WHERE Id_Estado = 6
 );
 
-
 -- LISTAR LOS FUNCIONARIOS QUE TENGAN EL ROL DE INSTRUCTOR
 DROP VIEW IF EXISTS 15_V_Subir_Autores;
 CREATE VIEW 15_V_Subir_Autores AS(
@@ -169,11 +163,16 @@ CREATE VIEW 15_V_Subir_Autores AS(
 DROP VIEW IF EXISTS 16_V_Items_Lista;
 CREATE VIEW 16_V_Items_Lista AS(
 	
-    SELECT v3.Id_Item_Lista,Des_Item_Lista,Tipo_Item,v1.Id_Lista_Chequeo,Id_Detalles_Lista
+    SELECT v3.Id_Item_Lista,Des_Item_Lista,Tipo_Item,v1.Id_Lista_Chequeo
     FROM Detalles_Lista v1 INNER JOIN Lista_Chequeo v2 ON v1.Id_Lista_Chequeo = v2.Id_Lista_Chequeo
     INNER JOIN Item_Lista v3 ON v1.Id_Item_Lista = v3.Id_Item_Lista
  
 );
+
+SELECT Id_Item_Lista,Des_Item_Lista
+FROM  Item_Lista
+WHERE Id_Item_Lista NOT IN (3) AND Tipo_Item = 0
+
 
 CREATE VIEW 17_V_ProductosEvaluador AS (
 	
@@ -181,15 +180,15 @@ CREATE VIEW 17_V_ProductosEvaluador AS (
 	FROM Producto_Virtual v1 INNER JOIN Version v2 ON v1.Id_P_Virtual = v2.Id_P_Virtual INNER JOIN Estado v3 ON v2.Id_Estado = v3.Id_Estado
 );
 
+
 CREATE VIEW 18_V_Notificaciones AS(
-	SELECT v1.Id_Funcionario, Nom_Funcionario, v5.Id_Rol,Nom_Rol, Fecha_Envio, Conte_Notificacion, Ides_Proceso,v3.Id_Funcionario AS Id_FuncionarioEnvio,Id_Centro,Id_Tipo_Notificacion
+	SELECT v1.Id_Funcionario, Nom_Funcionario, v5.Id_Rol,Nom_Rol, Fecha_Envio, Conte_Notificacion, Ides_Proceso,v3.Id_Funcionario AS Id_FuncionarioEnvio
 	FROM Funcionario v1 INNER JOIN Detalles_Notificacion v2 ON v1.Id_Funcionario = v2.Id_Funcionario
 	 INNER JOIN Notificacion v3 ON v2.Id_Notificacion = v3.Id_Notificacion INNER JOIN Rol_Funcionario v4 ON v1.Id_Funcionario = v4.Id_Funcionario
-     INNER JOIN Rol v5 ON v4.Id_Rol = v5.Id_Rol INNER JOIN Area_Centro v6 ON v1.Id_Area_Centro = v6.Id_Area_Centro 
-	ORDER BY v1.Id_Funcionario
+     INNER JOIN Rol v5 ON v4.Id_Rol = v5.Id_Rol
 );
 
-
+use sara;
 CREATE VIEW 19_v_TemasFormacion AS(
 
 	SELECT Id_Tema, Nom_Tema, Id_Centro
@@ -198,40 +197,7 @@ CREATE VIEW 19_v_TemasFormacion AS(
     
 );
 
-CREATE VIEW 20_V_Login AS(
-SELECT Id_Rol, Id_Funcionario, Nom_Funcionario,v2.Id_Centro,Num_Documento, Contraseña
-FROM  08_V_Funcionario v1 INNER JOIN Area_Centro v2 ON v1.Id_Area_Centro = v2.Id_Area_Centro
-);
-
-CREATE VIEW 21_V_AsignarRol AS(
-SELECT v1.Id_Funcionario, CONCAT(Nom_Funcionario," ",Apellidos) AS NombreCompleto, Cargo,v2.Id_Centro, Nom_Centro,v2.Id_Area,Nom_Area,v3.Id_Ciudad,Nom_Ciudad
-FROM Funcionario v1 INNER JOIN Area_Centro v2 ON v1.Id_Area_Centro = v2.Id_Area_Centro
-	 INNER JOIN Centro v3 ON v2.Id_Centro = v3.Id_Centro INNER JOIN Area v4 ON v2.Id_Area = v4.Id_Area
-     INNER JOIN Ciudad v5 ON v3.Id_Ciudad = v5.Id_Ciudad INNER JOIN Estado v7 ON v1.Id_Estado = v7.Id_Estado
-WHERE v1.Id_Estado = 2
-);
-
-CREATE VIEW 22_V_Autor_Simple AS(
-	SELECT v1.Id_Funcionario ,CONCAT(Nom_Funcionario," ",Apellidos) AS NombreCompleto, Id_Version
-    FROM Funcionario v1 INNER JOIN Autor v2 ON v1.Id_Funcionario = v2.Id_Funcionario
-);
-
-CREATE VIEW 23_V_Consultar AS(
-	SELECT  Id_P_Virtual, Nom_P_Virtual,Des_P_Virtual,Palabras_Clave,Fecha_Publicacion,Id_Version
-    FROM 07_v_version
-    WHERE Id_Estado = 6
-);
-
-
-CREATE VIEW 24_V_Toquen AS(
-	SELECT * 
-    FROM Toquen
-    WHERE FechaVigencia > CURRENT_TIMESTAMP
-);
 
 -- REGISTRAR FUNCIONARIO
-CALL SARA_CRUD("INSERT","Funcionario","Id_Tipo_Documento~1	|Num_Documento~691335951	|Nom_Funcionario~Miguel Alfredo2	|Apellidos~Sanchez Cabanzo2		|Correo~Macastiblanco288@misena.edu.co	|Cargo~Instructor	|Ip_Sena~159755	|Contraseña~macc1	|Id_Area_Centro~1","");
-CALL SARA_CRUD("SELECT","Funcionario","","");
 
-CALL SARA_CRUD("UPDATE","Funcionario","Correo~uno correo19","Id_Funcionario = 44");
 -- SELECTOR CENTRO

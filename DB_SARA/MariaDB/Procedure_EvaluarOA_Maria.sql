@@ -34,6 +34,7 @@ BEGIN
 			SET @cant = CHAR_LENGTH(@arrayE) - CHAR_LENGTH(@val);
 			SET @arrayE = RIGHT(@arrayE,@cant -1);
 				SELECT @val;
+
                 CASE @a
 					WHEN 0 THEN SET @valorizacion = @val;
                     WHEN 1 THEN SET @observacionItem = @val;
@@ -116,11 +117,11 @@ CALL ALL_AUTOR(4,@sali);
 
 SELECT @sali;
 
-CALL RegistrarEvaluacion("Observacion1111 de hhhpruebakk17719~1~4~3~2~2017-08-01~1¤si cumple con el item¤1|1¤si cumple con el item¤2");
+CALL RegistrarEvaluacion("Observacion1111 de hhhpruebakk17719~1~4~3~2~2017-08-01~    1¤si cumple con el item¤1|1¤si cumple con el item¤2");
 
 CALL SARA_CRUD("SELECT","Tipo_Notificacion","","");
 
-CALL SARA_CRUD("SELECT","Version","","");
+CALL SARA_CRUD("SELECT","Evaluacion_Genaral","","");
 
 -- CALL SARA_CRUD("DELETE","Detalles_Evaluacion","","Id_Detalles_Evaluacion >= 5");
 -- CALL SARA_CRUD("DELETE","Evaluacion_General","","Id_Evaluacion_General >= 2 ");

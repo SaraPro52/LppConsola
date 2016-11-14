@@ -154,7 +154,6 @@ CREATE VIEW 14_V_Titulos AS (
     WHERE Id_Estado = 6
 );
 
-
 -- LISTAR LOS FUNCIONARIOS QUE TENGAN EL ROL DE INSTRUCTOR
 DROP VIEW IF EXISTS 15_V_Subir_Autores;
 CREATE VIEW 15_V_Subir_Autores AS(
@@ -211,27 +210,8 @@ FROM Funcionario v1 INNER JOIN Area_Centro v2 ON v1.Id_Area_Centro = v2.Id_Area_
 WHERE v1.Id_Estado = 2
 );
 
-CREATE VIEW 22_V_Autor_Simple AS(
-	SELECT v1.Id_Funcionario ,CONCAT(Nom_Funcionario," ",Apellidos) AS NombreCompleto, Id_Version
-    FROM Funcionario v1 INNER JOIN Autor v2 ON v1.Id_Funcionario = v2.Id_Funcionario
-);
-
-CREATE VIEW 23_V_Consultar AS(
-	SELECT  Id_P_Virtual, Nom_P_Virtual,Des_P_Virtual,Palabras_Clave,Fecha_Publicacion,Id_Version
-    FROM 07_v_version
-    WHERE Id_Estado = 6
-);
-
-
-CREATE VIEW 24_V_Toquen AS(
-	SELECT * 
-    FROM Toquen
-    WHERE FechaVigencia > CURRENT_TIMESTAMP
-);
 
 -- REGISTRAR FUNCIONARIO
 CALL SARA_CRUD("INSERT","Funcionario","Id_Tipo_Documento~1	|Num_Documento~691335951	|Nom_Funcionario~Miguel Alfredo2	|Apellidos~Sanchez Cabanzo2		|Correo~Macastiblanco288@misena.edu.co	|Cargo~Instructor	|Ip_Sena~159755	|Contraseña~macc1	|Id_Area_Centro~1","");
 CALL SARA_CRUD("SELECT","Funcionario","","");
-
-CALL SARA_CRUD("UPDATE","Funcionario","Correo~uno correo19","Id_Funcionario = 44");
 -- SELECTOR CENTRO
