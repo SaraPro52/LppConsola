@@ -13,7 +13,8 @@
                                             <th>#</th>
                                             <th>Nombre de lista</th>
                                             <th>Fecha</th>
-                                            <th></th> 
+                                            <th>Evaluar</th> 
+                                            <th>Descargar</th>
                                         </tr>
                                     </thead>
                                     <tbody>
