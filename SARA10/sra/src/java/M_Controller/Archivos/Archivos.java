@@ -21,7 +21,7 @@ public class Archivos {
     }
 
     public String getBase() {
-        String base = "C:\\Users\\migue\\Desktop\\LppConsola\\SARA10\\sra\\web\\Archivos";
+        String base = "C:\\Users\\migue\\Desktop\\LppConsola\\SARA10\\sra\\web\\Archivos\\";
         return base;
     }
     
