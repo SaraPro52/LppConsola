@@ -13,7 +13,7 @@ function modificar(idTipoItem) {
 
     $("#btnItem").on('click', function () {
         var objeto = {opcion: 1, nombre: "MultiSelect", opt: "Div",
-            url: "Crud_Controller", tabla: "18", datos: ["", $("#Descripcion").val(), idTipoItem], elegir: ["0", "1"],
+            url: "Crud_Controller", tabla: "19", datos: ["", $("#Descripcion").val(), idTipoItem], elegir: ["0", "1"],
             delimitador: "[{colum:2,operador:0,valor1:" + idTipoItem + "}]", id: 0, opSelect: 6};
         ob.ajax(objeto, selector);
     });

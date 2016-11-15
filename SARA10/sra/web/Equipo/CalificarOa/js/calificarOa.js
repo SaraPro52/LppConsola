@@ -23,12 +23,16 @@ $("#btnEvaluar").click(function () {
             infoItems.push("0¤" + $("#" + campo).val() + "¤" + campo);
         }
     });
-
-    objet = {opcion: 1,
-        url: "EvaluacionGeneral_Controller", infoEva: [$("#areaObservacion").val(),$("#Resultado").val(),idVersion,idLista,idUser,$("#iFecha").val()],
-        infoItem: infoItems};
+    var resultado = 3;
+    if ($(".Resultado").is(':checked')) {
+        resultado = 1;
+    } else if ($(".Resultado1").is(':checked')) {
+        resultado = 0;
+    }
+    objet = {
+        opcion: 1, url: "EvaluacionGeneral_Controller", infoEva: [$("#areaObservacion").val(),
+            resultado, idVersion, idLista, idUser, $("#iFecha").val()], infoItem: infoItems};
     selector = "btn";
-    ob.ajax(objet,selector);
-
+    ob.ajax(objet, selector);
 });
     

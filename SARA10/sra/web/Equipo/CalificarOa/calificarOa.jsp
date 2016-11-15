@@ -23,8 +23,8 @@
                             <label class="col-md-5" for="areaObservacion">Observaciones</label>
                             <textarea class="col-md-5 col-md-offset-3" id="areaObservacion" rows="1" cols="40"></textarea>
                             <form class="col-md-5 col-md-offset-3" action="">
-                                <input type="radio" id="Resultado" name="Resultado" value="1"> Aprovado<br>
-                                <input type="radio" id="Resultado" name="Resultado" value="0"> Reprovado<br>
+                                <input type="radio" name="Resultado" class="Resultado" value="1"> Aprovado<br>
+                                <input type="radio" name="Resultado" class="Resultado1" value="0"> Reprovado<br>
                             </form>
                             <div col-md-4 col-md-offset-1>
                                 <button type="button" class="btn btn-block" id="btnEvaluar">Evaluar</button>

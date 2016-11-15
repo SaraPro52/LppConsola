@@ -60,8 +60,6 @@
 <script type="text/javascript" src="js/jquery.cecily.js"></script>
 <script type="text/javascript" src="Equipo/ModificarLista/js/modificarLista.js"></script>
 <script>
-    $(document).ready(function () {
-        modificar(this.idTipoItem);
-    });
+    modificar(this.idTipoItem);
 </script>
 </div>
