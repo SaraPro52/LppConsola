@@ -93,7 +93,7 @@
         <div  class="col-md-12 quienesEstilo">
             <img src="imagenes/quienes3.png" class="queimagen">
             <h2 class="titleSARA">¿Quenes somos?</h2>
-            <div class="lineaHorizontal"></div> 
+            <div class="lineaHorizontal"></div>
             <div id="cajon1" class="col-md-6 seccionEquipo" >
                 <h3>Equipo desarrollador</h3>
                 <p>
@@ -102,12 +102,12 @@
                     y las tecnologias de la informacion de la regional distrito capital
                 </p>
                 <table class="table">
-                    <form action="Equipo_Controller" method="post" class="form-control">
+                    <form action="Equipo_Controller" method="post" class="form-control"> 
                         <select name="Opcion" value="0" >
-                            <option value="2">Imagenes12</option>
+                            <option value="3">Imagenes12</option>
                         </select>
                         <input type="submit" name="btnenviar" value="Aceptar">
-                    </form>
+                    </form>    
                     <tbody>
                         <tr>
                             <td>
