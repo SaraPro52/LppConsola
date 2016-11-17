@@ -1,5 +1,5 @@
 $(document).on('ready', function () {
-    var c=0;
+    var c = 0;
     var tabla = $("#tablaarea");
     var objet = {opcion: 3, url: "Crud_Controller", nombre: "Area", tabla: "1", datos: [""], elegir: ["0", "1", "2"], id: 0, opSelect: 4};//TABLA Area
     var selector = $("#tablaarea");
@@ -33,10 +33,10 @@ $(document).on('ready', function () {
     $(document).on('click', '.botonclick', function (e) {
         switch (this.value) {
             case "m":
+                selector = $("#selecAreafun");
+                
+                ob.ajax(objet,selector);
                 console.log("DinamicoM" + this.id);
-                break;
-            case "e":
-                console.log("DinamicoE" + this.id);
                 break;
         }
     });

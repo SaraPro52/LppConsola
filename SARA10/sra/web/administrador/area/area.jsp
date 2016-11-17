@@ -12,6 +12,29 @@
         <div class="content">
             <div class="container-fluid">
                 <div class="row">
+                    <div class="wrapper">
+                        <div id="myModal" class="modal fade" role="dialog">
+                            <div class="modal-dialog">
+
+                                <!-- Modal content-->
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        <h4 class="modal-title">Modificar lider de  la area</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <select id="selecAreafun">
+                                            <option value="A0">Seleciona...</option>
+                                        </select>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-info">Guardar</button>
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <div class="col-md-12">
                         <article class="col-md-10">
                             <label>Centro de formacion</label>
@@ -44,7 +67,6 @@
                 </div>
             </div>
         </div>
-
     </body>
     <script type="text/javascript" src="js/jquery.js"></script>
     <script type="text/javascript" charset="utf8" src="js/jquery.dataTables.js"></script>

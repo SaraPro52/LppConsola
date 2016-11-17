@@ -1,6 +1,5 @@
 <div class="">
     <link rel="stylesheet" type="text/css" href="css/multi-select.css">
-
 <div class="content">
     <div class="container-fluid">
         <div class="row">
