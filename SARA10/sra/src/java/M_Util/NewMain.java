@@ -1,8 +1,8 @@
 package M_Util;
 
+import M_Modelo.Programa;
 import org.json.JSONException;
 import javax.script.ScriptException;
-import org.apache.commons.codec.digest.DigestUtils;
 
 public class NewMain {
 
@@ -1210,10 +1210,22 @@ public class NewMain {
 //            File archivo = new File("C:\\Users\\migue\\Desktop\\LppConsola\\SARA10\\sra\\src\\java\\M_Controller\\Correos\\prueba.html");
 //            archivo.delete();
 
-              String contraSin = "123456";
-              String contraCon = DigestUtils.md5Hex(contraSin);
-              
-              System.out.println(contraCon);
+//              String contraSin = "123456";
+//              String contraCon = DigestUtils.md5Hex(contraSin);
+//              
+//              System.out.println(contraCon);
+//            Elomac elo  = new Elomac(1,1);
+//             elo.atributos.replace("Nom_Area","Area 31");
+//             elo.atributos.replace("Lider_Area", "Miguel28");
+//             System.out.println(elo.Insert());
+//            System.out.println(elo.atributos.get("Id_Area"));
+
+            Programa p = new Programa();
+            String[] pro = {"","LA PRUEBA PRO1","Tecnologo1"};
+            String[] are = {"1","2"};
+            String[] tem = {"1","3"};
+            System.out.println(p.RegistrarPrograma(pro, are, tem));
+             
               
               
     }

@@ -45,8 +45,7 @@
                                             <label>Definir de objecto de aprendizaje</label> <br/>
                                             <input type="checkbox" id="Categorias"  >Categoria<br/>
                                             <div id="SelectCategoriaDiv">
-                                                <section  id=SelectCategoria>
-                                                </section>
+                                                <section  id=SelectCategoria></section>
                                             </div>
                                             <input type="checkbox" id="Estruturas" >Estrura de formacion
                                             <div id="SelectEstruturaDiv">

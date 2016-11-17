@@ -216,7 +216,43 @@ public class Elomac extends M_Crud{
     
     //------------------------- INSERT -----------------------------
     public boolean Insert(){
-        return (boolean)this.SuperP("INSERT",this.tabla,atributos,"");
+        boolean bo = (boolean)this.SuperP("INSERT",this.tabla,atributos,"");
+        this.load(this.Select(Integer.parseInt(this.ObtenerId())));
+        return bo;
+    }
+    
+    private String ObtenerId(){
+        String[] arr = cargarArrayAtributos();
+        String delimitador = "";
+        String añada = "";
+        String[] numColum = {"0"};
+        String id ="";
+        for(int i = 0;i < arr.length;i++){
+            
+            for (Entry<String, Object> enti : atributos.entrySet()) {
+                
+                if(arr[i].equals(enti.getKey())){
+                    if((i + 1) < arr.length) añada = ",añadir:0},";
+                    else añada = "}]";
+
+                    if(i == 1){
+                        delimitador += "[{colum:"+i+",operador:0,valor1:'\""+enti.getValue()+"\"'"+añada;
+                    }else if(i > 1){
+                        delimitador += "{colum:"+i+",operador:0,valor1:'\""+enti.getValue()+"\"'"+añada;
+                    }
+                }
+                
+            }
+        }
+        System.out.println(delimitador);
+        id = this.Select(numColum,delimitador);
+        System.out.println(id);
+        try {
+            JSONObject idJ = new JSONArray(id).getJSONObject(0);
+            return idJ.getString(idJ.names().getString(0));//obtener el valor de un json por medio del nombre de la llave
+        } catch (Exception e) {
+            return "NO ID";
+        }
     }
     
     //------------------------- UPDATE -----------------------------

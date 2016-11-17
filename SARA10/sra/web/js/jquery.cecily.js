@@ -34,6 +34,7 @@ jQuery.Luna = function (Datos, selector) {
             lista.text(texto);
         }
     }
+    
     this.TablaEspa = function (datos) {
         datos.DataTable({
             language: {

@@ -18,10 +18,16 @@
                                 <select id="SelecCentro">
                                     <option value="A0">Seleciona...</option>
                                 </select>
-                                <label>Area de formacion</label>
+                                <label id="lblArea">Areas</label>
+                                <div id="oculto1"><select id="MultAreas"></select></div>
+                                
+                                <label id="lblTema">Temas</label>
+                                <div id="oculto2"><select id="MultTemas"></select></div>
+                                
                                 <select id="SelecArea">
                                     <option value="A0">Seleciona...</option>
                                 </select>
+                                
                                 <label>Programa de formación</label>
                                 <input type="text" class="form-control" placeholder="Ej: Diseño multimedia ">
                                 <div id="oculto"><select id="MultTemas"></select></div>

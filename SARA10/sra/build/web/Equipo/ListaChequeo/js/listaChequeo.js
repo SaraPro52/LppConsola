@@ -1,6 +1,4 @@
 function listaChequeo(idTipoItem,idUser){
-    var val= $("#vista").val();
-    //alert(idTipoItem);
     var objet = {opcion: 3, url: "Crud_Controller", nombre: "MultiSelect",
         tabla: "19", datos: [""], elegir: ["0", "1"],
         delimitador: "[{colum: 2,operador: 0,valor1:"+idTipoItem+"}]", id: 0, opSelect: 6};
@@ -21,6 +19,7 @@ function listaChequeo(idTipoItem,idUser){
             arraySelecion.splice(busqueda, 1);
         }
     });
+    
     $("#btnItem").on('click', function () { 
         var objeto = {opcion: 1, nombre: "MultiSelect", opt: "Div",
             url: "Crud_Controller",tabla: "19", datos: ["", $("#Descripcion").val(), idTipoItem], elegir: ["0", "1"],
@@ -28,6 +27,7 @@ function listaChequeo(idTipoItem,idUser){
         console.log(objeto); 
         ob.ajax(objeto, selector);
     });
+    
     $("#BtnLista").on('click', function () {
         var arrayS = [];
         for (var j = 0; j < arraySelecion.length; j++) {
