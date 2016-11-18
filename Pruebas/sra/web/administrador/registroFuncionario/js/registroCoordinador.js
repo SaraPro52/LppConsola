@@ -9,7 +9,7 @@ $(document).on('ready', function () {
         id: 0, 
         opSelect: 4};
     
-    var arr =["Crud_Controller","5","10","",0,4,"2",["2","3"]];
+    var jso = ['Crud_Controller','[{opcion:5,tabla:10,datos:[""],delimitador:"",id:0,opSelect:4,elegir:["2","3"]}]'];
    
     var selector = $("#centroFormacion");
     var ob = new $.Luna("RegistroFuncionario", selector);
@@ -18,7 +18,7 @@ $(document).on('ready', function () {
     var cc = 0;
     var hilo = [];
     hilo[cc] = new Worker("js/worker.js");
-    hilo[cc].postMessage(arr);
+    hilo[cc].postMessage(jso);
     hilo[cc].onmessage = function (event) {
         console.log(event.data);
         hilo[cc].terminate();

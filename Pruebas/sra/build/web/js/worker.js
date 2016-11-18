@@ -1,9 +1,8 @@
-this.addEventListener('message', function (e,w) {
+this.addEventListener('message', function (e) {
     var data = e.data;
-    var string = e.data;
     
     var xhr = new XMLHttpRequest();
-    xhr.open("POST","../"+ data[0] +"?data="+data, true);
+    xhr.open("POST","../"+ data[0] +"?data="+data[1], true);
     xhr.setRequestHeader('Content-type', 'application/json; charset=utf-8');
     xhr.onload = function (e) {
         if (xhr.readyState === 4) {

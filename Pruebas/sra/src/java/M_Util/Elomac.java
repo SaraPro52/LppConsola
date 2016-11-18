@@ -40,6 +40,7 @@ public class Elomac extends M_Crud{
         cargarAtributos();
         this.arrayAtributos = cargarArrayAtributos();
     }
+    
     public Elomac(int tab,int tipo,String[] datos){
         this.tipoElo = tipo;
         this.arrayTablas = cargarTablas();
@@ -48,11 +49,19 @@ public class Elomac extends M_Crud{
         this.arrayAtributos = cargarArrayAtributos();
     }
     
+    public Elomac(int tab,int tipo,ArrayList<String> datosLista){
+        this.tipoElo = tipo;
+        this.arrayTablas = cargarTablas();
+        this.tabla = arrayTablas[tab];
+        cargarAtributos(datosLista.toArray());
+        this.arrayAtributos = cargarArrayAtributos();
+    }
+    
     private void cargarAtributos(){
         atributosLista(null);
     }
     
-    private void cargarAtributos(String[] datos){
+    private void cargarAtributos(Object[] datos){
         atributosLista(datos);
     }
     
@@ -69,7 +78,6 @@ public class Elomac extends M_Crud{
         } catch (Exception e) {
             e.printStackTrace();
         }
-    
     }
     
     private String[] cargarArrayAtributos(){
@@ -244,5 +252,12 @@ public class Elomac extends M_Crud{
     public boolean Delete(String colum, String operador ,String valor){
         return (boolean)this.SuperP("DELETE",this.tabla,atributos,""+colum+" "+operador+" "+valor+"");
     }
-
+    
+    
+    //---------------------------- CONVERTIDORES ------------------------
+    
+    public static Object[] M_toArray(String arrayFalse){
+        Object[] arrayTrue = arrayFalse.substring(1,arrayFalse.length()-1).split(",");
+        return arrayTrue;
+    }
 }

@@ -1,8 +1,11 @@
 package M_Util;
 
+import java.util.ArrayList;
 import org.json.JSONException;
 import javax.script.ScriptException;
 import org.apache.commons.codec.digest.DigestUtils;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class NewMain {
 
@@ -1211,13 +1214,36 @@ public class NewMain {
 //              
 //              System.out.println(contraCon);
 //              
-        String dias = "Lunes,Martes,Miercoles,Jueves,Viernes,Sabado,Domingo";
-        String diaArray[] = dias.split(",");
+//        String dias = "Lunes,Martes,Miercoles,Jueves,Viernes,Sabado,Domingo";
+//        String diaArray[] = dias.split(",");
+//
+//        System.out.println("--Ejemplo 1--");
+//        for (String dia : diaArray) {
+//            System.out.println(dia);
+//        }
 
-        System.out.println("--Ejemplo 1--");
-        for (String dia : diaArray) {
-            System.out.println(dia);
-        }
+          
+//          ArrayList<String> pru = new ArrayList<String>();
+//          pru.add("Hola");
+//          pru.add("Como");
+//          pru.add("Estas?");
+//          Object[] arr = pru.toArray();
+//          System.out.println(arr.length);
+//          for (int i = 0; i < arr.length; i++) {
+//              System.out.println(arr[i]);
+//            }
+
+
+        String json = "[{primero:1,segundo:[1,2]}]";
         
+        JSONObject j = new JSONArray(json).getJSONObject(0);
+        
+        Object[] pru = Elomac.M_toArray(j.getString("segundo"));
+        
+        System.out.println(pru[0]);
+        System.out.println(pru[1]);
+          
     }
+    
+    
 }
