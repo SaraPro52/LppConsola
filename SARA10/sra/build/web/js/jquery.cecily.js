@@ -257,14 +257,16 @@ jQuery.Luna = function (Datos, selector) {
                 }
                 break;
             case "Funcionario":
-                for (var i = 0; i < json.length; i++) {
+                var jsFuncionario;
+                jsFuncionario = jQuery.parseJSON(json);
+                for (var i = 0; i < jsFuncionario.length; i++) {
                     table = selector.dataTable().fnAddData([
                         c,
-                        json[i].NombreCompleto,
-                        json[i].Cargo,
-                        json[i].Nom_Area,
-                        json[i].Nom_Estado,
-                        "<button id='" + json[i].Id_Funcionario + "' class='botonclick btn btn-danger'>Deshabilitar Usuario</button>"
+                        jsFuncionario[i].NombreCompleto,
+                        jsFuncionario[i].Cargo,
+                        jsFuncionario[i].Nom_Area,
+                        jsFuncionario[i].Nom_Estado,
+                        "<button id='" + jsFuncionario[i].Id_Funcionario + "' class='botonclick btn btn-danger'>Deshabilitar Usuario</button>"
                     ]);
                     c++;
                 }

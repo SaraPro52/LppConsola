@@ -54,7 +54,7 @@ public class Crud_Controller1 extends HttpServlet {
             tabla = jDato.getInt("tabla");
             datos = (String[]) Elomac.M_toArray(jDato.getString("datos"));
             delimitador = jDato.getString("delimitador");
-            //actualizar = request.getParameter("actualizar");
+            actualizar = jDato.getString("actualizar");
             id = jDato.getInt("id");
             optionSelect = jDato.getInt("opSelect");
 
@@ -68,12 +68,15 @@ public class Crud_Controller1 extends HttpServlet {
                     break;
                 case 2:
                     elo = new Elomac(tabla, tipoElo);
-                    if (elo.Update(elo.Select(Integer.parseInt(request.getParameter("id"))), request.getParameter("actualizar"))) {
-                        respuesta.println("actualizado");
-                    } else {
-                        respuesta.println("no actualizado");
+                    try {
+                        if (elo.Update(elo.Select(id), actualizar)) {
+                            respuesta.println("actualizado");
+                        } else {
+                            respuesta.println("no actualizado");
+                        }
+                    } catch (Exception e) {
+                        respuesta.println(e.getMessage());
                     }
-
                     break;
                 case 3:
                     ManejoDatos();
@@ -145,6 +148,8 @@ public class Crud_Controller1 extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        System.out.println(request);
+        System.out.println(response);
         processRequest(request, response);
     }
 
@@ -159,7 +164,10 @@ public class Crud_Controller1 extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        System.out.println(request);
+        System.out.println(response);
         processRequest(request, response);
+
     }
 
     /**

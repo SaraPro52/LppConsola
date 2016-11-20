@@ -22,7 +22,7 @@ import org.json.JSONObject;
 public class Funcionario_Controller extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, Exception{
+            throws ServletException, Exception {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             //Cambio previsto ahora no se tlvez toque esperar 1 minuto
@@ -32,7 +32,7 @@ public class Funcionario_Controller extends HttpServlet {
             2. Actualizar
             3. Consultar
             4. Deshabilitar*/
-            String data = request.getParameter("data");       
+            String data = request.getParameter("data");
             System.out.println(data);
             JSONObject jData = new JSONArray(data).getJSONObject(0);
             int opcion = jData.getInt("opcion");
@@ -46,8 +46,8 @@ public class Funcionario_Controller extends HttpServlet {
                     try {
                         if (new Funcionario().RegistrarFuncionario(fun)) {
                             DJCorreoHTML correoHTML = new DJCorreoHTML();
-                                correoHTML.mandarCorreo(fun[5], "Confirmacion de Cuenta SARA PRO1",fun[2],fun[8]);
-                                respuesta.println("El funcionario fue registrado correctamente");
+                            correoHTML.mandarCorreo(fun[5], "Confirmacion de Cuenta SARA PRO1", fun[2], fun[8]);
+                            respuesta.println("El funcionario fue registrado correctamente");
                         } else {
                             respuesta.println("El funcionario no fue registrado");
                         }
@@ -64,13 +64,12 @@ public class Funcionario_Controller extends HttpServlet {
                     }
                     break;
                 case 3:
-                    Elomac fun1 = new Elomac(18,1);
-                    if(fun1.Update(fun1.Select(jData.getInt("id")),"[{'8':'"+DigestUtils.md5Hex(jData.getString("con"))+"','9':'1'}]")){
+                    Elomac fun1 = new Elomac(18, 1);
+                    if (fun1.Update(fun1.Select(jData.getInt("id")), "[{'8':'" + DigestUtils.md5Hex(jData.getString("con")) + "','9':'1'}]")) {
                         respuesta.println("actualizado");
-                    }  
-                    else{
+                    } else {
                         respuesta.println("no actualizado");
-                    } 
+                    }
                     break;
             }
         }
