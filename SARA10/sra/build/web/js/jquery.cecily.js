@@ -173,13 +173,22 @@ jQuery.Luna = function (Datos, selector) {
                 });
                 break;
             case "Notificacion":
-                for (var i = 0; i < json.length; i++) {
+                var jso = jQuery.parseJSON(json);
+                var selecNo = selector.selector + "P";
+                $(selecNo).empty();
+                for (var i = 0; i < jso.length; i++) {
                     table = selector.dataTable().fnAddData([
                         i + 1,
-                        json[i].Conte_Notificacion,
-                        json[i].Fecha_Envio
+                        jso[i].Conte_Notificacion,
+                        jso[i].Fecha_Envio
                     ]);
+                    if (i < 5) {
+                        $(selecNo).append('<li><a><label class="Notify" id=' + jso[i].Ides_Proceso + '>' + jso[i].Conte_Notificacion + '</label></a></li>');
+                    }else if(i==5){
+                        $(selecNo).append('<li><a><label class="Notify" id=verMasNotificaciones>Ver mas notificaciones</label></a></li>');
+                    }
                 }
+                $("#ccNoti").append(i);
                 break;
             case "correcion":
                 for (var i = 0; i < json.length; i++) {
@@ -236,12 +245,13 @@ jQuery.Luna = function (Datos, selector) {
                 }
                 break;
             case "Habilitar":
-                for (var i = 0; i < json.length; i++) {
+                var jsSelect = jQuery.parseJSON(json);
+                for (var i = 0; i < jsSelect.length; i++) {
                     table = selector.dataTable().fnAddData([
                         i + 1,
-                        json[i].Nom_P_Virtual,
-                        json[i].Num_Version,
-                        "<button id='" + json[i].Id_Version + "' value='H' class='btnclick btn btn-info'>Habilitar</button>"
+                        jsSelect[i].Nom_P_Virtual,
+                        jsSelect[i].Num_Version,
+                        "<button id='" + jsSelect[i].Id_Version + "'class='btnclick btn btn-info'>Habilitar</button>"
                     ]);
                 }
                 break;

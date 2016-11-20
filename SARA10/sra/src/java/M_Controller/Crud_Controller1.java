@@ -38,7 +38,6 @@ public class Crud_Controller1 extends HttpServlet {
         this.request = request;
         this.response = response;
         response.setContentType("text/html;charset=UTF-8");
-
         try (PrintWriter out = response.getWriter()) {
             /*Menu - Crud_Controller
             1. AÃ±adir Registro.
@@ -46,7 +45,7 @@ public class Crud_Controller1 extends HttpServlet {
             3. Obtener datos - Solo para tablas
             4. Eliminar
             5. Obtener datos - Solo para vistas*/
-            String data = request.getParameter("data");
+           String data = request.getParameter("data");
             System.out.println(data);
             jDato = new JSONArray(data).getJSONObject(0);
             tipoElo = 1;

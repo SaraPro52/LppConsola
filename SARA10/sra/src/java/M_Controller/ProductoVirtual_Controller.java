@@ -89,15 +89,19 @@ public class ProductoVirtual_Controller extends HttpServlet {
                     }
                     break;
                 case 4:
-                    String[] aprobacion = (String[]) Elomac.M_toArray(jDato.getString("aprobacion"));
-                    if (ver.AprobarPV(aprobacion)) {
-                        respuesta.println("Si Registro");
-                    } else {
-                        respuesta.println("No Registro");
+                    try {
+                        String[] aprobacion = (String[]) Elomac.M_toArray(jDato.getString("aprobacion"));
+                        if (ver.AprobarPV(aprobacion)) {
+                            respuesta.println("Si Registro");
+                        } else {
+                            respuesta.println("No Registro");
+                        }
+                    } catch (Exception e) {
+                        respuesta.println(e.getMessage());
                     }
                     break;
                 case 5:
-                    respuesta.println(new Producto_Virtual().ConsultraProducto());
+                    respuesta.println(new Producto_Virtual().ConsultarProducto());
                     break;
             }
         } catch (Exception falla) {

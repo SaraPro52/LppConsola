@@ -4,11 +4,12 @@ $(document).on('ready', function () {
     ob.Vivo("Habilitar Producto");
 
     $(document).on('click', '.btnclick', function (e) {
-        jso[1] = ['ProductoVirtual_Controller', '[{opcion: 4,aprobacion:[' + idUser, this.id + ']}]'];
+        jso[1] = ['ProductoVirtual_Controller', '[{opcion: 4,info:[],arrayFun:[],arrayTemas:[],archivoNom:[],aprobacion:[' + idUser + ',' + this.id + ']}]'];
         selector[1] = $("#tablaAprobar");
+        datos[0] = {nombre: "btn", worker: true};
         ajax(1, datos[0]);
     });
-    jso[0] = ['ProductoVirtual_Controller', '[{opcion:5,tabla:9,datos:[""],info:[],arrayFun:[],elegir:[0,1,2],delimitador:"[{colum:4,operador:0,valor1:'+ idCentro +'}]",id:0,opSelect:6}]'];
+    jso[0] = ['Crud_Controller1', '[{opcion:5,tabla:9,datos:[""],actualizar:"",elegir:[0,1,2],delimitador:"[{colum:4,operador:0,valor1:' + idCentro + '}]",id:0,opSelect:6}]'];
     selector[0] = $("#tablaAprobar");
     ob.TablaEspa(selector[0]);
     datos[0] = {nombre: "Habilitar", worker: true};
@@ -26,16 +27,16 @@ $(document).on('ready', function () {
     }
     function peticionCompleta(i) {
         if (i == 1) {
-            jso[2] = ['Crud_Controller1', '[{opcion:5,tabla:11,datos:[],actualizar:[],delimitador:[],elegir:[0,1,3,5,6],id:0,opSelect:4}]'];
-            selector[2] = $("#tablaAdmi");
+            jso[2] = ['Crud_Controller1', '[{opcion:5,tabla:9,datos:[""],actualizar:"",elegir:[0,1,2],delimitador:"[{colum:4,operador:0,valor1:' + idCentro + '}]",id:0,opSelect:6}]'];
+            selector[0] = $("#tablaAprobar");
             ajax(2, datos[0]);
         } else if (i == 2) {
             var men = "";
-            nombre = "funcionario";
+            nombre = "producto";
             if (jso[2].length == jso[0].length) {
-                men = nombre + " fue deshabilitado correctamente.";
+                men = nombre + " fue habilitado correctamente.";
             } else {
-                men = "No se a podido deshabilitado a " + nombre + ".";
+                men = "No se a podido habilitar a " + nombre + ".";
             }
             $.notify({
                 icon: 'ti-gift',

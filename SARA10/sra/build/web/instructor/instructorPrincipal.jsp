@@ -62,16 +62,11 @@
                                 <li class="dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                         <i class="ti-bell"></i>
-                                        <p class="notification">5</p>
-                                        <p>Notifications</p>
+                                        <p class="notification"><label id="ccNoti"></label></p>
+                                        <p>Notificaciones</p>
                                         <b class="caret"></b>
                                     </a>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="#">Notification 1</a></li>
-                                        <li><a href="#">Notification 2</a></li>
-                                        <li><a href="#">Notification 3</a></li>
-                                        <li><a href="#">Notification 4</a></li>
-                                        <li><a href="#">Another notification</a></li>
+                                    <ul class="dropdown-menu" id="tablaNotificacionP">
                                     </ul>
                                 </li>
                                 <li>
