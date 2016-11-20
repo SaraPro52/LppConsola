@@ -1,10 +1,15 @@
 $(document).on('ready', function () {
+    var casoUso = "Notificaciones";
     console.log("Vivo??Instrutor");
     var objeto = {url: "Instrutor_Controller", Opcion: 3, name: 'cuerpo'};
-        obtenerP(objeto);
+    obtenerP(objeto);
     $('.menu li').click(function (e) {
         var objeto = {url: "Instrutor_Controller", Opcion: this.value, name: 'cuerpo'};
+        console.log(this);
+        casoUso="text"+this.value;
+        casoUso =  $("#"+casoUso).text();
         obtenerP(objeto);
+
     });
     function obtenerP(datos) {
         console.log(datos);
@@ -26,6 +31,8 @@ $(document).on('ready', function () {
     function res(body, select) {
         switch (select) {
             case"cuerpo":
+                $("#CasoNombre").text(casoUso);
+                console.log(casoUso);
                 $("#cuerpo").empty();
                 $("#cuerpo").append(body);
                 break;

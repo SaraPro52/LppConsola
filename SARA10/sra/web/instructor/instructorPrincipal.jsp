@@ -28,14 +28,13 @@
                         </a>
                     </div>
 
-                    <ul class="nav menu">
-                        <li class="active"><a><i class="ti-home"></i><p>Inicio</p></a></li>
-                        <li class="btntt" value="4"><a><i class="ti-user"></i><p>Perfil de usuario</p></a></li>
-                        <li class="btntt" value="1"><a><i class="icono izquierda  fa fa-upload" aria-hidden="true"></i>Subir P.V.</a></li>
-                        <li class="btntt" value="0"><a><i class="icono izquierda  fa fa-eye" aria-hidden="true"></i>Consultar P.V.</a></li>
-                        <li class="btntt" value="3"><a><i class="icono izquierda  fa fa-eye" aria-hidden="true"></i>Notificaciones P.V</a></li>
-                        <li class="btntt" value="2"><a><i class="icono izquierda  fa fa-upload" aria-hidden="true"></i>Correguir P.V</a></li>
-
+                    <ul class="nav menu" id="menus">
+                        <li class="active"><a><i class="ti-home"></i><p>Instrutor</p></a></li>
+                        <li class="btntt" value="4"><a><i class="ti-user"></i><p><label id="text4">Perfil de usuario</label></p></a></li>
+                        <li class="btntt" value="1"><a><i class="icono izquierda  fa fa-upload" aria-hidden="true"></i><label id="text1">Subir P.V.</label></a></li>
+                        <li class="btntt" value="0"><a><i class="icono izquierda  fa fa-eye" aria-hidden="true"></i><label id="text0">Consultar P.V.</label></a></li>
+                        <li class="btntt" value="3"><a><i class="icono izquierda  fa fa-eye" aria-hidden="true"></i><label id="text3">Notificaciones P.V</label></a></li>
+                        <li class="btntt" value="2"><a><i class="icono izquierda  fa fa-upload" aria-hidden="true"></i><label id="text2">Correguir P.V</label></a></li>
                     </ul>
                 </div>
             </div>
@@ -50,7 +49,7 @@
                                 <span class="icon-bar bar2"></span>
                                 <span class="icon-bar bar3"></span>
                             </button>
-                            <a class="navbar-brand" href="#">Notificaiones</a>
+                            <a class="navbar-brand"><label id="CasoNombre">Notificaciones</label></a>
                         </div>
                         <div class="collapse navbar-collapse">
                             <ul class="nav navbar-nav navbar-right">
@@ -109,9 +108,6 @@
                                 </li>
                             </ul>
                         </nav>
-                        <div class="copyright pull-right">
-                            <script>document.write(new Date().getFullYear())</script>, made with <i class="fa fa-heart heart"></i> by <a href="http://www.creative-tim.com">Creative Tim</a>
-                        </div>
                     </div>
                 </footer>
             </div>
@@ -126,22 +122,22 @@
     <script src="assets/js/demo.js"></script>
     <script src="instructor/js/InstrutorPrincipal.js"></script>
     <script type="text/javascript">
-                                var nomUser = '<%= session.getAttribute("nomUser")%>';
-                                var idUser = '<%= session.getAttribute("idUser")%>';
-                                var idRol = '<%= session.getAttribute("idRol")%>';
-                                var idCentro = '<%= session.getAttribute("idCentro")%>';
-                                if (idUser != null && idRol != null && nomUser != null && idCentro != null) {
-                                    $("#link").append("<a href='index.jsp?cerrar=true'><h5>Cerrar Sesion</h5></a>");
-                                } else {
-                                    location.replace('index.jsp');
-                                }
-                                $.notify({
-                                    icon: 'ti-gift',
-                                    message: "Bienvenido a <b>Sara Pro</b> - Instructor " + nomUser + "."
+        var nomUser = '<%= session.getAttribute("nomUser")%>';
+        var idUser = '<%= session.getAttribute("idUser")%>';
+        var idRol = '<%= session.getAttribute("idRol")%>';
+        var idCentro = '<%= session.getAttribute("idCentro")%>';
+        if (idUser != null && idRol != null && nomUser != null && idCentro != null) {
+            $("#menus").append("<li><a href='index.jsp?cerrar=true'><i class='icono izquierda  fa fa-upload' aria-hidden='true'></i>Cerrar Sesion</a></li>");
+        } else {
+            location.replace('index.jsp');
+        }
+        $.notify({
+            icon: 'ti-gift',
+            message: "Bienvenido a <b>Sara Pro</b> - Instructor " + nomUser + "."
 
-                                }, {
-                                    type: 'success',
-                                    timer: 4000
-                                });
+        }, {
+            type: 'success',
+            timer: 4000
+        });
     </script>
 </html>

@@ -55,11 +55,11 @@
                             <img src="assets/img/logo.png" alt="" />
                         </a>
                     </div>
-                    <ul class="nav menu"><li class="active"><a href="inicio.html"><i class="ti-home"></i><p>Equipo tecnico</p></a></li>
-                        <li class="activado" value="0"><a><i class="ti-user"></i><p>Perfil de usuario</p></a></li>
-                        <li class="activado" value="1"><a><i class="icono izquierda  fa fa-book" aria-hidden="true"></i>Crear lista de chequeo</a></li>
-                        <li class="activado" value="3"><a><i class="icono izquierda  fa fa-edit" aria-hidden="true"></i>Modificar Lista  de chequeo</a></li>
-                        <li class="activado" value="2"><a><i class="icono izquierda  fa fa-eye" aria-hidden="true"></i>consultar objetos</a></li>
+                    <ul class="nav menu" id="menus"><li class="active"><a href="inicio.html"><i class="ti-home"></i><p>Equipo tecnico</p></a></li>
+                        <li class="activado" value="0"><a><i class="ti-user"></i><p><label id="text0">Perfil de usuario</label></p></a></li>
+                        <li class="activado" value="1"><a><i class="icono izquierda  fa fa-book" aria-hidden="true"></i><label id="text1">Crear lista de chequeo</label></a></li>
+                        <li class="activado" value="3"><a><i class="icono izquierda  fa fa-edit" aria-hidden="true"></i><label id="text3">Modificar Lista  de chequeo</label></a></li>
+                        <li class="activado" value="2"><a><i class="icono izquierda  fa fa-eye" aria-hidden="true"></i><label id="text2">Consultar objetos</label></a></li>
                     </ul>
                 </div>
             </div>
@@ -74,7 +74,7 @@
                                 <span class="icon-bar bar2"></span>
                                 <span class="icon-bar bar3"></span>
                             </button>
-                            <a class="navbar-brand" href="#">Incio</a>
+                            <a class="navbar-brand"><label id="CasoNombre"></label></a>
                         </div>
                         <div class="collapse navbar-collapse">
                             <ul class="nav navbar-nav navbar-right">
@@ -160,7 +160,7 @@
                                 var idTipoItem = 0;
 
                                 if (idUser != null && idRol != null && nomUser != null && idCentro != null) {
-                                    $("#link").append("<a href='index.jsp?cerrar=true'><h5>Cerrar Sesion</h5></a>");
+                                    $("#menus").append("<li><a href='index.jsp?cerrar=true'><i class='icono izquierda  fa fa-upload' aria-hidden='true'></i>Cerrar Sesion</a></li>");
                                 } else {
                                     location.replace('index.jsp');
                                 }

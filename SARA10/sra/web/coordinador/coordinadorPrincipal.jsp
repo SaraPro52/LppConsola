@@ -7,9 +7,7 @@
         <link rel="apple-touch-icon" sizes="76x76" href="assets/img/apple-icon.png">
         <link rel="icon" type="image/png" sizes="96x96" href="assets/img/favicon.png">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-
-        <title>-Sara Pro...</title>
-
+        <title>Sara Pro...</title>
         <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
         <meta name="viewport" content="width=device-width" />
         <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
@@ -31,13 +29,13 @@
                         </a>
                     </div>
 
-                    <ul class="nav menu">
-                        <li class="active"><a href="inicio.html"><i class="ti-home"></i><p>Coordinador</p></a></li>
-                        <li class="btntt" value="4"><a><i class="ti-user"></i><p>Perfil de usuario</p></a></li>
-                        <li class="btntt" value="0"><a><i class=" icono izquierda fa fa-area-chart" aria-hidden="true"></i>Consultar estadisticas</a></li>
-                        <li class="btntt" value="1"><a><i class=" icono izquierda fa fa-check" aria-hidden="true"></i>Habilitar producto virtual</a></li>
-                        <li class="btntt" value="2"><a><i class=" icono izquierda fa fa-credit-card-alt" aria-hidden="true"></i>Asignar roles</a></li>
-                        <li class="btntt" value="3"><a><i class=" icono izquierda fa fa-edit" aria-hidden="true"></i>Crear categorias</a></li>
+                    <ul class="nav menu" id="menus">
+                        <li class="active"><a><i class="ti-home"></i><p>Coordinador</p></a></li>
+                        <li class="btntt" value="4"><a><i class="ti-user"></i><p><label id="text4">Perfil de usuario</label></p></a></li>
+                        <li class="btntt" value="0"><a><i class=" icono izquierda fa fa-area-chart" aria-hidden="true"></i><label id="text0">Consultar estadisticas</label></a></li>
+                        <li class="btntt" value="1"><a><i class=" icono izquierda fa fa-check" aria-hidden="true"></i><label id="text1">Habilitar producto virtual</label></a></li>
+                        <li class="btntt" value="2"><a><i class=" icono izquierda fa fa-credit-card-alt" aria-hidden="true"></i><label id="text2">Asignar roles</label></a></li>
+                        <li class="btntt" value="3"><a><i class=" icono izquierda fa fa-edit" aria-hidden="true"></i><label id="text3">Crear categorias</label></a></li>
                     </ul>
                 </div>
             </div>
@@ -52,7 +50,7 @@
                                 <span class="icon-bar bar2"></span>
                                 <span class="icon-bar bar3"></span>
                             </button>
-                            <a class="navbar-brand" href="#">Inicio</a>
+                            <a class="navbar-brand"><label id="CasoNombre"></label></a>
                         </div>
                         <div class="collapse navbar-collapse">
                             <ul class="nav navbar-nav navbar-right">
@@ -141,7 +139,7 @@
                                 var idRol = '<%= session.getAttribute("idRol")%>';
                                 var idCentro = '<%= session.getAttribute("idCentro")%>';
                                 if (idUser != null && idRol != null && nomUser != null && idCentro != null) {
-                                    $("#link").append("<a href='index.jsp?cerrar=true'><h5>Cerrar Sesion</h5></a>");
+                                    $("#menus").append("<li><a href='index.jsp?cerrar=true'><i class='icono izquierda  fa fa-upload' aria-hidden='true'></i>Cerrar Sesion</a></li>");
                                 } else {
                                     location.replace('index.jsp');
                                 }

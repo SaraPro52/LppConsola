@@ -1,42 +1,25 @@
 $(document).on('ready', function () {
-    var c = 1;
-    var cc = 1;
-    var objet = {opcion: 5, 
-        url: "Crud_Controller",
-        tabla: "10",
-        datos: [""],
-        elegir: ["2", "3"],
-        id: 0, 
-        opSelect: 4};
-    
-    var jso = ['Crud_Controller','[{opcion:5,tabla:10,datos:[""],delimitador:"",id:0,opSelect:4,elegir:["2","3"]}]'];
-   
-    var selector = $("#centroFormacion");
-    var ob = new $.Luna("RegistroFuncionario", selector);
-    ob.Vivo("RegistroFuncionario");
-    //ob.ajax(objet, selector);
-    var cc = 0;
-    var hilo = [];
-    hilo[cc] = new Worker("js/worker.js");
-    hilo[cc].postMessage(jso);
-    hilo[cc].onmessage = function (event) {
-        console.log(event.data);
-        hilo[cc].terminate();
-    };
-    
+    var ob = new $.Luna("Producto virtual", selector);
+    ob.Vivo("CalificarOA");
+
+    var c = 0, cc = 0, selector = [], hilo = [], jso = [], data = [], es = [];
+    selector[0] = $("#centroFormacion");
+    jso[0] = ['Crud_Controller', '[{opcion:5,tabla:10,datos:[""],delimitador:"",id:0,opSelect:4,elegir:["2","3"]}]', 0];
+    selector[1] = $("#tipoUsuario");
+    jso[1] = ['Crud_Controller', '[{opcion:5,tabla:10,datos:[""],delimitador:"",id:0,opSelect:4,elegir:["2","3"]}]', 1];
+    selector[2] = $("#tipoIdenti");
+    jso[2] = ['Crud_Controller', '[{opcion:5,tabla:11,datos:[""],delimitador:"",id:0,opSelect:4,elegir:["2","3"]}]', 2];
+    var datos = {nombre: "Select"}
+    ajax(2, datos);
     $("#tipoUsuario").hover(function () {
         if (c == 1) {
-            selector = $("#tipoUsuario");
-            var objet = {opcion: 3, url: "Crud_Controller", nombre: "Select", tabla: "25", datos: [""], elegir: ["0", "1"], id: 0, opSelect: 4};
-            //ob.ajax(objet, selector);
+            ajax(0, datos);
         }
         c++;
     });
     $("#tipoIdenti").hover(function () {
         if (cc == 1) {
-            selector = $("#tipoIdenti");
-            var objet = {opcion: 3, url: "Crud_Controller", nombre: "Select", tabla: "28", datos: [""], elegir: [""], id: 0, opSelect: 1};
-            //ob.ajax(objet, selector);
+            ajax(2, datos);
         }
         cc++;
     });
@@ -60,5 +43,15 @@ $(document).on('ready', function () {
         };
         console.log(objet);
         //ob.ajax(objet, selector);
+    }
+    function ajax(i, datos) {
+        hilo[i] = new Worker("js/worker.js");
+        hilo[i].postMessage(jso[i]);
+        hilo[i].onmessage = function (event) {
+            data[i] = event.data;
+            ob.cargarTabla(data[i], selector[i], datos);
+            hilo[i].terminate();
+        };
+
     }
 });

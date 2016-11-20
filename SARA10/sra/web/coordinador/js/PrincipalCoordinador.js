@@ -1,13 +1,13 @@
 $(document).on('ready', function () {
     console.log("Vivo??coordinador");
+    var casoUso = "Consultar estadisticas";
     $('.menu li').click(function (e) {
-        console.log(this);
         objeto = {url: "coordinador_Controller", Opcion: this.value, name: 'cuerpo', vista: $("#vista").val()};
-        console.log(objeto);
+        casoUso = "text" + this.value;
+        casoUso = $("#" + casoUso).text();
         obtenerP(objeto);
     });
     function obtenerP(datos) {
-        console.log(datos.url);
         $.ajax({
             url: datos.url,
             type: 'POST',
@@ -26,6 +26,7 @@ $(document).on('ready', function () {
     function res(body, select, vista) {
         switch (select) {
             case"cuerpo":
+                $("#CasoNombre").text(casoUso);
                 $("#cuerpo").empty();
                 $("#cuerpo").append(body);
                 var cabeza = ("<input id='equipo' value='" + vista + "' type='hidden'>");

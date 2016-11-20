@@ -34,7 +34,7 @@ jQuery.Luna = function (Datos, selector) {
             lista.text(texto);
         }
     }
-    
+
     this.TablaEspa = function (datos) {
         datos.DataTable({
             language: {
@@ -102,28 +102,41 @@ jQuery.Luna = function (Datos, selector) {
             }
         });
     };
+    this.cargarTabla = function (json, selector, datos) {
+        cargarTabla(json, selector, datos);
+    };
     function cargarTabla(json, selector, datos) {
         var c = 1;
         switch (datos.nombre) {
-            case "btn":
-                alert(json);
-                break;
             case "MultiSelect":
+                console.log("cambio");
+                var jso;
+                if (datos.worker == true) {
+                    jso = jQuery.parseJSON(json);
+                } else {
+                    jso = json;
+                }
                 if (datos.opt == "Div") {
                     selector.multiSelect('deselect_all');
                 }
                 selector.multiSelect('refresh');
-                var j = Object.keys(json[0]);
-                for (var i = 0; i < json.length; i++) {
-                    selector.multiSelect('addOption', {value: json[i][j[0]], text: json[i][j[1]], index: i, nested: 'optgroup_label'});
+                var j = Object.keys(jso[0]);
+                for (var i = 0; i < jso.length; i++) {
+                    selector.multiSelect('addOption', {value: jso[i][j[0]], text: jso[i][j[1]], index: i, nested: 'optgroup_label'});
                 }
                 break;
             case "Select":
-                var j = Object.keys(json[0]);
-                for (var i = 0; i < json.length; i++) {
+                var jsSelect;
+                if (datos.worker == true) {
+                    jsSelect = jQuery.parseJSON(json);
+                } else {
+                    jsSelect = json;
+                }
+                var j = Object.keys(jsSelect[0]);
+                for (var i = 0; i < jsSelect.length; i++) {
                     selector.append($('<option>', {
-                        value: json[i][j[0]],
-                        text: json[i][j[1]]
+                        value: jsSelect[i][j[0]],
+                        text: jsSelect[i][j[1]]
                     }));
                 }
                 break;
@@ -139,7 +152,7 @@ jQuery.Luna = function (Datos, selector) {
                     oAItem.children().appendTo($("#resultados"));
                 }
                 break;
-            case "calificar":  
+            case "calificar":
                 for (var i = 0; i < json.length; i++) {
                     var conte = $("#clone").clone();
                     conte.find('.chex').attr('value', json[i].Id_Detalles_Lista);

@@ -101,7 +101,7 @@ jQuery.Luna = function (Datos, selector) {
             }
         });
     };
-    function cargarTabla(json, selector, datos) {
+    this.cargarTabla = function (json, selector, datos) {
         var c = 1;
         switch (datos.nombre) {
             case "btn":
@@ -118,11 +118,14 @@ jQuery.Luna = function (Datos, selector) {
                 }
                 break;
             case "Select":
-                var j = Object.keys(json[0]);
+                console.log(json);
+                var js = jQuery.parseJSON(json[0]);
+                var j = Object.keys(js[0]);
+                console.log(js);
                 for (var i = 0; i < json.length; i++) {
                     selector.append($('<option>', {
-                        value: json[i][j[0]],
-                        text: json[i][j[1]]
+                        value: js[i][j[0]],
+                        text: js[i][j[1]]
                     }));
                 }
                 break;

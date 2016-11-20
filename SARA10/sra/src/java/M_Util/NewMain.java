@@ -1220,11 +1220,24 @@ public class NewMain {
 //             System.out.println(elo.Insert());
 //            System.out.println(elo.atributos.get("Id_Area"));
 
-            Programa p = new Programa();
-            String[] pro = {"","LA PRUEBA PRO1","Tecnologo1"};
-            String[] are = {"1","2"};
-            String[] tem = {"1","3"};
-            System.out.println(p.RegistrarPrograma(pro, are, tem));
+//            Programa p = new Programa();
+//            String[] pro = {"","LA PRUEBA PRO1","Tecnologo1"};
+//            String[] are = {"1","2"};
+//            String[] tem = {"1","3"};
+//            System.out.println(p.RegistrarPrograma(pro, are, tem));
+//            
+
+             String delimitador = "[{colum:0,operador:7,valor1:'4,6',añadir:0},{colum:2,operador:0,valor1:0}]";
+             
+             Elomac elo = new Elomac(19, 1);
+             
+             System.out.println(elo.Select(delimitador));
+             
+            
+            
+            
+            
+            
              
               
               
