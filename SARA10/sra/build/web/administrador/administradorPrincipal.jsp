@@ -28,7 +28,7 @@
                             <img src="assets/img/logo.png" alt="" />
                         </a>
                     </div>
-                    <ul class="nav menu">
+                    <ul class="nav menu" id="menus">
                         <li class="active"><a href="inicio.html"><i class="ti-home"></i><p>Administrador</p></a></li>
                         <li class="btntt" value="6"><a><i class="ti-user"></i><p>Perfil de usuario</p></a></li>
                         <li class="btntt" value="0"><a><i class="ti-marker-alt"></i><p>Registrar usuario</p></a></li>
@@ -138,14 +138,14 @@
                                 var ami = '<%= session.getAttribute("ami")%>';
 
                                 if (ami != null) {
-                                    $("#link").append("<a href='index.jsp?cerrar=true'><h5>Cerrar Sesion</h5></a>");
+                                    $("#menus").append("<li><a href='index.jsp?cerrar=true'><i class='icono izquierda  fa fa-upload' aria-hidden='true'></i>Cerrar Sesion</a></li>");
                                 } else {
                                     location.replace('./index.jsp');
                                 }
 
                                 $.notify({
                                     icon: 'ti-gift',
-                                    message: "Bienvenido a <b>Sara Pro</b> - Administrador "+ami+"."
+                                    message: "Bienvenido a <b>Sara Pro</b> - Administrador " + ami + "."
 
                                 }, {
                                     type: 'success',

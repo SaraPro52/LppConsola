@@ -25,7 +25,7 @@
                                     <th>Deshabilitar</th>
                                     </thead>
                                     <tbody>
-                                    
+
                                     </tbody>
                                 </table>
                             </article>
@@ -37,6 +37,7 @@
     </div>
     <input type="hidden" id="ajaxComplet">
     <script type="text/javascript" src="js/jquery.js"></script>
+    <script src="assets/js/bootstrap-notify.js"></script>
     <script type="text/javascript" charset="utf8" src="js/jquery.dataTables.js"></script>
     <script type="text/javascript" src="js/jquery.cecily.js"></script>
     <script type="text/javascript" src="administrador/deshabilitarFuncionario/js/admiPrincipal.js"></script>

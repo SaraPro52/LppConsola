@@ -1,29 +1,18 @@
 $(document).on('ready', function () {
-    var c = 1;var cc=1;
-    var objet = {opcion: 5, url: "Crud_Controller", nombre: "Select", tabla: "10", datos: [""], elegir: ["2", "3"], id: 0, opSelect: 4};
-    var selector = $("#centroFormacion");
+    var selector = [], hilo = [], jso = [], data = [], datos = [];
     var ob = new $.Luna("RegistroFuncionario", selector);
     ob.Vivo("RegistroFuncionario");
-    ob.ajax(objet, selector);
+    jso[0] = ['Crud_Controller1', '[{opcion:5,tabla:10,datos:[],delimitador:[],elegir:[2,3],id:0,opSelect:4}]'];
+    selector[0] = $("#centroFormacion");
+    jso[1] = ['Crud_Controller1', '[{opcion:3,tabla:25,datos:[],delimitador:[],elegir:[0,1],id:0,opSelect:4}]'];
+    selector[1] = $("#tipoUsuario");
+    jso[2] = ['Crud_Controller1', '[{opcion:3,tabla:29,datos:[],delimitador:[],elegir:[],id:0,opSelect:1}]'];
+    selector[2] = $("#tipoIdenti");
+    datos[0] = {nombre: "Select", worker: true};
+    ajax(0, datos[0]);
 
-    $("#tipoUsuario").hover(function () {
-        if (c == 1) {
-            selector = $("#tipoUsuario"); 
-            var objet = {opcion: 3, url: "Crud_Controller", nombre: "Select", tabla: "25", datos: [""], elegir: ["0", "1"], id: 0, opSelect: 4};
-            ob.ajax(objet, selector);
-        }
-        c++;
-    });
-    $("#tipoIdenti").hover(function () {
-        if (cc==1) {
-            selector = $("#tipoIdenti");
-            var objet = {opcion: 3, url: "Crud_Controller", nombre: "Select", tabla: "28", datos: [""],elegir: [""],id: 0, opSelect: 1};
-            ob.ajax(objet, selector);
-        }
-        cc++;
-    });
     $("#centroFormacion").change(function () {
-        $("#area").empty().append("<option>selecciona...</option>");
+        $("#area").empty().append("<option selected='selected'>selecciona...</option>");
         var objet = {opcion: 5, url: "Crud_Controller", nombre: "Select", tabla: "10", datos: [""], elegir: ["0", "1"],
             delimitador: "[{colum:2 ,operador:0 ,valor1:" + $("#centroFormacion").val() + "}]", id: 0, opSelect: 6};
         selector = $("#area");
@@ -31,16 +20,64 @@ $(document).on('ready', function () {
     });
 
     $("#boton1").on('click', function () {
-        datosV();
+        jso[3] = ['Funcionario_Controller', '[{opcion:1,datos:[' + $("#tipoUsuario").val() + ',' + $("#tipoIdenti").val() + ',' + $("#numeroIdentificacion").val() + ',' + $("#nombre").val() + ',' + $("#apellido").val() + ',' + $("#email").val() + ',' + $("#cargo").val() + ',' + $("#ipSena").val() + ',"1",' + $("#centroFormacion").val() + ',' + $("#area").val() + ']}]'];
+        datos[1] = {nombre: "btn", worker: true};
+        $("#boton1").attr("disabled", true);
+        ajax(3, datos[1]);
+
     });
-    function datosV() {
-        var selector = "btn";
-        var objet = {
-            opcion: 1,url: "Funcionario_Controller",nombre: "btn",
-            datos: [$("#tipoUsuario").val(),$("#tipoIdenti").val(),$("#numeroIdentificacion").val(),$("#nombre").val(),$("#apellido").val(),
-                $("#email").val(),$("#cargo").val(),$("#ipSena").val(),"1",$("#centroFormacion").val(),$("#area").val()]
+    function ajax(i, datos) {
+        hilo[i] = new Worker("js/worker.js");
+        hilo[i].postMessage(jso[i]);
+        hilo[i].onmessage = function (event) {
+            data[i] = event.data;
+            ob.cargarTabla(data[i], selector[i], datos);
+            hilo[i].terminate();
+            peticionCompleta(i, datos);
         };
-        console.log(objet);
-        ob.ajax(objet, selector);
+    }
+    function peticionCompleta(i, datos) {
+        if ((i < 2) && (datos.nombre == "Select")) {
+            i++;
+            ajax(i, datos);
+        } else if (datos.nombre == "btn") {
+            $("#formulario1 :input").val("");
+            $("#area").empty().append("<option selected='selected'>selecciona...</option>");
+            $("#boton1").attr("disabled", false);
+            $.notify({
+                icon: 'ti-gift',
+                message: data[i] + "."
+            }, {
+                type: 'success',
+                timer: 4000
+            });
+        }
+    }
+    function ajax(i, datos) {
+        hilo[i] = new Worker("js/worker.js");
+        hilo[i].postMessage(jso[i]);
+        hilo[i].onmessage = function (event) {
+            data[i] = event.data;
+            ob.cargarTabla(data[i], selector[i], datos);
+            hilo[i].terminate();
+            peticionCompleta(i, datos);
+        };
+    }
+    function peticionCompleta(i, datos) {
+        if ((i < 2) && (datos.nombre == "Select")) {
+            i++;
+            ajax(i, datos);
+        } else if (datos.nombre == "btn") {
+            $("#formulario1 :input").val("");
+            $("#area").empty().append("<option selected='selected'>selecciona...</option>");
+            $("#boton1").attr("disabled", false);
+            $.notify({
+                icon: 'ti-gift',
+                message: data[i] + "."
+            }, {
+                type: 'success',
+                timer: 4000
+            });
+        }
     }
 });

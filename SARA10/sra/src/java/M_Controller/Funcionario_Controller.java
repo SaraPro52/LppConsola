@@ -9,15 +9,20 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import M_Modelo.Funcionario;
 import M_Util.Elomac;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.annotation.WebServlet;
 import org.apache.commons.codec.digest.DigestUtils;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 @WebServlet(name = "Funcionario_Controller", urlPatterns = {"/Funcionario_Controller"})
 
 public class Funcionario_Controller extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, Exception {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             //Cambio previsto ahora no se tlvez toque esperar 1 minuto
@@ -27,29 +32,31 @@ public class Funcionario_Controller extends HttpServlet {
             2. Actualizar
             3. Consultar
             4. Deshabilitar*/
-            int opcion = Integer.parseInt(request.getParameter("opcion"));
+            String data = request.getParameter("data");
+            System.out.println(data);
+            JSONObject jData = new JSONArray(data).getJSONObject(0);
+            int opcion = jData.getInt("opcion");
             response.setContentType("application/json;charset=UTF-8");
             PrintWriter respuesta = response.getWriter();
 
             switch (opcion) {
                 case 1:
-                    String[] fun = request.getParameterValues("datos[]");
+                    String[] fun = (String[]) Elomac.M_toArray(jData.getString("datos"));
                     fun[8] = new vasos().getVaso();
                     try {
                         if (new Funcionario().RegistrarFuncionario(fun)) {
                             DJCorreoHTML correoHTML = new DJCorreoHTML();
-                                correoHTML.mandarCorreo(fun[5], "Confirmacion de Cuenta SARA PRO1",fun[2],fun[8]);
-                                respuesta.println("Si Registro");
-                            
+                            correoHTML.mandarCorreo(fun[5], "Confirmacion de Cuenta SARA PRO1", fun[2], fun[8]);
+                            respuesta.println("El funcionario fue registrado correctamente");
                         } else {
-                            respuesta.println("No Registro");
+                            respuesta.println("El funcionario no fue registrado");
                         }
                     } catch (Exception e) {
                         respuesta.println(e.getMessage());
                     }
                     break;
                 case 2:
-                    String centro = request.getParameter("centro");
+                    String centro = jData.getString("centro");
                     try {
                         respuesta.println(new Funcionario().ListaAsignarRoles(centro));
                     } catch (Exception e) {
@@ -57,13 +64,12 @@ public class Funcionario_Controller extends HttpServlet {
                     }
                     break;
                 case 3:
-                    Elomac fun1 = new Elomac(18,1);
-                    if(fun1.Update(fun1.Select(Integer.parseInt(request.getParameter("id"))),"[{'8':'"+DigestUtils.md5Hex(request.getParameter("con"))+"','9':'1'}]")){
+                    Elomac fun1 = new Elomac(18, 1);
+                    if (fun1.Update(fun1.Select(jData.getInt("id")), "[{'8':'" + DigestUtils.md5Hex(jData.getString("con")) + "','9':'1'}]")) {
                         respuesta.println("actualizado");
-                    }  
-                    else{
+                    } else {
                         respuesta.println("no actualizado");
-                    } 
+                    }
                     break;
             }
         }
@@ -81,7 +87,11 @@ public class Funcionario_Controller extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (Exception ex) {
+            Logger.getLogger(Funcionario_Controller.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -95,7 +105,11 @@ public class Funcionario_Controller extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (Exception ex) {
+            Logger.getLogger(Funcionario_Controller.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**

@@ -1,9 +1,13 @@
 package M_Controller;
 
 import M_Util.Elomac;
+import com.google.gson.Gson;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Properties;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -12,8 +16,8 @@ import javax.servlet.http.HttpServletResponse;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-@WebServlet(name = "Crud_Controller", urlPatterns = {"/Crud_Controller"})
-public class Crud_Controller extends HttpServlet {
+@WebServlet(name = "Crud_Controller1", urlPatterns = {"/Crud_Controller1"})
+public class Crud_Controller1 extends HttpServlet {
 
     private Elomac elo;
     private JSONObject jDato;
@@ -36,23 +40,23 @@ public class Crud_Controller extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /*Menu - Crud_Controller
-            1. Añadir Registro.
+            1. AÃ±adir Registro.
             2. Actualizar datos.
             3. Obtener datos - Solo para tablas
             4. Eliminar
             5. Obtener datos - Solo para vistas*/
-            String data = request.getParameter("data");
+           String data = request.getParameter("data");
             System.out.println(data);
             jDato = new JSONArray(data).getJSONObject(0);
             tipoElo = 1;
-            option =        jDato.getInt("opcion");
-            tabla =         jDato.getInt("tabla");
-            datos =         (String[])Elomac.M_toArray(jDato.getString("datos"));
-            delimitador =   jDato.getString("delimitador");
-            actualizar =    request.getParameter("actualizar");
-            id =            jDato.getInt("id");
-            optionSelect =  jDato.getInt("opSelect");
-            
+            option = jDato.getInt("opcion");
+            tabla = jDato.getInt("tabla");
+            datos = (String[]) Elomac.M_toArray(jDato.getString("datos"));
+            delimitador = jDato.getString("delimitador");
+            actualizar = jDato.getString("actualizar");
+            id = jDato.getInt("id");
+            optionSelect = jDato.getInt("opSelect");
+
             elo = new Elomac(tabla, tipoElo, datos);
 
             switch (option) {
@@ -63,12 +67,15 @@ public class Crud_Controller extends HttpServlet {
                     break;
                 case 2:
                     elo = new Elomac(tabla, tipoElo);
-                    if (elo.Update(elo.Select(Integer.parseInt(request.getParameter("id"))), request.getParameter("actualizar"))) {
-                        respuesta.println("actualizado");
-                    } else {
-                        respuesta.println("no actualizado");
+                    try {
+                        if (elo.Update(elo.Select(id), actualizar)) {
+                            respuesta.println("actualizado");
+                        } else {
+                            respuesta.println("no actualizado");
+                        }
+                    } catch (Exception e) {
+                        respuesta.println(e.getMessage());
                     }
-
                     break;
                 case 3:
                     ManejoDatos();
@@ -95,16 +102,30 @@ public class Crud_Controller extends HttpServlet {
         response.setContentType("application/json;charset=UTF-8");
         respuesta = response.getWriter();
         Elomac elo1 = new Elomac(tabla, tipoElo);
-        String[] elegir = (String[])Elomac.M_toArray(jDato.getString("elegir"));
+        String[] elegir = (String[]) Elomac.M_toArray(jDato.getString("elegir"));
         try {
             switch (optionSelect) {
-                case 1:respuesta.println(elo1.Select());break;
-                case 2:respuesta.println(elo1.Select(id));break;
-                case 3:respuesta.println(elo1.Select(delimitador));break;
-                case 4:respuesta.println(elo1.Select(elegir));break;
-                case 5:respuesta.println(elo1.Select(elegir, id));break;
-                case 6:respuesta.println(elo1.Select(elegir, delimitador));break;
-                default:respuesta.println("Default");break;
+                case 1:
+                    respuesta.println(elo1.Select());
+                    break;
+                case 2:
+                    respuesta.println(elo1.Select(id));
+                    break;
+                case 3:
+                    respuesta.println(elo1.Select(delimitador));
+                    break;
+                case 4:
+                    respuesta.println(elo1.Select(elegir));
+                    break;
+                case 5:
+                    respuesta.println(elo1.Select(elegir, id));
+                    break;
+                case 6:
+                    respuesta.println(elo1.Select(elegir, delimitador));
+                    break;
+                default:
+                    respuesta.println("Default");
+                    break;
             }
 
         } catch (Exception e) {
@@ -126,9 +147,9 @@ public class Crud_Controller extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
         System.out.println(request);
         System.out.println(response);
+        processRequest(request, response);
     }
 
     /**
@@ -142,9 +163,10 @@ public class Crud_Controller extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
         System.out.println(request);
         System.out.println(response);
+        processRequest(request, response);
+
     }
 
     /**

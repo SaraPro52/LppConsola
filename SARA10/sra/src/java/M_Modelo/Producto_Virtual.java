@@ -9,7 +9,7 @@ public class Producto_Virtual extends Elomac{
 		super("Producto_Virtual",1);
 	}
         
-        public Object ConsultraProducto(){
+        public Object ConsultarProducto(){
             
             try {
                 String consulta = new Elomac(22,2).Select();

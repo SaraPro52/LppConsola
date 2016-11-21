@@ -34,7 +34,7 @@ jQuery.Luna = function (Datos, selector) {
             lista.text(texto);
         }
     }
-    
+
     this.TablaEspa = function (datos) {
         datos.DataTable({
             language: {
@@ -102,28 +102,41 @@ jQuery.Luna = function (Datos, selector) {
             }
         });
     };
+    this.cargarTabla = function (json, selector, datos) {
+        cargarTabla(json, selector, datos);
+    };
     function cargarTabla(json, selector, datos) {
         var c = 1;
         switch (datos.nombre) {
-            case "btn":
-                alert(json);
-                break;
             case "MultiSelect":
+                console.log("cambio");
+                var jso;
+                if (datos.worker == true) {
+                    jso = jQuery.parseJSON(json);
+                } else {
+                    jso = json;
+                }
                 if (datos.opt == "Div") {
                     selector.multiSelect('deselect_all');
                 }
                 selector.multiSelect('refresh');
-                var j = Object.keys(json[0]);
-                for (var i = 0; i < json.length; i++) {
-                    selector.multiSelect('addOption', {value: json[i][j[0]], text: json[i][j[1]], index: i, nested: 'optgroup_label'});
+                var j = Object.keys(jso[0]);
+                for (var i = 0; i < jso.length; i++) {
+                    selector.multiSelect('addOption', {value: jso[i][j[0]], text: jso[i][j[1]], index: i, nested: 'optgroup_label'});
                 }
                 break;
             case "Select":
-                var j = Object.keys(json[0]);
-                for (var i = 0; i < json.length; i++) {
+                var jsSelect;
+                if (datos.worker == true) {
+                    jsSelect = jQuery.parseJSON(json);
+                } else {
+                    jsSelect = json;
+                }
+                var j = Object.keys(jsSelect[0]);
+                for (var i = 0; i < jsSelect.length; i++) {
                     selector.append($('<option>', {
-                        value: json[i][j[0]],
-                        text: json[i][j[1]]
+                        value: jsSelect[i][j[0]],
+                        text: jsSelect[i][j[1]]
                     }));
                 }
                 break;
@@ -139,7 +152,7 @@ jQuery.Luna = function (Datos, selector) {
                     oAItem.children().appendTo($("#resultados"));
                 }
                 break;
-            case "calificar":  
+            case "calificar":
                 for (var i = 0; i < json.length; i++) {
                     var conte = $("#clone").clone();
                     conte.find('.chex').attr('value', json[i].Id_Detalles_Lista);
@@ -160,13 +173,22 @@ jQuery.Luna = function (Datos, selector) {
                 });
                 break;
             case "Notificacion":
-                for (var i = 0; i < json.length; i++) {
+                var jso = jQuery.parseJSON(json);
+                var selecNo = selector.selector + "P";
+                $(selecNo).empty();
+                for (var i = 0; i < jso.length; i++) {
                     table = selector.dataTable().fnAddData([
                         i + 1,
-                        json[i].Conte_Notificacion,
-                        json[i].Fecha_Envio
+                        jso[i].Conte_Notificacion,
+                        jso[i].Fecha_Envio
                     ]);
+                    if (i < 5) {
+                        $(selecNo).append('<li><a><label class="Notify" id=' + jso[i].Ides_Proceso + '>' + jso[i].Conte_Notificacion + '</label></a></li>');
+                    }else if(i==5){
+                        $(selecNo).append('<li><a><label class="Notify" id=verMasNotificaciones>Ver mas notificaciones</label></a></li>');
+                    }
                 }
+                $("#ccNoti").append(i);
                 break;
             case "correcion":
                 for (var i = 0; i < json.length; i++) {
@@ -223,12 +245,13 @@ jQuery.Luna = function (Datos, selector) {
                 }
                 break;
             case "Habilitar":
-                for (var i = 0; i < json.length; i++) {
+                var jsSelect = jQuery.parseJSON(json);
+                for (var i = 0; i < jsSelect.length; i++) {
                     table = selector.dataTable().fnAddData([
                         i + 1,
-                        json[i].Nom_P_Virtual,
-                        json[i].Num_Version,
-                        "<button id='" + json[i].Id_Version + "' value='H' class='btnclick btn btn-info'>Habilitar</button>"
+                        jsSelect[i].Nom_P_Virtual,
+                        jsSelect[i].Num_Version,
+                        "<button id='" + jsSelect[i].Id_Version + "'class='btnclick btn btn-info'>Habilitar</button>"
                     ]);
                 }
                 break;
@@ -244,14 +267,16 @@ jQuery.Luna = function (Datos, selector) {
                 }
                 break;
             case "Funcionario":
-                for (var i = 0; i < json.length; i++) {
+                var jsFuncionario;
+                jsFuncionario = jQuery.parseJSON(json);
+                for (var i = 0; i < jsFuncionario.length; i++) {
                     table = selector.dataTable().fnAddData([
                         c,
-                        json[i].NombreCompleto,
-                        json[i].Cargo,
-                        json[i].Nom_Area,
-                        json[i].Nom_Estado,
-                        "<button id='" + json[i].Id_Funcionario + "' class='botonclick btn btn-danger'>Deshabilitar Usuario</button>"
+                        jsFuncionario[i].NombreCompleto,
+                        jsFuncionario[i].Cargo,
+                        jsFuncionario[i].Nom_Area,
+                        jsFuncionario[i].Nom_Estado,
+                        "<button id='" + jsFuncionario[i].Id_Funcionario + "' class='botonclick btn btn-danger'>Deshabilitar Usuario</button>"
                     ]);
                     c++;
                 }

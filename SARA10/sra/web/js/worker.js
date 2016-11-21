@@ -1,6 +1,5 @@
 this.addEventListener('message', function (e) {
     var data = e.data;
-    console.log(data);
     var xhr = new XMLHttpRequest();
     xhr.open("POST", "../" + data[0] + "?data=" + data[1], true);
     xhr.setRequestHeader('Content-type', 'application/json; charset=utf-8');
@@ -11,7 +10,7 @@ this.addEventListener('message', function (e) {
             } else {
                 console.error(xhr.statusText);
             }
-        } 
+        }
     };
     xhr.onerror = function (e) {
         console.log(e);
@@ -20,6 +19,7 @@ this.addEventListener('message', function (e) {
     xhr.send();
     function respuesta(obj) {
         this.postMessage(obj);
-        obj=null;
+        obj = null;
     }
 }, false);
+
