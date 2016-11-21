@@ -81,7 +81,7 @@ public class  M_Crud extends M_Procedure{
         
     }
     
-    private String[] M_toArray(Map<String, Object> mapa){
+    protected String[] M_toArray(Map<String, Object> mapa){
         String[] array  = new String[mapa.size()];
         int i = 0;
         for (Entry<String, Object> enti : mapa.entrySet()) {

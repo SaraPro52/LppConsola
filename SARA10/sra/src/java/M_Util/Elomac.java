@@ -40,7 +40,7 @@ public class Elomac extends M_Crud{
         cargarAtributos();
         this.arrayAtributos = cargarArrayAtributos();
     }
-    public Elomac(int tab,int tipo,String[] datos){
+    public Elomac(int tab,int tipo,Object[] datos){
         this.tipoElo = tipo;
         this.arrayTablas = cargarTablas();
         this.tabla = arrayTablas[tab];
@@ -52,7 +52,7 @@ public class Elomac extends M_Crud{
         atributosLista(null);
     }
     
-    private void cargarAtributos(String[] datos){
+    private void cargarAtributos(Object[] datos){
         atributosLista(datos);
     }
     
