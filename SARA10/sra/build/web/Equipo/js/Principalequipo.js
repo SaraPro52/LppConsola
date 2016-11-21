@@ -1,8 +1,10 @@
 $(document).on('ready', function () {
-    var idLista = 0;
-    var idVersion = 0;
     var casoUso = "Notificaciones";
     console.log("Vivo??EquipoPrincipal");
+
+    objeto = {url: "Equipo_Controller", Opcion: 2, name: 'cuerpo'};
+    casoUso = "Consultar productos virtuales";
+    obtenerP(objeto);
     $(document).on('click', 'btnnotofica', function (e) {
         console.log(this);
     });
@@ -10,6 +12,9 @@ $(document).on('ready', function () {
         objeto = {url: "Equipo_Controller", Opcion: this.value, name: 'cuerpo'};
         casoUso = "text" + this.value;
         casoUso = $("#" + casoUso).text();
+        if (this.value==2) {
+            casoUso="Consultar productos virtuales";
+        }
         obtenerP(objeto);
     });
     function obtenerP(datos) {

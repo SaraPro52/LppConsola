@@ -3,7 +3,6 @@
 <!doctype html>
 <html lang="en">
     <head>
-
         <meta charset="utf-8" />
         <link rel="apple-touch-icon" sizes="76x76" href="assets/img/apple-icon.png">
         <link rel="icon" type="image/png" sizes="96x96" href="assets/img/favicon.png">
@@ -55,11 +54,11 @@
                             <img src="assets/img/logo.png" alt="" />
                         </a>
                     </div>
-                    <ul class="nav menu" id="menus"><li class="active"><a href="inicio.html"><i class="ti-home"></i><p>Equipo tecnico</p></a></li>
+                    <ul class="nav menu" id="menus"><li class="active"><a><i class="ti-home"></i><p>Equipo tecnico</p></a></li>
                         <li class="activado" value="0"><a><i class="ti-user"></i><p><label id="text0">Perfil de usuario</label></p></a></li>
                         <li class="activado" value="1"><a><i class="icono izquierda  fa fa-book" aria-hidden="true"></i><label id="text1">Crear lista de chequeo</label></a></li>
                         <li class="activado" value="3"><a><i class="icono izquierda  fa fa-edit" aria-hidden="true"></i><label id="text3">Modificar Lista  de chequeo</label></a></li>
-                        <li class="activado" value="2"><a><i class="icono izquierda  fa fa-eye" aria-hidden="true"></i><label id="text2">Consultar objetos</label></a></li>
+                        <li class="activado" value="2"><a><i class="icono izquierda  fa fa-eye" aria-hidden="true"></i><label id="text2">Consultar P.V</label></a></li>
                     </ul>
                 </div>
             </div>

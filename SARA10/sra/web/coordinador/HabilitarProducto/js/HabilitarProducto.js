@@ -6,8 +6,9 @@ $(document).on('ready', function () {
     $(document).on('click', '.btnclick', function (e) {
         jso[1] = ['ProductoVirtual_Controller', '[{opcion: 4,info:[],arrayFun:[],arrayTemas:[],archivoNom:[],aprobacion:[' + idUser + ',' + this.id + ']}]'];
         selector[1] = $("#tablaAprobar");
-        datos[0] = {nombre: "btn", worker: true};
-        ajax(1, datos[0]);
+        ob.limpiarTabla(selector[1]);
+        datos[1] = {nombre: "btn", worker: true};
+        ajax(1, datos[1]);
     });
     jso[0] = ['Crud_Controller1', '[{opcion:5,tabla:9,datos:[""],actualizar:"",elegir:[0,1,2],delimitador:"[{colum:4,operador:0,valor1:' + idCentro + '}]",id:0,opSelect:6}]'];
     selector[0] = $("#tablaAprobar");
@@ -28,7 +29,7 @@ $(document).on('ready', function () {
     function peticionCompleta(i) {
         if (i == 1) {
             jso[2] = ['Crud_Controller1', '[{opcion:5,tabla:9,datos:[""],actualizar:"",elegir:[0,1,2],delimitador:"[{colum:4,operador:0,valor1:' + idCentro + '}]",id:0,opSelect:6}]'];
-            selector[0] = $("#tablaAprobar");
+            selector[2] = $("#tablaAprobar");
             ajax(2, datos[0]);
         } else if (i == 2) {
             var men = "";

@@ -29,14 +29,14 @@
                         </a>
                     </div>
                     <ul class="nav menu" id="menus">
-                        <li class="active"><a href="inicio.html"><i class="ti-home"></i><p>Administrador</p></a></li>
-                        <li class="btntt" value="6"><a><i class="ti-user"></i><p>Perfil de usuario</p></a></li>
-                        <li class="btntt" value="0"><a><i class="ti-marker-alt"></i><p>Registrar usuario</p></a></li>
-                        <li class="btntt" value="1"><a><i class="ti-close"></i><p>Deshabilitar usuario</p></a></li>
-                        <li class="btntt" value="2"><a><i class="ti-file"></i><p>Formato</p></a></li>
-                        <li class="btntt" value="3"><a><i class="ti-ruler-alt-2"></i><p>Área</p></a></li>
-                        <li class="btntt" value="4"><a><i class="ti-layout-width-default"></i><p>Ciudad</p></a></li>
-                        <li class="btntt" value="5"><a><i class="ti-blackboard"></i><p>Programa</p></a></li>
+                        <li class="active"><a><i class="ti-home"></i><p>Administrador</p></a></li>
+                        <li class="btntt" value="6"><a><i class="ti-user"></i><p><label id="text6">Perfil de usuario</label></p></a></li>
+                        <li class="btntt" value="0"><a><i class="ti-marker-alt"></i><p><label id="text0">Registrar usuario</label></p></a></li>
+                        <li class="btntt" value="1"><a><i class="ti-close"></i><p><label id="text1">Deshabilitar usuario</label></p></a></li>
+                        <li class="btntt" value="2"><a><i class="ti-file"></i><p><label id="text2">Formato</label></p></a></li>
+                        <li class="btntt" value="3"><a><i class="ti-ruler-alt-2"></i><p><label id="text3">Área</label></p></a></li>
+                        <li class="btntt" value="4"><a><i class="ti-layout-width-default"></i><p><label id="text4">Ciudad</label></p></a></li>
+                        <li class="btntt" value="5"><a><i class="ti-blackboard"></i><p><label id="text5">Programa</label></p></a></li>
                     </ul>
                     <input id="controller" value="Administrador_Controller" type="hidden">
                 </div>
@@ -52,7 +52,7 @@
                                 <span class="icon-bar bar2"></span>
                                 <span class="icon-bar bar3"></span>
                             </button>
-                            <a class="navbar-brand" href="#">Inicio</a>
+                            <a class="navbar-brand"><label id="CasoNombre">Dehabilitar Funcionarios</label></a>
                         </div>
                         <div class="collapse navbar-collapse">
                             <ul class="nav navbar-nav navbar-right">
@@ -65,16 +65,11 @@
                                 <li class="dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                         <i class="ti-bell"></i>
-                                        <p class="notification">5</p>
-                                        <p>Notifications</p>
+                                        <p class="notification"><label id="ccNoti"></label></p>
+                                        <p>Funcionarios</p>
                                         <b class="caret"></b>
                                     </a>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="#">Notification 1</a></li>
-                                        <li><a href="#">Notification 2</a></li>
-                                        <li><a href="#">Notification 3</a></li>
-                                        <li><a href="#">Notification 4</a></li>
-                                        <li><a href="#">Another notification</a></li>
+                                    <ul class="dropdown-menu" id="tablaAdmiP">                     
                                     </ul>
                                 </li>
                                 <li>
