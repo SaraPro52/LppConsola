@@ -44,6 +44,7 @@ public class ProductoVirtual_Controller extends HttpServlet {
             response.setContentType("application/json;charset=UTF-8");
 
             ArchivosController arch = new ArchivosController();
+            respuesta = response.getWriter();
             Version ver = new Version();
             switch (opcion) {
                 case 1:
