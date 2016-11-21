@@ -14,7 +14,6 @@ import java.util.logging.Logger;
 import javax.servlet.annotation.WebServlet;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 @WebServlet(name = "Funcionario_Controller", urlPatterns = {"/Funcionario_Controller"})
@@ -25,7 +24,6 @@ public class Funcionario_Controller extends HttpServlet {
             throws ServletException, Exception {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            PrintWriter devuelta1 = response.getWriter();
             /*Menu de opciondes de crud de funcionario...
             1. Agregar funcionario
             2. Actualizar
@@ -40,6 +38,9 @@ public class Funcionario_Controller extends HttpServlet {
             switch (opcion) {
                 case 1:
                     String[] fun = (String[]) Elomac.M_toArray(jData.getString("datos"));
+                    for(int i = 0; i < 9;i++){
+                        System.out.println(fun[i]);
+                    }
                     fun[8] = new vasos().getVaso();
                     try {
                         if (new Funcionario().RegistrarFuncionario(fun)) {
