@@ -49,7 +49,7 @@
                                 <span class="icon-bar bar2"></span>
                                 <span class="icon-bar bar3"></span>
                             </button>
-                            <a class="navbar-brand"><label id="CasoNombre">Notificaciones</label></a>
+                            <a class="navbar-brand"><label id="CasoNombre">Notificaciones producto virtual</label></a>
                         </div>
                         <div class="collapse navbar-collapse">
                             <ul class="nav navbar-nav navbar-right">
@@ -69,14 +69,7 @@
                                     <ul class="dropdown-menu" id="tablaNotificacionP">
                                     </ul>
                                 </li>
-                                <li>
-                                    <a href="#">
-                                        <i class="ti-settings"></i>
-                                        <p>Settings</p>
-                                    </a>
-                                </li>
                             </ul>
-
                         </div>
                     </div>
                 </nav>

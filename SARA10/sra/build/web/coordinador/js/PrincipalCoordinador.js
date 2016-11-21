@@ -1,6 +1,18 @@
 $(document).on('ready', function () {
     console.log("Vivo??coordinador");
     var casoUso = "Consultar estadisticas";
+    objeto = {url: "coordinador_Controller", Opcion: 1, name: 'cuerpo', vista: $("#vista").val()};
+    casoUso = $("#text1").text();
+    obtenerP(objeto);
+
+    $(document).on('click', '.Notify', function (e) {
+        if (this.id == "verMasNotificaciones") {
+            var objeto = {url: "coordinador_Controller", Opcion: 1, name: 'cuerpo'};
+            casoUso = $("#text1").text();
+            obtenerP(objeto);
+        }
+    });
+
     $('.menu li').click(function (e) {
         objeto = {url: "coordinador_Controller", Opcion: this.value, name: 'cuerpo', vista: $("#vista").val()};
         casoUso = "text" + this.value;

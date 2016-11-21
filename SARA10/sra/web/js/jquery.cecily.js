@@ -182,9 +182,9 @@ jQuery.Luna = function (Datos, selector) {
                         jso[i].Conte_Notificacion,
                         jso[i].Fecha_Envio
                     ]);
-                    if (i < 5) {
+                    if (i < 4) {
                         $(selecNo).append('<li><a><label class="Notify" id=' + jso[i].Ides_Proceso + '>' + jso[i].Conte_Notificacion + '</label></a></li>');
-                    }else if(i==5){
+                    } else if (i == 4) {
                         $(selecNo).append('<li><a><label class="Notify" id=verMasNotificaciones>Ver mas notificaciones</label></a></li>');
                     }
                 }
@@ -246,6 +246,7 @@ jQuery.Luna = function (Datos, selector) {
                 break;
             case "Habilitar":
                 var jsSelect = jQuery.parseJSON(json);
+                var selecNo = selector.selector + "P";
                 for (var i = 0; i < jsSelect.length; i++) {
                     table = selector.dataTable().fnAddData([
                         i + 1,
@@ -253,7 +254,13 @@ jQuery.Luna = function (Datos, selector) {
                         jsSelect[i].Num_Version,
                         "<button id='" + jsSelect[i].Id_Version + "'class='btnclick btn btn-info'>Habilitar</button>"
                     ]);
+                    if (i < 4) {
+                        $(selecNo).append('<li><a><label class="Notify" id=' + jsSelect[i].Id_Version + '>Producto virtual ' + jsSelect[i].Nom_P_Virtual + '</label></a></li>');
+                    } else if (i == 4) {
+                        $(selecNo).append('<li><a><label class="Notify" id=verMasNotificaciones>Ver mas productos</label></a></li>');
+                    }
                 }
+                $("#ccNoti").append(i);
                 break;
             case "Area":
                 for (var i = 0; i < json.length; i++) {
@@ -269,17 +276,23 @@ jQuery.Luna = function (Datos, selector) {
             case "Funcionario":
                 var jsFuncionario;
                 jsFuncionario = jQuery.parseJSON(json);
+                var selecNo = selector.selector + "P";
                 for (var i = 0; i < jsFuncionario.length; i++) {
                     table = selector.dataTable().fnAddData([
-                        c,
+                        i + 1,
                         jsFuncionario[i].NombreCompleto,
                         jsFuncionario[i].Cargo,
                         jsFuncionario[i].Nom_Area,
                         jsFuncionario[i].Nom_Estado,
                         "<button id='" + jsFuncionario[i].Id_Funcionario + "' class='botonclick btn btn-danger'>Deshabilitar Usuario</button>"
                     ]);
-                    c++;
+                    if (i < 4) {
+                        $(selecNo).append('<li><a><label class="Notify" id=' + i + '>Nuevo funcionario' + jsFuncionario[i].Cargo + '</label></a></li>');
+                    } else if (i == 4) {
+                        $(selecNo).append('<li><a><label class="Notify" id=verMasNotificaciones>Ver mas funcionarios</label></a></li>');
+                    }
                 }
+                $("#ccNoti").append(i);
                 break;
             case "Formato" :
                 var w = getNombre();

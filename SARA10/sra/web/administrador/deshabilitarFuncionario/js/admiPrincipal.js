@@ -2,7 +2,7 @@ $(document).on('ready', function () {
     var selector = [], hilo = [], jso = [], data = [], nombre = "funcionario", datos = [];
     var ob = new $.Luna("funcionario", selector);
     ob.Vivo("DesabilitarFuncionario");
-
+    
     jso[0] = ['Crud_Controller1', '[{opcion:5,tabla:11,datos:[],actualizar:[],delimitador:[],elegir:[0,1,3,5,6],id:0,opSelect:4}]'];
     selector[0] = $("#tablaAdmi");
     datos[0] = {nombre: "Funcionario", worker: true};
@@ -11,13 +11,6 @@ $(document).on('ready', function () {
     $(document).on('click', '.botonclick', function (e) {
         jso[1] = ['Crud_Controller1', '[{opcion:2,tabla:"18",datos:[],delimitador:[],elegir:[],actualizar:"[{9:2}]",id:' + this.id + ',opSelect:2}]'];
         selector[1] = $("#tablaAdmi");
-        data1 = jQuery.parseJSON(data[0]);
-        for (var i in jso[1]) {
-            if (data1[i].Id_Funcionario == this.id) {
-                nombre = data1[i].NombreCompleto;
-                console.log(nombre);
-            }
-        }
         ob.limpiarTabla(selector[1]);
         datos[1] = {nombre: "btn", worker: true};
         ajax(1, datos[1]);
@@ -39,10 +32,9 @@ $(document).on('ready', function () {
             ajax(2, datos[0]);
         } else if (i == 2) {
             var men = "";
-            nombre="funcionario";
             if (data[2].length < data[0].length) {
-                men =  " fue deshabilitado correctamente.";
-            } else if(data[2].length == data[0].length){
+                men = "fue deshabilitado correctamente.";
+            } else if (data[2].length == data[0].length) {
                 men = "No se a podido deshabilitado a  .";
             }
             $.notify({

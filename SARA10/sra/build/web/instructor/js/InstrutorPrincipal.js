@@ -3,21 +3,22 @@ $(document).on('ready', function () {
     $(document).on('click', '.Notify', function (e) {
         if (this.id == "verMasNotificaciones") {
             var objeto = {url: "Instrutor_Controller", Opcion: 3, name: 'cuerpo'};
-            casoUso="Notificaciones P.V";
+            casoUso = "Notificaciones P.V";
             obtenerP(objeto);
         }
     });
 
-    var casoUso = "Notificaciones";
+    var casoUso = "Notificaciones producto virtual";
     console.log("Vivo??Instrutor");
     var objeto = {url: "Instrutor_Controller", Opcion: 3, name: 'cuerpo'};
-    
     obtenerP(objeto);
     $('.menu li').click(function (e) {
         var objeto = {url: "Instrutor_Controller", Opcion: this.value, name: 'cuerpo'};
-        console.log(this);
         casoUso = "text" + this.value;
         casoUso = $("#" + casoUso).text();
+        if (this.value == 3) {
+            casoUso = casoUso + " producto virtual";
+        }
         obtenerP(objeto);
 
     });
@@ -42,7 +43,6 @@ $(document).on('ready', function () {
         switch (select) {
             case"cuerpo":
                 $("#CasoNombre").text(casoUso);
-                console.log(casoUso);
                 $("#cuerpo").empty();
                 $("#cuerpo").append(body);
                 break;
