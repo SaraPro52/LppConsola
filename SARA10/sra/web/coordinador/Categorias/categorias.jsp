@@ -41,6 +41,7 @@
 </body>
 <script type="text/javascript" src="js/jquery.js"></script>
 <script src="js/jquery.multi-select.js"></script></script>
+<script src="assets/js/bootstrap-notify.js"></script>
 <script type="text/javascript" src="js/jquery.cecily.js"></script>
 <script type="text/javascript" src="js/bootstrap-modal.js"></script>
 <script type="text/javascript" src="coordinador/Categorias/js/categorias.js"></script>
