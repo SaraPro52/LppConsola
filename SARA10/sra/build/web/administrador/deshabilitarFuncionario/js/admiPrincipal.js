@@ -40,10 +40,10 @@ $(document).on('ready', function () {
         } else if (i == 2) {
             var men = "";
             nombre="funcionario";
-            if (jso[2].length == jso[0].length) {
-                men = nombre + " fue deshabilitado correctamente.";
-            } else {
-                men = "No se a podido deshabilitado a " + nombre + ".";
+            if (data[2].length < data[0].length) {
+                men =  " fue deshabilitado correctamente.";
+            } else if(data[2].length == data[0].length){
+                men = "No se a podido deshabilitado a  .";
             }
             $.notify({
                 icon: 'ti-gift',

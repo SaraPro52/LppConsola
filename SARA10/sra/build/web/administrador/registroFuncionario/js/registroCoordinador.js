@@ -53,4 +53,31 @@ $(document).on('ready', function () {
             });
         }
     }
+    function ajax(i, datos) {
+        hilo[i] = new Worker("js/worker.js");
+        hilo[i].postMessage(jso[i]);
+        hilo[i].onmessage = function (event) {
+            data[i] = event.data;
+            ob.cargarTabla(data[i], selector[i], datos);
+            hilo[i].terminate();
+            peticionCompleta(i, datos);
+        };
+    }
+    function peticionCompleta(i, datos) {
+        if ((i < 2) && (datos.nombre == "Select")) {
+            i++;
+            ajax(i, datos);
+        } else if (datos.nombre == "btn") {
+            $("#formulario1 :input").val("");
+            $("#area").empty().append("<option selected='selected'>selecciona...</option>");
+            $("#boton1").attr("disabled", false);
+            $.notify({
+                icon: 'ti-gift',
+                message: data[i] + "."
+            }, {
+                type: 'success',
+                timer: 4000
+            });
+        }
+    }
 });

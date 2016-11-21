@@ -3,7 +3,7 @@ $(document).on('ready', function () {
     $(document).on('click', '.Notify', function (e) {
         if (this.id == "verMasNotificaciones") {
             var objeto = {url: "Instrutor_Controller", Opcion: 3, name: 'cuerpo'};
-            casoUso="text3";
+            casoUso="Notificaciones P.V";
             obtenerP(objeto);
         }
     });

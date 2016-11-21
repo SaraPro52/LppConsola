@@ -32,6 +32,15 @@
                             </div>
                             <button type="submit" class="btn btn-default ubicacionLoginBoton" id="btnLogin">Iniciar sesión</button>
                         </form>
+
+                        <form class="col-md-12" action="Equipo_Controller" method="post" class="form-control"> 
+                            <select name="Opcion" value="0" >
+                                <option value="1">seleciona</option>
+                                <option value="1">Imagenes12</option>
+                            </select>
+                            <input type="submit" name="btnenviar" value="Aceptar">
+                        </form>    
+
                     </div>
                 </div>
             </nav>
@@ -89,7 +98,6 @@
             </div>
         </div>
 
-
         <div  class="col-md-12 quienesEstilo">
             <img src="imagenes/quienes3.png" class="queimagen">
             <h2 class="titleSARA">¿Quenes somos?</h2>
@@ -101,13 +109,8 @@
                     desarrollo de sistemas de informacion del centro de mercados,logistica
                     y las tecnologias de la informacion de la regional distrito capital
                 </p>
+
                 <table class="table">
-                    <form action="Administrador_Controller" method="post" class="form-control"> 
-                        <select name="Opcion" value="0" >
-                            <option value="5">Imagenes12</option>
-                        </select>
-                        <input type="submit" name="btnenviar" value="Aceptar">
-                    </form>    
                     <tbody>
                         <tr>
                             <td>
