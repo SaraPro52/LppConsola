@@ -1233,16 +1233,17 @@ public class NewMain {
 //              System.out.println(arr[i]);
 //            }
 
-
-//        String json = "[{primero:1,segundo:[1,2]}]";
-//        
-//        JSONObject j = new JSONArray(json).getJSONObject(0);
-//        
-//        Object[] pru = Elomac.M_toArray(j.getString("segundo"));
-//        
-//        System.out.println(pru[0]);
-//        System.out.println(pru[1]);
-//          
+        String v1 = "1";
+        int v2 = 2;
+        String json = "[{primero:1,segundo:['"+v1+"','"+v2+"']}]";
+        
+        JSONObject j = new JSONArray(json).getJSONObject(0);
+        
+        Object[] pru = Elomac.M_toArray(j.getString("segundo"));
+        
+        System.out.println(pru[0]);
+        System.out.println(pru[1]);
+          
 
 
     }
