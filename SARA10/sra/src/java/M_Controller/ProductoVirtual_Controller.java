@@ -6,7 +6,6 @@ import M_Modelo.Version;
 import M_Util.Elomac;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -15,7 +14,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 @WebServlet(name = "ProductoVirtual_Controller", urlPatterns = {"/ProductoVirtual_Controller"})
@@ -35,19 +33,19 @@ public class ProductoVirtual_Controller extends HttpServlet {
                 4. Realiza la aprovacion del producto virtual.
                 5. Consultar Productos virtuales Aprovados.*/
             String data = request.getParameter("data");
-            System.out.println(data);
-            JSONObject jDato = new JSONArray(data).getJSONObject(0);
-            int option = jDato.getInt("opcion");
-            String[] infoVersion = (String[]) Elomac.M_toArray(jDato.getString("info"));
-            String arrayFun = jDato.getString("arrayFun");
-            String[] arrayTemas = (String[]) Elomac.M_toArray(jDato.getString("arrayTemas"));
-            String archivoNom = jDato.getString("archivoNom");
+            JSONObject jData = new JSONArray(data).getJSONObject(0);
+            
+            int opcion = jData.getInt("opcion");
+            String[] infoVersion = (String[]) Elomac.M_toArray(jData.getString("info"));
+            String arrayFun = jData.getString("arrayFun");
+            String[] arrayTemas = (String[]) Elomac.M_toArray(jData.getString("arrayTemas"));
+            String archivoNom = jData.getString("archivoNom");
 
             response.setContentType("application/json;charset=UTF-8");
 
             ArchivosController arch = new ArchivosController();
             Version ver = new Version();
-            switch (option) {
+            switch (opcion) {
                 case 1:
                     infoVersion[4] = archivoNom;
 //                    try {
@@ -81,7 +79,7 @@ public class ProductoVirtual_Controller extends HttpServlet {
                     }
                     break;
                 case 3:
-                    String[] correccion = (String[]) Elomac.M_toArray(jDato.getString("correccion"));
+                    String[] correccion = (String[]) Elomac.M_toArray(jData.getString("correccion"));
                     if (ver.CorreccionVersion(correccion)) {
                         respuesta.println("Si Registro");
                     } else {
@@ -90,7 +88,7 @@ public class ProductoVirtual_Controller extends HttpServlet {
                     break;
                 case 4:
                     try {
-                        String[] aprobacion = (String[]) Elomac.M_toArray(jDato.getString("aprobacion"));
+                        String[] aprobacion = (String[]) Elomac.M_toArray(jData.getString("aprobacion"));
                         if (ver.AprobarPV(aprobacion)) {
                             respuesta.println("Si Registro");
                         } else {

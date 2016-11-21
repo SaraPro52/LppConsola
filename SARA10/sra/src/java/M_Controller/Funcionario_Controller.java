@@ -25,7 +25,6 @@ public class Funcionario_Controller extends HttpServlet {
             throws ServletException, Exception {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            //Cambio previsto ahora no se tlvez toque esperar 1 minuto
             PrintWriter devuelta1 = response.getWriter();
             /*Menu de opciondes de crud de funcionario...
             1. Agregar funcionario
@@ -33,7 +32,6 @@ public class Funcionario_Controller extends HttpServlet {
             3. Consultar
             4. Deshabilitar*/
             String data = request.getParameter("data");
-            System.out.println(data);
             JSONObject jData = new JSONArray(data).getJSONObject(0);
             int opcion = jData.getInt("opcion");
             response.setContentType("application/json;charset=UTF-8");

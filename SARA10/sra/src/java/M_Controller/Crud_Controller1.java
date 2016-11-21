@@ -20,10 +20,10 @@ import org.json.JSONObject;
 public class Crud_Controller1 extends HttpServlet {
 
     private Elomac elo;
-    private JSONObject jDato;
+    private JSONObject jData;
     private int tabla = 0;
     private int tipoElo = 0;
-    private int option = 0;
+    private int opcion = 0;
     private String delimitador;
     private String[] datos = null;
     private String actualizar = "";
@@ -46,26 +46,24 @@ public class Crud_Controller1 extends HttpServlet {
             4. Eliminar
             5. Obtener datos - Solo para vistas*/
            String data = request.getParameter("data");
-            System.out.println(data);
-            jDato = new JSONArray(data).getJSONObject(0);
+            jData = new JSONArray(data).getJSONObject(0);
+            
             tipoElo = 1;
-            option = jDato.getInt("opcion");
-            tabla = jDato.getInt("tabla");
-            datos = (String[]) Elomac.M_toArray(jDato.getString("datos"));
-            delimitador = jDato.getString("delimitador");
-            actualizar = jDato.getString("actualizar");
-            id = jDato.getInt("id");
-            optionSelect = jDato.getInt("opSelect");
-
-            elo = new Elomac(tabla, tipoElo, datos);
-
-            switch (option) {
+            tabla =         jData.getInt("tabla");
+            opcion =        jData.getInt("opcion");
+            id =            jData.getInt("id");
+            optionSelect =  jData.getInt("opSelect");
+            
+            switch (opcion) {
                 case 1:
+                    datos = (String[]) Elomac.M_toArray(jData.getString("datos"));
+                    elo = new Elomac(tabla, tipoElo, datos);
                     if (elo.Insert()) {
                         ManejoDatos();
                     }
                     break;
                 case 2:
+                    actualizar = jData.getString("actualizar");
                     elo = new Elomac(tabla, tipoElo);
                     try {
                         if (elo.Update(elo.Select(id), actualizar)) {
@@ -102,30 +100,17 @@ public class Crud_Controller1 extends HttpServlet {
         response.setContentType("application/json;charset=UTF-8");
         respuesta = response.getWriter();
         Elomac elo1 = new Elomac(tabla, tipoElo);
-        String[] elegir = (String[]) Elomac.M_toArray(jDato.getString("elegir"));
+        delimitador = jData.getString("delimitador");
+        String[] elegir = (String[]) Elomac.M_toArray(jData.getString("elegir"));
         try {
             switch (optionSelect) {
-                case 1:
-                    respuesta.println(elo1.Select());
-                    break;
-                case 2:
-                    respuesta.println(elo1.Select(id));
-                    break;
-                case 3:
-                    respuesta.println(elo1.Select(delimitador));
-                    break;
-                case 4:
-                    respuesta.println(elo1.Select(elegir));
-                    break;
-                case 5:
-                    respuesta.println(elo1.Select(elegir, id));
-                    break;
-                case 6:
-                    respuesta.println(elo1.Select(elegir, delimitador));
-                    break;
-                default:
-                    respuesta.println("Default");
-                    break;
+                case 1:respuesta.println(elo1.Select());break;
+                case 2:respuesta.println(elo1.Select(id));break;
+                case 3:respuesta.println(elo1.Select(delimitador));break;
+                case 4:respuesta.println(elo1.Select(elegir));break;
+                case 5:respuesta.println(elo1.Select(elegir, id));break;
+                case 6:respuesta.println(elo1.Select(elegir, delimitador));break;
+                default:respuesta.println("Default");break;
             }
 
         } catch (Exception e) {

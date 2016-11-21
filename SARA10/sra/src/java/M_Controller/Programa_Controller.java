@@ -2,6 +2,7 @@
 package M_Controller;
 
 import M_Modelo.Programa;
+import M_Util.Elomac;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -9,6 +10,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 @WebServlet(name = "Programa_Controller", urlPatterns = {"/Programa_Controller"})
 public class Programa_Controller extends HttpServlet {
@@ -18,20 +21,28 @@ public class Programa_Controller extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             
-           int option = Integer.parseInt(request.getParameter("option"));
+            String data = request.getParameter("data");
+            JSONObject jData = new JSONArray(data).getJSONObject(0);
+            int opcion = jData.getInt("opcion");
+            
            response.setContentType("application/json;charset=UTF-8");
            PrintWriter respuesta = response.getWriter();
-           switch(option){
+           switch(opcion){
                case 1:
-                   String[] programainfo = request.getParameterValues("infoP[]");
-                   String[] areas = request.getParameterValues("areas[]");
-                   String[] temas = request.getParameterValues("temas[]");
+                   String[] programainfo = (String[]) Elomac.M_toArray(jData.getString("infoP"));
+                   String[] areas = (String[]) Elomac.M_toArray(jData.getString("areas"));
+                   String[] temas = (String[]) Elomac.M_toArray(jData.getString("temas"));
+                   
                    Programa p = new Programa();
-                   if(p.RegistrarPrograma(programainfo, areas, temas)){
-                       respuesta.println("Si Registro");
-                   }else{
-                       respuesta.println("No Registro");
-                   }
+                   try {
+                       if(p.RegistrarPrograma(programainfo, areas, temas))
+                            respuesta.println("Si Registro");
+                        else
+                            respuesta.println("No Registro");
+                        
+                    } catch (Exception e) {
+                        respuesta.println(e.getMessage());
+                    }
                    break;
            }
         }catch(Exception ex){

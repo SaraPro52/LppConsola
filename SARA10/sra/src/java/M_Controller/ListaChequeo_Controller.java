@@ -1,19 +1,24 @@
 package M_Controller;
 
 import M_Modelo.Lista_Chequeo;
+import M_Util.Elomac;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 @WebServlet(name = "ListaChequeo_Controller", urlPatterns = {"/ListaChequeo_Controller"})
 public class ListaChequeo_Controller extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, Exception {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /*Menu de opciones crud
@@ -22,31 +27,23 @@ public class ListaChequeo_Controller extends HttpServlet {
             3.consultar
             4.eliminar
             5.Agregar Items*/
+            String data = request.getParameter("data");
+            JSONObject jData = new JSONArray(data).getJSONObject(0);
+            int opcion = jData.getInt("opcion");
             
-            int opcion = Integer.parseInt(request.getParameter("opcion"));
             response.setContentType("application/json;charset=UTF-8");
             PrintWriter respuesta = response.getWriter();
             switch (opcion) {
                 case 1:
-                    String[] lista = request.getParameterValues("lista[]");
-                    String items = request.getParameter("items");
-                    if(new Lista_Chequeo().RegistrarLista(lista, items))
-                        respuesta.println("Si Registro");
-                    else respuesta.println("No Registro");
-                    break;
-                case 2:
-                    
-                    break;
-                case 3:
+                    String[] lista = (String[]) Elomac.M_toArray(jData.getString("lista"));
+                    String items = jData.getString("items");
                     try {
-                        respuesta.println(new Lista_Chequeo().Select());
+                        if(new Lista_Chequeo().RegistrarLista(lista, items))
+                            respuesta.println("Si Registro");
+                        else respuesta.println("No Registro");
                     } catch (Exception e) {
-                        respuesta.println("Falla: " + e.getMessage());
+                        respuesta.println(e.getMessage());
                     }
-                    break;
-                case 4:
-                    break;
-                case 5:
                     break;
             }
         }
@@ -64,7 +61,11 @@ public class ListaChequeo_Controller extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (Exception ex) {
+            Logger.getLogger(ListaChequeo_Controller.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -78,7 +79,11 @@ public class ListaChequeo_Controller extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (Exception ex) {
+            Logger.getLogger(ListaChequeo_Controller.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**

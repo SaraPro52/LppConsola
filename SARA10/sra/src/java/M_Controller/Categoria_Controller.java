@@ -6,35 +6,48 @@
 package M_Controller;
 
 import M_Modelo.Categoria;
+import M_Util.Elomac;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 @WebServlet(name = "Categoria_Controller", urlPatterns = {"/Categoria_Controller"})
 
 public class Categoria_Controller extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, Exception {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             
-            int opcion = Integer.parseInt(request.getParameter("opcion"));
-            String[] categoria = request.getParameterValues("catego[]");
-            String temas = request.getParameter("temas");
+            String data = request.getParameter("data");
+            JSONObject jData = new JSONArray(data).getJSONObject(0);
+            
+            int opcion = jData.getInt("opcion");
+            String[] categoria = (String[]) Elomac.M_toArray(jData.getString("catego"));
+            String temas = jData.getString("temas");
+            
             response.setContentType("application/json;charset=UTF-8");
             PrintWriter respuesta = response.getWriter();
             
             Categoria cate = new Categoria();
             switch(opcion){
                 case 1: 
-                    if(cate.RegistrarCategoria(categoria, temas))
-                         respuesta.println("Si Registro");
-                    else respuesta.println("No Registro");
+                    try {
+                        if(cate.RegistrarCategoria(categoria, temas))
+                            respuesta.println("Si Registro");
+                        else respuesta.println("No Registro");
+                    } catch (Exception e) {
+                        respuesta.println(e.getMessage());
+                    }
                     break;
             }
         }
@@ -52,7 +65,11 @@ public class Categoria_Controller extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (Exception ex) {
+            Logger.getLogger(Categoria_Controller.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -66,7 +83,11 @@ public class Categoria_Controller extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (Exception ex) {
+            Logger.getLogger(Categoria_Controller.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
