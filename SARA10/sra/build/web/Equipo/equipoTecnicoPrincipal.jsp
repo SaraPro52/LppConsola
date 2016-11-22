@@ -5,9 +5,9 @@
     <head>
         <meta charset="utf-8" />
         <link rel="apple-touch-icon" sizes="76x76" href="assets/img/apple-icon.png">
-        <link rel="icon" type="image/png" sizes="96x96" href="assets/img/favicon.png">
+        <link rel="shotrcut icon" href="recursos/flavicon.ico">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-        <title>Sara Pro....</title>
+        <title>Sara-Equipo Tecnico</title>
         <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
         <meta name="viewport" content="width=device-width" />
         <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
@@ -86,23 +86,12 @@
                                 <li class="dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                         <i class="ti-bell"></i>
-                                        <p class="notification">5</p>
-                                        <p>Notifications</p>
+                                        <p class="notification"><label id="ccNoti"></label></p>
+                                        <p>Productos virtuales</p>
                                         <b class="caret"></b>
                                     </a>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="#">Notification 1</a></li>
-                                        <li><a href="#">Notification 2</a></li>
-                                        <li><a href="#">Notification 3</a></li>
-                                        <li><a href="#">Notification 4</a></li>
-                                        <li><a href="#">Another notification</a></li>
+                                    <ul class="dropdown-menu" id="tablaConsultarOaP">
                                     </ul>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <i class="ti-settings"></i>
-                                        <p>Settings</p>
-                                    </a>
                                 </li>
                             </ul>
                         </div>

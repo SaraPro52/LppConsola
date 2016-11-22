@@ -201,15 +201,24 @@ jQuery.Luna = function (Datos, selector) {
                 }
                 break;
             case "consutarOa":
-                for (var i = 0; i < json.length; i++) {
+                var selecNo = selector.selector + "P";
+                $(selecNo).empty();
+                var jso = jQuery.parseJSON(json);
+                for (var i = 0; i < jso.length; i++) {
                     table = selector.dataTable().fnAddData([
                         i + 1,
-                        json[i].Conte_Notificacion,
-                        json[i].Fecha_Envio,
-                        "<button  type='button' id='" + json[i].Ides_Proceso + "' class='btn btn-info btn-lg btnEvaluar'>Evaluar Producto</button>",
-                        "<button  type='button' id='" + json[i].Url_Version + "' class='btn btn-info btn-lg btnDescargar'>Descargar Producto</button>",
+                        jso[i].Conte_Notificacion,
+                        jso[i].Fecha_Envio,
+                        "<button  type='button' id='" + jso[i].Url_Version + "' class='btn btn-info btn-lg btnDescargar'>Descargar Producto</button>",
+                        "<button  type='button' id='" + jso[i].Ides_Proceso + "' class='btn btn-info btn-lg btnEvaluar'>Evaluar Producto</button>"
                     ]);
+                    if (i < 4) {
+                        $(selecNo).append('<li><a><label class="Notify" id=' + jso[i].Ides_Proceso + '>' + jso[i].Conte_Notificacion + '</label></a></li>');
+                    } else if (i == 4) {
+                        $(selecNo).append('<li><a><label class="Notify" id=verMasNotificaciones>Ver mas productos virtuales</label></a></li>');
+                    }
                 }
+                $("#ccNoti").append(i);
                 break;
             case "ConsultarLista":
                 for (var i = 0; i < json.length; i++) {

@@ -1,0 +1,121 @@
+use SecretariaSalud2;
+/*1.	Construir un procedimiento  almacenado que reciba el nombre de una EPS y presente una lista   con los datos de los afiliados: Nombre completo, edad,  tipo de documento y número de identificación,  de todas las personas que  sean menores de edad.*/
+create procedure SelectAfiliadoMenor
+ @Nom varchar(30)
+as begin
+	Declare @Eps int;
+	select @Eps=ideps From EPS where nombre=@Nom;
+select 
+	E.nombre as Eps,
+	CONCAT(P.nombre,' ',P.apellido) As Nombre_Completo,
+	DATEDIFF(yy,GETDATE(), P.fechaNacimiento)* -1 AS edad,
+	TP.abreviatura AS Tipo_Documento,
+	P.idPersona 
+from 
+	Eps  E inner join  
+	HistorialPersona  H on E.ideps= H.ideps 
+	inner join Persona P on H.idpersona = P.idPersona 
+	inner join TipoIdentificacion TP on P.tipoidentificacion = TP.idTipoIdentificacion
+where
+    DATEDIFF(yy,GETDATE(), P.fechaNacimiento)*-1 <= 18 and E.ideps= @Eps
+end 
+
+select * from EPS
+exec SelectAfiliadoMenor 'NUEVA EPS';
+/*2 Construir un procedimiento  almacenado que permita  registrar una nueva persona en el sistema,  debe recibir sus datos completos incluyendo el nombre de la EPS, el tipo de afiliado. Por defecto se deben registrar como estado   Activo y la fecha de ingreso la del sistema.*/
+create procedure InsertAfiliado
+  @idPersona int,
+  @tipoIdentificacion varchar(3),
+  @nombreP varchar(20),
+  @apellidoP varchar(20),
+  @fechaP date,
+  @sexoP char(1),	
+  @Eps varchar(30),
+  @TipoAfiliado varchar(20)
+as 
+ DECLARE @idEps int,@idTipo int, @Iden int; 	
+ select @Iden =idTipoIdentificacion from TipoIdentificacion where abreviatura=@tipoIdentificacion;
+ select @idTipo =idTipoAfiliado from TipoAfiliado where descripcion=@TipoAfiliado;
+ select @idEps =ideps from EPS where nombre=@Eps;
+ insert into Persona values(@idPersona,@Iden,@nombreP,@apellidoP,@fechaP,@sexoP);
+ insert into HistorialPersona values (@idPersona,GETDATE(),null,1,@idEps,@idTipo);	
+
+ exec InsertAfiliado 2,'CC','Andres','Alvarez','2000-05-06','M','NUEVA EPS','Cotizante'
+ select * from Persona;
+ select * from HistorialPersona;
+
+/*3.Construir un procedimiento que retorne el listado de EPS con su nombre y el valor que cobran por un servicio en particular, del cual se recibe el nombre.*/
+create procedure SelectServicio
+	@DesServivio varchar(35)
+as
+	Declare @IdServicio int;
+	select @IdServicio=idTipoServicio from TipoServicio where descripcion=@DesServivio
+	select 
+		E.nombre AS EPS,
+		SE.valor AS Valor_Monetario
+	from EPS E inner join ServicioEps SE on E.ideps=SE.ideps 
+			   inner join TipoServicio TS on SE.idtiposervicio= TS.idTipoServicio
+	where @IdServicio=TS.idTipoServicio;
+
+exec SelectServicio 'Consulta externa'
+select * from TipoServicio;
+
+
+/*6.Construir un trigger que impida que se cambie el estado de la persona a “Retirado” si no tiene una fecha de retiro registrada.*/
+	create trigger ti_NoFechaRetiro
+	on HistorialPersona
+	for update
+	as
+		declare @estadoT int,
+				@FechaRetiroT date
+		select  @estadoT = estadopersona from inserted
+		select  @FechaRetiroT= fecharetiro from deleted	
+	 if @estadoT=4  and @FechaRetiroT is null
+	 begin 
+			rollBack transaction;
+	 end
+	/*Caso de prueba donde se ejecuta el trigger el registro no tiene fecha de retiro*/	
+	update HistorialPersona
+	set estadopersona = 4
+	where idpersona= 2 
+	/*Caso de prueba donde no se ejecuta el trigger El registro tiene fecha de retiro*/
+	update HistorialPersona
+	set estadopersona= 1
+	where idpersona=4186277
+ select * from HistorialPersona;
+/*7.Construir un Trigger que impida que se cambie el estado de una EPS si el  estado actual es “Liquidada”, debe emitir un mensaje indicando que esa operación no está permitida y se contacte con el administrador del sistema.*/
+create trigger ti_UpdateEps
+on EPS
+for update
+as
+	declare @estadoEpsVT int
+    select @estadoEpsVT =estadoeps from deleted
+	if	@estadoEpsVT =  5
+	begin
+		raiserror('Esta operacion no esta permitida, comunícate con el administrador ;)',10,1)
+		rollback transaction;
+	end 
+select * from EPS;
+/*Caso de prueba  cuando se activa  */
+update EPS
+set estadoeps = 1
+where ideps = 5
+/*8.Construir un Trigger que solo permita que se registren nuevos servicios a una EPS si esta se encuentra Activa, de lo contrario debe impedir el registro.*/
+create trigger ti_InsertServicio
+on ServicioEps
+for insert
+as
+	declare @epsEs int,
+			@idEps int
+	select @idEps = ideps from inserted;
+	select @epsEs =estadoeps  from EPS where ideps =@idEps
+if @epsEs <> 1
+begin	
+	raiserror('La eps no puede obtener mas servicios por que se no encuentra activada',10,1)
+	rollback transaction;
+end
+select * from EPS;
+select * from EstadoEPS;
+select * from ServicioEps;
+/*Caso de prueba donde se actia el trigger*/
+insert into ServicioEps values(9,11,'A',1000,null);

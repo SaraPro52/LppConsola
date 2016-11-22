@@ -12,6 +12,8 @@ $(document).on('ready', function () {
         jso[1] = ['Crud_Controller1', '[{opcion:2,tabla:"18",datos:[],delimitador:[],elegir:[],actualizar:"[{9:2}]",id:' + this.id + ',opSelect:2}]'];
         selector[1] = $("#tablaAdmi");
         ob.limpiarTabla(selector[1]);
+        $("#ccNoti").empty();
+        $("#tablaAdmiP").empty();
         datos[1] = {nombre: "btn", worker: true};
         ajax(1, datos[1]);
     });

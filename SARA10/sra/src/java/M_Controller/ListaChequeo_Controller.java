@@ -39,13 +39,15 @@ public class ListaChequeo_Controller extends HttpServlet {
                     String items = jData.getString("items");
                     try {
                         if(new Lista_Chequeo().RegistrarLista(lista, items))
-                            respuesta.println("Si Registro");
-                        else respuesta.println("No Registro");
+                            respuesta.println("fue registrada correctamente");
+                        else respuesta.println("no registro");
                     } catch (Exception e) {
                         respuesta.println(e.getMessage());
                     }
                     break;
             }
+        }catch(Exception e){
+            System.out.println(e.getMessage());
         }
     }
 

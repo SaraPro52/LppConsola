@@ -20,14 +20,15 @@ function listaChequeo(idTipoItem, idUser) {
         var arrayS = [];
         for (var j = 0; j < arraySelecion.length; j++) {
             if (j == 0) {
-                arrayS = "" + arraySelecion[j];
+                arrayS = "" + arraySelecion[j]; 
             } else {
                 arrayS = arrayS + "," + arraySelecion[j];
             }
         }
-        jso[2] = ['ListaChequeo_Controller', '[{opcion:1,lista:[' + $("#NombreL").val() + ',' + $("#DescripcionL").val() + ',' + idUser + '],items:' + arrayS + '}]'];
+        men=$("#NombreL").val();
+        jso[2] = ['ListaChequeo_Controller','[{opcion:1,lista:['+$("#NombreL").val()+','+$("#DescripcionL").val()+','+idUser+'],items:['+arrayS+']}]'];
         datos[2] = {nombre: "btn", worker: true};
-        ajax(2, null);
+        ajax(2, datos[2]);
     });
     $("#btnItem").on('click', function () {
         jso[1] = ['Crud_Controller1', '[{opcion:1,actualizar:[],tabla:19,datos:["",' + $("#Descripcion").val() + ',idTipoItem],elegir:[0,1],delimitador:"[{colum:2,operador:0,valor1:' + idTipoItem + '}]",id:0,opSelect:6}]'];
@@ -54,6 +55,9 @@ function listaChequeo(idTipoItem, idUser) {
                 } else if (data[0].length < data[1].length) {
                     men = "El item: " + $("#Descripcion").val() + " no fue agregado exitosamente";
                 }
+            }
+            if (i==2) {
+                men= men+ " "+data[2];
             }
             $.notify({
                 icon: 'ti-gift',
