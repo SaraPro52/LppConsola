@@ -36,9 +36,9 @@ public class Programa_Controller extends HttpServlet {
                    Programa p = new Programa();
                    try {
                        if(p.RegistrarPrograma(programainfo, areas, temas))
-                            respuesta.println("Si Registro");
+                            respuesta.println("a registrado correctamente");
                         else
-                            respuesta.println("No Registro");
+                            respuesta.println("no se a registrado");
                         
                     } catch (Exception e) {
                         respuesta.println(e.getMessage());

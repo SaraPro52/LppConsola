@@ -1,61 +1,33 @@
 $(document).on('ready', function () {
-    $("#oculto1").hide();
-    $("#oculto2").hide();
-    //centro del area / temas  Cosas que hay que hacer
-    var objet = {d: 0, opcion: 3, url: "Crud_Controller", nombre: "Select", tabla: "5", datos: [""], elegir: ["0","2"], id: 0, opSelect: 4};
-    var selector = $("#SelecCentro");
-    var ob = new $.Luna(objet.nombre, selector);
+    var selector = [], hilo = [], jso = [], data = [], datos = [], arrayAreas = [], arrayTemas = [], mensaje = "El programa ";
+    var ob = new $.Luna("Select", $("#SelecCentro"));
+    $(".Mult").hide();
     ob.Vivo("Programa");
-    ob.ajax(objet, selector);
-
-//    $("#SelecCentro").change(function () {
-//        $("#SelecArea").html("<option value='A0'>Seleciona...</option>");
-//        var centroid =$("#SelecCentro").val();
-//        if (centroid != "A0") {
-//            selector = $("#SelecArea");
-//            objet = {d: 0, opcion: 5, url: "Crud_Controller", nombre: "Select", tabla: "10", datos: [""], elegir: ["0","1"],
-//                delimitador:"[{colum:2,operador:0,valor1:"+centroid+"}]", id: 0, opSelect: 6};
-//            ob.ajax(objet, selector);
-//        } 
-//    });
-    
-//    $("#SelecCentro").change(function () {
-//        var centroid =$("#SelecCentro").val();
-//        if (centroid != "A0"){
-////            $("#oculto1").show();
-//            selector = $("#MultAreas");
-//            objet = {d: 0, opcion: 5, url: "Crud_Controller", nombre: "MultiSelect", tabla: "10", datos: [""], elegir: ["0","1"],
-//                delimitador:"[{colum:2,operador:0,valor1:"+centroid+"}]", id: 0, opSelect: 6};
-//            ob.ajax(objet, selector);
-//        } 
-//    });
-
-    $("#lblArea").on("click",function(){
-        $("#oculto1").show();
-        selector = $("#MultAreas");
-        objet = {d: 0, opcion: 5, url: "Crud_Controller", nombre: "MultiSelect", tabla: "10", datos: [""], elegir: ["0","1"],
-            delimitador:"[{colum:2,operador:0,valor1:"+centroid+"}]", id: 0, opSelect: 6};
-        ob.ajax(objet, selector);
+    jso[0] = ['Crud_Controller1', '[{opcion:3,delimitador:[],tabla:5,datos:[],elegir:[0,2],id:0,opSelect:4}]'];
+    selector[0] = $("#SelecCentro");
+    datos[0] = {nombre: "Select", worker: true};
+    ajax(0, datos[0]);
+    $("#SelecCentro").change(function () {
+        $(".Mult").show();
+        if ($("#SelecCentro").val() != "A0") {
+            jso[1] = ['Crud_Controller1', '[{opcion:5,tabla:10,elegir:[0,1],\n\
+                delimitador:"[{colum:2,operador:0,valor1:' + $("#SelecCentro").val() + '}]",id:0,opSelect:6}]'];
+            selector[1] = $("#MultAreas");
+            datos[1] = {nombre: "MultiSelect", worker: true};
+            ajax(1, datos[1]);
+        }
     });
-    
-    $("#lblTema").on("click",function(){
-        $("#oculto2").show();
-        selector = $("#MultTemas");
-        objet = {d: 0, opcion: 3, url: "Crud_Controller", nombre: "MultiSelect", tabla: "27", datos: [""], elegir: ["0", "1"], id: 0, opSelect: 4};
-        ob.ajax(objet, selector);
+
+    $("#MultAreas").multiSelect({
+        afterSelect: function (valor) {
+            arrayAreas.push(valor);
+        },
+        afterDeselect: function (val) {
+            var buscando = $.inArray(val, arrayTemas);
+            arrayAreas.splice(buscando, 1);
+        }
     });
-    
-//    $("#SelecArea").change(function () {
-////        $("#oculto").show();
-//        if ($("#SelecArea").val() != "A0") {
-//            selector = $("#MultTemas");
-//            objet = {d: 0, opcion: 3, url: "Crud_Controller", nombre: "MultiSelect", tabla: "27", datos: [""], elegir: ["0", "1"], id: 0, opSelect: 4};
-//            ob.ajax(objet, selector);
-//        }
-//    });
-    
-    var arrayTemas = [];
-    $('#MultTemas').multiSelect({
+    $("#MultTemas").multiSelect({
         afterSelect: function (valor) {
             arrayTemas.push(valor);
         },
@@ -65,11 +37,39 @@ $(document).on('ready', function () {
         }
     });
 
-    $("#btnPrograma").on('click', function () {
-        console.log(arrayTemas);
-        
-        var objeto = {d: 1, opcion: 1, url: "Programa_Controller", nombre: "Formato",infoP:["", Nombre, nivel],areas:arrayAreas, temas:arrayTemas};
-        ob.limpiarTabla(selector);
-        ob.ajax(objeto, "btn");
+    $("#btnPrograma").click(function () {
+        mensaje = $("#nomPro").val();
+        jso[3] = ['Programa_Controller', '[{opcion:1,infoP:["","' + $("#nomPro").val() + '","' + $("#nivel").val() + '"],areas:[' + arrayAreas + '],temas:[' + arrayTemas + ']}]'];
+        datos[3] = {nombre: "btn", worker: true};
+        ajax(3, datos[3]);
     });
+
+    function ajax(i, datos) {
+        hilo[i] = new Worker("js/worker.js");
+        hilo[i].postMessage(jso[i]);
+        hilo[i].onmessage = function (event) {
+            data[i] = event.data;
+            ob.cargarTabla(data[i], selector[i], datos);
+            hilo[i].terminate();
+            peticionCompleta(i, datos);
+        };
+    }
+    function peticionCompleta(i, datos) {
+        if (i == 1) {
+            $(".Mult").show();
+        } else if (i == 0) {
+            jso[2] = ['Crud_Controller1', '[{opcion:3,tabla:27,elegir:[0,1],delimitador:[],id:0,opSelect:4}]'];
+            selector[2] = $("#MultTemas");
+            datos[2] = {nombre: "MultiSelect", worker: true};
+            ajax(2, datos[2]);
+        } else if (i == 3) {
+            $.notify({
+                icon: 'ti-gift',
+                message: mensaje + " " + data[i] +"."
+            }, {
+                type: 'success',
+                timer: 4000
+            });
+        }
+    }
 })

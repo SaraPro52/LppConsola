@@ -50,9 +50,9 @@ function listaChequeo(idTipoItem, idUser) {
     function peticionCompleta(i) {
         if ((i == 1) || (i == 2)) {
             if (i == 1) {
-                if (data[0].length == data[1].length) {
+                if (data[0].length < data[1].length) {
                     men = "El item" + $("#Descripcion").val() + " fue agregado exitosamente";
-                } else if (data[0].length < data[1].length) {
+                } else if (data[0].length == data[1].length) {
                     men = "El item: " + $("#Descripcion").val() + " no fue agregado exitosamente";
                 }
             }

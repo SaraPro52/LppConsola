@@ -12,25 +12,21 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="contenedorFormulario col-md-10">
-
                             <div class="form-group contenedorInsert">
                                 <label>Centro de formacion</label>
                                 <select id="SelecCentro">
                                     <option value="A0">Seleciona...</option>
                                 </select>
-                                <label id="lblArea">Areas</label>
-                                <div id="oculto1"><select id="MultAreas"></select></div>
-                                
-                                <label id="lblTema">Temas</label>
-                                <div id="oculto2"><select id="MultTemas"></select></div>
-                                
-                                <select id="SelecArea">
-                                    <option value="A0">Seleciona...</option>
-                                </select>
-                                
+                                <label class="Mult">Areas</label>
+                                <select class="Mult" id="MultAreas"></select>
+                                <label>Temas</label>
+                                <select id="MultTemas"></select>
                                 <label>Programa de formación</label>
-                                <input type="text" class="form-control" placeholder="Ej: Diseño multimedia ">
-                                <div id="oculto"><select id="MultTemas"></select></div>
+                                <input type="text" id="nomPro" class="form-control" placeholder="Ej: Diseño multimedia">
+                                <select id="nivel">
+                                    <option value="Tecnico">Tecnico</option>
+                                    <option value="Tecnologo">Tecnologo</option>
+                                </select>
                             </div>
                             <button id="btnPrograma" type="button" class="btn btn-primary">Guardar</button>
                         </div>

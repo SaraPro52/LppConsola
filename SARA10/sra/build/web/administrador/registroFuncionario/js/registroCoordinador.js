@@ -19,9 +19,11 @@ $(document).on('ready', function () {
         ob.ajax(objet, selector);
     });
 
-    $("#boton1").on('click', function () { 
+    $("#boton1").on('click', function () {
         jso[3] = ['Funcionario_Controller', "[{opcion:1,datos:['" + $("#tipoUsuario").val() + "','" + $("#tipoIdenti").val() + "','" + $("#numeroIdentificacion").val() + "','" + $("#nombre").val() + "','" + $("#apellido").val() + "','" + $("#email").val() + "','" + $("#cargo").val() + "','" + $("#ipSena").val() +"','1','" + $("#centroFormacion").val() + "','" + $("#area").val() + "']}]"];
-        
+        var v1 = "hola";
+        var v2 = "como";
+        var v3 = 1;
         datos[1] = {nombre: "btn", worker: true};
         $("#boton1").attr("disabled", true);
         ajax(3, datos[1]);

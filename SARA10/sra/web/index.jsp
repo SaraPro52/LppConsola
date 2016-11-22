@@ -33,18 +33,11 @@
                             <button type="submit" class="btn btn-default ubicacionLoginBoton" id="btnLogin">Iniciar sesión</button>
                         </form>
 
-<<<<<<< HEAD
-                        <form class="col-md-12" action="Administrador_Controller" method="post" class="form-control"> 
-                            <select name="Opcion" value="0" >
-                                <option value="0">seleciona</option>
-                                <option value="0">Imagenes12</option>
-=======
                         <form class="col-md-12" action="coordinador_Controller" method="post" class="form-control"> 
                             <select name="Opcion" value="0" >
                                 <option value="0">seleciona</option>
                                 <option value="3">Imagenes12</option>
->>>>>>> 5effe215a78f8a05ff1b164c8b9a7d0108986860
-                            </select>
+                                </select>        
                             <input type="submit" name="btnenviar" value="Aceptar">
                         </form>    
 
