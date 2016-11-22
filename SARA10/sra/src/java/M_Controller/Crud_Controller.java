@@ -84,8 +84,8 @@ public class Crud_Controller extends HttpServlet {
     
     private void ManejoDatos() throws IOException{
         response.setContentType("application/json;charset=UTF-8");
-                    respuesta = response.getWriter();
-                    Elomac elo1 = new Elomac(tabla,tipoElo);
+                   respuesta = response.getWriter();
+                   Elomac elo1 = new Elomac(tabla,tipoElo);
                    try {
                        String[] elegir = request.getParameterValues("elegir[]");
                            switch(optionSelect){

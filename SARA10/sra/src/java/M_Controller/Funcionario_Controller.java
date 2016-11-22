@@ -37,7 +37,7 @@ public class Funcionario_Controller extends HttpServlet {
 
             switch (opcion) {
                 case 1:
-                    String[] fun = (String[]) Elomac.M_toArray(jData.getString("datos"));
+                    String[] fun =  Elomac.M_toArray(jData.getString("datos"));
                     for(int i = 0; i < 9;i++){
                         System.out.println(fun[i]);
                     }
@@ -45,7 +45,7 @@ public class Funcionario_Controller extends HttpServlet {
                     try {
                         if (new Funcionario().RegistrarFuncionario(fun)) {
                             DJCorreoHTML correoHTML = new DJCorreoHTML();
-                            correoHTML.mandarCorreo(fun[5], "Confirmacion de Cuenta SARA PRO1", fun[2], fun[8]);
+                            correoHTML.mandarCorreo(fun[5], "Confirmacion de Cuenta SARA PRO1",fun[2],fun[8]);
                             respuesta.println("El funcionario fue registrado correctamente");
                         } else {
                             respuesta.println("El funcionario no fue registrado");

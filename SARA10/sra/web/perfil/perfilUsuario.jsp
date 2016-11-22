@@ -67,7 +67,8 @@
                                         <div class="form-group">
                                             <label>Tipo De Identificación</label>
                                             <select id="IdentificacionFunTipo" class="form-control border-input">
-                                                <option>Seleciona...</option>
+                                                <option value="A0">Seleciona...</option>
+                                                <option >c.c</option>
                                             </select>
                                         </div>
                                     </div>

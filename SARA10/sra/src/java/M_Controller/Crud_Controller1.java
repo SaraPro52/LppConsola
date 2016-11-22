@@ -1,13 +1,9 @@
 package M_Controller;
 
 import M_Util.Elomac;
-import com.google.gson.Gson;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Properties;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -54,9 +50,10 @@ public class Crud_Controller1 extends HttpServlet {
             id =            jData.getInt("id");
             optionSelect =  jData.getInt("opSelect");
             
+            
             switch (opcion) {
                 case 1:
-                    datos = (String[]) Elomac.M_toArray(jData.getString("datos"));
+                    datos = Elomac.M_toArray(jData.getString("datos"));
                     elo = new Elomac(tabla, tipoElo, datos);
                     if (elo.Insert()) {
                         ManejoDatos();
@@ -95,13 +92,15 @@ public class Crud_Controller1 extends HttpServlet {
             }
         }
     }
+    
+    
 
     private void ManejoDatos() throws Exception {
         response.setContentType("application/json;charset=UTF-8");
         respuesta = response.getWriter();
         Elomac elo1 = new Elomac(tabla, tipoElo);
         delimitador = jData.getString("delimitador");
-        String[] elegir = (String[]) Elomac.M_toArray(jData.getString("elegir"));
+        String[] elegir =  Elomac.M_toArray(jData.getString("elegir"));
         try {
             switch (optionSelect) {
                 case 1:respuesta.println(elo1.Select());break;

@@ -26,6 +26,49 @@ $(document).on('ready', function () {
         }
         cF++;
     });
+    
+      var emailreg = /^[a-zA-Z0-9_\.\-]+@[a-zA-Z0-9\-]+\.[a-zA-Z0-9\-\.]+$/;
+    $("#BtnModificar").click(function (){
+	
+    $(".remove").remove();
+        if( $("#NombreFun").val() == "" ){
+            $("#NombreFun").focus().after("<div class='remove'><font color='red'>digite el nombre</font><div>");
+            return false;
+        
+    }else if( $("#ApellidoFun").val() == ""){
+            $("#ApellidoFun").focus().after("<div class='remove'><font color='red'>Ingrese un apellido</font></div>");
+            return false;
+		}else if( $("#IdentificacionFunTipo").val("A0") == "" ){
+            $("#IdentificacionFunTipo").focus().after("<div class='remove'><font color='red'>seleccione una opcion</font></div>");
+            return false;
+		}else if( $("#IdentificacionFun").val() == "" ){
+            $("#IdentificacionFun").focus().after("<div class='remove'><font color='red'>ingrese su numero de identificacion</font></div>");
+            return false;
+		}else if( $("#NFuncionarioFun").val() == "" ){
+            $("#NFuncionarioFun").focus().after("<div class='remove'><font color='red'>ingrese su numero de funsionario</font></div>");
+            return false;
+		}else if( $("#CorreoFun").val() == "" || !emailreg.test($("#CorreoFun").val()) ){
+            $("#CorreoFun").focus().after("<div class='remove'><font color='red'>Ingrese un email correcto</font></div>");
+            return false;
+		}else if( $("#IdSenaFun").val() == "" ){
+            $("#IdSenaFun").focus().after("<div class='remove'><font color='red'>ingrese una ip</font></div>");
+            return false;
+		}else if( $("#CaargoFun").val() == "" ){
+            $("#CaargoFun").focus().after("<div class='remove'><font color='red'>ingrese un cargo</font></div>");
+            return false;
+			}
+
+
+
+
+    });
+
+    $("#CorreoFun").keyup(function(){
+        if( $(this).val() != "" && emailreg.test($(this).val())){
+            $(".error").fadeOut();
+            return false;
+        }
+    });
     $("#BtnMcontrasena").click(function () {
         if (($("#ConNueva").val() == $("#ConNuevaF").val()) && ($("#ConNuevaF").val() != "")) {
             console.log("Listo para peticion");

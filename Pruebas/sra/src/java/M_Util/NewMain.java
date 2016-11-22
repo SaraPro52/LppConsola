@@ -1233,7 +1233,7 @@ public class NewMain {
 //              System.out.println(arr[i]);
 //            }
 
-        String v1 = "1";
+        String v1 = "miguel";
         int v2 = 2;
         String json = "[{primero:1,segundo:['"+v1+"','"+v2+"']}]";
         

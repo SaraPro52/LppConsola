@@ -18,7 +18,7 @@
                                     <p><h3>Datos personales</h3></p>
                                     <label  class="col-md-12"  for="Centro">Tipo de usuario</label>
                                     <select class="form-control" id="tipoUsuario" name="tipoUsuario">
-                                        <option>selecciona...</option>
+                                        <option value="AS">selecciona...</option>
                                     </select>
                                     <label>Nombre</label>
                                     <input type="text" class="form-control" placeholder="Nombre" id="nombre" maxlength="20">
@@ -26,7 +26,7 @@
                                     <input type="text" class="form-control" placeholder="Apellido" id="apellido" maxlength="20">
                                     <label>Tipo identificacion</label>
                                     <select class="form-control"  name="tipoIdenti" id="tipoIdenti">
-                                        <option value="" selected="selected">Selecciona...</option>
+                                        <option value="AD" selected="selected">Selecciona...</option>
                                     </select>
                                     <label>Numero identificacion</label>
                                     <input type="text" class="form-control" placeholder="Numero de identificacion" id="numeroIdentificacion" maxlength="10">
@@ -38,12 +38,12 @@
                                     <label>centro de formacion</label>
                                     <div class="form-group">
                                         <select class="form-control"  id="centroFormacion">
-                                            <option value="" selected="selected">Selecciona...</option>
+                                            <option value="AB" selected="selected">Selecciona...</option>
                                         </select>
                                     </div>
                                     <label  class="col-md-12"  for="area">Area</label>
                                     <select class="form-control" id="area">
-                                        <option value="" selected="selected">selecciona...</option>
+                                        <option value="AA" selected="selected">selecciona...</option>
                                     </select>
                                     <label>Ip SENA</label>
                                     <input type="text" class="form-control" placeholder="Ip SENA" id="ipSena" maxlength="10">
@@ -61,6 +61,7 @@
             </div>
         </div>
     </body>
+    <script src="assets/js/jquery-1.10.2.js" type="text/javascript"></script>
     <script type="text/javascript" src="js/jquery.js"></script>
     <script src="assets/js/bootstrap-notify.js"></script>
     <script type="text/javascript" charset="utf8" src="js/jquery.dataTables.js"></script>

@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 public class Elomac extends M_Crud{
@@ -256,8 +257,13 @@ public class Elomac extends M_Crud{
     
     //---------------------------- CONVERTIDORES ------------------------
     
-    public static Object[] M_toArray(String arrayFalse){
-        Object[] arrayTrue = arrayFalse.substring(1,arrayFalse.length()-1).split(",");
-        return arrayTrue;
+    public static Object[] M_toArray(String arrayFalse) throws JSONException{
+        JSONArray j = new JSONArray(arrayFalse);
+        ArrayList<String> a = new ArrayList<String>();
+        for (int i = 0; i < j.length(); i++) {
+            System.out.println(j.getString(i));
+            a.add(""+j.getString(i));
+        }
+        return a.toArray();
     }
 }
