@@ -18,12 +18,12 @@ $(document).on('ready', function () {
         };
     }
     function peticionCompleta(i) {
-        if (i == 0) {
-            selector = $("#txtBuscar");
-            objet = {opcion: 5, url: "", nombre: "", tabla: "22", datos: [""], elegir: ["0", "1"], id: 0, opSelect: 4};
+        if (i == 0) { 
+            selector = $("#");
+            objet = {opcion: 5,tabla: "22", datos: [""], elegir: ["0", "1"], id: 0, opSelect: 4};
             ob.ajax(objet, selector);
             jso[0] = ['Crud_Controller', '[{opcion:5]'];
-            selector[0] = $("#formulario1");
+            selector[0] = $("#txtBuscar");
             datos[0] = {nombre: "AutoComplet", worker: true};
             ajax(0, datos[0]);
 
