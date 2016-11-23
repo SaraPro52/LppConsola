@@ -157,11 +157,11 @@ jQuery.Luna = function (Datos, selector) {
                 }
                 break;
             case "AutoComplet":
-
-                var j = Object.keys(json[0]);
+                var jso = jQuery.parseJSON(json);
+                var j = Object.keys(jso[0]);
                 var s = [];
-                for (var i = 0; i < json.length; i++) {
-                    s.push(json[i][j[1]]);
+                for (var i = 0; i < jso.length; i++) {
+                    s.push(jso[i][j[1]]);
                 }
                 selector.autocomplete({
                     source: s,

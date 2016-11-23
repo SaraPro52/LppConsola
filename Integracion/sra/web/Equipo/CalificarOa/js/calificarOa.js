@@ -24,13 +24,13 @@ function calificarPV(idLista) {
                 infoItems.push("0¤" + $("#" + campo).val() + "¤" + campo);
             }
         });
-        var resultado = 3;
+        var resultado = 3;   
         if ($(".Resultado").is(':checked')) {
             resultado = 1;
         } else if ($(".Resultado1").is(':checked')) {
             resultado = 0;
         }
-        jso[1] = ['EvaluacionGeneral_Controller', '[{opcion:1,infoEva:[' + $("#areaObservacion").val() + ',' + resultado + ',' + idVersion + ',' + idLista + ',' + idUser + ',' + $("#iFecha").val() + '],infoItem:' + infoItems + '}]'];
+        jso[1] = ['EvaluacionGeneral_Controller', '[{opcion:1,infoEva:[' + $("#areaObservacion").val() + ',' + resultado + ',' + idVersion + ',' + idLista + ',' + idUser + ',' + $("#iFecha").val() + '],infoItem:[' + infoItems + ']}]'];
         selector[1] = null;
         datos[1] = {nombre: "btn", worker: true};
         ajax(1, datos[1]);

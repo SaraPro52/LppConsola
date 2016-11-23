@@ -52,14 +52,14 @@ $(document).ready(function () {
         uploadProgress: function (event, position, total, percentComplete) {
             $("#progressbar").width(percentComplete + '%');
             $("#percent").html(percentComplete + '%');
-            if (percentComplete > 50) {
-                $("#message").html("<font color='red'>El archivo se esta subiendo</font>");
+            if ((percentComplete > 50) && (percentComplete < 100)) {
+                $("#message").html("<font color='blue'>El archivo se esta subiendo</font>");
             }
         },
         success: function () {
             $("#progressbar").width('100 %');
             $("#percent").html('100 %');
-            console.log("s");
+            $("#message").html("<font color='gren'>El archivo se subio correctamente</font>");
             var arrayAutor = "";
             var arrayTemas = [];
             for (var i = 0; i < arraySelecionAutor.length; i++) {
@@ -75,7 +75,7 @@ $(document).ready(function () {
             for (var i = 0; i < arraySelecionCate.length; i++) {
                 arrayTemas.push(arraySelecionCate[i] + "-1");
             }
-            jso[5] = ['ProductoVirtual_Controller','[{opcion:1,info:['+$("#Titulo_Publicacion").val()+','+$("#descripcion_oa").val()+','+$("#palabras_claves").val()+','+$("#formato").val()+',0,0,'+ $("#instrucciones").val()+','+$("#requisitos_instalacion").val()+'],arrayFun:['+arrayAutor+'],arrayTemas:['+arrayTemas+'],archivoNom:'+$("#myfile").val()+'}]'];
+            jso[5] = ['ProductoVirtual_Controller', '[{opcion:1,info:[' + $("#Titulo_Publicacion").val() + ',' + $("#descripcion_oa").val() + ',' + $("#palabras_claves").val() + ',' + $("#formato").val() + ',0,0,' + $("#instrucciones").val() + ',' + $("#requisitos_instalacion").val() + '],arrayFun:[' + arrayAutor + '],arrayTemas:[' + arrayTemas + '],archivoNom:' + $("#myfile").val() + '}]'];
             selector[5] = null;
             datos[5] = {nombre: "btn", worker: true};
             console.log(jso[5]);

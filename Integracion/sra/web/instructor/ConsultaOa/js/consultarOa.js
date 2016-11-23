@@ -1,18 +1,55 @@
 $(document).on('ready', function () {
-    var limpiandpo = $('<option>', {value: 'A0', text: 'Seleciona...'});
-    var objet = {opcion: 5, url: "ProductoVirtual_Controller", nombre: "ConsOaP"};
-    var selector = $("#formulario1");
-    var ob = new $.Luna(objet.nombre, selector);
+    var selector = [], hilo = [], jso = [], data = [], datos = [];
+    jso[0] = ['ProductoVirtual_Controller', '[{opcion:5]'];
+    selector[0] = $("#formulario1");
+    datos[0] = {nombre: "ConsOaP", worker: true};
+    ajax(0, datos[0]);
+    var ob = new $.Luna("Consultar PV", $("#formulario1"));
     ob.Vivo("ConsultarOA");
-    ob.ajax(objet, selector);
+
+    function ajax(i, datos) {
+        hilo[i] = new Worker("js/worker.js");
+        hilo[i].postMessage(jso[i]);
+        hilo[i].onmessage = function (event) {
+            data[i] = event.data;
+            ob.cargarTabla(data[i], selector[i], datos);
+            hilo[i].terminate();
+            peticionCompleta(i);
+        };
+    }
+    function peticionCompleta(i) {
+        if (i == 0) {
+            selector = $("#txtBuscar");
+            objet = {opcion: 5, url: "", nombre: "", tabla: "22", datos: [""], elegir: ["0", "1"], id: 0, opSelect: 4};
+            ob.ajax(objet, selector);
+            jso[0] = ['Crud_Controller', '[{opcion:5]'];
+            selector[0] = $("#formulario1");
+            datos[0] = {nombre: "AutoComplet", worker: true};
+            ajax(0, datos[0]);
+
+
+        }
+
+        if (i == 1) {
+            $.notify({
+                icon: 'ti-gift',
+                message: data[i] + "."
+            }, {
+                type: 'success',
+                timer: 4000
+            });
+        }
+    }
+
+    var limpiandpo = $('<option>', {value: 'A0', text: 'Seleciona...'});
+
+
     var constan = true;
     var consta = true;
     var busT = 0;
     $("#txtBuscar").hover(function () {
         if (busT == 0) {
-            selector = $("#txtBuscar");
-            objet = {opcion: 5, url: "Crud_Controller", nombre: "AutoComplet", tabla: "22", datos: [""], elegir: ["0", "1"], id: 0, opSelect: 4};
-            ob.ajax(objet, selector);
+
         }
         busT++;
     });
@@ -83,7 +120,7 @@ $(document).on('ready', function () {
         console.log($("#Ciudad").val());
         $("#CentroF").empty().append(limpiandpo);
         selector = $("#CentroF");
-        if ( $("#Ciudad").val() == "A0") {
+        if ($("#Ciudad").val() == "A0") {
             objet = {opcion: 3, url: "Crud_Controller", nombre: "Select", tabla: "5", datos: [""], elegir: ["0", "2"], id: 0, opSelect: 4};
             ob.ajax(objet, selector);
         }
@@ -120,9 +157,9 @@ $(document).on('ready', function () {
         selector = $("#TemaPrograma");
         objet = {opcion: 5, url: "Crud_Controller", nombre: "Select", tabla: "3", datos: [""], elegir: ["4", "5"],
             delimitador: "[{colum:1,operador:0 ,valor1: " + $("#Programa").val() + "}]", id: 0, opSelect: 6};
-         ob.ajax(objet, selector);
+        ob.ajax(objet, selector);
     });
-    $("#TemaPrograma").hover(function () { 
+    $("#TemaPrograma").hover(function () {
         if ($("#Programa").val() == "A0") {
             $("#TemaPrograma").empty().append(limpiandpo);
             selector = $("#TemaPrograma");
@@ -131,31 +168,6 @@ $(document).on('ready', function () {
         }
     });
 
-//    $(document).on('change', '.clickformacion', function (e) {
-//        var obj = $(this);
-//        console.log(obj.val());
-//    });
-//    
-    //CONSULTAS
-//
-//    //POR CIUDAD - SIN PARAMETROS
-//    
-//
-//    //POR CENTRO DE FORMACION - con parametro y sin parametro
-
-//
-//    //POR AREAS DE CONOCIMIENTO - con y sin paramentros
-
-//
-//    //POR PROGRAMAS DE FORMACION - con y sin parametros
-
-//
-//    //POR TEMA - con y sin paramentros 
-//      
-//    //TITULO
-
-
-//
 //    $("#Formacion").hover(function () {
 //        selector = $("#Formacion");
 //        objet = {opcion: 3, url: "Crud_Controller", nombre: "ConsOaP", tabla: "0", datos: [""], elegir: ["0", "1", "2"], id: 0, opSelect: 4};

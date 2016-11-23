@@ -35,9 +35,9 @@ public class ProductoVirtual_Controller extends HttpServlet {
                 5. Consultar Productos virtuales Aprovados.*/
             String data = request.getParameter("data");
             JSONObject jData = new JSONArray(data).getJSONObject(0);
-            
+
             int opcion = jData.getInt("opcion");
-            String[] infoVersion =  Elomac.M_toArray(jData.getString("info"));
+            String[] infoVersion = Elomac.M_toArray(jData.getString("info"));
             String arrayFun = M_Procedure.Group(Elomac.M_toArray(jData.getString("arrayFun")), ',');
             String[] arrayTemas = Elomac.M_toArray(jData.getString("arrayTemas"));
             String archivoNom = jData.getString("archivoNom");
@@ -50,27 +50,12 @@ public class ProductoVirtual_Controller extends HttpServlet {
             switch (opcion) {
                 case 1:
                     infoVersion[4] = archivoNom;
-//                    try {
-
                     String nruta = infoVersion[0];
-//                        if (arch.CambiarNombre(archivoNom, nruta, "A")) {
-//                            if (arch.CambiarNombre(imagenNom, nruta, "I")) {
-//
-//                            } else {
-//                                arch.EliminarArchivo(imagenNom);
-//                            }
-//                        } else {
-//                            arch.EliminarArchivo(archivoNom);
-//                        }
-//                    } catch (Exception e) {
-//                        System.out.println(e.getMessage());
-//                    }
-
+                    infoVersion[4] = arch.CambiarNombre(archivoNom, nruta);
                     if (ver.RegistrarPV(infoVersion, arrayFun, arrayTemas)) {
-
-                        respuesta.println("Si Registro");
+                        respuesta.println("fue registrado correctamente");
                     } else {
-                        respuesta.println("No Registro");
+                        respuesta.println("no fue registrado");
                     }
                     break;
                 case 2:
@@ -90,7 +75,7 @@ public class ProductoVirtual_Controller extends HttpServlet {
                     break;
                 case 4:
                     try {
-                        String[] aprobacion =  Elomac.M_toArray(jData.getString("aprobacion"));
+                        String[] aprobacion = Elomac.M_toArray(jData.getString("aprobacion"));
                         if (ver.AprobarPV(aprobacion)) {
                             respuesta.println("Si Registro");
                         } else {

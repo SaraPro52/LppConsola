@@ -49,22 +49,23 @@ public class ArchivosController extends HttpServlet {
         archivo.delete();
     }
 
-    public boolean CambiarNombre(String AnNombre, String NuevoNombre, String tip) {
-        Archivos bs = new Archivos();
-        boolean res = false;
-        if (tip.equals("I")) {
+    public String CambiarNombre(String AnNombre, String NuevoNombre) {
+        String nombre = "";
+        try {
+            Archivos bs = new Archivos();
             String ext2 = FilenameUtils.getExtension(AnNombre);
-            File archivo = new File(bs.getBase()+ AnNombre);
-            File NuNombre = new File(bs.getBase()+NuevoNombre+tip + ext2);
-            archivo.renameTo(NuNombre);
-        } else {
-            String ext2 = FilenameUtils.getExtension(AnNombre);
-            File archivo = new File(AnNombre);
-            File    NuNombre = new File(NuevoNombre + ext2);
-            archivo.renameTo(NuNombre);
-        }
 
-        return res;
+            File archivo = new File(bs.getBase() + AnNombre);
+            File NuNombre = new File(bs.getBase() + NuevoNombre + '.' + ext2);
+            if (archivo.renameTo(NuNombre)) {
+                nombre = bs.getBase() + NuevoNombre;
+            } else {
+                nombre = bs.getBase() + AnNombre;
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return nombre;
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

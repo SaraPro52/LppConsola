@@ -1,6 +1,5 @@
 package M_Controller;
 
-
 import M_Modelo.Evaluacion_General;
 import M_Util.Elomac;
 import java.io.IOException;
@@ -15,7 +14,6 @@ import javax.servlet.http.HttpServletResponse;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-
 @WebServlet(urlPatterns = {"/EvaluacionGeneral_Controller"})
 public class EvaluacionGeneral_Controller extends HttpServlet {
 
@@ -27,24 +25,26 @@ public class EvaluacionGeneral_Controller extends HttpServlet {
             String data = request.getParameter("data");
             JSONObject jData = new JSONArray(data).getJSONObject(0);
             int opcion = jData.getInt("opcion");
-            
-            String[] infoEva =  Elomac.M_toArray(jData.getString("infoEva"));
+
+            String[] infoEva = Elomac.M_toArray(jData.getString("infoEva"));
             String[] infoItem = Elomac.M_toArray(jData.getString("infoItem"));
-            
+
             Evaluacion_General evaluacion = new Evaluacion_General();
             response.setContentType("appication/json;charset=UTF-8");
             PrintWriter respuesta = response.getWriter();
-            
-            switch(opcion){
+
+            switch (opcion) {
                 case 1:
                     try {
                         evaluacion.RegistrarEvaluacion(infoEva, infoItem);
-                        respuesta.println("Si Registro");
+                        respuesta.println("se evaluo correctamente");
                     } catch (Exception e) {
-                        respuesta.println("No Registro");
+                        respuesta.println("no pudo ser evaluado");
                     }
                     break;
             }
+        } catch (Exception falla) {
+            System.out.println(falla.getMessage());
         }
     }
 

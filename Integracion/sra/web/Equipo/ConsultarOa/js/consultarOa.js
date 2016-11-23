@@ -16,7 +16,6 @@ $(document).on("click", ".btnDescargar", function () {
 var rol = $("#vista").val() + 2;
 var cc = 0;
 $(document).on('click', '.btnEvaluar', function (e) {
-
     if (cc == 0) {
         idVersion = this.id;
         ob.setCons("Lista de chequeo");
@@ -102,27 +101,14 @@ function ajax(i, datos) {
         ob.cargarTabla(data[i], selector[i], datos);
         hilo[i].terminate();
         peticionCompleta(i);
-    };
+    };  
 }
 function peticionCompleta(i) {
     if (i == 1) {
+        console.log("Que paso");
         jso[2] = ['Crud_Controller', '[{opcion:5,tabla:11,datos:[],actualizar:[],delimitador:[],elegir:[0,1,3,5,6],id:0,opSelect:4}]'];
         selector[2] = $("#tablaAdmi");
         datos[2] = {nombre: "consutarOa", worker: true, dat: false};
         ajax(2, datos[2]);
-    } else if (i == 2) {
-        var men = "";
-        if (data[2].length < data[0].length) {
-            men = "fue deshabilitado correctamente.";
-        } else if (data[2].length == data[0].length) {
-            men = "No se a podido deshabilitado a  .";
-        }
-        $.notify({
-            icon: 'ti-gift',
-            message: men + "."
-        }, {
-            type: 'success',
-            timer: 4000
-        });
     }
 }
