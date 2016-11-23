@@ -4,6 +4,7 @@ import M_Controller.Archivos.ArchivosController;
 import M_Modelo.Producto_Virtual;
 import M_Modelo.Version;
 import M_Util.Elomac;
+import M_Util.M_Procedure;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.logging.Level;
@@ -37,7 +38,7 @@ public class ProductoVirtual_Controller extends HttpServlet {
             
             int opcion = jData.getInt("opcion");
             String[] infoVersion =  Elomac.M_toArray(jData.getString("info"));
-            String arrayFun = jData.getString("arrayFun");
+            String arrayFun = M_Procedure.Group(Elomac.M_toArray(jData.getString("arrayFun")), ',');
             String[] arrayTemas = Elomac.M_toArray(jData.getString("arrayTemas"));
             String archivoNom = jData.getString("archivoNom");
 

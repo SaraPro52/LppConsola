@@ -3,7 +3,7 @@ $(document).ready(function () {
     var ob = new $.Luna("AutoComplet", "Null");
     ob.Vivo("SubirOA2");
 
-    jso[0] = ['Crud_Controller', '[{opcion:5,tabla:14,datos:[],elegir:[0,1],delimitador:"[{comlum:2,operador:0,valor1:1}]",id:0,opSelect:6}]'];
+    jso[0] = ['Crud_Controller', '[{opcion:5,tabla:13,datos:[],elegir:[0,1],delimitador:[],id:0,opSelect:4}]'];
     selector[0] = $("#Titulo_Publicacion");
     datos[0] = {nombre: "AutoComplet", worker: true};
     ajax(0, datos[0]);
@@ -75,7 +75,7 @@ $(document).ready(function () {
             for (var i = 0; i < arraySelecionCate.length; i++) {
                 arrayTemas.push(arraySelecionCate[i] + "-1");
             }
-            jso[5] = ['ProductoVirtual_Controller','[{opcion:1,info:['+$("#Titulo_Publicacion").val()+','+$("#descripcion_oa").val()+','+$("#palabras_claves").val()+','+$("#formato").val()+','+ $("#instrucciones").val()+','+$("#requisitos_instalacion").val()+'],arrayFun:['+arrayAutor+'],arrayTemas:['+arrayTemas+'],archivoNom:'+$("#myfile").val()+'}]'];
+            jso[5] = ['ProductoVirtual_Controller','[{opcion:1,info:['+$("#Titulo_Publicacion").val()+','+$("#descripcion_oa").val()+','+$("#palabras_claves").val()+','+$("#formato").val()+',0,0,'+ $("#instrucciones").val()+','+$("#requisitos_instalacion").val()+'],arrayFun:['+arrayAutor+'],arrayTemas:['+arrayTemas+'],archivoNom:'+$("#myfile").val()+'}]'];
             selector[5] = null;
             datos[5] = {nombre: "btn", worker: true};
             console.log(jso[5]);
