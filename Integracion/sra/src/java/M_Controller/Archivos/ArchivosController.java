@@ -41,9 +41,7 @@ public class ArchivosController extends HttpServlet {
             } catch (Exception e) {
                 System.out.println("Error al cargar el archivo" + e);
             }
-            request.getRequestDispatcher("instructor/registroOA/registroOA.jsp").forward(request, response);
         }
-
     }
 
     public void EliminarArchivo(String nombre) {

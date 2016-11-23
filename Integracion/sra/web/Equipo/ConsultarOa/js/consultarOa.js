@@ -1,7 +1,7 @@
 var selector = [], hilo = [], jso = [], data = [], nombre = "funcionario", datos = [];
 jso[0] = ['Crud_Controller', '[{opcion:5,tabla:24,datos:[],elegir:[4,5,6,10],delimitador:"[{colum:2,operador:0,valor1:' + idRol + ',añadir:0},{colum:8,operador:0,valor1:' + idCentro + ',añadir:0},{colum:0,operador:0,valor1:' + idUser + '}]",id:0,opSelect:6}]'];
 selector[0] = $("#tablaConsultarOa");
-datos[0] = {nombre: "consutarOa", worker: true};
+datos[0] = {nombre: "consutarOa", worker: true, dat: true};
 ajax(0, datos[0]);
 
 var ob = new $.Luna("Producto virtual", selector[0]);
@@ -14,16 +14,22 @@ $(document).on("click", ".btnDescargar", function () {
 });
 
 var rol = $("#vista").val() + 2;
+var cc = 0;
 $(document).on('click', '.btnEvaluar', function (e) {
-    idVersion = this.id;
+
+    if (cc == 0) {
+        idVersion = this.id;
+        ob.setCons("Lista de chequeo");
+        jso[1] = ['Crud_Controller', '[{opcion:5,tabla:12,datos:[],elegir:[0,1,2,3],delimitador:"[{colum:5,operador:0,valor1:' + idRol + '}]",id:0,opSelect:6}]'];
+        selector[1] = $("#tablaListaChequeo");
+        datos[1] = {nombre: "ConsultarLista", worker: true};
+        ob.TablaEspa(selector[1]);
+        ob.limpiarTabla(selector[1]);
+        ajax(1, datos[1]);
+    }
     $('#myModal').modal('show');
-    ob.setCons("Lista de chequeo");
-    ob.TablaEspa(selector[0]);
-    ob.limpiarTabla(selector[0]);
-    jso[1] = ['Crud_Controller', '[{opcion:5,tabla:12,datos:[],elegir:[0,1,2,3],delimitador:"[{colum:5,operador:0,valor1:'+idRol+'}]",id:0,opSelect:6}]'];
-    selector[1] = $("#tablaListaChequeo");
-    datos[1] = {nombre: "ConsultarLista", worker: true};
-    ajax(1, datos[1]);
+    cc++;
+
 });
 
 
@@ -41,7 +47,7 @@ $(document).on('click', '.btnclick', function (e) {
 $(document).on('click', '.btnclickca', function (e) {
     var con = $(this);
     $('#myModal').modal('hide');
-    objeto = {url:"Equipo_Controller",Opcion:4,name:"cuerpo",nomLista:"Nombrelista",listaSele:con.val()};
+    objeto = {url: "Equipo_Controller", Opcion: 4, name: "cuerpo", nomLista: "Nombrelista", listaSele: con.val()};
     console.log(objeto);
     idLista = con.val();
     obtenerP(objeto);
@@ -102,7 +108,8 @@ function peticionCompleta(i) {
     if (i == 1) {
         jso[2] = ['Crud_Controller', '[{opcion:5,tabla:11,datos:[],actualizar:[],delimitador:[],elegir:[0,1,3,5,6],id:0,opSelect:4}]'];
         selector[2] = $("#tablaAdmi");
-        ajax(2, datos[0]);
+        datos[2] = {nombre: "consutarOa", worker: true, dat: false};
+        ajax(2, datos[2]);
     } else if (i == 2) {
         var men = "";
         if (data[2].length < data[0].length) {

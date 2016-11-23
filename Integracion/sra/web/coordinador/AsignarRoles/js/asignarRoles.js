@@ -8,7 +8,6 @@ $(document).on('ready', function () {
     var ob = new $.Luna("usuario", selector[0]);
     ob.Vivo("Asignar Roles");
     ob.TablaEspa(selector[0]);
-
     $(document).on('click', '.btnclick', function (e) {
         switch (this.value) {
             case "A":
@@ -18,7 +17,6 @@ $(document).on('ready', function () {
                 selector[1] = $("#tablaARoles");
                 datos[1] = {nombre:"btn",worker: true};
                 ajax(1, datos[1]);
-
                 break;
         }
     });

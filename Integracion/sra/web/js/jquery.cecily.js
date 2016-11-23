@@ -57,23 +57,17 @@ jQuery.Luna = function (Datos, selector) {
             }
         });
     };
-    this.archivosAjax = function (selector) {
-        var formData = new FormData(document.getElementById(selector));
-        formData.append("dato", "valor");
-        console.log(formData.getPrototypeOf());
-        formData.append(f.attr("name"), $(this)[0].files[0]);
+    this.archivosAjax = function (url, data) {
         $.ajax({
-            url: "archivos",
-            type: "post",
-            dataType: "html",
-            data: formData,
-            cache: false,
+            url: url,
+            type: 'POST',
             contentType: false,
-            processData: false
-        })
-                .done(function (res) {
-                    alert("Funciona" + res);
-                });
+            processData: false,
+            data: data,
+            success: function (resultado) {
+                alert(resultado);
+            }
+        });
     }
     this.ajax = function (datos, selector) {
         $.ajax({
@@ -153,15 +147,17 @@ jQuery.Luna = function (Datos, selector) {
                 }
                 break;
             case "calificar":
-                for (var i = 0; i < json.length; i++) {
+                var jso = jQuery.parseJSON(json);
+                for (var i = 0; i < jso.length; i++) {
                     var conte = $("#clone").clone();
-                    conte.find('.chex').attr('value', json[i].Id_Detalles_Lista);
-                    conte.find('.textarea').attr('id', json[i].Id_Detalles_Lista);
-                    conte.find('.locura').text(json[i].Des_Item_Lista);
+                    conte.find('.chex').attr('value', jso[i].Id_Detalles_Lista);
+                    conte.find('.textarea').attr('id', jso[i].Id_Detalles_Lista);
+                    conte.find('.locura').text(jso[i].Des_Item_Lista);
                     conte.children().appendTo(selector);
                 }
                 break;
             case "AutoComplet":
+
                 var j = Object.keys(json[0]);
                 var s = [];
                 for (var i = 0; i < json.length; i++) {
@@ -209,43 +205,48 @@ jQuery.Luna = function (Datos, selector) {
                         i + 1,
                         jso[i].Conte_Notificacion,
                         jso[i].Fecha_Envio,
-                        "<button  type='button' id='" + jso[i].Url_Version + "' class='btn btn-info btn-lg btnDescargar'>Descargar Producto</button>",
-                        "<button  type='button' id='" + jso[i].Ides_Proceso + "' class='btn btn-info btn-lg btnEvaluar'>Evaluar Producto</button>"
+                        "<button  type='button' id='" + jso[i].Url_Version + "' class='btn btn-info btn-lg btnDescargar'>Descargar P.V</button>",
+                        "<button  type='button' id='" + jso[i].Ides_Proceso + "' class='btn btn-info btn-lg btnEvaluar'>Evaluar P.V</button>"
                     ]);
-                    if (i < 4) {
+                    if ((i < 4) && (datos.dat == true)) {
                         $(selecNo).append('<li><a><label class="Notify" id=' + jso[i].Ides_Proceso + '>' + jso[i].Conte_Notificacion + '</label></a></li>');
-                    } else if (i == 4) {
+                    } else if ((i == 4) && (datos.dat == true)) {
                         $(selecNo).append('<li><a><label class="Notify" id=verMasNotificaciones>Ver mas productos virtuales</label></a></li>');
                     }
                 }
-                $("#ccNoti").append(i);
+                if ((datos.dat == true)) {
+                    $("#ccNoti").append(i);
+                }
+
                 break;
             case "ConsultarLista":
-                for (var i = 0; i < json.length; i++) {
+                var jso = jQuery.parseJSON(json);
+                for (var i = 0; i < jso.length; i++) {
                     table = selector.dataTable().fnAddData([
                         i + 1,
-                        json[i].Nom_Lista_Chequeo,
-                        json[i].Des_Lista_Chequeo,
-                        json[i].Fecha_Creacion.substring(0, 11),
-                        "<button id='ca' value='" + json[i].Id_Lista_Chequeo + "' class='btnclickca btn btn-info'>Escojer </button>"
+                        jso[i].Nom_Lista_Chequeo,
+                        jso[i].Des_Lista_Chequeo,
+                        jso[i].Fecha_Creacion.substring(0, 11),
+                        "<button id='ca' value='" + jso[i].Id_Lista_Chequeo + "' class='btnclickca btn btn-info'>Escojer </button>"
                     ]);
                 }
                 break;
             case "Lista":
-                for (var i = 0; i < json.length; i++) {
-                    yu = [json[i].Nom_Lista_Chequeo + "$$$" + json[i].Des_Lista_Chequeo];
+                var jso = jQuery.parseJSON(json);
+                for (var i = 0; i < jso.length; i++) {
+                    yu = [jso[i].Nom_Lista_Chequeo + "$$$" + jso[i].Des_Lista_Chequeo];
                     table = selector.dataTable().fnAddData([
                         i + 1,
-                        json[i].Nom_Lista_Chequeo,
-                        json[i].Des_Lista_Chequeo,
-                        json[i].Fecha_Creacion.substring(0, 11),
-                        "<button id='" + json[i].Id_Lista_Chequeo + "' value='" + yu + "' class='btnclick btn btn-success'>Modificar</button>"
+                        jso[i].Nom_Lista_Chequeo,
+                        jso[i].Des_Lista_Chequeo,
+                        jso[i].Fecha_Creacion.substring(0, 11),
+                        "<button id='" + jso[i].Id_Lista_Chequeo + "' value='" + yu + "' class='btnclick btn btn-success'>Modificar</button>"
                     ]);
                 }
                 break;
             case "Ciudad":
                 for (var i = 0; i < json.length; i++) {
-                        table = selector.dataTable().fnAddData([
+                    table = selector.dataTable().fnAddData([
                         i + 1,
                         json[i].Nom_Ciudad,
                         "<button id='" + json[i].Id_Ciudad + "' value='m' class='btnclick btn btn-success'>Modificar</button>",
@@ -323,7 +324,7 @@ jQuery.Luna = function (Datos, selector) {
                 setNombre(i + 1);
                 break;
             case "AsignarRol":
-                 var jsSelect = jQuery.parseJSON(json);   
+                var jsSelect = jQuery.parseJSON(json);
                 for (var i = 0; i < json.length; i++) {
                     var select = ("'><option value='1'>Intructor</option><option value='2'>Equipo Tecnico</option><option value='3'>Equipo Pedagogico</option></select>");
                     table = $("#tablaARoles").dataTable().fnAddData([

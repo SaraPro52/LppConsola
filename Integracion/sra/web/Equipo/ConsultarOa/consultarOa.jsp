@@ -11,10 +11,10 @@
                                     <thead>
                                         <tr>
                                             <th>#</th>
-                                            <th>Nombre de lista</th>
-                                            <th>Fecha</th>
-                                            <th>Evaluar</th> 
+                                            <th>Nombre del producto</th>
+                                            <th>Fecha del producto</th>
                                             <th>Descargar</th>
+                                            <th>Evaluar</th> 
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -31,6 +31,7 @@
     <script type="text/javascript" src="js/jquery.js"></script>
     <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.12/js/jquery.dataTables.js"></script>
     <script type="text/javascript" src="js/jquery.cecily.js"></script>  
+    <script src="assets/js/bootstrap-notify.js"></script>
     <script type="text/javascript" src="js/bootstrap-modal.js"></script>
     <script type="text/javascript" src="Equipo/ConsultarOa/js/consultarOa.js"></script>
 </div>

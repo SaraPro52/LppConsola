@@ -15,7 +15,6 @@
                                 <input type="text" class="form-control" id="NombreL"  placeholder="Nombre de lista">
                                 <label>Decripcion</label>
                                 <textarea class="form-control"  id="DescripcionL" placeholder="Descripcion lista" rows="1" id="comment"></textarea>
-                                <button class="btn btn-info col-md-6" id="BtnLista">Modificar lista</button>
                             </article>
                             <article class="col-md-6" id="items">
                                 <p><h3 class="dark-grey"><b>Items de lista de chequeo</b></h3></p>
@@ -46,15 +45,21 @@
                     </section>
                     <article class="col-md-16" class="EspacioItems">
                         <div id="SelectItemDiv">
-                            <section  id=SelectItem>
-                            </section>
+                            <select id=SelectItem></select>
+                            <div id="campoItemsDatos">
+                                <label>Items de lista de chequeo</label>
+
+                            </div>
+
                         </div>
                     </article>
+                    <button class="btn btn-info col-md-6" id="BtnLista">Modificar lista</button>
                 </div>
             </div>
         </div>
     </div>
     <script type="text/javascript" src="js/jquery.js"></script>        
+    <script src="assets/js/bootstrap-notify.js"></script>
     <script type="text/javascript" charset="utf8" src="js/jquery.dataTables.js"></script>
     <script src="js/jquery.multi-select.js"></script></script>
 <script type="text/javascript" src="js/jquery.cecily.js"></script>

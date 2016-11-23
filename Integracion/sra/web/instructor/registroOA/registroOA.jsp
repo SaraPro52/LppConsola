@@ -9,7 +9,6 @@
         <title>Subir OA</title>
     </head>
     <body>
-
         <div class="content">
             <div class="container-fluid">
                 <div class="row">
@@ -42,11 +41,11 @@
                                         </div>
                                         <div>
                                             <label>Definir de objecto de aprendizaje</label> <br/>
-                                            <input type="checkbox" id="Categorias"  >Categoria<br/>
+                                            <label>Categorias del producto virtual</label>   
                                             <div id="SelectCategoriaDiv">
                                                 <section  id=SelectCategoria></section>
                                             </div>
-                                            <input type="checkbox" id="Estruturas" >Estrura de formacion
+                                            <label>Programa de formacion</label>  
                                             <div id="SelectEstruturaDiv">
                                                 <section  id=SelectEstrutura>
                                                 </section>
@@ -72,15 +71,21 @@
                                         <input class="form-control" type="text"  name="palabras_claves" id="instrucciones" placeholder="Instrucciones de instalacion" required data-validation-required-message="Ingresa instrucciones de instalacion.">
 
                                     </div>
-                                    <form enctype="multipart/form-data" id="formuploadajax" method="post" action="archivos">
-                                        <div> 
-                                            <div>
-                                                <label for="Documento">añadir OA</label>
-                                                <input type="file" size="60" id="Documento" name="myfile" class="input-file">
-                                            </div>    
-                                        </div>
-                                        <button class=" btn btn-info  col-md-4" id="subir_oa" >Agregar Archivos</button>
-                                    </form>        
+                                    <div> 
+                                        <div>
+                                            <label for="Documento">añadir OA</label>
+                                            <form id="UploadForm" action="archivos" method="post" enctype="multipart/form-data">
+                                                <input type="file" size="60" id="myfile" name="myfile"> 
+                                                <input type="submit" class=" btn btn-info  col-md-6"  value="Subir Produto virtual" id="subir_oa">
+                                                <div id="progressbox">
+                                                    <div id="progressbar"></div>
+                                                    <div id="percent">0%</div>
+                                                </div>
+                                                <br />
+                                                <div id="message"></div>
+                                            </form>
+                                        </div>    
+                                    </div>
                                 </article>
                             </section>       
                         </div>
@@ -88,11 +93,11 @@
                 </div>
             </div>
         </div>
-
     </div>
 </div>
 </body>
 <script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript"  src="js/jquery.form.js"></script> 
 <script type="text/javascript" src="js/jquery.cecily.js"></script>
 <script type="text/javascript" src="js/jqueryUi.js"></script>
 <script src="js/jquery.multi-select.js"></script>
