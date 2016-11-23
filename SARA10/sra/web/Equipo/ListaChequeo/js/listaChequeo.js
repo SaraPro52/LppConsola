@@ -2,7 +2,7 @@ function listaChequeo(idTipoItem, idUser) {
     var selector = [], hilo = [], jso = [], data = [], datos = [], men = "";
     var ob = new $.Luna("MultiItems", $("#SelectItem"));
     ob.Vivo("ListaDeChequeo1");
-    jso[0] = ['Crud_Controller1', '[{opcion:3,tabla:19,actualizar:[],datos:[],elegir:[0,1],delimitador:"[{colum: 2,operador: 0,valor1:' + idTipoItem + '}]",id:0,opSelect:6}]'];
+    jso[0] = ['Crud_Controller', '[{opcion:3,tabla:19,actualizar:[],datos:[],elegir:[0,1],delimitador:"[{colum: 2,operador: 0,valor1:' + idTipoItem + '}]",id:0,opSelect:6}]'];
     selector[0] = $("#SelectItem");
     datos[0] = {nombre: "MultiSelect", worker: true};
     ajax(0, datos[0]);
@@ -31,7 +31,7 @@ function listaChequeo(idTipoItem, idUser) {
         ajax(2, datos[2]);
     });
     $("#btnItem").on('click', function () {
-        jso[1] = ['Crud_Controller1', '[{opcion:1,actualizar:[],tabla:19,datos:["",' + $("#Descripcion").val() + ',idTipoItem],elegir:[0,1],delimitador:"[{colum:2,operador:0,valor1:' + idTipoItem + '}]",id:0,opSelect:6}]'];
+        jso[1] = ['Crud_Controller', '[{opcion:1,actualizar:[],tabla:19,datos:["",' + $("#Descripcion").val() + ','+idTipoItem+'],elegir:[0,1],delimitador:"[{colum:2,operador:0,valor1:' + idTipoItem + '}]",id:0,opSelect:6}]'];
         selector[1] = $("#SelectItem");
         datos[1] = {nombre: "MultiSelect", worker: true, opt: "Div"};
         ajax(1, datos[1]);

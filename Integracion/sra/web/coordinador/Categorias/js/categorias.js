@@ -10,10 +10,10 @@ $(document).ready(function () {
     ajax(0, datos[0]);
 
     $("#btnTema").click(function () {
+        nombre = $("#NombreTema").val();
         jso[1] = ['Crud_Controller', '[{opcion:1,tabla:27,delimitador:[],datos:["",' + $("#NombreTema").val() + ',' + $("#DescripcionTema").val() + ',1],elegir:[0,1],id:0,opSelect:4}]'];
         selector[1] = $("#SelectTemas");
         datos[1] = {nombre: "MultiSelect", opt: "Div", worker: true};
-        nombre = $("#NombreTema").val();
         ajax(1, datos[1]);
     });
 
@@ -26,20 +26,12 @@ $(document).ready(function () {
             arraySelecion.splice(busqueda, 1);
         }
     });
-
+ 
     $("#btnCategoria").click(function () {
-        var arrayS = [];
-        for (var j = 0; j < arraySelecion.length; j++) {
-            if (j == 0) {
-                arrayS = "" + arraySelecion[j];
-            } else {
-                arrayS = arrayS + "," + arraySelecion[j];
-            }
-        }
-        jso[2] = ['Categoria_Controller', '[{opcion:1,catego:[' + $("#NombreCategoria").val() + ',' + $("#DescripcionCategoria").val() + ',2],temas:arrayS}]'];
+        jso[2] = ['Categoria_Controller', '[{opcion:1,catego:["' + $("#NombreCategoria").val() + '","' + $("#DescripcionCategoria").val() + '",'+idUser+'],temas:['+arraySelecion+']}]'];
         datos[2] = {nombre: "btn", worker: true};
         nombre = $("#NombreTema").val();
-        ajax(2, datos[2]);
+        ajax(2, datos[2]);   
 
     });
 
@@ -55,8 +47,16 @@ $(document).ready(function () {
     }
     function peticionCompleta(i) {
         if ((i == 1) || (i == 2)) {
-            men = data[i];
-            $.notify({ 
+            if (i == 1) {
+                if (data[0].length < data[1].length) {
+                    men = "El item: " + nombre+ " fue agregado exitosamente";
+                } else if (data[0].length == data[1].length) {
+                    men = "El item: " + nombre + " no fue agregado exitosamente";
+                }
+            } else {
+                men = data[i];
+            }
+            $.notify({
                 icon: 'ti-gift',
                 message: men + "."
             }, {

@@ -13,18 +13,14 @@ $(document).on('ready', function () {
 
     $("#centroFormacion").change(function () {
         $("#area").empty().append("<option selected='selected'>selecciona...</option>");
-        jso[4] = ['Crud_Controller','opcion:5,tabla:10,datos:[],\n\
-        delimitador:"[{colum:2 ,operador:0 ,valor1:' + $("#centroFormacion").val() + '}]",elegir:["0","1"],id:0,opSelect:6'];
-        selector[4] = $("#area");
-        datos[0] = {nombre: "Select", worker: true};
-        ajax(4, datos[0]);
+        var objet = {opcion: 5, url: "Crud_Controller", nombre: "Select", tabla: "10", datos: [""], elegir: ["0", "1"],
+            delimitador: "[{colum:2 ,operador:0 ,valor1:" + $("#centroFormacion").val() + "}]", id: 0, opSelect: 6};
+        selector = $("#area");
+        ob.ajax(objet, selector);
     });
-    
-    //cargar las areas
 
-    $("#boton1").on('click', function () { 
+    $("#boton1").on('click', function () {
         jso[3] = ['Funcionario_Controller', "[{opcion:1,datos:['" + $("#tipoUsuario").val() + "','" + $("#tipoIdenti").val() + "','" + $("#numeroIdentificacion").val() + "','" + $("#nombre").val() + "','" + $("#apellido").val() + "','" + $("#email").val() + "','" + $("#cargo").val() + "','" + $("#ipSena").val() +"','1','" + $("#centroFormacion").val() + "','" + $("#area").val() + "']}]"];
-        
         datos[1] = {nombre: "btn", worker: true};
         $("#boton1").attr("disabled", true);
         ajax(3, datos[1]);
@@ -123,7 +119,7 @@ $(document).on('ready', function () {
         } else if (datos.nombre == "btn") {
             $("#formulario1 :input").val("");
             $("#area").empty().append("<option selected='selected'>selecciona...</option>");
-            $("#boton1").attr("disabled", false);
+            //$("#boton1").attr("disabled", false);
             $.notify({
                 icon: 'ti-gift',
                 message: data[i] + "."

@@ -1,5 +1,7 @@
 package M_Util;
 
+import M_Modelo.Categoria;
+import M_Modelo.Lista_Chequeo;
 import M_Modelo.Programa;
 import org.json.JSONException;
 import javax.script.ScriptException;
@@ -1196,20 +1198,16 @@ public class NewMain {
 //          String delimitador1 = "[{colum:0,operador:0,valor1:'\""+usuario+"\"',añadir:0},{colum:1,operador:0,valor1:'\""+contraseña+"\"'}]";
 //          Elomac e = new Elomac(0,1);
 //          System.out.println(e.Select(delimitador1));
-
-
 //            System.out.println(new Producto_Virtual().ConsultraProducto());
 //           String deli = "[{colum:0,operador:0,valor1:'\"con7\"'}]";
 //           Elomac e = new Elomac(23,2);
 //           String w = e.Select(deli);
 //           System.out.println(w);
-
 //            Elomac elo = new Elomac(6,1);
 //            elo.Update(elo.Select(2),"[{'1':'ciudad21'}]");
 //            System.out.println(elo.Select());
 //            File archivo = new File("C:\\Users\\migue\\Desktop\\LppConsola\\SARA10\\sra\\src\\java\\M_Controller\\Correos\\prueba.html");
 //            archivo.delete();
-
 //              String contraSin = "123456";
 //              String contraCon = DigestUtils.md5Hex(contraSin);
 //              
@@ -1219,27 +1217,35 @@ public class NewMain {
 //             elo.atributos.replace("Lider_Area", "Miguel28");
 //             System.out.println(elo.Insert());
 //            System.out.println(elo.atributos.get("Id_Area"));
-
 //            Programa p = new Programa();
 //            String[] pro = {"","LA PRUEBA PRO1","Tecnologo1"};
 //            String[] are = {"1","2"};
 //            String[] tem = {"1","3"};
 //            System.out.println(p.RegistrarPrograma(pro, are, tem));
 //            
+//             String delimitador = "[{colum:0,operador:7,valor1:'4,6',añadir:0},{colum:2,operador:0,valor1:0}]";
+//             
+//             Elomac elo = new Elomac(19, 1);
+//             
+//             System.out.println(elo.Select(delimitador));
+//              Categoria c = new Categoria();
+//              
+//              String[] info = {"iuor","ews","13"};
+//              String temas = "1,2";
+//              
+//              System.out.println(c.RegistrarCategoria(info, temas));
+                Lista_Chequeo l = new Lista_Chequeo();
+                l.load(l.Select(3));
+                
+                String[] info = M_Crud.M_toArray(l.atributos, 2);
+                
+//                for (int i = 0; i < info.length; i++) {
+//                    System.out.println(info[i]);
+//                } 
+                
+                String[] items = {"4","5","6"};
+                
+                System.out.println(l.ModificarLista(info, items));
 
-             String delimitador = "[{colum:0,operador:7,valor1:'4,6',añadir:0},{colum:2,operador:0,valor1:0}]";
-             
-             Elomac elo = new Elomac(19, 1);
-             
-             System.out.println(elo.Select(delimitador));
-             
-            
-            
-            
-            
-            
-             
-              
-              
     }
 }

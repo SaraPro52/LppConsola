@@ -30,15 +30,15 @@ public class Programa_Controller extends HttpServlet {
            switch(opcion){
                case 1:
                    String[] programainfo =  Elomac.M_toArray(jData.getString("infoP"));
-                   String[] areas = Elomac.M_toArray(jData.getString("areas"));
-                   String[] temas = Elomac.M_toArray(jData.getString("temas"));
+                   String[] areas =  Elomac.M_toArray(jData.getString("areas"));
+                   String[] temas =  Elomac.M_toArray(jData.getString("temas"));
                    
                    Programa p = new Programa();
                    try {
                        if(p.RegistrarPrograma(programainfo, areas, temas))
-                            respuesta.println("Si Registro");
+                            respuesta.println("a registrado correctamente");
                         else
-                            respuesta.println("No Registro");
+                            respuesta.println("no se a registrado");
                         
                     } catch (Exception e) {
                         respuesta.println(e.getMessage());

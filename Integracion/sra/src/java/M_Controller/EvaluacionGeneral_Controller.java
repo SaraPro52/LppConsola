@@ -28,7 +28,7 @@ public class EvaluacionGeneral_Controller extends HttpServlet {
             JSONObject jData = new JSONArray(data).getJSONObject(0);
             int opcion = jData.getInt("opcion");
             
-            String[] infoEva = Elomac.M_toArray(jData.getString("infoEva"));
+            String[] infoEva =  Elomac.M_toArray(jData.getString("infoEva"));
             String[] infoItem = Elomac.M_toArray(jData.getString("infoItem"));
             
             Evaluacion_General evaluacion = new Evaluacion_General();

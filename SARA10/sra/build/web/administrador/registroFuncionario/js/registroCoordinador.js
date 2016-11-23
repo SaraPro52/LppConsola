@@ -2,11 +2,11 @@ $(document).on('ready', function () {
     var selector = [], hilo = [], jso = [], data = [], datos = [];
     var ob = new $.Luna("RegistroFuncionario", selector);
     ob.Vivo("RegistroFuncionario");
-    jso[0] = ['Crud_Controller1', '[{opcion:5,tabla:10,datos:[],delimitador:[],elegir:["2","3"],id:0,opSelect:4}]'];
+    jso[0] = ['Crud_Controller', '[{opcion:5,tabla:10,datos:[],delimitador:[],elegir:["2","3"],id:0,opSelect:4}]'];
     selector[0] = $("#centroFormacion");
-    jso[1] = ['Crud_Controller1', '[{opcion:3,tabla:25,datos:[],delimitador:[],elegir:["0","1"],id:0,opSelect:4}]'];
+    jso[1] = ['Crud_Controller', '[{opcion:3,tabla:25,datos:[],delimitador:[],elegir:["0","1"],id:0,opSelect:4}]'];
     selector[1] = $("#tipoUsuario");
-    jso[2] = ['Crud_Controller1', '[{opcion:3,tabla:28,datos:[],delimitador:[],elegir:[],id:0,opSelect:1}]'];
+    jso[2] = ['Crud_Controller', '[{opcion:3,tabla:28,datos:[],delimitador:[],elegir:[],id:0,opSelect:1}]'];
     selector[2] = $("#tipoIdenti");
     datos[0] = {nombre: "Select", worker: true};
     ajax(0, datos[0]);
@@ -21,9 +21,6 @@ $(document).on('ready', function () {
 
     $("#boton1").on('click', function () {
         jso[3] = ['Funcionario_Controller', "[{opcion:1,datos:['" + $("#tipoUsuario").val() + "','" + $("#tipoIdenti").val() + "','" + $("#numeroIdentificacion").val() + "','" + $("#nombre").val() + "','" + $("#apellido").val() + "','" + $("#email").val() + "','" + $("#cargo").val() + "','" + $("#ipSena").val() +"','1','" + $("#centroFormacion").val() + "','" + $("#area").val() + "']}]"];
-        var v1 = "hola";
-        var v2 = "como";
-        var v3 = 1;
         datos[1] = {nombre: "btn", worker: true};
         $("#boton1").attr("disabled", true);
         ajax(3, datos[1]);

@@ -83,7 +83,7 @@ public class M_Procedure extends M_Connection{
             return listo;
         }
         
-        protected String Group(Object[] array ,char delimitardor){
+        public static String Group(Object[] array ,char delimitardor){
             String group = "";
             for(int i= 0; i < array.length; i++){
                 if(i == 0)group += array[i];

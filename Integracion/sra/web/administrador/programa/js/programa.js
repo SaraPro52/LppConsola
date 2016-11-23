@@ -1,5 +1,5 @@
 $(document).on('ready', function () {
-    var selector = [], hilo = [], jso = [], data = [], datos = [], arrayAreas = [], arrayTemas = [];
+    var selector = [], hilo = [], jso = [], data = [], datos = [], arrayAreas = [], arrayTemas = [], mensaje = "El programa ";
     var ob = new $.Luna("Select", $("#SelecCentro"));
     $(".Mult").hide();
     ob.Vivo("Programa");
@@ -8,6 +8,7 @@ $(document).on('ready', function () {
     datos[0] = {nombre: "Select", worker: true};
     ajax(0, datos[0]);
     $("#SelecCentro").change(function () {
+        $(".Mult").show();
         if ($("#SelecCentro").val() != "A0") {
             jso[1] = ['Crud_Controller', '[{opcion:5,tabla:10,elegir:[0,1],\n\
                 delimitador:"[{colum:2,operador:0,valor1:' + $("#SelecCentro").val() + '}]",id:0,opSelect:6}]'];
@@ -37,9 +38,8 @@ $(document).on('ready', function () {
     });
 
     $("#btnPrograma").click(function () {
-       console.log(arrayAreas);
-        console.log(arrayTemas);
-        jso[3] = ['Programa_Controller', '[{opcion:1,infoP:["","'+$("#nomPro").val()+'","'+$("#nivel").val()+'"],areas:['+arrayAreas+'],temas:['+arrayTemas+']}]'];
+        mensaje = $("#nomPro").val();
+        jso[3] = ['Programa_Controller', '[{opcion:1,infoP:["","' + $("#nomPro").val() + '","' + $("#nivel").val() + '"],areas:[' + arrayAreas + '],temas:[' + arrayTemas + ']}]'];
         datos[3] = {nombre: "btn", worker: true};
         ajax(3, datos[3]);
     });
@@ -62,18 +62,14 @@ $(document).on('ready', function () {
             selector[2] = $("#MultTemas");
             datos[2] = {nombre: "MultiSelect", worker: true};
             ajax(2, datos[2]);
+        } else if (i == 3) {
+            $.notify({
+                icon: 'ti-gift',
+                message: mensaje + " " + data[i] +"."
+            }, {
+                type: 'success',
+                timer: 4000
+            });
         }
-
-//            $("#formulario1 :input").val("");
-//            $("#area").empty().append("<option selected='selected'>selecciona...</option>");
-//            $("#boton1").attr("disabled", false);
-//            $.notify({
-//                icon: 'ti-gift',
-//                message: data[i] + "."
-//            }, {
-//                type: 'success',
-//                timer: 4000
-//            });
-
     }
 })

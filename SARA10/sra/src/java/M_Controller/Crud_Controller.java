@@ -1,4 +1,3 @@
-
 package M_Controller;
 
 import M_Util.Elomac;
@@ -10,23 +9,26 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 @WebServlet(name = "Crud_Controller", urlPatterns = {"/Crud_Controller"})
 public class Crud_Controller extends HttpServlet {
-    
+
     private Elomac elo;
+    private JSONObject jData;
     private int tabla = 0;
     private int tipoElo = 0;
-    private int option = 0;
+    private int opcion = 0;
     private String delimitador;
     private String[] datos = null;
     private String actualizar = "";
     private int optionSelect = 0;
     private int id = 0;
-    
     private HttpServletRequest request;
     private HttpServletResponse response;
     private PrintWriter respuesta;
-            
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         this.request = request;
@@ -34,77 +36,88 @@ public class Crud_Controller extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /*Menu - Crud_Controller
-            1. Añadir Registro.
+            1. AÃ±adir Registro.
             2. Actualizar datos.
             3. Obtener datos - Solo para tablas
             4. Eliminar
-            5. Obtener datos - Solo para vistas
-            */
-            tipoElo = 1;
-            option = Integer.parseInt(request.getParameter("opcion"));
-            tabla = Integer.parseInt(request.getParameter("tabla"));
-            datos = request.getParameterValues("datos[]");
-            delimitador = request.getParameter("delimitador");
-            actualizar = request.getParameter("actualizar");
-            optionSelect= Integer.parseInt(request.getParameter("opSelect"));
-            id = Integer.parseInt(request.getParameter("id"));
+            5. Obtener datos - Solo para vistas*/
+           String data = request.getParameter("data");
+            jData = new JSONArray(data).getJSONObject(0);
             
-            elo = new Elomac(tabla,tipoElo,datos);
-           
-           switch(option){
-               case 1:if(elo.Insert())ManejoDatos();break;
-               case 2:
-                    elo = new Elomac(tabla,tipoElo);
-                    if(elo.Update(elo.Select(Integer.parseInt(request.getParameter("id"))),request.getParameter("actualizar"))){
-                        respuesta.println("actualizado");
-                    }  
-                    else{
-                        respuesta.println("no actualizado");
-                    } 
-                       
-                   break;
-               case 3:ManejoDatos(); break;
-               case 4:
-               break;
-               case 5:
-                   tipoElo = 2;
-                   ManejoDatos();
-                   break;
-           }
-        }catch(Exception falla){
-            respuesta.println("Falla: "+ falla.getMessage());
-        }finally {
+            tipoElo = 1;
+            tabla =         jData.getInt("tabla");
+            opcion =        jData.getInt("opcion");
+            id =            jData.getInt("id");
+            optionSelect =  jData.getInt("opSelect");
+            
+            switch (opcion) {
+                case 1:
+                    datos = Elomac.M_toArray(jData.getString("datos"));
+                    elo = new Elomac(tabla, tipoElo, datos);
+                    if (elo.Insert()) {
+                        ManejoDatos();
+                    }
+                    break;
+                case 2:
+                    actualizar = jData.getString("actualizar");
+                    elo = new Elomac(tabla, tipoElo);
+                    try {
+                        if (elo.Update(elo.Select(id), actualizar)) {
+                            respuesta.println("actualizado");
+                        } else {
+                            respuesta.println("no actualizado");
+                        }
+                    } catch (Exception e) {
+                        respuesta.println(e.getMessage());
+                    }
+                    break;
+                case 3:
+                    ManejoDatos();
+                    break;
+                case 4:
+                    break;
+                case 5:
+                    tipoElo = 2;
+                    ManejoDatos();
+                    break;
+            }
+        } catch (Exception falla) {
+            respuesta.println("Falla: " + falla.getMessage());
+        } finally {
             try {
-                    elo.cerrarConexiones();
+                elo.cerrarConexiones();
             } catch (SQLException ex) {
-                respuesta.println("Falla: "+ ex.getMessage());
+                respuesta.println("Falla: " + ex.getMessage());
             }
         }
     }
     
-    private void ManejoDatos() throws IOException{
+    
+
+    private void ManejoDatos() throws Exception {
         response.setContentType("application/json;charset=UTF-8");
-                   respuesta = response.getWriter();
-                   Elomac elo1 = new Elomac(tabla,tipoElo);
-                   try {
-                       String[] elegir = request.getParameterValues("elegir[]");
-                           switch(optionSelect){
-                            case 1:respuesta.println(elo1.Select());break;
-                            case 2:respuesta.println(elo1.Select(id)); break;
-                            case 3:respuesta.println(elo1.Select(delimitador));break;
-                            case 4:respuesta.println(elo1.Select(elegir));break;
-                            case 5:respuesta.println(elo1.Select(elegir, id));break;
-                            case 6:respuesta.println(elo1.Select(elegir,delimitador));break;
-                            default: respuesta.println("Default");break;
-                        
-                       }
-                          
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                        System.out.println(e.getMessage());
-                        respuesta.println(e.getMessage());
-                    }
+        respuesta = response.getWriter();
+        Elomac elo1 = new Elomac(tabla, tipoElo);
+        delimitador = jData.getString("delimitador");
+        String[] elegir =  Elomac.M_toArray(jData.getString("elegir"));
+        try {
+            switch (optionSelect) {
+                case 1:respuesta.println(elo1.Select());break;
+                case 2:respuesta.println(elo1.Select(id));break;
+                case 3:respuesta.println(elo1.Select(delimitador));break;
+                case 4:respuesta.println(elo1.Select(elegir));break;
+                case 5:respuesta.println(elo1.Select(elegir, id));break;
+                case 6:respuesta.println(elo1.Select(elegir, delimitador));break;
+                default:respuesta.println("Default");break;
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println(e.getMessage());
+            respuesta.println(e.getMessage());
+        }
     }
+
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -117,6 +130,8 @@ public class Crud_Controller extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        System.out.println(request);
+        System.out.println(response);
         processRequest(request, response);
     }
 
@@ -131,7 +146,10 @@ public class Crud_Controller extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        System.out.println(request);
+        System.out.println(response);
         processRequest(request, response);
+
     }
 
     /**

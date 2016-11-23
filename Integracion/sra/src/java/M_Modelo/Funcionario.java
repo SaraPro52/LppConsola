@@ -10,7 +10,7 @@ public class Funcionario extends Elomac{
 		super("Funcionario",1);
 	}
         
-        public boolean RegistrarFuncionario(String[] fun){
+        public boolean RegistrarFuncionario(Object[] fun){
             return (boolean)this.Registar(Group(fun,'~'), 2);
         }
         

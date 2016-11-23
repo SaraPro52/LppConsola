@@ -36,9 +36,9 @@ public class ProductoVirtual_Controller extends HttpServlet {
             JSONObject jData = new JSONArray(data).getJSONObject(0);
             
             int opcion = jData.getInt("opcion");
-            String[] infoVersion = (String[]) Elomac.M_toArray(jData.getString("info"));
+            String[] infoVersion =  Elomac.M_toArray(jData.getString("info"));
             String arrayFun = jData.getString("arrayFun");
-            String[] arrayTemas = (String[]) Elomac.M_toArray(jData.getString("arrayTemas"));
+            String[] arrayTemas = Elomac.M_toArray(jData.getString("arrayTemas"));
             String archivoNom = jData.getString("archivoNom");
 
             response.setContentType("application/json;charset=UTF-8");
@@ -80,7 +80,7 @@ public class ProductoVirtual_Controller extends HttpServlet {
                     }
                     break;
                 case 3:
-                    String[] correccion = (String[]) Elomac.M_toArray(jData.getString("correccion"));
+                    String[] correccion = Elomac.M_toArray(jData.getString("correccion"));
                     if (ver.CorreccionVersion(correccion)) {
                         respuesta.println("Si Registro");
                     } else {
@@ -89,7 +89,7 @@ public class ProductoVirtual_Controller extends HttpServlet {
                     break;
                 case 4:
                     try {
-                        String[] aprobacion = (String[]) Elomac.M_toArray(jData.getString("aprobacion"));
+                        String[] aprobacion =  Elomac.M_toArray(jData.getString("aprobacion"));
                         if (ver.AprobarPV(aprobacion)) {
                             respuesta.println("Si Registro");
                         } else {

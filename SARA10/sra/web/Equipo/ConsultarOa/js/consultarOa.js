@@ -1,5 +1,5 @@
 var selector = [], hilo = [], jso = [], data = [], nombre = "funcionario", datos = [];
-jso[0] = ['Crud_Controller1', '[{opcion:5,tabla:24,datos:[],elegir:[4,5,6,10],delimitador:"[{colum:2,operador:0,valor1:' + idRol + ',añadir:0},{colum:8,operador:0,valor1:' + idCentro + ',añadir:0},{colum:0,operador:0,valor1:' + idUser + '}]",id:0,opSelect:6}]'];
+jso[0] = ['Crud_Controller', '[{opcion:5,tabla:24,datos:[],elegir:[4,5,6,10],delimitador:"[{colum:2,operador:0,valor1:' + idRol + ',añadir:0},{colum:8,operador:0,valor1:' + idCentro + ',añadir:0},{colum:0,operador:0,valor1:' + idUser + '}]",id:0,opSelect:6}]'];
 selector[0] = $("#tablaConsultarOa");
 datos[0] = {nombre: "consutarOa", worker: true};
 ajax(0, datos[0]);
@@ -20,7 +20,7 @@ $(document).on('click', '.btnEvaluar', function (e) {
     ob.setCons("Lista de chequeo");
     ob.TablaEspa(selector[0]);
     ob.limpiarTabla(selector[0]);
-    jso[1] = ['Crud_Controller1', '[{opcion:5,tabla:12,datos:[],elegir:[0,1,2,3],delimitador:"[{colum:5,operador:0,valor1:'+idRol+'}]",id:0,opSelect:6}]'];
+    jso[1] = ['Crud_Controller', '[{opcion:5,tabla:12,datos:[],elegir:[0,1,2,3],delimitador:"[{colum:5,operador:0,valor1:'+idRol+'}]",id:0,opSelect:6}]'];
     selector[1] = $("#tablaListaChequeo");
     datos[1] = {nombre: "ConsultarLista", worker: true};
     ajax(1, datos[1]);
@@ -100,7 +100,7 @@ function ajax(i, datos) {
 }
 function peticionCompleta(i) {
     if (i == 1) {
-        jso[2] = ['Crud_Controller1', '[{opcion:5,tabla:11,datos:[],actualizar:[],delimitador:[],elegir:[0,1,3,5,6],id:0,opSelect:4}]'];
+        jso[2] = ['Crud_Controller', '[{opcion:5,tabla:11,datos:[],actualizar:[],delimitador:[],elegir:[0,1,3,5,6],id:0,opSelect:4}]'];
         selector[2] = $("#tablaAdmi");
         ajax(2, datos[0]);
     } else if (i == 2) {

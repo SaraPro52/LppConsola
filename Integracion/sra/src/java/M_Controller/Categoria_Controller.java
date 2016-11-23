@@ -1,12 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package M_Controller;
 
 import M_Modelo.Categoria;
 import M_Util.Elomac;
+import M_Util.M_Procedure;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.logging.Level;
@@ -33,7 +29,7 @@ public class Categoria_Controller extends HttpServlet {
             
             int opcion = jData.getInt("opcion");
             String[] categoria = Elomac.M_toArray(jData.getString("catego"));
-            String temas = jData.getString("temas");
+            String temas = M_Procedure.Group(Elomac.M_toArray(jData.getString("temas")),',');
             
             response.setContentType("application/json;charset=UTF-8");
             PrintWriter respuesta = response.getWriter();

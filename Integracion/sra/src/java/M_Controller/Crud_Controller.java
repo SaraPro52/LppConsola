@@ -28,8 +28,7 @@ public class Crud_Controller extends HttpServlet {
     private HttpServletRequest request;
     private HttpServletResponse response;
     private PrintWriter respuesta;
-    
-  
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         this.request = request;
@@ -53,7 +52,7 @@ public class Crud_Controller extends HttpServlet {
             
             switch (opcion) {
                 case 1:
-                    datos = (String[]) Elomac.M_toArray(jData.getString("datos"));
+                    datos = Elomac.M_toArray(jData.getString("datos"));
                     elo = new Elomac(tabla, tipoElo, datos);
                     if (elo.Insert()) {
                         ManejoDatos();
@@ -92,13 +91,15 @@ public class Crud_Controller extends HttpServlet {
             }
         }
     }
+    
+    
 
     private void ManejoDatos() throws Exception {
         response.setContentType("application/json;charset=UTF-8");
         respuesta = response.getWriter();
         Elomac elo1 = new Elomac(tabla, tipoElo);
         delimitador = jData.getString("delimitador");
-        String[] elegir = Elomac.M_toArray(jData.getString("elegir"));
+        String[] elegir =  Elomac.M_toArray(jData.getString("elegir"));
         try {
             switch (optionSelect) {
                 case 1:respuesta.println(elo1.Select());break;

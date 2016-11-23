@@ -3,14 +3,14 @@ $(document).on('ready', function () {
     var ob = new $.Luna("Select", $("#SelecCentro"));
     $(".Mult").hide();
     ob.Vivo("Programa");
-    jso[0] = ['Crud_Controller1', '[{opcion:3,delimitador:[],tabla:5,datos:[],elegir:[0,2],id:0,opSelect:4}]'];
+    jso[0] = ['Crud_Controller', '[{opcion:3,delimitador:[],tabla:5,datos:[],elegir:[0,2],id:0,opSelect:4}]'];
     selector[0] = $("#SelecCentro");
     datos[0] = {nombre: "Select", worker: true};
     ajax(0, datos[0]);
     $("#SelecCentro").change(function () {
         $(".Mult").show();
         if ($("#SelecCentro").val() != "A0") {
-            jso[1] = ['Crud_Controller1', '[{opcion:5,tabla:10,elegir:[0,1],\n\
+            jso[1] = ['Crud_Controller', '[{opcion:5,tabla:10,elegir:[0,1],\n\
                 delimitador:"[{colum:2,operador:0,valor1:' + $("#SelecCentro").val() + '}]",id:0,opSelect:6}]'];
             selector[1] = $("#MultAreas");
             datos[1] = {nombre: "MultiSelect", worker: true};
@@ -58,7 +58,7 @@ $(document).on('ready', function () {
         if (i == 1) {
             $(".Mult").show();
         } else if (i == 0) {
-            jso[2] = ['Crud_Controller1', '[{opcion:3,tabla:27,elegir:[0,1],delimitador:[],id:0,opSelect:4}]'];
+            jso[2] = ['Crud_Controller', '[{opcion:3,tabla:27,elegir:[0,1],delimitador:[],id:0,opSelect:4}]'];
             selector[2] = $("#MultTemas");
             datos[2] = {nombre: "MultiSelect", worker: true};
             ajax(2, datos[2]);

@@ -29,9 +29,9 @@ public class Programa_Controller extends HttpServlet {
            PrintWriter respuesta = response.getWriter();
            switch(opcion){
                case 1:
-                   String[] programainfo = (String[]) Elomac.M_toArray(jData.getString("infoP"));
-                   String[] areas = (String[]) Elomac.M_toArray(jData.getString("areas"));
-                   String[] temas = (String[]) Elomac.M_toArray(jData.getString("temas"));
+                   String[] programainfo =  Elomac.M_toArray(jData.getString("infoP"));
+                   String[] areas =  Elomac.M_toArray(jData.getString("areas"));
+                   String[] temas =  Elomac.M_toArray(jData.getString("temas"));
                    
                    Programa p = new Programa();
                    try {

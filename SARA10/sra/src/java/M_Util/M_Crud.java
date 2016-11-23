@@ -32,7 +32,7 @@ public class  M_Crud extends M_Procedure{
             int a = 0;
             switch(sentencia){
             case "SELECT":
-                    rs = saraCrud(sentencia,tabla,this.Group(M_toArray(contenido1), '|'),contenido2);
+                    rs = saraCrud(sentencia,tabla,this.Group(M_toArray(contenido1,1), '|'),contenido2);
                      a = 0;
                     while(rs.next()){
                         item = new LinkedHashMap<String,Object>();
@@ -81,14 +81,18 @@ public class  M_Crud extends M_Procedure{
         
     }
     
-    protected String[] M_toArray(Map<String, Object> mapa){
+    public static String[] M_toArray(Map<String, Object> mapa,int vector){
         String[] array  = new String[mapa.size()];
+        Object[] array1 = new String[mapa.size()];
         int i = 0;
         for (Entry<String, Object> enti : mapa.entrySet()) {
             array[i] = enti.getKey();
+            array1[i] = enti.getValue();
             i++;
         }
-        return array;
+        if(vector == 1) return array;
+        else if(vector == 2) return (String[])array1;
+        return null;
     }
     
 }

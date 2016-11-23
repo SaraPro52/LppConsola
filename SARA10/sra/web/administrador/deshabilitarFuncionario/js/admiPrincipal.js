@@ -3,13 +3,13 @@ $(document).on('ready', function () {
     var ob = new $.Luna("funcionario", selector);
     ob.Vivo("DesabilitarFuncionario");
     
-    jso[0] = ['Crud_Controller1', '[{opcion:5,tabla:11,datos:[],actualizar:[],delimitador:[],elegir:[0,1,3,5,6],id:0,opSelect:4}]'];
+    jso[0] = ['Crud_Controller', '[{opcion:5,tabla:11,datos:[],actualizar:[],delimitador:[],elegir:[0,1,3,5,6],id:0,opSelect:4}]'];
     selector[0] = $("#tablaAdmi");
     datos[0] = {nombre: "Funcionario", worker: true};
     ajax(0, datos[0]);
     ob.TablaEspa(selector[0]);
     $(document).on('click', '.botonclick', function (e) {
-        jso[1] = ['Crud_Controller1', '[{opcion:2,tabla:"18",datos:[],delimitador:[],elegir:[],actualizar:"[{9:2}]",id:' + this.id + ',opSelect:2}]'];
+        jso[1] = ['Crud_Controller', '[{opcion:2,tabla:"18",datos:[],delimitador:[],elegir:[],actualizar:"[{9:2}]",id:' + this.id + ',opSelect:2}]'];
         selector[1] = $("#tablaAdmi");
         ob.limpiarTabla(selector[1]);
         $("#ccNoti").empty();
@@ -29,7 +29,7 @@ $(document).on('ready', function () {
     }
     function peticionCompleta(i) {
         if (i == 1) {
-            jso[2] = ['Crud_Controller1', '[{opcion:5,tabla:11,datos:[],actualizar:[],delimitador:[],elegir:[0,1,3,5,6],id:0,opSelect:4}]'];
+            jso[2] = ['Crud_Controller', '[{opcion:5,tabla:11,datos:[],actualizar:[],delimitador:[],elegir:[0,1,3,5,6],id:0,opSelect:4}]'];
             selector[2] = $("#tablaAdmi");
             ajax(2, datos[0]);
         } else if (i == 2) {

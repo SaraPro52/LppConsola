@@ -26,7 +26,7 @@ function modificar(idTipoItem) {
         s = dat.split("$$$");
         $("#NombreL").val(s[0]);
         $("#DescripcionL").val(s[1]);
-        jso[0] = ['Crud_Controller1', '[{opcion: 5, tabla: "15", elegir: ["0", "1"], datos:"[]",delimitador: "[{colum:3,operador:0,valor1:' + this.id + ',añadir:0},{colum:2,operador:0,valor1:' + idTipoItem + '}]", id: 0, opSelect: 6}]'];
+        jso[0] = ['Crud_Controller', '[{opcion: 5, tabla: "15", elegir: ["0", "1"], datos:"[]",delimitador: "[{colum:3,operador:0,valor1:' + this.id + ',añadir:0},{colum:2,operador:0,valor1:' + idTipoItem + '}]", id: 0, opSelect: 6}]'];
         var datos = {nombre: "MultiSelects", worker: true};
         selector[0] = $("#SelectItem");
         ajax(0, datos);
@@ -59,7 +59,7 @@ function modificar(idTipoItem) {
                 multi.push(json1[i].Id_Item_Lista);
                 data[1] = json1[i];
             }
-            jso[1] = ['Crud_Controller1', '[{opcion: 3,tabla: "19",elegir: ["0", "1"],datos:"[]" ,delimitador: "[{colum:0,operador:7,valor1:' + ww + ',añadir:0},{colum:2,operador:0,valor1:' + idTipoItem + '}]", id:0,opSelect:6}]'];
+            jso[1] = ['Crud_Controller', '[{opcion: 3,tabla: "19",elegir: ["0", "1"],datos:"[]" ,delimitador: "[{colum:0,operador:7,valor1:' + ww + ',añadir:0},{colum:2,operador:0,valor1:' + idTipoItem + '}]", id:0,opSelect:6}]'];
             selector[1] = $("#SelectItem");
             datos = {nombre: "MultiSelect", worker: true};
             ajax(1, datos);

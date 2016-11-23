@@ -2,6 +2,7 @@ package M_Controller;
 
 import M_Modelo.Lista_Chequeo;
 import M_Util.Elomac;
+import M_Util.M_Procedure;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.logging.Level;
@@ -35,12 +36,24 @@ public class ListaChequeo_Controller extends HttpServlet {
             PrintWriter respuesta = response.getWriter();
             switch (opcion) {
                 case 1:
-                    String[] lista = (String[]) Elomac.M_toArray(jData.getString("lista"));
-                    String items = jData.getString("items");
+                    String[] lista = Elomac.M_toArray(jData.getString("lista"));
+                    String items = M_Procedure.Group(Elomac.M_toArray(jData.getString("items")),',');
                     try {
                         if(new Lista_Chequeo().RegistrarLista(lista, items))
                             respuesta.println("fue registrada correctamente");
                         else respuesta.println("no registro");
+                    } catch (Exception e) {
+                        respuesta.println(e.getMessage());
+                    }
+                    break;
+                case 2:
+                    String[] mLista = Elomac.M_toArray(jData.getString("mLista"));
+                    String[] mitems =  Elomac.M_toArray(jData.getString("mItems"));
+                    
+                    try {
+                        if(new Lista_Chequeo().ModificarLista(mLista, mitems))
+                            respuesta.println("Se actualizo");
+                        else respuesta.println("No se actualizo");
                     } catch (Exception e) {
                         respuesta.println(e.getMessage());
                     }

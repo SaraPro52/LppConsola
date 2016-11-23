@@ -4,12 +4,13 @@ $(document).on('ready', function () {
     objeto = {url: "Administrador_Controller", Opcion: 1, name: 'cuerpo', vista: $("#vista").val()};
     obtenerP(objeto);
     var casoUso = "Dehabilitar Funcionarios";
+
     $(document).on('click', '.Notify', function (e) {
         if (this.id == "verMasNotificaciones") {
             var objeto = {url: "Administrador_Controller", Opcion: 1, name: 'cuerpo'};
             casoUso = "Dehabilitar Funcionarios";
             obtenerP(objeto);
-         }
+        }
     });
 
 
@@ -19,13 +20,6 @@ $(document).on('ready', function () {
         casoUso = "text" + this.value;
         casoUso = $("#" + casoUso).text();
         obtenerP(objeto);
-        if(this.value==6){
-           console.log($('#recordatorio'));
-            $('#recordatorio').show();
-            $('#formCambiarContra').hide();
-        }
-        
-        
     });
 
     function obtenerP(datos) {
@@ -50,7 +44,7 @@ $(document).on('ready', function () {
                 $("#CasoNombre").text(casoUso);
                 $("#cuerpo").empty();
                 $("#cuerpo").append(body);
-                var cabeza = ("<input id='Admi' value='" + vista + "' type='hiden'>");
+                var cabeza = ("<input id='Admi' value='" + vista + "' type='hidden'>");
                 $("#header").append(cabeza);
                 break;
         }

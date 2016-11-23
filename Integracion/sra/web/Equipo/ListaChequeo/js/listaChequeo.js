@@ -31,7 +31,7 @@ function listaChequeo(idTipoItem, idUser) {
         ajax(2, datos[2]);
     });
     $("#btnItem").on('click', function () {
-        jso[1] = ['Crud_Controller', '[{opcion:1,actualizar:[],tabla:19,datos:["",' + $("#Descripcion").val() + ',idTipoItem],elegir:[0,1],delimitador:"[{colum:2,operador:0,valor1:' + idTipoItem + '}]",id:0,opSelect:6}]'];
+        jso[1] = ['Crud_Controller', '[{opcion:1,actualizar:[],tabla:19,datos:["",' + $("#Descripcion").val() + ','+idTipoItem+'],elegir:[0,1],delimitador:"[{colum:2,operador:0,valor1:' + idTipoItem + '}]",id:0,opSelect:6}]'];
         selector[1] = $("#SelectItem");
         datos[1] = {nombre: "MultiSelect", worker: true, opt: "Div"};
         ajax(1, datos[1]);
@@ -50,9 +50,9 @@ function listaChequeo(idTipoItem, idUser) {
     function peticionCompleta(i) {
         if ((i == 1) || (i == 2)) {
             if (i == 1) {
-                if (data[0].length == data[1].length) {
+                if (data[0].length < data[1].length) {
                     men = "El item" + $("#Descripcion").val() + " fue agregado exitosamente";
-                } else if (data[0].length < data[1].length) {
+                } else if (data[0].length == data[1].length) {
                     men = "El item: " + $("#Descripcion").val() + " no fue agregado exitosamente";
                 }
             }

@@ -245,7 +245,7 @@ jQuery.Luna = function (Datos, selector) {
                 break;
             case "Ciudad":
                 for (var i = 0; i < json.length; i++) {
-                    table = selector.dataTable().fnAddData([
+                        table = selector.dataTable().fnAddData([
                         i + 1,
                         json[i].Nom_Ciudad,
                         "<button id='" + json[i].Id_Ciudad + "' value='m' class='btnclick btn btn-success'>Modificar</button>",
@@ -323,17 +323,18 @@ jQuery.Luna = function (Datos, selector) {
                 setNombre(i + 1);
                 break;
             case "AsignarRol":
+                 var jsSelect = jQuery.parseJSON(json);   
                 for (var i = 0; i < json.length; i++) {
                     var select = ("'><option value='1'>Intructor</option><option value='2'>Equipo Tecnico</option><option value='3'>Equipo Pedagogico</option></select>");
                     table = $("#tablaARoles").dataTable().fnAddData([
                         i + 1,
-                        json[i].NombreCompleto,
-                        json[i].Cargo,
-                        json[i].Nom_Area,
-                        json[i].Nom_Centro,
-                        json[i].Nom_Ciudad,
-                        "<select id='Select" + json[i].Id_Funcionario + "'value='0'" + select,
-                        "<button id='" + json[i].Id_Funcionario + "' class='btnclick btn btn-success botonclick'value='A' >Asignar</button>"
+                        jsSelect[i].NombreCompleto,
+                        jsSelect[i].Cargo,
+                        jsSelect[i].Nom_Area,
+                        jsSelect[i].Nom_Centro,
+                        jsSelect[i].Nom_Ciudad,
+                        "<select id='Select" + jsSelect[i].Id_Funcionario + "'value='0'" + select,
+                        "<button id='" + jsSelect[i].Id_Funcionario + "' class='btnclick btn btn-success botonclick'value='A' >Asignar</button>"
                     ]);
                 }
                 break;
