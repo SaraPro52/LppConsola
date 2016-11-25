@@ -14,63 +14,87 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="contenedor">
-                            <section class="col-md-6">
+                            <section class="col-md-12">
                                 <label><h3>Subir producto virtual</h3></label>
                                 <article>
                                     <form id = "formulario1">
-                                        <div class="form-group col-xs-12 floating-label-form-group controls">   
-                                            <label>Titulo de la publicacion</label>
-                                            <input class="form-control" type="text"  name="Titulo_Publicacion" id="Titulo_Publicacion" placeholder="Titulo de la publicacion" required data-validation-required-message="Ingresa el titulo de la publicacion.">
-                                            <p class="help-block text-danger"></p>
-                                        </div>
-                                        <div>
-                                            <div id="SelectAutoresDiv">
-                                                <section  id="SelectAutores">
-                                                </section>
+                                        <div class="col-md-6" id="formulario11"> 
+                                            <div class="form-group col-xs-12 floating-label-form-group controls">   
+                                                <label>Titulo de la publicacion</label>
+                                                <input class="form-control" type="text"  name="Titulo_Publicacion" id="Titulo_Publicacion" placeholder="Titulo de la publicacion" required data-validation-required-message="Ingresa el titulo de la publicacion.">
+                                                <p class="help-block text-danger"></p>
                                             </div>
+                                            <div class="form-group col-xs-12 floating-label-form-group controls">   
+                                                <label>Palabras claves de busqueda</label>
+                                                <input class="form-control" type="text"  name="palabras_claves" id="palabras_claves" placeholder="Palabras claves " required data-validation-required-message="Ingresa las palabras clave de la publicacion.">
+                                                <p class="help-block text-danger"></p>
+                                            </div>
+                                            <div class="form-group col-xs-12 floating-label-form-group controls">   
+                                                <label>Decripcion del producto</label>
+                                                <input class="form-control" type="text"  name="palabras_claves" id="descripcion_oa" placeholder="Descripcion del P.V" required data-validation-required-message="Ingresa la descripcion del producto virtual.">
+                                            </div>
+                                        </div>
 
-                                        </div>
-                                        <div class="form-group col-xs-12 floating-label-form-group controls">   
-                                            <label>Palabras claves de busqueda</label>
-                                            <input class="form-control" type="text"  name="palabras_claves" id="palabras_claves" placeholder="Palabras claves " required data-validation-required-message="Ingresa las palabras clave de la publicacion.">
-                                            <p class="help-block text-danger"></p>
-                                        </div>
-                                        <div >   
-                                            <label>Decripcion del producto</label>
-                                            <input class="form-control" type="text"  name="palabras_claves" id="descripcion_oa" placeholder="Descripcion del P.V" required data-validation-required-message="Ingresa la descripcion del producto virtual.">
-                                        </div>
-                                        <div>
-                                            <label>Definir de objecto de aprendizaje</label> <br/>
-                                            <label>Categorias del producto virtual</label>   
-                                            <div id="SelectCategoriaDiv">
-                                                <section  id=SelectCategoria></section>
+                                        <div class="col-md-6" iinstruccionesd="formulario2">
+                                            <div>   
+                                                <label for="instrucciones"> instrucciones de instalacion</label>
+                                                <div class="form-group">
+                                                    <textarea class="form-control " id="instrucciones" type="textarea " maxlength="200"  placeholder="instrucciones de instalacion" required data-validation-required-message="Ingresa requisitos de instalacion." rows="3"></textarea>
+                                                </div>
                                             </div>
-                                            <label>Programa de formacion</label>  
-                                            <div id="SelectEstruturaDiv">
-                                                <section  id=SelectEstrutura>
-                                                </section>
+                                            <div>
+                                                <label>Formato del archivo</label>
+                                                <select class="form-control col-xs-12 floating-label-form-group controls" id="formato" value="Valueblanco">
+                                                    <option value="FG" selected="selected">Selecciona...</option>
+                                                </select>
                                             </div>
+                                            
+                                           
                                         </div>
                                     </form>
+
+                                     <div class="col-md-6">   
+                                         <label style="display: none;"> Requisitos de instalacion</label>
+                                                <div class="form-group" style="visibility:hidden;">
+                                                    <textarea class="form-control " type="textarea " maxlength="200" name="palabras_claves" id="requisitos_instalacion" placeholder="Requisitos de instalacion" required data-validation-required-message="Ingresa requisitos de instalacion." rows="3" id="comment"></textarea>
+                                                </div>
+                                            </div>
+
+                                    <div class="col-md-6">
+                                        
+                                        <label>Categorias del producto virtual</label>   
+                                        <div id="SelectCategoriaDiv">
+                                            <section  id=SelectCategoria></section>
+                                        </div>
+                                        
+                                        
+                                                <div class="form-group col-md-10">
+                                                    <label for="requisitos_instalacion"> requisitos de instalacion</label>
+                                                    <textarea class="form-control " id="requisitos_instalacion" type="textarea " maxlength="200" name="palabras_claves" placeholder="requisitos  de instalacion"  rows="5"></textarea>
+                                                </div>
+                                        
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <label>Programa de formacion</label> 
+                                        <div id="SelectEstruturaDiv">
+                                            <section  id=SelectEstrutura>
+                                            </section>
+                                        </div>
+                                        
+                                         <label>Autores</label>
+                                       <div id="SelectAutoresDiv">
+                                            <section  id="SelectAutores">
+                                            </section>
+                                        </div>
+                                    </div>
+                                    
+                                     
+                                   
+                                   
                                 </article>
+
                                 <article>
-                                    <div>
-                                        <label>Formato del archivo</label>
-                                        <select class="form-control" id="formato" value="Valueblanco">
-                                            <option value="FG" selected="selected">Selecciona...</option>
-                                        </select>
-                                    </div>
-                                    <div class="">   
-                                        <label for="requisitos_instalacion"> Requisitos de instalacion</label>
-                                        <input  class="form-control" type="text"  name="palabras_claves" id="requisitos_instalacion" placeholder="Requisitos de instalacion" required data-validation-required-message="Ingresa requisitos de instalacion.">
-
-                                    </div>
-
-                                    <div class="">   
-                                        <label for="instrucciones">Instrucciones de instalacion</label>
-                                        <input class="form-control" type="text"  name="palabras_claves" id="instrucciones" placeholder="Instrucciones de instalacion" required data-validation-required-message="Ingresa instrucciones de instalacion.">
-
-                                    </div>
                                     <div> 
                                         <div>
                                             <label for="Documento">añadir OA</label>

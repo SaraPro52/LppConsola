@@ -31,6 +31,9 @@ public class Instrutor_Controller extends HttpServlet {
             case 4:
                 request.getRequestDispatcher("perfil/perfilUsuario.jsp").forward(request, response);
                 break;
+            case 5:
+                request.getRequestDispatcher("instructor/DetallesConsultaP/DetallessPV.jsp").forward(request, response);
+                break;
         }
     }
 

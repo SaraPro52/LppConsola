@@ -13,33 +13,36 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-12">
-                        <section class="col-md-12">
-                            <article class="col-md-8">
-                                <form id = "formularioEstado">
-                                    <label for="EstadoC">Nombre de la ciudad</label>
-                                    <input type="text"  name="Ciudad" id="Ciudad">
-                                    <button type="button" id="btnCiudad"  name="button">Guardar Ciudad</button>
-                                </form>
-                            </article>
-                            <article class="col-md-6 col-offset-2s">
-                                <table id="tablaCiudad" class="display table table-hover">
-                                    <thead>
-                                        <tr class="active">
-                                            <td>#</td>
-                                            <td>Nombre</td>
-                                            <td>Modificar</td>
-                                            <td>Eliminar</td>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                    </tbody>
-                                </table>
-                            </article>
-                        </section>
+                        <div class="contenedorFormulario col-md-10">
+                            <div class="form-group contenedorInsert">
+                                <section>
+                                    <article>
+                                        <label for="EstadoC">Nombre de la ciudad</label>
+                                        <input type="text" class="form-control" name="Ciudad" id="Ciudad" placeholder="Ej: Bogotá D.C">
+                                        <button type="button" id="btnCiudad" class="btn btn-primary"  name="button"> Guardar Ciudad</button>
+                                    </article>
+
+                                    <article class="col-md-10 col-offset-2s">
+                                        <table id="tablaCiudad" class=" display table table-hover">
+                                            <thead>
+                                                <tr class="active">
+                                                    <td>#</td>
+                                                    <td>Nombre</td>
+                                                    <td>Modificar</td>
+                                                    <td>Eliminar</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                            </tbody>
+                                        </table>
+                                    </article>
+                                </section>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </div>  
     </body>
     <script type="text/javascript" src="js/jquery.js"></script>
     <script type="text/javascript" charset="utf8" src="js/jquery.dataTables.js"></script>

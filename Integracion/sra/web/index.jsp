@@ -33,10 +33,10 @@
                             <button type="submit" class="btn btn-default ubicacionLoginBoton" id="btnLogin">Iniciar sesión</button>
                         </form>
 
-                        <form class="col-md-12" action="Equipo_Controller" method="post" class="form-control"> 
+                        <form class="col-md-12" action="Administrador_Controller" method="post" class="form-control"> 
                             <select name="Opcion" value="0" >
                                 <option value="0">seleciona</option>
-                                <option value="3">Imagenes12</option>
+                                <option value="0">Imagenes12</option>
                             </select>        
                             <input type="submit" name="btnenviar" value="Aceptar">
                         </form>    

@@ -92,6 +92,28 @@ jQuery.Luna = function (Datos, selector) {
     function cargarTabla(json, selector, datos) {
         var c = 1;
         switch (datos.nombre) {
+            case "DetallesOaC":
+                console.log(json);
+                var jso = jQuery.parseJSON(json);
+                var oAItem;
+                for (var i = 0; i < jso.length; i++) {
+                    oAItem = selector.clone();
+                    oAItem.find("#consul").addClass("consul" + jso[i].Id_Version);
+                    oAItem.find("#NumVersion").text(jso[i].Id_Version);
+                    oAItem.find("#PvAutores").text(jso[i].Autores);
+                    oAItem.find("#PvFechaEn").text(jso[i].Fecha_Envio);
+                    oAItem.find("#PvPublicacion").text(jso[i].Fecha_Publicacion);
+                    oAItem.find("#PvFechaVigencia").text(jso[i].Fecha_Vigencia);
+                    oAItem.find("#PvRequisitos").val(jso[i].Reqst_Instalacion);
+                    oAItem.find("#PvInstalacion").val(jso[i].Inst_Instalacion);
+                    oAItem.find(".labelEstrella").addClass(jso[i].Id_Version);
+                    oAItem.find("#comment").addClass('Comment' + jso[i].Id_Version);
+                    oAItem.find("#Url_Version").val(jso[i].Url_Version);
+                    oAItem.find("#Actualizar").val(jso[i].Id_Version);
+                    oAItem.find("#btn_Comentar").val(jso[i].Id_Version);
+                    oAItem.children().appendTo($("#resultados"));
+                }
+                break;
             case "MultiSelect":
                 console.log("cambio");
                 var jso;
@@ -125,15 +147,31 @@ jQuery.Luna = function (Datos, selector) {
                 }
                 break;
             case "ConsOaP":
+                var pag = 0;
+                var q = 3;
+                var jso = jQuery.parseJSON(json);
                 var oAItem;
-                for (var i = 0; i < json.length; i++) {
+                for (var i = 0; i < jso.length; i++) {
+                    if (q == i) {
+                        pag++;
+                        s = "<li id=pag" + pag + " class='pagination'><a><lavel>" + pag + "</label></a></li>";
+                        $("#paginador").append(s);
+                        q = q + 3;
+                    }
                     oAItem = selector.clone();
-                    oAItem.find("#TituloOa").text(json[i].Nom_P_Virtual);
-                    oAItem.find("#AutoresOa").text(json[i].Autores);
-                    oAItem.find("#FechaPublicacionOa").text(json[i].Fecha_Publicacion);
-                    oAItem.find("#DescripcionOa").text(json[i].Des_P_Virtual);
-                    oAItem.find("#BtnDescargar").val(json[i].Id_P_Virtual);
+
+                    oAItem.find("#TituloOa").text(jso[i].Nom_P_Virtual);
+                    oAItem.find("#AutoresOa").text(jso[i].Autores);
+                    oAItem.find("#FechaPublicacionOa").text(jso[i].Fecha_Publicacion);
+                    oAItem.find("#DescripcionOa").text(jso[i].Des_P_Virtual);
+                    oAItem.find("#BtnDescargar").val(jso[i].Id_P_Virtual);
+                    oAItem.find("#BtnDescargar").addClass('mom');
+                    oAItem.find("#Contenedora").addClass(jso[i].Id_P_Virtual);
+                    oAItem.find("#Contenedora").addClass('pag' + pag);
                     oAItem.children().appendTo($("#resultados"));
+                    if (pag > 0) {
+                        $(".pag" + pag).hide();
+                    }
                 }
                 break;
             case "calificar":
@@ -312,7 +350,7 @@ jQuery.Luna = function (Datos, selector) {
                         "<button id='" + json[i].Id_Formato + "' class='btn btn-danger botonclick' value='e'>eliminar</button>"
                     ]);
                 }
-                setNombre(i + 1);  
+                setNombre(i + 1);
                 break;
             case "AsignarRol":
                 var jsSelect = jQuery.parseJSON(json);

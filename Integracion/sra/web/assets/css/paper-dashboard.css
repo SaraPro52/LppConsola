@@ -620,13 +620,16 @@ hr {
 
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/conacelelena\/paper-dashboard\/assets\/sass\/paper\/_buttons\.scss}line{font-family:\0000340}}
 .navbar .navbar-nav > li > a.btn-primary, .btn-primary {
+  margin-top: 3%;
+  margin-bottom: 5%;
+  background-color:#218276;   
   border-color: #218276;
-  color: #7A9E9F; }
+  color: #FFFFFF; }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/conacelelena\/paper-dashboard\/assets\/sass\/paper\/mixins\/_buttons\.scss}line{font-family:\000036}}
   .navbar .navbar-nav > li > a.btn-primary:hover, .navbar .navbar-nav > li > a.btn-primary:focus, .navbar .navbar-nav > li > a.btn-primary:active, .navbar .navbar-nav > li > a.btn-primary.active, .open > .navbar .navbar-nav > li > a.btn-primary.dropdown-toggle, .btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open > .btn-primary.dropdown-toggle {
-    background-color: #218276;
-    color: rgba(255, 255, 255, 0.7);
-    border-color: #7A9E9F; }
+    background-color: #17574F;
+    color:#FFFFFF;
+    border-color: #17574F; }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/conacelelena\/paper-dashboard\/assets\/sass\/paper\/mixins\/_buttons\.scss}line{font-family:\0000314}}
     .navbar .navbar-nav > li > a.btn-primary:hover .caret, .navbar .navbar-nav > li > a.btn-primary:focus .caret, .navbar .navbar-nav > li > a.btn-primary:active .caret, .navbar .navbar-nav > li > a.btn-primary.active .caret, .open > .navbar .navbar-nav > li > a.btn-primary.dropdown-toggle .caret, .btn-primary:hover .caret, .btn-primary:focus .caret, .btn-primary:active .caret, .btn-primary.active .caret, .open > .btn-primary.dropdown-toggle .caret {
       border-top-color: rgba(255, 255, 255, 0.7); }
@@ -703,13 +706,14 @@ hr {
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/conacelelena\/paper-dashboard\/assets\/sass\/paper\/_buttons\.scss}line{font-family:\0000342}}
 .navbar .navbar-nav > li > a.btn-info, .btn-info {
   margin-top: 4%;
+  background-color:#218276;
   border-color: #218276;
-  color: #218276; }
+  color: #FFFFFF; }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/conacelelena\/paper-dashboard\/assets\/sass\/paper\/mixins\/_buttons\.scss}line{font-family:\000036}}
   .navbar .navbar-nav > li > a.btn-info:hover, .navbar .navbar-nav > li > a.btn-info:focus, .navbar .navbar-nav > li > a.btn-info:active, .navbar .navbar-nav > li > a.btn-info.active, .open > .navbar .navbar-nav > li > a.btn-info.dropdown-toggle, .btn-info:hover, .btn-info:focus, .btn-info:active, .btn-info.active, .open > .btn-info.dropdown-toggle {
-    background-color: #218276;
-    color: rgba(255, 255, 255, 0.7);
-    border-color: #218276; }
+    background-color: #17574F;
+    color:#FFFFFF;
+    border-color: #17574F; }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/conacelelena\/paper-dashboard\/assets\/sass\/paper\/mixins\/_buttons\.scss}line{font-family:\0000314}}
     .navbar .navbar-nav > li > a.btn-info:hover .caret, .navbar .navbar-nav > li > a.btn-info:focus .caret, .navbar .navbar-nav > li > a.btn-info:active .caret, .navbar .navbar-nav > li > a.btn-info.active .caret, .open > .navbar .navbar-nav > li > a.btn-info.dropdown-toggle .caret, .btn-info:hover .caret, .btn-info:focus .caret, .btn-info:active .caret, .btn-info.active .caret, .open > .btn-info.dropdown-toggle .caret {
       border-top-color: rgba(255, 255, 255, 0.7); }
@@ -719,15 +723,15 @@ hr {
     border-color: #68B3C8; }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/conacelelena\/paper-dashboard\/assets\/sass\/paper\/mixins\/_buttons\.scss}line{font-family:\0000335}}
   .navbar .navbar-nav > li > a.btn-info.btn-fill, .btn-info.btn-fill {
-    color: #218276;
-    background-color:transparent;
+    color:#FFFFFF;
+    background-color:#218276;
     opacity: 1;
     filter: alpha(opacity=100); }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/conacelelena\/paper-dashboard\/assets\/sass\/paper\/mixins\/_buttons\.scss}line{font-family:\0000340}}
     .navbar .navbar-nav > li > a.btn-info.btn-fill:hover, .navbar .navbar-nav > li > a.btn-info.btn-fill:focus, .navbar .navbar-nav > li > a.btn-info.btn-fill:active, .navbar .navbar-nav > li > a.btn-info.btn-fill.active, .open > .navbar .navbar-nav > li > a.btn-info.btn-fill.dropdown-toggle, .btn-info.btn-fill:hover, .btn-info.btn-fill:focus, .btn-info.btn-fill:active, .btn-info.btn-fill.active, .open > .btn-info.btn-fill.dropdown-toggle {
-      background-color: #218276;
+      background-color:#17574F;
       color: #FFFFFF;
-      border-color: #218276; }
+      border-color: #17574F; }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/conacelelena\/paper-dashboard\/assets\/sass\/paper\/mixins\/_buttons\.scss}line{font-family:\0000350}}
     .navbar .navbar-nav > li > a.btn-info.btn-fill .caret, .btn-info.btn-fill .caret {
       border-top-color: #FFFFFF; }

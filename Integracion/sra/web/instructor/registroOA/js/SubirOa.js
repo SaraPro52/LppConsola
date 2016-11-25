@@ -41,7 +41,7 @@ $(document).ready(function () {
             arraySelecionEstr.splice(busqueda, 1);
         }
     });
-          $("#subir_oa").on('click', function () {
+    $("#subir_oa").on('click', function () {
          $(".remove").remove();
                 if ($("#Titulo_Publicacion").val() == "") {
                         $("#Titulo_Publicacion").focus().after("<div class='remove'><font color='red'>digite un titulo de publicacion</font><div>");
@@ -53,26 +53,18 @@ $(document).ready(function () {
         } else if ($("#descripcion_oa").val() == "") {
                         $("#descripcion_oa").focus().after("<div class='remove'><font color='red'>diita la descripco</font></div>");
                         return false;
-        } else if ($("#Categorias").val() == "") {
-                        $("#Categorias").focus().after("<div class='remove'><font color='red'>seleccione esta pcion</font></div>");
-                        return false;
-        } else if ($("#Estruturas").val() == "") {
-                        $("#Estruturas").focus().after("<div class='remove'><font color='red'>seleccione esta opcion</font></div>");
-                        return false;
-        } else if ($("#formato").val() == "FG") {
-                        $("#formato").focus().after("<div class='remove'><font color='red'>slecione un formato</font></div>");
-                        return false;
         } else if ($("#requisitos_instalacion").val() == "") {
                         $("#requisitos_instalacion").focus().after("<div class='remove'><font color='red'>digite los requisitos de instalacion</font></div>");
                         return false;
         } else if ($("#instrucciones").val() == "") {
                         $("#instrucciones").focus().after("<div class='remove'><font color='red'>digite instrucciones de instalacion</font></div>");
                         return false;
-
-        }else if ($("#myfile").val() == "") {
+        } else if ($("#formato").val() == "FG") {
+                        $("#formato").focus().after("<div class='remove'><font color='red'>slecione un formato</font></div>");
+                        return false;
+        } else if ($("#myfile").val() == "") {
                         $("#myfile").focus().after("<div class='remove'><font color='red'>ingrese un archivo</font></div>");
                         return false;
-
         }
     });
 
@@ -106,7 +98,7 @@ $(document).ready(function () {
             for (var i = 0; i < arraySelecionEstr.length; i++) {
                 arrayTemas.push(arraySelecionEstr[i] + "-0");
             }
-           for (var i = 0; i < arraySelecionCate.length; i++) {
+            for (var i = 0; i < arraySelecionCate.length; i++) {
                 arrayTemas.push(arraySelecionCate[i] + "-1");
             }
             jso[5] = ['ProductoVirtual_Controller', '[{opcion:1,info:[' + $("#Titulo_Publicacion").val() + ',' + $("#descripcion_oa").val() + ',' + $("#palabras_claves").val() + ',' + $("#formato").val() + ',0,0,' + $("#instrucciones").val() + ',' + $("#requisitos_instalacion").val() + '],arrayFun:[' + arrayAutor + '],arrayTemas:[' + arrayTemas + '],archivoNom:' + $("#myfile").val() + '}]'];
@@ -121,7 +113,7 @@ $(document).ready(function () {
     };
     $("#UploadForm").ajaxForm(options);
 
-    
+
     function ajax(i, datos) {
         hilo[i] = new Worker("js/worker.js");
         hilo[i].postMessage(jso[i]);

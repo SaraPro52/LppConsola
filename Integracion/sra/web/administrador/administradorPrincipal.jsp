@@ -18,39 +18,9 @@
         <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
         <link href='https://fonts.googleapis.com/css?family=Muli:400,300' rel='stylesheet' type='text/css'>
         <link href="assets/css/themify-icons.css" rel="stylesheet">
+        <link href="assets/css/estilo.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
-
-        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                        <h4 class="modal-title" id="myModalLabel">Cambiar Contraseña</h4>
-                    </div>
-                    <div class="modal-body">
-                        <div class="col-md-8">
-                            <label>Contraseña actual</label>
-                            <input id="ConActual" type="password" class="form-control border-input" placeholder="" >
-                        </div>
-                        <div class="col-md-6">
-                            <label>Nueva contraseña</label>
-                            <input id="ConNueva" type="password" class="form-control border-input" placeholder="" >
-                        </div>
-                        <div class="col-md-6">
-                            <label for="exampleInputEmail1">Confirmar nueva contraseña</label>
-                            <input id="ConNuevaF"  type="password" class="form-control border-input" placeholder="">
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                        <button type="button" class="btn btn-primary">Guardar cambios</button>
-                    </div>
-                </div>
-            </div>
-        </div>
 
         <div class="wrapper">
             <div class="sidebar" data-background-color="white" data-active-color="danger">
@@ -62,7 +32,7 @@
                     </div>
                     <ul class="nav menu" id="menus">
                         <li class="active"><a><i class="ti-home"></i><p>Administrador</p></a></li>
-                        <li class="btntt" value="6"><a><i class="ti-user"></i><p><label id="text6">Perfil de usuario</label></p></a></li>
+                       
                         <li class="btntt" value="0"><a><i class="ti-marker-alt"></i><p><label id="text0">Registrar usuario</label></p></a></li>
                         <li class="btntt" value="1"><a><i class="ti-close"></i><p><label id="text1">Deshabilitar usuario</label></p></a></li>
                         <li class="btntt" value="2"><a><i class="ti-file"></i><p><label id="text2">Formato</label></p></a></li>
@@ -121,32 +91,30 @@
 
                 </div>
 
-                <footer class="footer">
-                    <div class="container-fluid">
-                        <nav class="pull-left">
-                            <ul>
+                <footer  class="text-center footerPrincipal">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="footer col-md-4">
+                                        <img src="assets/img/sena.png">
+                                    </div>
+                                    <div class="footer-col col-md-2">
+                                        <h3>Siguenos en:</h3>
+                                        <ul class="list-inline">
+                                            <li>
+                                                <a href="https://plus.google.com/u/0/101782866518065902776" class="btn-social btn-outline"><i class="fa fa-fw fa-google-plus"></i></a>
+                                            </li>
+                                           <li>
+                                                <a href="https://github.com/SaraPro52/LppConsola" class="btn-social btn-outline"><i class="fa fa-fw fa-github"></i></a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="footer-">
 
-                                <li>
-                                    <a href="http://www.creative-tim.com">
-                                        Creative Tim
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="http://blog.creative-tim.com">
-                                        Blog
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="http://www.creative-tim.com/license">
-                                        Licenses
-                                    </a>
-                                </li>
-                            </ul>
-                        </nav>
-                        <div class="copyright pull-right">
-                            &copy; <script>document.write(new Date().getFullYear())</script>, made with <i class="fa fa-heart heart"></i> by <a href="http://www.creative-tim.com">Creative Tim</a>
-                        </div>
-                    </div>
+                                        <img src="assets/img/saraBlanco.png">
+                                    </div>
+                                </div>
+                            </div>
+                        </footer>
                 </footer>
 
             </div>

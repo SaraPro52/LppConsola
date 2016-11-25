@@ -29,6 +29,7 @@ $(document).on('ready', function () {
     
       
     $("#BtnModificar").click(function (){
+    console.log("hellow por fin!!!!!!!!!");
 var emailreg = /^[a-zA-Z0-9_\.\-]+@[a-zA-Z0-9\-]+\.[a-zA-Z0-9\-\.]+$/;	
     $(".remove").remove();
         if( $("#NombreFun").val() == "" ){

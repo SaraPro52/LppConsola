@@ -13,27 +13,51 @@
                     <div class="col-md-12">
                         <div class="contenedorFormulario col-md-10">
                             <div class="form-group contenedorInsert">
-                                <label>Centro de formacion</label>
-                                <select id="SelecCentro">
-                                    <option value="A0">Seleciona...</option>
+                                <div class="col-md-12">
+                                    <label>Programa de formación</label>
+                                    <input type="text" id="nomPro" class="form-control" placeholder="Ej: Diseño multimedia">
+                                </div>
+                                
+
+                                <div class="col-md-12">
+                                    <div class="col-md-6" style="margin-top:3%;">
+                                        <label>Centro de formacion</label>
+                                        <select id="SelecCentro">
+                                            <option value="A0">Seleciona...</option>
+                                        </select>
+                                        
+                                        <div>
+                                            <label>Áreas</label>
+                                        </div>
+                                        <select class="Mult" id="MultAreas"></select>
+                                    </div>
+                                    <div class="col-md-6" style="margin-top:3%;">
+                                        <label>Nivel de Formación</label>
+                                        <select id="nivel">
+                                    <option value="Tecnico">Técnico</option>
+                                    <option value="Tecnologo">Tecnólogo</option>
+                                    <option value="Especialidad">Especialidad</option>
                                 </select>
-                                <label class="Mult">Areas</label>
-                                <select class="Mult" id="MultAreas"></select>
-                                <label>Temas</label>
-                                <select id="MultTemas"></select>
-                                <label>Programa de formación</label>
-                                <input type="text" id="nomPro" class="form-control" placeholder="Ej: Diseño multimedia">
-                                <select id="nivel">
-                                    <option value="Tecnico">Tecnico</option>
-                                    <option value="Tecnologo">Tecnologo</option>
-                                </select>
+                                    </div>
+                                    <div class="col-md-6">
+                                        
+                                        <label>Temas</label>
+                                        <select id="MultTemas"></select>
+                                    </div>
+                                </div>
+
+
+
+
+                                
+
+
+                                <button id="btnPrograma" type="button" class="btn btn-primary">Guardar</button>
                             </div>
-                            <button id="btnPrograma" type="button" class="btn btn-primary">Guardar</button>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
     </body>    
     <script src="assets/js/jquery-1.10.2.js" type="text/javascript"></script>
     <script type="text/javascript" charset="utf8" src="js/jquery.dataTables.js"></script>

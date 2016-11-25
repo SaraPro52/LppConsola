@@ -19,6 +19,37 @@
         <link href="assets/css/themify-icons.css" rel="stylesheet">
     </head>
     <body>
+        
+             <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <h4 class="modal-title" id="myModalLabel">Cambiar Contraseña</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="col-md-8">
+                            <label>Contraseña actual</label>
+                            <input id="ConActual" type="password" class="form-control border-input" placeholder="" >
+                        </div> 
+                        <div class="col-md-6">
+                            <label>Nueva contraseña</label>
+                            <input id="ConNueva" type="password" class="form-control border-input" placeholder="" >
+                        </div>
+                        <div class="col-md-6">
+                            <label for="exampleInputEmail1">Confirmar nueva contraseña</label>
+                            <input id="ConNuevaF"  type="password" class="form-control border-input" placeholder="">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                        <button type="button" class="btn btn-primary">Guardar Cambios</button>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="wrapper">
             <div class="sidebar" data-background-color="white" data-active-color="danger">
                 <div class="sidebar-wrapper">
@@ -74,30 +105,7 @@
                     </div>
                 </nav>
                 <div id="cuerpo" ></div>
-                <footer class="footer">
-                    <div class="container-fluid">
-                        <nav class="pull-left">
-                            <ul>
-
-                                <li>
-                                    <a href="http://www.creative-tim.com">
-                                        Creative Tim
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="http://blog.creative-tim.com">
-                                        Blog
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="http://www.creative-tim.com/license">
-                                        Licenses
-                                    </a>
-                                </li>
-                            </ul>
-                        </nav>
-                    </div>
-                </footer>
+               
             </div>
         </div>
     </body>

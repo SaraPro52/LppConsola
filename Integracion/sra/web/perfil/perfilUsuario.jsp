@@ -11,32 +11,6 @@
         <div class="content">
             <div class="container-fluid">
                 <div class="row">
-
-                    <!--div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"-->
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                    <h4 class="modal-title" id="myModalLabel">Modifica tu contraseña</h4>
-                                </div>
-                                <div class="modal-body">
-                                    <article  id="tabla">
-                                        <div class="col-md-3">
-                                            <label>Contraseña actual</label>
-                                            <input id="ConActual" type="password" class="form-control border-input" placeholder="" >
-                                            <label>Nueva contraseña</label>
-                                            <input id="ConNueva" type="password" class="form-control border-input" placeholder="" >
-                                            <label for="exampleInputEmail1">Confirmar nueva contraseña</label>
-                                            <input id="ConNuevaF"  type="password" class="form-control border-input" placeholder="">
-                                        </div>
-                                </div>
-                                <div id="modal-footer">
-                                    <button id="BtnMcontrasena"type="button">Modificar</button>
-                                </div>
-                                </article>
-                            </div>
-                        </div>
-                    <!--/div-->
                 </div>
                 <div class="col-lg-8 col-md-7">
                     <div class="card">
@@ -106,14 +80,15 @@
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label>Cargo</label>
-                                            <input id="CaargoFun" type="text" class="form-control border-input" placeholder="Ej:Instructor">
+                                            <input id="CaargoFun" type="text" maxlength="12"  class="form-control border-input" placeholder="Ej:Instructor">
                                         </div>
                                     </div>
                                 </div>
-
                         </div>
-                        <div class="text-center">
-                            <button id="Btncontrasena"  type="button" class="btn btn-info btn-fill btn-wd">Contraseña</button>
+                        <div class="text-center" style="margin-bottom:3%; ">
+                            <button type="button" class="btn btn-info btn-fill btn-wd" data-toggle="modal" data-target="#myModal">
+                                Cambiar contraseña
+                            </button>
                             <button id="BtnModificar" type="button" class="btn btn-info btn-fill btn-wd">Modificar perfil</button>
                         </div>
                         <div class="clearfix"></div>

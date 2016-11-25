@@ -13,40 +13,47 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-12">
-                        <div class="content">
-                            <article class="col-md-12">
-                                <form id = "formularioEstado">
-                                    <label for="formato">Nombre del formato</label>
-                                    <input  placeholder="Nombre del formato" type="text"  name="formato" id="formato" required="true">
-                                    <label for="descripcion">descripcion formato</label>
-                                    <textarea placeholder="descripcion formato" id="descripcion" name="descripcion" required="true"></textarea>
-                                    <button type="button" class="btn btn-info" id="btnformato"  name="button">Guardar formato</button>
-                                </form>
-                            </article>
-                            <article class="col-md-10 ">
-                                <table id="tablaformato" class="table table-hover">
-                                    <thead>
-                                        <tr class="active">
-                                            <td>#</td>
-                                            <td >Nombre formato</td>
-                                            <td>Descripcion del formato</td>
-                                            <td></td>
-                                            <td></td>
-                                        </tr>
-                                    </thead>
-                                    <tbody id="tablabody">
-                                    </tbody>
-                                </table>
-                            </article>
+                        <div class="contenedorFormulario col-md-10">
+                            <div class="form-group contenedorInsert">
+                                <div class="col-md-6">
+                                    <label for="formato">Nombre del Formato</label>
+                                    <input  placeholder="Nombre del formato" type="text" class="form-control" name="formato" id="formato" required="true">
+
+                                </div>
+
+                                <div class="col-md-6">
+
+                                    <label for="descripcion">Descripción Formato</label>
+                                    <textarea placeholder="descripcion formato" class="form-control" id="descripcion" name="descripcion" required="true"></textarea>
+
+                                </div> 
+                                <button type="button" class="btn btn-info" id="btnformato"  name="button">Guardar Formato</button>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </body>
-    <script src="assets/js/jquery-1.10.2.js" type="text/javascript"></script>
-    <script type="text/javascript" charset="utf8" src="js/jquery.dataTables.js"></script>
-    <script src="assets/js/bootstrap-notify.js"></script> 
-    <script type="text/javascript" src="js/jquery.cecily.js"></script>
-    <script type="text/javascript" src="administrador/Formato/js/Formato.js"></script>
-</html>
+
+
+
+                <article class="col-md-10 ">
+                    <table id="tablaformato" class="table table-hover">
+                        <thead>
+                            <tr class="active">
+                                <td>#</td>
+                                <td >Nombre formato</td>
+                                <td>Descripcion del formato</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </thead>
+                        <tbody id="tablabody">
+                        </tbody>
+                    </table>
+                </article>
+                </body>
+                <script src="assets/js/jquery-1.10.2.js" type="text/javascript"></script>
+                <script type="text/javascript" charset="utf8" src="js/jquery.dataTables.js"></script>
+                <script src="assets/js/bootstrap-notify.js"></script> 
+                <script type="text/javascript" src="js/jquery.cecily.js"></script>
+                <script type="text/javascript" src="administrador/Formato/js/Formato.js"></script>
+                </html>
