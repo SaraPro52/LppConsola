@@ -42,5 +42,10 @@
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script>
         calificarPV(this.idLista);
+        
+        $fecha = $('#iFecha');
+        if ($fecha[0].type != "date") {
+            $("#iFecha").datepicker();
+        }
     </script>
 </div>     

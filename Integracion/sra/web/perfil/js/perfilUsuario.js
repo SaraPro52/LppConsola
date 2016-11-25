@@ -27,9 +27,9 @@ $(document).on('ready', function () {
         cF++;
     });
     
-      var emailreg = /^[a-zA-Z0-9_\.\-]+@[a-zA-Z0-9\-]+\.[a-zA-Z0-9\-\.]+$/;
+      
     $("#BtnModificar").click(function (){
-	
+var emailreg = /^[a-zA-Z0-9_\.\-]+@[a-zA-Z0-9\-]+\.[a-zA-Z0-9\-\.]+$/;	
     $(".remove").remove();
         if( $("#NombreFun").val() == "" ){
             $("#NombreFun").focus().after("<div class='remove'><font color='red'>digite el nombre</font><div>");
@@ -38,7 +38,7 @@ $(document).on('ready', function () {
     }else if( $("#ApellidoFun").val() == ""){
             $("#ApellidoFun").focus().after("<div class='remove'><font color='red'>Ingrese un apellido</font></div>");
             return false;
-		}else if( $("#IdentificacionFunTipo").val("A0") == "" ){
+		}else if( $("#IdentificacionFunTipo").val() == "A0" ){
             $("#IdentificacionFunTipo").focus().after("<div class='remove'><font color='red'>seleccione una opcion</font></div>");
             return false;
 		}else if( $("#IdentificacionFun").val() == "" ){
@@ -57,10 +57,6 @@ $(document).on('ready', function () {
             $("#CaargoFun").focus().after("<div class='remove'><font color='red'>ingrese un cargo</font></div>");
             return false;
 			}
-
-
-
-
     });
 
     $("#CorreoFun").keyup(function(){
@@ -70,11 +66,18 @@ $(document).on('ready', function () {
         }
     });
     $("#BtnMcontrasena").click(function () {
-        if (($("#ConNueva").val() == $("#ConNuevaF").val()) && ($("#ConNuevaF").val() != "")) {
-            console.log("Listo para peticion");
-            $("#ConActual").val();
-            $("#ConNueva").val();
-        }
+       console.log("vivi");
+        clave1 = $("#ConNueva").val();
+      	clave2 = $("#ConNuevaF").val();
+         $(".remove").remove();
+        
+        if( $("#ConActual").val() == "" ){
+            $("#ConActual").focus().after("<div class='remove'><font color='red'>ingrese contraseña actual</font><div>");
+            return false;
+         }else if(clave1.trim() != clave2.trim()){
+				$("#ConNuevaF").focus().after("<div class='remove'><font color='red'>Las contraseñas no son iguales.</font></div>");
+			return false;
+                    } 
     });
 });
 

@@ -10,12 +10,30 @@ $(document).ready(function () {
     ajax(0, datos[0]);
 
     $("#btnTema").click(function () {
+ 
+              $(".remove").remove();
+           if ($("#NombreTema").val() == "") {
+                        $("#NombreTema").focus().after("<div class='remove'><font color='red'>digita el nombre del tema</font><div>");
+                        return false;
+            } else if ($("#DescripcionTema").val() == "") {
+                        $("#DescripcionTema").focus().after("<div class='remove'><font color='red'>digita la decripcion del tema</font></div>");
+                        return false;
+        }
+
+ 
+    unio();
+ 
+    });
+
+    function unio(){
+        
         nombre = $("#NombreTema").val();
         jso[1] = ['Crud_Controller', '[{opcion:1,tabla:27,delimitador:[],datos:["",' + $("#NombreTema").val() + ',' + $("#DescripcionTema").val() + ',1],elegir:[0,1],id:0,opSelect:4}]'];
         selector[1] = $("#SelectTemas");
         datos[1] = {nombre: "MultiSelect", opt: "Div", worker: true};
         ajax(1, datos[1]);
-    });
+        
+    }
 
     $('#SelectTemas').multiSelect({
         afterSelect: function (valor) {
@@ -28,12 +46,26 @@ $(document).ready(function () {
     });
  
     $("#btnCategoria").click(function () {
+       
+       console.log("vivieee");
+        $(".remove").remove();
+           if ($("#NombreCategoria").val() == "") {
+                        $("#NombreCategoria").focus().after("<div class='remove'><font color='red'>digita el nombre del tema</font><div>");
+                        return false;
+            } else if ($("#DescripcionCategoria").val() == "") {
+                        $("#DescripcionCategoria").focus().after("<div class='remove'><font color='red'>digita la decripcion del tema</font></div>");
+                        return false;
+        }
+            estr();
+    });
+
+    function estr(){
+        
         jso[2] = ['Categoria_Controller', '[{opcion:1,catego:["' + $("#NombreCategoria").val() + '","' + $("#DescripcionCategoria").val() + '",'+idUser+'],temas:['+arraySelecion+']}]'];
         datos[2] = {nombre: "btn", worker: true};
         nombre = $("#NombreTema").val();
-        ajax(2, datos[2]);   
-
-    });
+        ajax(2, datos[2]);  
+    }
 
     function ajax(i, datos) {
         hilo[i] = new Worker("js/worker.js");

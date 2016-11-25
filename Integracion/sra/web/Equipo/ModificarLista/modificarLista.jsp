@@ -12,9 +12,9 @@
                             <article class="col-md-6" id="item">
                                 <input type="hidden" value="1" id="tipoLis">
                                 <label>Nombre Lista</label>
-                                <input type="text" class="form-control" id="NombreL"  placeholder="Nombre de lista">
+                                <input type="text" class="form-control" value="GH" id="NombreL"  placeholder="Nombre de lista">
                                 <label>Decripcion</label>
-                                <textarea class="form-control"  id="DescripcionL" placeholder="Descripcion lista" rows="1" id="comment"></textarea>
+                                <textarea class="form-control" value="AS" id="DescripcionL" placeholder="Descripcion lista" rows="1" id="comment"></textarea>
                             </article>
                             <article class="col-md-6" id="items">
                                 <p><h3 class="dark-grey"><b>Items de lista de chequeo</b></h3></p>

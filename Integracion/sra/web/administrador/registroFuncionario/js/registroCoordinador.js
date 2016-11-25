@@ -10,7 +10,7 @@ $(document).on('ready', function () {
     selector[2] = $("#tipoIdenti");
     datos[0] = {nombre: "Select", worker: true};
     ajax(0, datos[0]);
-
+    
     $("#centroFormacion").change(function () {
         $("#area").empty().append("<option selected='selected'>selecciona...</option>");
         var objet = {opcion: 5, url: "Crud_Controller", nombre: "Select", tabla: "10", datos: [""], elegir: ["0", "1"],

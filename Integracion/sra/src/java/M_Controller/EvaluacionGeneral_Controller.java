@@ -1,9 +1,12 @@
 package M_Controller;
 
 import M_Modelo.Evaluacion_General;
+import M_Modelo.Notificacion;
 import M_Util.Elomac;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -25,8 +28,12 @@ public class EvaluacionGeneral_Controller extends HttpServlet {
             String data = request.getParameter("data");
             JSONObject jData = new JSONArray(data).getJSONObject(0);
             int opcion = jData.getInt("opcion");
-
+            
+            
             String[] infoEva = Elomac.M_toArray(jData.getString("infoEva"));
+            Date d = new Date(infoEva[5]);
+            SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd");
+            infoEva[5] = f.format(d);
             String[] infoItem = Elomac.M_toArray(jData.getString("infoItem"));
 
             Evaluacion_General evaluacion = new Evaluacion_General();
@@ -36,10 +43,22 @@ public class EvaluacionGeneral_Controller extends HttpServlet {
             switch (opcion) {
                 case 1:
                     try {
-                        evaluacion.RegistrarEvaluacion(infoEva, infoItem);
-                        respuesta.println("se evaluo correctamente");
+                        if(evaluacion.RegistrarEvaluacion(infoEva, infoItem)){
+                            respuesta.println("se evaluo correctamente");
+                            int idNoti = jData.getInt("idNoti");
+                            Notificacion noti = new Notificacion();
+                            noti.load(noti.Select(idNoti));
+                            noti.atributos.replace("Estado",1);
+                            if(noti.Update()){
+                                System.out.println("Se actualizo");
+                            }else{
+                                System.out.println("No actualizo");
+                            }
+                        }else{
+                            respuesta.println("no pudo ser evaluado");
+                        }
                     } catch (Exception e) {
-                        respuesta.println("no pudo ser evaluado");
+                        respuesta.println(e.getMessage());
                     }
                     break;
             }

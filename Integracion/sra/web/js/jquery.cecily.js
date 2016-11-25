@@ -83,16 +83,6 @@ jQuery.Luna = function (Datos, selector) {
             },
             error: function () {
                 alert = ("Disculpa, pero existe un error al cargar datos del servidor :/");
-            }, complete: function (jqXHR, textStatus) {
-                var a = jqXHR.responseText;
-                console.log(a);
-                if ($.trim(a) == "Si Registro") {
-                    $.notify(a, "success");
-                }
-                if ($.trim(a) == "No Registro") {
-                    $.notify(a, "error");
-
-                }
             }
         });
     };
@@ -255,6 +245,7 @@ jQuery.Luna = function (Datos, selector) {
                 }
                 break;
             case "Habilitar":
+                console.log("Sd");
                 var jsSelect = jQuery.parseJSON(json);
                 var selecNo = selector.selector + "P";
                 for (var i = 0; i < jsSelect.length; i++) {
@@ -321,7 +312,7 @@ jQuery.Luna = function (Datos, selector) {
                         "<button id='" + json[i].Id_Formato + "' class='btn btn-danger botonclick' value='e'>eliminar</button>"
                     ]);
                 }
-                setNombre(i + 1);
+                setNombre(i + 1);  
                 break;
             case "AsignarRol":
                 var jsSelect = jQuery.parseJSON(json);
@@ -335,7 +326,7 @@ jQuery.Luna = function (Datos, selector) {
                         jsSelect[i].Nom_Centro,
                         jsSelect[i].Nom_Ciudad,
                         "<select id='Select" + jsSelect[i].Id_Funcionario + "'value='0'" + select,
-                        "<button id='" + jsSelect[i].Id_Funcionario + "' class='btnclick btn btn-success botonclick'value='A' >Asignar</button>"
+                        "<button id='" + jsSelect[i].Id_Funcionario + "' class='btnclick btn btn-success botonclick'value='b' >Asignar</button>"
                     ]);
                 }
                 break;

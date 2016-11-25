@@ -20,6 +20,33 @@
     </head>
     <body>
         <div class="wrapper">
+            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="myModalLabel">Lista de chequeo para evaluar Producto virtual</h4>
+                        </div>
+                        <div class="modal-body">
+                            <article  id="tabla">
+                                <table class="table table-striped" id="tablaListaChequeo">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Nombre lista</th>
+                                            <th>Descripcion lista</th>
+                                            <th>Fecha vigencia</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    </tbody>
+                                </table>
+                            </article>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="sidebar" data-background-color="white" data-active-color="danger">
                 <div class="sidebar-wrapper">
                     <div class="logo">

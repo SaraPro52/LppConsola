@@ -57,7 +57,7 @@
                                     <div>
                                         <label>Formato del archivo</label>
                                         <select class="form-control" id="formato" value="Valueblanco">
-                                            <option value="" selected="selected">Selecciona...</option>
+                                            <option value="FG" selected="selected">Selecciona...</option>
                                         </select>
                                     </div>
                                     <div class="">   

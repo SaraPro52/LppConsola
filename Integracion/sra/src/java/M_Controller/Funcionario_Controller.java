@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import M_Modelo.Funcionario;
 import M_Util.Elomac;
+import M_Util.M_Crud;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.annotation.WebServlet;
@@ -38,9 +39,6 @@ public class Funcionario_Controller extends HttpServlet {
             switch (opcion) {
                 case 1:
                     String[] fun =  Elomac.M_toArray(jData.getString("datos"));
-                    for(int i = 0; i < 9;i++){
-                        System.out.println(fun[i]);
-                    }
                     fun[8] = new vasos().getVaso();
                     try {
                         if (new Funcionario().RegistrarFuncionario(fun)) {
@@ -69,6 +67,25 @@ public class Funcionario_Controller extends HttpServlet {
                     } else {
                         respuesta.println("no actualizado");
                     }
+                    break;
+                case 4:
+                    String[] datos = Elomac.M_toArray(jData.getString("datos"));
+                    Elomac funAsignar = new Elomac(26,1,datos);
+                    System.out.println(new Funcionario().Select(27));//OBTENER EL ID DEL FUNCIONARIO
+                    String funSelect = new Funcionario().Select(27);
+                    
+                    if(funAsignar.Insert() == true && funSelect != null){
+                        Elomac  fu  = new Elomac(18,1);
+                        fu.load(funSelect);
+                        String[] fun2 = M_Crud.M_toArray(fu.atributos, 2);
+                        fun2[8] = new vasos().getVaso();
+                        DJCorreoHTML correoHTML = new DJCorreoHTML();
+                        correoHTML.mandarCorreo(fun2[5], "Confirmacion de Cuenta SARA PRO1",fun2[2],fun2[8]);
+                        respuesta.println("El funcionario fue registrado correctamente");
+                    } else {
+                        respuesta.println("El funcionario no fue registrado");
+                    }
+                    
                     break;
             }
         }

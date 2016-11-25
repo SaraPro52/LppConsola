@@ -1,6 +1,8 @@
 package M_Util;
 
 import M_Modelo.Categoria;
+import M_Modelo.Evaluacion_General;
+import M_Modelo.Funcionario;
 import M_Modelo.Lista_Chequeo;
 import M_Modelo.Programa;
 import org.json.JSONException;
@@ -1092,12 +1094,12 @@ public class NewMain {
 //        Elomac elo1 = new Elomac("Ciudad");
 //        System.out.println(elo1.Select(6));
 //////////////////////////////////// EVALUACION
-//        String[] s1 = {"observacionral","0","1","1","2"};
-//        String[] s2 = {"0¤no cumple con el item¤1","1¤si cumple con el item¤2"};
+//        String[] s1 = {"observacionral12","0","4","3","11"};
+//        String[] s2 = {"0¤no cumple con el item22¤1","1¤si cumple con el item22¤2"};
 //        
 //        Evaluacion_General eva = new Evaluacion_General();
 //        eva.RegistrarEvaluacion(s1, s2);
-//        System.out.println(new Eloview(2).Select());
+//        System.out.println(new Elomac("Evaluacion_General",1).Select());
 //        
 //        int[] num = {1};
 //        Eloview e = new Eloview(2);
@@ -1234,18 +1236,26 @@ public class NewMain {
 //              String temas = "1,2";
 //              
 //              System.out.println(c.RegistrarCategoria(info, temas));
-                Lista_Chequeo l = new Lista_Chequeo();
-                l.load(l.Select(3));
-                
-                String[] info = M_Crud.M_toArray(l.atributos, 2);
-                
-//                for (int i = 0; i < info.length; i++) {
-//                    System.out.println(info[i]);
-//                } 
-                
-                String[] items = {"4","5","6"};
-                
-                System.out.println(l.ModificarLista(info, items));
+//                Lista_Chequeo l = new Lista_Chequeo();
+//                l.load(l.Select(3));
+//                
+//                String[] info = M_Crud.M_toArray(l.atributos, 2);
+//                
+////                for (int i = 0; i < info.length; i++) {
+////                    System.out.println(info[i]);
+////                } 
+//                
+//                String[] items = {"4","5","6"};
+//                
+//                System.out.println(l.ModificarLista(info, items));
 
+//                  System.out.println(new Funcionario().Select(27));
+
+
+            Evaluacion_General e = new Evaluacion_General();
+            String[] info1 = {"Observacion 1","1","5","3","12","2016-11-25"};
+            String[] info2 = {"1¤Observacion Item 1¤1","1¤Observacion Item 2¤2"};
+            System.out.println(e.RegistrarEvaluacion(info1, info2));
+                    
     }
 }

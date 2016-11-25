@@ -1,21 +1,22 @@
 $(document).on('ready', function () {
     var selector = [], hilo = [], jso = [], data = [], datos = [], nombre = "";
+    var ob = new $.Luna("usuario", selector[0]);
+    ob.Vivo("Asignar Roles");
 
     jso[0] = ['Funcionario_Controller', '[{opcion:2,centro:' + idCentro + '}]'];
     selector[0] = $("#tablaARoles");
     datos[0] = {nombre: "AsignarRol", worker: true};
     ajax(0, datos[0]);
-    var ob = new $.Luna("usuario", selector[0]);
-    ob.Vivo("Asignar Roles");
+
     ob.TablaEspa(selector[0]);
     $(document).on('click', '.btnclick', function (e) {
-        switch (this.value) {
-            case "A":
+        switch (this.value) { 
+            case "b":
                 var bus = "Select" + this.id;
                 bus = $("#bus").find($("#" + bus));
-                jso[1] = ['Crud_Controller', '[{opcion:1,tabla:26,datos:["", "'+bus.val()+'","'+this.id+'"],id:0,opSelect:7}]'];
+                jso[1] = ['Funcionario_Controller', '[{opcion:4,datos:["", "' + bus.val() + '","' + this.id + '"]}]'];
                 selector[1] = $("#tablaARoles");
-                datos[1] = {nombre:"btn",worker: true};
+                datos[1] = {nombre: "btn", worker: true};
                 ajax(1, datos[1]);
                 break;
         }
@@ -34,7 +35,6 @@ $(document).on('ready', function () {
     }
     function peticionCompleta(i, datos) {
         if (i == 1) {
-  
             $.notify({
                 icon: 'ti-gift',
                 message: data[i] + "."
@@ -42,6 +42,12 @@ $(document).on('ready', function () {
                 type: 'success',
                 timer: 4000
             });
+            jso[2] = ['Funcionario_Controller', '[{opcion:2,centro:' + idCentro + '}]'];
+            selector[2] = $("#tablaARoles");
+            datos[2] = {nombre: "AsignarRol", worker: true};
+            ob.limpiarTabla(selector[2]);
+            ajax(2, datos[2]);
+            console.log("Cambiodd");
         }
     }
 

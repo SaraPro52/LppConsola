@@ -33,4 +33,6 @@ public class Funcionario extends Elomac{
                 return("no se pudo");
             }
         }
+        
+       
 }

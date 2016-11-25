@@ -41,7 +41,7 @@ public class Crud_Controller extends HttpServlet {
             3. Obtener datos - Solo para tablas
             4. Eliminar
             5. Obtener datos - Solo para vistas*/
-           String data = request.getParameter("data");
+            String data = request.getParameter("data");
             jData = new JSONArray(data).getJSONObject(0);
             
             tipoElo = 1;
@@ -93,7 +93,6 @@ public class Crud_Controller extends HttpServlet {
     }
     
     
-
     private void ManejoDatos() throws Exception {
         response.setContentType("application/json;charset=UTF-8");
         respuesta = response.getWriter();

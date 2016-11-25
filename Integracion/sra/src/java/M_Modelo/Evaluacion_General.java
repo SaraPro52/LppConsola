@@ -8,7 +8,8 @@ public class Evaluacion_General extends Elomac{
 	}
         
         public boolean RegistrarEvaluacion(String[] infoEva,String[] infoItem){
-            return (boolean) this.Registar(this.Group(infoEva,'~')+"~"+this.Group(infoItem,'|'), 5);
+            return (boolean)this.Registar(this.Group(infoEva,'~')+"~"+this.Group(infoItem,'|'), 5);
+            
         }
-
+        
 }

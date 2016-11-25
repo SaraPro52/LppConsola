@@ -1,7 +1,7 @@
 function modificar(idTipoItem) {
     var jso = [], selector = [], hilo = [], data = [], ww = "", multi = [], arraySelecion = [];
     $(".EspacioItems").hide();
-    $("#tablaItems").hide(); 
+    $("#tablaItems").hide();
     var ob = new $.Luna("Lista", $("#tablalista"));
     ob.Vivo("ModificarListaDeChequeo");
     jso[2] = ['Crud_Controller', '[{opcion:5,tabla:12,datos:[],elegir:[0,1,2,3],delimitador: "[{colum:5,operador:0,valor1:' + idRol + '}]",id:0,opSelect:6}]'];
@@ -10,11 +10,21 @@ function modificar(idTipoItem) {
     ob.TablaEspa(selector[2]);
     ajax(2, datos);
     $("#btnItem").on('click', function () {
-        jso[1] = ['Crud_Controller1', '[{opcion:1,tabla:19,datos:["",' + $("#Descripcion").val() + ',' + idTipoItem + '],elegir:[0,1],delimitador:"[{colum:2,operador:0,valor1:' + idTipoItem + '}]",id:0,opSelect:6}]'];
+        console.log("helow1");
+                   $(".remove").remove();
+        if( $("#Descripcion").val() == "" ){
+            $("#Descripcion").focus().after("<div class='remove'><font color='red'>ingrese la descripcion</font><div>");
+            return false;
+}
+        greef();
+    });
+
+    function greef() {
+        jso[1] = ['Crud_Controller', '[{opcion:1,tabla:19,datos:["",' + $("#Descripcion").val() + ',' + idTipoItem + '],elegir:[0,1],delimitador:"[{colum:2,operador:0,valor1:' + idTipoItem + '}]",id:0,opSelect:6}]'];
         var datos = {nombre: "MultiSelects", worker: true, opt: "Div"};
         selector[1] = $("#SelectItem");
         ajax(1, datos);
-    });
+    }
     $(document).on('click', '.btnclick', function (e) {
         $(".EspacioItems").show();
         $("#CompoLista").hide();
@@ -40,9 +50,25 @@ function modificar(idTipoItem) {
         }
     });
     $("#BtnLista").click(function () {
-        //Array de items arraySelecion
-        jso[0] = ['Crud_Controller', '[{opcion: 5, tabla: "15", elegir: ["0", "1"], datos:"[]",delimitador: "[{colum:3,operador:0,valor1:' + this.id + ',aÃ±adir:0},{colum:2,operador:0,valor1:' + idTipoItem + '}]", id: 0, opSelect: 6}]'];
+        console.log("hellow")
+        $(".remove").remove();
+        if( $("#NombreL").val() == "" ){
+            $("#NombreL").focus().after("<div class='remove'><font color='red'>diguita la descripcion</font><div>");
+
+            return false;
+            }else if ($("#comment").val() == ""){
+    
+            $("#comment").focus().after("<div class='remove'><font color='red'>diguita un comentario</font><div>");
+                return fase;
+        }
+      hooo();
     });
+    
+    function hooo(){
+         //Array de items arraySelecion
+        jso[0] = ['Crud_Controller', '[{opcion: 5, tabla: "15", elegir: ["0", "1"], datos:"[]",delimitador: "[{colum:3,operador:0,valor1:' + this.id + ',aÃ±adir:0},{colum:2,operador:0,valor1:' + idTipoItem + '}]", id: 0, opSelect: 6}]'];
+    }
+    
     function ajax(i, datos) {
         hilo[i] = new Worker("js/worker.js");
         hilo[i].postMessage(jso[i]);
@@ -68,7 +94,7 @@ function modificar(idTipoItem) {
                 p = '</br> <label>' + i + "  " + [f].Des_Item_Lista + '</label>';
                 $("#campoItemsDatos").append(p);
             }
-            jso[3] = ['Crud_Controller1', '[{opcion: 3,tabla: "19",elegir: ["0", "1"],datos:"[]" ,delimitador: "[{colum:0,operador:7,valor1:' + ww + ',aÃ±adir:0},{colum:2,operador:0,valor1:' + idTipoItem + '}]", id:0,opSelect:6}]'];
+            jso[3] = ['Crud_Controller', '[{opcion: 3,tabla: "19",elegir: ["0", "1"],datos:"[]" ,delimitador: "[{colum:0,operador:7,valor1:' + ww + ',aÃ±adir:0},{colum:2,operador:0,valor1:' + idTipoItem + '}]", id:0,opSelect:6}]'];
             selector[3] = $("#SelectItem");
             datos[3] = {nombre: "MultiSelect", worker: true};
             selector[3].multiSelect();

@@ -17,25 +17,53 @@ function listaChequeo(idTipoItem, idUser) {
         }
     });
     $("#BtnLista").on('click', function () {
+        console.log("hola como");
+        $(".remove").remove();
+                if ($("#NombreL").val() == "") {
+                        $("#NombreL").focus().after("<div class='remove'><font color='red'>diguita nombre de lista</font><div>");
+                        return false;
+        
+            } else if ($("#DescripcionL").val() == "") {
+                        $("#DescripcionL").focus().after("<div class='remove'><font color='red'>diguita descripcon de lista</font></div>");
+                        return false;
+        }
+        tre();
+    });
+
+    function tre() {
+
         var arrayS = [];
         for (var j = 0; j < arraySelecion.length; j++) {
             if (j == 0) {
-                arrayS = "" + arraySelecion[j]; 
+                arrayS = "" + arraySelecion[j];
             } else {
                 arrayS = arrayS + "," + arraySelecion[j];
             }
         }
-        men=$("#NombreL").val();
-        jso[2] = ['ListaChequeo_Controller','[{opcion:1,lista:['+$("#NombreL").val()+','+$("#DescripcionL").val()+','+idUser+'],items:['+arrayS+']}]'];
+        men = $("#NombreL").val();
+        jso[2] = ['ListaChequeo_Controller', '[{opcion:1,lista:[' + $("#NombreL").val() + ',' + $("#DescripcionL").val() + ',' + idUser + '],items:[' + arrayS + ']}]'];
         datos[2] = {nombre: "btn", worker: true};
         ajax(2, datos[2]);
-    });
+    }
+
     $("#btnItem").on('click', function () {
-        jso[1] = ['Crud_Controller', '[{opcion:1,actualizar:[],tabla:19,datos:["",' + $("#Descripcion").val() + ','+idTipoItem+'],elegir:[0,1],delimitador:"[{colum:2,operador:0,valor1:' + idTipoItem + '}]",id:0,opSelect:6}]'];
+
+         $(".remove").remove();
+        if( $("#Descripcion").val() == ""){
+            $("#Descripcion").focus().after("<div class='remove'><font color='red'>diguita descripcion</font></div>");
+            return false;
+                    }
+
+    greek();
+    });
+
+    function  greek() {
+        jso[1] = ['Crud_Controller', '[{opcion:1,actualizar:[],tabla:19,datos:["",' + $("#Descripcion").val() + ',' + idTipoItem + '],elegir:[0,1],delimitador:"[{colum:2,operador:0,valor1:' + idTipoItem + '}]",id:0,opSelect:6}]'];
         selector[1] = $("#SelectItem");
         datos[1] = {nombre: "MultiSelect", worker: true, opt: "Div"};
         ajax(1, datos[1]);
-    });
+    }
+
     function ajax(i, datos) {
         console.log(i);
         hilo[i] = new Worker("js/worker.js");
@@ -56,8 +84,8 @@ function listaChequeo(idTipoItem, idUser) {
                     men = "El item: " + $("#Descripcion").val() + " no fue agregado exitosamente";
                 }
             }
-            if (i==2) {
-                men= men+ " "+data[2];
+            if (i == 2) {
+                men = men + " " + data[2];
             }
             $.notify({
                 icon: 'ti-gift',

@@ -2,6 +2,8 @@ $(document).on('ready', function () {
     var selector = [], hilo = [], jso = [], data = [], datos = [];
     var ob = new $.Luna("Producto virtual", selector);
     ob.Vivo("Habilitar Producto");
+    console.log($("#ccNoti"));
+    $("#ccNoti").empty();
     $(document).on('click', '.btnclick', function (e) {
         jso[1] = ['ProductoVirtual_Controller', '[{opcion: 4,info:[],arrayFun:[],arrayTemas:[],archivoNom:[],aprobacion:[' + idUser + ',' + this.id + ']}]'];
         selector[1] = $("#tablaAprobar");
