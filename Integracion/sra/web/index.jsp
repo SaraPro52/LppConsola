@@ -8,6 +8,7 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
         <link rel="shotrcut icon" href="recursos/flavicon.ico">
+        <link href="css/saraestilo.css" rel="stylesheet" type="text/css"/>
         <title>Sara Pro</title>
     </head>
     <body>
@@ -33,13 +34,13 @@
                             <button type="submit" class="btn btn-default ubicacionLoginBoton" id="btnLogin">Iniciar sesión</button>
                         </form>
 
-                        <form class="col-md-12" action="Administrador_Controller" method="post" class="form-control"> 
-                            <select name="Opcion" value="0" >
-                                <option value="0">seleciona</option>
-                                <option value="0">Imagenes12</option>
+                        <!--form class="col-md-12" action="Equipo_Controller" method="post" class="form-control"> 
+                            <select name="Opcion" value="2" >
+                                <option value="2">seleciona</option>
+                                <option value="2">Imagenes12</option>
                             </select>        
                             <input type="submit" name="btnenviar" value="Aceptar">
-                        </form>    
+                        </form-->    
 
                     </div>
                 </div>

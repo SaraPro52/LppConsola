@@ -1,7 +1,7 @@
 function calificarPV(idLista) {
     var selector = [], hilo = [], jso = [], data = [], nombre = "funcionario", datos = [];
     
-    //$("#iFecha").datepicker();
+    $("#iFecha").datepicker();
     
     $("#clone").hide();
     var ob = new $.Luna("Producto virtual", $("#divContainer"));
@@ -32,7 +32,7 @@ function calificarPV(idLista) {
         } else if ($(".Resultado1").is(':checked')) {
             resultado = 0;
         }
-        jso[1] = ['EvaluacionGeneral_Controller', '[{opcion:1,infoEva:["' + $("#areaObservacion").val() + '","' + resultado + '","' + idVersion + '","' + idLista + '","' + idUser + '","' + $("#iFecha").val() + '"],infoItem:[' + infoItems + ']}]'];
+        jso[1] = ['EvaluacionGeneral_Controller', '[{opcion:1,idNoti:0,infoEva:["' + $("#areaObservacion").val() + '","' + resultado + '","' + idVersion + '","' + idLista + '","' + idUser + '","' + $("#iFecha").val() + '"],infoItem:[' + infoItems + ']}]'];
         selector[1] = null;
         datos[1] = {nombre: "btn", worker: true};
         ajax(1, datos[1]);

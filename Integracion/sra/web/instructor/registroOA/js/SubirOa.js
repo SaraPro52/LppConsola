@@ -41,32 +41,32 @@ $(document).ready(function () {
             arraySelecionEstr.splice(busqueda, 1);
         }
     });
-    $("#subir_oa").on('click', function () {
-         $(".remove").remove();
-                if ($("#Titulo_Publicacion").val() == "") {
-                        $("#Titulo_Publicacion").focus().after("<div class='remove'><font color='red'>digite un titulo de publicacion</font><div>");
-                        return false;
-        
-            } else if ($("#palabras_claves").val() == "") {
-                        $("#palabras_claves").focus().after("<div class='remove'><font color='red'>digite las palabras claves</font></div>");
-                        return false;
-        } else if ($("#descripcion_oa").val() == "") {
-                        $("#descripcion_oa").focus().after("<div class='remove'><font color='red'>diita la descripco</font></div>");
-                        return false;
-        } else if ($("#requisitos_instalacion").val() == "") {
-                        $("#requisitos_instalacion").focus().after("<div class='remove'><font color='red'>digite los requisitos de instalacion</font></div>");
-                        return false;
-        } else if ($("#instrucciones").val() == "") {
-                        $("#instrucciones").focus().after("<div class='remove'><font color='red'>digite instrucciones de instalacion</font></div>");
-                        return false;
-        } else if ($("#formato").val() == "FG") {
-                        $("#formato").focus().after("<div class='remove'><font color='red'>slecione un formato</font></div>");
-                        return false;
-        } else if ($("#myfile").val() == "") {
-                        $("#myfile").focus().after("<div class='remove'><font color='red'>ingrese un archivo</font></div>");
-                        return false;
-        }
-    });
+//    $("#subir_oa").on('click', function () {
+//         $(".remove").remove();
+//                if ($("#Titulo_Publicacion").val() == "") {
+//                        $("#Titulo_Publicacion").focus().after("<div class='remove'><font color='red'>digite un titulo de publicacion</font><div>");
+//                        return false;
+//        
+//            } else if ($("#palabras_claves").val() == "") {
+//                        $("#palabras_claves").focus().after("<div class='remove'><font color='red'>digite las palabras claves</font></div>");
+//                        return false;
+//        } else if ($("#descripcion_oa").val() == "") {
+//                        $("#descripcion_oa").focus().after("<div class='remove'><font color='red'>diita la descripco</font></div>");
+//                        return false;
+//        } else if ($("#requisitos_instalacion").val() == "") {
+//                        $("#requisitos_instalacion").focus().after("<div class='remove'><font color='red'>digite los requisitos de instalacion</font></div>");
+//                        return false;
+//        } else if ($("#instrucciones").val() == "") {
+//                        $("#instrucciones").focus().after("<div class='remove'><font color='red'>digite instrucciones de instalacion</font></div>");
+//                        return false;
+//        } else if ($("#formato").val() == "FG") {
+//                        $("#formato").focus().after("<div class='remove'><font color='red'>slecione un formato</font></div>");
+//                        return false;
+//        } else if ($("#myfile").val() == "") {
+//                        $("#myfile").focus().after("<div class='remove'><font color='red'>ingrese un archivo</font></div>");
+//                        return false;
+//        }
+//    });
 
     var options = {
         beforeSend: function () {

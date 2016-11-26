@@ -50,10 +50,12 @@
                                 <label>Items de lista de chequeo</label>
 
                             </div>
-
                         </div>
                     </article>
-                    <button class="btn btn-info col-md-6" id="BtnLista">Modificar lista</button>
+                    <article class="col-md-12">
+                        
+                        <button class="btn btn-info col-md-6" id="BtnLista">Modificar lista</button>
+                    </article>
                 </div>
             </div>
         </div>

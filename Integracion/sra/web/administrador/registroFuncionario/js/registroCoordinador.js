@@ -13,10 +13,10 @@ $(document).on('ready', function () {
     
     $("#centroFormacion").change(function () {
         $("#area").empty().append("<option selected='selected'>selecciona...</option>");
-        var objet = {opcion: 5, url: "Crud_Controller", nombre: "Select", tabla: "10", datos: [""], elegir: ["0", "1"],
-            delimitador: "[{colum:2 ,operador:0 ,valor1:" + $("#centroFormacion").val() + "}]", id: 0, opSelect: 6};
-        selector = $("#area");
-        ob.ajax(objet, selector);
+        jso[4] = ['Crud_Controller', '[{opcion:5,tabla:10,datos:[],elegir:[0,1],delimitador:"[{colum:2 ,operador:0 ,valor1:'+$("#centroFormacion").val()+'}]",id:0,opSelect:6}]'];
+        selector[4] = $("#area");
+        datos[4] = {nombre: "Select", worker: true};
+        ajax(4, datos[4]); 
     });
 
     

@@ -56,7 +56,7 @@
                                      <div class="col-md-6">   
                                          <label style="display: none;"> Requisitos de instalacion</label>
                                                 <div class="form-group" style="visibility:hidden;">
-                                                    <textarea class="form-control " type="textarea " maxlength="200" name="palabras_claves" id="requisitos_instalacion" placeholder="Requisitos de instalacion" required data-validation-required-message="Ingresa requisitos de instalacion." rows="3" id="comment"></textarea>
+                                                    <textarea class="form-control " type="textarea " maxlength="200" name="palabras_claves" id="requisitos_instalacion1" placeholder="Requisitos de instalacion" required data-validation-required-message="Ingresa requisitos de instalacion." rows="3"></textarea>
                                                 </div>
                                             </div>
 

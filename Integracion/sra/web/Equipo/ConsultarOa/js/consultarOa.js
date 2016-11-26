@@ -1,8 +1,8 @@
 var selector = [], hilo = [], jso = [], data = [], nombre = "funcionario", datos = [];
-jso[0] = ['Crud_Controller', '[{opcion:5,tabla:24,datos:[],elegir:[4,5,6,10],delimitador:"[{colum:2,operador:0,valor1:' + idRol + ',añadir:0},{colum:8,operador:0,valor1:0},{colum:7,operador:0,valor1:' + idCentro + ',añadir:0},{colum:0,operador:0,valor1:' + idUser + '}]",id:0,opSelect:6}]'];
-selector[0] = $("#tablaConsultarOa");
+jso[0] = ['Crud_Controller', '[{opcion:5,tabla:24,datos:[],elegir:[4,5,6,11],delimitador:"[{colum:2,operador:0,valor1:' + idRol + ',añadir:0},{colum:8,operador:0,valor1:0,añadir:0},{colum:9,operador:0,valor1:' + idCentro + ',añadir:0},{colum:0,operador:0,valor1:' + idUser + '}]",id:0,opSelect:6}]'];
+selector[0] = $("#tablaConsultarOa"); 
 datos[0] = {nombre: "consutarOa", worker: true, dat: true};
-ajax(0, datos[0]);
+ajax(0, datos[0]);                 
 
 var ob = new $.Luna("Producto virtual", selector[0]);
 ob.Vivo("Producto virtual");

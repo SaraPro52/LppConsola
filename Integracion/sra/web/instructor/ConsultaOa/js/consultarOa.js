@@ -70,22 +70,21 @@ $(document).on('ready', function () {
 
 
     $("#btnBuscar").click(function () {
-        if (("#TituloOa").val() != "") {
-            var jso = data[2];
-            jso = jQuery.parseJSON(data[2]);
-            for (var i = 1; i <= jso.length; i++) {
-                var a = $("." + i).find('p');
-                var c = $(a[0]);
+        var jso = data[2];
+        console.log($("#txtBuscarTitle").val());
+
+        jso = jQuery.parseJSON(data[2]);
+        for (var i = 1; i <= jso.length; i++) {
+            var a = $("." + i).find('p');
+            console.log(a);
+            var c = $(a[0]);
+            console.log($(a[0]));
+            $("." + i).show();
+            if ($("#txtBuscarTitle").val() == c.text()) {
                 $("." + i).show();
-                if ($("#txtBuscarTitle").val() == c.text()) {
-                    $("." + i).show();
-                } else if ($("#txtBuscarTitle").val() != c.text()) {
-                    $("." + i).hide();
-                }
+            } else {
+                $("." + i).hide();
             }
-        } else {
-
-
         }
 
     });

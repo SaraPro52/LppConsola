@@ -32,7 +32,19 @@ public class ProductoVirtual_Controller extends HttpServlet {
                 2. Registrar Una nueva Version.
                 3. Correccion - Actualiza solo el url.
                 4. Realiza la aprovacion del producto virtual.
-                5. Consultar Productos virtuales Aprovados.*/
+                5. Consultar Productos virtuales Aprovados.
+            WHEN 0 THEN SET @Nom_P_Virtual = @valor;
+			WHEN 1 THEN SET @Des_P_Virtual = @valor;
+			WHEN 2 THEN SET @Palabras_Clave = @valor;
+			WHEN 3 THEN SET @Id_Formato = @valor;
+			WHEN 4 THEN SET @Url_Version = @valor;
+			WHEN 5 THEN SET @Url_Img = @valor;
+			WHEN 6 THEN SET @Inst_Instalacion= @valor;
+			WHEN 7 THEN SET @Reqst_Instalacion = @valor;
+			WHEN 8 THEN SET @ArrayFuncionario = @valor;
+			WHEN 9 THEN SET @ArrayTema = @valor;
+            
+            */
             String data = request.getParameter("data");
             JSONObject jData = new JSONArray(data).getJSONObject(0);
 

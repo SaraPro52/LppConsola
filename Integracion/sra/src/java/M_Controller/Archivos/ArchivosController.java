@@ -58,9 +58,9 @@ public class ArchivosController extends HttpServlet {
             File archivo = new File(bs.getBase() + AnNombre);
             File NuNombre = new File(bs.getBase() + NuevoNombre + '.' + ext2);
             if (archivo.renameTo(NuNombre)) {
-                nombre = bs.getBase() + NuevoNombre;
+                nombre = NuevoNombre+'.'+ext2;
             } else {
-                nombre = bs.getBase() + AnNombre;
+                nombre = AnNombre+'.'+ext2;
             }
         } catch (Exception e) {
             System.out.println(e.getMessage());

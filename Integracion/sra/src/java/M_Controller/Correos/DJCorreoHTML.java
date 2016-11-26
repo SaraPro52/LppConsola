@@ -36,6 +36,7 @@ public class DJCorreoHTML {
 
         try {
             MimeMessage mimeMessage = new MimeMessage(session);
+
             mimeMessage.setFrom(new InternetAddress(correoEnvia, "Sara Pro"));
             
             InternetAddress[] internetAddresses = {new InternetAddress(

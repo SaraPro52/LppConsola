@@ -1252,10 +1252,13 @@ public class NewMain {
 //                  System.out.println(new Funcionario().Select(27));
 
 
-            Evaluacion_General e = new Evaluacion_General();
-            String[] info1 = {"Observacion 1","1","5","3","12","2016-11-25"};
-            String[] info2 = {"1¤Observacion Item 1¤1","1¤Observacion Item 2¤2"};
-            System.out.println(e.RegistrarEvaluacion(info1, info2));
-                    
-    }
+//            Evaluacion_General e = new Evaluacion_General();
+//            String[] info1 = {"Observacion 1","1","5","3","12","2016-11-25"};
+//            String[] info2 = {"1¤Observacion Item 1¤1","1¤Observacion Item 2¤2"};
+////            System.out.println(e.RegistrarEvaluacion(info1, info2));
+//                    
+//              Elomac e = new Elomac(24,2);
+//              String beli = "[{colum:2,operador:0,valor1:1,añadir:0},{colum:7,operador:0,valor1:' + idCentro + ',añadir:0},{colum:0,operador:0,valor1:' + idUser + '}]",id:0,opSelect:6}]'];;
+//    }[4,5,6,10]}
+}
 }
