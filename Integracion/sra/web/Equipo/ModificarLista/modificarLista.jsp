@@ -2,7 +2,7 @@
     <link rel="stylesheet" href="css/bootstrap.css" media="screen" title="no title" charset="utf-8">
     <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.12/css/jquery.dataTables.css">
     <link rel="stylesheet" type="text/css" href="css/multi-select.css">
-    <link href="assets/css/paper-dashboard.css" rel="stylesheet"/>
+    <link href="assets/css/paper-dashboardEquipo.css" rel="stylesheet"/>
     <div class="content">
         <div class="container-fluid">
             <div class="row">
@@ -53,7 +53,7 @@
                         </div>
                     </article>
                     <article class="col-md-12">
-                        
+
                         <button class="btn btn-info col-md-6" id="BtnLista">Modificar lista</button>
                     </article>
                 </div>

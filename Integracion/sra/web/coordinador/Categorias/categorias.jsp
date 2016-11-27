@@ -3,7 +3,7 @@
     <title>Categorias</title>
     <link rel="stylesheet" href="css/bootstrap.css" media="screen" title="no title" charset="utf-8">
     <link rel="stylesheet" type="text/css" href="css/multi-select.css">
-    <link href="assets/css/paper-dashboard.css" rel="stylesheet"/>
+     <link href="assets/css/paper-dashboardCoordinador.css" rel="stylesheet"/>
 </head>
 <body>
     <div class="content">

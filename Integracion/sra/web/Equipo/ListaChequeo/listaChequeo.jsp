@@ -1,5 +1,6 @@
 <div class="">
     <link rel="stylesheet" type="text/css" href="css/multi-select.css">
+    <link href="assets/css/paper-dashboardEquipo.css" rel="stylesheet"/>
     <div class="content">
         <div class="container-fluid">
             <div class="row">

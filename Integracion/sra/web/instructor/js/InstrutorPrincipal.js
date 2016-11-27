@@ -1,5 +1,4 @@
 $(document).on('ready', function () {
-
     $(document).on('click', '.Notify', function (e) {
         if (this.id == "verMasNotificaciones") {
             var objeto = {url: "Instrutor_Controller", Opcion: 3, name: 'cuerpo'};
@@ -12,6 +11,7 @@ $(document).on('ready', function () {
     console.log("Vivo??Instrutor");
     var objeto = {url: "Instrutor_Controller", Opcion: 3, name: 'cuerpo'};
     obtenerP(objeto);
+
     $('.menu li').click(function (e) {
         var objeto = {url: "Instrutor_Controller", Opcion: this.value, name: 'cuerpo'};
         casoUso = "text" + this.value;
@@ -46,6 +46,19 @@ $(document).on('ready', function () {
                 break;
         }
     }
+    var cont = 0;
+    if (cont == 0) {
+        $.notify({
+            icon: 'ti-gift',
+            message: "Bienvenido a <b>Sara Pro</b> - Instructor " + nomUser + "."
+
+        }, {
+            type: 'success',
+            timer: 4000
+        });
+        cont++;
+    }
+
 });
 
 

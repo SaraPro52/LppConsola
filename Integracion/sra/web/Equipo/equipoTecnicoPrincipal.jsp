@@ -12,7 +12,8 @@
         <meta name="viewport" content="width=device-width" />
         <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
         <link href="assets/css/animate.min.css" rel="stylesheet"/>
-        <link href="assets/css/paper-dashboard.css" rel="stylesheet"/>
+        <link href="assets/css/paper-dashboardEquipo.css" rel="stylesheet"/>
+
         <link href="assets/css/demo.css" rel="stylesheet" />
         <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
         <link href='https://fonts.googleapis.com/css?family=Muli:400,300' rel='stylesheet' type='text/css'>
@@ -51,7 +52,7 @@
                 <div class="sidebar-wrapper">
                     <div class="logo">
                         <a class="simple-text">
-                            <img src="assets/img/logo.png" alt="" />
+                            <img src="assets/img/logoEquipo.png" alt="" />
                         </a>
                     </div>
                     <ul class="nav menu" id="menus"><li class="active"><a><i class="ti-home"></i><p>Equipo tecnico</p></a></li>

@@ -1,5 +1,6 @@
 <div id="contenedoraBody">
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link href="assets/css/paper-dashboardEquipo.css" rel="stylesheet"/>
     <div class="content">
         <div class="container-fluid">
             <div class="row">

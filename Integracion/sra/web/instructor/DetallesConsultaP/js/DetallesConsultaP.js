@@ -18,6 +18,7 @@ function Detalles(Producto, dat) {
     ajax(1, datos[1]);
     $(document).on('click', '.Comentar', function (e) {
         var s = $("#consul" + this.value);
+        
         jso[0] = ['Crud_Controller', '[{opcion:1,tabla:7,delimitador:[],datos:["",' + $(".Comment" + this.value).val() + ',' + idUser + ',' + this.value + '],\n\
         elegir:[0,1,2,3],delimitar:[{colum:3,operador:0,valor1:' + this.value + '}],id:0,opSelect:6}]'];
         selector[0] = "null";

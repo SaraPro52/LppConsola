@@ -96,13 +96,5 @@
         } else {
             location.replace('index.jsp');
         }
-        $.notify({
-            icon: 'ti-gift',
-            message: "Bienvenido a <b>Sara Pro</b> - Instructor " + nomUser + "."
-
-        }, {
-            type: 'success',
-            timer: 4000
-        });
     </script>
 </html>

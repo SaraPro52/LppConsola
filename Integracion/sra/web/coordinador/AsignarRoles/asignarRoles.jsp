@@ -5,6 +5,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="css/bootstrap.css" media="screen" title="no title" charset="utf-8">
         <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.12/css/jquery.dataTables.css">
+         <link href="assets/css/paper-dashboardCoordinador.css" rel="stylesheet"/>
         <title>Asignar roles</title>
     </head>
     <body>
