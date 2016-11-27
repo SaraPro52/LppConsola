@@ -5,6 +5,7 @@ import M_Modelo.Evaluacion_General;
 import M_Modelo.Funcionario;
 import M_Modelo.Lista_Chequeo;
 import M_Modelo.Programa;
+import static com.sun.corba.se.spi.presentation.rmi.StubAdapter.request;
 import org.json.JSONException;
 import javax.script.ScriptException;
 
@@ -1248,10 +1249,7 @@ public class NewMain {
 //                String[] items = {"4","5","6"};
 //                
 //                System.out.println(l.ModificarLista(info, items));
-
 //                  System.out.println(new Funcionario().Select(27));
-
-
 //            Evaluacion_General e = new Evaluacion_General();
 //            String[] info1 = {"Observacion 1","1","5","3","12","2016-11-25"};
 //            String[] info2 = {"1¤Observacion Item 1¤1","1¤Observacion Item 2¤2"};
@@ -1260,5 +1258,9 @@ public class NewMain {
 //              Elomac e = new Elomac(24,2);
 //              String beli = "[{colum:2,operador:0,valor1:1,añadir:0},{colum:7,operador:0,valor1:' + idCentro + ',añadir:0},{colum:0,operador:0,valor1:' + idUser + '}]",id:0,opSelect:6}]'];;
 //    }[4,5,6,10]}
-}
+        String sFernando = "C u a n d o F e r n a n d o S é p t i m o u s a b a p a l e t o";
+        System.out.println(sFernando);
+        sFernando = sFernando.replace(' ', '_');
+        System.out.println(sFernando);
+    }
 }

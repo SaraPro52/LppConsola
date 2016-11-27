@@ -1,13 +1,21 @@
 function Detalles(Producto, dat) {
+    var acc = document.getElementsByClassName("accordion");
+    $(document).on('click', '.accordion', function (e) {
+        for (e = 0; e < acc.length; e++) {
+            acc[e].onclick = function () {
+                this.classList.toggle("active");
+                this.nextElementSibling.classList.toggle("show");
+            }
+        }
+    });
+
     $("#IdProducto").text("Produto: " + dat);
     var selector = [], hilo = [], jso = [], data = [], datos = [];
-    var ob = new $.Luna("Consultar PV", $("#formulario1"));
+    var ob = new $.Luna("Consultar PV1", $("#formulario1"));
     jso[1] = ['ProductoVirtual_Controller', '[{opcion:5,arrayTemas:[],archivoNom:"",info:[],arrayFun:[],idPV:' + Producto + '}]'];
     selector[1] = $("#ClonDetalles");
-    datos[1] = {nombre: "DetallesOaC", worker: true};
-    console.log(jso[1]);
+    datos[1] = {nombre: "DetallesOaC", worker: true, nom: dat};
     ajax(1, datos[1]);
-
     $(document).on('click', '.Comentar', function (e) {
         var s = $("#consul" + this.value);
         jso[0] = ['Crud_Controller', '[{opcion:1,tabla:7,delimitador:[],datos:["",' + $(".Comment" + this.value).val() + ',' + idUser + ',' + this.value + '],\n\
@@ -19,16 +27,17 @@ function Detalles(Producto, dat) {
 
     $(document).on('click', '.labelEstrella', function (e) {
         console.log(this.id);
-        var myClass=[];
+        var myClass = [];
         var s = $(this);
         console.log(s);
         myClass = s.attr("class");
-        var res= myClass.substr(14,myClass.length); 
-        jso[2] = ['Rankin_Controller', '[{opcion:1,idVer:' +res+',campRa:' +this.id+ '}]'];
+        var res = myClass.substr(14, myClass.length);
+        jso[2] = ['Rankin_Controller', '[{opcion:1,idVer:' + res + ',campRa:' + this.id + '}]'];
         selector[2] = "null";
         datos[2] = {nombre: "btn", worker: true};
         ajax(2, datos[2]);
     });
+
 
     $(document).on('click', '.Descargar', function (e) {
         location.href = "Archivos/" + this.value;
@@ -48,14 +57,7 @@ function Detalles(Producto, dat) {
         };
     }
     function peticionCompleta(i) {
-        if (i == 0) {
-            console.log(data[i]);
-        } else if (i == 1) {
-            console.log(data[i]);
-
-        } else if (i == 2) {
-            console.log(data[i]);
-        } else if (i == 5) {
+        if (i == 15) {
             $.notify({
                 icon: 'ti-gift',
                 message: data[5] + "."

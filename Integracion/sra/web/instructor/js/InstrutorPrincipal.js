@@ -20,10 +20,8 @@ $(document).on('ready', function () {
             casoUso = casoUso + " producto virtual";
         }
         obtenerP(objeto);
-
     });
     function obtenerP(datos) {
-        console.log(datos);
         $.ajax({
             url: datos.url,
             type: 'POST',

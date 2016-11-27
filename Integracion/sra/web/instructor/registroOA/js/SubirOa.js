@@ -41,32 +41,32 @@ $(document).ready(function () {
             arraySelecionEstr.splice(busqueda, 1);
         }
     });
-//    $("#subir_oa").on('click', function () {
-//         $(".remove").remove();
-//                if ($("#Titulo_Publicacion").val() == "") {
-//                        $("#Titulo_Publicacion").focus().after("<div class='remove'><font color='red'>digite un titulo de publicacion</font><div>");
-//                        return false;
-//        
-//            } else if ($("#palabras_claves").val() == "") {
-//                        $("#palabras_claves").focus().after("<div class='remove'><font color='red'>digite las palabras claves</font></div>");
-//                        return false;
-//        } else if ($("#descripcion_oa").val() == "") {
-//                        $("#descripcion_oa").focus().after("<div class='remove'><font color='red'>diita la descripco</font></div>");
-//                        return false;
-//        } else if ($("#requisitos_instalacion").val() == "") {
-//                        $("#requisitos_instalacion").focus().after("<div class='remove'><font color='red'>digite los requisitos de instalacion</font></div>");
-//                        return false;
-//        } else if ($("#instrucciones").val() == "") {
-//                        $("#instrucciones").focus().after("<div class='remove'><font color='red'>digite instrucciones de instalacion</font></div>");
-//                        return false;
-//        } else if ($("#formato").val() == "FG") {
-//                        $("#formato").focus().after("<div class='remove'><font color='red'>slecione un formato</font></div>");
-//                        return false;
-//        } else if ($("#myfile").val() == "") {
-//                        $("#myfile").focus().after("<div class='remove'><font color='red'>ingrese un archivo</font></div>");
-//                        return false;
-//        }
-//    });
+    $("#subir_oa").on('click', function () {
+         $(".remove").remove();
+                if ($("#Titulo_Publicacion").val() == "") {
+                        $("#Titulo_Publicacion").focus().after("<div class='remove'><font color='red'>digite un titulo de publicacion</font><div>");
+                        return false;
+        
+            } else if ($("#palabras_claves").val() == "") {
+                        $("#palabras_claves").focus().after("<div class='remove'><font color='red'>digite las palabras claves</font></div>");
+                        return false;
+        } else if ($("#descripcion_oa").val() == "") {
+                        $("#descripcion_oa").focus().after("<div class='remove'><font color='red'>digite la descripción</font></div>");
+                        return false;
+        } else if ($("#requisitos_instalacion").val() == "") {
+                        $("#requisitos_instalacion").focus().after("<div class='remove'><font color='red'>digite los requisitos de instalacion</font></div>");
+                        return false;
+        } else if ($("#instrucciones").val() == "") {
+                        $("#instrucciones").focus().after("<div class='remove'><font color='red'>digite instrucciones de instalacion</font></div>");
+                        return false;
+        } else if ($("#formato").val() == "FG") {
+                        $("#formato").focus().after("<div class='remove'><font color='red'>slecione un formato</font></div>");
+                        return false;
+        } else if ($("#myfile").val() == "") {
+                        $("#myfile").focus().after("<div class='remove'><font color='red'>ingrese un archivo</font></div>");
+                        return false;
+        }
+    });
 
     var options = {
         beforeSend: function () {
@@ -78,14 +78,12 @@ $(document).ready(function () {
         uploadProgress: function (event, position, total, percentComplete) {
             $("#progressbar").width(percentComplete + '%');
             $("#percent").html(percentComplete + '%');
-            if ((percentComplete > 50) && (percentComplete < 100)) {
-                $("#message").html("<font color='blue'>El archivo se esta subiendo</font>");
+            if ((percentComplete > 1) && (percentComplete < 101)) {
+                $("#message").html("<font color='blue'>Cargando el archivo... espera</font>");
             }
+            
         },
         success: function () {
-            $("#progressbar").width('100 %');
-            $("#percent").html('100 %');
-            $("#message").html("<font color='gren'>El archivo se subio correctamente</font>");
             var arrayAutor = "";
             var arrayTemas = [];
             for (var i = 0; i < arraySelecionAutor.length; i++) {

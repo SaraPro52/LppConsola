@@ -11,8 +11,6 @@
         <div class="content">
             <div class="container-fluid">
                 <div class="row">
-
-
                     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
@@ -55,7 +53,6 @@
         </div>
     </body>
     <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.12/js/jquery.dataTables.js"></script>
-    <script type="text/javascript" src="js/bootstrap-modal.js"></script>
     <script type="text/javascript" src="js/jquery.cecily.js"></script>
     <script src="instructor/Correcion/js/Correcion.js" type="text/javascript"></script>
 </html>

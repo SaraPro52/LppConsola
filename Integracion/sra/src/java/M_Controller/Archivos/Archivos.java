@@ -21,10 +21,8 @@ public class Archivos {
     }
 
     public String getBase() {
-        String base = "C:\\Users\\migue\\Desktop\\LppConsola\\Integracion\\sra\\web\\Archivos\\";
-        return base;
+        return ("C:\\Users\\Judini\\Documents\\Proyectos\\LppConsola\\Integracion\\sra\\web\\Archivos\\");
     }
-    
 
     public void setBase(String base) {
         this.base = base;

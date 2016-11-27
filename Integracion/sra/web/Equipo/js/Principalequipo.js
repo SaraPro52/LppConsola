@@ -1,7 +1,5 @@
 $(document).on('ready', function () {
     var casoUso = "Notificaciones";
-    console.log("Vivo??EquipoPrincipal");
-
     objeto = {url: "Equipo_Controller", Opcion: 2, name: 'cuerpo'};
     casoUso = "Consultar productos virtuales";
     obtenerP(objeto);

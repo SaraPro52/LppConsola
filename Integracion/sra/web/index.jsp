@@ -34,13 +34,13 @@
                             <button type="submit" class="btn btn-default ubicacionLoginBoton" id="btnLogin">Iniciar sesión</button>
                         </form>
 
-                        <!--form class="col-md-12" action="Equipo_Controller" method="post" class="form-control"> 
+                        <form class="col-md-12" action="Instrutor_Controller" method="post" class="form-control"> 
                             <select name="Opcion" value="2" >
-                                <option value="2">seleciona</option>
+                                <option value="0">seleciona</option>
                                 <option value="2">Imagenes12</option>
                             </select>        
                             <input type="submit" name="btnenviar" value="Aceptar">
-                        </form-->    
+                        </form>    
 
                     </div>
                 </div>
@@ -93,7 +93,9 @@
             </div>
             <div id="cajon2" class="col-md-5 seccionVideo">
                 <div style="margin-left:10%; margin-bottom:3%;">
-                    <video src="video/SARApro[1].webm" width="400" height="260" controls>
+                    <video controls>
+                        Lo siento; tu navegador no soporta HTML 5 video.
+                        <source src="video/SARApro.mp4" type="video/mp4">
                     </video>
                 </div>
             </div>

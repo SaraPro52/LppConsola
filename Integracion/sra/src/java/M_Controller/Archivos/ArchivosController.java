@@ -51,6 +51,7 @@ public class ArchivosController extends HttpServlet {
 
     public String CambiarNombre(String AnNombre, String NuevoNombre) {
         String nombre = "";
+        NuevoNombre = NuevoNombre.replace(' ', '_');
         try {
             Archivos bs = new Archivos();
             String ext2 = FilenameUtils.getExtension(AnNombre);
@@ -58,9 +59,9 @@ public class ArchivosController extends HttpServlet {
             File archivo = new File(bs.getBase() + AnNombre);
             File NuNombre = new File(bs.getBase() + NuevoNombre + '.' + ext2);
             if (archivo.renameTo(NuNombre)) {
-                nombre = NuevoNombre+'.'+ext2;
+                nombre = NuevoNombre + '.' + ext2;
             } else {
-                nombre = AnNombre+'.'+ext2;
+                nombre = AnNombre + '.' + ext2;
             }
         } catch (Exception e) {
             System.out.println(e.getMessage());

@@ -8,7 +8,7 @@
         <link href="assets/css/paper-dashboard.css" rel="stylesheet"/>
     </head>
     <body>
-        <div class="content">
+        <div class="content" id="formulario1">
             <div class="container-fluid">
                 <div class="row">
                 </div>
@@ -42,7 +42,6 @@
                                             <label>Tipo De Identificación</label>
                                             <select id="IdentificacionFunTipo" class="form-control border-input">
                                                 <option value="A0">Seleciona...</option>
-                                                <option >c.c</option>
                                             </select>
                                         </div>
                                     </div>
@@ -84,20 +83,31 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div class="col-md-8">
+                                    <label>Contraseña actual</label>
+                                    <input id="ConActual" type="password" class="form-control border-input" placeholder="" >
+                                </div> 
+                                <div class="col-md-6">
+                                    <label>Nueva contraseña</label>
+                                    <input id="ConNueva" type="password" class="form-control border-input" placeholder="" >
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="exampleInputEmail1">Confirmar nueva contraseña</label>
+                                    <input id="ConNuevaF"  type="password" class="form-control border-input" placeholder="">
+                                </div>
                         </div>
                         <div class="text-center" style="margin-bottom:3%; ">
-                            <button type="button" class="btn btn-info btn-fill btn-wd" data-toggle="modal" data-target="#myModal">
-                                Cambiar contraseña
-                            </button>
                             <button id="BtnModificar" type="button" class="btn btn-info btn-fill btn-wd">Modificar perfil</button>
                         </div>
-                        <div class="clearfix"></div>
-                        </form>
                     </div>
+
+                    <div class="clearfix"></div>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
+</div>
 </body>
 <script src="assets/js/jquery-1.10.2.js" type="text/javascript"></script>
 <script src="assets/js/bootstrap-notify.js"></script> 

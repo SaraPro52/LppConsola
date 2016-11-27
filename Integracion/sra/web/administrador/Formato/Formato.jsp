@@ -39,10 +39,9 @@
                     <table id="tablaformato" class="table table-hover">
                         <thead>
                             <tr class="active">
-                                <td>#</td>
-                                <td >Nombre formato</td>
+                                <td>Numero </td>
+                                <td>Nombre formato</td>
                                 <td>Descripcion del formato</td>
-                                <td></td>
                                 <td></td>
                             </tr>
                         </thead>

@@ -1,8 +1,8 @@
 function calificarPV(idLista) {
     var selector = [], hilo = [], jso = [], data = [], nombre = "funcionario", datos = [];
-    
+
     $("#iFecha").datepicker();
-    
+
     $("#clone").hide();
     var ob = new $.Luna("Producto virtual", $("#divContainer"));
     ob.Vivo("CalificarOA");
@@ -26,7 +26,7 @@ function calificarPV(idLista) {
                 infoItems.push("0¤" + $("#" + campo).val() + "¤" + campo);
             }
         });
-        var resultado = 3;   
+        var resultado = 3;
         if ($(".Resultado").is(':checked')) {
             resultado = 1;
         } else if ($(".Resultado1").is(':checked')) {

@@ -29,7 +29,6 @@
                                                     <td>#</td>
                                                     <td>Nombre</td>
                                                     <td>Modificar</td>
-                                                    <td>Eliminar</td>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -45,6 +44,7 @@
         </div>  
     </body>
     <script type="text/javascript" src="js/jquery.js"></script>
+    <script src="assets/js/bootstrap-notify.js"></script> 
     <script type="text/javascript" charset="utf8" src="js/jquery.dataTables.js"></script>
     <script type="text/javascript" src="js/jquery.cecily.js"></script>
     <script type="text/javascript" src="administrador/ciudad/js/ciudad.js"></script>
