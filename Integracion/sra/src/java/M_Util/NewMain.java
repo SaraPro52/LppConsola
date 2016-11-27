@@ -1,11 +1,13 @@
 package M_Util;
 
+import M_Controller.Archivos.Archivos;
 import M_Modelo.Categoria;
 import M_Modelo.Evaluacion_General;
 import M_Modelo.Funcionario;
 import M_Modelo.Lista_Chequeo;
 import M_Modelo.Programa;
 import static com.sun.corba.se.spi.presentation.rmi.StubAdapter.request;
+import java.io.File;
 import org.json.JSONException;
 import javax.script.ScriptException;
 
@@ -1258,9 +1260,21 @@ public class NewMain {
 //              Elomac e = new Elomac(24,2);
 //              String beli = "[{colum:2,operador:0,valor1:1,añadir:0},{colum:7,operador:0,valor1:' + idCentro + ',añadir:0},{colum:0,operador:0,valor1:' + idUser + '}]",id:0,opSelect:6}]'];;
 //    }[4,5,6,10]}
-        String sFernando = "C u a n d o F e r n a n d o S é p t i m o u s a b a p a l e t o";
-        System.out.println(sFernando);
-        sFernando = sFernando.replace(' ', '_');
-        System.out.println(sFernando);
+        File fichero = new File("src/java/M_Controller/Archivos/Archivos.java");
+
+        if (fichero.exists()) {
+            System.out.println("Nombre del archivo " + fichero.getName());
+            System.out.println("Camino             " + fichero.getPath());
+            System.out.println("Camino absoluto    " + fichero.getAbsolutePath());
+            System.out.println("Se puede escribir  " + fichero.canRead());
+            System.out.println("Se puede leer      " + fichero.canWrite());
+            System.out.println("Tamaño             " + fichero.length());
+        }
+
+        fichero = new File(".");
+        String[] listaArchivos = fichero.list();
+        for (int i = 0; i < listaArchivos.length; i++) {
+            System.out.println(listaArchivos[i]);
+        }
     }
 }
