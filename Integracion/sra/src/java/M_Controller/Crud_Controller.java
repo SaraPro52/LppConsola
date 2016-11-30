@@ -63,12 +63,12 @@ public class Crud_Controller extends HttpServlet {
                     elo = new Elomac(tabla, tipoElo);
                     try {
                         if (elo.Update(elo.Select(id), actualizar)) {
-                            respuesta.println("actualizado");
+                            respuesta.println("[{valor:true,mensaje:'Actualizo'}]");
                         } else {
-                            respuesta.println("no actualizado");
+                            respuesta.println("[{valor:true,mensaje:'No Actualizo'}]");
                         }
                     } catch (Exception e) {
-                        respuesta.println(e.getMessage());
+                        respuesta.println("[{valor:false,mensaje:'Falla: "+e.getMessage()+"'}]");
                     }
                     break;
                 case 3:
@@ -82,12 +82,12 @@ public class Crud_Controller extends HttpServlet {
                     break;
             }
         } catch (Exception falla) {
-            respuesta.println("Falla: " + falla.getMessage());
+            respuesta.println("[{valor:false,mensaje:'Falla: "+falla.getMessage()+"'}]");
         } finally {
             try {
                  elo.cerrarConexiones();
             } catch (SQLException ex) {
-                respuesta.println("Falla: " + ex.getMessage());
+                respuesta.println("[{valor:false,mensaje:'Falla: "+ex.getMessage()+"'}]");
             }
         }
     }
@@ -111,9 +111,7 @@ public class Crud_Controller extends HttpServlet {
             }
 
         } catch (Exception e) {
-            e.printStackTrace();
-            System.out.println(e.getMessage());
-            respuesta.println(e.getMessage());
+            respuesta.println("[{valor:false,mensaje:'Falla: "+e.getMessage()+"'}]");
         }
     }
 

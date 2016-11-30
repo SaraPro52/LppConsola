@@ -65,40 +65,40 @@ public class ProductoVirtual_Controller extends HttpServlet {
                     String nruta = infoVersion[0];
                     infoVersion[4] = arch.CambiarNombre(archivoNom, nruta);
                     if (ver.RegistrarPV(infoVersion, arrayFun, arrayTemas)) {
-                        respuesta.println("fue registrado correctamente");
+                        respuesta.println("[{valor:true,mensaje:'El producto fue Registrado'}]");
                     } else {
-                        respuesta.println("no fue registrado");
+                        respuesta.println("[{valor:false,mensaje:'El producto no fue Registrado'}]");
                     }
                     break;
                 case 2:
                     if (ver.RegistrarVersion(infoVersion, arrayFun)) {
-                        respuesta.println("Si Registro");
+                        respuesta.println("[{valor:true,mensaje:'Si Registro'}]");
                     } else {
-                        respuesta.println("No Registro");
+                        respuesta.println("[{valor:false,mensaje:'No Registro'}]");
                     }
                     break;
                 case 3:
                     String[] correccion = Elomac.M_toArray(jData.getString("correccion"));
                     if (ver.CorreccionVersion(correccion)) {
-                        respuesta.println("Si Registro");
+                        respuesta.println("[{valor:true,mensaje:'Si Registro'}]");
                     } else {
-                        respuesta.println("No Registro");
+                        respuesta.println("[{valor:false,mensaje:'No Registro'}]");
                     }
                     break;
                 case 4:
                     try {
                         String[] aprobacion = Elomac.M_toArray(jData.getString("aprobacion"));
                         if (ver.AprobarPV(aprobacion)) {
-                            respuesta.println("Si Registro");
+                            respuesta.println("[{valor:true,mensaje:'Si Registro'}]");
                         } else {
-                            respuesta.println("No Registro");
+                            respuesta.println("[{valor:false,mensaje:'No Registro'}]");
                         }
                     } catch (Exception e) {
                         respuesta.println(e.getMessage());
                     }
                     break;
                 case 5:
-                    respuesta.println(new Producto_Virtual().ConsultarProducto());
+                    respuesta.println("[{valor:true,mensaje:'"+new Producto_Virtual().ConsultarProducto()+"'}]");
                     break;
             }
         } catch (Exception falla) {

@@ -44,28 +44,28 @@ public class Funcionario_Controller extends HttpServlet {
                         if (new Funcionario().RegistrarFuncionario(fun)) {
                             DJCorreoHTML correoHTML = new DJCorreoHTML();
                             correoHTML.mandarCorreo(fun[5], "Confirmacion de Cuenta SARA PRO1",fun[2],fun[8]);
-                            respuesta.println("El funcionario fue registrado correctamente");
+                            respuesta.println("[{valor:true,mensaje:'Registro Completo'}]");
                         } else {
-                            respuesta.println("El funcionario no fue registrado");
+                            respuesta.println("[{valor:false,mensaje:'Registro Fallido'}]");
                         }
                     } catch (Exception e) {
-                        respuesta.println(e.getMessage());
+                        respuesta.println("[{valor:false,mensaje:'"+e.getMessage()+"'}]");
                     }
                     break;
                 case 2:
                     String centro = jData.getString("centro");
                     try {
-                        respuesta.println(new Funcionario().ListaAsignarRoles(centro));
+                        respuesta.println("[{valor:true,mensaje:'"+new Funcionario().ListaAsignarRoles(centro)+"'}]");
                     } catch (Exception e) {
-                        respuesta.println(e.getMessage());
+                        respuesta.println("[{valor:false,mensaje:'"+e.getMessage()+"'}]");
                     }
                     break;
                 case 3:
                     Elomac fun1 = new Elomac(18, 1);
                     if (fun1.Update(fun1.Select(jData.getInt("id")), "[{'8':'" + DigestUtils.md5Hex(jData.getString("con")) + "','9':'1'}]")) {
-                        respuesta.println("actualizado");
+                        respuesta.println("[{valor:true,mensaje:'Actualizacion Complea'}]");
                     } else {
-                        respuesta.println("no actualizado");
+                        respuesta.println("[{valor:false,mensaje:'Actualizacion Fallida'}]");
                     }
                     break;
                 case 4:
@@ -81,9 +81,9 @@ public class Funcionario_Controller extends HttpServlet {
                         fun2[8] = new vasos().getVaso();
                         DJCorreoHTML correoHTML = new DJCorreoHTML();
                         correoHTML.mandarCorreo(fun2[5], "Confirmacion de Cuenta SARA PRO1",fun2[2],fun2[8]);
-                        respuesta.println("El funcionario fue registrado correctamente");
+                        respuesta.println("[{valor:true,mensaje:'El Funcionario fue Registrado'}]");
                     } else {
-                        respuesta.println("El funcionario no fue registrado");
+                        respuesta.println("[{valor:false,mensaje:'El Funcionario no fue Registrado'}]");
                     }
                     
                     break;

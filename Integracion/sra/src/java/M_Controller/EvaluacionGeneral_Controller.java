@@ -44,21 +44,21 @@ public class EvaluacionGeneral_Controller extends HttpServlet {
                 case 1:
                     try {
                         if(evaluacion.RegistrarEvaluacion(infoEva, infoItem)){
-                            respuesta.println("se evaluo correctamente");
+                            respuesta.println("[{valor:true,mensaje:'Se evaluo Correctamente'}]");
                             int idNoti = jData.getInt("idNoti");
                             Notificacion noti = new Notificacion();
                             noti.load(noti.Select(idNoti));
                             noti.atributos.replace("Estado",1);
                             if(noti.Update()){
-                                System.out.println("Se actualizo");
+                                respuesta.println("[{valor:true,mensaje:'Actualizo'}]");
                             }else{
-                                System.out.println("No actualizo");
+                                respuesta.println("[{valor:false,mensaje:'No Actualizo'}]");
                             }
                         }else{
-                            respuesta.println("no pudo ser evaluado");
+                            respuesta.println("[{valor:false,mensaje:'No se evaluado'}]");
                         }
                     } catch (Exception e) {
-                        respuesta.println(e.getMessage());
+                        respuesta.println("[{valor:false,mensaje:'"+e.getMessage()+"'}]");
                     }
                     break;
             }

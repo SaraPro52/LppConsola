@@ -40,10 +40,10 @@ public class ListaChequeo_Controller extends HttpServlet {
                     String items = M_Procedure.Group(Elomac.M_toArray(jData.getString("items")),',');
                     try {
                         if(new Lista_Chequeo().RegistrarLista(lista, items))
-                            respuesta.println("fue registrada correctamente");
-                        else respuesta.println("no registro");
+                            respuesta.println("[{valor:true,mensaje:'La Lista fue Registrada'}]");
+                        else respuesta.println("[{valor:false,mensaje:'La lista no fue Registrada'}]");
                     } catch (Exception e) {
-                        respuesta.println(e.getMessage());
+                        respuesta.println("[{valor:false,mensaje:'"+e.getMessage()+"'}]");
                     }
                     break;
                 case 2:
@@ -52,8 +52,8 @@ public class ListaChequeo_Controller extends HttpServlet {
                     
                     try {
                         if(new Lista_Chequeo().ModificarLista(mLista, mitems))
-                            respuesta.println("Se actualizo");
-                        else respuesta.println("No se actualizo");
+                            respuesta.println("[{valor:true,mensaje:'Actualizacion Correcta'}]");
+                        else respuesta.println("[{valor:false,mensaje:'Actualizacion Fallida'}]");
                     } catch (Exception e) {
                         respuesta.println(e.getMessage());
                     }

@@ -39,10 +39,10 @@ public class Categoria_Controller extends HttpServlet {
                 case 1: 
                     try {
                         if(cate.RegistrarCategoria(categoria, temas))
-                            respuesta.println("Si Registro");
-                        else respuesta.println("No Registro");
+                             respuesta.println("[{valor:true,mensaje:'Registro Completo'}]");
+                        else respuesta.println("[{valor:false,mensaje:'Registro Completo'}]");
                     } catch (Exception e) {
-                        respuesta.println(e.getMessage());
+                        respuesta.println("[{valor:false,mensaje:'"+e.getMessage()+"'}]");
                     }
                     break;
             }

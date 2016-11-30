@@ -19,7 +19,7 @@ $(document).on('ready', function () {
     });
     var men = "";
     $("#btnCiudad").on('click', function () {
-        jso[1] = ['Crud_Controller', '[{opcion:1,tabla:5,delimitador:[],datos:["",' + $("#Ciudad").val() + '],elegir:[0,1],id:0,opSelect:4}]'];
+        jso[1] = ['Crud_Controller', '[{opcion:1,tabla:6,delimitador:[],datos:["",' + $("#Ciudad").val() + '],elegir:[0,1],id:0,opSelect:4}]'];
         selector[1] = $("#tablaCiudad");
         men = $("#Ciudad").val();
         datos[1] = {nombre: "Ciudad", worker: true};
