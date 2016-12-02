@@ -3,7 +3,6 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Deshabilitar Funcionario</title>
         <link rel="stylesheet" href="css/bootstrap.css" media="screen" title="no title" charset="utf-8">
         <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.12/css/jquery.dataTables.css">
         <link href="assets/css/paper-dashboard.css" rel="stylesheet"/>
@@ -14,7 +13,7 @@
                 <div class="col-md-12">
                     <div class="contenedor">
                         <section>
-                            <article class="col-md-10 col-md-offset-1"> 
+                            <article class="col-md-10 col-md-offset-1">
                                 <table id="tablaAdmi" class="table table-hover ">
                                     <thead>
                                     <th>#</th>
@@ -36,9 +35,9 @@
         </div>
     </div>
     <input type="hidden" id="ajaxComplet">
-    <script type="text/javascript" src="js/jquery.js"></script>
-    <script src="js/notify.js"></script>
+    <script type="text/javascript" charset="utf8" src="js/jquery.js"></script>
+    <script type="text/javascript" charset="utf8" src="js/notify.js"></script>
     <script type="text/javascript" charset="utf8" src="js/jquery.dataTables.js"></script>
-    <script type="text/javascript" src="js/jquery.cecily.js"></script>
-    <script type="text/javascript" src="administrador/deshabilitarFuncionario/js/admiPrincipal.js"></script>
+    <script type="text/javascript" charset="utf8" src="js/jquery.cecily.js"></script>
+    <script type="text/javascript" charset="utf8" src="administrador/deshabilitarFuncionario/js/admiPrincipal.js"></script>
 </html>

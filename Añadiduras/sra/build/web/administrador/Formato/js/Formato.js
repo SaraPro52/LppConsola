@@ -47,7 +47,6 @@ $(document).on('ready', function () {
                 estado = ("success");
             }
             $.notify(men, estado);
-
         }
     }
 });

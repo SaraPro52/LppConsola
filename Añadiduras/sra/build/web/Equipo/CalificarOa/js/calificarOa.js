@@ -1,28 +1,25 @@
-function calificarPV(idLista) {
-    var selector = [], hilo = [], jso = [], data = [], nombre = "funcionario", datos = [];
-
+function calificarPV(idLista,idRol,idNotifi) {
+    var selector = [], hilo = [], jso = [], data = [], nombre = "funcionario", datos = [],men="",estado="";
     $("#iFecha").datepicker();
-
     $("#clone").hide();
     var ob = new $.Luna("Producto virtual", $("#divContainer"));
     ob.Vivo("CalificarOA");
-    jso[0] = ['Crud_Controller', '[{opcion:3,tabla2:15,tipo:2,elegir:[0,1,4],delimitador:"[{colum:3,operador:0,valor1:'+idLista+'}]",id:0,opSelect:6}]'];
+    jso[0] = ['Crud_Controller', '[{opcion:3,tabla2:15,tipo:2,elegir:[0,1,4],delimitador:"[{colum:3,operador:0,valor1:' + idLista + '}]",id:0,opSelect:6}]'];
     selector[0] = $("#divContainer");
-    datos[0] = {nombre: "calificar",worker: true};
+    datos[0] = {nombre: "calificar", worker: true};
     ajax(0, datos[0]);
-    
     var t = true;
-    var fecha = "null";
+    var fecha = "yyyy-MM-dd";
     $(document).on('click', '.FechaLi', function (e) {
-        if (t==true) {
+        if (t == true) {
             $("#TipodeFecha").show();
-            t=false;
-        }else if(t==false){
+            t = false;
+        } else if (t == false) {
             $("#TipodeFecha").hide();
-            t=true;
+            t = true;
         }
-        
-    })
+
+    });
     $("#btnEvaluar").click(function () {
         var campo = "";
         var infoItems = [];
@@ -46,20 +43,18 @@ function calificarPV(idLista) {
         } else {
             resultado = 1;
         }
-        if(t == false){
+        if($("#iFecha").val() == ""){
+            alert("Nulote");
+        }else{
+            alert("no "+$("#iFecha").val());
             fecha = $("#iFecha").val();
         }
-        
-        alert(fecha+"1");
-        alert($("#iFecha").val());
-        
-        jso[1] = ['EvaluacionGeneral_Controller','[{opcion:1,idNoti:,infoEva:["'+$("#areaObservacion").val()+'","' + resultado + '","' + idVersion + '","' + idLista + '","' + idUser + '","' +fecha+ '"],infoItem:[' + infoItems + ']}]'];
+        alert(fecha);
+        jso[1] = ['EvaluacionGeneral_Controller', '[{opcion:1,idNoti:'+idNotifi+',infoEva:["' + $("#areaObservacion").val() + '","' + resultado + '","' + idVersion + '","' + idLista + '","' + idUser + '","' + fecha + '"],infoItem:[' + infoItems + ']}]'];
         selector[1] = null;
-        datos[1] = {nombre:"btn", worker: true};
-        console.log(jso[1]);
-        ajax(1, datos[1]); 
+        datos[1] = {nombre: "btn", worker: true};
+        ajax(1, datos[1]);
     });
-
     function ajax(i, datos) {
         hilo[i] = new Worker("js/worker.js");
         hilo[i].postMessage(jso[i]);
@@ -72,13 +67,15 @@ function calificarPV(idLista) {
     }
     function peticionCompleta(i) {
         if (i == 1) {
-            $.notify({
-                icon: 'ti-gift',
-                message: data[i] + "."
-            }, {
-                type: 'success',
-                timer: 4000
-            });
+            var daMen = data[i].split("$$");
+            if (daMen[0] == "true") {
+                estado = ("success");
+                men = "La area " + men + " " + daMen[1];
+            } else {
+                estado = ("error");
+                men = daMen[1];
+            }
+            $.notify(men, estado);
         }
     }
 }

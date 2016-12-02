@@ -5,6 +5,7 @@ import M_Modelo.Categoria;
 import M_Modelo.Evaluacion_General;
 import M_Modelo.Funcionario;
 import M_Modelo.Lista_Chequeo;
+import M_Modelo.Producto_Virtual;
 import M_Modelo.Programa;
 import static com.sun.corba.se.spi.presentation.rmi.StubAdapter.request;
 import java.io.File;
@@ -1277,10 +1278,31 @@ public class NewMain {
 //            System.out.println(listaArchivos[i]);
 //        }
 
-Elomac e = new Elomac(15,2);
-String deli = "[{colum:3,operador:0,valor1:18,añadir:0},{colum:2,operador:0,valor1:0}]";
-String[] eli = {"0","1"};
-        System.out.println(e.Select(eli, deli));
+//Elomac e = new Elomac(15,2);
+//String deli = "[{colum:3,operador:0,valor1:18,añadir:0},{colum:2,operador:0,valor1:0}]";
+//String[] eli = {"0","1"};
+//        System.out.println(e.Select(eli, deli));
 
+//    String[] eli = {"4","5","6","7","12","13"};
+//    String deli = "[{colum:2,operador:0,valor1:'2',añadir:0},"
+//            + "     {colum:9,operador:0,valor1:0,añadir:0},"
+//            + "     {colum:10,operador:0,valor1:'1',añadir:0},"
+//            + "     {colum:0,operador:0,valor1:'11'}]";
+//
+//    Elomac e = new Elomac(24,2);
+//            System.out.println(e.Select(eli, deli));
+
+
+
+        Producto_Virtual p = new Producto_Virtual();
+        String[] filtrar = {"Titulote","","","","",""};
+        
+        System.out.println(p.ConsultarProducto(filtrar,29));
+
+
+
+//        String deli = "[{colum:4,operador:9,valor1:'2016-11-25'}]";
+//        String[] num = {"0","1","2","4"};
+//        System.out.println(new Elomac(27,2).Select(num,deli));
     }
 }

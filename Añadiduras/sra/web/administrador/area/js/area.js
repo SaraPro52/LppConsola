@@ -10,12 +10,38 @@ $(document).on('ready', function () {
     ajax(0, datos[0]);
     var men = "";
     $("#btnArea").on('click', function () {
+        $(".remove").remove();
+        var boo = 0;
+        var inputs = $(".inputs");
+        var selec = $(".select");
+        var input, selet;
+        for (var i = 0; i < inputs.length; i++) {
+            if (inputs[i].value == "") {
+                input = $(inputs[i]);
+                input.focus().after("<div class='remove'><font color='red'>Rellene este campo</font><div>");       
+            } else {
+                boo++;
+            }
+        }
+        for (var i = 0; i < selec.length; i++) {
+            if (selec[i].value == "A0") {
+                selet = $(selec[i]);
+                selet.focus().after("<div class='remove'><font color='red'>seleccione una opcion</font><div>");
+            } else {
+                boo++;
+            }
+        }
+        if (boo == 3) {
+            BtnArea();
+        }
+    });
+    function BtnArea() {
         jso[1] = ['FormacionPro_Controller', '[{opcion:2,tabla:2,delimitador:[],datos:["",' + $("#areaC").val() + ',' + $("#areaL").val() + '],idC:' + $("#CentroFormacion").val() + '}]'];
         selector[1] = $("#tablaarea");
         datos[1] = {nombre: "btn", worker: true};
         men = $("#areaC").val();
         ajax(1, datos[1]);
-    });
+    }
     $(document).on('click', '.botonArea', function (e) {
         switch (this.value) {
             case "m":
@@ -46,10 +72,10 @@ $(document).on('ready', function () {
             var daMen = data[i].split("$$");
             if (daMen[0] == "true") {
                 estado = ("success");
-                men="La area "+ men +" "+daMen[1];
+                men = "La area " + men + " " + daMen[1];
             } else {
                 estado = ("error");
-                men=daMen;
+                men = daMen[1];
             }
             $.notify(men, estado);
             jso[2] = ['Crud_Controller', '[{opcion:3,tabla2:1,tipo:1,elegir:[0,1,2],delimitador:[],id:0,opSelect:4}]'];

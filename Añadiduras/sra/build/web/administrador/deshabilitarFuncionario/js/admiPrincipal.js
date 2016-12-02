@@ -41,10 +41,7 @@ $(document).on('ready', function () {
                 men = "No se a podido deshabilitado a  .";
                 estado = ("error");
             }
-
             $.notify(men, estado);
-
-
         }
     }
 });

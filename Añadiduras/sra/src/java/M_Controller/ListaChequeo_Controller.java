@@ -52,8 +52,8 @@ public class ListaChequeo_Controller extends HttpServlet {
                     
                     try {
                         if(new Lista_Chequeo().ModificarLista(mLista, mitems))
-                            respuesta.println("true$$Actualizacion Correcta");
-                        else respuesta.println("false$$Actualizacion Fallida");
+                            respuesta.println("true$$actualizacion correcta");
+                        else respuesta.println("false$$actualizacion fallida");
                     } catch (Exception e) {
                         respuesta.println(e.getMessage());
                     }

@@ -20,8 +20,11 @@ public class Archivos {
         this.ruta = ruta;
     }
 
+    
     public String getBase() {
-        return ("C:\\Users\\Judini\\Documents\\Proyectos\\LppConsola\\Integracion\\sra\\web\\Archivos\\");
+        String macc = "C:\\Users\\migue\\Desktop\\Añadiduras\\sra\\web\\Archivos\\";
+        String juan = "C:\\Users\\Judini\\Documents\\Proyectos\\LppConsola\\Integracion\\sra\\web\\Archivos\\";
+        return (macc);
     }
 
     public void setBase(String base) {

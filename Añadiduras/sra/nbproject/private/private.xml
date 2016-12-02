@@ -3,17 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/migue/Desktop/Añadiduras/sra/web/Equipo/CalificarOa/calificarOa.jsp</file>
-            <file>file:/C:/Users/migue/Desktop/Añadiduras/sra/web/instructor/DetallesConsultaP/DetallessPV.jsp</file>
-            <file>file:/C:/Users/migue/Desktop/Añadiduras/sra/web/Equipo/CalificarOa/js/calificarOa.js</file>
-            <file>file:/C:/Users/migue/Desktop/Añadiduras/sra/src/java/M_Util/Elomac.java</file>
-            <file>file:/C:/Users/migue/Desktop/Añadiduras/sra/web/Equipo/ModificarLista/js/modificarLista.js</file>
-            <file>file:/C:/Users/migue/Desktop/Añadiduras/sra/web/js/jquery.cecily.js</file>
-            <file>file:/C:/Users/migue/Desktop/Añadiduras/sra/web/Equipo/ConsultarOa/js/consultarOa.js</file>
-            <file>file:/C:/Users/migue/Desktop/Añadiduras/sra/src/java/M_Modelo/Lista_Chequeo.java</file>
-            <file>file:/C:/Users/migue/Desktop/Añadiduras/sra/src/java/M_Controller/Crud_Controller.java</file>
-            <file>file:/C:/Users/migue/Desktop/Añadiduras/sra/src/java/M_Controller/ListaChequeo_Controller.java</file>
-            <file>file:/C:/Users/migue/Desktop/Añadiduras/sra/src/java/M_Controller/EvaluacionGeneral_Controller.java</file>
+            <file>file:/C:/Users/migue/Desktop/Añadiduras/sra/web/instructor/ActualizarOa/Actualizar.jsp</file>
+            <file>file:/C:/Users/migue/Desktop/Añadiduras/sra/web/coordinador/ConsultarEstadisticas/consultarEstadisticas.jsp</file>
+            <file>file:/C:/Users/migue/Desktop/Añadiduras/sra/web/instructor/ActualizarOa/js/Actualizar.js</file>
+            <file>file:/C:/Users/migue/Desktop/Añadiduras/sra/web/instructor/instructorPrincipal.jsp</file>
+            <file>file:/C:/Users/migue/Desktop/Añadiduras/sra/web/instructor/ConsultaOa/consultarOa.jsp</file>
+            <file>file:/C:/Users/migue/Desktop/Añadiduras/sra/src/java/M_Controller/Linkeos/Instrutor_Controller.java</file>
+            <file>file:/C:/Users/migue/Desktop/Añadiduras/sra/web/index.jsp</file>
+            <file>file:/C:/Users/migue/Desktop/Añadiduras/sra/web/coordinador/ConsultarEstadisticas/js/Estadisticas.js</file>
         </group>
     </open-files>
 </project-private>

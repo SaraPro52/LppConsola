@@ -1,5 +1,5 @@
 $(document).on('ready', function () {
-    var selector = [], hilo = [], jso = [], data = [], datos = [];
+    var selector = [], hilo = [], jso = [], data = [], datos = [], estado = "";
     var ob = new $.Luna("Producto virtual", selector);
     ob.Vivo("Habilitar Producto");
     console.log($("#ccNoti"));
@@ -11,7 +11,7 @@ $(document).on('ready', function () {
         datos[1] = {nombre: "btn", worker: true};
         ajax(1, datos[1]);
     });
-    jso[0] = ['Crud_Controller', '[{opcion:3,tabla2:9,tipo,2,elegir:[0,1,2],delimitador:"[{colum:4,operador:0,valor1:' + idCentro + '}]",id:0,opSelect:6}]'];
+    jso[0] = ['Crud_Controller', '[{opcion:3,tabla2:9,tipo:2,elegir:[0,1,2],delimitador:"[{colum:4,operador:0,valor1:' + idCentro + '}]",id:0,opSelect:6}]'];
     selector[0] = $("#tablaAprobar");
     ob.TablaEspa(selector[0]);
     datos[0] = {nombre: "Habilitar", worker: true};
@@ -29,24 +29,16 @@ $(document).on('ready', function () {
     }
     function peticionCompleta(i) {
         if (i == 1) {
-            jso[2] = ['Crud_Controller', '[{opcion:3,tabla2:9,tipo:2,elegir:[0,1,2],delimitador:"[{colum:4,operador:0,valor1:' + idCentro + '}]",id:0,opSelect:6}]'];
-            selector[2] = $("#tablaAprobar");
-            ajax(2, datos[0]);
-        } else if (i == 2) {
-            var men = "";
-            nombre = "producto";
-            if (jso[2].length == jso[0].length) {
-                men = nombre + " fue habilitado correctamente.";
+            var daMen = data[i].split("$$");
+            var men="";
+            if (daMen[0] == "true") {
+                estado = ("success");
+                men = "El producto fue " + daMen[1];
             } else {
-                men = "No se a podido habilitar a " + nombre + ".";
+                estado = ("error");
+                men = "El producto fue " + daMen[1];
             }
-            $.notify({
-                icon: 'ti-gift',
-                message: men + "."
-            }, {
-                type: 'success',
-                timer: 4000
-            });
+            $.notify(men, estado);
         }
     }
 });

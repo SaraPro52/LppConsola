@@ -1,7 +1,16 @@
 $(document).on('ready', function () {
-    $("#iFecha").datepicker();
+
+    $("#dataInicialA").datepicker({defaultDate: "+1w", changeMonth: true, numberOfMonths: 2});
+    $("#dataFinalA").datepicker({defaultDate: "+1w", changeMonth: true, numberOfMonths: 2});
+    $("#dataInicialA").change(function () {
+        $("#dataFinalA").datepicker("option", "minDate", $("#dataInicialA").val());
+    });
+    $("#dataFinalA").change(function () {
+        $("#dataInicialA").datepicker("option", "maxDate", $("#dataFinalA").val());
+    });
+
     var selector = [], hilo = [], jso = [], data = [], datos = [], constan = true;
-    jso[0] = ['Crud_Controller', '[{opcion:3,tabla2:22,tipo:2,elegir:[0,1,2,3,4],delimitador:[],id:0,opSelect:4}]'];
+    jso[0] = ['ProductoVirtual_Controller', '[{opcion:5,filtrar:[],caso:29}]'];
     selector[0] = $("#formulario1");
     datos[0] = {nombre: "ConsOaP", worker: true};
     ajax(0, datos[0]);
@@ -27,21 +36,14 @@ $(document).on('ready', function () {
         }
     });
     $(document).on('click', '.mom', function (e) {
-        console.log(this);
-
         var a = $("." + this.value).find('p');
         var c = $(a[0]);
-
         var objeto = {url: "Instrutor_Controller", Opcion: 5, name: 'cuerpo'};
         idProducto = this.value;
         Titulo = c.text();
         obtenerP(objeto);
     });
-
-
     function obtenerP(datos) {
-        console.log(datos);
-        console.log("s");
         $.ajax({
             url: datos.url,
             type: 'POST',
@@ -69,22 +71,12 @@ $(document).on('ready', function () {
 
 
     $("#btnBuscar").click(function () {
-        var jso = data[2];
-        console.log($("#txtBuscarTitle").val());
+        jso[8] = ['ProductoVirtual_Controller', '[{opcion:5,filtrar:["' + $("#txtBuscarTitle").val() + '","' + $("#Formato").val() + '","' + $("#dataInicialA").val() + '","' + $("#dataFinalA").val() + '","' + $("#Autores").val() + '",""],caso:27}]'];
+        selector[8] = $("#formulario1");
+        datos[8] = {nombre: "ConsOaP", worker: true};
+        selector[8].empty();
+        ajax(8, datos[8]);
 
-        jso = jQuery.parseJSON(data[2]);
-        for (var i = 1; i <= jso.length; i++) {
-            var a = $("." + i).find('p');
-            console.log(a);
-            var c = $(a[0]);
-            console.log($(a[0]));
-            $("." + i).show();
-            if ($("#txtBuscarTitle").val() == c.text()) {
-                $("." + i).show();
-            } else {
-                $("." + i).hide();
-            }
-        }
 
     });
     $("#programa").click(function () {
@@ -131,10 +123,21 @@ $(document).on('ready', function () {
             $("#pagActual").val("pag0");
             ajax(2, datos[2]);
         } else if (i == 2) {
-            jso[3] = ['Crud_Controller', '[{opcion:3,tabla:17,elegir:[0,1],delimitador:[],id:0,opSelect:4}]'];
+            jso[3] = ['Crud_Controller', '[{opcion:3,tabla2:17,tipo:1,elegir:[0,1],delimitador:[],id:0,opSelect:4}]'];
             selector[3] = $("#Formato");
             datos[3] = {nombre: "Select", worker: true};
             ajax(3, datos[3]);
+        } else if (i == 3) {
+            jso[6] = ['Crud_Controller', '[{opcion:3,tabla2:26,tipo:2,elegir:[0,1],delimitador:[],id:0,opSelect:4}]'];
+            selector[6] = $("#Autores");
+            datos[6] = {nombre: "Select", worker: true};
+            ajax(6, datos[6]);
         }
+        //Categoria
+        //jso[6] = ['Crud_Controller', '[{opcion:3,tabla2:4,tipo:2,elegir:[0,1],delimitador:[],id:0,opSelect:4}]'];
+        //Programa de formacion
+        //jso[6] = ['Crud_Controller', '[{opcion:3,tabla2:3,tipo:2,elegir:[1,2],delimitador:[],id:0,opSelect:4}]'];
+
+
     }
 });

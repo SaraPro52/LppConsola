@@ -57,7 +57,7 @@
                     <ul class="nav menu" id="menus"><li class="active"><a href="inicio.html"><i class="ti-home"></i><p>Equipo pedagogico</p></a></li>
                         <li class="activado" value="0"><a><i class="ti-user"></i><p><label id="text0">Perfil de usuario</label></p></a></li>
                         <li class="activado" value="1"><a><i class="icono izquierda  fa fa-book" aria-hidden="true"></i><label id="text1">Crear lista de chequeo</label </a></li>
-                        <li class="activado" value="3"><a><i class="icono izquierda  fa fa-edit" aria-hidden="true"></i><label id="text3">Modificar Lista de chequeo</label></a></li>
+                        <li class="activado" value="3"><a><i class="icono izquierda  fa fa-edit" aria-hidden="true"></i><label id="text3">Editar Lista de chequeo</label></a></li>
                         <li class="activado" value="2"><a><i class="icono izquierda  fa fa-eye" aria-hidden="true"></i><label id="text2">Consultar objetos</label></a></li>
                     </ul>
                 </div>
@@ -73,16 +73,10 @@
                                 <span class="icon-bar bar2"></span>
                                 <span class="icon-bar bar3"></span>
                             </button>
-                            <h3><label id="CasoNombre"></label></h3>
+                            <h3><label style="color:#E84E1B;" id="CasoNombre"></label></h3>
                         </div>
                         <div class="collapse navbar-collapse">
                             <ul class="nav navbar-nav navbar-right">
-                                <li>
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                        <i class="ti-panel"></i>
-                                        <p>Stats</p>
-                                    </a>
-                                </li>
                                 <li class="dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                         <i class="ti-bell"></i>

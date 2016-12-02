@@ -10,24 +10,25 @@ $(document).ready(function () {
     ajax(0, datos[0]);
 
     $("#btnTema").click(function () {
-
         $(".remove").remove();
-           if ($("#NombreTema").val() == "") {
-                        $("#NombreTema").focus().after("<div class='remove'><font color='red'>digita el nombre del tema</font><div>");
-                        return false;
-            } else if ($("#DescripcionTema").val() == "") {
-                        $("#DescripcionTema").focus().after("<div class='remove'><font color='red'>digita la decripcion del tema</font></div>");
-                        return false;
+        var boo = 0;
+        var inputs = $(".inputs");
+        var input, selet;
+        for (var i = 0; i < inputs.length; i++) {
+            if (inputs[i].value == "") {
+                input = $(inputs[i]);
+                input.focus().after("<div class='remove'><font color='red'>Rellene este campo</font><div>");       
+            } else {
+                boo++;
+            }
+        } 
+        if (boo == 2) {
+            BtnTema();
         }
-
-
-        unio();
-
     });
 
-    function unio() {
-
-        nombre = $("#NombreTema").val();
+    function BtnTema() {
+        men = $("#NombreTema").val();
         jso[1] = ['Crud_Controller', '[{opcion:1,tabla1:27,tabla2:27,tipo:1,datos:["",' + $("#NombreTema").val() + ',' + $("#DescripcionTema").val() + ',1],elegir:[0,1],delimitador:[],id:0,opSelect:4}]'];
         selector[1] = $("#SelectTemas");
         datos[1] = {nombre: "MultiSelect", opt: "Div", worker: true};
@@ -46,21 +47,25 @@ $(document).ready(function () {
     });
 
     $("#btnCategoria").click(function () {
-
-        console.log("vivieee");
         $(".remove").remove();
-           if ($("#NombreCategoria").val() == "") {
-                        $("#NombreCategoria").focus().after("<div class='remove'><font color='red'>digita el nombre del tema</font><div>");
-                        return false;
-            } else if ($("#DescripcionCategoria").val() == "") {
-                        $("#DescripcionCategoria").focus().after("<div class='remove'><font color='red'>digita la decripcion del tema</font></div>");
-                        return false;
+        var coo = 0;
+        var inputs = $(".inputsC");
+        var input, selet;
+        for (var i = 0; i < inputs.length; i++) {
+            if (inputs[i].value == "") {
+                input = $(inputs[i]);
+                input.focus().after("<div class='remove'><font color='red'>Rellene este campo</font><div>");       
+            } else {
+                coo++;
+            }
         }
-        estr();
+        if (coo == 2) {
+            BtnCate();
+        }
     });
 
-    function estr() {
-        men=$("#NombreCategoria").val();
+    function BtnCate() {
+        men = $("#NombreCategoria").val();
         jso[2] = ['Categoria_Controller', '[{opcion:1,catego:["' + $("#NombreCategoria").val() + '","' + $("#DescripcionCategoria").val() + '",' + idUser + '],temas:[' + arraySelecion + ']}]'];
         datos[2] = {nombre: "btn", worker: true};
         ajax(2, datos[2]);
@@ -79,10 +84,10 @@ $(document).ready(function () {
     function peticionCompleta(i) {
         if (i == 1) {
             if (data[0].length < data[1].length) {
-                men = "El item: " + nombre + " fue agregado exitosamente";
+                men = "El tema: " + men + " fue agregado exitosamente";
                 estado = ("success");
             } else if (data[0].length == data[1].length) {
-                men = "El item: " + nombre + " no fue agregado exitosamente";
+                men = "El tema: " + men + " no fue agregado exitosamente";
                 estado = ("error");
             }
             $.notify(men, estado);
@@ -93,7 +98,7 @@ $(document).ready(function () {
                 men = "La categoria " + men + " " + daMen[1];
             } else {
                 estado = ("error");
-                men = daMen;
+                men = daMen[1];
             }
             $.notify(men, estado);
         }

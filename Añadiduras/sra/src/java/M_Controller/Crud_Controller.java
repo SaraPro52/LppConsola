@@ -92,7 +92,7 @@ public class Crud_Controller extends HttpServlet {
     }
     
     private void ManejoDatos() throws Exception {
-            response.setContentType("application/json;charset=UTF-8");
+        response.setContentType("application/json;charset=UTF-8");
         respuesta = response.getWriter();
         optionSelect =  jData.getInt("opSelect");
         

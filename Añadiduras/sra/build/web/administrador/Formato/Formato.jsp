@@ -17,25 +17,21 @@
                             <div class="form-group contenedorInsert">
                                 <div class="col-md-6">
                                     <label for="formato">Nombre del Formato</label>
-                                    <input  placeholder="Nombre del formato" type="text" class="form-control" name="formato" id="formato" required="true">
+                                    <input  placeholder="Nombre del Formato" type="text" class="form-control" name="formato" id="formato" required="true">
 
                                 </div>
 
                                 <div class="col-md-6">
 
                                     <label for="descripcion">Descripción Formato</label>
-                                    <textarea placeholder="descripcion formato" class="form-control" id="descripcion" name="descripcion" required="true"></textarea>
-
+                                    <input type="text" placeholder="Descripción Formato"  class="form-control" id="descripcion" name="descripcion" required="true">
                                 </div> 
                                 <button type="button" class="btn btn-info" id="btnformato"  name="button">Guardar Formato</button>
                             </div>
                         </div>
                     </div>
                 </div>
-
-
-
-                <article class="col-md-10 ">
+                <article style="margin-left:8%;" class="col-md-8 ">
                     <table id="tablaformato" class="table table-hover">
                         <thead>
                             <tr class="active">
@@ -49,10 +45,10 @@
                         </tbody>
                     </table>
                 </article>
-                </body>
-                <script src="assets/js/jquery-1.10.2.js" type="text/javascript"></script>
+   </body>
+                <script type="text/javascript" charset="utf8" src="assets/js/jquery-1.10.2.js"></script>
                 <script type="text/javascript" charset="utf8" src="js/jquery.dataTables.js"></script>
-                <script src="js/notify.js"></script> 
-                <script type="text/javascript" src="js/jquery.cecily.js"></script>
-                <script type="text/javascript" src="administrador/Formato/js/Formato.js"></script>
-                </html>
+                <script type="text/javascript" charset="utf8" src="js/notify.js"></script> 
+                <script type="text/javascript" charset="utf8" src="js/jquery.cecily.js"></script>
+                <script type="text/javascript" charset="utf8" src="administrador/Formato/js/Formato.js"></script>
+</html>

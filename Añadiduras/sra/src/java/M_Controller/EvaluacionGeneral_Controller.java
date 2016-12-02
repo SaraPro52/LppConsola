@@ -30,12 +30,14 @@ public class EvaluacionGeneral_Controller extends HttpServlet {
             int opcion = jData.getInt("opcion");
             
             String[] infoEva = Elomac.M_toArray(jData.getString("infoEva"));
-            if(infoEva[5] != null){
-                Date d = new Date(infoEva[5]);
-                SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd");
-                infoEva[5] = f.format(d);
-            }else {
+            if(infoEva[5].equals("yyyy-MM-dd")){
                 infoEva[5] = "null";
+            }else{
+                if(infoEva[5] != "yyyy-MM-dd"){
+                    Date d = new Date(infoEva[5]);
+                    SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd");
+                    infoEva[5] = f.format(d);
+                }
             }
             
             String[] infoItem = Elomac.M_toArray(jData.getString("infoItem"));
@@ -48,18 +50,18 @@ public class EvaluacionGeneral_Controller extends HttpServlet {
                 case 1:
                     try {
                         if(evaluacion.RegistrarEvaluacion(infoEva, infoItem)){
-                            respuesta.println("[{valor:true,mensaje:'Se evaluo Correctamente'}]");
+                            respuesta.println("true$$El producto virtual se evaluo Correctamente");
                             int idNoti = jData.getInt("idNoti");
                             Notificacion noti = new Notificacion();
                             noti.load(noti.Select(idNoti));
                             noti.atributos.replace("Estado",1);
                             if(noti.Update()){
-                                respuesta.println("[{valor:true,mensaje:'Actualizo'}]");
+                                respuesta.println("true$$actualizo");
                             }else{
-                                respuesta.println("[{valor:false,mensaje:'No Actualizo'}]");
+                                respuesta.println("false$$no actualizo");
                             }
                         }else{
-                            respuesta.println("[{valor:false,mensaje:'No se evaluado'}]");
+                            respuesta.println("false$$El producto no se evaluado");
                         }
                     } catch (Exception e) {
                         respuesta.println("[{valor:false,mensaje:'"+e.getMessage()+"'}]");

@@ -213,6 +213,7 @@ public class Elomac extends M_Crud {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        System.out.println(concat);
         return concat;
     }
 

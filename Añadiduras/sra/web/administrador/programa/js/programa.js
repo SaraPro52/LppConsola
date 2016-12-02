@@ -1,5 +1,5 @@
 $(document).on('ready', function () {
-    var selector = [], hilo = [], jso = [], data = [], datos = [], arrayAreas = [], arrayTemas = [], men ="",estado="";
+    var selector = [], hilo = [], jso = [], data = [], datos = [], arrayAreas = [], arrayTemas = [], men = "", estado = "";
     var ob = new $.Luna("Select", $("#SelecCentro"));
     $(".Mult").hide();
     ob.Vivo("Programa");
@@ -9,7 +9,7 @@ $(document).on('ready', function () {
     ajax(0, datos[0]);
     $("#SelecCentro").change(function () {
         $(".Mult").show();
-        if ($("#SelecCentro").val() != "A0") {
+        if ($("#SelecCentro").val() != "A0") { 
             jso[1] = ['Crud_Controller', '[{opcion:3,tabla2:10,tipo:2,elegir:[0,1],\n\
                 delimitador:"[{colum:2,operador:0,valor1:' + $("#SelecCentro").val() + '}]",id:0,opSelect:6}]'];
             selector[1] = $("#MultAreas");
@@ -38,11 +38,38 @@ $(document).on('ready', function () {
     });
 
     $("#btnPrograma").click(function () {
+        $(".remove").remove();
+        var boo = 0;
+        var inputs = $(".inputs");
+        var selec = $(".select");
+        var input, selet;
+        for (var i = 0; i < inputs.length; i++) {
+            if (inputs[i].value == "") {
+                input = $(inputs[i]);
+                input.focus().after("<div class='remove'><font color='red'>Rellene este campo</font><div>");       
+            } else {
+                boo++;
+            }
+        }
+        for (var i = 0; i < selec.length; i++) {
+            console.log(selec[i]);
+            if (selec[i].value == "AD") {
+                selet = $(selec[i]);
+                selet.focus().after("<div class='remove'><font color='red'>seleccione una opcion</font><div>");
+            } else {
+                boo++;
+            }
+        }
+        if (boo == 3) {
+            BtnPrograma();
+        }
+    });
+    function BtnPrograma() {
         men = $("#nomPro").val();
         jso[3] = ['FormacionPro_Controller', '[{opcion:1,datos:["","' + $("#nomPro").val() + '","' + $("#nivel").val() + '"],areas:[' + arrayAreas + '],temas:[' + arrayTemas + ']}]'];
         datos[3] = {nombre: "btn", worker: true};
         ajax(3, datos[3]);
-    });
+    }
 
     function ajax(i, datos) {
         hilo[i] = new Worker("js/worker.js");
@@ -69,7 +96,7 @@ $(document).on('ready', function () {
                 men = "El programa " + men + " " + daMen[1];
             } else {
                 estado = ("error");
-                men = daMen;
+                men = daMen[1];
             }
             $.notify(men, estado);
         }

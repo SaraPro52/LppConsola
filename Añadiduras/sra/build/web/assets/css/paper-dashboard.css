@@ -664,13 +664,14 @@ hr {
 
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/conacelelena\/paper-dashboard\/assets\/sass\/paper\/_buttons\.scss}line{font-family:\0000341}}
 .navbar .navbar-nav > li > a.btn-success, .btn-success {
-  border-color: #7AC29A;
-  color: #7AC29A; }
+  background-color:#218276;
+  border-color:#218276;
+  color: #FFFFFF; }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/conacelelena\/paper-dashboard\/assets\/sass\/paper\/mixins\/_buttons\.scss}line{font-family:\000036}}
   .navbar .navbar-nav > li > a.btn-success:hover, .navbar .navbar-nav > li > a.btn-success:focus, .navbar .navbar-nav > li > a.btn-success:active, .navbar .navbar-nav > li > a.btn-success.active, .open > .navbar .navbar-nav > li > a.btn-success.dropdown-toggle, .btn-success:hover, .btn-success:focus, .btn-success:active, .btn-success.active, .open > .btn-success.dropdown-toggle {
-    background-color: #7AC29A;
-    color: rgba(255, 255, 255, 0.7);
-    border-color: #7AC29A; }
+    background-color: #17574F;
+    color:#FFFFFF;
+    border-color: #17574F; }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/conacelelena\/paper-dashboard\/assets\/sass\/paper\/mixins\/_buttons\.scss}line{font-family:\0000314}}
     .navbar .navbar-nav > li > a.btn-success:hover .caret, .navbar .navbar-nav > li > a.btn-success:focus .caret, .navbar .navbar-nav > li > a.btn-success:active .caret, .navbar .navbar-nav > li > a.btn-success.active .caret, .open > .navbar .navbar-nav > li > a.btn-success.dropdown-toggle .caret, .btn-success:hover .caret, .btn-success:focus .caret, .btn-success:active .caret, .btn-success.active .caret, .open > .btn-success.dropdown-toggle .caret {
       border-top-color: rgba(255, 255, 255, 0.7); }

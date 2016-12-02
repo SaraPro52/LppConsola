@@ -36,7 +36,7 @@
         </div>
     </body>
     <script type="text/javascript" src="js/jquery.js"></script>
-    <script type="text/javascript" src="assets/js/bootstrap-notify.js"></script>
+    <script type="text/javascript" src="js/notify.js"></script>
     <script type="text/javascript" charset="utf8" src="js/jquery.dataTables.js"></script>
     <script type="text/javascript" src="js/jquery.cecily.js"></script>
     <script type="text/javascript" src="coordinador/HabilitarProducto/js/HabilitarProducto.js"></script>

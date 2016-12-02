@@ -41,9 +41,6 @@ $(document).ready(function () {
             arraySelecionEstr.splice(busqueda, 1);
         }
     });
-    $("#subir_oa").on('click', function () {
-
-    });
 
     var options = {
         beforeSend: function () {

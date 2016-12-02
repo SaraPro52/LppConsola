@@ -1,31 +1,40 @@
 function modificar(idTipoItem) {
-    var jso = [], selector = [], hilo = [], data = [], ww = "", multi = [], arraySelecion = [],Lista=-8;
+    var jso = [], selector = [], hilo = [], data = [], ww = "", multi = [], arraySelecion = [], Lista = -8, men = "", men1 = "", estado = "";
     $(".EspacioItems").hide();
     $("#tablaItems").hide();
     var ob = new $.Luna("Lista", $("#tablalista"));
-    ob.Vivo("ModificarListaDeChequeo  1");
+    ob.Vivo("ModificarListaDeChequeo");
     jso[2] = ['Crud_Controller', '[{opcion:3,tabla2:12,tipo:2,elegir:[0,1,2,3],delimitador: "[{colum:5,operador:0,valor1:' + idRol + '}]",id:0,opSelect:6}]'];
     var datos = {nombre: "Lista", worker: true};
     selector[2] = $("#tablalista");
     ob.TablaEspa(selector[2]);
     ajax(2, datos);
     $("#btnItem").on('click', function () {
-        console.log("helow1");
         $(".remove").remove();
-                if ($("#Descripcion").val() == "") {
-                        $("#Descripcion").focus().after("<div class='remove'><font color='red'>ingrese la descripcion</font><div>");
-                        return false;
+        var boo = 0;
+        var inputs = $(".inputs");
+        var input;
+        for (var i = 0; i < inputs.length; i++) {
+            if (inputs[i].value == "") {
+                input = $(inputs[i]);
+                input.focus().after("<div class='remove'><font color='red'>Rellene este campo</font><div>");       
+            } else {
+                boo++;
+            }
         }
-        greef();
+        if (boo == 1) {
+            BtnItem();
+        }
     });
 
-    function greef() {
+    function BtnItem() {
         jso[1] = ['Crud_Controller', '[{opcion:1,tabla1:19,tabla2:19,tipo:1,datos:["",' + $("#Descripcion").val() + ',' + idTipoItem + '],elegir:[0,1],delimitador:"[{colum:2,operador:0,valor1:' + idTipoItem + '}]",id:0,opSelect:6}]'];
         var datos = {nombre: "MultiSelects", worker: true, opt: "Div"};
         selector[1] = $("#SelectItem");
+        men = $("#Descripcion").val();
         ajax(1, datos);
     }
-    $(document).on('click', '.btnclickca', function (e) {
+    $(document).on('click', '.btnclick', function (e) {
         $(".EspacioItems").show();
         $("#CompoLista").hide();
         var s = [];
@@ -36,7 +45,7 @@ function modificar(idTipoItem) {
         jso[0] = ['Crud_Controller', '[{opcion:3, tabla2: 15,tipo:2, elegir:[0,1],delimitador: "[{colum:3,operador:0,valor1:' + this.id + ',añadir:0},{colum:2,operador:0,valor1:' + idTipoItem + '}]", id: 0, opSelect: 6}]'];
         var datos = {nombre: "btn", worker: true};
         selector[0] = "null";
-        Lista=this.id;
+        Lista = this.id;
         ajax(0, datos);
     });
 
@@ -52,34 +61,45 @@ function modificar(idTipoItem) {
     });
     $("#BtnLista").click(function () {
         $(".remove").remove();
-                if ($("#NombreL").val() == "") {
-                        $("#NombreL").focus().after("<div class='remove'><font color='red'>diguita la descripcion</font><div>");
-
-                        return false;
-        } else if ($("#comment").val() == "") {
-
-                        $("#comment").focus().after("<div class='remove'><font color='red'>diguita un comentario</font><div>");
-            return fase;
+        var boo = 0;
+        var inputs = $(".inputs1");
+        var input;
+        for (var i = 0; i < inputs.length; i++) {
+            if (inputs[i].value == "") {
+                input = $(inputs[i]);
+                input.focus().after("<div class='remove'><font color='red'>Rellene este campo</font><div>");       
+            } else {
+                boo++;
+            }
         }
-        BtnLista();
+        if (boo == 2) {
+            BtnLista();
+        }
     });
 
     function BtnLista() {
-        jso[5] = ['ListaChequeo_Controller', '[{opcion: 2,mLista:["'+Lista+'","'+$("#NombreL").val()+'","'+$("#DescripcionL").val()+'"],mItems:['+arraySelecion+']}]'];
+        jso[5] = ['ListaChequeo_Controller', '[{opcion: 2,mLista:["' + Lista + '","' + $("#NombreL").val() + '","' + $("#DescripcionL").val() + '"],mItems:[' + arraySelecion + ']}]'];
         datos[5] = {nombre: "btn", worker: true};
+        men1 = $("#NombreL").val();
         ajax(5, datos[5]);
     }
 
     function ajax(i, datos) {
-        hilo[i] = new Worker("js/worker.js");
-        hilo[i].postMessage(jso[i]);
-        hilo[i].onmessage = function (event) {
-            data[i] = event.data;
-            ob.cargarTabla(data[i], selector[i], datos);
-            data[i] = jQuery.parseJSON(event.data);
-            hilo[i].terminate();
-            peticionCompleta(i, data[i]);
-        };
+        try {
+            hilo[i] = new Worker("js/worker.js");
+            hilo[i].postMessage(jso[i]);
+            hilo[i].onmessage = function (event) {
+                data[i] = event.data;
+                ob.cargarTabla(data[i], selector[i], datos);
+                if (i != 5) {
+                    data[i] = jQuery.parseJSON(event.data);
+                }
+                hilo[i].terminate();
+                peticionCompleta(i, data[i]);
+            };
+        } catch (error) {
+            console.log(error);
+        }
     }
     function peticionCompleta(i, daos) {
         if (i == 0) {
@@ -92,16 +112,31 @@ function modificar(idTipoItem) {
                 } else {
                     ww = ww + ',' + daos[f].Id_Item_Lista;
                 }
-
             }
-            console.log(ww);
             jso[3] = ['Crud_Controller', '[{opcion: 3,tabla2:19,tipo:1,elegir: [0,1],delimitador:"[{colum:0,operador:7,valor1:' + ww + ',añadir:0},{colum:2,operador:0,valor1:' + idTipoItem + '}]", id:0,opSelect:6}]'];
             selector[3] = $("#SelectItem");
             datos[3] = {nombre: "MultiSelect", worker: true};
             selector[3].multiSelect();
             ajax(3, datos[3]);
-        }else if(i==5){
-            
-        } 
+        } else if (i == 1) {
+            if (data[0].length == data[i].length) {
+                men = "El item " + men + " no se ingreso.";
+                estado = ("error");
+            } else if (data[0].length < data[i].length) {
+                men = "El item " + men + " se ingreso correctamente";
+                estado = ("success");
+            }
+            $.notify(men, estado);
+        } else if (i == 5) {
+            var daMen = data[i].split("$$");
+            if (daMen[0] == "true") {
+                estado = ("success");
+                men = "La lista " + men1 + " " + daMen[1];
+            } else {
+                estado = ("error");
+                men = daMen[1];
+            }
+            $.notify(men, estado);
+        }
     }
 }

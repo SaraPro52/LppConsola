@@ -79,12 +79,7 @@
                         </div>
                         <div class="collapse navbar-collapse">
                             <ul class="nav navbar-nav navbar-right">
-                                <li>
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                        <i class="ti-panel"></i>
-                                        <p>Stats</p>
-                                    </a>
-                                </li>
+
                                 <li class="dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                         <i class="ti-bell"></i>
@@ -103,40 +98,40 @@
 
                 </div>
 
-                       <footer class="footer footerPrincipal">
-            <div class="container-fluid">
-                <nav class="pull-left">
-                    <ul>
+                <footer class="footer footerPrincipal">
+                    <div class="container-fluid">
+                        <nav class="pull-left">
+                            <ul>
 
-                        <li>
-                            <img src="assets/img/sena.png">
-                            
-                          
-                        <img src="assets/img/saraBlanco.png">
-                        </li>
-                        
-                       
-                    </ul>
-                </nav>
-                <div class="copyright pull-right">
-                     
+                                <li>
+                                    <img src="assets/img/sena.png">
+
+
+                                    <img src="assets/img/saraBlanco.png">
+                                </li>
+
+
+                            </ul>
+                        </nav>
+                        <div class="copyright pull-right">
+
                             <li>
-                             
-                                        <h3>Siguenos en:</h3>
-                                        <ul class="list-inline">
-                                            <li>
-                                                <a href="https://plus.google.com/u/0/101782866518065902776" class="btn-social btn-outline"><i class="fa fa-fw fa-google-plus"></i></a>
-                                            </li>
-                                           <li>
-                                                <a href="https://github.com/SaraPro52/LppConsola" class="btn-social btn-outline"><i class="fa fa-fw fa-github"></i></a>
-                                            </li>
-                                        </ul>
-                                
-                        </li>
-                    
-                </div>
-            </div>
-        </footer>
+
+                                <h3>Síguenos en:</h3>
+                                <ul class="list-inline">
+                                    <li>
+                                        <a href="https://plus.google.com/u/0/101782866518065902776" class="btn-social btn-outline"><i class="fa fa-fw fa-google-plus"></i></a>
+                                    </li>
+                                    <li>
+                                        <a href="https://github.com/SaraPro52/LppConsola" class="btn-social btn-outline"><i class="fa fa-fw fa-github"></i></a>
+                                    </li>
+                                </ul>
+
+                            </li>
+
+                        </div>
+                    </div>
+                </footer>
 
 
             </div>

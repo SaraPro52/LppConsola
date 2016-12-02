@@ -1,5 +1,4 @@
 $(document).on('ready', function () {
-
     var casoUso = "Notificaciones";
     objeto = {url: "Equipo_Controller", Opcion: 2, name: 'cuerpo'};
     casoUso = "Consultar productos virtuales";
@@ -11,8 +10,8 @@ $(document).on('ready', function () {
         objeto = {url: "Equipo_Controller", Opcion: this.value, name: 'cuerpo'};
         casoUso = "text" + this.value;
         casoUso = $("#" + casoUso).text();
-        if (this.value==2) {
-            casoUso="Consultar productos virtuales";
+        if (this.value == 2) {
+            casoUso = "Consultar productos virtuales";
         }
         obtenerP(objeto);
     });

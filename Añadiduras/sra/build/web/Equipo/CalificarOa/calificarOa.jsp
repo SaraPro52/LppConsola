@@ -16,7 +16,7 @@
                                     <input type="checkbox" class="chex col-md-1"> 
                                     <label class="locura col-md-8"></label>
                                 </div>
-                                <textarea class="textarea form-control"></textarea>
+                                <textarea class="textarea form-control inputs"></textarea>
                             </div>
                             <div class="col-md-8" id="divContainer">
 
@@ -47,10 +47,10 @@
     </div>
     <script type="text/javascript" src="js/jquery.js"></script>
     <script type="text/javascript" src="js/jquery.cecily.js"></script>
-    <script type="text/javascript" src="assets/js/bootstrap-notify.js"></script>
+    <script type="text/javascript" src="js/notify.js"></script>
     <script type="text/javascript" src="Equipo/CalificarOa/js/calificarOa.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script>
-        calificarPV(this.idLista, this.idRol);
+        calificarPV(this.idLista, this.idRol,this.Notifi);
     </script>
 </div>     

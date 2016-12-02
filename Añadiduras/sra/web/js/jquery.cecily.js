@@ -2,13 +2,21 @@ jQuery.Luna = function (Datos, selector) {
     this.cor = ("El gato lopez");
     this.Nombre = selector;
     this.Cons = Datos;
+    this.contador = 0;
+    console.log(this.Nombre);
     this.setCons = function (dato) {
-        this.Cons = dato
+        this.Cons = dato;
     };
     function setNombre(dato) {
-        this.Nombre = dato
+        this.Nombre = dato;
     }
     ;
+    function setContador(n) {
+        this.contador = n;
+    }
+    function getContador() {
+        return this.contador;
+    }
     function getNombre() {
         return this.Nombre;
     }
@@ -22,6 +30,13 @@ jQuery.Luna = function (Datos, selector) {
                 .draw();
         $("input").val("");
     };
+    function limpiarTabla() {
+        var tabla = selector.DataTable();
+        tabla
+                .clear()
+                .draw();
+    }
+    ;
     this.tipoUsuario = function (tipo, lista) {
         var texto = "";
         if (tipo == 0) {
@@ -130,7 +145,7 @@ jQuery.Luna = function (Datos, selector) {
                     }
                     break;
                 case "carga":
-                    
+
                     break;
                 case "MultiSelect":
                     var jso;
@@ -246,15 +261,17 @@ jQuery.Luna = function (Datos, selector) {
                 case "consutarOa":
                     var selecNo = selector.selector + "P";
                     $(selecNo).empty();
+                    setNombre($("#tablaListaChequeo"));
                     $("#ccNoti").empty();
                     var jso = jQuery.parseJSON(json);
                     for (var i = 0; i < jso.length; i++) {
                         table = selector.dataTable().fnAddData([
                             i + 1,
+                            jso[i].Producto,
                             jso[i].Conte_Notificacion,
                             jso[i].Fecha_Envio,
                             "<button  type='button' id='" + jso[i].Url_Version + "' class='btn btn-info  btnDescargar'>Descargar P.V</button>",
-                            "<button  type='button' id='" + jso[i].Ides_Proceso + "' class='btn btn-info  btnEvaluar'>Evaluar P.V</button>"
+                            "<button  type='button' id='" + jso[i].Ides_Proceso + "' class='btn btn-info  btnEvaluar' value=" + jso[i].Id_Notificacion + ">Evaluar P.V</button>"
                         ]);
                         if ((i < 4) && (datos.dat == true)) {
                             $(selecNo).append('<li><a><label class="Notify" id=' + jso[i].Ides_Proceso + '>' + jso[i].Conte_Notificacion + '</label></a></li>');
@@ -269,6 +286,14 @@ jQuery.Luna = function (Datos, selector) {
                     break;
                 case "ConsultarLista":
                     var jso = jQuery.parseJSON(json);
+                    if (getContador() == 1) {
+                        $("#tablaListaChequeo_filter").empty();
+                        $("#tablaListaChequeo_length").empty();
+                        $("#tablaListaChequeo_wrapper").find(".dataTables_info").empty();
+                        $("#tablaListaChequeo_wrapper").find(".dataTables_paginate").empty();
+                    }
+                    ;
+                    setContador(1);
                     for (var i = 0; i < jso.length; i++) {
                         table = selector.dataTable().fnAddData([
                             i + 1,
