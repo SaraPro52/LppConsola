@@ -5,7 +5,8 @@
         <meta charset="utf-8">
         <title>Registrar de funcionario</title>
         <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
-        <link href="assets/css/paper-dashboard.css" rel="stylesheet"/>
+        <link href="assets/css/paper-dashboard.css" rel="stylesheet"/>  
+        <link rel="stylesheet" href="assets/css/estilo_1.css"/>   
     </head>
     <body>
         <div class="content">
@@ -17,38 +18,39 @@
                                 <section class="col col-md-6">
                                     <p><h3>Datos personales</h3></p>
                                     <label  class="col-md-12"  for="Centro">Tipo de usuario</label>
-                                    <select class="form-control" id="tipoUsuario" name="tipoUsuario">
-                                        <option value="AS">selecciona...</option>
+                                    <select class="form-control select" id="tipoUsuario " name="tipoUsuario">
+                                        <option value="AD">selecciona...</option>
+                                        <option >...</option>
                                     </select>
                                     <label>Nombre</label>
-                                    <input type="text" class="form-control" placeholder="Nombre" id="nombre" maxlength="20">
+                                    <input required type="text" class="form-control inputs" placeholder="Digite Nombre" id="nombre" maxlength="20">
                                     <label>Apellido</label>
-                                    <input type="text" class="form-control" placeholder="Apellido" id="apellido" maxlength="20">
-                                    <label>Tipo identificacion</label>
-                                    <select class="form-control"  name="tipoIdenti" id="tipoIdenti">
+                                    <input required="" type="text" class="form-control inputs" placeholder=" Digite Apellido" id="Digite Apellido" maxlength="20">
+                                    <label>Tipo Identificación</label>
+                                    <select required class="form-control select"  name="tipoIdenti" id="tipoIdenti">
                                         <option value="AD" selected="selected">Selecciona...</option>
                                     </select>
-                                    <label>Numero identificacion</label>
-                                    <input type="text" class="form-control" placeholder="Numero de identificacion" id="numeroIdentificacion" maxlength="10">
-                                    <label>Correo electronico</label>
-                                    <input type="text" class="form-control" placeholder="Correo electronico" id="email" maxlength="70">
+                                    <label>Numero Identificación</label>
+                                    <input required type="text" class="form-control inputs" placeholder="Digite Numero de Identificación" id="numeroIdentificacion" maxlength="10">
+                                    <label>Correo Eléctronico</label>
+                                    <input required type="text" class="form-control inputs" placeholder=" Digite Correo Eléctronico" id="email" maxlength="70">
                                 </section>
                                 <section class="col col-md-6">
                                     <p><h3>Datos SENA</h3> </p>
-                                    <label>centro de formacion</label>
+                                    <label>Centro de Formación</label>
                                     <div class="form-group">
-                                        <select class="form-control"  id="centroFormacion">
-                                            <option value="AB" selected="selected">Selecciona...</option>
+                                        <select required class="form-control select"  id="centroFormacion">
+                                            <option value="AD" selected="selected">Selecciona...</option>
                                         </select>
                                     </div>
-                                    <label  class="col-md-12"  for="area">Area</label>
-                                    <select class="form-control" id="area">
-                                        <option value="AA" selected="selected">selecciona...</option>
+                                    <label  class="col-md-12"  for="area">Área</label>
+                                    <select required class="form-control select" id="area">
+                                        <option value="AD" selected="selected">selecciona...</option>
                                     </select>
                                     <label>Ip SENA</label>
-                                    <input type="text" class="form-control" placeholder="Ip SENA" id="ipSena" maxlength="10">
+                                    <input required type="text" class="form-control inputs" placeholder=" Digite Ip SENA" id="ipSena" maxlength="10">
                                     <label  for="cargo">Cargo</label>
-                                    <input type="text" class="form-control" placeholder="Cargo" id="cargo" maxlength="15">
+                                    <input required type="text" class="form-control inputs" placeholder=" Digite Cargo" id="cargo" maxlength="15">
                                     <center>
                                         <button type="button" id="boton1" class="btn btn-info">Registrar Funcionario</button>
                                     </center>

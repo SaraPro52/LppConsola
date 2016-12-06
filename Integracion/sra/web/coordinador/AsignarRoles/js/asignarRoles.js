@@ -1,5 +1,5 @@
 $(document).on('ready', function () {
-    var selector = [], hilo = [], jso = [], data = [], datos = [], nombre = "";
+    var selector = [], hilo = [], jso = [], data = [], datos = [];
     var ob = new $.Luna("usuario", selector[0]);
     ob.Vivo("Asignar Roles");
 
@@ -21,8 +21,6 @@ $(document).on('ready', function () {
                 break;
         }
     });
-
-
     function ajax(i, datos) {
         hilo[i] = new Worker("js/worker.js");
         hilo[i].postMessage(jso[i]);
@@ -50,6 +48,5 @@ $(document).on('ready', function () {
             console.log("Cambiodd");
         }
     }
-
 });
     

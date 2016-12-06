@@ -12,16 +12,65 @@ function calificarPV(idLista) {
     ajax(0, datos[0]);
 
     $("#btnEvaluar").click(function () {
+        console.log("as");
+        $(".remove").remove();
+        var boo = 0;
+        var inputs = $(".inputs");
+        var input;
+        for (var i = 0; i < inputs.length; i++) {
+            if (inputs[i].value == "") {
+                input = $(inputs[i]);
+                input.focus().after("<div class='remove'><font color='red'>Rellene este campo</font><div>");       
+            } else {
+                boo++;
+            }
+        }
+        if (boo == 4) {
+            console.log("HH");
+            //btnEvaluar(this);
+        }
+    });
+
+    var options = {
+        beforeSend: function () {
+            $("#progressbox").show();
+            $("#progressbar").width('0%');
+            $("#message").empty();
+            $("#percent").html("0%");
+        },
+        uploadProgress: function (event, position, total, percentComplete) {
+            $("#progressbar").width(percentComplete + '%');
+            $("#percent").html(percentComplete + '%');
+            if ((percentComplete > 1) && (percentComplete < 101)) {
+                $("#message").html("<font color='blue'>Cargando el archivo... espera</font>");
+            }
+
+        },
+        success: function () {
+            //Peticion para guardar la correcion en bd
+            jso[5] = ['ProductoVirtual_Controller', '[{opcion:1,info:[' + $("#Titulo_Publicacion").val() + ',' + $("#descripcion_oa").val() + ',' + $("#palabras_claves").val() + ',' + $("#formato").val() + ',0,0,' + $("#instrucciones").val() + ',' + $("#requisitos_instalacion").val() + '],arrayFun:[' + arrayAutor + '],arrayTemas:[' + arrayTemas + '],archivoNom:' + $("#myfile").val() + '}]'];
+            selector[5] = null;
+            datos[5] = {nombre: "btn", worker: true};
+            console.log(jso[5]);
+            ajax(5, datos[5]);
+        },
+        error: function () {
+            $("#message").html("<font color='red'>Error: al subir el archivo</font>");
+        }
+    };
+    $("#UploadForm").ajaxForm(options);
+
+    function btnEvaluar(ele) {
         var campo = "";
         var infoItems = [];
         $("input:checkbox:checked").each(function () {
-            campo = $(this).val();
+            campo = $(ele).val();
             if (campo !== "on") {
                 infoItems.push("1¤" + $("#" + campo).val() + "¤" + campo);
             }
         });
         $("input:checkbox:not(:checked)").each(function () {
-            campo = $(this).val();
+            campo = $(ele).val();
             if (campo !== "on") {
                 infoItems.push("0¤" + $("#" + campo).val() + "¤" + campo);
             }
@@ -36,7 +85,7 @@ function calificarPV(idLista) {
         selector[1] = null;
         datos[1] = {nombre: "btn", worker: true};
         ajax(1, datos[1]);
-    });
+    }
 
     function ajax(i, datos) {
         hilo[i] = new Worker("js/worker.js");

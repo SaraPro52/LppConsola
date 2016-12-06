@@ -1,6 +1,7 @@
 <div class="">
     <link rel="stylesheet" type="text/css" href="css/multi-select.css">
     <link href="assets/css/paper-dashboardEquipo.css" rel="stylesheet"/>
+    <link href="assets/css/estilo_1.css" rel="stylesheet" type="text/css"/>
     <div class="content">
         <div class="container-fluid">
             <div class="row">
@@ -9,26 +10,33 @@
                         <article class="col-md-6" id="item">
                             <input type="hidden" value="1" id="tipoLis">
                             <label>Nombre Lista</label>
-                            <input type="text" class="form-control" id="NombreL"  placeholder="Nombre de lista">
-                            <label>Decripcion</label>
-                            <textarea class="form-control"  id="DescripcionL" placeholder="Descripcion lista" rows="1" id="comment"></textarea>
-                            <button class="btn btn-info col-md-6" id="BtnLista"> Crear lista</button>
+                            <input required="" type="text" class="form-control inputs1" id="NombreL"  placeholder=" Digite Nombre de lista">
+                            <label>Descripción</label>
+                            <textarea required class="form-control inputs1"  id="DescripcionL" placeholder="Digite Descripción lista" rows="5" id="comment"></textarea>
                         </article>
+                        
                         <article class="col-md-6" id="items">
-                            <label class="dark-grey" id="lista" >Items de lista de chequeo</label>
+                            <!--jejejeje-->
+                            <div id="SelectItemDiv">
+                                <label>Items</label>
+                                <section  id="SelectItem">
+                                </section>
+                            </div>
+                        </article>
+                        <button class="btn btn-info col-md-6" style=" margin-left:30%; margin-right:1%;" id="BtnLista"> Crear lista</button>
+                        <article class="col-md-8 " id="tabla">
+                            
                             <div class="col-md-10">
-                                <label for="Descripcion">Descripcion de item</label>
+                                <div>
+                                <label style="color: #E48D15;" id="lista" >Crear Item</label>    
+                                </div>
+                                
+                                <label for="Descripcion">Descripción de item</label>
 
-                                <textarea class="form-control" placeholder="Descripcion lista" rows="1" id="Descripcion"></textarea>
+                                <textarea required class="form-control inputs" placeholder=" Digite Descripción Item" rows="1" id="Descripcion"></textarea>
                             </div>
                             <div class="col-md-10">
                                 <button  class="btn btn-info" id="btnItem">Agregar Item</button>
-                            </div>
-                        </article>
-                        <article class="col-md-8 col-md-offset-1" id="tabla">
-                            <div id="SelectItemDiv">
-                                <section  id="SelectItem">
-                                </section>
                             </div>
                         </article>
                     </section>
@@ -36,6 +44,7 @@
             </div>
         </div>
     </div>
+    
 
 </section>
 <script type="text/javascript" src="js/jquery.js"></script>

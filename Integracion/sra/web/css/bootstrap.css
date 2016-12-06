@@ -3057,15 +3057,15 @@ fieldset[disabled] a.btn {
   pointer-events: none;
 }
 .btn-default {
-  color: #333;
-  background-color: #fff;
-  border-color: #ccc;
+  color: #FFFFFF;
+  background-color:#218276;
+  border-color: #218276;
 }
 .btn-default:focus,
 .btn-default.focus {
-  color: #333;
-  background-color: #e6e6e6;
-  border-color: #8c8c8c;
+  color: #FFFFFF;
+  background-color:#218276;
+  border-color:#218276;
 }
 .btn-default:hover {
   color: #333;

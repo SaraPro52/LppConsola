@@ -1,0 +1,42 @@
+Retorno del controlador cuando un registro se logro un true o flase segun el caso debes de se a registrado
+------------------------------------------------------------------
+
+	
+Alterar los datos en la vista que invoca la peticion dentro del modelo 
+--------------------------------------
+Consulta de pv por los equipos;  la peticion esta mal.
+por que me trae las productos por evaluar y los que ya estan evaluados.
+
+Esta solucion se desarrolla con la implementacion del cambio de estado para 
+la tabla notificaciones.
+
+Este proceso solo necesita el id de la notificacion para poder hacer la
+peticion de la actualizacion de ese registro
+------------------------------------------------
+En Instructor/Corrgir
+la peticion de cargar los PV a corregir no es correcta 
+
+Es la misma peticion que en notificaciones pero con la diferencia que ahora trae las 
+notificaciones de tipo retroalimentacion, que son las encargadas de contener todas 
+notificaciones que son de correccion.
+--------------------------------------------------------------------
+
+crear peticion de perfil de usuario
+donde me traiga los datos del usuario especificados en el formulario
+
+Peticion creada apartir de la vista de funcionario	
+-----------------------------------------------------------------------
+
+crear igualmente  la peticion de cambio de datos de funcionarios.
+
+Peticion creada para la modificacion de los datos de un funcionario.
+------------------------------------------------------------------------
+
+
+
+NOtificaciones maso
+
+//////Nuevas peticiones ;)
+
+Casos Comentario //Cargar todos los comentarios no se por que no lo hace 
+solo carga el primer comentario  fabian... ajajajaj

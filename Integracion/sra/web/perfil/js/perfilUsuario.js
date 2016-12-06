@@ -9,9 +9,64 @@ $(document).on('ready', function () {
 
 
     $("#BtnModificar").click(function () {
+        var emailreg = /^[a-zA-Z0-9_\.\-]+@[a-zA-Z0-9\-]+\.[a-zA-Z0-9\-\.]+$/;
+        $(".remove").remove();
+        var boo = 0;
+        var inputs = $(".inputs");
+        var selec = $(".select");
+        var input, selet;
+
+        for (var i = 0; i < inputs.length; i++) {
+            if (inputs[i].value == "") {
+                input = $(inputs[i]);
+                input.focus().after("<div  style='font-size:15px;' class='remove'><font color='red'>Rellene este campo</font><div>");       
+            } else {
+                boo++;
+            }
+        }
+
+        for (var i = 0; i < selec.length; i++) {
+            console.log(selec[i]);
+            if (selec[i].value == "A0") {
+                selet = $(selec[i]);
+                selet.focus().after("<div style='font-size:15px;' class='remove'><font color='red'>seleccione una opcion</font><div>");
+            } else {
+                boo++;
+            }
+        }
+        if (!emailreg.test($("#CorreoFun").val())) {
+            $("#CorreoFun").focus().after("<div style='font-size:15px;' class='remove'><font color='red'>Ingrese un email correcto</font></div>");
+            boo = boo - 1;
+        }
+        if (boo == 10) {
+            console.log("campos");
+            //btnarea();
+        }
+
+
+    });
+    $("#BtnModificar1").click(function () {
+        $(".remove").remove();
+        if( $("#ConActual").val() == "" ){
+            $("#ConActual").focus().after("<div class='remove'><font color='red'>ingrese la contraseña actual</font></div>");
+            
+            }else if( $("#ConNuevaF").val() == "" ){
+            $("#ConNuevaF").focus().after("<div class='remove'><font color='red'>ingrese la contraseña actual</font></div>");
+        
+            }else if( $("#ConNueva").val() == "" ){
+            $("#ConNueva").focus().after("<div class='remove'><font color='red'>ingrese la contraseña actual</font></div>");
+        
+        }else if ($("#ConNueva").val().trim() != $("#ConNuevaF").val().trim()) {
+            $("#ConNueva").focus().after("<div class='remove'><font color='red'>Las contraseñas no son iguales.</font></div>");
+            boo = boo - 1;
+        
+                }
+        });
+    function btnmodificar() {
+
         var pass = "";
         if ($("#ConNueva").val() == "") {
-            pass=$("#ConActual"),val();
+            pass = $("#ConActual").val();
         }
         $("#NombreFun").val();
         $("#ApellidoFun").val();
@@ -22,11 +77,7 @@ $(document).on('ready', function () {
         $("#IdentificacionFun").val();
         $("#IdentificacionFunTipo").val();
 
-
-    });
-
-
-
+    }
 
     function ajax(i, datos) {
         hilo[i] = new Worker("js/worker.js");
@@ -48,48 +99,6 @@ $(document).on('ready', function () {
         }
     }
 });
-
-//         $(".remove").remove();
-//
-//        if ($("#ConActual").val() == "") {
-//                        $("#ConActual").focus().after("<div class='remove'><font color='red'>ingrese contraseña actual</font><div>");
-//                        return false;
-//         } else if (clave1.trim() != clave2.trim()) {
-//            $("#ConNuevaF").focus().after("<div class='remove'><font color='red'>Las contraseñas no son iguales.</font></div>");
-//            return false;
-//        }
-
-//        $("#BtnModificar").click(function () {
-//        var emailreg = /^[a-zA-Z0-9_\.\-]+@[a-zA-Z0-9\-]+\.[a-zA-Z0-9\-\.]+$/;
-//            $(".remove").remove();
-//                if ($("#NombreFun").val() == "") {
-//                        $("#NombreFun").focus().after("<div class='remove'><font color='red'>digite el nombre</font><div>");
-//                        return false;
-//        
-//            } else if ($("#ApellidoFun").val() == "") {
-//                        $("#ApellidoFun").focus().after("<div class='remove'><font color='red'>Ingrese un apellido</font></div>");
-//                        return false;
-//        } else if ($("#IdentificacionFunTipo").val() == "A0") {
-//                        $("#IdentificacionFunTipo").focus().after("<div class='remove'><font color='red'>seleccione una opcion</font></div>");
-//                        return false;
-//        } else if ($("#IdentificacionFun").val() == "") {
-//                        $("#IdentificacionFun").focus().after("<div class='remove'><font color='red'>ingrese su numero de identificacion</font></div>");
-//                        return false;
-//        } else if ($("#NFuncionarioFun").val() == "") {
-//                        $("#NFuncionarioFun").focus().after("<div class='remove'><font color='red'>ingrese su numero de funsionario</font></div>");
-//                        return false;
-//        } else if ($("#CorreoFun").val() == "" || !emailreg.test($("#CorreoFun").val())) {
-//                        $("#CorreoFun").focus().after("<div class='remove'><font color='red'>Ingrese un email correcto</font></div>");
-//                        return false;
-//        } else if ($("#IdSenaFun").val() == "") {
-//                        $("#IdSenaFun").focus().after("<div class='remove'><font color='red'>ingrese una ip</font></div>");
-//                        return false;
-//        } else if ($("#CaargoFun").val() == "") {
-//                        $("#CaargoFun").focus().after("<div class='remove'><font color='red'>ingrese un cargo</font></div>");
-//                        return false;
-//        }
-//        });
-//
 //        $("#CorreoFun").keyup(function () {
 //                if ($(this).val() != "" && emailreg.test($(this).val())) {
 //                        $(".error").fadeOut();

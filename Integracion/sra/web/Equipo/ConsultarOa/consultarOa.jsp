@@ -5,10 +5,10 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
-                    <div class="content">
+                    <div class="content" style="margin-top: 3%;">
                         <section>
-                            <article class="col-md-8 col-md-offset-1" id="tabla">
-                                <table class="table table-striped" id="tablaConsultarOa">
+                            <article class="col-md-10 col-md-offset-1" id="tabla">
+                                <table class="table table-striped" id="tablaConsultarOa" >
                                     <thead>
                                         <tr>
                                             <th>#</th>

@@ -18,29 +18,30 @@ public class sesion_controller extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");        try (PrintWriter out = response.getWriter()) {
-       
+        response.setContentType("text/html;charset=UTF-8");
+        try (PrintWriter out = response.getWriter()) {
+
             response.setContentType("application/json;charset=UTF-8");
             PrintWriter respuesta = response.getWriter();
             HttpSession sesion = request.getSession();
-            
+
             String usuario = request.getParameter("user");
             String contraseña = request.getParameter("pwd");
-            if(usuario.equals("1019") && contraseña.equals("Sena")){
+            if (usuario.equals("1019") && contraseña.equals("Sena")) {
                 sesion.setAttribute("ami", "1019");
                 request.getRequestDispatcher("administrador/administradorPrincipal.jsp").forward(request, response);
-                if(request.getParameter("cerrar") != null){
-                            sesion.invalidate();
+                if (request.getParameter("cerrar") != null) {
+                    sesion.invalidate();
                 }
-            }else{
+            } else {
                 contraseña = DigestUtils.md5Hex(request.getParameter("pwd"));
-                String delimitador = "[{colum:4,operador:0,valor1:'\""+usuario+"\"',añadir:0},{colum:5,operador:0,valor1:'\""+contraseña+"\"'}]";
-                Elomac elo = new Elomac(19,2);
+                String delimitador = "[{colum:4,operador:0,valor1:'\"" + usuario + "\"',añadir:0},{colum:5,operador:0,valor1:'\"" + contraseña + "\"'}]";
+                Elomac elo = new Elomac(19, 2);
 
                 try {
                     String fun = elo.Select(delimitador);
 
-                    if(fun != ""){                    
+                    if (fun != "") {
                         JSONObject funJ = new JSONArray(fun).getJSONObject(0);
                         int rol = funJ.getInt("Id_Rol");
                         sesion.setAttribute("idUser", funJ.getInt("Id_Funcionario"));
@@ -48,7 +49,7 @@ public class sesion_controller extends HttpServlet {
                         sesion.setAttribute("idRol", rol);
                         sesion.setAttribute("idCentro", funJ.getInt("Id_Centro"));
 
-                        switch(rol){
+                        switch (rol) {
                             case 1:
                                 request.getRequestDispatcher("instructor/instructorPrincipal.jsp").forward(request, response);
                                 break;
@@ -63,17 +64,17 @@ public class sesion_controller extends HttpServlet {
                                 break;
                         }
 
-    //                }else if(ad != ""){
-    //                    
-    //                    JSONObject admin = new JSONArray(ad).getJSONObject(0);
-    //                    sesion.setAttribute("usuAdmin",admin.getString("Usuario"));
-    //                    sesion.setAttribute("contra",admin.getString("Contraseña"));
-    //                    
-    //                    request.getRequestDispatcher("administrador/administradorPrincipal.jsp").forward(request, response);
-    //                    
+                        //                }else if(ad != ""){
+                        //                    
+                        //                    JSONObject admin = new JSONArray(ad).getJSONObject(0);
+                        //                    sesion.setAttribute("usuAdmin",admin.getString("Usuario"));
+                        //                    sesion.setAttribute("contra",admin.getString("Contraseña"));
+                        //                    
+                        //                    request.getRequestDispatcher("administrador/administradorPrincipal.jsp").forward(request, response);
+                        //                    
                     }
-                    if(request.getParameter("cerrar") != null){
-                            sesion.invalidate();
+                    if (request.getParameter("cerrar") != null) {
+                        sesion.invalidate();
                     }
                 } catch (Exception e) {
                     request.getRequestDispatcher("index.jsp").forward(request, response);
@@ -107,6 +108,8 @@ public class sesion_controller extends HttpServlet {
 //                    request.getRequestDispatcher("Equipo/CalificarOa/calificarOa.jsp").forward(request, response);
 //                    break;
 //            }
+        } catch (Exception e) {
+            request.getRequestDispatcher("index.jsp").forward(request, response);
         }
     }
 

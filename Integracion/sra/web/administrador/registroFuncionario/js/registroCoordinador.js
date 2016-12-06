@@ -22,13 +22,43 @@ $(document).on('ready', function () {
     
           
     $("#boton1").click(function (){
+        $(".remove").remove();
+        var boo = 0;
+        var inputs = $(".inputs");
+        var selec = $(".select");
+        var input, selet;
+        for (var i = 0; i < inputs.length; i++) {
+            if (inputs[i].value == "") {
+                input = $(inputs[i]);
+                input.focus().after("<div class='remove'><font color='red'>Rellene este campo</font><div>");       
+            } else {
+                boo++;
+            }
+        }
+        for (var i = 0; i < selec.length; i++) {
+            console.log(selec[i]);
+            if (selec[i].value == "AD") {
+                selet = $(selec[i]);
+                selet.focus().after("<div class='remove'><font color='red'>seleccione una opcion</font><div>");
+            } else {
+                boo++;
+            }
+        }
+
+        if (boo == 10) {
+           boton1();
+        }
+        
+    });
+
+        function boton1() {
         jso[3] = ['Funcionario_Controller', "[{opcion:1,datos:['" + $("#tipoUsuario").val() + "','" + $("#tipoIdenti").val() + "','" + $("#numeroIdentificacion").val() + "','" + $("#nombre").val() + "','" + $("#apellido").val() + "','" + $("#email").val() + "','" + $("#cargo").val() + "','" + $("#ipSena").val() +"','1','" + $("#centroFormacion").val() + "','" + $("#area").val() + "']}]"];
         datos[1] = {nombre: "btn", worker: true};
         $("#boton1").attr("disabled", true);
         ajax(3, datos[1]);
 
-    });
-
+    }
+        
     function ajax(i, datos) {
         hilo[i] = new Worker("js/worker.js");
         hilo[i].postMessage(jso[i]);

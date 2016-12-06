@@ -10,13 +10,22 @@ function modificar(idTipoItem) {
     ob.TablaEspa(selector[2]);
     ajax(2, datos);
     $("#btnItem").on('click', function () {
-        console.log("helow1");
-                   $(".remove").remove();
-        if( $("#Descripcion").val() == "" ){
-            $("#Descripcion").focus().after("<div class='remove'><font color='red'>ingrese la descripcion</font><div>");
-            return false;
-}
-        greef();
+    $(".remove").remove();
+        var boo = 0;
+        var inputs = $(".inputs");
+        var input;
+        for (var i = 0; i < inputs.length; i++) {
+            if (inputs[i].value == "") {
+                input = $(inputs[i]);
+                input.focus().after("<div class='remove'><font color='red'>Rellene este campo</font><div>");       
+            } else {
+                boo++;
+            }
+        }
+        if (boo == 1) {
+            
+            greef();
+        }
     });
 
     function greef() {
@@ -50,18 +59,22 @@ function modificar(idTipoItem) {
         }
     });
     $("#BtnLista").click(function () {
-        console.log("hellow")
         $(".remove").remove();
-        if( $("#NombreL").val() == "" ){
-            $("#NombreL").focus().after("<div class='remove'><font color='red'>diguita la descripcion</font><div>");
-
-            return false;
-            }else if ($("#comment").val() == ""){
-    
-            $("#comment").focus().after("<div class='remove'><font color='red'>diguita un comentario</font><div>");
-                return fase;
+        var boo = 0;
+        var inputs = $(".inputs1");
+        var input;
+        for (var i = 0; i < inputs.length; i++) {
+            if (inputs[i].value == "") {
+                input = $(inputs[i]);
+                input.focus().after("<div class='remove'><font color='red'>Rellene este campo</font><div>");       
+            } else {
+                boo++;
+            }
         }
-      hooo();
+        if (boo == 2) {
+            
+            hooo();
+        }
     });
     
     function hooo(){

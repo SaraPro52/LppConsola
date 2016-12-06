@@ -13,11 +13,12 @@
         <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
         <link href="assets/css/animate.min.css" rel="stylesheet"/>
         <link href="assets/css/paper-dashboardEquipo.css" rel="stylesheet"/>
-
+        <link href="assets/css/estilo.css" rel="stylesheet" type="text/css"/>
         <link href="assets/css/demo.css" rel="stylesheet" />
         <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
         <link href='https://fonts.googleapis.com/css?family=Muli:400,300' rel='stylesheet' type='text/css'>
         <link href="assets/css/themify-icons.css" rel="stylesheet">
+
     </head>
     <body>
         <div class="wrapper">
@@ -58,7 +59,7 @@
                     <ul class="nav menu" id="menus"><li class="active"><a><i class="ti-home"></i><p>Equipo tecnico</p></a></li>
                         <li class="activado" value="0"><a><i class="ti-user"></i><p><label id="text0">Perfil de usuario</label></p></a></li>
                         <li class="activado" value="1"><a><i class="icono izquierda  fa fa-book" aria-hidden="true"></i><label id="text1">Crear lista de chequeo</label></a></li>
-                        <li class="activado" value="3"><a><i class="icono izquierda  fa fa-edit" aria-hidden="true"></i><label id="text3">Modificar Lista  de chequeo</label></a></li>
+                        <li class="activado" value="3"><a><i class="icono izquierda  fa fa-edit" aria-hidden="true"></i><label id="text3">Editar Lista chequeo</label></a></li>
                         <li class="activado" value="2"><a><i class="icono izquierda  fa fa-eye" aria-hidden="true"></i><label id="text2">Consultar P.V</label></a></li>
                     </ul>
                 </div>
@@ -74,16 +75,11 @@
                                 <span class="icon-bar bar2"></span>
                                 <span class="icon-bar bar3"></span>
                             </button>
-                            <a class="navbar-brand"><label id="CasoNombre"></label></a>
+                            <h3 style="color:#E84E1B;"><label id="CasoNombre"></label></h3>
                         </div>
                         <div class="collapse navbar-collapse">
                             <ul class="nav navbar-nav navbar-right">
-                                <li>
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                        <i class="ti-panel"></i>
-                                        <p>Stats</p>
-                                    </a>
-                                </li>
+
                                 <li class="dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                         <i class="ti-bell"></i>
@@ -101,33 +97,42 @@
                 <div id="cuerpo" >
 
                 </div>
-                <footer class="footer">
+
+                <footer class="footer footerPrincipal">
                     <div class="container-fluid">
                         <nav class="pull-left">
                             <ul>
 
                                 <li>
-                                    <a href="http://www.creative-tim.com">
-                                        Creative Tim
-                                    </a>
+                                    <img src="assets/img/sena.png">
+
+
+                                    <img src="assets/img/saraBlanco.png">
                                 </li>
-                                <li>
-                                    <a href="http://blog.creative-tim.com">
-                                        Blog
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="http://www.creative-tim.com/license">
-                                        Licenses
-                                    </a>
-                                </li>
+
+
                             </ul>
                         </nav>
                         <div class="copyright pull-right">
-                            <script>document.write(new Date().getFullYear())</script>, made with <i class="fa fa-heart heart"></i> by <a href="http://www.creative-tim.com">Creative Tim</a>
+
+                            <li>
+
+                                <h3>Síguenos en:</h3>
+                                <ul class="list-inline">
+                                    <li>
+                                        <a href="https://plus.google.com/u/0/101782866518065902776" class="btn-social btn-outline"><i class="fa fa-fw fa-google-plus"></i></a>
+                                    </li>
+                                    <li>
+                                        <a href="https://github.com/SaraPro52/LppConsola" class="btn-social btn-outline"><i class="fa fa-fw fa-github"></i></a>
+                                    </li>
+                                </ul>
+
+                            </li>
+
                         </div>
                     </div>
                 </footer>
+
 
             </div>
         </div>
@@ -142,25 +147,25 @@
     <script src="assets/js/demo.js"></script>
     <script type="text/javascript" src="Equipo/js/Principalequipo.js"></script>
     <script>
-                                var nomUser = '<%= session.getAttribute("nomUser")%>';
-                                var idUser = '<%= session.getAttribute("idUser")%>';
-                                var idRol = '<%= session.getAttribute("idRol")%>';
-                                var idCentro = '<%= session.getAttribute("idCentro")%>';
-                                var idTipoItem = 0;
+        var nomUser = '<%= session.getAttribute("nomUser")%>';
+        var idUser = '<%= session.getAttribute("idUser")%>';
+        var idRol = '<%= session.getAttribute("idRol")%>';
+        var idCentro = '<%= session.getAttribute("idCentro")%>';
+        var idTipoItem = 0;
 
-                                if (idUser != null && idRol != null && nomUser != null && idCentro != null) {
-                                    $("#menus").append("<li><a href='index.jsp?cerrar=true'><i class='icono izquierda  fa fa-upload' aria-hidden='true'></i>Cerrar Sesion</a></li>");
-                                } else {
-                                    location.replace('index.jsp');
-                                }
+        if (idUser != null && idRol != null && nomUser != null && idCentro != null) {
+            $("#menus").append("<li><a href='index.jsp?cerrar=true'><i class='icono izquierda  fa fa-upload' aria-hidden='true'></i>Cerrar Sesion</a></li>");
+        } else {
+            location.replace('index.jsp');
+        }
 
-                                $.notify({
-                                    icon: 'ti-gift',
-                                    message: "Bienvenido a <b>Sara Pro</b> - Lider de equipo tecnico " + nomUser + "."
+        $.notify({
+            icon: 'ti-gift',
+            message: "Bienvenido a <b>Sara Pro</b> - Lider de equipo tecnico " + nomUser + "."
 
-                                }, {
-                                    type: 'success',
-                                    timer: 4000
-                                });
+        }, {
+            type: 'success',
+            timer: 4000
+        });
     </script>
 </html>

@@ -1,7 +1,4 @@
 $(document).on('ready', function () {
-    $("#btnI").click(function(){
-        
-    });    
     $(document).on('click', 'li .btntt', function (e) {
         objeto = {url: $("#controller").val(), Opcion: this.value, name: 'cuerpo', vista: $("#vista").val()};
         console.log(objeto);

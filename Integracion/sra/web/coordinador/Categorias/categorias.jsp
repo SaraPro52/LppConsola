@@ -4,7 +4,10 @@
     <link rel="stylesheet" href="css/bootstrap.css" media="screen" title="no title" charset="utf-8">
     <link rel="stylesheet" type="text/css" href="css/multi-select.css">
      <link href="assets/css/paper-dashboardCoordinador.css" rel="stylesheet"/>
+     <link href="assets/css/estilo.css" rel="stylesheet" type="text/css"/>
+     
 </head>
+
 <body>
     <div class="content">
         <div class="container-fluid">
@@ -12,16 +15,20 @@
                 <div class="col-md-12">
                     <section class="col-md-12">
                         <article class="col-md-6">
+                            <label style="color:#60B359;">Crear Categoría </label>
                             <label for="NombreCategoria" class="col-md-12">Nombre:</label>
-                            <div class="col-md-12"><input type="text" class="form-control" id="NombreCategoria" placeholder="Nombre de la categoria"></div>
-                            <label for="DescripcionCategoria" class="col-md-12">Descripcion:</label>
-                            <div class="col-md-12"><input type="text" class="form-control" id="DescripcionCategoria" placeholder="Nombre de la descripcion"></div>
+                            <div class="col-md-12"><input type="text" class="form-control" id="NombreCategoria" placeholder=" Digite Nombre de la categoría"></div>
+                            <label for="DescripcionCategoria" class="col-md-12">Descripción:</label>
+                            <div class="col-md-12"><input type="text" class="form-control" id="DescripcionCategoria" placeholder="Digite Nombre de la descripción"></div>
+                            
                         </article>
+                        
+                        
                         <article class="col-md-6">
-
-                            <div class="col-md-12"><input type="text" class="form-control" id="NombreTema" placeholder="Nombre del tema"></div>
-                            <label for="DescripcionCategoria" class="col-md-12">Descripcion:</label>
-                            <div class="col-md-12"><input type="text" class="form-control" id="DescripcionTema" placeholder="Nombre del tema"></div>
+                            
+                            <div class="col-md-12"><label style="color: #60B359;">Crear Tema</label><input type="text" class="form-control" id="NombreTema" placeholder="Digite Nombre del Tema"></div>
+                            <label for="DescripcionCategoria" class="col-md-12">Descripción:</label>
+                            <div class="col-md-12"><input type="text" class="form-control" id="DescripcionTema" placeholder="Digite Descripción del Tema"></div>
                             <button type="button" id="btnTema" class="btn btn-info">Guardar Tema</button>
 
                         </article>

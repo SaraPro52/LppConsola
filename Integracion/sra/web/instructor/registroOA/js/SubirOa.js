@@ -42,32 +42,37 @@ $(document).ready(function () {
         }
     });
     $("#subir_oa").on('click', function () {
-         $(".remove").remove();
-                if ($("#Titulo_Publicacion").val() == "") {
-                        $("#Titulo_Publicacion").focus().after("<div class='remove'><font color='red'>digite un titulo de publicacion</font><div>");
-                        return false;
-        
-            } else if ($("#palabras_claves").val() == "") {
-                        $("#palabras_claves").focus().after("<div class='remove'><font color='red'>digite las palabras claves</font></div>");
-                        return false;
-        } else if ($("#descripcion_oa").val() == "") {
-                        $("#descripcion_oa").focus().after("<div class='remove'><font color='red'>digite la descripción</font></div>");
-                        return false;
-        } else if ($("#requisitos_instalacion").val() == "") {
-                        $("#requisitos_instalacion").focus().after("<div class='remove'><font color='red'>digite los requisitos de instalacion</font></div>");
-                        return false;
-        } else if ($("#instrucciones").val() == "") {
-                        $("#instrucciones").focus().after("<div class='remove'><font color='red'>digite instrucciones de instalacion</font></div>");
-                        return false;
-        } else if ($("#formato").val() == "FG") {
-                        $("#formato").focus().after("<div class='remove'><font color='red'>slecione un formato</font></div>");
-                        return false;
-        } else if ($("#myfile").val() == "") {
-                        $("#myfile").focus().after("<div class='remove'><font color='red'>ingrese un archivo</font></div>");
-                        return false;
+         
+    
+      
+     $(".remove").remove();
+        var boo = 0;
+        var inputs = $(".inputs");
+        var selec = $(".select");
+        var input, selet;
+        for (var i = 0; i < inputs.length; i++) {
+            if (inputs[i].value == "") {
+                input = $(inputs[i]);
+                input.focus().after("<div class='remove'><font color='red'>Rellene este campo</font><div>");       
+            } else {
+                boo++;
+            }
         }
-    });
+        for (var i = 0; i < selec.length; i++) {
+            console.log(selec[i]);
+            if (selec[i].value == "AD") {
+                selet = $(selec[i]);
+                selet.focus().after("<div class='remove'><font color='red'>seleccione una opcion</font><div>");
+            } else {
+                boo++;
+            }
+        }
 
+        if (boo == 3) {
+            
+            btnprograma();
+        }
+      });  
     var options = {
         beforeSend: function () {
             $("#progressbox").show();

@@ -8,16 +8,45 @@ $(document).on('ready', function () {
     datos[0] = {nombre: "Area", worker: true};
     ob.TablaEspa(selector[0]);
     ajax(0, datos[0]);
-    var men="";
+    var men = "";
     $("#btnArea").on('click', function () {
+        $(".remove").remove();
+        var boo = 0;
+        var inputs = $(".inputs");
+        var selec = $(".select");
+        var input, selet;
+        for (var i = 0; i < inputs.length; i++) {
+            if (inputs[i].value == "") {
+                input = $(inputs[i]);
+                input.focus().after("<div class='remove'><font color='red'>Rellene este campo</font><div>");       
+            } else {
+                boo++;
+            }
+        }
+        for (var i = 0; i < selec.length; i++) {
+            console.log(selec[i]);
+            if (selec[i].value == "A0") {
+                selet = $(selec[i]);
+                selet.focus().after("<div class='remove'><font color='red'>seleccione una opcion</font><div>");
+            } else {
+                boo++;
+            }
+        }
+
+        if (boo == 3) {
+            console.log("campos");
+            btnarea();
+        }
+    });
+    function btnarea() {
         //CentroFormacion
-        jso[1] = ['Crud_Controller', '[{opcion:1,tabla:0,delimitador:[],datos:["",'+$("#areaC").val()+','+$("#areaL").val() + '],elegir:[0,1,2],id:0,opSelect:4}]'];
+        jso[1] = ['Crud_Controller', '[{opcion:1,tabla:0,delimitador:[],datos:["",' + $("#areaC").val() + ',' + $("#areaL").val() + '],elegir:[0,1,2],id:0,opSelect:4}]'];
         selector[1] = $("#tablaarea");
         datos[1] = {nombre: "Area", worker: true};
         ob.limpiarTabla(selector[1]);
-        men=$("#areaC").val();
+        men = $("#areaC").val();
         ajax(1, datos[1]);
-    });
+    }
     $(document).on('click', '.botonArea', function (e) {
         switch (this.value) {
             case "m":

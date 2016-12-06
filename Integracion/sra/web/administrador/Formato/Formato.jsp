@@ -7,6 +7,7 @@
         <link rel="stylesheet" href="css/bootstrap.css" media="screen" title="no title" charset="utf-8">
         <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.12/css/jquery.dataTables.css">
         <link href="assets/css/paper-dashboard.css" rel="stylesheet"/>
+         <link rel="stylesheet" href="assets/css/estilo_1.css"/>
     </head>
     <body>
         <div class="content">
@@ -17,15 +18,14 @@
                             <div class="form-group contenedorInsert">
                                 <div class="col-md-6">
                                     <label for="formato">Nombre del Formato</label>
-                                    <input  placeholder="Nombre del formato" type="text" class="form-control" name="formato" id="formato" required="true">
+                                    <input required placeholder="Nombre del Formato" type="text" class="form-control inputs" name="formato" id="formato" required="true">
 
                                 </div>
 
                                 <div class="col-md-6">
 
                                     <label for="descripcion">Descripción Formato</label>
-                                    <textarea placeholder="descripcion formato" class="form-control" id="descripcion" name="descripcion" required="true"></textarea>
-
+                                    <input required type="text" placeholder="Descripción Formato"  class="form-control inputs" id="descripcion" name="descripcion" required="true">
                                 </div> 
                                 <button type="button" class="btn btn-info" id="btnformato"  name="button">Guardar Formato</button>
                             </div>
@@ -35,7 +35,7 @@
 
 
 
-                <article class="col-md-10 ">
+                <article style="margin-left:8%;" class="col-md-8 ">
                     <table id="tablaformato" class="table table-hover">
                         <thead>
                             <tr class="active">

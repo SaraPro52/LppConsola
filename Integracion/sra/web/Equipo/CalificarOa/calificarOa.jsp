@@ -1,6 +1,7 @@
 <div id="contenedoraBody">
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <link href="assets/css/paper-dashboardEquipo.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="assets/css/estilo_1.css"/>
     <div class="content">
         <div class="container-fluid">
             <div class="row">
@@ -13,10 +14,10 @@
                             <div id="clone">
                                 <div class="col-md-12">
                                     <label class="col-md-2">Cumple</label>    
-                                    <input type="checkbox" class="chex col-md-1"> 
+                                    <input required type="checkbox"  class="chex col-md-1 inputs"> 
                                     <label class="locura col-md-8"></label>
                                 </div>
-                                <textarea class="textarea form-control"></textarea>
+                                <textarea required class="textarea form-control inputs"></textarea>
                             </div>
                             <div class="col-md-8" id="divContainer">
 
@@ -27,11 +28,11 @@
 
                             <label class="col-md-5" for="areaObservacion">Observaciones</label>
                             <div class="col-md-8">
-                                <textarea class="col-md-5 form-control" id="areaObservacion" rows="1" cols="40"></textarea>
+                                <textarea required class="col-md-5 form-control inputs" id="areaObservacion" rows="1" cols="40"></textarea>
                             </div>   
                             <form class="col-md-5 col-md-offset-3" action="">
-                                <input type="radio" id="s" name="Resultado" class="Resultado" value="1"> Aprovado<br>
-                                <input type="radio" id="r" name="Resultado" class="Resultado1" value="0"> Reprovado<br>
+                                <input required type="radio" id="s" name="Resultado" class="Resultado" value="1"> Aprovado<br>
+                                <input required type="radio" id="r" name="Resultado" class="Resultado1" value="0"> Reprovado<br>
                             </form>
                             <div col-md-4 col-md-offset-1>
                                 <div class="col-md-5">

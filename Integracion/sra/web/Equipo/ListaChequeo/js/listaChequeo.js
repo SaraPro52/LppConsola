@@ -17,21 +17,28 @@ function listaChequeo(idTipoItem, idUser) {
         }
     });
     $("#BtnLista").on('click', function () {
-        console.log("hola como");
+
         $(".remove").remove();
-                if ($("#NombreL").val() == "") {
-                        $("#NombreL").focus().after("<div class='remove'><font color='red'>diguita nombre de lista</font><div>");
-                        return false;
-        
-            } else if ($("#DescripcionL").val() == "") {
-                        $("#DescripcionL").focus().after("<div class='remove'><font color='red'>diguita descripcon de lista</font></div>");
-                        return false;
+        var boo = 0;
+        var inputs = $(".inputs1");
+        var input, selet;
+        for (var i = 0; i < inputs.length; i++) {
+            if (inputs[i].value == "") {
+                input = $(inputs[i]);
+                input.focus().after("<div class='remove'><font color='red'>Rellene este campo</font><div>");       
+            } else {
+                boo++;
+            }
         }
-        tre();
+        if (boo == 2) {
+
+            tre();
+        }
+
+
     });
 
     function tre() {
-
         var arrayS = [];
         for (var j = 0; j < arraySelecion.length; j++) {
             if (j == 0) {
@@ -47,16 +54,22 @@ function listaChequeo(idTipoItem, idUser) {
     }
 
     $("#btnItem").on('click', function () {
-
-         $(".remove").remove();
-        if( $("#Descripcion").val() == ""){
-            $("#Descripcion").focus().after("<div class='remove'><font color='red'>diguita descripcion</font></div>");
-            return false;
-                    }
-
-    greek();
+        $(".remove").remove();
+        var boo = 0;
+        var inputs = $(".inputs");
+        var input, selet;
+        for (var i = 0; i < inputs.length; i++) {
+            if (inputs[i].value == "") {
+                input = $(inputs[i]);
+                input.focus().after("<div class='remove'><font color='red'>Rellene este campo</font><div>");       
+            } else {
+                boo++;
+            }
+        }
+        if (boo == 1) {
+            greek();
+        }
     });
-
     function  greek() {
         jso[1] = ['Crud_Controller', '[{opcion:1,actualizar:[],tabla:19,datos:["",' + $("#Descripcion").val() + ',' + idTipoItem + '],elegir:[0,1],delimitador:"[{colum:2,operador:0,valor1:' + idTipoItem + '}]",id:0,opSelect:6}]'];
         selector[1] = $("#SelectItem");

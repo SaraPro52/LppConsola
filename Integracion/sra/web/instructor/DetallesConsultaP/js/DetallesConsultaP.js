@@ -3,6 +3,7 @@ function Detalles(Producto, dat) {
     $(document).on('click', '.accordion', function (e) {
         for (e = 0; e < acc.length; e++) {
             acc[e].onclick = function () {
+                    
                 this.classList.toggle("active");
                 this.nextElementSibling.classList.toggle("show");
             }

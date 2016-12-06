@@ -19,28 +19,30 @@
                         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                             <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
                         </button>
-                        <img src="imagenes/sara4.png">
+                        <img src="assets/img/logo.png" alt=""/>
                     </div>
                     <div class="collapse navbar-collapse ubicacionLogin" id="bs-example-navbar-collapse-1">
                         <form action="sesion_controller" method="POST">
                             <div class="form-group col-md-3">
                                 <label for="user">Usuario</label>
-                                <input type="text" class="form-control" placeholder="Usuario" name="user" id="user">
+                                <input type="text" class="form-control" placeholder="Usuario" onkeypress ="return justNumbers(event);" name="user" id="user">
                             </div>
                             <div class="form-group col-md-3">
                                 <label for="pwd">Contraseña</label>
-                                <input type="password" class="form-control" placeholder="Contraseña" name="pwd" id="pwd">
+                                <input type="password" class="form-control" placeholder="Contraseña" name="pwd" id="pwd" maxlength="16">
                             </div>
                             <button type="submit" class="btn btn-default ubicacionLoginBoton" id="btnLogin">Iniciar sesión</button>
                         </form>
 
-                        <form class="col-md-12" action="Instrutor_Controller" method="post" class="form-control"> 
-                            <select name="Opcion" value="2" >
-                                <option value="0">seleciona</option>
-                                <option value="2">Imagenes12</option>
-                            </select>        
-                            <input type="submit" name="btnenviar" value="Aceptar">
-                        </form>    
+                        <div style="display: none;">
+                            <form class="col-md-12" action="Equipo_Controller" method="post" class="form-control"> 
+                                <select name="Opcion" value="2" >
+                                    <option value="0">seleciona</option>
+                                    <option value="4">Imagenes12</option>
+                                </select>        
+                                <input type="submit" name="btnenviar" value="Aceptar">
+                            </form> 
+                        </div>
 
                     </div>
                 </div>
@@ -266,6 +268,14 @@
         <script type="text/javascript" src="js/jquery.js"></script>
         <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <script type="text/javascript" src="js/sesion.js"></script>
-
+        <script type="text/javascript">
+        function justNumbers(e) {
+            var keynum = window.event ? window.event.keyCode : e.which;
+            if ((keynum == 8) || (keynum == 46)) {
+                return true;
+            }
+                return /\d/.test(String.fromCharCode(keynum));
+        };
+        </script>
     </body>
 </html>

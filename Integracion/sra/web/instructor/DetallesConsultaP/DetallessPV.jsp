@@ -35,6 +35,7 @@
                             <label id="8" for="radio1" class="labelEstrella">★</label>
                         </p>
                     </form>
+                    <div id="BaseComentario"></div>
                     <h4 class="dark-grey">Cuentanos tu opinion</h4>
                     <label>Cometarios</label>
                     <textarea class="form-control" placeholder="Comentarios" rows="3" id="comment"></textarea> 

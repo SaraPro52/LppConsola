@@ -99,6 +99,7 @@ jQuery.Luna = function (Datos, selector) {
                         oAItem = selector.clone();
                         oAItem.find("#consul").addClass("consul" + jso[i].Id_Version);
                         oAItem.find("#NumVersion").text("Version: " + datos.nom + " " + jso[i].Id_Version);
+                        oAItem.find("#NumVersion").addClass(jso[i].Id_Version);
                         oAItem.find("#PvAutores").text(jso[i].Autores);
                         oAItem.find("#PvFechaEn").text(jso[i].Fecha_Envio);
                         oAItem.find("#PvPublicacion").text(jso[i].Fecha_Publicacion);
@@ -106,6 +107,7 @@ jQuery.Luna = function (Datos, selector) {
                         oAItem.find("#PvRequisitos").val(jso[i].Reqst_Instalacion);
                         oAItem.find("#PvInstalacion").val(jso[i].Inst_Instalacion);
                         oAItem.find(".labelEstrella").addClass(jso[i].Id_Version);
+                        oAItem.find("#BaseComentario").addClass('BaseComment' + jso[i].Id_Version);
                         oAItem.find("#comment").addClass('Comment' + jso[i].Id_Version);
                         oAItem.find("#Url_Version").val(jso[i].Url_Version);
                         oAItem.find("#Actualizar").val(jso[i].Id_Version);
@@ -214,6 +216,7 @@ jQuery.Luna = function (Datos, selector) {
                     }
                     $("#ccNoti").append(i);
                     break;
+
                 case "correcion":
                     var jsoCorre = jQuery.parseJSON(json);
                     for (var i = 0; i < jsoCorre.length; i++) {
@@ -222,6 +225,33 @@ jQuery.Luna = function (Datos, selector) {
                             jsoCorre[i].Conte_Notificacion,
                             jsoCorre[i].Fecha_Envio,
                             "<button  type='button' id='" + jsoCorre[i].Ides_Proceso + "' class='btn btn-info btn-lg btnCorrecion'>Correguir P.V</button>"
+                        ]);
+                    }
+                    break;
+                case "correcionCo":
+                    var valida;
+                    var jso = jQuery.parseJSON(json);
+                    for (var i = 0; i < jso.length; i++) {
+                        var conte = $("#clone").clone();
+                        conte.find('.item').attr(jso[i].Id_Detalles_Lista);
+                        if (jso[i].Id_Detalles_Lista == 0) {
+                            valida = "No cumple";
+                        } else {
+                            valida = "No cumple";
+                        }
+                        conte.find('.validacion').text(valida);
+                        conte.find('.ItemTexto').val(jso[i].Id_Detalles_Lista);
+                        conte.children().appendTo(selector);
+                    }
+                    break;
+                case "actualizacion":
+                    var jsoCorre = jQuery.parseJSON(json);
+                    for (var i = 0; i < jsoCorre.length; i++) {
+                        table = selector.dataTable().fnAddData([
+                            i + 1,
+                            jsoCorre[i].Conte_Notificacion,
+                            jsoCorre[i].Fecha_Envio,
+                            "<button  type='button' id='" + jsoCorre[i].Ides_Proceso + "' class='btn btn-info btn-lg btnActualizar'>Actualizar P.V</button>"
                         ]);
                     }
                     break;
@@ -235,8 +265,8 @@ jQuery.Luna = function (Datos, selector) {
                             i + 1,
                             jso[i].Conte_Notificacion,
                             jso[i].Fecha_Envio,
-                            "<button  type='button' id='" + jso[i].Url_Version + "' class='btn btn-info btn-lg btnDescargar'>Descargar P.V</button>",
-                            "<button  type='button' id='" + jso[i].Ides_Proceso + "' class='btn btn-info btn-lg btnEvaluar'>Evaluar P.V</button>"
+                            "<button  type='button' id='" + jso[i].Url_Version + "' class='btn btn-info  btnDescargar'>Descargar P.V</button>",
+                            "<button  type='button' id='" + jso[i].Ides_Proceso + "' class='btn btn-info  btnEvaluar'>Evaluar P.V</button>"
                         ]);
                         if ((i < 4) && (datos.dat == true)) {
                             $(selecNo).append('<li><a><label class="Notify" id=' + jso[i].Ides_Proceso + '>' + jso[i].Conte_Notificacion + '</label></a></li>');
@@ -270,7 +300,7 @@ jQuery.Luna = function (Datos, selector) {
                             jso[i].Nom_Lista_Chequeo,
                             jso[i].Des_Lista_Chequeo,
                             jso[i].Fecha_Creacion.substring(0, 11),
-                            "<button id='" + jso[i].Id_Lista_Chequeo + "' value='" + yu + "' class='btnclick btn btn-success'>Modificar</button>"
+                            "<button id='" + jso[i].Id_Lista_Chequeo + "' value='" + yu + "' class='btnclick btn btn-info'>Modificar</button>"
                         ]);
                     }
                     break;
@@ -281,7 +311,7 @@ jQuery.Luna = function (Datos, selector) {
                         table = selector.dataTable().fnAddData([
                             i + 1,
                             jsCiudad[i].Nom_Ciudad,
-                            "<button id='" + jsCiudad[i].Id_Ciudad + "' value='" + data + "' class='btnclick btn btn-success'>Modificar</button>"
+                            "<button id='" + jsCiudad[i].Id_Ciudad + "' value='" + data + "' class='btnclick btn btn-info'>Modificar</button>"
                         ]);
                     }
                     break;
@@ -314,7 +344,7 @@ jQuery.Luna = function (Datos, selector) {
                             i + 1,
                             jsArea[i].Nom_Area,
                             jsArea[i].Lider_Area,
-                            "<button id='" + jsArea[i].Id_Area + "' class='btn btn-success botonArea'value='" + data + "' >modificar</button>"
+                            "<button id='" + jsArea[i].Id_Area + "' class='btn btn-info botonArea'value='" + data + "' >modificar</button>"
                         ]);
                     }
                     break;

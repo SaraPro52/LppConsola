@@ -6,7 +6,7 @@ $(document).on('ready', function () {
     selector[0] = $("#tablaCiudad");
     datos[0] = {nombre: "Ciudad", worker: true};
     ob.TablaEspa(selector[0]);
-    ajax(0, datos[0]);
+        ajax(0, datos[0]);
     $(document).on('click', '.btnclick', function (e) {
         switch (this.value) {
             case "m":
@@ -19,13 +19,32 @@ $(document).on('ready', function () {
     });
     var men = "";
     $("#btnCiudad").on('click', function () {
+         $(".remove").remove();
+        var boo = 0;
+        var seletor = $(".inputs");
+        var input;
+        for (var i = 0; i < selector.length; i++) {
+            if (seletor[i].value == "") {
+                input = $(seletor[i]);
+                input.focus().after("<div class='remove'><font color='red'>" + input.attr("placeholder") + "</font><div>");       
+            }else{
+                boo++;
+            }
+        }
+        if (boo == 1) {
+            
+            btnciudad();
+        }
+    });
+
+    function btnciudad() {
         jso[1] = ['Crud_Controller', '[{opcion:1,tabla:5,delimitador:[],datos:["",' + $("#Ciudad").val() + '],elegir:[0,1],id:0,opSelect:4}]'];
         selector[1] = $("#tablaCiudad");
         men = $("#Ciudad").val();
         datos[1] = {nombre: "Ciudad", worker: true};
         ob.limpiarTabla(selector[1]);
         ajax(1, datos[1]);
-    });
+    }
     function ajax(i, datos) {
         hilo[i] = new Worker("js/worker.js");
         hilo[i].postMessage(jso[i]);

@@ -12,7 +12,7 @@
         <div class="content">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-md-12">
+                    <div style="margin-top:3%;" class="col-md-12">
                         <section>
                             <article class="col-md-8 col-md-offset-1" id="tabla">
                                 <table class="table table-striped" id="tablaAprobar">

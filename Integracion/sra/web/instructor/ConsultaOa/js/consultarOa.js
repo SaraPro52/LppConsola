@@ -87,6 +87,35 @@ $(document).on('ready', function () {
         }
 
     });
+    
+    $("#btnBuscar").click(function(){
+     $(".remove").remove();
+        var boo = 0;
+        var inputs = $(".inputs");
+        var selec = $(".select");
+        var input, selet;
+        for (var i = 0; i < inputs.length; i++) {
+            if (inputs[i].value == "") {
+                input = $(inputs[i]);
+                input.focus().after("<div class='remove'><font color='red'>Rellene este campo</font><div>");       
+            } else {
+                boo++;
+            }
+        }
+        for (var i = 0; i < selec.length; i++) {
+            console.log(selec[i]);
+            if (selec[i].value == "AD") {
+                selet = $(selec[i]);
+                selet.focus().after("<div class='remove'><font color='red'>seleccione una opcion</font><div>");
+            } else {
+                boo++;
+            }
+        }
+
+        if (boo == 6) {
+            
+        } 
+    });
     $("#programa").click(function () {
         $("#ElementoFormacion").show();
         $("#CategoriaTem").hide();
