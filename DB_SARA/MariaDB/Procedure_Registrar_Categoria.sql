@@ -31,7 +31,7 @@ END;;
 DELIMITER ;
 
 
-CALL RegistrarCategoria("LA PRUEBA2~ECHA PARA SER LA MEJOR2~2~1,2");
+CALL RegistrarCategoria("LA PRUEBA2~ECHA PARA SER LA MEJOR2~13~1,2");
 
 CALL SARA_CRUD("SELECT","Categoria","","");
 CALL SARA_CRUD("SELECT","Detalles_Categoria","","");

@@ -182,7 +182,7 @@ BEGIN
 		END CASE"
     );
     
-    CALL SARA_CRUD("UPDATE","Version","Id_Estado~6",CONCAT("Id_Version = ",@idVersion,""));
+    CALL SARA_CRUD("UPDATE","Version",CONCAT("Id_Estado~6|Fecha_Publicacion~",CURRENT_TIMESTAMP,""),CONCAT("Id_Version = ",@idVersion,""));
     CALL ALL_AUTOR(@idVersion,@autores);
     CALL RegistarNotificaion(CONCAT("El Producto Virtual Fue publicado INS~3~",@idCoordinador,"~",@autores,"~",@idVersion,""));	
     
@@ -192,7 +192,6 @@ BEGIN
 			-- "Id_P_Virtual = @idPro AND Id_Estado != 6 AND Num_Version = @numVer");
 END;;
 DELIMITER ;
-
 
 CALL Registrar_OA("Prueba222 Producto12333~Se esta porbando e222l procedimiento12333~Prueba12322233,Producto3223,virtual33223~1~Prueba12322233/Version~Prueba123322233/Imagen~No se instal5a322233~Ningun requisit22222334o~1,2~2-1,2-0");
 

@@ -24,7 +24,6 @@ CREATE TABLE Estado(
     
 );
 
-
 CREATE TABLE Formato(
 	
     Id_Formato     INTEGER NOT NULL AUTO_INCREMENT,
@@ -260,11 +259,13 @@ CREATE TABLE Notificacion(
     Ides_Proceso			INTEGER NOT NULL,
     Id_Tipo_Notificacion	INTEGER NOT NULL,
     Id_Funcionario 			INTEGER NOT NULL,
+    Estado 					BOOLEAN NOT NULL DEFAULT 0,
     
     CONSTRAINT PK_Notificacion 		PRIMARY KEY (Id_Notificacion),
     CONSTRAINT FK_Tipo_Notificacion FOREIGN KEY (Id_Tipo_Notificacion) REFERENCES Tipo_Notificacion(Id_Tipo_Notificacion),
     CONSTRAINT FK_Funcionario_06	FOREIGN KEY (Id_Funcionario)	   REFERENCES Funcionario(Id_Funcionario)
 );
+
 
 CREATE TABLE Detalles_Notificacion(
 	
@@ -425,6 +426,7 @@ CREATE TABLE Detalles_Categoria(
     CONSTRAINT FK_Categoria		     FOREIGN KEY (Id_Categoria) REFERENCES Categoria (Id_Categoria),
     CONSTRAINT FK_Tema_03		     FOREIGN KEY (Id_Tema)		REFERENCES Tema		 (Id_Tema)
 );
+
 
 
 CREATE TABLE Admin(

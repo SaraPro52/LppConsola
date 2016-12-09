@@ -1,17 +1,6 @@
 USE SARA;
 
-DELIMITER ;;
-CREATE TRIGGER Version_BU_Trigger BEFORE UPDATE ON Version FOR EACH ROW
-BEGIN
-	SELECT COUNT(*) INTO @lineas
-    FROM Rankin
-    WHERE Id_Version = NEW.Id_Version; 
-    
-	IF(NEW.Id_Estado = 6)THEN
-        INSERT INTO Rankin(Id_Version) VALUES(OLD.Id_Version);
-    END IF;
-END;;
-DELIMITER ;
+
 
 DROP TRIGGER Funcionario_AU_Trigger;
 DELIMITER ;;

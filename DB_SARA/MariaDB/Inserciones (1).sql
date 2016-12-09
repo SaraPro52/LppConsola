@@ -17,15 +17,13 @@ CALL SARA_CRUD("SELECT","Rol_Funcionario","","");
 
 CALL Registrar_PV("Producto Virtual 1~ Des Producto Virtual 1~PV1,PV2,PV3~1~UrlVER/1~UrlIMG/1~Intruncion 1~Requisito 1~1,5~1-0,2-0");
 
-use sara;
 SELECT v1.Id_Funcionario, Nom_Funcionario, Nom_Rol, Fecha_Envio, Conte_Notificacion, Ides_Proceso,v3.Id_Funcionario
 FROM Funcionario v1 INNER JOIN Detalles_Notificacion v2 ON v1.Id_Funcionario = v2.Id_Funcionario
 	 INNER JOIN Notificacion v3 ON v2.Id_Notificacion = v3.Id_Notificacion INNER JOIN Rol_Funcionario v4 ON v1.Id_Funcionario = v4.Id_Funcionario
      INNER JOIN Rol v5 ON v4.Id_Rol = v5.Id_Rol
-WHERE v5.Id_Rol = 1;
+WHERE v5.Id_Rol = 2;
 
 
-USE SARA;
 CALL SARA_CRUD("SELECT","Version","","");
 CALL SARA_CRUD("SELECT","Autor","","");
 
@@ -50,9 +48,9 @@ CALL SARA_CRUD("SELECT","Detalles_Lista","","");
 
 -- ERROR EN LA NOTIFICACION EN EL URL CUALDO SE LE ENVIA AL COORDINADOR
 
-CALL RegistrarEvaluacion("Evaluacion PV Prueba 1~0~2~1~2~2017-08-01~1¤Observacion Item 1¤1|1¤Observacion Item 2¤2");
+CALL RegistrarEvaluacion("Evaluacion PV Prueba 1~1~2~1~2~2017-08-01~1¤Observacion Item 1¤1|1¤Observacion Item 2¤2");
 
-CALL RegistrarEvaluacion("Evaluacion PV Prueba 2~1~1~1~3~2017-08-01~1¤Observacion Item 3¤1|1¤Observacion Item 4¤2");
+CALL RegistrarEvaluacion("Evaluacion PV Prueba 2~1~2~1~3~2017-08-01~1¤Observacion Item 3¤1|1¤Observacion Item 4¤2");
 
 -- CASO ALTERNO
 
@@ -61,7 +59,11 @@ CALL RegistrarEvaluacion("Evaluacion PV Prueba 2~0~1~1~2~2017-08-01~0¤Observaci
 CALL CorreccionVersion("1~1~URLversion1/1");
 
 CALL RegistrarEvaluacion("Evaluacion PV Prueba 3~0~1~1~3~2017-08-01~0¤Observacion Item 1¤1|1¤Observacion Item 2¤2");
+
 CALL CorreccionVersion("1~4~URLversion2/2");
+
+
+
 -- APROBACION
 
 CALL AprobarPV("4~2");
@@ -84,6 +86,8 @@ CALL SARA_CRUD("SELECT","Evaluacion_General","","");
 
 CALL SARA_CRUD("DELETE","Detalles_Evaluacion","","Id_Detalles_Evaluacion > 6");
 CALL SARA_CRUD("DELETE","Evaluacion_General","","Id_Evaluacion_General > 3");
+
+
 
 CALL SARA_CRUD("UPDATE","Version","Id_Estado~5","Id_Version = 2");
 

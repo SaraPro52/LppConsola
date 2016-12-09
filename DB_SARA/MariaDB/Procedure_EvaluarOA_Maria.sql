@@ -17,7 +17,11 @@ BEGIN
             WHEN 5 THEN SET @fechaVigencia  = @valor;
 			WHEN 6 THEN SET @ArrayEvaItems 	= @valor;
 		END CASE;");
-        
+	
+    IF(@fechaVigencia = "null")THEN 
+		SET @fechaVigencia = CONCAT(DATE_ADD(CURDATE(), INTERVAL 30 DAY)," 18:00:00");	
+    END IF;
+	
 	CALL SARA_CRUD("INSERT","Evaluacion_General",CONCAT("Observacion~",@observacionG,"|Resultado~",@resultado,"|Id_Version~",@idVersion,"|Id_Lista_Chequeo~",@idLista,"|Id_Funcionario~",@idFuncionario,""),"");
     CALL SARA_CRUD("SELECT","Evaluacion_General","Id_Evaluacion_General INTO @idEvaluacion","Id_Evaluacion_General > 0 ORDER BY Id_Evaluacion_General DESC LIMIT 1");
     
@@ -29,6 +33,7 @@ BEGIN
         SET @cant = CHAR_LENGTH(@ArrayEvaItems) - CHAR_LENGTH(@arrayE);
         SET @ArrayEvaItems = RIGHT(@ArrayEvaItems,@cant -1);  
         SET @a = 0;
+        
         WHILE(@a < 3 )DO
 			SET @val = SUBSTRING_INDEX(@arrayE,"¤",1);
 			SET @cant = CHAR_LENGTH(@arrayE) - CHAR_LENGTH(@val);
@@ -42,8 +47,10 @@ BEGIN
                 END CASE;
             SET @a = @a + 1;        
         END WHILE;
+        
         CALL SARA_CRUD("INSERT","Detalles_Evaluacion",CONCAT("Valorizacion~",@valorizacion,"|Observacion~",@observacionItem,"|Id_Detalles_Lista~",@idDetallesLista,"|Id_Evaluacion_General~",@idEvaluacion,""),"");
-		SET @i = @i + 1;
+
+        SET @i = @i + 1;
     END WHILE;
     
     -- SI FUE ACEPTADO POR PARTE DEL E TECNICO
@@ -121,12 +128,12 @@ CALL RegistrarEvaluacion("Observacion1111 de hhhpruebakk17719~1~4~3~2~2017-08-01
 
 CALL SARA_CRUD("SELECT","Tipo_Notificacion","","");
 
-CALL SARA_CRUD("SELECT","Evaluacion_Genaral","","");
+CALL SARA_CRUD("SELECT","Evaluacion_General","","");
 
 -- CALL SARA_CRUD("DELETE","Detalles_Evaluacion","","Id_Detalles_Evaluacion >= 5");
 -- CALL SARA_CRUD("DELETE","Evaluacion_General","","Id_Evaluacion_General >= 2 ");
 
-CALL SARA_CRUD("SELECT","Notificacion","","");
+CALL SARA_CRUD("SELECT","Categoria","","");
 
 CALL SARA_CRUD("DELETE","Evaluacion_General","","Id_Evaluacion_General > 1");
 CALL SARA_CRUD("SELECT","Evaluacion_General","","");
@@ -153,7 +160,6 @@ BEGIN
     END IF;
 END;;
 DELIMITER ;
-
 
 DROP TRIGGER IF EXISTS EvaluacionGeneral_BI_Trigger;
 DELIMITER ;;
