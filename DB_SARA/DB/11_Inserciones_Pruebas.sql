@@ -1,12 +1,12 @@
 -- Proceso de validacion
 USE SARA;
 -- FUNCIONARIOS
-CALL RegistrarFuncionario("1~1~1019133595~Funcionario-1~Inst1~Funcionario1@outlook.es~INS~123451~con1~1~1");
-CALL RegistrarFuncionario("2~1~2019133595~Funcionario-2~EvalT1~Funcionario2@outlook.es~EP~123452~con2~1~1");
-CALL RegistrarFuncionario("3~1~3019133595~Funcionario-3~EvalP1~Funcionario3@outlook.es~ET~123453~con3~1~1");
-CALL RegistrarFuncionario("4~1~4019133595~Funcionario-4~Coor1~Funcionario4@outlook.es~CO~123454~con4~1~1");
+CALL RegistrarFuncionario("1~1~1019133595~Funcionario-1~Inst1~Funcionario1@outlook.es~INS~123451~e10adc3949ba59abbe56e057f20f883e~1~1");
+CALL RegistrarFuncionario("2~1~2019133595~Funcionario-2~EvalT1~Funcionario2@outlook.es~EP~123452~e10adc3949ba59abbe56e057f20f883e~1~1");
+CALL RegistrarFuncionario("3~1~3019133595~Funcionario-3~EvalP1~Funcionario3@outlook.es~ET~123453~e10adc3949ba59abbe56e057f20f883e~1~1");
+CALL RegistrarFuncionario("4~1~4019133595~Funcionario-4~Coor1~Funcionario4@outlook.es~CO~123454~e10adc3949ba59abbe56e057f20f883e~1~1");
 
-CALL RegistrarFuncionario("1~1~5019133595~Funcionario-5~Inst2~Funcionario5@outlook.es~INS~123455~con5~1~1");
+CALL RegistrarFuncionario("1~1~5019133595~Funcionario-5~Inst2~Funcionario5@outlook.es~INS~123455~e10adc3949ba59abbe56e057f20f883e~1~1");
 
 
 CALL SARA_CRUD("UPDATE","Funcionario","Id_Estado~1","Id_Funcionario > 0");
