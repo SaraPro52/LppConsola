@@ -121,7 +121,7 @@ CREATE VIEW 10_Habilitar_P AS(
 DROP VIEW IF EXISTS 11_V_Area;
 CREATE VIEW 11_V_Area AS (
 	SELECT v1.Id_Area, Nom_Area, v1.Id_Centro,Nom_Centro
-	FROM Area_Centro v1 INNER JOIN Area v2 ON v1.Id_Area = v2.Id_Area INNER JOIN Centro v3 ON V1.Id_Centro = v3.Id_Centro
+	FROM Area_Centro v1 INNER JOIN Area v2 ON v1.Id_Area = v2.Id_Area INNER JOIN Centro v3 ON v1.Id_Centro = v3.Id_Centro
 );
 
 -- INHABILITAR FUNCIONARIO POR PARTE DE ADMINISTRADOR
@@ -129,7 +129,7 @@ DROP VIEW IF EXISTS 12_Inabilitar_Funcionario;
 CREATE VIEW 12_Inabilitar_Funcionario AS 
 (
     SELECT v1.Id_Funcionario, CONCAT(Nom_Funcionario," ",Apellidos) AS NombreCompleto,Ip_Sena, Cargo,Nom_Rol,Nom_Estado, Nom_Area, Nom_Centro 
-	FROM Funcionario v1 INNER JOIN Estado v2 ON v1.Id_Estado = v2.Id_Estado INNER JOIN Rol_Funcionario v3 ON V1.Id_Funcionario = V3.Id_Funcionario
+	FROM Funcionario v1 INNER JOIN Estado v2 ON v1.Id_Estado = v2.Id_Estado INNER JOIN Rol_Funcionario v3 ON v1.Id_Funcionario = v3.Id_Funcionario
 	INNER JOIN Rol v4 ON v3.Id_Rol = v4.Id_Rol INNER JOIN  Area_Centro v5 ON v1.Id_Area_Centro = v5.Id_Area_Centro 
 	INNER JOIN Area v6 ON v5.Id_Area = v6.Id_Area INNER JOIN Centro v7 ON v5.Id_Centro = v7.Id_Centro WHERE v1.Id_Estado = 1
 );
@@ -226,7 +226,7 @@ CREATE VIEW 22_V_Autor_Simple AS(
 DROP VIEW IF EXISTS 23_V_Consultar;
 CREATE VIEW 23_V_Consultar AS(
 	SELECT  Id_P_Virtual, Nom_P_Virtual,Des_P_Virtual,Palabras_Clave,Fecha_Publicacion,Fecha_Vigencia,Inst_Instalacion,Reqst_Instalacion,Url_Version,Id_Version,Num_Version
-    FROM 07_v_version
+    FROM 07_V_Version
     WHERE Id_Estado = 6
 );
 
@@ -240,7 +240,7 @@ CREATE VIEW 24_V_Toquen AS(
 DROP VIEW IF EXISTS 25_V_EvaluarProductosV;
 CREATE VIEW 25_V_EvaluarProductosV AS (
 	SELECT Id_Funcionario, Nom_Funcionario, v1.Id_Rol,Nom_Rol,Id_Notificacion, v1.Fecha_Envio, Conte_Notificacion, Ides_Proceso,Id_FuncionarioEnvio,Estado,Id_Centro,Id_Tipo_Notificacion,v2.Url_Version,CONCAT(Nom_P_Virtual," ",Num_Version) AS Producto
-    FROM 18_V_notificaciones v1 INNER JOIN Version v2 ON v1.Ides_Proceso = v2.Id_Version INNER JOIN Producto_Virtual v3 ON 
+    FROM 18_V_Notificaciones v1 INNER JOIN Version v2 ON v1.Ides_Proceso = v2.Id_Version INNER JOIN Producto_Virtual v3 ON 
     v2.Id_P_Virtual = v3.Id_P_Virtual
     WHERE Id_Rol NOT IN (1)
 );
@@ -261,8 +261,8 @@ DROP VIEW IF EXISTS 28_V_ConsultaCategoria;
 CREATE VIEW 28_V_ConsultaCategoria AS (
 	SELECT DISTINCT v3.Id_P_Virtual, v3.Nom_P_Virtual,v3.Des_P_Virtual,Id_Formato,Fecha_Publicacion,v4.Id_Funcionario,Id_Categoria,v4.Id_Version
 	FROM 05_V_Detalles_Categoria v1 INNER JOIN 06_V_Detalles_Tema v2 ON v1.Id_Tema = v2.Id_Tema 
-	INNER JOIN 23_v_consultar v3 ON v2.Id_P_Virtual = v3.Id_P_Virtual
-	INNER JOIN 22_v_autor_simple v4 ON v3.Id_Version = v4.Id_Version
+	INNER JOIN 23_V_Consultar v3 ON v2.Id_P_Virtual = v3.Id_P_Virtual
+	INNER JOIN 22_V_Autor_Simple v4 ON v3.Id_Version = v4.Id_Version
 	WHERE Tipo_Tema = 1 AND v3.Num_Version = 
 		(	SELECT Num_Version 
 			FROM Producto_Virtual v11 INNER JOIN Version v22 ON v11.Id_P_Virtual = v22.Id_P_Virtual 
@@ -275,8 +275,8 @@ DROP VIEW IF EXISTS 29_V_ConsultaPrograma;
 CREATE VIEW 29_V_ConsultaPrograma AS (
 	SELECT DISTINCT v3.Id_P_Virtual, v3.Nom_P_Virtual,v3.Des_P_Virtual,Id_Formato,Fecha_Publicacion,Id_Funcionario,Id_Programa,v4.Id_Version
 	FROM 04_V_Detalles_Programa v1 INNER JOIN 06_V_Detalles_Tema v2 ON v1.Id_Tema = v2.Id_Tema 
-	INNER JOIN 23_v_consultar v3 ON v2.Id_P_Virtual = v3.Id_P_Virtual
-	INNER JOIN 22_v_autor_simple v4 ON v3.Id_Version = v4.Id_Version
+	INNER JOIN 23_V_Consultar v3 ON v2.Id_P_Virtual = v3.Id_P_Virtual
+	INNER JOIN 22_V_Autor_Simple v4 ON v3.Id_Version = v4.Id_Version
 	WHERE Tipo_Tema = 0 AND v3.Num_Version = 
 		(	SELECT Num_Version 
 			FROM Producto_Virtual v11 INNER JOIN Version v22 ON v11.Id_P_Virtual = v22.Id_P_Virtual 
@@ -286,7 +286,7 @@ CREATE VIEW 29_V_ConsultaPrograma AS (
 DROP VIEW IF EXISTS 30_V_ConsultaNormal;
 CREATE VIEW 30_V_ConsultaNormal AS (
 	SELECT Id_P_Virtual,Nom_P_Virtual,Des_P_Virtual,Palabras_Clave,Fecha_Publicacion,Id_Version
-	FROM 23_v_consultar v1
+	FROM 23_V_Consultar v1
 	WHERE Num_Version = 
 			(	SELECT Num_Version 
 				FROM Producto_Virtual v11 INNER JOIN Version v22 ON v11.Id_P_Virtual = v22.Id_P_Virtual 
@@ -369,7 +369,7 @@ DROP VIEW IF EXISTS 36_V_EstadisticaCategoria2;
 CREATE VIEW 36_V_EstadisticaCategoria2 AS (
 	SELECT Id_Categoria, Nom_Categoria, COUNT(*) AS Canti, Id_Centro
 	FROM 35_V_EstadisticaCategoria1
-	GROUP BY Id_Categoria, Nom_Categoria,Id_Centro
+	GROUP BY Id_Categoria, Nom_Categoria,Id_CentroFuncionario
 );
 
 DROP VIEW IF EXISTS 37_V_EvaluacionGeneral;
