@@ -71,10 +71,10 @@ CALL SARA_CRUD("INSERT","Tipo_Notificacion","Nom_Tipo_Notif~Evaluativa			|Des_Ti
 CALL SARA_CRUD("INSERT","Tipo_Notificacion","Nom_Tipo_Notif~Retroalimentativa	|Des_Tipo_Notif~Solo podran recibirlas los intructores","");
 CALL SARA_CRUD("INSERT","Tipo_Notificacion","Nom_Tipo_Notif~Publicativa			|Des_Tipo_Notif~Lo recibiran tanto los instructores como el coordinador","");
 
-CALL RegistrarFuncionario("1~1~1019133595~Funcionario-1~Inst1~Funcionario1@outlook.es~INS~123451~e10adc3949ba59abbe56e057f20f883e~1~1");
-CALL RegistrarFuncionario("2~1~2019133595~Funcionario-2~EvalT1~Funcionario2@outlook.es~EP~123452~e10adc3949ba59abbe56e057f20f883e~1~1");
-CALL RegistrarFuncionario("3~1~3019133595~Funcionario-3~EvalP1~Funcionario3@outlook.es~ET~123453~e10adc3949ba59abbe56e057f20f883e~1~1");
-CALL RegistrarFuncionario("4~1~4019133595~Funcionario-4~Coor1~Funcionario4@outlook.es~CO~123454~e10adc3949ba59abbe56e057f20f883e~1~1");
+select * from Funcionario;
+CALL RegistrarFuncionario("1~1~1019133595~Funcionario-1~Inst1~Funcionario1@outlook.es~INS~123451~cont1~1~1");
+CALL RegistrarFuncionario("2~1~2019133595~Funcionario-2~EvalT1~Funcionario2@outlook.es~EP~123452~cont2~1~1");
+CALL RegistrarFuncionario("3~1~3019133595~Funcionario-3~EvalP1~Funcionario3@outlook.es~ET~123453~cont3~1~1");
+CALL RegistrarFuncionario("4~1~4019133595~Funcionario-4~Coor1~Funcionario4@outlook.es~CO~123454~cont4~1~1");
 
-CALL RegistrarFuncionario("1~1~5019133595~Funcionario-5~Inst2~Funcionario5@outlook.es~INS~123455~e10adc3949ba59abbe56e057f20f883e~1~1");
-
+CALL RegistrarFuncionario("1~1~5019133595~Funcionario-5~Inst2~Funcionario5@outlook.es~INS~123455~cont5~1~1");

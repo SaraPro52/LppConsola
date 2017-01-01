@@ -124,7 +124,6 @@ CREATE VIEW 11_V_Area AS (
 	FROM Area_Centro v1 INNER JOIN Area v2 ON v1.Id_Area = v2.Id_Area INNER JOIN Centro v3 ON V1.Id_Centro = v3.Id_Centro
 );
 
-
 -- INHABILITAR FUNCIONARIO POR PARTE DE ADMINISTRADOR
 DROP VIEW IF EXISTS 12_Inabilitar_Funcionario;
 CREATE VIEW 12_Inabilitar_Funcionario AS 
