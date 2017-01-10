@@ -12,43 +12,15 @@
         <meta name="viewport" content="width=device-width" />
         <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
         <link href="assets/css/animate.min.css" rel="stylesheet"/>
-        <link href="assets/css/paper-dashboardEquipo.css" rel="stylesheet"/>
-        <link href="assets/css/estilo.css" rel="stylesheet" type="text/css"/>
         <link href="assets/css/demo.css" rel="stylesheet" />
         <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
         <link href='https://fonts.googleapis.com/css?family=Muli:400,300' rel='stylesheet' type='text/css'>
         <link href="assets/css/themify-icons.css" rel="stylesheet">
-
+        <link href="css/modal.css" rel="stylesheet"/>
+        <link href="assets/css/estilo.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
         <div class="wrapper">
-            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                            <h4 class="modal-title" id="myModalLabel">Lista de chequeo para evaluar Producto virtual</h4>
-                        </div>
-                        <div class="modal-body">
-                            <article  id="tabla">
-                                <table class="table table-striped" id="tablaListaChequeo">
-                                    <thead>
-                                        <tr>
-                                            <th>#</th>
-                                            <th>Nombre lista</th>
-                                            <th>Descripcion lista</th>
-                                            <th>Fecha vigencia</th>
-                                            <th></th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                    </tbody>
-                                </table>
-                            </article>
-                        </div>
-                    </div>
-                </div>
-            </div>
             <div class="sidebar" data-background-color="white" data-active-color="danger">
                 <div class="sidebar-wrapper">
                     <div class="logo">
@@ -56,7 +28,8 @@
                             <img src="assets/img/logoEquipo.png" alt="" />
                         </a>
                     </div>
-             <ul class="nav menu" id="menus"><li class="active"><a><i class="ti-home"></i><p>Equipo tecnico</p></a></li>
+                    <ul class="nav menu" id="menus">
+                        <li class="active"   value="2"><a><i class="ti-home"></i><label style='cursor:pointer;' id="text2">Equipo tecnico</label></a></li>
                         <li class="activado" value="0"><a><i class="ti-user"></i><p><label style='cursor:pointer;' id="text0" >Perfil de usuario</label></p></a></li>
                         <li class="activado" value="1"><a><i class="icono izquierda  fa fa-book" aria-hidden="true"></i><label  style='cursor:pointer;' id="text1">Crear lista de chequeo</label></a></li>
                         <li class="activado" value="3"><a><i class="icono izquierda  fa fa-edit" aria-hidden="true"></i><label style='cursor:pointer;' id="text3">Editar Lista chequeo</label></a></li>
@@ -83,11 +56,12 @@
                                 <li class="dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                         <i class="ti-bell"></i>
-                                        <p class="notification"><label id="ccNoti"></label></p>
+                                        <p class="notification"><label id="ccNoti">0</label></p>
                                         <p>Productos virtuales</p>
                                         <b class="caret"></b>
                                     </a>
                                     <ul class="dropdown-menu" id="tablaConsultarOaP">
+                                        <li><a><label class="Notify">No hay productos a evaluar</label></a></li>
                                     </ul>
                                 </li>
                             </ul>
@@ -97,26 +71,18 @@
                 <div id="cuerpo" >
 
                 </div>
-
                 <footer class="footer footerPrincipal">
                     <div class="container-fluid">
                         <nav class="pull-left">
                             <ul>
-
                                 <li>
                                     <img src="assets/img/sena.png">
-
-
                                     <img src="assets/img/saraBlanco.png">
                                 </li>
-
-
                             </ul>
                         </nav>
                         <div class="copyright pull-right">
-
                             <li>
-
                                 <h3>Síguenos en:</h3>
                                 <ul class="list-inline">
                                     <li>
@@ -126,17 +92,12 @@
                                         <a href="https://github.com/SaraPro52/LppConsola" class="btn-social btn-outline"><i class="fa fa-fw fa-github"></i></a>
                                     </li>
                                 </ul>
-
                             </li>
-
                         </div>
                     </div>
                 </footer>
-
-
             </div>
         </div>
-
     </body>
     <script type="text/javascript" src="js/jquery.js"></script>
     <script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
@@ -145,6 +106,7 @@
     <script src="assets/js/bootstrap-notify.js"></script>
     <script src="assets/js/paper-dashboard.js"></script>
     <script src="assets/js/demo.js"></script>
+    <script type="text/javascript" src="js/jquery.cecily.js"></script>
     <script type="text/javascript" src="Equipo/js/Principalequipo.js"></script>
     <script>
         var nomUser = '<%= session.getAttribute("nomUser")%>';

@@ -97,8 +97,12 @@
             </div>
         </div>
     </body>
-    <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.12/js/jquery.dataTables.js"></script>
+    <script type="text/javascript" charset="utf8" src="js/jquery.dataTables.js"></script>
     <script type="text/javascript"  src="js/jquery.form.js"></script> 
     <script type="text/javascript" src="js/jquery.cecily.js"></script>
     <script type="text/javascript" charset="utf8" src="instructor/ActualizarOa/js/Actualizar.js" type="text/javascript"></script>
+    <script>
+        console.log(this.id);
+        //Actualizar();
+    </script>
 </html>

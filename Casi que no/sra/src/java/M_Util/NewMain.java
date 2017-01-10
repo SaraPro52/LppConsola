@@ -1314,12 +1314,7 @@ public class NewMain {
 //        System.out.println(e.Select(ele,"[{colum:0,operador:0,valor1:4}]"));
         
 
-//          Evaluacion_General e = new Evaluacion_General();
-//          System.out.println(e.ConsultarEvaluacion(3, 0));
-
-    Elomac n = new Elomac(1,1);
-        System.out.println(n.Select());
-
-   
+          Evaluacion_General e = new Evaluacion_General();
+          System.out.println(e.ConsultarEvaluacion(3, 0));
     }
 }

@@ -12,11 +12,11 @@
         <meta name="viewport" content="width=device-width" />
         <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
         <link href="assets/css/animate.min.css" rel="stylesheet"/>
-        <link href="assets/css/paper-dashboard.css" rel="stylesheet"/>
         <link href="assets/css/demo.css" rel="stylesheet" />
         <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
         <link href='https://fonts.googleapis.com/css?family=Muli:400,300' rel='stylesheet' type='text/css'>
         <link href="assets/css/themify-icons.css" rel="stylesheet">
+        <link href="css/modal.css" rel="stylesheet"/>
         <link href="assets/css/estilo.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
@@ -60,8 +60,8 @@
                         </a>
                     </div>
 
-                     <ul class="nav menu" id="menus">
-                        <li class="active"><a><i class="ti-home"></i><p>Administrador</p></a></li>
+                    <ul class="nav menu" id="menus">
+                        <li class="active" value="1" ><a><i class="ti-home"></i><p><label style='cursor:pointer;' id="text1">Administrador</label></p></a></li>
                         <li class="btntt" value="0"><a><i class="ti-marker-alt"></i><p><label style='cursor:pointer;' id="text0">Registrar usuario</label></p></a></li>
                         <li class="btntt" value="1"><a><i class="ti-close"></i><p><label style='cursor:pointer;' id="text1">Deshabilitar usuario</label></p></a></li>
                         <li class="btntt" value="2"><a><i class="ti-file"></i><p><label style='cursor:pointer;' id="text2">Formato</label></p></a></li>
@@ -90,11 +90,12 @@
                                 <li class="dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                         <i class="ti-bell"></i>
-                                        <p class="notification"><label id="ccNoti"></label></p>
+                                        <p class="notification"><label id="ccNoti">0</label></p>
                                         <p>Notificaciones</p>
                                         <b class="caret"></b>
                                     </a>
                                     <ul class="dropdown-menu" id="tablaAdmiP">
+                                        <li><a><label class="Notify">No hay funcionarios registrados</label></a></li>
                                     </ul>
                                 </li>
                             </ul>
@@ -102,7 +103,40 @@
                     </div>
                 </nav>
                 <div id="cuerpo" ></div>
+                <footer class="footer footerPrincipal">
+                    <div class="container-fluid">
+                        <nav class="pull-left">
+                            <ul>
 
+                                <li>
+                                    <img src="assets/img/sena.png">
+
+
+                                    <img src="assets/img/saraBlanco.png">
+                                </li>
+
+
+                            </ul>
+                        </nav>
+                        <div class="copyright pull-right">
+
+                            <li>
+
+                                <h3>Síguenos en:</h3>
+                                <ul class="list-inline">
+                                    <li>
+                                        <a href="https://plus.google.com/u/0/101782866518065902776" class="btn-social btn-outline"><i class="fa fa-fw fa-google-plus"></i></a>
+                                    </li>
+                                    <li>
+                                        <a href="https://github.com/SaraPro52/LppConsola" class="btn-social btn-outline"><i class="fa fa-fw fa-github"></i></a>
+                                    </li>
+                                </ul>
+
+                            </li>
+
+                        </div>
+                    </div>
+                </footer>
             </div>
         </div>
     </body>

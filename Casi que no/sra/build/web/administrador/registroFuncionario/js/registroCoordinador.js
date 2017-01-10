@@ -1,7 +1,8 @@
 $(document).on('ready', function () {
-    var selector = [], hilo = [], jso = [], data = [], datos = [], estados = "",men="";
+    var selector = [], hilo = [], jso = [], data = [], datos = [], estados = "", men = "";
     var ob = new $.Luna("RegistroFuncionario", selector);
-    ob.Vivo("RegistroFuncionario");
+    ob.Vivo("RegistroFuncionario1");
+    $("#AnimacionCargando").hide();
     jso[0] = ['Crud_Controller', '[{opcion:3,tabla2:10,tipo:2,elegir:["2","3"],delimitador:[],id:0,opSelect:4}]'];
     selector[0] = $("#centroFormacion");
     datos[0] = {nombre: "Select", worker: true};
@@ -14,15 +15,15 @@ $(document).on('ready', function () {
         datos[4] = {nombre: "Select", worker: true};
         ajax(4, datos[4]);
     });
-
-
           
-        $("#boton1").click(function () {
+    $("#boton1").click(function () {
+        $(this).hide();
+        $("#AnimacionCargando").show();
         jso[3] = ['Funcionario_Controller', "[{opcion:1,datos:['" + $("#tipoUsuario").val() + "','" + $("#tipoIdenti").val() + "','" + $("#numeroIdentificacion").val() + "','" + $("#nombre").val() + "','" + $("#apellido").val() + "','" + $("#email").val() + "','" + $("#cargo").val() + "','" + $("#ipSena").val() + "','1','" + $("#centroFormacion").val() + "','" + $("#area").val() + "']}]"];
-        men=$("#nombre").val();
+        men = $("#nombre").val();
         datos[1] = {nombre: "btn", worker: true};
         ajax(3, datos[1]);
-        });
+    });
 
     function ajax(i, datos) {
         hilo[i] = new Worker("js/worker.js");
@@ -57,16 +58,18 @@ $(document).on('ready', function () {
             ajax(2, datos[2]);
         } else if (i == 3) {
             $("#formulario1 :input").val("");
-            $("#area").empty().append("<option selected='selected'>selecciona...</option>");
+            $("select").empty().append("<option selected='selected'>selecciona...</option>");
             var daMen = data[i].split("$$");
             if (daMen[0] == "true") {
                 estados = ("success");
                 men = "El funcionario  " + men + " " + daMen[1];
             } else {
                 estados = ("error");
-                men = daMen;
+                men = daMen[1];
             }
             $.notify(men, estados);
+            $("#boton1").show();
+            $("#AnimacionCargando").hide();
         }
     }
 });

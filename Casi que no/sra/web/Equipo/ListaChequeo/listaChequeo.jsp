@@ -11,17 +11,17 @@
                         <article class="col-md-6" id="item">
                             <input type="hidden" value="1" id="tipoLis">
                             <label>Nombre Lista</label>
-                            <input required="" type="text" class="form-control inputs1" id="NombreL"  placeholder=" Digite Nombre de lista">
-                            <label>Descripci?n</label>
-                            <textarea required class="form-control inputs1"  id="DescripcionL" placeholder="Digite Descripci?n lista" rows="5" id="comment"></textarea>
+                            <input required="" type="text" class="form-control inputs1" id="NombreL"  placeholder=" Digite un  nombre para la lista">
+                            <label>Descripción</label>
+                            <textarea required class="form-control inputs1"  id="DescripcionL" placeholder="Describa una descripción para la lista" rows="5" id="comment"></textarea>
                         </article>
 
                         <article class="col-md-6" id="items">
-                            <!--jejejeje-->
                             <div id="SelectItemDiv">
                                 <label>Items</label>
-                                <section  id="SelectItem">
-                                </section>
+                                <select id="SelectItem" class="itemSelect" multiple="multiple">
+                                    
+                                </select>
                             </div>
                         </article>
                         <button class="btn btn-info col-md-6" style=" margin-left:30%; margin-right:1%;" id="BtnLista"> Crear lista</button>
@@ -32,9 +32,9 @@
                                     <label style="color: #E48D15;" id="lista" >Crear Item</label>
                                 </div>
 
-                                <label for="Descripcion">Descripci?n de item</label>
+                                <label for="Descripcion">Descripción de item</label>
 
-                                <textarea required class="form-control inputs" placeholder=" Digite Descripci?n Item" rows="1" id="Descripcion"></textarea>
+                                <textarea required class="form-control inputs" placeholder="Describa una descripción para el item" rows="1" id="Descripcion"></textarea>
                             </div>
                             <div class="col-md-10">
                                 <button  class="btn btn-info" id="btnItem">Agregar Item</button>
@@ -49,7 +49,8 @@
 
 </section>
 <script type="text/javascript" src="js/jquery.js"></script>
-<script type="text/javascript" src="js/jquery.multi-select.js"></script></script>
+<script type="text/javascript" src="js/jquery.multi-select.js"></script>
+<script type="text/javascript" src="js/jquery.quicksearch.js"></script>
 <script type="text/javascript" src="js/notify.js"></script>
 <script type="text/javascript" src="js/jquery.cecily.js"></script>
 <script type="text/javascript" src="Equipo/ListaChequeo/js/listaChequeo.js"></script>

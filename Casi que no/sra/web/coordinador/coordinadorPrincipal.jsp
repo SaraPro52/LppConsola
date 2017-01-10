@@ -30,7 +30,7 @@
                         </a>
                     </div>
                     <ul class="nav menu" id="menus">
-                        <li class="active"><a><i class="ti-home"></i><p>Coordinador</p></a></li>
+                        <li class="active" value="1"><a><i class="ti-home"></i><label style='cursor:pointer;' id="text1">Coordinador</label></a></li>
                         <li class="btntt" value="4"><a><i class="ti-user"></i><p><label style='cursor:pointer;' id="text4">Perfil de Usuario</label></p></a></li>
                         <li class="btntt" value="0"><a><i class=" icono izquierda fa fa-area-chart" aria-hidden="true"></i><label style='cursor:pointer;' id="text0">Consultar Estadísticas</label></a></li>
                         <li class="btntt" value="1"><a><i class=" icono izquierda fa fa-check" aria-hidden="true"></i><label style='cursor:pointer;' id="text1">Habilitar Producto V.</label></a></li>
@@ -58,11 +58,12 @@
                                 <li class="dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                         <i class="ti-bell"></i>
-                                        <p class="notification"><label id="ccNoti"></label></p>
+                                        <p class="notification"><label id="ccNoti">0</label></p>
                                         <p>Productos virtuales a habilitar</p>
                                         <b class="caret"></b>
                                     </a>
                                     <ul class="dropdown-menu" id="tablaAprobarP">
+                                         <li><a><label class="Notify">No hay productos a habilitar</label></a></li>
                                     </ul>
                             </ul>
                         </div>

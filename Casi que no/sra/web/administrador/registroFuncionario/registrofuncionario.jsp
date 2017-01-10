@@ -6,6 +6,7 @@
         <title>Registrar de funcionario</title>
         <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
         <link href="assets/css/paper-dashboard.css" rel="stylesheet"/>
+        <link href="css/carg.css" rel="stylesheet"/>
     </head>
     <body>
         <div class="content">
@@ -50,6 +51,27 @@
                                     <label  for="cargo">Cargo</label>
                                     <input type="text" class="form-control" placeholder=" Digite Cargo" id="cargo" maxlength="15">
                                     <center>
+                                        <br/>
+                                        <div id="AnimacionCargando" class="col-md-12">
+                                            <p class="col-md-8" ALIGN=right>Creando usuario</p>
+                                            <div class="windows8 col-md-4">
+                                                <div class="wBall" id="wBall_1">
+                                                    <div class="wInnerBall"></div>
+                                                </div>
+                                                <div class="wBall" id="wBall_2">
+                                                    <div class="wInnerBall"></div>
+                                                </div>
+                                                <div class="wBall" id="wBall_3">
+                                                    <div class="wInnerBall"></div>
+                                                </div>
+                                                <div class="wBall" id="wBall_4">
+                                                    <div class="wInnerBall"></div>
+                                                </div>
+                                                <div class="wBall" id="wBall_5">
+                                                    <div class="wInnerBall"></div>
+                                                </div>
+                                            </div>
+                                        </div>
                                         <button type="button" id="boton1" class="btn btn-info">Registrar Funcionario</button>
                                     </center>
                                 </section>

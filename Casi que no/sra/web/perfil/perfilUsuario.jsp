@@ -5,8 +5,8 @@
         <meta charset="utf-8">
         <title>formato</title>
         <link rel="stylesheet" href="css/bootstrap.css" media="screen" title="no title" charset="utf-8">
-        <link href="assets/css/paper-dashboard.css" rel="stylesheet"/>
-        <link rel="stylesheet" href="assets/css/estilo_1.css"/>
+        <link href="assets/css/paper-dashboard.css" rel="stylesheet" id="cssUsuario"/>
+
     </head>
     <body>
         
@@ -17,7 +17,7 @@
                 <div class="col-lg-8 col-md-7" style="width:100%; ">
                     <div class="card">
                         <div class="header">
-                            <h4 style="color:#218276; font-size:25px;"class="title">Editar Perfil</h4>
+                            <h4 style="font-size:25px;"class="title">Editar Perfil</h4>
                         </div>
                         <div class="header">
                             <h4 class="title">Datos Personales</h4>
@@ -44,6 +44,9 @@
                                             <label>Tipo De Identificación</label>
                                             <select required id="IdentificacionFunTipo" class="form-control border-input select">
                                                 <option value="A0">Seleciona...</option>
+                                                <option value="1">Cedula de Ciudadania</option>
+                                                <option value="2">Cedula Extrangera</option>
+                                                <option value="3">Registro Civil</option>
                                             </select>
                                         </div>
                                     </div>
@@ -57,7 +60,7 @@
                                 <hr>
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <h5 style="color:#218276; font-size:25px;"class="title" >Datos SENA</h5>
+                                        <h4 style="font-size:25px;"class="title" >Datos SENA</h4>
                                         
                                 </div>
 
@@ -111,7 +114,7 @@
 </body>
 
 <script type="text/javascript" src="assets/js/jquery-1.10.2.js" ></script>
-<script type="text/javascript" src="js/bootstrap.min.js" ></script>
+<script type="text/javascript" src="js/bootstrap.js" ></script>
 <script type="text/javascript" src="js/notify.js"></script> 
 <script type="text/javascript" src="js/jquery.cecily.js"></script>
 <script type="text/javascript" src="perfil/js/perfilUsuario.js"></script>

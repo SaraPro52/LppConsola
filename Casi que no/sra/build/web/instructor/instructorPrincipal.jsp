@@ -57,11 +57,12 @@
                                 <li class="dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                         <i class="ti-bell"></i>
-                                        <p class="notification"><label id="ccNoti"></label></p>
+                                        <p class="notification"><label id="ccNoti">0</label></p>
                                         <p>Notificaciones</p>
                                         <b class="caret"></b>
                                     </a>
                                     <ul class="dropdown-menu" id="tablaNotificacionP">
+                                         <li><a><label class="Notify">No hay notificaciones de productos</label></a></li>
                                     </ul>
                                 </li>
                             </ul>

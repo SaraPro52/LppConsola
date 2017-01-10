@@ -3,7 +3,6 @@
     <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.12/css/jquery.dataTables.css">
     <link rel="stylesheet" type="text/css" href="css/multi-select.css">
     <link href="assets/css/paper-dashboardEquipo.css" rel="stylesheet"/>
-    <link rel="stylesheet" href="assets/css/estilo_1.css"/>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <div class="content">
         <div class="container-fluid">
@@ -46,17 +45,12 @@
                         </article>
                     </section>
                     <article style="margin-left: 12%;" class="col-md-16" class="EspacioItems">
-                        <div id="SelectItemDiv">
-                            <select id=SelectItem></select>
-                            <div id="campoItemsDatos">
-                                <label>Items de lista de chequeo</label>
-
+                        <div id="SelectItemDiv" class="EspacioItems">
+                            <select id="SelectItem" class="itemselect" multiple="multiple"></select>
+                            <div>
+                                <button class="btn btn-info col-md-6" id="BtnLista" >Modificar lista</button>
                             </div>
                         </div>
-                    </article>
-                    <article class="col-md-12">
-
-                        <button style="margin-left:20%; margin-bottom:3%; " class="btn btn-info col-md-6" id="BtnLista">Modificar lista</button>
                     </article>
                 </div>
             </div>
@@ -65,10 +59,11 @@
     <script type="text/javascript" charset="utf8" src="js/jquery.js"></script>        
     <script type="text/javascript" charset="utf8" src="js/notify.js"></script>
     <script type="text/javascript" charset="utf8" src="js/jquery.dataTables.js"></script>
-    <script type="text/javascript" charset="utf8" src="js/jquery.multi-select.js"></script></script>
-<script type="text/javascript" charset="utf8" src="js/jquery.cecily.js"></script>
-<script type="text/javascript" charset="utf8" src="Equipo/ModificarLista/js/modificarLista.js"></script>
-<script>
-    modificar(this.idTipoItem);
-</script>
+    <script type="text/javascript" charset="utf8" src="js/jquery.multi-select.js"></script>
+    <script type="text/javascript" charset="utf8" src="js/jquery.quicksearch.js"></script>
+    <script type="text/javascript" charset="utf8" src="js/jquery.cecily.js"></script>
+    <script type="text/javascript" charset="utf8" src="Equipo/ModificarLista/js/modificarLista.js"></script>
+    <script>
+        modificar(this.idTipoItem);
+    </script>
 </div>

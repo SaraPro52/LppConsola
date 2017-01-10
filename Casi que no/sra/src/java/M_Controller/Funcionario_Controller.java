@@ -44,9 +44,9 @@ public class Funcionario_Controller extends HttpServlet {
                         if (new Funcionario().RegistrarFuncionario(fun)) {
                             DJCorreoHTML correoHTML = new DJCorreoHTML();
                             correoHTML.mandarCorreo(fun[5], "Confirmacion de Cuenta SARA PRO1",fun[2],fun[8]);
-                            respuesta.println("true$$'Registro Completo");
+                            respuesta.println("true$$se registro correctamente");
                         } else {
-                            respuesta.println("false$$Registro Fallido");
+                            respuesta.println("false$$no se registro correctamente");
                         }
                     } catch (Exception e) {
                         respuesta.println("[{valor:false,mensaje:'"+e.getMessage()+"'}]");

@@ -68,7 +68,7 @@ function calificarPV(idLista,idRol,idNotifi) {
             var daMen = data[i].split("$$");
             if (daMen[0] == "true") {
                 estado = ("success");
-                men = "La area " + men + " " + daMen[1];
+                men =  daMen[1];
             } else {
                 estado = ("error");
                 men = daMen[1];

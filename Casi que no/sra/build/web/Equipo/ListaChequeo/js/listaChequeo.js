@@ -1,21 +1,51 @@
 function listaChequeo(idTipoItem, idUser) {
     var selector = [], hilo = [], jso = [], data = [], datos = [], men = "", estado = "";
     var ob = new $.Luna("MultiItems", $("#SelectItem"));
-    ob.Vivo("ListaDeChequeo1");
+    ob.Vivo("ListaDeChequeo2");
     jso[0] = ['Crud_Controller', '[{opcion:3,tabla2:19,tipo:1,elegir:[0,1],delimitador:"[{colum: 2,operador: 0,valor1:' + idTipoItem + '}]",id:0,opSelect:6}]'];
     selector[0] = $("#SelectItem");
-    datos[0] = {nombre: "MultiSelect", worker: true};
-    ajax(0, datos[0]);
-    var arraySelecion = [];
-    $('#SelectItem').multiSelect({
-        afterSelect: function (valor) {
-            arraySelecion.push(valor);
+    datos[0] = {nombre: "MultiSelect", opt: "NN"};
+    ajax(0, datos[0]); 
+    var arraySelecion = []; 
+    $('.itemSelect').multiSelect({
+        selectableHeader: "<input type='text' class='search-input form-control' autocomplete='off' placeholder='Busca un item...'>",
+        selectionHeader: "<input type='text' class='search-input form-control' autocomplete='off' placeholder='Busca un item...'>",
+        afterInit: function (ms) {
+            var that = this,
+                    $selectableSearch = that.$selectableUl.prev(),
+                    $selectionSearch = that.$selectionUl.prev(),
+                    selectableSearchString = '#' + that.$container.attr('id') + ' .ms-elem-selectable:not(.ms-selected)',
+                    selectionSearchString = '#' + that.$container.attr('id') + ' .ms-elem-selection.ms-selected';
+
+            that.qs1 = $selectableSearch.quicksearch(selectableSearchString)
+                    .on('keydown', function (e) {
+                        if (e.which === 40) {
+                            that.$selectableUl.focus();
+                            return false;
+                        }
+                    });
+
+            that.qs2 = $selectionSearch.quicksearch(selectionSearchString)
+                    .on('keydown', function (e) {
+                        if (e.which == 40) {
+                            that.$selectionUl.focus();
+                            return false;
+                        }
+                    });
+        },
+        afterSelect: function (val) {
+            this.qs1.cache();
+            this.qs2.cache();
+            arraySelecion.push(val);
         },
         afterDeselect: function (val) {
+            this.qs1.cache();
+            this.qs2.cache();
             var busqueda = $.inArray(val, arraySelecion);
             arraySelecion.splice(busqueda, 1);
         }
     });
+
     $("#BtnLista").on('click', function () {
         $(".remove").remove();
         var boo = 0;
@@ -63,18 +93,17 @@ function listaChequeo(idTipoItem, idUser) {
         }
         if (boo == 1) {
             BtnItem();
-        }
+        } 
     });
 
     function  BtnItem() {
         jso[1] = ['Crud_Controller', '[{opcion:1,tabla1:19,tabla2:19,tipo:1,datos:["",' + $("#Descripcion").val() + ',' + idTipoItem + '],elegir:[0,1],delimitador:"[{colum:2,operador:0,valor1:' + idTipoItem + '}]",id:0,opSelect:6}]'];
         selector[1] = $("#SelectItem");
-        datos[1] = {nombre: "MultiSelect", worker: true, opt: "Div"};
+        datos[1] = {nombre: "MultiSelect", opt: "Div"};
         ajax(1, datos[1]);
     }
 
     function ajax(i, datos) {
-        console.log(i);
         hilo[i] = new Worker("js/worker.js");
         hilo[i].postMessage(jso[i]);
         hilo[i].onmessage = function (event) {
@@ -94,8 +123,7 @@ function listaChequeo(idTipoItem, idUser) {
                     men = "El item: " + $("#Descripcion").val() + " no fue agregado exitosamente";
                     estado = ("error");
                 }
-                $.notify(men, estado);
-            }
+            } 
             if (i == 2) {
                 var daMen = data[i].split("$$");
                 if (daMen[0] == "true") {
@@ -103,10 +131,10 @@ function listaChequeo(idTipoItem, idUser) {
                     men = "La lista  " + men + " " + daMen[1];
                 } else {
                     estado = ("error");
-                    men = daMen;
+                    men = daMen[1];
                 }
-                $.notify(men, estado);
             }
+            $.notify(men, estado);
         }
     }
 }

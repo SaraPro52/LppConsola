@@ -2,20 +2,29 @@ package M_Controller.Linkeos;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 @WebServlet(name = "Equipo_Controller", urlPatterns = {"/Equipo_Controller"})
 public class Equipo_Controller extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException, JSONException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            int opcion = Integer.parseInt(request.getParameter("Opcion"));
+            
+            String data = request.getParameter("data");
+            JSONObject jData = new JSONArray(data).getJSONObject(0);
+            int opcion = jData.getInt("opcion");
+
             switch (opcion) {
                 case 0:
                     request.getRequestDispatcher("perfil/perfilUsuario.jsp").forward(request, response);
@@ -31,8 +40,10 @@ public class Equipo_Controller extends HttpServlet {
                     break;
                 case 4:
                     request.getRequestDispatcher("Equipo/CalificarOa/calificarOa.jsp").forward(request, response);
-                    break;    
+                    break;
             }
+        }catch(Exception e){
+            System.out.println(e.getMessage()); 
         }
     }
 
@@ -48,7 +59,11 @@ public class Equipo_Controller extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (JSONException ex) {
+            Logger.getLogger(Equipo_Controller.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -62,7 +77,11 @@ public class Equipo_Controller extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (JSONException ex) {
+            Logger.getLogger(Equipo_Controller.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**

@@ -1,13 +1,13 @@
 function modificar(idTipoItem) {
     var jso = [], selector = [], hilo = [], data = [], ww = "", multi = [], arraySelecion = [], Lista = -8, men = "", men1 = "", estado = "";
-    $(".EspacioItems").hide();
+    $(".EspacioItems").hide(); 
     $("#tablaItems").hide();
     var ob = new $.Luna("Lista", $("#tablalista"));
-    ob.Vivo("ModificarListaDeChequeo");
+    ob.Vivo("ModificarListaDeChequeo2");
     jso[2] = ['Crud_Controller', '[{opcion:3,tabla2:12,tipo:2,elegir:[0,1,2,3],delimitador: "[{colum:5,operador:0,valor1:' + idRol + '}]",id:0,opSelect:6}]'];
     var datos = {nombre: "Lista", worker: true};
     selector[2] = $("#tablalista");
-    ob.TablaEspa(selector[2]);
+    ob.TablaEspa(selector[2]); 
     ajax(2, datos);
     $("#btnItem").on('click', function () {
         $(".remove").remove();
@@ -48,13 +48,41 @@ function modificar(idTipoItem) {
         Lista = this.id;
         ajax(0, datos);
     });
+    var arraySelecion = [];
+    $('.itemselect').multiSelect({
+        selectableHeader: "<input type='text' class='search-input form-control' autocomplete='off' placeholder='Busca un item...'>",
+        selectionHeader: "<input type='text' class='search-input form-control' autocomplete='off' placeholder='Busca un item...'>",
+        afterInit: function (ms) {
+            var that = this,
+                    $selectableSearch = that.$selectableUl.prev(),
+                    $selectionSearch = that.$selectionUl.prev(),
+                    selectableSearchString = '#' + that.$container.attr('id') + ' .ms-elem-selectable:not(.ms-selected)',
+                    selectionSearchString = '#' + that.$container.attr('id') + ' .ms-elem-selection.ms-selected';
 
+            that.qs1 = $selectableSearch.quicksearch(selectableSearchString)
+                    .on('keydown', function (e) {
+                        if (e.which === 40) {
+                            that.$selectableUl.focus();
+                            return false;
+                        }
+                    });
 
-    $('#SelectItem').multiSelect({
-        afterSelect: function (valor) {
-            arraySelecion.push(valor);
+            that.qs2 = $selectionSearch.quicksearch(selectionSearchString)
+                    .on('keydown', function (e) {
+                        if (e.which == 40) {
+                            that.$selectionUl.focus();
+                            return false;
+                        }
+                    });
+        },
+        afterSelect: function (val) {
+            this.qs1.cache();
+            this.qs2.cache();
+            arraySelecion.push(val);
         },
         afterDeselect: function (val) {
+            this.qs1.cache();
+            this.qs2.cache();
             var busqueda = $.inArray(val, arraySelecion);
             arraySelecion.splice(busqueda, 1);
         }
@@ -89,35 +117,38 @@ function modificar(idTipoItem) {
             hilo[i] = new Worker("js/worker.js");
             hilo[i].postMessage(jso[i]);
             hilo[i].onmessage = function (event) {
-                data[i] = event.data;
+                data[i] = event.data; 
                 ob.cargarTabla(data[i], selector[i], datos);
                 if (i != 5) {
                     data[i] = jQuery.parseJSON(event.data);
                 }
                 hilo[i].terminate();
-                peticionCompleta(i, data[i]);
+                peticionCompleta(i);
             };
         } catch (error) {
             console.log(error);
         }
     }
-    function peticionCompleta(i, daos) {
-        if (i == 0) {
-            var p = "";
-            for (var f = 0; f < daos.length; f++) {
-                p = '</br> <label class=' + daos[f].Id_Item_Lista + '>' + f + "  " + daos[f].Des_Item_Lista + '</label>';
-                $("#campoItemsDatos").append(p);
-                if ((daos[f] == daos[0])) {
-                    ww = daos[f].Id_Item_Lista;
-                } else {
-                    ww = ww + ',' + daos[f].Id_Item_Lista;
-                }
+    function peticionCompleta(i) {
+        var arrItemsC = [{Id_Item_Lista: "1000000", Des_Item_Lista: "ñññññññññññññññññññññññ", tipo: true}]; 
+        if (i == 0) { 
+            console.log(data[i].length);
+            var js =data[i];
+            for (var f = 0; f < data[i].length; f++) {
+                arrItemsC.push({Id_Item_Lista: js[f].Id_Item_Lista, Des_Item_Lista: js[f].Des_Item_Lista, tipo: true});
             }
             jso[3] = ['Crud_Controller', '[{opcion: 3,tabla2:19,tipo:1,elegir: [0,1],delimitador:"[{colum:0,operador:7,valor1:' + ww + ',añadir:0},{colum:2,operador:0,valor1:' + idTipoItem + '}]", id:0,opSelect:6}]'];
             selector[3] = $("#SelectItem");
-            datos[3] = {nombre: "MultiSelect", worker: true};
+            datos[3] = {nombre: "btn"}; 
             selector[3].multiSelect();
             ajax(3, datos[3]);
+        } else if (i == 3) { 
+            var js =data[i];
+            for (var f = 0; f < data[i].length; f++) {
+                arrItemsC.push({Id_Item_Lista: js[f].Id_Item_Lista, Des_Item_Lista: js[f].Des_Item_Lista, tipo: false});
+            }
+            datos[3] = {nombre: "MultiSelect",compuesto:true};
+            ob.cargarTabla(arrItemsC, $("#SelectItem"), datos[3]);
         } else if (i == 1) {
             if (data[0].length == data[i].length) {
                 men = "El item " + men + " no se ingreso.";

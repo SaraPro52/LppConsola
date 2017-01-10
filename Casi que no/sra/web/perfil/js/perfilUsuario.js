@@ -1,7 +1,7 @@
 $(document).on('ready', function () {
     var selector = [], hilo = [], jso = [], data = [], datos = [], constan = true;
     var ob = new $.Luna("Perfil", $("#formulario1"));
-    ob.Vivo("PerfilUsuario");
+    ob.Vivo("PerfilUsuarioq");
     jso[0] = ['Crud_Controller', '[{opcion:3,tabla2:7,tipo:2,elegir:[4,5,7,8,9,10,11,12],delimitador:"[{colum:4,operador:0,valor1:' + idUser + '}]",id:0,opSelect:6}]'];
     selector[0] = $("#formulario1");
     datos[0] = {nombre: "btn", worker: true};
@@ -89,14 +89,13 @@ $(document).on('ready', function () {
             jso = jQuery.parseJSON(data[i]);
             $("#NombreFun").val(jso[0].Nom_Funcionario);
             $("#ApellidoFun").val(jso[0].Apellidos);
+            console.log(jso[0].Id_Tipo_Documento);
+            
+            $("#IdentificacionFunTipo option[value=" + jso[0].Id_Tipo_Documento + "]").attr("selected",true);
             $("#IdentificacionFun").val(jso[0].Num_Documento);
             $("#IdSenaFun").val(jso[0].Ip_Sena);
             $("#CaargoFun").val(jso[0].Cargo);
             $("#CorreoFun").val(jso[0].Correo);
-            jso[1] = ['Crud_Controller', '[{opcion:3,tabla2:28,tipo:1,elegir:[],delimitador:[],id:0,opSelect:1}]'];
-            selector[1] = $("#IdentificacionFunTipo");
-            datos[1] = {nombre: "Select", worker: true};
-            ajax(1, datos[1]);
         }
     }
 });

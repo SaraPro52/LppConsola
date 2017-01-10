@@ -35,7 +35,7 @@
                         </form>
                         <form class="col-md-12" action="Instrutor_Controller" method="post" class="form-control"> 
                             <select name="Opcion" value="0" >
-                                <option value="1">seleciona</option> 
+                                <option value="7">seleciona</option> 
                                 <option value="5">Imagenes12</option>
                             </select>        
                             <input type="submit" name="btnenviar" value="Aceptar">
@@ -263,7 +263,6 @@
         </div>
         <script type="text/javascript" src="js/jquery.js"></script>
         <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-        <script type="text/javascript" src="js/sesion.js"></script>
         <script type="text/javascript">
                                     function justNumbers(e) {
                                         var keynum = window.event ? window.event.keyCode : e.which;

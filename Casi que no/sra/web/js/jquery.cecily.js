@@ -3,6 +3,7 @@ jQuery.Luna = function (Datos, selector) {
     this.Nombre = selector;
     this.Cons = Datos;
     this.contador = 0;
+    this.bus = [1, 2, 3, 4];
     this.setCons = function (dato) {
         this.Cons = dato;
     };
@@ -13,18 +14,43 @@ jQuery.Luna = function (Datos, selector) {
     function setContador(n) {
         this.contador = n;
     }
+    ;
+
     function getContador() {
         return this.contador;
     }
-    function getNombre() {
-        return this.Nombre;
+    ;
+    function setBus(n) {
+        this.bus = [];
+        console.log(this.bus);
+        this.bus = n;
+        console.log(this.bus);
     }
+    ;
+
+    this.ObtenerBus = function () {
+        return this.bus;
+    };
     this.Vivo = function (mensaje) {
         console.log("Vivo??Cecily." + mensaje + " ");
     };
     this.limpiarSelector = function (selector) {
         selector.empty().append('<option value="A0">selecione...</option>');
-    }
+    };
+    this.tablaEm = function (selector) {
+        selector.empty();
+        estrutura = "<thead>\n\
+                    <tr>\n\
+                      <th>#</th>\n\
+                      <th>Nombre lista</th>\n\
+                      <th>Descripcion lista</th>\n\
+                      <th>Fecha vigencia</th>\n\
+                      <th></th>\n\
+                      </tr>\n\
+                   </thead>\n\
+                   <tbody></tbody>"
+        selector.append(estrutura);
+    };
     this.limpiarTablaI = function (selector) {
         var tabla = selector.DataTable();
         tabla
@@ -36,26 +62,12 @@ jQuery.Luna = function (Datos, selector) {
         tabla
                 .clear()
                 .draw();
-        $("input").val("");
     };
     function limpiarTabla() {
         var tabla = selector.DataTable();
         tabla
                 .clear()
                 .draw();
-    }
-    ;
-    this.tipoUsuario = function (tipo, lista) {
-        var texto = "";
-        if (tipo == 0) {
-            texto = lista.text();
-            texto = (texto + " equipo tecnico");
-            lista.text(texto);
-        } else if (tipo == 1) {
-            texto = lista.text();
-            texto = (texto + " equipo pedagogico");
-            lista.text(texto);
-        }
     }
 
     this.TablaEspa = function (datos) {
@@ -80,18 +92,12 @@ jQuery.Luna = function (Datos, selector) {
             }
         });
     };
-    this.archivosAjax = function (url, data) {
-        $.ajax({
-            url: url,
-            type: 'POST',
-            contentType: false,
-            processData: false,
-            data: data,
-            success: function (resultado) {
-                alert(resultado);
-            }
-        });
-    }
+    this.mostrarVentana = function (selector) {
+        selector.show();
+    };
+    this.ocultarVentana = function (selector) {
+        selector.hide();
+    };
     this.ajax = function (datos, selector) {
         $.ajax({
             url: datos.url,
@@ -118,11 +124,11 @@ jQuery.Luna = function (Datos, selector) {
                 case "correcionCo":
                     var jso = jQuery.parseJSON(json);
                     var jso1 = jQuery.parseJSON(jso.Items);
-                    $("#NomLista").text("Lista de chequeo: "+jso.Nom_Lista_Chequeo);
-                    $("#FechaEvaluacion").text("Fecha de evaluacion "+jso.Fecha_Evaluacion);
+                    $("#NomLista").text("Lista de chequeo: " + jso.Nom_Lista_Chequeo);
+                    $("#FechaEvaluacion").text("Fecha de evaluacion " + jso.Fecha_Evaluacion);
                     for (var i = 0; i < jso1.length; i++) {
-                        var  oAItem = $("#Clona").clone();
-                        oAItem.find("#textitem").text('Item :'+jso1[i].Des_Item_Lista);
+                        var oAItem = $("#Clona").clone();
+                        oAItem.find("#textitem").text('Item :' + jso1[i].Des_Item_Lista);
                         oAItem.find("#observacionItem").val(jso1[i].Observacion);
                         oAItem.children().appendTo($("#Respuestaitem"));
                     }
@@ -159,7 +165,7 @@ jQuery.Luna = function (Datos, selector) {
                         }
                     }
                     break;
-                case "Comentario":                    
+                case "Comentario":
                     $("#RComentarios" + datos.id).empty();
                     var jsoComen = jQuery.parseJSON(json);
                     for (var j = 0; j < jsoComen.length; j++) {
@@ -171,34 +177,94 @@ jQuery.Luna = function (Datos, selector) {
                     }
                     break;
                 case "MultiSelect":
-                    var jso;
-                    if (datos.worker == true) {
-                        jso = jQuery.parseJSON(json);
+ 
+                    if (datos.compuesto == true) {
+                        var j = Object.keys(json[0]);
+                        var opcion = "";   
+                        console.log(json);
+                        for (var i = 0; i < json.length; i++) {
+                            if (json[i].tipo==true) {
+                                opcion = "<option value=" + json[i][j[0]] + " disabled='disabled' selected>" + json[i][j[1]] + "</option>";
+                            } else {
+                                opcion = "<option value=" + json[i][j[0]] + ">" + json[i][j[1]] + "</option>";
+                            }
+                            selector.append(opcion);
+                        } 
                     } else {
-                        jso = json;
+                        var jso = jQuery.parseJSON(json); 
+                        var j = Object.keys(jso[0]);
+                        for (var i = 0; i < jso.length; i++) {
+                            var opcion = "<option value=" + jso[i][j[0]] + ">" + jso[i][j[1]] + "</option>";
+                            selector.append(opcion);
+                        }
                     }
+                    selector.multiSelect('refresh');
                     if (datos.opt == "Div") {
                         selector.multiSelect('deselect_all');
                     }
-                    selector.multiSelect('refresh');
+                    break;
+                case "MultiSelect1":
+                    console.log("Cambio14");
+                    var arraySelecion = [];
+                    console.log(arraySelecion);
+                    var sele = selector.attr('class');
+                    var tipo = "<input type='text' class='search-input form-control' autocomplete='off' placeholder='" + selector.attr('title') + "'>";
+                    var jso = jQuery.parseJSON(json);
                     var j = Object.keys(jso[0]);
                     for (var i = 0; i < jso.length; i++) {
-                        selector.multiSelect('addOption', {value: jso[i][j[0]], text: jso[i][j[1]], index: i, nested: 'optgroup_label'});
+                        var opcion = "<option value=" + jso[i][j[0]] + ">" + jso[i][j[1]] + "</option>";
+                        selector.append(opcion);
                     }
+                    $('.' + sele).multiSelect({
+                        selectableHeader: tipo,
+                        selectionHeader: tipo,
+                        afterInit: function (ms) {
+                            var that = this,
+                                    $selectableSearch = that.$selectableUl.prev(),
+                                    $selectionSearch = that.$selectionUl.prev(),
+                                    selectableSearchString = '#' + that.$container.attr('id') + ' .ms-elem-selectable:not(.ms-selected)',
+                                    selectionSearchString = '#' + that.$container.attr('id') + ' .ms-elem-selection.ms-selected';
+
+                            that.qs1 = $selectableSearch.quicksearch(selectableSearchString)
+                                    .on('keydown', function (e) {
+                                        if (e.which === 40) {
+                                            that.$selectableUl.focus();
+                                            return false;
+                                        }
+                                    });
+
+                            that.qs2 = $selectionSearch.quicksearch(selectionSearchString)
+                                    .on('keydown', function (e) {
+                                        if (e.which == 40) {
+                                            that.$selectionUl.focus();
+                                            return false;
+                                        }
+                                    });
+                        },
+                        afterSelect: function (val) {
+                            this.qs1.cache();
+                            this.qs2.cache();
+                            arraySelecion.push(val);
+                            console.log(arraySelecion);
+                            setBus(arraySelecion);
+                        },
+                        afterDeselect: function (val) {
+                            this.qs1.cache();
+                            this.qs2.cache();
+                            var busqueda = $.inArray(val, arraySelecion);
+                            arraySelecion.splice(busqueda, 1);
+                            setBus(arraySelecion);
+                        }
+                    });
                     break;
 
                 case "Select":
-                    var jsSelect;
-                    if (datos.worker == true) {
-                        jsSelect = jQuery.parseJSON(json);
-                    } else {
-                        jsSelect = json;
-                    }
-                    var j = Object.keys(jsSelect[0]);
-                    for (var i = 0; i < jsSelect.length; i++) {
+                    var jso = jQuery.parseJSON(json);
+                    var j = Object.keys(jso[0]);
+                    for (var i = 0; i < jso.length; i++) {
                         selector.append($('<option>', {
-                            value: jsSelect[i][j[0]],
-                            text: jsSelect[i][j[1]]
+                            value: jso[i][j[0]],
+                            text: jso[i][j[1]]
                         }));
                     }
                     break;
@@ -318,21 +384,15 @@ jQuery.Luna = function (Datos, selector) {
                     break;
                 case "ConsultarLista":
                     var jso = jQuery.parseJSON(json);
-                    if (getContador() == 1) {
-                        $("#tablaListaChequeo_filter").empty();
-                        $("#tablaListaChequeo_length").empty();
-                        $("#tablaListaChequeo_wrapper").find(".dataTables_info").empty();
-                        $("#tablaListaChequeo_wrapper").find(".dataTables_paginate").empty();
-                    }
-                    ;
-                    setContador(1);
+                    var dat=[];
                     for (var i = 0; i < jso.length; i++) {
+                        dat=[jso[i].Nom_Lista_Chequeo+"$$"+jso[i].Des_Lista_Chequeo+"$$"+jso[i].Fecha_Creacion.substring(0, 11)];
                         table = selector.dataTable().fnAddData([
                             i + 1,
                             jso[i].Nom_Lista_Chequeo,
                             jso[i].Des_Lista_Chequeo,
                             jso[i].Fecha_Creacion.substring(0, 11),
-                            "<button id='ca' value='" + jso[i].Id_Lista_Chequeo + "' class='btnclickca btn btn-info'>Escojer </button>"
+                            "<button id='"+dat+"' value='" + jso[i].Id_Lista_Chequeo + "' class='btnclickca btn btn-info'>Escojer </button>"
                         ]);
                     }
                     break;

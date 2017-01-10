@@ -4,7 +4,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-        <link rel="stylesheet" href=    "//code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css">
+        <link rel="stylesheet" href= "//code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css">
         <link rel="stylesheet" type="text/css" href="css/multi-select.css">
         <link rel="stylesheet" href="assets/css/estilo_1.css"/>
         <title>Subir OA</title>
@@ -37,7 +37,7 @@
                                     <div class="col-md-6">
 
                                         <label>Formato del archivo</label>
-                                        <select required class="form-control col-xs-12 floating-label-form-group controls select" id="formato" value="Valueblanco">
+                                        <select  required class="form-control col-xs-12 floating-label-form-group controls select" id="formato" value="Valueblanco">
                                             <option value="A0" selected="selected">Selecciona...</option>
                                         </select>
                                         <div class="form-group">
@@ -48,7 +48,7 @@
                                     <div class="col-md-6">
                                         <label>Categorías del Producto Virtual</label>
                                         <div id="SelectCategoriaDiv">
-                                            <section required id=SelectCategoria></section>
+                                            <select required id="SelectCategoria" class="categoria"  multiple='multiple' title="Busca una categoria.."></select>
                                         </div>
                                         <div class="form-group col-md-10">
                                             <label for="requisitos_instalacion"> Requisitos de Instalación</label>
@@ -58,13 +58,13 @@
                                     <div class="col-md-6">
                                         <label>Programa de Formación</label>
                                         <div id="SelectEstruturaDiv">
-                                            <section required  id=SelectEstrutura>
-                                            </section>
+                                            <select required  id="SelectEstrutura" class="programa"  multiple='multiple' title="Busca un programa..">
+                                            </select>
                                         </div>
                                         <label>Áutores</label>
                                         <div id="SelectAutoresDiv">
-                                            <section required  id="SelectAutores">
-                                            </section>
+                                            <select required  id="SelectAutores" class="autor"  multiple='multiple' title="Busca un autor..">
+                                            </select>
                                         </div>
                                     </div>
                                 </article>
@@ -72,7 +72,7 @@
                                     <div class="form-group">
                                         <label for="Documento">Adjuntar OA</label>
                                         <form id="UploadForm" action="archivos" method="post" enctype="multipart/form-data">
-                                            <input type="file" size="60" id="myfile" class="inputs" name="myfile"> 
+                                            <input type="file" size="26120" id="myfile" class="inputs input-file form-control" name="myfile"> 
                                             <input type="submit" class=" btn btn-info  col-md-6"  value="Subir Produto virtual" id="subir_oa">
                                             <div id="progressbox">
                                                 <div id="progressbar"></div>
@@ -97,6 +97,7 @@
 <script type="text/javascript" src="js/jquery.cecily.js"></script>
 <script type="text/javascript" src="js/jqueryUi.js"></script>
 <script type="text/javascript" src="js/jquery.multi-select.js"></script>
+<script type="text/javascript" src="js/jquery.quicksearch.js"></script>
 <script type="text/javascript" src="js/notify.js"></script>
 <script type="text/javascript" src="instructor/registroOA/js/SubirOa.js"></script>
 </html>

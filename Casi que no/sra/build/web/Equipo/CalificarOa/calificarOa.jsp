@@ -7,9 +7,10 @@
                 <div class="col-md-12">
                     <section class="col-md-10">
                         <article class="col-md-12">
-                            <label class="col-md-6" id="LabelEquipo"></label>
-                            <label class="col-md-6" id="LabelVersion"></label>
                             <label class="col-md-6" id="Nombrelista"></label> 
+                            <label class="col-md-6" id="DesLista"></label>
+                            <label class="col-md-6" id="FechaLista"></label>
+
                             <div id="clone">
                                 <div class="col-md-12">
                                     <label class="col-md-2">Cumple</label>    
@@ -51,6 +52,6 @@
     <script type="text/javascript" src="Equipo/CalificarOa/js/calificarOa.js"></script>
     <script type="text/javascript" src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script>
-        calificarPV(this.idLista, this.idRol,this.Notifi);
+        calificarPV(this.idLista, this.idRol, this.Notifi);
     </script>
 </div>     
