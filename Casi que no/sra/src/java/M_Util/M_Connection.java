@@ -17,7 +17,7 @@ public class M_Connection{
         usuario = "root";
         contraseña = "";
         bd = "SARA";
-        url = "jdbc:mysql://localhost:3303/"+bd;
+        url = "jdbc:mysql://localhost:3306/"+bd;
         
         try{
             Class.forName(driver).newInstance();

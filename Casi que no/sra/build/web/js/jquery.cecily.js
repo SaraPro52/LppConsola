@@ -368,7 +368,7 @@ jQuery.Luna = function (Datos, selector) {
                             jso[i].Producto,
                             jso[i].Conte_Notificacion,
                             jso[i].Fecha_Envio,
-                            "<button  type='button' id='" + jso[i].Url_Version + "' class='btn btn-info  btnDescargar'>Descargar P.V</button>",
+                            "<a class='btn btn-info' href=DescargaArchivo?archivo="+jso[i].Url_Version+">Descargar P.V</a>",
                             "<button  type='button' id='" + jso[i].Ides_Proceso + "' class='btn btn-info  btnEvaluar' value=" + jso[i].Id_Notificacion + ">Evaluar P.V</button>"
                         ]);
                         if ((i < 4) && (datos.dat == true)) {

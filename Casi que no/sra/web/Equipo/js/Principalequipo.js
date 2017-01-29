@@ -1,5 +1,5 @@
 $(document).on('ready', function () {
-    var selector = [], hilo = [], jso = [], data = [], datos = [];
+    var  hilo = [], jso = [], data = [], datos = [];
     var ob = new $.Luna("equipo", "");
     ob.Vivo("PricipalEquipo"); 
      

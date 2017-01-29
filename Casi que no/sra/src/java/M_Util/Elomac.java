@@ -41,7 +41,7 @@ public class Elomac extends M_Crud {
         this.arrayAtributos = cargarArrayAtributos();
     }
 
-    public Elomac(int tab,int tipo,Object[] datos){
+    public Elomac(int tab, int tipo, Object[] datos) {
         this.tipoElo = tipo;
         this.arrayTablas = cargarTablas();
         this.tabla = arrayTablas[tab];
@@ -61,7 +61,7 @@ public class Elomac extends M_Crud {
         atributosLista(null);
     }
 
-    private void cargarAtributos(Object[] datos){
+    private void cargarAtributos(Object[] datos) {
         atributosLista(datos);
     }
 
@@ -246,52 +246,62 @@ public class Elomac extends M_Crud {
     }
 
     public String Select(String delimitador) {
-        return (String) this.SuperP("SELECT", this.tabla, atributos, this.DelimitarSentencia(delimitador));
+        String bandera = null;
+        try {
+            bandera = (String) this.SuperP("SELECT", this.tabla, atributos, this.DelimitarSentencia(delimitador));
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            bandera = "false";
+        }
+        return bandera;
     }
 
     public String Select(String colum, String operador, String valor) {
         return (String) this.SuperP("SELECT", this.tabla, atributos, "" + colum + " " + operador + " " + valor + "");
     }
 
-   //------------------------- INSERT -----------------------------
-   public boolean Insert(){
-        boolean bo = (boolean)this.SuperP("INSERT",this.tabla,atributos,"");
+    //------------------------- INSERT -----------------------------
+    public boolean Insert() {
+        boolean bo = (boolean) this.SuperP("INSERT", this.tabla, atributos, "");
         this.load(this.Select(Integer.parseInt(this.ObtenerId())));
         return bo;
     }
-    
-    private String ObtenerId(){
+
+    private String ObtenerId() {
         String[] arr = cargarArrayAtributos();
         String delimitador = "";
         String añada = "";
         String[] numColum = {"0"};
-        String id ="";
-        for(int i = 0;i < arr.length;i++){
-            
-            for (Entry<String, Object> enti : atributos.entrySet()) {
-                
-                if(arr[i].equals(enti.getKey())){
-                    if((i + 1) < arr.length) añada = ",añadir:0},";
-                    else añada = "}]";
+        String id = "";
+        for (int i = 0; i < arr.length; i++) {
 
-                    if(i == 1){
-                        delimitador += "[{colum:"+i+",operador:0,valor1:'\""+enti.getValue()+"\"'"+añada;
-                    }else if(i > 1){
-                        delimitador += "{colum:"+i+",operador:0,valor1:'\""+enti.getValue()+"\"'"+añada;
+            for (Entry<String, Object> enti : atributos.entrySet()) {
+
+                if (arr[i].equals(enti.getKey())) {
+                    if ((i + 1) < arr.length) {
+                        añada = ",añadir:0},";
+                    } else {
+                        añada = "}]";
+                    }
+
+                    if (i == 1) {
+                        delimitador += "[{colum:" + i + ",operador:0,valor1:'\"" + enti.getValue() + "\"'" + añada;
+                    } else if (i > 1) {
+                        delimitador += "{colum:" + i + ",operador:0,valor1:'\"" + enti.getValue() + "\"'" + añada;
                     }
                 }
-                
+
             }
         }
         System.out.println(delimitador);
-        id = this.Select(numColum,delimitador);
+        id = this.Select(numColum, delimitador);
         System.out.println(id);
         try {
             JSONObject idJ = new JSONArray(id).getJSONObject(0);
             return idJ.getString(idJ.names().getString(0));//obtener el valor de un json por medio del nombre de la llave
         } catch (Exception e) {
             return "NO ID";
-       }
+        }
     }
 
     //------------------------- UPDATE -----------------------------
@@ -328,10 +338,10 @@ public class Elomac extends M_Crud {
     }
 
     //---------------------------- CONVERTIDORES ------------------------
-    public static String[] M_toArray(String arrayFalse) throws JSONException{
+    public static String[] M_toArray(String arrayFalse) throws JSONException {
         JSONArray j = new JSONArray(arrayFalse);
         String[] arrayVerdad = new String[j.length()];
-        
+
         for (int i = 0; i < j.length(); i++) {
             System.out.println(j.getString(i));
             arrayVerdad[i] = j.getString(i);

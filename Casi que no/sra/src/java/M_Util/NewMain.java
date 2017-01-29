@@ -12,6 +12,7 @@ import static com.sun.corba.se.spi.presentation.rmi.StubAdapter.request;
 import java.io.File;
 import org.json.JSONException;
 import javax.script.ScriptException;
+import org.apache.commons.codec.digest.DigestUtils;
 
 public class NewMain {
 
@@ -1298,23 +1299,24 @@ public class NewMain {
 //        String deli = "[{colum:4,operador:9,valor1:'2016-11-25'}]";
 //        String[] num = {"0","1","2","4"};
 //        System.out.println(new Elomac(27,2).Select(num,deli));
-        
-
-
 //System.out.println(new Elomac(34, 2).Select("[{colum:3,operador:0,valor1:1}]"));
-
         //System.out.println(new Producto_Virtual().DetallesConsulta(2));
-        
 //        String[] fechas = {"2016-11-24","2016-11-25"};
 //        System.out.println(new Estadisticas().EstadisticaFecha(fechas, 1));
-                
-        
 //        Elomac e = new Elomac(36,2);
 //        String[] ele = {"3","4","5","6"};
 //        System.out.println(e.Select(ele,"[{colum:0,operador:0,valor1:4}]"));
-        
+//
+//          Evaluacion_General e = new Evaluacion_General();
+//          System.out.println(e.ConsultarEvaluacion(3, 0));
+//        String a = ("\\JudiniBezarius\\Documents\\Boludo?p.orqu_e c.no iso c.ommit?.exe");
+//        String[] parts = a.split("\\.");
+//        for (int i = 0; i < parts.length; i++) {
+//            System.out.println(parts[i]);
+//        }
+        String contraseña = DigestUtils.md5Hex("1234");
+        System.out.println(contraseña);
 
-          Evaluacion_General e = new Evaluacion_General();
-          System.out.println(e.ConsultarEvaluacion(3, 0));
+
     }
 }

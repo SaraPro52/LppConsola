@@ -101,7 +101,7 @@ $(document).ready(function () {
         var siezekiloByte = parseInt(sizeByte / 1024);
         if (siezekiloByte > $(this).attr('size')) {
             $(this).val('');
-            $(".input-file").notify(
+            $(".inputNotifi").notify(
                     "El archivo supera el limite de 25 mb", 'warn',
                     {position: "right"}
             );

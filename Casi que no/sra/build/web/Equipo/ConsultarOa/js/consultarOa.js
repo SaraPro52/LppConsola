@@ -13,9 +13,6 @@ ajax(0, datos[0]);
 ob.TablaEspa(selector[0]);
 ob.limpiarTabla(selector[0]);
 
-$(document).on("click", ".btnDescargar", function () {
-    location.href = "Archivos/" + this.id;
-});
 
 var rol = $("#vista").val() + 2;
 

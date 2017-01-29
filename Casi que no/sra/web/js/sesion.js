@@ -1,49 +1,40 @@
 $(document).on('ready', function () {
-    $("#btnI").click(function(){
-        
-    });    
-    $(document).on('click', 'li .btntt', function (e) {
-        objeto = {url: $("#controller").val(), Opcion: this.value, name: 'cuerpo', vista: $("#vista").val()};
-        console.log(objeto);
-        //obtenerP(objeto);
+    console.log("Index");
+    var hilo = [], jso = [], data = [];
+
+
+
+    $('#btnLogin').click(function () {
+        var u = $("#user").val();
+        if (u == "") {
+            u = 0;
+        }
+        jso[0] = ['sesion_controller', '[{user:' + u + ',pwd:' + $("#pwd").val() + ',opcion:1}]'];
+        ajax(0);
     });
-    function obtenerP(datos) {
-        console.log(datos.url);
-        $.ajax({
-            url: datos.url,
-            type: 'POST',
-            async: true,
-            cache: false,
-            datatype: 'json',
-            data: datos,
-            success: function (json) {
-                res(json, datos.name, datos.vista);
-            },
-            error: function (jqXHR, textStatus, errorThrown) {
-                console.log("Disculpa, pero existe un error :/" + textStatus + errorThrown);
-            }
-        });
+
+    function ajax(i) {
+        hilo[i] = new Worker("js/worker.js");
+        hilo[i].postMessage(jso[i]);
+        hilo[i].onmessage = function (event) {
+            data[i] = event.data;
+            hilo[i].terminate();
+            peticionCompleta(i);
+        };
     }
-    function res(body, select, vista) {
-        switch (select) {
-            case"cuerpo":
+    function peticionCompleta(i) {
+        if (i == 0) {
+            if (data[i] == "false") {
+                alert("Error del servidor ;)");
+            } else {
+                $("#estru").empty();
                 $("#cuerpo").empty();
-                $("#cuerpo").append(body);
-                var cabeza = ("<input id='equipo' value='" + vista + "' type='hidden'>");
-                $("#header").append(cabeza);
-                break;
-            case 'cabeza':
-                $("#header").empty();
-                $("#header").append(body);
-                break;
-            case 'pies':
-                $("#footer").empty();
-                $("#footer").append(body);
-                break;
-            case 'home':
-                //$("#cuerpo").append(body);
-                break;
+                $("#estru").append(data[i]);
+            }
+
         }
     }
 });
+
+
 

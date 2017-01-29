@@ -121,7 +121,7 @@
     var idTipoItem = 1;
 
     if (idUser != null && idRol != null && nomUser != null && idCentro != null) {
-        $("#menus").append("<li><a href='index.jsp?cerrar=true'><i class='icono izquierda  fa fa-upload' aria-hidden='true'></i>Cerrar Sesion</a></li>");
+        $("#menus").append("<li><a href='index.jsp'><i class='icono izquierda  fa fa-upload' aria-hidden='true'></i>Cerrar Sesion</a></li>");
     } else {
         location.replace('index.jsp');
     }

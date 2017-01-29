@@ -1,4 +1,4 @@
-    package M_Controller;
+package M_Controller;
 
 import M_Util.Elomac;
 import java.io.IOException;
@@ -45,14 +45,14 @@ public class Crud_Controller extends HttpServlet {
             5. Obtener datos - Solo para vistas*/
             String data = request.getParameter("data");
             jData = new JSONArray(data).getJSONObject(0);
-            
+
             tipoElo = 1;
             opcion = jData.getInt("opcion");
-            id =     jData.getInt("id");
-            
+            id = jData.getInt("id");
+
             switch (opcion) {
                 case 1:
-                    tabla1 =         jData.getInt("tabla1");
+                    tabla1 = jData.getInt("tabla1");
                     datos = Elomac.M_toArray(jData.getString("datos"));
                     elo = new Elomac(tabla1, tipoElo, datos);
                     if (elo.Insert()) {
@@ -71,7 +71,7 @@ public class Crud_Controller extends HttpServlet {
                             respuesta.println("true$$No Actualizo");
                         }
                     } catch (Exception e) {
-                        respuesta.println("false$$"+e.getMessage()+"");
+                        respuesta.println("false$$" + e.getMessage() + "");
                     }
                     break;
                 case 3:
@@ -81,42 +81,56 @@ public class Crud_Controller extends HttpServlet {
                     break;
             }
         } catch (Exception falla) {
-            respuesta.println("false$$"+falla.getMessage()+"");
+            respuesta.println("false$$" + falla.getMessage() + "");
         } finally {
             try {
-                 elo.cerrarConexiones();
+                elo.cerrarConexiones();
             } catch (SQLException ex) {
-                respuesta.println("false$$"+ex.getMessage()+"");
+                respuesta.println("false$$" + ex.getMessage() + "");
             }
         }
     }
-    
+
     private void ManejoDatos() throws Exception {
         response.setContentType("application/json;charset=UTF-8");
         respuesta = response.getWriter();
-        optionSelect =  jData.getInt("opSelect");
-        
+        optionSelect = jData.getInt("opSelect");
+
         Elomac elo1 = null;
-        if(optionSelect != 7){
+        if (optionSelect != 7) {
             tipoElo = jData.getInt("tipo");
             tabla2 = jData.getInt("tabla2");
             delimitador = jData.getString("delimitador");
-            elegir =  Elomac.M_toArray(jData.getString("elegir"));
+            elegir = Elomac.M_toArray(jData.getString("elegir"));
             elo1 = new Elomac(tabla2, tipoElo);
         }
         try {
             switch (optionSelect) {
-                case 1:respuesta.println(elo1.Select());break;
-                case 2:respuesta.println(elo1.Select(id));break;
-                case 3:respuesta.println(elo1.Select(delimitador));break;
-                case 4:respuesta.println(elo1.Select(elegir));break;
-                case 5:respuesta.println(elo1.Select(elegir, id));break;
-                case 6:respuesta.println(elo1.Select(elegir, delimitador));break;
-                default:respuesta.println("Default");break;
+                case 1:
+                    respuesta.println(elo1.Select());
+                    break;
+                case 2:
+                    respuesta.println(elo1.Select(id));
+                    break;
+                case 3:
+                    respuesta.println(elo1.Select(delimitador));
+                    break;
+                case 4:
+                    respuesta.println(elo1.Select(elegir));
+                    break;
+                case 5:
+                    respuesta.println(elo1.Select(elegir, id));
+                    break;
+                case 6:
+                    respuesta.println(elo1.Select(elegir, delimitador));
+                    break;
+                default:
+                    respuesta.println("Default");
+                    break;
             }
 
         } catch (Exception e) {
-            respuesta.println("[{valor:false,mensaje:'Falla: "+e.getMessage()+"'}]");
+            respuesta.println("[{valor:false,mensaje:'Falla: " + e.getMessage() + "'}]");
         }
     }
 
