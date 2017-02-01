@@ -1,12 +1,138 @@
 $(document).ready(function () {
-    var selector = [], hilo = [], jso = [], data = [], datos = [], estado = "", men = "", nombre = "";
+    var selector = [], hilo = [], jso = [], data = [], datos = [], estado = "", men = "", nombre = "",
+    arraySelecionAutor=[],arraySelecionEstr=[],arraySelecionCate=[];
     var ob = new $.Luna("AutoComplet", "Null");
-    ob.Vivo("SubirOA13");
+    ob.Vivo("SubirOA14"); 
 
     jso[0] = ['Crud_Controller', '[{opcion:3,tabla2:13,tipo:2,elegir:[0,1],delimitador:[],id:0,opSelect:4}]'];
     selector[0] = $("#Titulo_Publicacion");
     datos[0] = {nombre: "AutoComplet", worker: true};
     ajax(0, datos[0]);
+
+$('.autoresMultiselect').multiSelect({
+        selectableHeader: "<input type='text' class='search-input form-control' autocomplete='off' placeholder='Busca un item...'>",
+        selectionHeader: "<input type='text' class='search-input form-control' autocomplete='off' placeholder='Busca un item...'>",
+        afterInit: function (ms) {
+            var that = this,
+                    $selectableSearch = that.$selectableUl.prev(),
+                    $selectionSearch = that.$selectionUl.prev(),
+                    selectableSearchString = '#' + that.$container.attr('id') + ' .ms-elem-selectable:not(.ms-selected)',
+                    selectionSearchString = '#' + that.$container.attr('id') + ' .ms-elem-selection.ms-selected';
+
+            that.qs1 = $selectableSearch.quicksearch(selectableSearchString)
+                    .on('keydown', function (e) {
+                        if (e.which === 40) {
+                            that.$selectableUl.focus();
+                            return false;
+                        }
+                    });
+
+            that.qs2 = $selectionSearch.quicksearch(selectionSearchString)
+                    .on('keydown', function (e) {
+                        if (e.which == 40) {
+                            that.$selectionUl.focus();
+                            return false;
+                        }
+                    });
+        },
+        afterSelect: function (val) {
+            this.qs1.cache();
+            this.qs2.cache();
+            arraySelecionAutor.push(val);
+        },
+        afterDeselect: function (val) {
+            this.qs1.cache();
+            this.qs2.cache();
+            var busqueda = $.inArray(val, arraySelecionAutor);
+            arraySelecionAutor.splice(busqueda, 1);
+        }
+    });
+    
+    
+    
+    $('.programaFormacionMultiSelect').multiSelect({
+        selectableHeader: "<input type='text' class='search-input form-control' autocomplete='off' placeholder='Busca un item...'>",
+        selectionHeader: "<input type='text' class='search-input form-control' autocomplete='off' placeholder='Busca un item...'>",
+        afterInit: function (ms) {
+            var that = this,
+                    $selectableSearch = that.$selectableUl.prev(),
+                    $selectionSearch = that.$selectionUl.prev(),
+                    selectableSearchString = '#' + that.$container.attr('id') + ' .ms-elem-selectable:not(.ms-selected)',
+                    selectionSearchString = '#' + that.$container.attr('id') + ' .ms-elem-selection.ms-selected';
+
+            that.qs1 = $selectableSearch.quicksearch(selectableSearchString)
+                    .on('keydown', function (e) {
+                        if (e.which === 40) {
+                            that.$selectableUl.focus();
+                            return false;
+                        }
+                    });
+
+            that.qs2 = $selectionSearch.quicksearch(selectionSearchString)
+                    .on('keydown', function (e) {
+                        if (e.which == 40) {
+                            that.$selectionUl.focus();
+                            return false;
+                        }
+                    });
+        },
+        afterSelect: function (val) {
+            this.qs1.cache();
+            this.qs2.cache();
+            arraySelecionEstr.push(val);
+        },
+        afterDeselect: function (val) {
+            this.qs1.cache();
+            this.qs2.cache();
+            var busqueda = $.inArray(val, arraySelecionEstr);
+            arraySelecionEstr.splice(busqueda, 1);
+        }
+    });
+    
+    
+    
+    $('.categoriaMultiselect').multiSelect({
+        selectableHeader: "<input type='text' class='search-input form-control' autocomplete='off' placeholder='Busca un item...'>",
+        selectionHeader: "<input type='text' class='search-input form-control' autocomplete='off' placeholder='Busca un item...'>",
+        afterInit: function (ms) {
+            var that = this,
+                    $selectableSearch = that.$selectableUl.prev(),
+                    $selectionSearch = that.$selectionUl.prev(),
+                    selectableSearchString = '#' + that.$container.attr('id') + ' .ms-elem-selectable:not(.ms-selected)',
+                    selectionSearchString = '#' + that.$container.attr('id') + ' .ms-elem-selection.ms-selected';
+
+            that.qs1 = $selectableSearch.quicksearch(selectableSearchString)
+                    .on('keydown', function (e) {
+                        if (e.which === 40) {
+                            that.$selectableUl.focus();
+                            return false;
+                        }
+                    });
+
+            that.qs2 = $selectionSearch.quicksearch(selectionSearchString)
+                    .on('keydown', function (e) {
+                        if (e.which == 40) {
+                            that.$selectionUl.focus();
+                            return false;
+                        }
+                    });
+        },
+        afterSelect: function (val) {
+            this.qs1.cache();
+            this.qs2.cache();
+            arraySelecionCate.push(val);
+        },
+        afterDeselect: function (val) {
+            this.qs1.cache();
+            this.qs2.cache();
+            var busqueda = $.inArray(val, arraySelecionCate);
+            arraySelecionCate.splice(busqueda, 1);
+        }
+    });
+
+
+
+
 
     function ajax(i, datos) {
         hilo[i] = new Worker("js/worker.js");

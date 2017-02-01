@@ -1,24 +1,29 @@
-function calificarPV(idLista,idRol,idNotifi) {
-    var selector = [], hilo = [], jso = [], data = [], nombre = "funcionario", datos = [],men="",estado="";
+function calificarPV(idLista, idRol, idNotifi) {
+    var selector = [], hilo = [], jso = [], data = [], nombre = "funcionario", datos = [], men = "", estado = "";
     $("#iFecha").datepicker();
     $("#clone").hide();
     var ob = new $.Luna("Producto virtual", $("#divContainer"));
-    ob.Vivo("CalificarOA");
+    ob.Vivo("CalificarOA2");
     jso[0] = ['Crud_Controller', '[{opcion:3,tabla2:15,tipo:2,elegir:[0,1,4],delimitador:"[{colum:3,operador:0,valor1:' + idLista + '}]",id:0,opSelect:6}]'];
-    selector[0] = $("#divContainer");
+    selector[0] = $("#clone");
     datos[0] = {nombre: "calificar", worker: true};
     ajax(0, datos[0]);
-    var t = true;
     var fecha = "yyyy-MM-dd";
-    $(document).on('click', '.FechaLi', function (e) {
-        if (t == true) {
+    $("#TipodeFecha").hide();
+    $("#Aprueba").change(function () {
+        document.getElementById('noAprueba').checked = false;
+        if (idRol == 2) {
             $("#TipodeFecha").show();
-            t = false;
-        } else if (t == false) {
+            $("#TextFecha").text("fecha limite de certificacion");
+        } else if (idRol == 3) {
             $("#TipodeFecha").hide();
-            t = true;
+            $("#TextFecha").text("");
         }
-
+    });
+    $("#noAprueba").change(function () {
+        document.getElementById('Aprueba').checked = false;
+        $("#TipodeFecha").show();
+        $("#TextFecha").text("fecha limite de correcion");
     });
     $("#btnEvaluar").click(function () {
         var campo = "";
@@ -43,12 +48,12 @@ function calificarPV(idLista,idRol,idNotifi) {
         } else {
             resultado = 1;
         }
-        if($("#iFecha").val() == ""){
-            console.log("Nulote");
-        }else{
+        if ($("#iFecha").val() == "") {
+            console.log("Null");
+        } else {
             fecha = $("#iFecha").val();
         }
-        jso[1] = ['EvaluacionGeneral_Controller', '[{opcion:1,idNoti:'+idNotifi+',infoEva:["' + $("#areaObservacion").val() + '","' + resultado + '","' + idVersion + '","' + idLista + '","' + idUser + '","' + fecha + '"],infoItem:[' + infoItems + ']}]'];
+        jso[1] = ['EvaluacionGeneral_Controller', '[{opcion:1,idNoti:' + idNotifi + ',infoEva:["' + $("#areaObservacion").val() + '","' + resultado + '","' + idVersion + '","' + idLista + '","' + idUser + '","' + fecha + '"],infoItem:[' + infoItems + ']}]'];
         selector[1] = null;
         datos[1] = {nombre: "btn", worker: true};
         ajax(1, datos[1]);
@@ -64,16 +69,25 @@ function calificarPV(idLista,idRol,idNotifi) {
         };
     }
     function peticionCompleta(i) {
-        if (i == 1) {
+        if (i == 0) {
+            $("#clone").show();
+        } else if (i == 1) {
+            jso[2] = ['Equipo_Controller', '[{opcion:2}]'];
+            datos[2] = {caso: "Consultar productos virtuales"};
+            ajax(2);
             var daMen = data[i].split("$$");
             if (daMen[0] == "true") {
                 estado = ("success");
-                men =  daMen[1];
+                men = daMen[1];
             } else {
                 estado = ("error");
                 men = daMen[1];
             }
             $.notify(men, estado);
+        } else if (i == 2) {
+            $("#CasoNombre").text(datos[i].caso);
+            $("#cuerpo").empty();
+            $("#cuerpo").append(data[i]);
         }
     }
 }

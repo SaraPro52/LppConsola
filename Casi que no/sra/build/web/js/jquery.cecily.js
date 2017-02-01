@@ -177,11 +177,9 @@ jQuery.Luna = function (Datos, selector) {
                     }
                     break;
                 case "MultiSelect":
- 
                     if (datos.compuesto == true) {
                         var j = Object.keys(json[0]);
                         var opcion = "";   
-                        console.log(json);
                         for (var i = 0; i < json.length; i++) {
                             if (json[i].tipo==true) {
                                 opcion = "<option value=" + json[i][j[0]] + " disabled='disabled' selected>" + json[i][j[1]] + "</option>";
@@ -306,12 +304,16 @@ jQuery.Luna = function (Datos, selector) {
                     break;
                 case "calificar":
                     var jso = jQuery.parseJSON(json);
+                    var row="",cc=1;
                     for (var i = 0; i < jso.length; i++) {
-                        var conte = $("#clone").clone();
-                        conte.find('.chex').attr('value', jso[i].Id_Detalles_Lista);
-                        conte.find('.textarea').attr('id', jso[i].Id_Detalles_Lista);
-                        conte.find('.locura').text(jso[i].Des_Item_Lista);
-                        conte.children().appendTo(selector);
+                        row= ("<tr class='col-md-12'>\n\
+                                    <td class='col-md-1'><label>"+cc+"</label></td>\n\
+                                    <td class='col-md-6'><label>"+jso[i].Des_Item_Lista+"</label></td>\n\
+                                    <td class='col-md-1'><input type='checkbox' value="+jso[i].Id_Detalles_Lista+">Si</td>\n\
+                                    <td class='col-md-4'><textarea id="+jso[i].Id_Detalles_Lista+" class='form-control esac'></textarea></td>\n\
+                                </tr>");
+                        selector.append(row);
+                        cc++;
                     }
                     break;
                 case "AutoComplet":

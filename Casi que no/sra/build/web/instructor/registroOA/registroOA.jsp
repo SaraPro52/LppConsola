@@ -47,8 +47,8 @@
                                     </div>
                                     <div class="col-md-6">
                                         <label>Categorías del Producto Virtual</label>
-                                        <div id="SelectCategoriaDiv">
-                                            <select required id="SelectCategoria" class="categoria"  multiple='multiple' title="Busca una categoria.."></select>
+                                        <div id="SelectCategoriaDiv" class="">
+                                            <select required id="SelectCategoria" class="categoriaMultiselect"  multiple='multiple' title="Busca una categoria.."></select>
                                         </div>
                                         <div class="form-group col-md-10">
                                             <label for="requisitos_instalacion"> Requisitos de Instalación</label>
@@ -58,12 +58,12 @@
                                     <div class="col-md-6">
                                         <label>Programa de Formación</label>
                                         <div id="SelectEstruturaDiv">
-                                            <select required  id="SelectEstrutura" class="programa"  multiple='multiple' title="Busca un programa..">
+                                            <select required  id="SelectEstrutura" class="programaFormacionMultiSelect"  multiple='multiple' title="Busca un programa..">
                                             </select>
                                         </div>
                                         <label>Áutores</label>
                                         <div id="SelectAutoresDiv">
-                                            <select required  id="SelectAutores" class="autor"  multiple='multiple' title="Busca un autor..">
+                                            <select required  id="SelectAutores" class="autoresMultiselect"  multiple='multiple' title="Busca un autor..">
                                             </select>
                                         </div>
                                     </div>

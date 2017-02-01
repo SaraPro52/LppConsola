@@ -18,14 +18,16 @@
                                 <textarea required class="form-control inputs1" value="AS" id="DescripcionL" placeholder="Descripcion lista" rows="1" id="comment"></textarea>
                             </article>
                             <article class="col-md-6" id="items">
-                                <p><h3 class="dark-grey"><b>Items de lista de chequeo</b></h3></p>
-                                <label for="Descripcion">Descripcion de item</label>
-                                <div class="col-md-10">
-                                    <textarea required class="form-control inputs" placeholder="Descripcion lista" rows="1" id="Descripcion"></textarea>
-                                </div>
-                                <div class="col-md-10">
-                                    <button  class="btn btn-info" id="btnItem">Agregar Item</button>
-                                </div>
+                                
+                                    <label class="dark-grey">Items de lista de chequeo</label>
+                                    <label for="Descripcion">Descripcion de item</label>
+                                    <div class="col-md-10">
+                                        <textarea required class="form-control inputs" placeholder="Descripcion lista" rows="1" id="Descripcion"></textarea>
+                                    </div>
+                                    <div class="col-md-10">
+                                        <button  class="btn btn-info" id="btnItem">Agregar Item</button>
+                                    </div>
+                               
                             </article>
                         </div>
                         <article class="col-md-10 col-md-offset-1" id="CompoLista">

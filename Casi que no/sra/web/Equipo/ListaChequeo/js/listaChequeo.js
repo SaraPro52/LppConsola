@@ -1,12 +1,12 @@
 function listaChequeo(idTipoItem, idUser) {
     var selector = [], hilo = [], jso = [], data = [], datos = [], men = "", estado = "";
     var ob = new $.Luna("MultiItems", $("#SelectItem"));
-    ob.Vivo("ListaDeChequeo2");
+    ob.Vivo("ListaDeChequeo3");
     jso[0] = ['Crud_Controller', '[{opcion:3,tabla2:19,tipo:1,elegir:[0,1],delimitador:"[{colum: 2,operador: 0,valor1:' + idTipoItem + '}]",id:0,opSelect:6}]'];
     selector[0] = $("#SelectItem");
     datos[0] = {nombre: "MultiSelect", opt: "NN"};
-    ajax(0, datos[0]); 
-    var arraySelecion = []; 
+    ajax(0, datos[0]);
+    var arraySelecion = [];
     $('.itemSelect').multiSelect({
         selectableHeader: "<input type='text' class='search-input form-control' autocomplete='off' placeholder='Busca un item...'>",
         selectionHeader: "<input type='text' class='search-input form-control' autocomplete='off' placeholder='Busca un item...'>",
@@ -99,7 +99,7 @@ function listaChequeo(idTipoItem, idUser) {
     function  BtnItem() {
         jso[1] = ['Crud_Controller', '[{opcion:1,tabla1:19,tabla2:19,tipo:1,datos:["",' + $("#Descripcion").val() + ',' + idTipoItem + '],elegir:[0,1],delimitador:"[{colum:2,operador:0,valor1:' + idTipoItem + '}]",id:0,opSelect:6}]'];
         selector[1] = $("#SelectItem");
-        datos[1] = {nombre: "MultiSelect", opt: "Div"};
+        datos[1] = {nombre: "btn"};
         ajax(1, datos[1]);
     }
 
@@ -115,7 +115,8 @@ function listaChequeo(idTipoItem, idUser) {
     }
     function peticionCompleta(i) {
         if ((i == 1) || (i == 2)) {
-            if (i == 1) {
+            if (i == 1) { 
+                document.getElementById("formAgregaItem").reset();
                 if (data[0].length < data[1].length) {
                     men = "El item " + $("#Descripcion").val() + " fue agregado exitosamente";
                     estado = ("success");
@@ -123,12 +124,14 @@ function listaChequeo(idTipoItem, idUser) {
                     men = "El item: " + $("#Descripcion").val() + " no fue agregado exitosamente";
                     estado = ("error");
                 }
-            } 
+            }
             if (i == 2) {
+                document.getElementById("formAgreLista").reset();
+                $('.itemSelect').multiSelect('deselect_all');
                 var daMen = data[i].split("$$");
                 if (daMen[0] == "true") {
                     estado = ("success");
-                    men = "La lista  " + men + " " + daMen[1];
+                    men = "La lista  " + men + "  fue registrada";
                 } else {
                     estado = ("error");
                     men = daMen[1];

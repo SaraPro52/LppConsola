@@ -39,7 +39,7 @@
 
                             <form class="col-md-12" action="Instrutor_Controller" method="post" class="form-control"> 
                                 <select name="Opcion" value="0" >
-                                    <option value="7">seleciona</option> 
+                                    <option value="1">seleciona</option> 
                                     <option value="8">Imagenes12</option>
                                 </select>        
                                 <input type="submit" name="btnenviar" value="Aceptar">

@@ -5,27 +5,34 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
-                    <section class="col-md-10">
+                    <section class="col-md-12">
                         <article class="col-md-12">
-                            <label class="col-md-6" id="Nombrelista"></label> 
-                            <label class="col-md-6" id="DesLista"></label>
-                            <label class="col-md-6" id="FechaLista"></label>
-
-                            <div id="clone">
-                                <div class="col-md-12">
-                                    <label class="col-md-2">Cumple</label>    
-                                    <input type="checkbox" class="chex col-md-1"> 
-                                    <label class="locura col-md-8"></label>
-                                </div>
-                                <textarea class="textarea form-control inputs"></textarea>
+                            <br/>
+                            <div class="col-md-10">
+                                <label class="col-md-6">Nombre de la lista de chequeo: </label>
+                                <label class="col-md-6" id="Nombrelista"></label> 
+                                <label class="col-md-6">Descripcion de la lista de chequeo: </label>
+                                <label class="col-md-6" id="DesLista"></label>
+                                <label class="col-md-6">Fecha de creacion lista de chequeo: </label>
+                                <label class="col-md-6" id="FechaLista"></label>
+                            </div>     
+                            <table class="col-md-12 table">
+                                <thead class="col-md-12">
+                                <th class="col-md-1">N°</th>
+                                <th class="col-md-6">Item</th>
+                                <th class="col-md-1">Cumple</th>
+                                <th class="col-md-4">Observaciones</th>
+                                </thead>
+                                <br/>
+                                <tbody id="clone" class="col-md-12"></tbody>
+                            </table>
+                            <br/>
+                            <div class="col-md-12 col-md-offset-3">
+                                <label class="col-md-12">¿El objeto virtual aprueba?</label>
+                                <input type='checkbox' name="aprobar" value="on" id="Aprueba">Si</br>
+                                <input type='checkbox' name="aprobar"  value="on" id="noAprueba"> No</br>
                             </div>
-                            <div class="col-md-8" id="divContainer">
-
                             </div>
-                            <div class="col-md-5">
-                                <button id="FechaLi" class="FechaLi btn btn-block" > Fecha limite</button>
-                            </div>
-
                             <dvi class="col-md-12" id="TipodeFecha" style="display: none;">
                                 <label id="TextFecha"></label> <input type="text" id="iFecha">    
                             </dvi>

@@ -1,53 +1,15 @@
 function modificar(idTipoItem) {
     var jso = [], selector = [], hilo = [], data = [], ww = "", multi = [], arraySelecion = [], Lista = -8, men = "", men1 = "", estado = "";
-    $(".EspacioItems").hide(); 
+    $(".EspacioItems").hide();
     $("#tablaItems").hide();
     var ob = new $.Luna("Lista", $("#tablalista"));
-    ob.Vivo("ModificarListaDeChequeo2");
+    ob.Vivo("ModificarListaDeChequeo3");
     jso[2] = ['Crud_Controller', '[{opcion:3,tabla2:12,tipo:2,elegir:[0,1,2,3],delimitador: "[{colum:5,operador:0,valor1:' + idRol + '}]",id:0,opSelect:6}]'];
     var datos = {nombre: "Lista", worker: true};
     selector[2] = $("#tablalista");
-    ob.TablaEspa(selector[2]); 
+    ob.TablaEspa(selector[2]);
     ajax(2, datos);
-    $("#btnItem").on('click', function () {
-        $(".remove").remove();
-        var boo = 0;
-        var inputs = $(".inputs");
-        var input;
-        for (var i = 0; i < inputs.length; i++) {
-            if (inputs[i].value == "") {
-                input = $(inputs[i]);
-                input.focus().after("<div class='remove'><font color='red'>Rellene este campo</font><div>");       
-            } else {
-                boo++;
-            }
-        }
-        if (boo == 1) {
-            BtnItem();
-        }
-    });
 
-    function BtnItem() {
-        jso[1] = ['Crud_Controller', '[{opcion:1,tabla1:19,tabla2:19,tipo:1,datos:["",' + $("#Descripcion").val() + ',' + idTipoItem + '],elegir:[0,1],delimitador:"[{colum:2,operador:0,valor1:' + idTipoItem + '}]",id:0,opSelect:6}]'];
-        var datos = {nombre: "MultiSelects", worker: true, opt: "Div"};
-        selector[1] = $("#SelectItem");
-        men = $("#Descripcion").val();
-        ajax(1, datos);
-    }
-    $(document).on('click', '.btnclick', function (e) {
-        $(".EspacioItems").show();
-        $("#CompoLista").hide();
-        var s = [];
-        var dat = $(this).val();
-        s = dat.split("$$$");
-        $("#NombreL").val(s[0]);
-        $("#DescripcionL").val(s[1]);
-        jso[0] = ['Crud_Controller', '[{opcion:3, tabla2: 15,tipo:2, elegir:[0,1],delimitador: "[{colum:3,operador:0,valor1:' + this.id + ',añadir:0},{colum:2,operador:0,valor1:' + idTipoItem + '}]", id: 0, opSelect: 6}]'];
-        var datos = {nombre: "btn", worker: true};
-        selector[0] = "null";
-        Lista = this.id;
-        ajax(0, datos);
-    });
     var arraySelecion = [];
     $('.itemselect').multiSelect({
         selectableHeader: "<input type='text' class='search-input form-control' autocomplete='off' placeholder='Busca un item...'>",
@@ -87,6 +49,47 @@ function modificar(idTipoItem) {
             arraySelecion.splice(busqueda, 1);
         }
     });
+
+    $(document).on('click', '.btnclick', function (e) {
+        $(".EspacioItems").show();
+        $("#CompoLista").hide();
+        var s = [];
+        var dat = $(this).val();
+        s = dat.split("$$$");
+        $("#NombreL").val(s[0]);
+        $("#DescripcionL").val(s[1]);
+        jso[0] = ['Crud_Controller', '[{opcion:3, tabla2: 15,tipo:2, elegir:[0,1],delimitador: "[{colum:3,operador:0,valor1:' + this.id + ',añadir:0},{colum:2,operador:0,valor1:' + idTipoItem + '}]", id: 0, opSelect: 6}]'];
+        var datos = {nombre: "btn", worker: true};
+        selector[0] = "null";
+        Lista = this.id;
+        ajax(0, datos);
+    });
+
+    $("#btnItem").click(function () {
+//        $(".remove").remove();
+//        var boo = 0; 
+//        var inputs = $(".inputs");
+//        var input, selet;
+//        for (var i = 0; i < inputs.length; i++) {
+//            if (inputs[i].value == "") {
+//                input = $(inputs[i]);
+//                input.focus().after("<div class='remove'><font color='red'>Rellene este campo</font><div>");       
+//            } else {
+//                boo++;
+//            }
+//        }
+//        if (boo == 1) {
+        BtnItem();
+        //   }
+    });
+
+    function  BtnItem() {
+        jso[1] = ['Crud_Controller', '[{opcion:1,tabla1:19,tabla2:19,tipo:1,datos:["",' + $("#Descripcion").val() + ',' + idTipoItem + '],elegir:[0,1],delimitador:"[{colum:2,operador:0,valor1:' + idTipoItem + '}]",id:0,opSelect:6}]'];
+        selector[1] = $("#SelectItem");
+        datos[1] = {nombre: "btn"};
+        ajax(1, datos[1]);
+    }
+
     $("#BtnLista").click(function () {
         $(".remove").remove();
         var boo = 0;
@@ -117,7 +120,7 @@ function modificar(idTipoItem) {
             hilo[i] = new Worker("js/worker.js");
             hilo[i].postMessage(jso[i]);
             hilo[i].onmessage = function (event) {
-                data[i] = event.data; 
+                data[i] = event.data;
                 ob.cargarTabla(data[i], selector[i], datos);
                 if (i != 5) {
                     data[i] = jQuery.parseJSON(event.data);
@@ -130,35 +133,51 @@ function modificar(idTipoItem) {
         }
     }
     function peticionCompleta(i) {
-        var arrItemsC = [{Id_Item_Lista: "1000000", Des_Item_Lista: "ñññññññññññññññññññññññ", tipo: true}]; 
-        if (i == 0) { 
-            console.log(data[i].length);
-            var js =data[i];
+        var arrItemsC = [{Id_Item_Lista: "1000000", Des_Item_Lista: "ñññññññññññññññññññññññ", tipo: true}];
+        if (i == 0) {
+            var js = data[i];
             for (var f = 0; f < data[i].length; f++) {
                 arrItemsC.push({Id_Item_Lista: js[f].Id_Item_Lista, Des_Item_Lista: js[f].Des_Item_Lista, tipo: true});
             }
             jso[3] = ['Crud_Controller', '[{opcion: 3,tabla2:19,tipo:1,elegir: [0,1],delimitador:"[{colum:0,operador:7,valor1:' + ww + ',añadir:0},{colum:2,operador:0,valor1:' + idTipoItem + '}]", id:0,opSelect:6}]'];
             selector[3] = $("#SelectItem");
-            datos[3] = {nombre: "btn"}; 
+            datos[3] = {nombre: "btn"};
             selector[3].multiSelect();
             ajax(3, datos[3]);
-        } else if (i == 3) { 
-            var js =data[i];
+        } else if (i == 3) {
+            var js = data[i];
             for (var f = 0; f < data[i].length; f++) {
                 arrItemsC.push({Id_Item_Lista: js[f].Id_Item_Lista, Des_Item_Lista: js[f].Des_Item_Lista, tipo: false});
             }
-            datos[3] = {nombre: "MultiSelect",compuesto:true};
+            datos[3] = {nombre: "MultiSelect", compuesto: true};
             ob.cargarTabla(arrItemsC, $("#SelectItem"), datos[3]);
         } else if (i == 1) {
             if (data[0].length == data[i].length) {
                 men = "El item " + men + " no se ingreso.";
                 estado = ("error");
             } else if (data[0].length < data[i].length) {
-                men = "El item " + men + " se ingreso correctamente";
+                var uu = data[i].length;
+                alert(uu);
+                alert(data[i]);
+                
+                var jsoData = jQuery.parseJSON(data[i]);
+                var jj = Object.keys(jsoData[0]);
+                
+                alert(jsoData);
+                alert(jsoData[uu]);
+                alert(jsoData[uu].Des_Item_Lista);
+
+
+                var opcion = "<option value=" + jsoData[uu].Des_Item_Lista + ">" + jsoData[uu].Id_Item_Lista + "</option>";
+                $("#SelectItem").append(opcion);
+                $("#SelectItem").multiSelect('refresh');
+                men = "El item " + data[uu].Des_Item_Lista + " se ingreso correctamente";
                 estado = ("success");
             }
             $.notify(men, estado);
         } else if (i == 5) {
+            $(".EspacioItems").hide();
+            $("#CompoLista").show();
             var daMen = data[i].split("$$");
             if (daMen[0] == "true") {
                 estado = ("success");
