@@ -22,13 +22,7 @@ public class DJCorreoHTML {
     
     public DJCorreoHTML() {
     }
-    /**
-     * El metodo mandarCorreo crea el cuerpo del correo ademas envia el correo al usuari o grupos de usuarios
-     * @param String  destinatario este parametro es el correo electronico de la persona a la que se debe enviar el correo
-     * @param String  asunt este parametro es el asunto del correo que se va a visualizar en el gestor de correos del cliente
-     * @param String  user este parametro es el numero de documento del usuario que se registra como usuario del aplicativo
-     * @param String  toq  este parametro es el toquen  para validacion del usuario posteriormente.
-     */
+
     public void mandarCorreo(String destinatario, String asunt,String user,String toq) {
         String destinatarios = destinatario;
         String asunto = asunt;
@@ -65,14 +59,14 @@ public class DJCorreoHTML {
                 StringBuffer msjHTML = new StringBuffer("<html>\n" +
         "    <body>\n" +
         "        <div align=\"center\">\n" +
-        "            <img src=\"a/darkSoulsFogata.jpg\">              \n" +
+        "            <img src=\"ConfirmacionCon/img/saraBlue.png\">              \n" +
         "        </div>\n" +
         "        <div align=\"center\">\n" +
         "            <font size=\"6\" face=\"Candara\">     \n" +
         "            Estimado Funcionario, le informamos que su usuario es: "+user+"\n" +
         "            <br>\n" +
         "            Para confirmar la cuenta debe ingresar al link que se encuentra"
-                + "acontinuacion LINK: <a href='http://localhost:8080/sra/ActivacionCuenta_Controller?t="+toq+"&c=1'>link</a>. \n" +
+                + "a continuacion LINK: <a href='http://localhost:8080/sra/ActivacionCuenta_Controller?t="+toq+"&c=1'>link</a>. \n" +
         "            <br>\n" +
         "            <br>\n" +
         "            Gracias por su atencion.\n" +
@@ -85,7 +79,7 @@ public class DJCorreoHTML {
         "</html>");
                 
                 // Url del directorio donde estan las imagenes
-                String urlImagenes = "url del directorio donde estan las imagenes";
+                String urlImagenes = "ConfirmacionCon/img";
                 File directorio = new File(urlImagenes);
                 // Obtener los nombres de las imagenes en el directorio
                 String[] imagenesDirectorio = directorio.list();
@@ -95,7 +89,6 @@ public class DJCorreoHTML {
                 // Validar que el directorio si tenga las imagenes
                 if (imagenesDirectorio != null) {
                     for (int count = 0; count < imagenesDirectorio.length; count++) {
-
                         MimeBodyPart imagePart = new MimeBodyPart();
                         imagePart.setHeader("Content-ID", "<"
                                 + imagenesDirectorio[count] + ">");

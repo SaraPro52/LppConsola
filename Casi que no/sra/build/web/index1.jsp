@@ -11,7 +11,7 @@
         <link href="css/saraestilo.css" rel="stylesheet" type="text/css"/>
         <title>Sara Pro</title>
     </head>
-    <body>
+    <body  id="total">
         <div id="estru">
 
         </div>

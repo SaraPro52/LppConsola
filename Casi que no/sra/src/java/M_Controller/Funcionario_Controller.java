@@ -1,4 +1,4 @@
-package M_Controller;
+    package M_Controller;
 
 import M_Controller.Correos.DJCorreoHTML;
 import java.io.IOException;
@@ -46,7 +46,7 @@ public class Funcionario_Controller extends HttpServlet {
                             correoHTML.mandarCorreo(fun[5], "Confirmacion de Cuenta SARA PRO1",fun[2],fun[8]);
                             respuesta.println("true$$se registro correctamente");
                         } else {
-                            respuesta.println("false$$no se registro correctamente");
+                            respuesta.println("false$$no se registro");
                         }
                     } catch (Exception e) {
                         respuesta.println("[{valor:false,mensaje:'"+e.getMessage()+"'}]");
@@ -63,9 +63,9 @@ public class Funcionario_Controller extends HttpServlet {
                 case 3:
                     Elomac fun1 = new Elomac(18, 1);
                     if (fun1.Update(fun1.Select(jData.getInt("id")), "[{'8':'" + DigestUtils.md5Hex(jData.getString("con")) + "','9':'1'}]")) {
-                        respuesta.println("[{valor:true,mensaje:'Actualizacion Complea'}]");
+                        respuesta.println("[{valor:true,mensaje:'la contraseña  se actualizo correctamente'}]");
                     } else {
-                        respuesta.println("[{valor:false,mensaje:'Actualizacion Fallida'}]");
+                        respuesta.println("[{valor:false,mensaje:'la contraseña  no se actualizo'}]");
                     }
                     break;
                 case 4:

@@ -1,4 +1,3 @@
-
 package M_Controller.Linkeos;
 
 import M_Util.Elomac;
@@ -24,27 +23,26 @@ public class ActivacionCuenta_Controller extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             String toq = request.getParameter("t");
-            int opcion = 1; 
+            int opcion = 1;
             response.setContentType("appication/json;charset=UTF-8");
             PrintWriter respuesta = response.getWriter();
             HttpSession sesion1 = request.getSession();
             opcion = Integer.parseInt(request.getParameter("c"));
-            Elomac t  = new Elomac(23,2);
-            String delimitador = "[{colum:0,operador:0,valor1:'\""+toq+"\"'}]";
+            Elomac t = new Elomac(23, 2);
+            String delimitador = "[{colum:0,operador:0,valor1:'\"" + toq + "\"'}]";
             String datos = t.Select(delimitador);
             try {
-                if(datos != null){
-
-                        JSONObject toqJ = new JSONArray(datos).getJSONObject(0);
-                        sesion1.setAttribute("fun",toqJ.getString("Funcionario"));
-                        request.getRequestDispatcher("ConfirmacionCon/ConfirmarCon.jsp").forward(request, response);
-
+                if (datos != null) {
+                    JSONObject toqJ = new JSONArray(datos).getJSONObject(0);
+                    sesion1.setAttribute("fun", toqJ.getString("Funcionario"));
+                    request.getRequestDispatcher("ConfirmacionCon/ConfirmarCon.jsp").forward(request, response);
                 }
-                if(Integer.parseInt(request.getParameter("c")) != 1 || datos == null){
+                if (Integer.parseInt(request.getParameter("c")) != 1 || datos == null) {
                     request.getRequestDispatcher("index.jsp").forward(request, response);
                     sesion1.invalidate();
                 }
             } catch (Exception ex) {
+                System.out.println(ex.getMessage());
                 request.getRequestDispatcher("index.jsp").forward(request, response);
                 sesion1.invalidate();
             }

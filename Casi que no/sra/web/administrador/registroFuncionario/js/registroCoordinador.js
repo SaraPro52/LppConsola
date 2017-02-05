@@ -65,7 +65,7 @@ $(document).on('ready', function () {
                 men = "El funcionario  " + men + " " + daMen[1];
             } else {
                 estados = ("error");
-                men = daMen[1];
+                men = "El funcionario  " + men +" "+ daMen[1];
             }
             $.notify(men, estados);
             $("#boton1").show();

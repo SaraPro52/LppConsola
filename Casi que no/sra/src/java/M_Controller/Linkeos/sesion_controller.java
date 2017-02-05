@@ -71,6 +71,9 @@ public class sesion_controller extends HttpServlet {
                     sesion.invalidate();
                     response.sendRedirect("index.jsp");
                     break;
+                case 3:
+                    request.getRequestDispatcher("index.jsp").forward(request, response);
+                    break;
             }
         } catch (Exception e) {
             request.getRequestDispatcher("index1.jsp").forward(request, response);
