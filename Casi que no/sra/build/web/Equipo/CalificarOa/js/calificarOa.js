@@ -27,12 +27,14 @@ function calificarPV(idLista, idRol, idNotifi) {
     });
     $("#btnEvaluar").click(function () {
         var campo = "";
+        var observacionIndi=[];
         var infoItems = [];
         var cc = 0;
         $("input:checkbox:checked").each(function () {
             campo = $(this).val();
             if (campo !== "on") {
                 infoItems.push("1¤" + $("#" + campo).val() + "¤" + campo);
+                
             }
         });
         $("input:checkbox:not(:checked)").each(function () {

@@ -1,8 +1,8 @@
 $(document).on('ready', function () {
-    var  hilo = [], jso = [], data = [], datos = [];
+    var hilo = [], jso = [], data = [], datos = [];
     var ob = new $.Luna("equipo", "");
-    ob.Vivo("PricipalEquipo"); 
-     
+    ob.Vivo("PricipalEquipo");
+
     jso[0] = ['Equipo_Controller', '[{opcion:2}]'];
     datos[0] = {caso: "Consultar productos virtuales"};
     ajax(0);
@@ -13,11 +13,14 @@ $(document).on('ready', function () {
     $('.menu li').click(function (e) {
         casoUso = "text" + this.value;
         casoUso = $("#" + casoUso).text();
+        jso[0] = ['Equipo_Controller', '[{opcion:' + this.value + '}]'];
         if (this.value == 2) {
             casoUso = "Consultar productos virtuales";
         }
-        jso[0] = ['Equipo_Controller', '[{opcion:' + this.value + '}]'];
-        datos[0] = {caso: casoUso,en:this.value};
+//        } else if (this.value == 5) {
+//            jso[0] = ['sesion_controller', '[{opcion:2}]'];
+//        }
+        datos[0] = {caso: casoUso, en: this.value};
         ajax(0);
     });
 
@@ -35,7 +38,7 @@ $(document).on('ready', function () {
             $("#CasoNombre").text(datos[i].caso);
             $("#cuerpo").empty();
             $("#cuerpo").append(data[i]);
-            if (datos[i].en==0) {
+            if (datos[i].en == 0) {
                 $("#cssUsuario").attr("href", "assets/css/paper-dashboardEquipo.css");
             }
         }

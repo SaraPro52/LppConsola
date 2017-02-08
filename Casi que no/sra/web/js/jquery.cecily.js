@@ -151,8 +151,7 @@ jQuery.Luna = function (Datos, selector) {
                         oAItem.find(".labelEstrella").addClass(jso[i].Id_Version);
                         oAItem.find(".RComentarios").attr('id', "RComentarios" + jso[i].Id_Version);
                         oAItem.find("#comment").addClass('Comment' + jso[i].Id_Version);
-                        oAItem.find("#Url_Version").val(jso[i].Url_Version);
-                        oAItem.find("#Actualizar").val(jso[i].Id_Version);
+                        oAItem.find("#Url_Version").attr('href','DescargaArchivo?archivo='+jso[i].Url_Version+'');
                         oAItem.find("#btn_Comentar").val(jso[i].Id_Version);
                         oAItem.children().appendTo($("#resultados"));
                         var jsoComen = jQuery.parseJSON(jso[i].Comentarios);
@@ -213,7 +212,7 @@ jQuery.Luna = function (Datos, selector) {
                         var opcion = "<option value=" + jso[i][j[0]] + ">" + jso[i][j[1]] + "</option>";
                         selector.append(opcion);
                     }
-                    $('.' + sele).multiSelect({
+                    $('.' + sele).multiSelect({ 
                         selectableHeader: tipo,
                         selectionHeader: tipo,
                         afterInit: function (ms) {

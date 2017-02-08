@@ -26,11 +26,11 @@
                     <label class="col-md-12">Valora Este objeto de aprendizaje</label>
                     <form>
                         <p class="clasificacion" id="Clasificacion">
-                            <label id="4" for="radio5" class="labelEstrella">★</label>
-                            <label id="5" for="radio4" class="labelEstrella">★</label>
-                            <label id="6" for="radio3" class="labelEstrella">★</label>
-                            <label id="7" for="radio2" class="labelEstrella">★</label>
-                            <label id="8" for="radio1" class="labelEstrella">★</label>
+                            <label id="4" for="4l" class="labelEstrella">★</label><input id="4l" type="radio">
+                            <label id="5" for="5l" class="labelEstrella">★</label><input id="5l" type="radio">
+                            <label id="6" for="3l" class="labelEstrella">★</label><input id="6l" type="radio">
+                            <label id="7" for="7l" class="labelEstrella">★</label><input id="7l" type="radio">
+                            <label id="8" for="8l" class="labelEstrella">★</label><input id="8l" type="radio">
                         </p>
                     </form>
                     <div class="RComentarios">
@@ -40,7 +40,7 @@
                     <label>Cometarios</label>
                     <textarea class="form-control" placeholder="Comentarios" rows="3" id="comment"></textarea> 
                     <button type="button" class="btn btn-default Comentar" id="btn_Comentar">Comentar P.V</button>
-                    <button type="button" class="btn btn-default Descargar" id="Url_Version">Descargar P.V</button>
+                    <a id="Url_Version" class='btn btn-default Descargar'>Descargar P.V</a>
                     <button type="button" class="btn btn-default Actualizar" id="Actualizar">Actualizar P.V</button>
                 </div>
             </article>

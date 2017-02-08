@@ -192,8 +192,8 @@ input[type="radio"] {
   unicode-bidi: bidi-override;
 }
 
-#labelEstrella:hover,
-#labelEstrella:hover ~ #labelEstrella {
+.labelEstrella:hover,
+.labelEstrella:hover ~ .labelEstrella {
   color: orange;
 }
 
