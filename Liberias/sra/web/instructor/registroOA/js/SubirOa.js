@@ -131,7 +131,10 @@ $(document).ready(function () {
             jso[7] = ['Crud_Controller', '[{opcion:3,tabla2:1,tipo:2,elegir:[1,3],delimitador:"[{colum:5,operador:0,valor1:' + $("#selectCiudad").val() + '}]",id:0,opSelect:6}]'];
             selector[7] = $("#selectCentroF");
             datos[7] = {nombre: "Select"};
+            $("#divBtPro").show();
             ajax(7, datos[7]);
+        } else {
+            $("#divBtPro").hide();
         }
     });
     $("#selectCentroF").change(function () {
@@ -143,7 +146,7 @@ $(document).ready(function () {
             ob.limpiarSelector(selector[8]);
             ajax(8, datos[8]);
         }
-    }); 
+    });
     $("#selectAreaF").change(function () {
         var option = $("#Area").val();
         if (option != "A0") {
@@ -199,12 +202,15 @@ $(document).ready(function () {
     $("#SelectCategoria").change(function () {
         var optionn = $("#SelectCategoria").val();
         if (optionn != "A0") {
+            $("#divBtnaCate").show();
             jso[6] = ['Crud_Controller', '[{opcion:3,tabla2:4,tipo:2,elegir:[6,7,8],delimitador:"[{colum:0,operador:0,valor1:' + $("#SelectCategoria").val() + '}]",id:0,opSelect:3}]'];
             selector[6] = $("#MultiCategoria");
             datos[6] = {nombre: "MultiSelect"};
             $("#MultiCategoria").empty();
             $("#SelectCategoriaDiv").show();
             ajax(6, datos[6]);
+        }else {
+            $("#divBtnaCate").hide();
         }
     });
 

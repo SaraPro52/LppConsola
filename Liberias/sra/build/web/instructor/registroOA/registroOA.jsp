@@ -57,7 +57,7 @@
                                                 <p class="arrayCate" style="display: none;"></p>
                                             </div>
                                         </div>
-                                        <div id="ECategoriaSelect"></div>
+                                        <div id="ECategoriaSelect" style="width: 200px; height: 100px; overflow-y: scroll;"></div>
                                         <div class="col-md-12">
                                             <select class="form-control" id="SelectCategoria"> 
                                                 <option value="A0">Seleciona categoria</option>
@@ -69,10 +69,10 @@
                                                 <option value="A0">Null</option>
                                             </select>
                                         </div>
-                                        <div class="col-md-8 col-md-offset-2">
+                                        <div class="col-md-8 col-md-offset-2" id="divBtnaCate">
                                             <button id="btnACategoria" class="btn btn-info">Agregar categoria</button>
                                         </div>
-                                        
+
                                         <div class="form-group col-md-10">
                                             <label for="requisitos_instalacion"> Requisitos de Instalación</label>
                                             <textarea required class="form-control inputs" id="requisitos_instalacion" type="textarea " maxlength="200" name="palabras_claves" placeholder="Digite requisitos  de instalación"  rows="5"></textarea>
@@ -88,25 +88,31 @@
                                                 <p class="arrayPro" style="display: none;"></p>
                                             </div>
                                         </div>
-                                        <div id="EProgramaFSelect" ></div>
-                                        <label>Ciudad</label>
-                                        <select id="selectCiudad">
-                                            <option value="A0">Seleciona...</option>
-                                        </select>
-                                        <label>Centro de formacion</label>
-                                        <select id="selectCentroF">
-                                            <option value="A0">Seleciona...</option>
-                                        </select>
-                                        <label>Area de formacion</label>
-                                        <select id="selectAreaF">
-                                            <option value="A0">Seleciona...</option>
-                                        </select>
-                                        <div id="SelectEstruturaDiv" style="display: none;">
+                                        <div id="EProgramaFSelect" style="width: 200px; height: 100px; overflow-y: scroll;"></div>
+                                        <div class="col-md-12">
+                                            <label class="col-md-12" for="selectCiudad">Ciudad</label>
+                                            <select id="selectCiudad" class="form-control">
+                                                <option value="A0">Seleciona...</option>
+                                            </select>
+
+                                            <label class="col-md-12" for="selectCentroF">Centro de formacion</label>
+                                            <select id="selectCentroF" class="col-md-12">
+                                                <option value="A0">Seleciona...</option>
+                                            </select>
+                                            <label class="col-md-12" for="selectAreaF">Area de formacion</label>
+                                            <select id="selectAreaF" class="col-md-12">
+                                                <option value="A0">Seleciona...</option>
+                                            </select>
+                                        </div>
+                                        <br>
+                                        <div id="SelectEstruturaDiv" style="display: none;" class="col-md-12">
                                             <select required  id="SelectEstrutura" class="programaFormacionMultiSelect"  multiple='multiple' title="Busca un programa.." >
                                                 <option value="A0">Null</option>
                                             </select>
                                         </div>
-                                        <button id="btnACategoriaF" class="btn btn-info">Agregar categoria</button>
+                                        <div class="col-md-8 col-md-offset-2"  style="display: none;" id="divBtPro"> 
+                                            <button id="btnACategoriaF" class="btn btn-danger">Agregar categoria</button>
+                                        </div>
                                         <label>Áutores</label>
                                         <div id="SelectAutoresDiv">
                                             <select required  id="SelectAutores" class="autoresMultiselect"  multiple='multiple' title="Busca un autor..">
