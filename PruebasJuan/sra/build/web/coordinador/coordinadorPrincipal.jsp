@@ -19,8 +19,7 @@
         <link href="assets/css/themify-icons.css" rel="stylesheet">
         <link href="assets/css/estilo.css" rel="stylesheet" type="text/css"/>
     </head>
-    <body>
-
+    <body >
         <div class="wrapper">
             <div class="sidebar" data-background-color="white" data-active-color="danger">
                 <div class="sidebar-wrapper">
@@ -36,6 +35,7 @@
                         <li class="btntt" value="1"><a><i class=" icono izquierda fa fa-check" aria-hidden="true"></i><label style='cursor:pointer;' id="text1">Habilitar Producto V.</label></a></li>
                         <li class="btntt" value="2"><a><i class=" icono izquierda fa fa-credit-card-alt" aria-hidden="true"></i><label style='cursor:pointer;' id="text2">Asignar Roles</label></a></li>
                         <li class="btntt" value="3"><a><i class=" icono izquierda fa fa-edit" aria-hidden="true"></i><label style='cursor:pointer;' id="text3">Crear Categorías</label></a></li>
+                        <li class="btntt" value="5"><a><i class=" icono izquierda fa fa-upload" aria-hidden="true"></i><label style='cursor:pointer;' id="text3">Cerrar Sesion</label></a></li>
                     </ul>
                 </div>
             </div>
@@ -63,7 +63,7 @@
                                         <b class="caret"></b>
                                     </a>
                                     <ul class="dropdown-menu" id="tablaAprobarP">
-                                         <li><a><label class="Notify">No hay productos a habilitar</label></a></li>
+                                        <li><a><label class="Notify">No hay productos a habilitar</label></a></li>
                                     </ul>
                             </ul>
                         </div>
@@ -124,11 +124,11 @@
         var idUser = '<%= session.getAttribute("idUser")%>';
         var idRol = '<%= session.getAttribute("idRol")%>';
         var idCentro = '<%= session.getAttribute("idCentro")%>';
-        if (idUser != null && idRol != null && nomUser != null && idCentro != null) {
-            $("#menus").append("<li><a href='index.jsp'><i class='icono izquierda  fa fa-upload' aria-hidden='true'></i>Cerrar Sesion</a></li>");
-        } else {
+        var tem ='[{nomUser:'+nomUser+',idUser:'+idUser+',idRol:'+idRol+',idCentro:'+idCentro+'}]';
+        if (idUser == null && idRol == null && nomUser == null && idCentro == null) {
             location.replace('index.jsp');
         }
+        cargaC(idRol,tem);
         $.notify({
             icon: 'ti-gift',
             message: "Bienvenido a <b>Sara Pro</b> - Coordinador " + nomUser + "."

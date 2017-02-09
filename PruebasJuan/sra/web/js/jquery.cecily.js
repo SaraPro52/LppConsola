@@ -9,25 +9,13 @@ jQuery.Luna = function (Datos, selector) {
     };
     function setNombre(dato) {
         this.Nombre = dato;
-    }
-    ;
-    function setContador(n) {
-        this.contador = n;
-    }
-    ;
-
-    function getContador() {
-        return this.contador;
-    }
-    ;
+    };
     function setBus(n) {
         this.bus = [];
         console.log(this.bus);
         this.bus = n;
         console.log(this.bus);
     }
-    ;
-
     this.ObtenerBus = function () {
         return this.bus;
     };
@@ -121,6 +109,9 @@ jQuery.Luna = function (Datos, selector) {
         try {
             var c = 1;
             switch (datos.nombre) {
+                case "MutiCategoria":
+                    //Lo mirare posee el mismo dilema que encontre con multiselect con la busqueda de quicksechars =0
+                    break;
                 case "correcionCo":
                     var jso = jQuery.parseJSON(json);
                     var jso1 = jQuery.parseJSON(jso.Items);
@@ -190,7 +181,6 @@ jQuery.Luna = function (Datos, selector) {
                     } else {
                         var jso = jQuery.parseJSON(json); 
                         var j = Object.keys(jso[0]);
-                        selector.empty();
                         for (var i = 0; i < jso.length; i++) {
                             var opcion = "<option value=" + jso[i][j[0]] + ">" + jso[i][j[1]] + "</option>";
                             selector.append(opcion);

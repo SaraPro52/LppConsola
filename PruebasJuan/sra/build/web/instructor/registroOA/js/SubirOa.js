@@ -1,13 +1,14 @@
 $(document).ready(function () {
     var selector = [], hilo = [], jso = [], data = [], datos = [], estado = "", men = "", nombre = "",
-            arraySelecionAutor = [], arraySelecionEstr = [], arraySelecionCate = [], arrayselecT = [];
+            arraySelecionAutor = [], arraySelecionEstr = [], arraySelecionCate = [], arrayselecT = [], arrayselecTF = [];
+    $("#ECategoriaSelect").hide();
+    $("#EProgramaFSelect").hide();
     var ob = new $.Luna("AutoComplet", "Null");
-    ob.Vivo("SubirOA96");
+    ob.Vivo("SubirOA3");
     jso[0] = ['Crud_Controller', '[{opcion:3,tabla2:13,tipo:2,elegir:[0,1],delimitador:[],id:0,opSelect:4}]'];
     selector[0] = $("#Titulo_Publicacion");
     datos[0] = {nombre: "AutoComplet", worker: true};
     ajax(0, datos[0]);
-
 
     $('.autoresMultiselect').multiSelect({
         selectableHeader: "<input type='text' class='search-input form-control' autocomplete='off' placeholder='Busca un item...'>",
@@ -48,8 +49,6 @@ $(document).ready(function () {
         }
     });
 
-
-
     $('.programaFormacionMultiSelect').multiSelect({
         selectableHeader: "<input type='text' class='search-input form-control' autocomplete='off' placeholder='Busca un item...'>",
         selectionHeader: "<input type='text' class='search-input form-control' autocomplete='off' placeholder='Busca un item...'>",
@@ -89,8 +88,6 @@ $(document).ready(function () {
         }
     });
 
-
-
     $('.categoriaMultiselect').multiSelect({
         selectableHeader: "<input type='text' class='search-input form-control' autocomplete='off' placeholder='Busca un item...'>",
         selectionHeader: "<input type='text' class='search-input form-control' autocomplete='off' placeholder='Busca un item...'>",
@@ -129,42 +126,153 @@ $(document).ready(function () {
             arraySelecionCate.splice(busqueda, 1);
         }
     });
+    ///Peticiones del programa de formacion
+    $("#selectCiudad").change(function () {
+        var option = $("#selectCiudad").val();
+        ob.limpiarSelector($("#selectCentroF"));
+        ob.limpiarSelector($("#Area"));
+        if (option != "A0") {
+            jso[7] = ['Crud_Controller', '[{opcion:3,tabla2:1,tipo:2,elegir:[1,3],delimitador:"[{colum:5,operador:0,valor1:' + $("#selectCiudad").val() + '}]",id:0,opSelect:6}]'];
+            selector[7] = $("#selectCentroF");
+            datos[7] = {nombre: "Select"};
+            $("#divBtPro").show();
+            ajax(7, datos[7]);
+        } else {
+            $("#divBtPro").hide();
+        }
+        $("#SelectEstruturaDiv").hide();
+    });
+    $("#selectCentroF").change(function () {
+        var option = $("#selectCentroF").val();
+        ob.limpiarSelector($("#Area"));
+        if (option != "A0") {
+            jso[8] = ['Crud_Controller', '[{opcion:3,tabla2:1,tipo:2,elegir:[7,8],delimitador:"[{colum:5,operador:0,valor1:' + $("#selectCiudad").val() + ',añadir:0},{colum:1,operador:0,valor1:' + $("#selectCentroF").val() + '}]",id:0,opSelect:6}]'];
+            selector[8] = $("#selectAreaF");
+            datos[8] = {nombre: "Select"};
+            ob.limpiarSelector(selector[8]);
+            ajax(8, datos[8]);
+        }
+        $("#SelectEstruturaDiv").hide();
+    });
+    $("#selectAreaF").change(function () {
+        var option = $("#Area").val();
+        if (option != "A0") {
+            jso[9] = ['Crud_Controller', '[{opcion:3,tabla2:2,tipo:2,elegir:[4,5],delimitador:"[{colum:1,operador:0,valor1:' + $("#selectAreaF").val() + '}]",id:0,opSelect:6}]'];
+            $("#SelectEstrutura").empty();
+            selector[9] = $("#SelectEstrutura");
+            datos[9] = {nombre: "MultiSelect"};
+            ajax(9, datos[9]);
+            $("#SelectEstruturaDiv").show();
+        } else {
+            $("#SelectEstruturaDiv").hide();
+        }
+    });
+    var countCC = 0;
+    $("#btnACategoriaF").click(function () {
+        if (countCC == 0) {
+            $("#EProgramaFSelect").show();
+        }
+        var jso = jQuery.parseJSON(data[9]);
+        var j = Object.keys(jso[0]);
+        var dd = [],campS = [], st = [],arraySelecionE=[],s="";
+        for (var q = 0; q < jso.length; q++) {
+            dd.push(jso[q][j[0]]);
+            campS.push(jso[q][j[1]]);
+            if (q<arraySelecionEstr.length) {
+                var tam =arraySelecionEstr[q];
+                arraySelecionE.push(tam);
+            }
+        }
+        for (var i = 0; i < dd.length; i++) {
+            for (var y = 0; y < arraySelecionE.length; y++) {
+                if (dd[i] == arraySelecionE[y]) {
+                    st = campS[i];
+                }
+                if (i == 0) {
+                    var con = arraySelecionE[i];
+                    arrayselecTF.push(con);
+                }
+            }
+        }
+        $("#SelectEstrutura").empty();
+        var clonCategoria = $("#ClonPrograma").clone();
+        clonCategoria.find("#labelPro").text("Categoria:  " + $("#selectAreaF option:selected").text());
+        clonCategoria.find("#labelProItems").text("Temas: " + st);
+        clonCategoria.find("#buttonPro").val('ProSelect' + countCC);
+        clonCategoria.find(".contenPro").attr('id', 'ProSelect' + countCC);
+        clonCategoria.find(".arrayPro").attr('id', 'aProSelect' + countCC);
+        clonCategoria.find("#aProSelect" + countCC).attr('text', '[' + arraySelecionEstr + ']');
+        clonCategoria.children().appendTo($("#EProgramaFSelect"));
+        countCC++;
+        arraySelecionEstr = [];
+    });
+    $(document).on('click', '.clickPro', function (e) {
+        select = this.value;
+        var aselect = 'a' + this.value;
+        var arr = $("#" + aselect).text();
+        for (var i = 0; i < arr.length; i++) {
+            var busqued = $.inArray(arr[i], arrayselecTF);
+            arrayselecTF.splice(busqued, 1);
+        }
+        $("#" + select).remove();
+    });
+
+    ///Peticiones de la categoria 
     $("#SelectCategoria").change(function () {
-        jso[5] = ['Crud_Controller', '[{opcion:3,tabla2:4,tipo:2,elegir:[6,7,8],delimitador:"[{colum:0,operador:0,valor1:' + $("#SelectCategoria").val() + '}]",id:0,opSelect:3}]'];
-        selector[5] = $("#MultiCategoria");
-        datos[5] = {nombre: "MultiSelect"};
-        ajax(5, datos[5]);
+        var optionn = $("#SelectCategoria").val();
+        if (optionn != "A0") {
+            $("#divBtnaCate").show();
+            jso[6] = ['Crud_Controller', '[{opcion:3,tabla2:4,tipo:2,elegir:[6,7,8],delimitador:"[{colum:0,operador:0,valor1:' + $("#SelectCategoria").val() + '}]",id:0,opSelect:3}]'];
+            selector[6] = $("#MultiCategoria");
+            datos[6] = {nombre: "MultiSelect"};
+            $("#MultiCategoria").empty();
+            $("#SelectCategoriaDiv").show();
+            ajax(6, datos[6]);
+        } else {
+            $("#divBtnaCate").hide();
+        }
     });
 
     var countC = 0;
     $("#btnACategoria").click(function () {
-        var dd = data[5][0];
-        var campS = [];
-//       for (var i = 0; i < arraySelecionCate.length; i++) {
-//            arrayselecT.push(arraySelecionCate[i]);
-//            if (dd[i] == arraySelecionCate[i]) {
-//                campS.push(dd[i]);
-//            }
-//        }
-
-        var cam = "categoria:  " + $("#SelectCategoria option:selected").text() + " Temas: " + campS;
+        var jso = jQuery.parseJSON(data[6]);
+        var j = Object.keys(jso[0]);
+        var dd = [];
+        var campS = [], st = [];
+        for (var q = 0; q < jso.length; q++) {
+            dd.push(jso[q][j[0]]);
+            campS.push(jso[q][j[1]]);
+        }
+        for (var i = 0; i < dd.length; i++) {
+            for (var y = 0; y < arraySelecionCate.length; y++) {
+                if (dd[i] == arraySelecionCate[y]) {
+                    st = campS[i];
+                }
+                if (i == 0) {
+                    $("#ECategoriaSelect").show();
+                    var con = arraySelecionCate[i];
+                    arrayselecT.push(con);
+                }
+            }
+        }
         var clonCategoria = $("#Cloncategoria").clone();
-        clonCategoria.find("#labelCate").text(cam);
+        clonCategoria.find("#labelCate").text("Categoria:  " + $("#SelectCategoria option:selected").text());
+        clonCategoria.find("#labelCateItems").text("Temas: " + st);
         clonCategoria.find("#buttonCate").val('categoriaSelect' + countC);
         clonCategoria.find(".contenCate").attr('id', 'categoriaSelect' + countC);
-        clonCategoria.find("#arrayCate").attr('text', '[' + arraySelecionCate + ']');
+        clonCategoria.find(".arrayCate").attr('id', 'acategoriaSelect' + countC);
+        clonCategoria.find("#acategoriaSelect" + countC).attr('text', '[' + arraySelecionCate + ']');
         clonCategoria.children().appendTo($("#ECategoriaSelect"));
         countC++;
         arraySelecionCate = [];
     });
-
     $(document).on('click', '.clickCate', function (e) {
         select = this.value;
-        arrayselecT
-        var arr = $("#arrayCate").text();
+        var aselect = 'a' + this.value;
+        var arr = $("#" + aselect).text();
         for (var i = 0; i < arr.length; i++) {
             var busqued = $.inArray(arr[i], arrayselecT);
-            arraySelecionCate.splice(busqued, 1);
+            arrayselecT.splice(busqued, 1);
         }
         $("#" + select).remove();
     });
@@ -196,11 +304,10 @@ $(document).ready(function () {
             selector[3] = $("#SelectCategoria");
             datos[3] = {nombre: "Select"};
             ajax(3, datos[3]);
-            //[{opcion:3,tabla2:4,tipo:2,elegir:[6,7],delimitador:[],id:0,opSelect:4}]
         } else if (i == 3) {
-            jso[4] = ['Crud_Controller', '[{opcion:3,tabla2:18,tipo:2,elegir:[0,1],delimitador:"[{colum:2,operador:0,valor1:1}]",id:0,opSelect:4}]'];
-            selector[4] = $("#SelectEstrutura");
-            datos[4] = {nombre: "MultiSelect"};
+            jso[4] = ['Crud_Controller', '[{opcion:3,tabla2:6,tipo:1,elegir:[0,1],delimitador:[],id:0,opSelect:4}]'];
+            selector[4] = $("#selectCiudad");
+            datos[4] = {nombre: "Select"};
             ajax(4, datos[4]);
         } else if (i == 5) {
             var daMen = data[i].split("$$");
@@ -231,8 +338,6 @@ $(document).ready(function () {
             }
         },
         success: function () {
-
-
             var arrayAutor = "";
             var arrayTemas = [];
             for (var i = 0; i < arraySelecionAutor.length; i++) {
@@ -242,17 +347,17 @@ $(document).ready(function () {
                     arrayAutor = arrayAutor + "," + (arraySelecionAutor[i]);
                 }
             }
-            for (var i = 0; i < arraySelecionEstr.length; i++) {
-                arrayTemas.push(arraySelecionEstr[i] + "-0");
+            for (var i = 0; i < arrayselecTF.length; i++) {
+                arrayTemas.push(arrayselecTF[i] + "-0");
             }
-            for (var i = 0; i < arraySelecionCate.length; i++) {
-                arrayTemas.push(arraySelecionCate[i] + "-1");
+            for (var i = 0; i < arrayselecT.length; i++) {
+                arrayTemas.push(arrayselecT[i] + "-1");
             }
             men = $("#Titulo_Publicacion").val();
             jso[5] = ['ProductoVirtual_Controller', '[{opcion:1,info:[' + $("#Titulo_Publicacion").val() + ',' + $("#descripcion_oa").val() + ',' + $("#palabras_claves").val() + ',' + $("#formato").val() + ',0,0,' + $("#instrucciones").val() + ',' + $("#requisitos_instalacion").val() + '],arrayFun:[' + arrayAutor + '],arrayTemas:[' + arrayTemas + '],archivoNom:' + $("#myfile").val() + '}]'];
             selector[5] = null;
             datos[5] = {nombre: "btn", worker: true};
-            //ajax(5, datos[5]);
+            ajax(5, datos[5]);
         },
         error: function () {
             $("#message").html("<font color='red'>Error: al subir el archivo</font>");

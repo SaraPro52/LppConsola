@@ -35,7 +35,6 @@
                                     </div>
 
                                     <div class="col-md-6">
-
                                         <label>Formato del archivo</label>
                                         <select  required class="form-control col-xs-12 floating-label-form-group controls select" id="formato" value="Valueblanco">
                                             <option value="A0" selected="selected">Selecciona...</option>
@@ -48,21 +47,31 @@
                                     <div class="col-md-6">
                                         <label class="col-md-12">Categorías del Producto Virtual</label>
                                         <div id="Cloncategoria" style="display: none;">
-                                            <div class="contenCate">
-                                                <label id="labelCate"></label>
-                                                <button id="buttonCate" class="clickCate">Eliminar</button>
-                                                <p id="arrayCate" style="display: none;"></p>
+                                            <div class="contenCate col-md-12" >
+                                                <label id="labelCate" class="col-md-12"></label>
+                                                <label id="labelCateItems" class="col-md-9"></label>
+                                                <div class="col-md-3">
+                                                    <button id="buttonCate" class="clickCate btn btn-danger">Eliminar categoria</button>
+                                                </div>
+                                                <p class="arrayCate" style="display: none;"></p>
                                             </div>
                                         </div>
-                                        <div id="ECategoriaSelect" ></div>
-                                        <select class="col-md-4" id="SelectCategoria"> 
-                                            <option value="A0">Seleciona categoria</option>
-                                        </select>
-
-                                        <div id="SelectCategoriaDiv" class="">
-                                            <select required id="MultiCategoria" class="categoriaMultiselect"  multiple='multiple' title="Busca una categoria.."></select>
+                                        <div id="ECategoriaSelect" style="width: 600px; height: 100px; overflow-y: scroll;"></div>
+                                        <div class="col-md-12">
+                                            <select class="form-control" id="SelectCategoria" > 
+                                                <option value="A0">Seleciona categoria</option>
+                                            </select>
                                         </div>
-                                        <button id="btnACategoria" class="btn btn-info">Agregar categoria</button>
+                                        <br>
+                                        <div id="SelectCategoriaDiv" class="col-md-12"  style="display: none;">
+                                            <select required id="MultiCategoria" class="categoriaMultiselect"  multiple='multiple' title="Busca una categoria..">
+                                                <option value="A0">Null</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-8 col-md-offset-2" id="divBtnaCate" >
+                                            <button id="btnACategoria" class="btn btn-info" >Agregar categoria</button>
+                                        </div>
+
                                         <div class="form-group col-md-10">
                                             <label for="requisitos_instalacion"> Requisitos de Instalación</label>
                                             <textarea required class="form-control inputs" id="requisitos_instalacion" type="textarea " maxlength="200" name="palabras_claves" placeholder="Digite requisitos  de instalación"  rows="5"></textarea>
@@ -70,23 +79,52 @@
                                     </div>
                                     <div class="col-md-6">
                                         <label>Programa de Formación</label>
-                                        <div id="SelectEstruturaDiv">
-                                            <select required  id="SelectEstrutura" class="programaFormacionMultiSelect"  multiple='multiple' title="Busca un programa..">
+                                        <div id="ClonPrograma" style="display: none;">
+                                            <div class="contenPro">
+                                                <label id="labelPro" class="col-md-12"></label>
+                                                <label id="labelProItems" class="col-md-9"></label>
+                                                <button id="buttonPro" class="clickPro btn btn-danger">Eliminar categoria</button>
+                                                <p class="arrayPro" style="display: none;"></p>
+                                            </div>
+                                        </div>
+                                        <div id="EProgramaFSelect" style="width: 600px; height: 100px; overflow-y: scroll;"></div>
+                                        <div class="col-md-12">
+                                            <label class="col-md-12" for="selectCiudad">Ciudad</label>
+                                            <select id="selectCiudad" class="form-control">
+                                                <option value="A0">Seleciona...</option>
+                                            </select>
+
+                                            <label class="col-md-12" for="selectCentroF">Centro de formacion</label>
+                                            <select id="selectCentroF" class="form-control">
+                                                <option value="A0">Seleciona...</option>
+                                            </select>
+                                            <label class="col-md-12" for="selectAreaF">Area de formacion</label>
+                                            <select id="selectAreaF" class="form-control">
+                                                <option value="A0">Seleciona...</option>
                                             </select>
                                         </div>
-                                        <label>Áutores</label>
-                                        <div id="SelectAutoresDiv">
+                                        <br>
+                                        <div id="SelectEstruturaDiv"  class="col-md-12" style="display: none;">
+                                            <select required  id="SelectEstrutura" class="programaFormacionMultiSelect"  multiple='multiple' title="Busca un programa.." >
+                                                <option value="A0">Null</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-8 col-md-offset-2"  style="display: none;" id="divBtPro"> 
+                                            <button id="btnACategoriaF" class="btn btn-info">Agregar categoria</button>
+                                        </div>
+                                        <label class="col-md-12">Áutores</label>
+                                        <div id="SelectAutoresDiv" class="col-md-12">
                                             <select required  id="SelectAutores" class="autoresMultiselect"  multiple='multiple' title="Busca un autor..">
                                             </select>
                                         </div>
                                     </div>
                                 </article>
-                                <article>
-                                    <div class="form-group">
-                                        <label for="Documento">Adjuntar OA</label>
+                                <article class="col-md-6">
+                                    <div class="col-md-12">
+                                        <label for="Documento" class="col-md-12">Adjuntar OA</label>
                                         <form id="UploadForm" action="archivos" method="post" enctype="multipart/form-data">
-                                            <input type="file" size="26120" id="myfile" class="inputs input-file form-control" name="myfile"> 
-                                            <input type="submit" class=" btn btn-info  col-md-6"  value="Subir Produto virtual" id="subir_oa">
+                                            <input type="file" size="26120" id="myfile" class="inputs input-file" name="myfile"> 
+                                            <input type="submit" class=" btn btn-info  col-md-8"  value="Subir Produto virtual" id="subir_oa">
                                             <div id="progressbox">
                                                 <div id="progressbar"></div>
                                                 <div id="percent">0%</div>

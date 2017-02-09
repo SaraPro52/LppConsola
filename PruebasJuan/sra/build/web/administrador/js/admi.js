@@ -1,53 +1,48 @@
-$(document).on('ready', function () {
+function cargaF(ti, rol) {
+    var hilo = [], jso = [], data = [], datos = [];
     console.log("Vivo??AdminiPricipal");
-
-    objeto = {url: "Administrador_Controller", Opcion: 1, name: 'cuerpo', vista: $("#vista").val()};
-    obtenerP(objeto);
     var casoUso = "Deshabilitar Usuarios";
+    jso[0] = ['Administrador_Controller', '[{opcion:1,ti:' + rol + '}]'];
+    datos[0] = {caso: "Deshabilitar Usuarios"};
+    ajax(0);
 
     $(document).on('click', '.Notify', function (e) {
-        var objeto = {url: "Administrador_Controller", Opcion: 1, name: 'cuerpo'};
-        casoUso = "Deshabilitar Usuarios";
-        obtenerP(objeto);
+        jso[0] = ['Administrador_Controller', '[{opcion:1,ti:' + rol + '}]'];
+        datos[0] = {caso: "Deshabilitar Usuarios"};
+        ajax(0);
     });
-
-
-
     $('.menu li').click(function (e) {
-        objeto = {url: "Administrador_Controller", Opcion: this.value, name: 'cuerpo', vista: $("#vista").val()};
-        casoUso = "text" + this.value;
-        casoUso = $("#" + casoUso).text();
-        obtenerP(objeto);
+        if (this.value == 7) {
+            jso[2] = ['sesion_controller', '[{opcion:2,se:' + ti + '}]'];
+            ajax(2);
+        } else {
+            casoUso = "text" + this.value;
+            casoUso = $("#" + casoUso).text();
+            jso[1] = ['Administrador_Controller', '[{opcion:' + this.value + ',ti:' + rol + '}]'];
+            datos[1] = {caso: casoUso};
+            ajax(1);
+        }
     });
-
-    function obtenerP(datos) {
-        $.ajax({
-            url: datos.url,
-            type: 'POST',
-            async: true,
-            cache: false,
-            datatype: 'json',
-            data: datos,
-            success: function (json) {
-                res(json, datos.name, datos.vista);
-            },
-            error: function (jqXHR, textStatus, errorThrown) {
-                console.log("Disculpa, pero existe un error :/" + textStatus + errorThrown);
-            }
-        });
+    function ajax(i) {
+        hilo[i] = new Worker("js/worker.js");
+        hilo[i].postMessage(jso[i]);
+        hilo[i].onmessage = function (event) {
+            data[i] = event.data;
+            hilo[i].terminate();
+            peticionCompleta(i);
+        };
     }
-    function res(body, select, vista) {
-        switch (select) {
-            case"cuerpo":
-                $("#CasoNombre").text(casoUso);
-                $("#cuerpo").empty();
-                $("#cuerpo").append(body);
-                var cabeza = ("<input id='Admi' value='" + vista + "' type='hidden'>");
-                $("#header").append(cabeza);
-                break;
+    function peticionCompleta(i) {
+        if ((i == 0) || (i == 1)) {
+            $("#CasoNombre").text(datos[i].caso);
+            $("#cuerpo").empty();
+            $("#cuerpo").append(data[i]);
+            if (datos[i].en == 0) {
+                $("#cssUsuario").attr("href", "assets/css/paper-dashboardEquipo.css");
+            }
+        } else if (i == 2) {
+            $("#estru").empty();
+            $("#estru").append(data[i]);
         }
     }
-});
-
-
-
+}
