@@ -135,10 +135,7 @@ $(document).ready(function () {
             jso[7] = ['Crud_Controller', '[{opcion:3,tabla2:1,tipo:2,elegir:[1,3],delimitador:"[{colum:5,operador:0,valor1:' + $("#selectCiudad").val() + '}]",id:0,opSelect:6}]'];
             selector[7] = $("#selectCentroF");
             datos[7] = {nombre: "Select"};
-            $("#divBtPro").show();
             ajax(7, datos[7]);
-        } else {
-            $("#divBtPro").hide();
         }
         $("#SelectEstruturaDiv").hide();
     });
@@ -163,8 +160,10 @@ $(document).ready(function () {
             datos[9] = {nombre: "MultiSelect"};
             ajax(9, datos[9]);
             $("#SelectEstruturaDiv").show();
+            $("#divBtPro").show();
         } else {
             $("#SelectEstruturaDiv").hide();
+            $("#divBtPro").hide();
         }
     });
     var countCC = 0;
@@ -174,15 +173,19 @@ $(document).ready(function () {
         }
         var jso = jQuery.parseJSON(data[9]);
         var j = Object.keys(jso[0]);
-        var dd = [],campS = [], st = [],arraySelecionE=[],s="";
+        var dd = [], campS = [], st = [], arraySelecionE = [], s = "";
         for (var q = 0; q < jso.length; q++) {
             dd.push(jso[q][j[0]]);
             campS.push(jso[q][j[1]]);
-            if (q<arraySelecionEstr.length) {
-                var tam =arraySelecionEstr[q];
+            if (q < arraySelecionEstr.length) {
+                var tam = arraySelecionEstr[q];
                 arraySelecionE.push(tam);
             }
         }
+        alert("Array dd");
+        alert(dd);
+        alert("Array arraySelecionE");
+        alert(arraySelecionE);
         for (var i = 0; i < dd.length; i++) {
             for (var y = 0; y < arraySelecionE.length; y++) {
                 if (dd[i] == arraySelecionE[y]) {
@@ -204,6 +207,7 @@ $(document).ready(function () {
         clonCategoria.find("#aProSelect" + countCC).attr('text', '[' + arraySelecionEstr + ']');
         clonCategoria.children().appendTo($("#EProgramaFSelect"));
         countCC++;
+        $("#SelectEstrutura").multiSelect('deselect_all');
         arraySelecionEstr = [];
     });
     $(document).on('click', '.clickPro', function (e) {
@@ -264,6 +268,7 @@ $(document).ready(function () {
         clonCategoria.find("#acategoriaSelect" + countC).attr('text', '[' + arraySelecionCate + ']');
         clonCategoria.children().appendTo($("#ECategoriaSelect"));
         countC++;
+        $("#MultiCategoria").multiSelect('deselect_all');
         arraySelecionCate = [];
     });
     $(document).on('click', '.clickCate', function (e) {

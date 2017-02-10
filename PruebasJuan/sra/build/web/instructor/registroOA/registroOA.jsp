@@ -19,7 +19,7 @@
                                 <label><h3>Subir Producto Virtual</h3></label>
                                 <article>
                                     <div class="col-md-6">
-                                        <div class="">
+                                        <div class="col-md-12">
                                             <label> Titulo de Publicación</label>
                                             <input required class="form-control inputs" type="text"  name="Titulo_Publicacion" id="Titulo_Publicacion" placeholder="Titulo de la publicacion" required data-validation-required-message="Ingresa el titulo de la publicacion.">
                                             <p class="help-block text-danger"></p>
@@ -31,7 +31,10 @@
                                             <label> Descripción del Producto</label>
                                             <input required class="form-control inputs" type="text"  name="palabras_claves" id="descripcion_oa" placeholder="Descripcion del P.V" required data-validation-required-message="Ingresa la descripcion del producto virtual.">
                                         </div>
-
+                                        <div class="form-group col-md-12">
+                                            <label for="requisitos_instalacion"> Requisitos de Instalación</label>
+                                            <textarea required class="form-control inputs" id="requisitos_instalacion" type="textarea " maxlength="200" name="palabras_claves" placeholder="Digite requisitos  de instalación"  rows="9"></textarea>
+                                        </div>
                                     </div>
 
                                     <div class="col-md-6">
@@ -43,51 +46,68 @@
                                             <label>Instrucciones de Instalación</label>
                                             <textarea required class="form-control inputs" id="instrucciones" type="textarea " maxlength="200"  placeholder="instrucciones de instalacion" required data-validation-required-message="Ingresa requisitos de instalacion." rows="3"></textarea>
                                         </div>
+                                        <label class="col-md-12">Áutores del producto virtual</label>
+                                        <div id="SelectAutoresDiv" class="col-md-12">
+                                            <select required  id="SelectAutores" class="autoresMultiselect"  multiple='multiple' title="Busca un autor..">
+                                            </select>
+                                        </div>
                                     </div>
                                     <div class="col-md-6">
-                                        <label class="col-md-12">Categorías del Producto Virtual</label>
+                                        <label class="col-md-12">Busqueda de temas por categorias  del Producto Virtual</label>
                                         <div id="Cloncategoria" style="display: none;">
                                             <div class="contenCate col-md-12" >
                                                 <label id="labelCate" class="col-md-12"></label>
-                                                <label id="labelCateItems" class="col-md-9"></label>
-                                                <div class="col-md-3">
-                                                    <button id="buttonCate" class="clickCate btn btn-danger">Eliminar categoria</button>
+                                                <label id="labelCateItems" class="col-md-8"></label>
+                                                <div class="col-md-4">
+                                                    <button id="buttonCate" class="clickCate btn btn-danger">Eliminar temas</button>
                                                 </div>
                                                 <p class="arrayCate" style="display: none;"></p>
                                             </div>
                                         </div>
-                                        <div id="ECategoriaSelect" style="width: 600px; height: 100px; overflow-y: scroll;"></div>
+
                                         <div class="col-md-12">
                                             <select class="form-control" id="SelectCategoria" > 
                                                 <option value="A0">Seleciona categoria</option>
                                             </select>
                                         </div>
-                                        <br>
+                               
                                         <div id="SelectCategoriaDiv" class="col-md-12"  style="display: none;">
                                             <select required id="MultiCategoria" class="categoriaMultiselect"  multiple='multiple' title="Busca una categoria..">
                                                 <option value="A0">Null</option>
                                             </select>
                                         </div>
-                                        <div class="col-md-8 col-md-offset-2" id="divBtnaCate" >
-                                            <button id="btnACategoria" class="btn btn-info" >Agregar categoria</button>
+                                        <div class="col-md-10 col-md-offset-2 " id="divBtnaCate" style="display: none;" >
+                                            <button id="btnACategoria" class="btn btn-info" >Agregar temas de la categoria</button>
                                         </div>
+                                        <div id="ECategoriaSelect" style="width: 100%; height: 100px; overflow-y: scroll;"></div>
 
-                                        <div class="form-group col-md-10">
-                                            <label for="requisitos_instalacion"> Requisitos de Instalación</label>
-                                            <textarea required class="form-control inputs" id="requisitos_instalacion" type="textarea " maxlength="200" name="palabras_claves" placeholder="Digite requisitos  de instalación"  rows="5"></textarea>
+                                        <div class="col-md-12">
+                                            <label for="Documento" class="col-md-12">Adjuntar OA</label>
+                                            <form id="UploadForm" action="archivos" method="post" enctype="multipart/form-data">
+                                                <input type="file" size="26120" id="myfile" class="inputs input-file" name="myfile"> 
+                                                <input type="submit" class=" btn btn-info  col-md-8"  value="Subir Produto virtual" id="subir_oa">
+                                                <div id="progressbox">
+                                                    <div id="progressbar"></div>
+                                                    <div id="percent">0%</div>
+                                                </div>
+                                                <br />
+                                                <div id="message"></div>
+                                            </form>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
-                                        <label>Programa de Formación</label>
+                                        <label class="espacio">Busqueda de temas por programa de Formación</label>
                                         <div id="ClonPrograma" style="display: none;">
                                             <div class="contenPro">
                                                 <label id="labelPro" class="col-md-12"></label>
-                                                <label id="labelProItems" class="col-md-9"></label>
-                                                <button id="buttonPro" class="clickPro btn btn-danger">Eliminar categoria</button>
+                                                <label id="labelProItems" class="col-md-8"></label>
+                                                <div class="col-md-4">
+                                                    <button id="buttonPro" class="clickPro btn btn-danger">Eliminar temas</button>
+                                                </div>
                                                 <p class="arrayPro" style="display: none;"></p>
                                             </div>
                                         </div>
-                                        <div id="EProgramaFSelect" style="width: 600px; height: 100px; overflow-y: scroll;"></div>
+
                                         <div class="col-md-12">
                                             <label class="col-md-12" for="selectCiudad">Ciudad</label>
                                             <select id="selectCiudad" class="form-control">
@@ -104,36 +124,19 @@
                                             </select>
                                         </div>
                                         <br>
-                                        <div id="SelectEstruturaDiv"  class="col-md-12" style="display: none;">
+                                        <div id="SelectEstruturaDiv"  class="col-md-12 espacio" style="display: none;">
                                             <select required  id="SelectEstrutura" class="programaFormacionMultiSelect"  multiple='multiple' title="Busca un programa.." >
                                                 <option value="A0">Null</option>
                                             </select>
                                         </div>
-                                        <div class="col-md-8 col-md-offset-2"  style="display: none;" id="divBtPro"> 
-                                            <button id="btnACategoriaF" class="btn btn-info">Agregar categoria</button>
+                                        <div class="col-md-10 col-md-offset-2"  style="display: none;" id="divBtPro"> 
+                                            <button id="btnACategoriaF" class="btn btn-info">Agregar temas de programa</button>
                                         </div>
-                                        <label class="col-md-12">Áutores</label>
-                                        <div id="SelectAutoresDiv" class="col-md-12">
-                                            <select required  id="SelectAutores" class="autoresMultiselect"  multiple='multiple' title="Busca un autor..">
-                                            </select>
-                                        </div>
+                                      
+                                        <div id="EProgramaFSelect" style="width: 100%; height: 100px; overflow-y: scroll;"></div>
                                     </div>
                                 </article>
-                                <article class="col-md-6">
-                                    <div class="col-md-12">
-                                        <label for="Documento" class="col-md-12">Adjuntar OA</label>
-                                        <form id="UploadForm" action="archivos" method="post" enctype="multipart/form-data">
-                                            <input type="file" size="26120" id="myfile" class="inputs input-file" name="myfile"> 
-                                            <input type="submit" class=" btn btn-info  col-md-8"  value="Subir Produto virtual" id="subir_oa">
-                                            <div id="progressbox">
-                                                <div id="progressbar"></div>
-                                                <div id="percent">0%</div>
-                                            </div>
-                                            <br />
-                                            <div id="message"></div>
-                                        </form>
-                                    </div>
-                                </article>
+
                             </section>
                         </div>
                     </div>

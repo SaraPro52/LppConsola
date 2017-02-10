@@ -24,3 +24,8 @@ article section:focus:invalid{
 form{
     font-size: medium;
 }
+
+.espacio{
+    margin: 5%
+        px;
+}
