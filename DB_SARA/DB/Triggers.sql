@@ -1,8 +1,7 @@
 USE SARA;
 
 
-
-DROP TRIGGER Funcionario_AU_Trigger;
+DROP TRIGGER  IF EXISTS Funcionario_AU_Trigger;
 DELIMITER ;;
 CREATE TRIGGER Funcionario_AU_Trigger AFTER UPDATE ON Funcionario FOR EACH ROW
 BEGIN
@@ -61,26 +60,7 @@ DELIMITER ;
 
 
 
-CALL SARA_CRUD("INSERT","Version","Num_Version~1	|Url_Version~Prueba6/Version6	|Url_Img~Prueba6/Imagen6	|Inst_Instalacion~No se instala6 |Reqst_Instalacion~Ningun requisito 6|Id_P_Virtual~3","");
 
-CALL SARA_CRUD("UPDATE","Version","Id_Estado~6","Id_Version = 3 ");
-
-CALL RegistrarEvaluacion("Observacion de prueba~1~10~3~6~2017-09-09~1¤si cumple con el item¤1|1¤si cumple con el item¤2");
-    
-CALL SARA_CRUD("SELECT","Producto_Virtual","","");
-CALL SARA_CRUD("SELECT","Detalles_Tema","","");
-CALL SARA_CRUD("SELECT","Version","","");
-CALL SARA_CRUD("SELECT","Rankin","","");
-CALL SARA_CRUD("SELECT","Categoria","","");
-
-
-
-
-
-
-CALL SARA_CRUD("INSERT","Evaluacion_General","Observacion~cualquiera|Resultado~0|Id_Version~9|Id_Lista_Chequeo~3|Id_Funcionario~2","");
-
-SELECT Id_Estado FROM Version WHERE Id_Version = 10;
 
 
 DROP TRIGGER IF EXISTS Version_BI_Trigger;
@@ -122,7 +102,7 @@ CALL SARA_CRUD("INSERT","Version","Num_Version~1	|Url_Version~Prueba61/Version61
 
 CALL SARA_CRUD("UPDATE","Version","Fecha_Vigencia~2016-10-12","Id_Version = 4");
 
-SELECT Id_Item_Lista, Des_Item_Lista FROM Item_Lista WHERE Tipo_Item = 1 LIMIT 1
+SELECT Id_Item_Lista, Des_Item_Lista FROM Item_Lista WHERE Tipo_Item = 1 LIMIT 1;
 
 CALL RegistrarEvaluacion("Observacion de prueba~0~4~3~6~2016-10-12~1¤si cumple con el item¤1|1¤si cumple con el item¤2");
 
@@ -134,3 +114,16 @@ CALL SARA_CRUD("SELECT","Detalles_Tema","","");
 CALL SARA_CRUD("SELECT","Version","","");
 CALL SARA_CRUD("SELECT","Autor","","");
 CALL SARA_CRUD("SELECT","Categoria","","");
+CALL SARA_CRUD("INSERT","Version","Num_Version~1	|Url_Version~Prueba6/Version6	|Url_Img~Prueba6/Imagen6	|Inst_Instalacion~No se instala6 |Reqst_Instalacion~Ningun requisito 6|Id_P_Virtual~3","");
+
+CALL SARA_CRUD("UPDATE","Version","Id_Estado~6","Id_Version = 3 ");
+
+CALL RegistrarEvaluacion("Observacion de prueba~1~10~3~6~2017-09-09~1¤si cumple con el item¤1|1¤si cumple con el item¤2");
+CALL SARA_CRUD("SELECT","Producto_Virtual","","");
+CALL SARA_CRUD("SELECT","Detalles_Tema","","");
+CALL SARA_CRUD("SELECT","Version","","");
+CALL SARA_CRUD("SELECT","Rankin","","");
+CALL SARA_CRUD("SELECT","Categoria","","");
+CALL SARA_CRUD("INSERT","Evaluacion_General","Observacion~cualquiera|Resultado~0|Id_Version~9|Id_Lista_Chequeo~3|Id_Funcionario~2","");
+
+SELECT Id_Estado FROM Version WHERE Id_Version = 10;
