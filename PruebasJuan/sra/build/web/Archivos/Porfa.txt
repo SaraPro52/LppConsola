@@ -1,0 +1,27 @@
+/Admini
+	Desabilitar funcionario
+		Recarga de funcionarios 
+	Perfil de usuario
+<div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <section class="col-md-12">
+                            <article class="col-md-8">
+              
+                            </article>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+<div id="clone">
+                                <div class="col-md-12">
+                                    <input type="checkbox" class="chex col-md-1"> 
+                                    <label class="locura col-md-11"></label>
+                                </div>
+                                <textarea class="textarea form-control"></textarea>
+                            </div>

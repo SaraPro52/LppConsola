@@ -338,11 +338,14 @@ $(document).ready(function () {
         uploadProgress: function (event, position, total, percentComplete) {
             $("#progressbar").width(percentComplete + '%');
             $("#percent").html(percentComplete + '%');
-            if ((percentComplete > 1) && (percentComplete < 101)) {
-                $("#message").html("<font color='blue'>Cargando el archivo... espera</font>");
+            if ((percentComplete > 1) && (percentComplete < 99)) {
+                $("#message").html("<font color='blue'>Cargando el archivo...</font>");
+            } else if (percentComplete == 100) {
+                $("#message").html("");
             }
         },
         success: function () {
+            $("#message").html("");
             var arrayAutor = "";
             var arrayTemas = [];
             for (var i = 0; i < arraySelecionAutor.length; i++) {
@@ -361,7 +364,7 @@ $(document).ready(function () {
             men = $("#Titulo_Publicacion").val();
             jso[5] = ['ProductoVirtual_Controller', '[{opcion:1,info:[' + $("#Titulo_Publicacion").val() + ',' + $("#descripcion_oa").val() + ',' + $("#palabras_claves").val() + ',' + $("#formato").val() + ',0,0,' + $("#instrucciones").val() + ',' + $("#requisitos_instalacion").val() + '],arrayFun:[' + arrayAutor + '],arrayTemas:[' + arrayTemas + '],archivoNom:' + $("#myfile").val() + '}]'];
             selector[5] = null;
-            datos[5] = {nombre: "btn", worker: true};
+            datos[5] = {nombre: "btn"};
             ajax(5, datos[5]);
         },
         error: function () {

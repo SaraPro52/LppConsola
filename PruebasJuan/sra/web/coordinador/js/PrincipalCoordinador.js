@@ -19,6 +19,7 @@ function cargaC(idRol, ti) {
             jso[1] = ['coordinador_Controller', '[{opcion:' + this.value + ',ti:' + idRol + '}]'];
             casoUso = "text" + this.value;
             casoUso = $("#" + casoUso).text();
+            datos[1] = {caso: casoUso};
             if (this.value == 1) {
                 casoUso = "Habilitar Producto virtual";
                 datos[1] = {caso: casoUso};

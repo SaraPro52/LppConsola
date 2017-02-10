@@ -37,6 +37,7 @@
                         <li class="activado" value="5"><a><i class="icono izquierda  fa fa-upload" aria-hidden="true"></i><label style='cursor:pointer;' id="text2">Cerrar Sesion</label></a></li>
                     </ul>
                 </div>
+                <p id="tis" style="display: none;"></p>
             </div>
 
             <div class="main-panel">

@@ -384,7 +384,6 @@ CREATE VIEW 37_V_EvaluacionGeneral AS (
 
 DROP VIEW IF EXISTS 38_V_Notificaciones_AR;-- Aprobado - Reprobado
 CREATE VIEW 38_V_Notificaciones_AR AS (
-	
     SELECT 	Id_Funcionario,
 			Nom_Funcionario,
 			Id_Rol,

@@ -9,6 +9,8 @@ function carga(ti, rol) {
     $(document).on('click', '.Notify', function (e) {
         ajax(0);
     });
+    $("#tis").text(rol);
+
     $('.menu li').click(function (e) {
         if (this.value == 5) {
             jso[2] = ['sesion_controller', '[{opcion:2,se:' + ti + '}]'];

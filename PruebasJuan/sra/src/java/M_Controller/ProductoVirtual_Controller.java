@@ -68,9 +68,9 @@ public class ProductoVirtual_Controller extends HttpServlet {
                     String nruta = infoVersion[0];
                     infoVersion[4] = arch.CambiarNombre(archivoNom, nruta);
                     if (ver.RegistrarPV(infoVersion, arrayFun, arrayTemas)) {
-                        respuesta.println("true$$El producto fue registrado");
+                        respuesta.println("true$$ fue registrado");
                     } else {
-                        respuesta.println("false$$El producto no fue registrado");
+                        respuesta.println("false$$ no fue registrado");
                     }
                     break;
                 case 2:

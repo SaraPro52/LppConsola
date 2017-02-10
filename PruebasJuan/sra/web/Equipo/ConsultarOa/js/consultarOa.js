@@ -36,7 +36,7 @@ $(document).on('click', '.btnEvaluar', function (e) {
 $(document).on('click', '.btnclickca', function (e) {
     var con = $(this);
     idLista = con.val();
-    jso[2] = ['Equipo_Controller', '[{opcion:4}]'];
+    jso[2] = ['Equipo_Controller', '[{opcion:4,ti:'+$("#tis").text()+'}]'];
     datos[2] = {nombre:"btn",caso: "Evaluacion de productos virtuales", nomLista: "Nombrelista", listaSele: this.id};
     ajax(2);
 });
