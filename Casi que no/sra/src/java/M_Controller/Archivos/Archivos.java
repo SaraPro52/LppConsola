@@ -2,11 +2,9 @@ package M_Controller.Archivos;
 
 import java.io.File;
 
-
 public class Archivos {
 
     private String ruta;
-    private String base;
 
     public Archivos() {
     }
@@ -21,19 +19,15 @@ public class Archivos {
         this.ruta = ruta;
     }
 
-    
     public String getBase() {
-        String macc = "C:\\Users\\migue\\Desktop\\Añadiduras\\sra\\web\\Archivos\\";
-        String juan = "C:\\Users\\JudiniBezarius\\Documents\\Proyectos\\LppConsola\\Casi que no\\sra\\web\\Archivos\\";
+        String macc = "C:\\Users\\migue\\Desktop\\Añadiduras\\sra\\web\\TemArchivos\\";
+        String juan = "C:\\Users\\JudiniBezarius\\Documents\\Proyectos\\LppConsola\\PruebasJuan\\sra\\web\\Archivos\\";
         return (juan);
     }
 
-    public void setBase(String base) {
-        this.base = base;
-    }
-
-    public String rutas() {
-        String ruta = getBase() + getRuta();
-        return ruta;
+    public String rutaTem() {
+        String macc = "C:\\Users\\migue\\Desktop\\Añadiduras\\sra\\web\\Archivos\\";
+        String juan = "C:\\Users\\JudiniBezarius\\Documents\\Proyectos\\LppConsola\\PruebasJuan\\sra\\web\\TemArchivos\\";
+        return (juan);
     }
 }

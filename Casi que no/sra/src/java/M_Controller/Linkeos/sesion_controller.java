@@ -35,7 +35,6 @@ public class sesion_controller extends HttpServlet {
                     String delimitador = "[{colum:4,operador:0,valor1:'\"" + usuario + "\"',añadir:0},{colum:5,operador:0,valor1:'\"" + contraseña + "\"'}]";
                     Elomac elo = new Elomac(19, 2);
                     String fun = elo.Select(delimitador);
-
                     if (fun != "false") {
                         JSONObject funJ = new JSONArray(fun).getJSONObject(0);
                         int rol = funJ.getInt("Id_Rol");
@@ -67,11 +66,21 @@ public class sesion_controller extends HttpServlet {
                     }
                     break;
                 case 2:
-                    System.out.println("Cerra sesion");
-                    sesion.invalidate();
-                    request.getRequestDispatcher("index.jsp").forward(request, response);
+                    try {
+                        String da = jData.getString("se");
+                        JSONObject jsesion = new JSONArray(da).getJSONObject(0);
+                        HttpSession sesioC = request.getSession();
+                        sesioC.setAttribute("idUser", jsesion.getInt("idUser"));
+                        sesioC.setAttribute("nomUser", jsesion.getString("nomUser"));
+                        sesioC.setAttribute("idRol", jsesion.getInt("idRol"));
+                        sesioC.setAttribute("idCentro", jsesion.getInt("idCentro"));
+                        sesioC.invalidate();
+                        request.getRequestDispatcher("index.jsp").forward(request, response);
+                    } catch (Exception e) {
+                        request.getRequestDispatcher("index.jsp").forward(request, response);
+                    }
                     break;
-                case 3:
+                default:
                     request.getRequestDispatcher("index.jsp").forward(request, response);
                     break;
             }

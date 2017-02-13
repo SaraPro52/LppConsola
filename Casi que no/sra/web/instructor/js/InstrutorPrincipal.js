@@ -16,6 +16,8 @@ $(document).on('ready', function () {
         casoUso = $("#" + casoUso).text();
         if (this.value == 3) {
             casoUso ="Notificaciones de los  productos virtuales";
+        }else if (this.value==1){
+            casoUso ="Subir Producto virtual";
         }
         obtenerP(objeto);
     });

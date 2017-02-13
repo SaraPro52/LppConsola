@@ -66,12 +66,13 @@
                                         </div>
 
                                         <div class="col-md-12">
+                                            <label class="col-md-12">Buscar por categoria.</label>
                                             <select class="form-control" id="SelectCategoria" > 
                                                 <option value="A0">Seleciona categoria</option>
                                             </select>
                                         </div>
-                               
                                         <div id="SelectCategoriaDiv" class="col-md-12"  style="display: none;">
+                                            <label class="col-md-12">Temas de la categoria</label>
                                             <select required id="MultiCategoria" class="categoriaMultiselect"  multiple='multiple' title="Busca una categoria..">
                                                 <option value="A0">Null</option>
                                             </select>
@@ -85,6 +86,7 @@
                                             <label for="Documento" class="col-md-12">Adjuntar OA</label>
                                             <form id="UploadForm" action="archivos" method="post" enctype="multipart/form-data">
                                                 <input type="file" size="26120" id="myfile" class="inputs input-file" name="myfile"> 
+                                                <div class="inputNotifi"></div>   
                                                 <input type="submit" class=" btn btn-info  col-md-8"  value="Subir Produto virtual" id="subir_oa">
                                                 <div id="progressbox">
                                                     <div id="progressbar"></div>
@@ -97,6 +99,7 @@
                                     </div>
                                     <div class="col-md-6">
                                         <label class="espacio">Busqueda de temas por programa de Formación</label>
+
                                         <div id="ClonPrograma" style="display: none;">
                                             <div class="contenPro">
                                                 <label id="labelPro" class="col-md-12"></label>
@@ -105,34 +108,33 @@
                                                     <button id="buttonPro" class="clickPro btn btn-danger">Eliminar temas</button>
                                                 </div>
                                                 <p class="arrayPro" style="display: none;"></p>
+
                                             </div>
                                         </div>
 
                                         <div class="col-md-12">
-                                            <label class="col-md-12" for="selectCiudad">Ciudad</label>
-                                            <select id="selectCiudad" class="form-control">
+                                            <label class="col-md-12" for="SelectArea">Buscar area de formacion.</label>
+                                            <select id="SelectArea" class="form-control">
                                                 <option value="A0">Seleciona...</option>
                                             </select>
 
-                                            <label class="col-md-12" for="selectCentroF">Centro de formacion</label>
-                                            <select id="selectCentroF" class="form-control">
-                                                <option value="A0">Seleciona...</option>
-                                            </select>
-                                            <label class="col-md-12" for="selectAreaF">Area de formacion</label>
-                                            <select id="selectAreaF" class="form-control">
+                                            <label class="col-md-12" for="selectProgramaF">Buscar programa de formacion.</label>
+                                            <select id="selectProgramaF" class="form-control">
                                                 <option value="A0">Seleciona...</option>
                                             </select>
                                         </div>
                                         <br>
                                         <div id="SelectEstruturaDiv"  class="col-md-12 espacio" style="display: none;">
+                                            <label class="col-md-12">Temas del programa de formacion</label>
                                             <select required  id="SelectEstrutura" class="programaFormacionMultiSelect"  multiple='multiple' title="Busca un programa.." >
                                                 <option value="A0">Null</option>
                                             </select>
+                                            <div class="col-md-10 col-md-offset-2"  id="divBtPro"> 
+                                                <button id="btnACategoriaF" class="btn btn-info">Agregar temas de programa</button>
+                                            </div>
                                         </div>
-                                        <div class="col-md-10 col-md-offset-2"  style="display: none;" id="divBtPro"> 
-                                            <button id="btnACategoriaF" class="btn btn-info">Agregar temas de programa</button>
-                                        </div>
-                                      
+
+
                                         <div id="EProgramaFSelect" style="width: 100%; height: 100px; overflow-y: scroll;"></div>
                                     </div>
                                 </article>

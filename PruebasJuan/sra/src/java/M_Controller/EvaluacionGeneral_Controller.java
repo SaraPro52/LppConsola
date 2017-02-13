@@ -19,30 +19,35 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 /**
- * La clase EvaluacionGeneral_Controller gestiona el envio de json y la obtencion de json del cliente al servidor
- * y viceversa generando asi la crud de la misma evaluacion 
+ * La clase EvaluacionGeneral_Controller gestiona el envio de json y la
+ * obtencion de json del cliente al servidor y viceversa generando asi la crud
+ * de la misma evaluacion
+ *
  * @author Judini
  * @version 25/11/2016 v5
  */
-
-
 @WebServlet(urlPatterns = {"/EvaluacionGeneral_Controller"})
 
 public class EvaluacionGeneral_Controller extends HttpServlet {
+
     /**
-     * El metodo processRequest obtiene las peticion del cliente y devuelve la informacion requerida.
-     * @param String request Este parametro tiene contenido el json que se envia desde el lado del cliente.
-     * @param String response Este parametro devuelve un valor para saber si se creo el archivo correctamente o no. 
-     * @return String este parametro devuelve los datos requerido de  la peticion si todo sale correctamente si no simplemente retorna una respuesta falsa
+     * El metodo processRequest obtiene las peticion del cliente y devuelve la
+     * informacion requerida.
+     *
+     * @param String request Este parametro tiene contenido el json que se envia
+     * desde el lado del cliente.
+     * @param String response Este parametro devuelve un valor para saber si se
+     * creo el archivo correctamente o no.
+     * @return String este parametro devuelve los datos requerido de la peticion
+     * si todo sale correctamente si no simplemente retorna una respuesta falsa
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, Exception {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
 
-            
             String data = request.getParameter("data");
-            
+
             JSONObject jData = new JSONArray(data).getJSONObject(0);
             int opcion = jData.getInt("opcion");
 
@@ -67,11 +72,7 @@ public class EvaluacionGeneral_Controller extends HttpServlet {
                             Notificacion noti = new Notificacion();
                             noti.load(noti.Select(idNoti));
                             noti.atributos.replace("Estado", 1);
-                            if (noti.Update()) {
-                                respuesta.println("true$$actualizo");
-                            } else {
-                                respuesta.println("false$$no actualizo");
-                            }
+                            noti.Update();
                         } else {
                             respuesta.println("false$$El producto no se evaluado");
                         }

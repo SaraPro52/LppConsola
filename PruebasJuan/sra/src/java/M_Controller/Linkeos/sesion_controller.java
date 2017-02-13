@@ -38,6 +38,7 @@ public class sesion_controller extends HttpServlet {
                     if (fun != "false") {
                         JSONObject funJ = new JSONArray(fun).getJSONObject(0);
                         int rol = funJ.getInt("Id_Rol");
+                        sesion.setMaxInactiveInterval(6000);
                         sesion.setAttribute("idUser", funJ.getInt("Id_Funcionario"));
                         sesion.setAttribute("nomUser", funJ.getString("Nom_Funcionario"));
                         sesion.setAttribute("idRol", rol);

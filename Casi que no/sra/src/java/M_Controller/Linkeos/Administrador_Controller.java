@@ -2,43 +2,56 @@ package M_Controller.Linkeos;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 @WebServlet(name = "Administrador_Controller", urlPatterns = {"/Administrador_Controller"})
 public class Administrador_Controller extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException, JSONException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            int opcion = Integer.parseInt(request.getParameter("Opcion"));
-            switch (opcion) {
-                case 0:
-                    request.getRequestDispatcher("administrador/registroFuncionario/registrofuncionario.jsp").forward(request, response);
-                    break;
-                case 1:
-                    request.getRequestDispatcher("administrador/deshabilitarFuncionario/deshabilitarFuncionario.jsp").forward(request, response);
-                    break;
-                case 2:
-                    request.getRequestDispatcher("administrador/Formato/Formato.jsp").forward(request, response);
-                    break;
-                case 3:
-                    request.getRequestDispatcher("administrador/area/area.jsp").forward(request, response);
-                    break;
-                case 4:
-                    request.getRequestDispatcher("administrador/ciudad/ciudad.jsp").forward(request, response);
-                    break;
-                case 5:
-                    request.getRequestDispatcher("administrador/programa/Programa.jsp").forward(request, response);
-                    break;
-                case 6:
-                    request.getRequestDispatcher("perfil/perfilUsuario.jsp").forward(request, response);
-                    break;
+            String data = request.getParameter("data");
+            JSONObject jData = new JSONArray(data).getJSONObject(0);
+            int tip = jData.getInt("ti");
+            if (tip == 5) {
+                int opcion = jData.getInt("opcion");
+                switch (opcion) {
+                    case 0:
+                        request.getRequestDispatcher("administrador/registroFuncionario/registrofuncionario.jsp").forward(request, response);
+                        break;
+                    case 1:
+                        request.getRequestDispatcher("administrador/deshabilitarFuncionario/deshabilitarFuncionario.jsp").forward(request, response);
+                        break;
+                    case 2:
+                        request.getRequestDispatcher("administrador/Formato/Formato.jsp").forward(request, response);
+                        break;
+                    case 3:
+                        request.getRequestDispatcher("administrador/area/area.jsp").forward(request, response);
+                        break;
+                    case 4:
+                        request.getRequestDispatcher("administrador/ciudad/ciudad.jsp").forward(request, response);
+                        break;
+                    case 5:
+                        request.getRequestDispatcher("administrador/programa/Programa.jsp").forward(request, response);
+                        break;
+                    case 6:
+                        request.getRequestDispatcher("perfil/perfilUsuario.jsp").forward(request, response);
+                        break;
+                }
+            } else {
+                request.getRequestDispatcher("index.jsp").forward(request, response);
             }
+
         }
     }
 
@@ -54,7 +67,11 @@ public class Administrador_Controller extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (JSONException ex) {
+            Logger.getLogger(Administrador_Controller.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -68,7 +85,11 @@ public class Administrador_Controller extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (JSONException ex) {
+            Logger.getLogger(Administrador_Controller.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**

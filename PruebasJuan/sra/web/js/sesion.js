@@ -1,15 +1,7 @@
 $(document).on('ready', function () {
-    console.log("Index");
     var hilo = [], jso = [], data = [];
-
-
-
     $('#btnLogin').click(function () {
-        var u = $("#user").val();
-        if (u == "") {
-            u = 0;
-        }
-        jso[0] = ['sesion_controller', '[{user:' + u + ',pwd:' + $("#pwd").val() + ',opcion:1}]'];
+        jso[0] = ['sesion_controller', '[{user:' + $("#user").val()+ ',pwd:' + $("#pwd").val() + ',opcion:1}]'];
         ajax(0);
     });
 

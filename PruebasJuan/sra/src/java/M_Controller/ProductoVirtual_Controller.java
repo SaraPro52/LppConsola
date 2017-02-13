@@ -44,14 +44,13 @@ public class ProductoVirtual_Controller extends HttpServlet {
 			WHEN 8 THEN SET @ArrayFuncionario = @valor;
 			WHEN 9 THEN SET @ArrayTema = @valor;
             
-            */
+             */
             String[] infoVersion = null;
             String arrayFun = null;
             String data = request.getParameter("data");
             JSONObject jData = new JSONArray(data).getJSONObject(0);
 
             int opcion = jData.getInt("opcion");
-            
 
             response.setContentType("application/json;charset=UTF-8");
 
@@ -69,8 +68,10 @@ public class ProductoVirtual_Controller extends HttpServlet {
                     infoVersion[4] = arch.CambiarNombre(archivoNom, nruta);
                     if (ver.RegistrarPV(infoVersion, arrayFun, arrayTemas)) {
                         respuesta.println("true$$ fue registrado");
+                        arch.MoverArchivo(infoVersion[4]);
                     } else {
                         respuesta.println("false$$ no fue registrado");
+                        arch.EliminarArchivo(infoVersion[4]);
                     }
                     break;
                 case 2:
@@ -84,7 +85,7 @@ public class ProductoVirtual_Controller extends HttpServlet {
                     break;
                 case 3:
                     String[] correccion = Elomac.M_toArray(jData.getString("correccion"));
-                    
+
                     correccion[2] = null;
                     if (ver.CorreccionVersion(correccion)) {
                         respuesta.println("[{valor:true,mensaje:'Si Registro'}]");
@@ -107,7 +108,7 @@ public class ProductoVirtual_Controller extends HttpServlet {
                 case 5:
                     String[] filtrar = Elomac.M_toArray(jData.getString("filtrar"));
                     int caso = jData.getInt("caso");
-                    respuesta.println(new Producto_Virtual().ConsultarProducto(filtrar,caso));
+                    respuesta.println(new Producto_Virtual().ConsultarProducto(filtrar, caso));
                     break;
                 case 6:
                     int idPV = jData.getInt("idPV");
@@ -117,8 +118,7 @@ public class ProductoVirtual_Controller extends HttpServlet {
         } catch (Exception falla) {
             respuesta.println("Falla: " + falla.getMessage());
         }
-        
-        
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

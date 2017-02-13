@@ -1,9 +1,8 @@
 package M_Modelo;
 
 import M_Util.Elomac;
-import java.text.SimpleDateFormat;
+import static M_Util.M_Crud.M_Format;
 import java.util.ArrayList;
-import java.util.Date;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -117,12 +116,18 @@ public class Producto_Virtual extends Elomac {
 
             for (int i = 0; i < new JSONArray(consulta1).length(); i++) {
                 String autores = "";
+                String comentarios = ""; // Modificado
                 JSONObject conJ = new JSONArray(consulta1).getJSONObject(i);
 
                 delimitador = "[{colum:4,operador:0,valor1:" + conJ.getInt("Id_Version") + "}]";
                 String[] numCamp1 = {"0", "1", "2", "3"};
-                String comentarios = new Elomac(25, 2).Select(numCamp1, delimitador);
-
+                //Mo
+                try {
+                    comentarios = new Elomac(25, 2).Select(numCamp1, delimitador);
+                } catch (Exception e) {
+                    comentarios = " ";
+                }
+                //Mo
                 String delimitador1 = "[{colum:2,operador:0,valor1:" + conJ.getInt("Id_Version") + "}]";
                 String consulta2 = new Elomac(21, 2).Select(delimitador1);
 

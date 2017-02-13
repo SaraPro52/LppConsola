@@ -399,10 +399,18 @@ CREATE VIEW 38_V_Notificaciones_AR AS (
 			Id_Centro,
 			Id_Tipo_Notificacion
 	FROM 18_V_Notificaciones v1 
-		INNER JOIN Version v2 ON v1.Ides_Proceso = v2.Ides_Proceso
+		INNER JOIN Version v2 ON v1.Ides_Proceso =  v2.id_version 
 		INNER JOIN Producto_Virtual v3 ON v3.Id_P_Virtual = v2.Id_P_Virtual
 	WHERE Id_Tipo_Notificacion IN (2,3)
 );
+
+DROP VIEW IF EXISTS 39_V_ListaCategoria;
+CREATE VIEW 39_V_ListaCategoria AS (
+
+    SELECT Id_Categoria, Nom_Categoria, Fecha_Creacion, Id_Centro
+    FROM Categoria v1 INNER JOIN 08_V_Funcionario v2 ON v1.Id_Funcionario = v2.Id_Funcionario
+)
+
 
 
 -- ESTABA CAMBIANDO LOS NOMBRES DE LAS VISTAS PARA PODER ACOMODAR LA NUEVA VISTA DE TIPO ESTADISTICA, PERO SE TIENE QUE ELIMINAR LAS ANTERIOES CON LA ELIMINACION 

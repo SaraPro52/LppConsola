@@ -17,22 +17,27 @@ import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.apache.commons.io.FilenameUtils;
 
 /**
- * La clase ArchivosController se encarga de gestionar los archivos  de los productos virtuales 
- * crear eliminar  modificar 
- *@author Juan Lopez Alvarez
- *@version 30/11/2016 v3
- * 
+ * La clase ArchivosController se encarga de gestionar los archivos de los
+ * productos virtuales crear eliminar modificar
+ *
+ * @author Juan Lopez Alvarez
+ * @version 30/11/2016 v3
+ *
  */
-
 @WebServlet(name = "archivos", urlPatterns = {"/archivos"})
 
 public class ArchivosController extends HttpServlet {
 
     private static final long serialVersionID = 1L;
+
     /**
-     * El metodo processRequest crear el archivo dentro de una carpeta especifica del servidor.
-     * @param Archivo request Este parametro tiene contenido el archivo o los archivos que se quieren ingresar.
-     * @param String response Este parametro devuelve un valor para saber si se creo el archivo correctamente o no. 
+     * El metodo processRequest crear el archivo dentro de una carpeta
+     * especifica del servidor.
+     *
+     * @param Archivo request Este parametro tiene contenido el archivo o los
+     * archivos que se quieren ingresar.
+     * @param String response Este parametro devuelve un valor para saber si se
+     * creo el archivo correctamente o no.
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -47,7 +52,7 @@ public class ArchivosController extends HttpServlet {
                 for (FileItem item : multiparts) {
                     if (!item.isFormField()) {
                         nombreArchivo = new File(item.getName()).getName();
-                        item.write(new File(a.getBase() + nombreArchivo));
+                        item.write(new File(a.rutaTem() + nombreArchivo));
                     }
                 }
             } catch (Exception e) {
@@ -57,19 +62,44 @@ public class ArchivosController extends HttpServlet {
     }
 
     /**
-     * El metodo EliminarArchivo busay elimina un archiv en especifico en la carpeta del servidor.
-     * @param nombre Nombre del archivo  que se desea eliminar.
+     * El metodo EliminarArchivo busay elimina un archiv en especifico en la
+     * carpeta del servidor.
+     *
+     * @param nombre Nombre del archivo que se desea eliminar.
      */
     public void EliminarArchivo(String nombre) {
-        File archivo = new File(nombre);
+        Archivos a = new Archivos();
+        String ruta = a.getBase();
+        ruta = ruta + nombre;
+        File archivo = new File(ruta);
         archivo.delete();
     }
 
+    public void MoverArchivo(String AnRuta, String NuevaRuta) {
+        try {
+            Archivos bs = new Archivos();
+            String ext2 = FilenameUtils.getExtension(AnRuta);
+            File archivo = new File(bs.rutaTem() + AnRuta);
+            File NuNombre = new File(bs.getBase() + NuevaRuta + '.' + ext2);
+
+            if (archivo.renameTo(NuNombre)) {
+                System.out.println("Si");
+            } else {
+                System.out.println(archivo.renameTo(NuNombre));
+            }
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
     /**
-     * Metodo CambiarNombre este metodo realiza el cambio de nombre de un archivo.
-     * @param AnNombre Nombre actual del archivo 
-     * @param NuevoNombre Nuevo nombre del archivo 
-     * @return String devuelve del nombre del archivo. 
+     * Metodo CambiarNombre este metodo realiza el cambio de nombre de un
+     * archivo.
+     *
+     * @param AnNombre Nombre actual del archivo
+     * @param NuevoNombre Nuevo nombre del archivo
+     * @return String devuelve del nombre del archivo.
      */
     public String CambiarNombre(String AnNombre, String NuevoNombre) {
         String nombre = "";
@@ -77,9 +107,8 @@ public class ArchivosController extends HttpServlet {
         try {
             Archivos bs = new Archivos();
             String ext2 = FilenameUtils.getExtension(AnNombre);
-
-            File archivo = new File(bs.getBase() + AnNombre);
-            File NuNombre = new File(bs.getBase() + NuevoNombre + '.' + ext2);
+            File archivo = new File(bs.rutaTem() + AnNombre);
+            File NuNombre = new File(bs.rutaTem() + NuevoNombre + '.' + ext2);
             if (archivo.renameTo(NuNombre)) {
                 nombre = NuevoNombre + '.' + ext2;
             } else {

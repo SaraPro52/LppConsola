@@ -29,7 +29,7 @@
 
                             <div class="form-group col-md-3">
                                 <label for="user">Usuario</label>
-                                <input type="number" class="form-control" placeholder="Usuario" id="user" >
+                                <input type="text" class="form-control" placeholder="Usuario" id="user" >
                             </div>
                             <div class="form-group col-md-3">
                                 <label for="pwd">Contraseña</label>

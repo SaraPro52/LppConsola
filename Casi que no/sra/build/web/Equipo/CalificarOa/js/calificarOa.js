@@ -1,7 +1,7 @@
 function calificarPV(idLista, idRol, idNotifi) {
     var selector = [], hilo = [], jso = [], data = [], nombre = "funcionario", datos = [], men = "", estado = "";
     $("#iFecha").datepicker();
-    $("#clone").hide();
+    $("#clone").hide(); 
     var ob = new $.Luna("Producto virtual", $("#divContainer"));
     ob.Vivo("CalificarOA2");
     jso[0] = ['Crud_Controller', '[{opcion:3,tabla2:15,tipo:2,elegir:[0,1,4],delimitador:"[{colum:3,operador:0,valor1:' + idLista + '}]",id:0,opSelect:6}]'];
@@ -74,7 +74,7 @@ function calificarPV(idLista, idRol, idNotifi) {
         if (i == 0) {
             $("#clone").show();
         } else if (i == 1) {
-            jso[2] = ['Equipo_Controller', '[{opcion:2}]'];
+            jso[2] = ['Equipo_Controller', '[{opcion:2,ti:'+$("#tis").text()+'}]'];
             datos[2] = {caso: "Consultar productos virtuales"};
             ajax(2);
             var daMen = data[i].split("$$");

@@ -1,13 +1,9 @@
 package M_Util;
-
 import java.sql.CallableStatement;
 import java.sql.ResultSet;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
-
 public class M_Procedure extends M_Connection{
-    
             private     CallableStatement cst = null;
             protected   ResultSet rs    = null;
             private     final String[] procedure = {"{Call SARA_CRUD(?,?,?,?)}",
@@ -91,13 +87,4 @@ public class M_Procedure extends M_Connection{
             }
             return group;
         }
-}    
-        
-
-        
-       
-
-
-
-
-
+} 

@@ -77,6 +77,8 @@ public class M_Procedure extends M_Connection{
                 Logger.getLogger(M_Procedure.class.getName()).log(Level.SEVERE,null,p2);
             }
             return listo;
+            
+            
         }
         
         public static String Group(Object[] array ,char delimitardor){

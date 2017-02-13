@@ -1,67 +1,51 @@
-$(document).on('ready', function () {
-    $(document).on('click', '.Notify', function (e) {
-            var objeto = {url: "Instrutor_Controller", Opcion: 3, name: 'cuerpo'};
-            casoUso = "Notificaciones P.V";
-            obtenerP(objeto);
-    });
-
-    var casoUso = "Notificaciones producto virtual";
+function cargaI(idRol, ti,js) {
+    var hilo = [], jso = [], data = [], datos = [], casoUso = "";
     console.log("Vivo??Instrutor");
-    var objeto = {url: "Instrutor_Controller", Opcion: 3, name: 'cuerpo'};
-    obtenerP(objeto);
+    jso[0] = ['Instrutor_Controller', '[{opcion:3,ti:' + idRol + '}]'];
+    datos[0] = {caso: "Notificaciones producto virtual"};
+    ajax(0);
+    $(document).on('click', '.Notify', function (e) {
+        jso[0] = ['Instrutor_Controller', '[{opcion:3,ti:' + idRol + '}]'];
+        datos[0] = {caso: "Notificaciones producto virtual",tipo:2};
+        ajax(0);
+    });
 
     $('.menu li').click(function (e) {
-        var objeto = {url: "Instrutor_Controller", Opcion: this.value, name: 'cuerpo'};
-        casoUso = "text" + this.value;
-        casoUso = $("#" + casoUso).text();
-        if (this.value == 3) {
-            casoUso ="Notificaciones de los  productos virtuales";
-        }else if (this.value==1){
-            casoUso ="Subir Producto virtual";
-        }
-        obtenerP(objeto);
-    });
-    function obtenerP(datos) {
-        $.ajax({
-            url: datos.url,
-            type: 'POST',
-            async: true,
-            cache: false,
-            datatype: 'json',
-            data: datos,
-            success: function (json) {
-                res(json, datos.name);
-            },
-            error: function (jqXHR, textStatus, errorThrown) {
-                console.log(textStatus + errorThrown + " Disculpa.");
+        if (this.value == 7) {
+            jso[2] = ['sesion_controller', '[{opcion:2,se:' + ti + '}]'];
+            ajax(2);
+        } else {
+            jso[1] = ['Instrutor_Controller', '[{opcion:' + this.value + ',ti:' + idRol + '}]'];
+            casoUso = "text" + this.value;
+            datos[1] = {caso: $("#" + casoUso).text(),tipo:4};
+            if (this.value == 3) {
+                datos[1] = {caso: "Notificaciones de los  productos virtuales",tipo:3};
+            }else if (this.value==1){
+                datos[1] = {caso: "Subir producto virtual",tipo:1};
             }
-        });
+            ajax(1);
+        }
+    });
+    function ajax(i) {
+        hilo[i] = new Worker("js/worker.js");
+        hilo[i].postMessage(jso[i]);
+        hilo[i].onmessage = function (event) {
+            data[i] = event.data;
+            hilo[i].terminate();
+            peticionCompleta(i);
+        };
     }
-    function res(body, select) {
-        switch (select) {
-            case"cuerpo":
-                $("#CasoNombre").text(casoUso);
-                $("#cuerpo").empty();
-                $("#cuerpo").append(body);
-                break;
+    function peticionCompleta(i) {
+        if ((i == 0) || (i == 1)) {
+            $("#CasoNombre").text(datos[i].caso);
+            $("#cuerpo").empty();
+            $("#cuerpo").append(data[i]);
+            if (datos[i].tipo == 4) {
+                $("#cssUsuario").attr("href", "assets/css/paper-dashboardEquipo.css");
+            }
+        } else if (i == 2) {
+            $("#estru").empty();
+            $("#estru").append(data[i]);
         }
     }
-    var cont = 0;
-    if (cont == 0) {
-        $.notify({
-            icon: 'ti-gift',
-            message: "Bienvenido a <b>Sara Pro</b> - Instructor " + nomUser + "."
-
-        }, {
-            type: 'success',
-            timer: 4000
-        });
-        cont++;
-    }
-
-});
-
-
-
-
-
+}
