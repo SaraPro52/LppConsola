@@ -19,49 +19,38 @@ BEGIN
 			WHEN 8 THEN SET @ArrayFuncionario = @valor;
 			WHEN 9 THEN SET @ArrayTema = @valor;
 		END CASE;"
-	);	
+	);
+    CALL SARA_CRUD("INSERT","Producto_Virtual",CONCAT("Nom_P_Virtual~",@Nom_P_Virtual,"|Des_P_Virtual~",@Des_P_Virtual,"|Palabras_Clave~",@Palabras_Clave,"|Id_Formato~",@Id_Formato,""),"");
+	CALL SARA_CRUD("SELECT","Producto_Virtual","Id_P_Virtual INTO @idPro","Nom_P_Virtual = @Nom_P_Virtual");
+	SET @i = 0;
+	SET @num = M_LENGTH(@ArrayTema,",");
+	WHILE(@i < @num)DO
+		SET @arrayT = SUBSTRING_INDEX(@ArrayTema,",",1);
+        SET @cant = CHAR_LENGTH(@ArrayTema) - CHAR_LENGTH(@arrayT);
+        SET @ArrayTema = RIGHT(@ArrayTema,@cant -1);
+        SET @a = 0;
+        WHILE(@a < 2)DO
+			SET @val = SUBSTRING_INDEX(@arrayT,"-",1);
+			SET @cant = CHAR_LENGTH(@arrayT) - CHAR_LENGTH(@val);
+			SET @arrayT = RIGHT(@arrayT,@cant -1);
+            CASE @a
+				WHEN 0 THEN SET @idTema = @val; 
+                WHEN 1 THEN SET @tipo 	= @val;
+            END CASE;
+            SET @a = @a + 1;        
+        END WHILE;
+        CALL SARA_CRUD("INSERT","Detalles_Tema",CONCAT("Id_Tema~",@idTema,"|Id_P_Virtual~",@idPro,"|Tipo_Tema~",@tipo,""),"");
+		SET @i = @i + 1;
+    END WHILE;
     
-    SET @co = 0;
-	SELECT COUNT(*) INTO @co 
-    FROM Producto_Virtual 
-    WHERE Nom_P_Virtual = @Nom_P_Virtual OR Des_P_Virtual = @Des_P_Virtual;
-    IF (@co = 0) THEN 
-		CALL SARA_CRUD("INSERT","Producto_Virtual",CONCAT("Nom_P_Virtual~",@Nom_P_Virtual,"|Des_P_Virtual~",@Des_P_Virtual,"|Palabras_Clave~",@Palabras_Clave,"|Id_Formato~",@Id_Formato,""),"");
-		CALL SARA_CRUD("SELECT","Producto_Virtual","Id_P_Virtual INTO @idPro","Nom_P_Virtual = @Nom_P_Virtual");
-		SET @i = 0;
-		SET @num = M_LENGTH(@ArrayTema,",");
-		WHILE(@i < @num)DO
-         SET @i = @i + 1;
-        
-        
-			SET @arrayT = SUBSTRING_INDEX(@ArrayTema,",",1);
-			SET @cant = CHAR_LENGTH(@ArrayTema) - CHAR_LENGTH(@arrayT);
-			SET @ArrayTema = RIGHT(@ArrayTema,@cant -1);
-			SET @a = 0;
-			WHILE(@a < 2)DO
-				SET @val = SUBSTRING_INDEX(@arrayT,"-",1);
-				SET @cant = CHAR_LENGTH(@arrayT) - CHAR_LENGTH(@val);
-				SET @arrayT = RIGHT(@arrayT,@cant -1);
-				CASE @a
-					WHEN 0 THEN SET @idTema = @val; 
-					WHEN 1 THEN SET @tipo 	= @val;
-				END CASE;
-				SET @a = @a + 1;        
-			END WHILE;
-			CALL SARA_CRUD("INSERT","Detalles_Tema",CONCAT("Id_Tema~",@idTema,"|Id_P_Virtual~",@idPro,"|Tipo_Tema~",@tipo,""),"");
-			SET @i = @i + 1;
-		END WHILE;
-		CALL RegistrarVersion(CONCAT("",@idPro,"~",@Url_Version,"~",@Url_Img,"~",@Inst_Instalacion,"~",@Reqst_Instalacion,"~",@ArrayFuncionario,""));
-        ELSE SIGNAL SQLSTATE "45000" SET MESSAGE_TEXT = "El nombre del producto o los detalles del mismo ya existen ";
-	END IF;
-	
+    CALL RegistrarVersion(CONCAT("",@idPro,"~",@Url_Version,"~",@Url_Img,"~",@Inst_Instalacion,"~",@Reqst_Instalacion,"~",@ArrayFuncionario,""));
+    
 END;;
 DELIMITER ;
 
 
 -- PROCEDIMIENTO PARA EL REGISTRO DE LAS VERSIONES, CUANDO UN INSTRUCTOR DESEE HACER UNA ACTUALIZACION DE ALGUN PRODUCTO VIRTUAL QUE 
 -- QUE YA ESTE EN PUBLICACION
-
 
 
 DROP PROCEDURE IF EXISTS RegistrarVersion;
@@ -96,16 +85,8 @@ BEGIN
 	END IF;
     
     CALL SARA_CRUD("INSERT","Version",CONCAT("Num_Version~",@numVer,"|Url_Version~",@Url_Version,"|Url_Img~",@Url_Img,"|Inst_Instalacion~",@Inst_Instalacion,"|Reqst_Instalacion~",@Reqst_Instalacion ,"|Id_P_Virtual~",@idPro,""),"");
-    -- CALL SARA_CRUD("SELECT","Version","Id_Version INTO @idVer","Inst_Instalacion = @Inst_Instalacion AND Reqst_Instalacion = @Reqst_Instalacion");
-    
-    SELECT Id_Version INTO @idVer
-    FROM Version v1 INNER JOIN Producto_Virtual v2 ON v1.Id_P_Virtual = v2.Id_P_Virtual
-	WHERE Inst_Instalacion = @Inst_Instalacion 
-		AND Reqst_Instalacion = @Reqst_Instalacion 
-		AND v1.Id_P_Virtual = @idPro 
-        AND v1.Id_Estado = 3
-	ORDER BY Fecha_Envio DESC LIMIT 1;
-        
+    CALL SARA_CRUD("SELECT","Version","Id_Version INTO @idVer","Inst_Instalacion = @Inst_Instalacion AND Reqst_Instalacion = @Reqst_Instalacion");
+   
    SET @a = 0;
    Bucle : WHILE (TRUE) DO
         SET @valor = SUBSTRING_INDEX(@ArrayFuncionario,",",1);
