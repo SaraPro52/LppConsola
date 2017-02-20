@@ -34,7 +34,7 @@ hr.star-primary {
 }
 
 .seccionQueEsSARA{
-    margin-left:3%;
+    margin-left:29%;
     margin-top: 2%;
     margin-bottom: 2%;
     background-color:#C04319;
@@ -49,10 +49,6 @@ hr.star-primary {
     margin-bottom: 2%;
 }
 
-.video{
-    margin-bottom:3%;
-    margin-left: 10%;
-}
 #verticaLineSARA{
     border-left: 3px solid #fff;
     margin-top: 1%;
@@ -61,12 +57,12 @@ hr.star-primary {
 }
 .queimagen{
     margin-top: 1%;
-    margin-left: 40%;
+    margin-left: 47%;
 }
 
 .titleSARA{
     color:#FFFFFF;
-    margin-left:38%;
+    margin-left:45%;
     margin-top: 4%;
 
 }
@@ -74,7 +70,7 @@ hr.star-primary {
     border: none;
     border-top: solid 5px white ;
     max-width: 30%;
-    margin-left: 33%;
+    margin-left: 38%;
     margin-bottom: 2%;
 }
 .textSARA{
@@ -96,11 +92,11 @@ hr.star-primary {
 #btnContra{
     margin: 8px;
 }
-/******************************* QUIENE SOMOS *********************************/
+
 
 /******************************* QUIENES HISTORIA *****************************/
 .seccionHistoria{
-    margin-left: 2%;
+    margin-left: 28%;
     margin-top: 2%;
     background-color:#1A6960;
     border-radius: 15px;
@@ -110,7 +106,9 @@ hr.star-primary {
 .quienesEstilo{
     background-color: #218276;
     margin-bottom: 10%;
-    color:#FFFFFF;
+    width: 100%;
+    height: 0%;
+    color:#FFFFFF; 
 }
 .seccionEquipo{
     margin-left:3%;

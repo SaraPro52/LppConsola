@@ -301,7 +301,7 @@ jQuery.Luna = function (Datos, selector) {
                         row = ("<tr class='col-md-12'>\n\
                                     <td class='col-md-1'><label>" + cc + "</label></td>\n\
                                     <td class='col-md-6'><label>" + jso[i].Des_Item_Lista + "</label></td>\n\
-                                    <td class='col-md-1'><input type='checkbox' value=" + jso[i].Id_Detalles_Lista + ">Si</td>\n\
+                                    <td class='col-md-1'><input type='checkbox' value=" + jso[i].Id_Detalles_Lista + "></td>\n\
                                     <td class='col-md-4'><textarea id=" + jso[i].Id_Detalles_Lista + " class='form-control esac'></textarea></td>\n\
                                 </tr>");
                         selector.append(row);

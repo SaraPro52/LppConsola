@@ -1,5 +1,5 @@
 $(document).on('ready', function () {
-    console.log('%c ¡La consola del navegador a sido bloqueada; es por la seguridad de nuestros clientes! :)', 'color: green; font-weight: bold;');
+    console.log('%c ¡Las consola del navegador a sido bloqueada; es por la seguridad de nuestros clientes! :)', 'color: green; font-weight: bold;');
     //logger.disableLogger();
     var hilo = [], jso = [], data = [];
     $('#btnLogin').click(function () {
@@ -9,10 +9,11 @@ $(document).on('ready', function () {
     });
 
     $("#olvidoPa").click(function () {
-        jso[0] = ['sesion_controller', '[{opcion:3}]'];
-        ajax(0);
+        jso[1] = ['sesion_controller', '[{opcion:3}]'];
+        ajax(1);
         $("#btnLogin").prop('disabled', true);
     });
+
 
     function ajax(i) {
         hilo[i] = new Worker("js/worker.js");
@@ -24,10 +25,19 @@ $(document).on('ready', function () {
         };
     }
     function peticionCompleta(i) {
-        if (i == 0) {
+        if ((i == 0) || (i == 1)) {
             if (data[i] == "false") {
                 alert("Error al conectarse con el servidor ;)");
+            } else if (i == 0) {
+                $("#total").removeAttr('style');
+                $("#footerPrin").empty();
+                $("#footerPrin1").empty();
+                $("#estru").empty();
+                $("#cuerpo").empty();
+                $("#estru").append(data[i]);
             } else {
+
+                $("#total").css({'background':'#218276'});
                 $("#estru").empty();
                 $("#cuerpo").empty();
                 $("#estru").append(data[i]);

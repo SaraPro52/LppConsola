@@ -34,7 +34,7 @@ hr.star-primary {
 }
 
 .seccionQueEsSARA{
-    margin-left:3%;
+   
     margin-top: 2%;
     margin-bottom: 2%;
     background-color:#C04319;
@@ -100,8 +100,7 @@ hr.star-primary {
 
 /******************************* QUIENES HISTORIA *****************************/
 .seccionHistoria{
-    margin-left: 2%;
-    margin-top: 2%;
+   
     background-color:#1A6960;
     border-radius: 15px;
 

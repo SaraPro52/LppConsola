@@ -26,7 +26,7 @@ public class sesion_controller extends HttpServlet {
             response.setContentType("application/json;charset=UTF-8");
             HttpSession sesion = request.getSession();
             String data = request.getParameter("data");
-            JSONObject jData = new JSONArray(data).getJSONObject(0);
+                JSONObject jData = new JSONArray(data).getJSONObject(0);
             int opcion = jData.getInt("opcion");
             switch (opcion) {
                 case 1:
