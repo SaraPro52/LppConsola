@@ -348,7 +348,7 @@ jQuery.Luna = function (Datos, selector) {
                             i + 1,
                             jsoCorre[i].Conte_Notificacion,
                             jsoCorre[i].Fecha_Envio,
-                            "<button  type='button' id='" + jsoCorre[i].Ides_Proceso + "' class='btn btn-info btn-lg btnCorrecion'>Correguir P.V</button>"
+                            "<button  type='button' id='" + jsoCorre[i].Ides_Proceso + "' class='btn btn-info btnCorrecion'>Correguir P.V</button>"
                         ]);
                     }
                     break;

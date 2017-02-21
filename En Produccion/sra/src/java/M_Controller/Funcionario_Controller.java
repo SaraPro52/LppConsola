@@ -27,13 +27,14 @@ public class Funcionario_Controller extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             /*Menu de opciondes de crud de funcionario...
             1. Agregar funcionario
-            2. Actualizar
-            3. Consultar
-            4. Deshabilitar*/
+            3. actualizar contraseña
+            4. nn
+                        5. Actualizar
+            6. olvidoContraseña*/
             String data = request.getParameter("data");
             JSONObject jData = new JSONArray(data).getJSONObject(0);
             int opcion = jData.getInt("opcion");
-            response.setContentType("application/json;charset=UTF-8");
+                response.setContentType("application/json;charset=UTF-8");
             PrintWriter respuesta = response.getWriter();
             switch (opcion) {
                 case 1:
@@ -64,10 +65,9 @@ public class Funcionario_Controller extends HttpServlet {
                         Elomac fun1 = new Elomac(18, 1);
                         String usuario = jData.getString("user");
                         String contraseña = DigestUtils.md5Hex(jData.getString("pwd"));
-                        String [] datos ={"6","0"};
-                        String delimitador = "[{colum:4,operador:0,valor1:'\"" + usuario + "\"',añadir:0},{colum:5,operador:0,valor1:'\"" + contraseña + "\"'}]";
-                        Elomac elo = new Elomac(18, 2);
-                        String DatFun = elo.Select(datos,delimitador);
+                        String delimitador = "[{colum:2,operador:0,valor1:" + usuario + " ,añadir:0},{colum:8,operador:0,valor1:'\"" + contraseña + "\"'}]";
+                        String[] num = {"0", "5"};
+                        String DatFun = new Elomac(18, 1).Select(num, delimitador);
                         JSONObject funJ = new JSONArray(DatFun).getJSONObject(0);
                         if (jData.getInt("id") == funJ.getInt("Id_Funcionario")) {
                             if (fun1.Update(fun1.Select(jData.getInt("id")), "[{'8':'" + DigestUtils.md5Hex(jData.getString("con")) + "','9':'1'}]")) {
@@ -106,10 +106,13 @@ public class Funcionario_Controller extends HttpServlet {
                 case 5:
                     Elomac fun1 = new Elomac(18, 1);
                     if (fun1.Update(fun1.Select(jData.getInt("id")), "[{'8':'" + DigestUtils.md5Hex(jData.getString("con")) + "','9':'1'}]")) {
-                        respuesta.println("true$$actualizado correctamente'}]");
+                        respuesta.println("true$$actualizado correctamente");
                     } else {
-                        respuesta.println("false$$actualizado'}]");
+                        respuesta.println("false$$actualizado");
                     }
+                    break;
+                case 6:
+                    
                     break;
             }
         }

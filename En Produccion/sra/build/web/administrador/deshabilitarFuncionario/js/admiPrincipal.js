@@ -38,7 +38,7 @@ $(document).on('ready', function () {
                 men = "fue deshabilitado correctamente.";
                 estado = ("success");
             } else if (data[2].length == data[0].length) {
-                men = "No se a podido deshabilitado a  .";
+                men = "No se a podido deshabilitado.";
                 estado = ("error");
             }
             $.notify(men, estado);

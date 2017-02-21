@@ -39,7 +39,7 @@ $(document).on('ready', function () {
         }
     });
     function BtnPerfil() {
-        
+
         $("#ApellidoFun").val();
         $("#IdentificacionFunTipo").val();
         $("#IdentificacionFun").val();
@@ -66,6 +66,10 @@ $(document).on('ready', function () {
             if (ccT == 4) {
                 BtnCon();
             }
+        } else {
+            $("#ConNueva").val();
+            $("#ConNuevaF").val();
+            $.notify("error", "Las contraseña no son iguales");
         }
         ccT = 0;
     });

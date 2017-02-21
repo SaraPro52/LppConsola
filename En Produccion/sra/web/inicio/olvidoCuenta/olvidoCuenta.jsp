@@ -28,21 +28,22 @@
             <section id="espacioF" class="col-md-12 fondoTa espacioG">
                 <article id="cuerpo" class="col-md-8 col-md-offset-2">
                     <h2 class="col-md-12">Recuperar su cuenta</h2>
-                    <div class="col-md-4">
-                        <span class="glyphicon glyphicon-envelope"></span>
-                    </div>
-                    <div>
+                    <div class="col-md-8">
+                        <div class="col-md-1">
+                            <span class="glyphicon glyphicon-envelope"></span>
+                        </div>
                         <label class="col-md-12">Ingrese el correo eletronico que tiene asociada esta cuenta</label>
-                        <input id="camCorreo" type="text" class="">
-                        <button id="Btn">Guardar</button>
-                    </div>
-                    
-                                        
+                        <div class="col-md-12">
+                            <input id="camCorreo"  type="text" class="form-control">                            
+                        </div>
+                        <div class="col-md-12">
+                            <button id="Btn" class="btn btn-info">Enviar correo</button>    
+                        </div>
+                    </div>                  
                 </article>
             </section>
-         
-
         </section>
+
     </body>
     <script type="text/javascript" src="js/jquery.js"></script>
     <script src="assets/js/bootstrap-notify.js"></script>

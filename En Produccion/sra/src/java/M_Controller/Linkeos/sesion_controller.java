@@ -26,7 +26,7 @@ public class sesion_controller extends HttpServlet {
             response.setContentType("application/json;charset=UTF-8");
             HttpSession sesion = request.getSession();
             String data = request.getParameter("data");
-                JSONObject jData = new JSONArray(data).getJSONObject(0);
+             JSONObject jData = new JSONArray(data).getJSONObject(0);
             int opcion = jData.getInt("opcion");
             switch (opcion) {
                 case 1:
@@ -38,7 +38,7 @@ public class sesion_controller extends HttpServlet {
                     if (fun != "false") {
                         JSONObject funJ = new JSONArray(fun).getJSONObject(0);
                         int rol = funJ.getInt("Id_Rol");
-                        sesion.setMaxInactiveInterval(6000);
+                        sesion.setMaxInactiveInterval(600000);
                         sesion.setAttribute("idUser", funJ.getInt("Id_Funcionario"));
                         sesion.setAttribute("nomUser", funJ.getString("Nom_Funcionario"));
                         sesion.setAttribute("idRol", rol);

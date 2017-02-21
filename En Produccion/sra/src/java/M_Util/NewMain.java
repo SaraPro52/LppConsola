@@ -1322,11 +1322,13 @@ public class NewMain {
 //
 //        System.out.println(new Elomac(37, 2).Select(num, delimitador));
         
-        String delimitador = "[{colum:2,operador:0,valor1:1019,añadir:0},{colum:8,operador:0,valor1:'\"81dc9bdb52d04dc20036dbd8313ed055\"'}]";
-        String[] num = {"0","5"};
-         System.out.println(new Elomac(18,1).Select(num, delimitador));
-         
-         
+        String usuario = "1019";
+        String contraseña ="81dc9bdb52d04dc20036dbd8313ed055";
+        String delimitador = "[{colum:2,operador:0,valor1:" + usuario + " ,añadir:0},{colum:8,operador:0,valor1:'\"" + contraseña + "\"'}]";
+
+        //String delimitador = "[{colum:2,operador:0,valor1:1019,añadir:0},{colum:8,operador:0,valor1:'\"81dc9bdb52d04dc20036dbd8313ed055\"'}]";
+        String[] num = {"0", "5"};
+        System.out.println(new Elomac(18, 1).Select(num, delimitador));
 
     }
 }

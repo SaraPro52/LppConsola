@@ -1,24 +1,26 @@
 var selector = [], hilo = [], jso = [], data = [], datos = [], constan = true;
 var ob = new $.Luna("producto", $("#tablaNotificacion"));
 ob.Vivo("CorrecionInstrutor");
+$("#percent").hide();
 $("#contenedor").hide();
 $("#Clona").hide();
 $("#formularioss").hide();
-jso[0] = ['Crud_Controller','[{opcion:3,tabla2:17,tipo:2,elegir:[4,5,6,7],delimitador:"[{colum:2,operador:0,valor1:' + idRol + ',añadir:0},{colum:10,operador:0,valor1:' + idCentro + ',añadir:0},{colum:0,operador:0,valor1:' + idUser + ',añadir:0},{colum:11,operador:0,valor1:2,añadir:0},{colum:9,operador:0,valor1:0}]",id:0,opSelect:6}]'];
+jso[0] = ['Crud_Controller', '[{opcion:3,tabla2:17,tipo:2,elegir:[4,5,6,7],delimitador:"[{colum:2,operador:0,valor1:' + idRol + ',añadir:0},{colum:10,operador:0,valor1:' + idCentro + ',añadir:0},{colum:0,operador:0,valor1:' + idUser + ',añadir:0},{colum:11,operador:0,valor1:2,añadir:0},{colum:9,operador:0,valor1:0}]",id:0,opSelect:6}]'];
 selector[0] = $("#tablaNotificacion");
-datos[0] = {nombre: "correcion", worker: true};
+datos[0] = {nombre: "correcion"};
 ob.TablaEspa(selector[0]);
 ajax(0, datos[0]);
 $(document).on('click', '.btnCorrecion', function (e) {
     ob.limpiarTablaI($("#tablaNotificacion"));
     jso[1] = ['EvaluacionGeneral_Controller', '[{opcion:2,idEvalua:' + this.id + ',resultado:0}]'];
     selector[1] = $("#Respuestaitem");
-    datos[1] = {nombre: "correcionCo", worker: true};
+    datos[1] = {nombre: "correcionCo"};
     ajax(1, datos[1]);
 });
 
 var options = {
     beforeSend: function () {
+        $("#percent").show();
         $("#progressbox").show();
         $("#progressbar").width('0%');
         $("#message").empty();
@@ -36,7 +38,7 @@ var options = {
         $("#formularioss").hide();
         jso[5] = ['ProductoVirtual_Controller', '[{opcion:1,info:[' + $("#Titulo_Publicacion").val() + ',' + $("#descripcion_oa").val() + ',' + $("#palabras_claves").val() + ',' + $("#formato").val() + ',0,0,archivoNom:' + $("#myfile").val() + '}]'];
         selector[5] = null;
-        datos[5] = {nombre: "btn", worker: true};
+        datos[5] = {nombre: "btn"};
         console.log(jso[5]);
         ajax(5, datos[5]);
     },

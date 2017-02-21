@@ -298,15 +298,17 @@ $(document).ready(function () {
             $("#message").html("");
             var arrayAutor = idUser;
             var arrayTemas = [];
-            for (var a = 0; i < arraySelecionAutor.length; a++) {
+            for (var a = 0; a < arraySelecionAutor.length; a++) {
                 arrayAutor = arrayAutor + "," + (arraySelecionAutor[a]);
             }
             for (var i = 0; i < arrayselecTF.length; i++) {
                 arrayTemas.push(arrayselecTF[i] + "-0");
             }
-            for (var p = 0; i < arrayselecT.length; p++) {
+            for (var p = 0; p < arrayselecT.length; p++) {
                 arrayTemas.push(arrayselecT[p] + "-1");
             }
+            alert("ArrayAutor");
+            alert(arrayAutor);
             men = $("#Titulo_Publicacion").val();
             jso[5] = ['ProductoVirtual_Controller', '[{opcion:1,info:[' + $("#Titulo_Publicacion").val() + ',' + $("#descripcion_oa").val() + ',' + $("#palabras_claves").val() + ',' + $("#formato").val() + ',0,0,' + $("#instrucciones").val() + ',' + $("#requisitos_instalacion").val() + '],arrayFun:[' + arrayAutor + '],arrayTemas:[' + arrayTemas + '],archivoNom:' + $("#myfile").val() + '}]'];
             selector[5] = null;
@@ -355,8 +357,6 @@ $(document).ready(function () {
             datos[3] = {nombre: "Select"};
             ajax(3, datos[3]);
         } else if (i == 3) {
-
-
             jso[4] = ['Crud_Controller', '[{opcion:3,tabla2:1,tipo:2,elegir:[7,8],delimitador:"[{colum:1,operador:0,valor1:' + $("#CentroDF").text() + '}]",id:0,opSelect:6}]'];
             selector[4] = $("#SelectArea");
             datos[4] = {nombre: "Select"};
@@ -372,8 +372,8 @@ $(document).ready(function () {
             }
             jso[11] = ['Instrutor_Controller', '[{opcion:3,ti:' + idRol + '}]'];
             datos[11] = {caso: "Notificaciones productos virtuales"};
-            ajax(11);
             $.notify(men, estado);
+            ajax(11);
         } else if (i == 11) {
             $("#CasoNombre").text(datos[i].caso);
             $("#cuerpo").empty();

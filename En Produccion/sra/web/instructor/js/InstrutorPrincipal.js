@@ -9,7 +9,6 @@ function cargaI(idRol, ti,js) {
         datos[0] = {caso: "Notificaciones productos virtuales",tipo:2};
         ajax(0);
     });
-
     $('.menu li').click(function (e) {
         if (this.value == 7) {
             jso[2] = ['sesion_controller', '[{opcion:2,se:' + ti + '}]'];
