@@ -9,19 +9,19 @@
                         <article class="col-md-12">
                             <br/>
                             <div class="col-md-10">
-                                <label class="col-md-6">Nombre de la lista de chequeo: </label>
-                                <label class="col-md-6" id="Nombrelista"></label> 
-                                <label class="col-md-6">Descripcion de la lista de chequeo: </label>
-                                <label class="col-md-6" id="DesLista"></label>
-                                <label class="col-md-6">Fecha de creacion lista de chequeo: </label>
-                                <label class="col-md-6" id="FechaLista"></label>
+                                <label class="col-lg-6 col-md-6">Nombre de la lista de chequeo: </label>
+                                <label class="col-lg-6 col-md-6" id="Nombrelista"></label> 
+                                <label class="col-lg-6 col-md-6">Descripcion de la lista de chequeo: </label>
+                                <label class="col-lg-6 col-md-6" id="DesLista"></label>
+                                <label class="col-lg-6 col-md-6">Fecha de creacion lista de chequeo: </label>
+                                <label class="col-lg-6 col-md-6" id="FechaLista"></label>
                             </div>     
                             <table class="col-md-12 table">
                                 <thead class="col-md-12">
-                                <th class="col-md-1">N°</th>
-                                <th class="col-md-6">Item</th>
-                                <th class="col-md-1">Cumple</th>
-                                <th class="col-md-4">Observaciones</th>
+                                <th class="col-lg-1 col-md-1">N°</th>
+                                <th class="col-lg-3 col-md-6">Item</th>
+                                <th class="col-lg-1 col-md-1">Cumple</th>
+                                <th class="col-lg-4 col-md-4">Observaciones</th>
                                 </thead>
                                 <br/>
                                 <tbody id="clone" class="col-md-12"></tbody>
@@ -33,17 +33,17 @@
                                 <input type='checkbox' name="aprobar"  value="on" id="noAprueba"> No</br>
                             </div>
                             </div>
-                            <dvi class="col-md-12" id="TipodeFecha" style="display: none;">
+                            <div class="col-md-12 col-md-offset-2" id="TipodeFecha" style="display: none;">
                                 <label id="TextFecha"></label> <input type="text" id="iFecha">    
-                            </dvi>
-
-                            <label class="col-md-5" for="areaObservacion">Observaciones</label>
-                            <div class="col-md-8">
-                                <textarea class="col-md-5 form-control" id="areaObservacion" rows="1" cols="40"></textarea>
+                            </div>
+                            <div class="col-md-8 col-md-offset-1">
+                                <label class="col-md-5" for="areaObservacion">Observaciones</label>
+                                <div class="col-md-12">
+                                    <textarea class=" form-control" id="areaObservacion" rows="3" cols="40"></textarea>    
+                                </div>
                             </div>   
-
                             <div col-md-4 col-md-offset-1>
-                                <div class="col-md-5">
+                                <div class="col-md-5 col-md-offset-2">
                                     <button type="button" class="btn btn-block col-md-offset-1" id="btnEvaluar">Evaluar</button>
                                 </div>
                             </div>

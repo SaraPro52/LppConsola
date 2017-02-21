@@ -7,7 +7,7 @@
                 <div class="col-md-12">
                     <div class="content" style="margin-top: 3%;">
                         <section >
-                            <article  id="divLista" >
+                            <article  id="divLista" class="col-md-10 col-md-offset-1" >
                                 <table class="table table-striped" id="tablaListaChequeo">
                                     <thead>
                                         <tr>

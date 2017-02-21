@@ -1,12 +1,12 @@
 $(document).on('ready', function () {
     var selector = [], hilo = [], jso = [], data = [], datos = [], constan = true;
     var ob = new $.Luna("Perfil", $("#formulario1"));
-    ob.Vivo("PerfilUsuarioq");
+    ob.Vivo("PerfilUsuario");
+    alert("Perfil2");
     jso[0] = ['Crud_Controller', '[{opcion:3,tabla2:7,tipo:2,elegir:[4,5,7,8,9,10,11,12],delimitador:"[{colum:4,operador:0,valor1:' + idUser + '}]",id:0,opSelect:6}]'];
     selector[0] = $("#formulario1");
     datos[0] = {nombre: "btn", worker: true};
     ajax(0, datos[0]);
-
 
     $("#BtnModificar").click(function () {
         var emailreg = /^[a-zA-Z0-9_\.\-]+@[a-zA-Z0-9\-]+\.[a-zA-Z0-9\-\.]+$/;
@@ -15,7 +15,6 @@ $(document).on('ready', function () {
         var inputs = $(".inputs");
         var selec = $(".select");
         var input, selet;
-
         for (var i = 0; i < inputs.length; i++) {
             if (inputs[i].value == "") {
                 input = $(inputs[i]);
@@ -24,7 +23,6 @@ $(document).on('ready', function () {
                 boo++;
             }
         }
-
         for (var i = 0; i < selec.length; i++) {
             if (selec[i].value == "A0") {
                 selet = $(selec[i]);
@@ -43,35 +41,38 @@ $(document).on('ready', function () {
     });
     function BtnPerfil() {
         alert("LIsta para peticion");
+        $("#NombreFun").val();
+        $("#ApellidoFun").val();
+        $("#IdentificacionFunTipo").val();
+        $("#IdentificacionFun").val();
+        $("#IdSenaFun").val();
+        $("#CaargoFun").val();
+        $("#CorreoFun").val();
+        
     }
     $("#BtnModificar1").click(function () {
         $(".remove").remove();
-        var ss = 0;
-        var input;
         var inputs = $(".inputsC");
+        var ccT = 0;
         for (var i = 0; i < inputs.length; i++) {
-            if (inputs[i].value == "") {
-                input = $(inputs[i]);
-                input.focus().after("<div  style='font-size:15px;' class='remove'><font color='red'>Rellene este campo</font><div>");       
+            if (inputs.value == "") {
+                inputs.focus().after("<div  style='font-size:15px;' class='remove'><font color='red'>Rellene este campo</font><div>");       
             } else {
-                ss++;
-                var con = $("#ConNueva").val();
-                var con1 = $("#ConNuevaF").val();
-                if (con === con1) {
-                    ss++;
-                } else {
-                    $(".remove").remove();
-                    $("#ConNueva").focus().after("<div style='font-size:15px;' class='remove'><font color='red'>Las contraseñas no son iguales.</font></div>");
-                    ss = ss - 1;
-                }
+                ccT++;
             }
         }
-        if (ss == 6) {
-            BtnCon();
+        if ($("#ConNueva").val() == $("#ConNuevaF").val()) {
+            alert("Iguales"+ccT);
+            if (ccT == 4) {
+                BtnCon();
+            }
         }
+        ccT = 0;
     });
     function BtnCon() {
-        console.log("HI");
+        jso[1] = ['Funcionario_Controller', '[{opcion:3,id:' + idUser + ',con:' + $("#ConNuevaF").val() + ',conA:' + $("#ConActual").val() + ',user:' + $("#user").val() + ',pwd:' + $("#ConActual").val() + '}]'];
+        datos[1] = {nombre: "btn"};
+        ajax(1, datos[1]);
     }
     function ajax(i, datos) {
         hilo[i] = new Worker("js/worker.js");
@@ -90,12 +91,23 @@ $(document).on('ready', function () {
             $("#NombreFun").val(jso[0].Nom_Funcionario);
             $("#ApellidoFun").val(jso[0].Apellidos);
             console.log(jso[0].Id_Tipo_Documento);
-            
-            $("#IdentificacionFunTipo option[value=" + jso[0].Id_Tipo_Documento + "]").attr("selected",true);
+
+            $("#IdentificacionFunTipo option[value=" + jso[0].Id_Tipo_Documento + "]").attr("selected", true);
             $("#IdentificacionFun").val(jso[0].Num_Documento);
             $("#IdSenaFun").val(jso[0].Ip_Sena);
             $("#CaargoFun").val(jso[0].Cargo);
             $("#CorreoFun").val(jso[0].Correo);
+        } else if (i == 1) {
+            var daMen = data[i].split("$$");
+            if (daMen[0] == "true") {
+                estado = ("success");
+                men = "La contraseña " + daMen[1];
+            } else {
+                estado = ("error");
+                men = "La contraseña  " + daMen[1];
+            }
+            $.notify(men, estado);
+            $("#coambiarContra")[0].reset();
         }
     }
 });

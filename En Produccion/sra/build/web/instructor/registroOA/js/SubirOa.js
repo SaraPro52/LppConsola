@@ -8,6 +8,7 @@ $(document).ready(function () {
     selector[0] = $("#Titulo_Publicacion");
     datos[0] = {nombre: "AutoComplet", worker: true};
     ajax(0, datos[0]);
+    
 
     $('.autoresMultiselect').multiSelect({
         selectableHeader: "<input type='text' class='search-input form-control' autocomplete='off' placeholder='Busca un autor...'>",
@@ -206,7 +207,7 @@ $(document).ready(function () {
         var optionn = $("#SelectCategoria").val();
         if (optionn != "A0") {
             $("#divBtnaCate").show();
-            jso[6] = ['Crud_Controller', '[{opcion:3,tabla2:4,tipo:2,elegir:[6,7,8],delimitador:"[{colum:0,operador:0,valor1:' + $("#SelectCategoria").val() + '}]",id:0,opSelect:3}]'];
+            jso[6] = ['Crud_Controller', '[{opcion:3,tabla2:4,tipo:2,elegir:[6,7,8],delimitador:"[{colum:0,operador:0,valor1:' + $("#SelectCategoria").val() + '}]",id:0,opSelect:6}]'];
             selector[6] = $("#MultiCategoria");
             datos[6] = {nombre: "MultiSelect"};
             $("#MultiCategoria").empty();
@@ -307,8 +308,6 @@ $(document).ready(function () {
             for (var p = 0; p < arrayselecT.length; p++) {
                 arrayTemas.push(arrayselecT[p] + "-1");
             }
-            alert("ArrayAutor");
-            alert(arrayAutor);
             men = $("#Titulo_Publicacion").val();
             jso[5] = ['ProductoVirtual_Controller', '[{opcion:1,info:[' + $("#Titulo_Publicacion").val() + ',' + $("#descripcion_oa").val() + ',' + $("#palabras_claves").val() + ',' + $("#formato").val() + ',0,0,' + $("#instrucciones").val() + ',' + $("#requisitos_instalacion").val() + '],arrayFun:[' + arrayAutor + '],arrayTemas:[' + arrayTemas + '],archivoNom:' + $("#myfile").val() + '}]'];
             selector[5] = null;

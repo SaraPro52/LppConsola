@@ -21,7 +21,10 @@ function confirmarCon(fun) {
         if (i == 0) {
             jso[1] = ['sesion_controller', '[{opcion:3}]'];
             ajax(1);
-            var daMen = data[i].split("$$");
+        } else if (i == 1) {
+            $("#total").empty();
+            $("#total").append(data[1]);
+            var daMen = data[0].split("$$");
             if (daMen[0] == "true") {
                 estado = ("success");
                 men = daMen[1];
@@ -30,9 +33,6 @@ function confirmarCon(fun) {
                 men = daMen[1];
             }
             $.notify(men, estado);
-        } else if (i == 1) {
-            $("#total").empty();
-            $("#total").append(data[i]);
         }
     }
 }

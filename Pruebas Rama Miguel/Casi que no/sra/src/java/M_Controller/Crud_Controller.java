@@ -82,12 +82,6 @@ public class Crud_Controller extends HttpServlet {
             }
         } catch (Exception falla) {
             respuesta.println("false$$" + falla.getMessage() + "");
-        } finally {
-            try {
-                elo.cerrarConexiones();
-            } catch (SQLException ex) {
-                respuesta.println("false$$" + ex.getMessage() + "");
-            }
         }
     }
 

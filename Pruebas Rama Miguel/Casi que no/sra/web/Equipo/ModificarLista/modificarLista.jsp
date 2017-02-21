@@ -48,7 +48,9 @@
                     </section>
                     <article style="margin-left: 12%;" class="col-md-16" class="EspacioItems">
                         <div id="SelectItemDiv" class="EspacioItems">
-                            <select id="SelectItem" class="itemselect" multiple="multiple"></select>
+                            <select id="SelectItem" class="itemselect" multiple="multiple">
+                                <option>null</option>
+                            </select>
                             <div>
                                 <button class="btn btn-info col-md-6" id="BtnLista" >Modificar lista</button>
                             </div>

@@ -20,13 +20,13 @@
                                     <label for="formato">Nombre del Formato</label>
                                     <input required placeholder="Nombre del Formato" type="text" class="form-control inputs" name="formato" id="formato" required="true">
                                 </div>
-
                                 <div class="col-md-6">
-
                                     <label for="descripcion">Descripción Formato</label>
                                     <input required type="text" placeholder="Descripción Formato"  class="form-control inputs" id="descripcion" name="descripcion" required="true">
                                 </div> 
-                                <button type="button" class="btn btn-info" id="btnformato"  name="button">Guardar formato</button>
+                                <div class="col-md-12 col-md-offset-1 espacio">
+                                    <button type="button" class="btn btn-info espacio" id="btnformato"  name="button">Guardar formato</button>    
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -45,10 +45,10 @@
                         </tbody>
                     </table>
                 </article>
-   </body>
+                </body>
                 <script type="text/javascript" charset="utf8" src="assets/js/jquery-1.10.2.js"></script>
                 <script type="text/javascript" charset="utf8" src="js/jquery.dataTables.js"></script>
                 <script type="text/javascript" charset="utf8" src="js/notify.js"></script> 
                 <script type="text/javascript" charset="utf8" src="js/jquery.cecily.js"></script>
                 <script type="text/javascript" charset="utf8" src="administrador/Formato/js/Formato.js"></script>
-</html>
+                </html>

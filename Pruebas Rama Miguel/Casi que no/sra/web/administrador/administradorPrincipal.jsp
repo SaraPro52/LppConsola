@@ -66,8 +66,9 @@
                         <li class="btntt" value="1"><a><i class="ti-close"></i><p><label style='cursor:pointer;' id="text1">Deshabilitar usuario</label></p></a></li>
                         <li class="btntt" value="2"><a><i class="ti-file"></i><p><label style='cursor:pointer;' id="text2">Formato</label></p></a></li>
                         <li class="btntt" value="3"><a><i class="ti-ruler-alt-2"></i><p><label style='cursor:pointer;' id="text3">Área</label></p></a></li>
-                        <li class="btntt" value="4"><a><i class="ti-layout-width-default"></i><p><label style='cursor:pointer;' id="text4">Ciudad</label></p></a></li>
                         <li class="btntt" value="5"><a><i class="ti-blackboard"></i><p><label style='cursor:pointer;' id="text5">Programa</label></p></a></li>
+                        <li class="btntt" value="4"><a><i class="ti-layout-width-default"></i><p><label style='cursor:pointer;' id="text4">Carga masiva</label></p></a></li>
+                        <li class="activado" value="7"><a><i class="glyphicon glyphicon-off" aria-hidden="true"></i><label style='cursor:pointer;' id="text2">Cerrar Sesion</label></a></li>
                     </ul>
                 </div>
             </div>
@@ -150,17 +151,18 @@
     <script src="assets/js/demo.js"></script>
     <script type="text/javascript" src="administrador/js/admi.js"></script>
     <script>
-        var ami = '<%= session.getAttribute("ami")%>';
-
-        if (ami != null) {
-            $("#menus").append("<li><a href='index.jsp'><i class='ti-shift-right'></i>Cerrar Sesion</a></li>");
-        } else {
-            location.replace('./index.jsp');
+        var nomUser = '<%= session.getAttribute("nomUser")%>';
+        var idUser = '<%= session.getAttribute("idUser")%>';
+        var idRol = '<%= session.getAttribute("idRol")%>';
+        var idCentro = '<%= session.getAttribute("idCentro")%>';
+        if (idUser == null || idRol == null || nomUser == null || idCentro == null) {
+            location.replace('index.jsp');
         }
-
+        var tem = '[{nomUser:' + nomUser + ',idUser:' + idUser + ',idRol:' + idRol + ',idCentro:' + idCentro + '}]';
+        cargaF(tem, idRol);
         $.notify({
             icon: 'ti-gift',
-            message: "Bienvenido a <b>Sara Pro</b> - Administrador " + ami + "."
+            message: "Bienvenido a <b>Sara Pro</b> - Administrador " + nomUser + "."
 
         }, {
             type: 'success',

@@ -1,13 +1,52 @@
 $(document).ready(function () {
     var selector = [], hilo = [], jso = [], data = [], datos = [], estado = "", men = "";
-    $('#myModal').modal('hide');
     var arraySelecion = [];
-    var ob = new $.Luna("MultiSelect", $("#SelectTemas"));
-    ob.Vivo("Categorias");
+    var ob = new $.Luna("MultiSelect", "null");
+    ob.Vivo("Categorias");  
     jso[0] = ['Crud_Controller', '[{opcion:3,tabla2:27,tipo:1,elegir:[0,1],delimitador:[],id:0,opSelect:4}]'];
-    selector[0] = $("#SelectTemas");
-    datos[0] = {nombre: "MultiSelect", worker: true};
+    selector[0] = $("#itemCategoria");
+    $("#itemCategoria").empty();
+    datos[0] = {nombre: "MultiSelect", compuesto: false};
     ajax(0, datos[0]);
+    $('.itemCategorias').multiSelect({
+        selectableHeader: "<input type='text' class='search-input form-control' autocomplete='off' placeholder='Busca un item...'>",
+        selectionHeader: "<input type='text' class='search-input form-control' autocomplete='off' placeholder='Busca un item...'>",
+        afterInit: function (ms) {
+            var that = this,
+                    $selectableSearch = that.$selectableUl.prev(),
+                    $selectionSearch = that.$selectionUl.prev(),
+                    selectableSearchString = '#' + that.$container.attr('id') + ' .ms-elem-selectable:not(.ms-selected)',
+                    selectionSearchString = '#' + that.$container.attr('id') + ' .ms-elem-selection.ms-selected';
+
+            that.qs1 = $selectableSearch.quicksearch(selectableSearchString)
+                    .on('keydown', function (e) {
+                        if (e.which === 40) {
+                            that.$selectableUl.focus();
+                            return false;
+                        }
+                    });
+
+            that.qs2 = $selectionSearch.quicksearch(selectionSearchString)
+                    .on('keydown', function (e) {
+                        if (e.which == 40) {
+                            that.$selectionUl.focus();
+                            return false;
+                        }
+                    });
+        },
+        afterSelect: function (val) {
+            this.qs1.cache();
+            this.qs2.cache();
+            arraySelecion.push(val);
+        },
+        afterDeselect: function (val) {
+            this.qs1.cache();
+            this.qs2.cache();
+            var busqueda = $.inArray(val, arraySelecion);
+            arraySelecion.splice(busqueda, 1);
+        }
+    });
+
 
     $("#btnTema").click(function () {
         $(".remove").remove();
@@ -21,7 +60,7 @@ $(document).ready(function () {
             } else {
                 boo++;
             }
-        } 
+        }
         if (boo == 2) {
             BtnTema();
         }
@@ -30,21 +69,13 @@ $(document).ready(function () {
     function BtnTema() {
         men = $("#NombreTema").val();
         jso[1] = ['Crud_Controller', '[{opcion:1,tabla1:27,tabla2:27,tipo:1,datos:["",' + $("#NombreTema").val() + ',' + $("#DescripcionTema").val() + ',1],elegir:[0,1],delimitador:[],id:0,opSelect:4}]'];
-        selector[1] = $("#SelectTemas");
-        datos[1] = {nombre: "MultiSelect", opt: "Div", worker: true};
+        selector[1] = $("#itemCategoria");
+        $("#itemCategoria").empty();
+        datos[1] = {nombre: "MultiSelect"};
         ajax(1, datos[1]);
 
     }
 
-    $('#SelectTemas').multiSelect({
-        afterSelect: function (valor) {
-            arraySelecion.push(valor);
-        },
-        afterDeselect: function (val) {
-            var busqueda = $.inArray(val, arraySelecion);
-            arraySelecion.splice(busqueda, 1);
-        }
-    });
 
     $("#btnCategoria").click(function () {
         $(".remove").remove();
@@ -67,7 +98,7 @@ $(document).ready(function () {
     function BtnCate() {
         men = $("#NombreCategoria").val();
         jso[2] = ['Categoria_Controller', '[{opcion:1,catego:["' + $("#NombreCategoria").val() + '","' + $("#DescripcionCategoria").val() + '",' + idUser + '],temas:[' + arraySelecion + ']}]'];
-        datos[2] = {nombre: "btn", worker: true};
+        datos[2] = {nombre: "btn"};
         ajax(2, datos[2]);
     }
 
@@ -90,6 +121,7 @@ $(document).ready(function () {
                 men = "El tema: " + men + " no fue agregado exitosamente";
                 estado = ("error");
             }
+            $("#agregarTema")[0].reset();
             $.notify(men, estado);
         } else if (i == 2) {
             var daMen = data[i].split("$$");
@@ -100,9 +132,10 @@ $(document).ready(function () {
                 estado = ("error");
                 men = daMen[1];
             }
+            $("#itemCategoria").multiSelect('deselect_all');
+            $("#AgregarCate")[0].reset();
             $.notify(men, estado);
         }
     }
-
 });
 

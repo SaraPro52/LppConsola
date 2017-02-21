@@ -17,15 +17,44 @@ BEGIN
             WHEN 5 THEN SET @fechaVigencia  = @valor;
 			WHEN 6 THEN SET @ArrayEvaItems 	= @valor;
 		END CASE;");
-	
-    IF(@fechaVigencia = "null")THEN 
-		SET @fechaVigencia = CONCAT(DATE_ADD(CURDATE(), INTERVAL 30 DAY)," 18:00:00");	
-    END IF;
-	
 	CALL SARA_CRUD("INSERT","Evaluacion_General",CONCAT("Observacion~",@observacionG,"|Resultado~",@resultado,"|Id_Version~",@idVersion,"|Id_Lista_Chequeo~",@idLista,"|Id_Funcionario~",@idFuncionario,""),"");
     CALL SARA_CRUD("SELECT","Evaluacion_General","Id_Evaluacion_General INTO @idEvaluacion","Id_Evaluacion_General > 0 ORDER BY Id_Evaluacion_General DESC LIMIT 1");
     
-    CALL SARA_CRUD("UPDATE","Version",CONCAT("Fecha_Vigencia~",@fechaVigencia,""),CONCAT("Id_Version = ",@idVersion,""));
+    -- -----------------------------------------------------------------------------------------------------------
+
+ 
+    CALL SARA_CRUD("SELECT","08_V_Funcionario","Id_Rol INTO @rol",
+    CONCAT("Id_Funcionario = ",@idFuncionario," AND Id_Rol IN (2,3)"));
+    
+    IF(@rol = 2 AND @resultado = 1)THEN
+    
+		IF(@fechaVigencia = "null")THEN 
+			SET @fechaVigencia = CONCAT(DATE_ADD(CURDATE(), INTERVAL 3 MONTH)," 18:00:00");	
+		END IF;	
+    
+		 CALL SARA_CRUD("UPDATE","Version",CONCAT("Fecha_Publicacion~",@fechaVigencia,""),CONCAT("Id_Version = ",@idVersion,""));
+         
+         ELSE IF (@rol = 3 AND @resultado = 1)THEN
+    
+			CALL SARA_CRUD("SELECT","Version","Fecha_Publicacion INTO @fechaVigencia",CONCAT("Id_Version = ",@idVersion,""));
+            
+            CALL SARA_CRUD("UPDATE","Version",CONCAT("Fecha_Vigencia~",@fechaVigencia,""),CONCAT("Id_Version = ",@idVersion,""));
+            
+            ELSE IF((@rol = 2 OR  @rol = 3) AND @resultado = 0) THEN
+                
+				IF(@fechaVigencia = "null")THEN 
+					SET @fechaVigencia = CONCAT(DATE_ADD(CURDATE(), INTERVAL 3 DAY)," 18:00:00");	
+				END IF;	
+				CALL SARA_CRUD("UPDATE","Version",CONCAT("Fecha_Vigencia~",@fechaVigencia,""),CONCAT("Id_Version = ",@idVersion,""));
+            
+			END IF;
+         END IF;
+         
+    END IF;
+    
+    -- -------------------------------------------------------------------------------
+	
+    
     SET @i = 0;
 	SET @num = M_LENGTH(@ArrayEvaItems,"|");
 	WHILE(@i < @num)DO
@@ -84,6 +113,7 @@ BEGIN
 
 				ELSE IF(@resultado = 0 AND @estado1 = 3 OR @estado1 = 4)THEN
 					CALL ALL_AUTOR(@idVersion,@autores);
+                    SELECT @autores as Autores_1; -- Verificacion del datos de autores por si lo pasa bien
 					CALL RegistarNotificaion(CONCAT("El Producto Virtual Fue reprovado INS~2~",@idFuncionario,"~",@autores,"~",@idEvaluacion,""));						
 				END IF;
 		END IF;
@@ -123,8 +153,41 @@ DELIMITER ;
 -- CALL ALL_AUTOR(4,@sali);
 
 -- SELECT @sali;
+-- WHEN 0 THEN SET @observacionG 	= @valor;
+-- WHEN 1 THEN SET @resultado 	  	= @valor;
+-- WHEN 2 THEN SET @idVersion 	  	= @valor;
+-- WHEN 3 THEN SET @idLista 	  	= @valor;
+-- WHEN 4 THEN SET @idFuncionario 	= @valor;
+-- WHEN 5 THEN SET @fechaVigencia  = @valor;
+-- WHEN 6 THEN SET @ArrayEvaItems 	= @valor;
 
--- CALL RegistrarEvaluacion("Observacion1111 de hhhpruebakk17719~1~4~3~2~2017-08-01~    1¤si cumple con el item¤1|1¤si cumple con el item¤2");
+ -- CALL RegistrarEvaluacion("Evaluacion Prueba 333~1~8~3~4~2017-03-26~    1¤si cumple con el item¤1|1¤si cumple con el item¤2");
+ 
+  -- SELECT *
+  -- FROM Evaluacion_General
+ --  WHERE Id_Version = 5 -- LA VALIDACION DE LOS TRES INTENTOS SE DA EN ESTA CONSULTA
+ 
+-- SELECT *
+ --  FROM 07_v_Version 
+-- WHERE Id_Estado = 6 AND Id_Version = 5
+ 
+ -- SELECT *
+  -- FROM 09_v_autor
+  -- WHERE Id_Estado = 3
+  
+--  SELECT *
+--   FROM  18_v_notificaciones
+ 
+ -- SELECT *
+ -- FROM 25_v_evaluarproductosv
+ 
+ --  UPDATE Version 
+  -- SET Fecha_Vigencia = (SELECT Fecha_Publicacion FROM Version WHERE Id_Version = @idVersion)
+  --           WHERE Id_Version = @idVersion;
+            
+-- SELECT Fecha_Publicacion INTO @fe FROM Version WHERE Id_Version = @idVersion;
+ -- SELECT @fe;
+ 
 
 -- CALL SARA_CRUD("SELECT","Tipo_Notificacion","","");
 

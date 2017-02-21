@@ -1,15 +1,9 @@
 $(document).on('ready', function () {
-    console.log("Index");
+    console.log('%c ¡La consola del navegador a sido bloqueada; es por la seguridad de nuestros clientes! :)', 'color: green; font-weight: bold;');
+    //logger.disableLogger();
     var hilo = [], jso = [], data = [];
-
-
-
     $('#btnLogin').click(function () {
-        var u = $("#user").val();
-        if (u == "") {
-            u = 0;
-        }
-        jso[0] = ['sesion_controller', '[{user:' + u + ',pwd:' + $("#pwd").val() + ',opcion:1}]'];
+        jso[0] = ['sesion_controller', '[{user:' + $("#user").val() + ',pwd:' + $("#pwd").val() + ',opcion:1}]'];
         ajax(0);
     });
 
@@ -25,7 +19,7 @@ $(document).on('ready', function () {
     function peticionCompleta(i) {
         if (i == 0) {
             if (data[i] == "false") {
-                alert("Error del servidor ;)");
+                alert("Error al conectarse con el servidor ;)");
             } else {
                 $("#estru").empty();
                 $("#cuerpo").empty();
@@ -36,5 +30,14 @@ $(document).on('ready', function () {
     }
 });
 
+var logger = function () {
+    var oldConsoleLog = null;
+    var pub = {};
+    pub.disableLogger = function disableLogger() {
+        oldConsoleLog = console.log;
+        window['console']['log'] = function () {};
+    };
+    return pub;
+}();
 
 

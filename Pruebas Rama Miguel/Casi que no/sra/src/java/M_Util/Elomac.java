@@ -23,7 +23,7 @@ public class Elomac extends M_Crud {
     private int tipoElo = 1;
 
     public void cerrarConexiones() throws SQLException {
-        this.CerrarConn();
+        this.CerrarConn(this.obtenerConn());
     }
 
     public Elomac(int tab, int tipo) {

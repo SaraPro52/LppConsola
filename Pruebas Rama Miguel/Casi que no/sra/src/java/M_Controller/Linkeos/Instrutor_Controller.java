@@ -38,7 +38,7 @@ public class Instrutor_Controller extends HttpServlet {
                 request.getRequestDispatcher("instructor/ActualizarOa/Actualizar.jsp").forward(request, response);
                 break;
             case 7:
-               request.getRequestDispatcher("Equipo/ModificarLista/modificarLista.jsp").forward(request, response);
+               request.getRequestDispatcher("Equipo/CalificarOa/calificarOa.jsp").forward(request, response);
                 break;
             case 8:
                 request.getRequestDispatcher("instructor/registroOA/imagenes.jsp").forward(request, response);

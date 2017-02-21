@@ -7,13 +7,13 @@ $(document).on('ready', function () {
     jso[0] = ['Crud_Controller', '[{opcion:3,tabla2:9,tipo:2,elegir:[0,1,2],delimitador:"[{colum:4,operador:0,valor1:' + idCentro + '}]",id:0,opSelect:6}]'];
     selector[0] = $("#tablaAprobar");
     ob.TablaEspa(selector[0]);
-    datos[0] = {nombre: "Habilitar", worker: true};
+    datos[0] = {nombre: "Habilitar"};
     ajax(0, datos[0]);
     $(document).on('click', '.btnclick', function (e) {
         jso[1] = ['ProductoVirtual_Controller', '[{opcion: 4,info:[],arrayFun:[],arrayTemas:[],archivoNom:[],aprobacion:[' + idUser + ',' + this.id + ']}]'];
         selector[1] = $("#tablaAprobar");
         ob.limpiarTabla(selector[1]);
-        datos[1] = {nombre: "btn", worker: true};
+        datos[1] = {nombre: "btn"};
         ajax(1, datos[1]);
     });
 
@@ -42,7 +42,7 @@ $(document).on('ready', function () {
             $.notify(men, estado);
             jso[0] = ['Crud_Controller', '[{opcion:3,tabla2:9,tipo:2,elegir:[0,1,2],delimitador:"[{colum:4,operador:0,valor1:' + idCentro + '}]",id:0,opSelect:6}]'];
             selector[0] = $("#tablaAprobar");
-            datos[0] = {nombre: "Habilitar", worker: true};
+            datos[0] = {nombre: "Habilitar"};
             ajax(0, datos[0]);
         }
     }

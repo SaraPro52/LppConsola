@@ -8,40 +8,38 @@
             <div class="row">
                 <div class="col-md-12">
                     <section class="col-md-10">
-                        <article class="col-md-6" id="item" id="formulario">
-                            <form id="formAgreLista">
-                            <input type="hidden" value="1" id="tipoLis">
-                            <label>Nombre Lista</label>
-                            <input required="" type="text" class="form-control inputs1" id="NombreL"  placeholder=" Digite un  nombre para la lista">
-                            <label>Descripción</label>
-                            <textarea required class="form-control inputs1"  id="DescripcionL" placeholder="Describa una descripción para la lista" rows="5" id="comment"></textarea>
-                            </form>
-                        </article>
-
+                        <form id="formAgreLista">
+                            <article class="col-md-6" id="item" id="formulario">
+                                <input type="hidden" value="1" id="tipoLis">
+                                <label>Nombre Lista</label>
+                                <input required="" type="text" class="form-control inputs1" id="NombreL"  placeholder=" Digite un  nombre para la lista">
+                                <label>Descripción</label>
+                                <textarea required class="form-control inputs1"  id="DescripcionL" placeholder="Describa una descripción para la lista" rows="5" id="comment"></textarea>
+                            </article>
+                        </form>
                         <article class="col-md-6" id="items">
                             <div id="SelectItemDiv">
                                 <label>Items</label>
                                 <select id="SelectItem" class="itemSelect" multiple="multiple">
-                                    
+
                                 </select>
                             </div>
                         </article> 
                         <button class="btn btn-info col-md-6" style=" margin-left:30%; margin-right:1%;" id="BtnLista"> Crear lista</button>
                         <article class="col-md-8 " id="tabla">
- 
                             <form class="col-md-10" id="formAgregaItem">
-                                <div>
-                                    <label style="color: #E48D15;" id="lista" >Crear Item</label>
+                                <div class="col-md-12">
+                                    <label style="color: #E48D15;" id="lista" >Crear Item</label>    
                                 </div>
-
-                                <label for="Descripcion">Descripción de item</label>
-
+                                <div class="col-md-12">
+                                    <label for="Descripcion">Descripción de item</label>
+                                </div>
                                 <textarea required class="form-control inputs" placeholder="Describa una descripción para el item" rows="1" id="Descripcion"></textarea>
                             </form>
-                            <div class="col-md-10">
-                                <button  class="btn btn-info" id="btnItem">Agregar Item</button>
-                            </div>
                         </article>
+                        <div class="col-md-10">
+                            <button  class="btn btn-info" id="btnItem">Agregar Item</button>
+                        </div>
                     </section>
                 </div>
             </div>

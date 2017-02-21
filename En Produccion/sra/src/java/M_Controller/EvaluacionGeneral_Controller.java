@@ -90,6 +90,15 @@ public class EvaluacionGeneral_Controller extends HttpServlet {
                         respuesta.println(e.getMessage());
                     }
                     break;
+                case 3:
+                    try {
+                        String delimitador = jData.getString("delimitador");
+                        String[] elegir = Elomac.M_toArray(jData.getString("elegir"));
+                        respuesta.println(new Notificacion().NotificacionAR(elegir, delimitador));
+                    } catch (Exception e) {
+                        respuesta.println(e.getMessage());
+                    }
+                    break;
             }
         } catch (Exception falla) {
             System.out.println(falla.getMessage());

@@ -74,15 +74,17 @@ function listaChequeo(idTipoItem, idUser) {
         }
         men = $("#NombreL").val();
         jso[2] = ['ListaChequeo_Controller', '[{opcion:1,lista:[' + $("#NombreL").val() + ',' + $("#DescripcionL").val() + ',' + idUser + '],items:[' + arrayS + ']}]'];
-        datos[2] = {nombre: "btn", worker: true};
+        datos[2] = {nombre: "btn"};
+        $('.itemSelect').multiSelect('deselect_all');
+        $('#formAgreLista')[0].reset();
         ajax(2, datos[2]);
     }
 
     $("#btnItem").on('click', function () {
-        $(".remove").remove();
+
         var boo = 0;
         var inputs = $(".inputs");
-        var input, selet;
+        var input;
         for (var i = 0; i < inputs.length; i++) {
             if (inputs[i].value == "") {
                 input = $(inputs[i]);
@@ -93,13 +95,15 @@ function listaChequeo(idTipoItem, idUser) {
         }
         if (boo == 1) {
             BtnItem();
-        } 
+        }
+        $(".remove").remove();
     });
 
     function  BtnItem() {
         jso[1] = ['Crud_Controller', '[{opcion:1,tabla1:19,tabla2:19,tipo:1,datos:["",' + $("#Descripcion").val() + ',' + idTipoItem + '],elegir:[0,1],delimitador:"[{colum:2,operador:0,valor1:' + idTipoItem + '}]",id:0,opSelect:6}]'];
         selector[1] = $("#SelectItem");
-        datos[1] = {nombre: "btn"};
+        $("#SelectItem").empty();
+        datos[1] = {nombre: "MultiSelect"};
         ajax(1, datos[1]);
     }
 
@@ -115,8 +119,7 @@ function listaChequeo(idTipoItem, idUser) {
     }
     function peticionCompleta(i) {
         if ((i == 1) || (i == 2)) {
-            if (i == 1) { 
-                document.getElementById("formAgregaItem").reset();
+            if (i == 1) {
                 if (data[0].length < data[1].length) {
                     men = "El item " + $("#Descripcion").val() + " fue agregado exitosamente";
                     estado = ("success");
@@ -124,9 +127,9 @@ function listaChequeo(idTipoItem, idUser) {
                     men = "El item: " + $("#Descripcion").val() + " no fue agregado exitosamente";
                     estado = ("error");
                 }
+                $('#formAgregaItem')[0].reset();
             }
             if (i == 2) {
-                document.getElementById("formAgreLista").reset();
                 $('.itemSelect').multiSelect('deselect_all');
                 var daMen = data[i].split("$$");
                 if (daMen[0] == "true") {
@@ -137,6 +140,7 @@ function listaChequeo(idTipoItem, idUser) {
                     men = daMen[1];
                 }
             }
+
             $.notify(men, estado);
         }
     }

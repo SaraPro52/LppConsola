@@ -1,11 +1,10 @@
 $(document).on('ready', function () {
-    var selector = [], hilo = [], jso = [], data = [], datos = [], estado = "";
-    var c = 0;
+    var selector = [], hilo = [], jso = [], data = [], datos = [], estado = "", idArea;
     var ob = new $.Luna("Area", $("#tablaarea"));
     ob.Vivo("Area");
     jso[0] = ['Crud_Controller', '[{opcion:3,tabla2:1,tipo:1,elegir:[0,1,2],delimitador:[],id:0,opSelect:4}]'];
     selector[0] = $("#tablaarea");
-    datos[0] = {nombre: "Area", worker: true};
+    datos[0] = {nombre: "Area"};
     ob.TablaEspa(selector[0]);
     ajax(0, datos[0]);
     var men = "";
@@ -35,29 +34,30 @@ $(document).on('ready', function () {
             BtnArea();
         }
     });
+
+    $(document).on('click', '.botonArea', function (e) {
+        campo = this.value;
+        var ca = campo.split("$$");
+        idArea = ca[0];
+        $("#areaC").val(ca[1]);
+        $("#areaL").val(ca[2]);
+        $("#btnArea").html("Modificar Área");
+    });
+
     function BtnArea() {
-        var Nom = $("#btnArea").val();
+        var Nom = $("#btnArea").text();
         if (Nom == "Guardar Área") {
             jso[1] = ['FormacionPro_Controller', '[{opcion:2,tabla:2,delimitador:[],datos:["",' + $("#areaC").val() + ',' + $("#areaL").val() + '],idC:' + $("#CentroFormacion").val() + '}]'];
         } else if (Nom == "Modificar Área") {
-            jso[1] = ['FormacionPro_Controller', '[{opcion:2,tabla:2,delimitador:[],datos:["",' + $("#areaC").val() + ',' + $("#areaL").val() + '],idC:' + $("#CentroFormacion").val() + '}]'];
-            $("#btnArea").val("Guardar Área");
+            jso[1] = ['FormacionPro_Controller', '[{opcion:3,tabla:2,delimitador:[],datos:[' + idArea + ',' + $("#areaC").val() + ',' + $("#areaL").val() + '],idC:' + $("#CentroFormacion").val() + '}]'];
+            $("#btnArea").html("Guardar Área");
         }
         selector[1] = $("#tablaarea");
         datos[1] = {nombre: "btn", worker: true};
         men = $("#areaC").val();
         ajax(1, datos[1]);
     }
-    $(document).on('click', '.botonArea', function (e) {
-        console.log("Btn");
-        campo = this.value;
-        var ca = campo.split("$$");
-        console.log(ca);
-        $("#btnArea").val("Modificar formato");
-        $("#areaL").val(ca[0]);
-        $("#areaC").val(ca[1]);
-        $("#btnArea").val("Modificar Área");
-    });
+
     function ajax(i, datos) {
         hilo[i] = new Worker("js/worker.js");
         hilo[i].postMessage(jso[i]);
@@ -72,7 +72,7 @@ $(document).on('ready', function () {
         if (i == 0) {
             jso[2] = ['Crud_Controller', '[{opcion:3,tabla2:10,tipo:2,elegir:[2,3],delimitador:[],id:0,opSelect:4}]'];
             selector[2] = $("#CentroFormacion");
-            datos[2] = {nombre: "Select", worker: true};
+            datos[2] = {nombre: "Select"};
             ajax(2, datos[2]);
         }
         if (i == 1) {
@@ -87,7 +87,7 @@ $(document).on('ready', function () {
             $.notify(men, estado);
             jso[2] = ['Crud_Controller', '[{opcion:3,tabla2:1,tipo:1,elegir:[0,1,2],delimitador:[],id:0,opSelect:4}]'];
             selector[2] = $("#tablaarea");
-            datos[2] = {nombre: "Area", worker: true};
+            datos[2] = {nombre: "Area"};
             ob.limpiarTabla(selector[2]);
             ajax(2, datos[2]);
         }

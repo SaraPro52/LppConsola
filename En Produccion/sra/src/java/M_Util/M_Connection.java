@@ -8,17 +8,14 @@ import java.sql.SQLException;
 
 public class M_Connection{
     
-    private String driver, url, usuario, contraseña, bd;
-    private Connection conn;
+    public M_Connection(){}
     
-    public M_Connection(){
-            
-        driver = "com.mysql.jdbc.Driver";
-        usuario = "root";
-        contraseña = "";
-        bd = "SARA";
-        url = "jdbc:mysql://localhost:3306/"+bd;
-        
+    protected Connection obtenerConn(){
+        String driver = "com.mysql.jdbc.Driver";
+        String url =  "jdbc:mysql://localhost:3303/SARA";     
+        String usuario = "root";
+        String contraseña = "";
+        Connection conn =  null;
         try{
             Class.forName(driver).newInstance();
             conn = DriverManager.getConnection(url,usuario,contraseña);
@@ -35,12 +32,9 @@ public class M_Connection{
         finally{
             
         }
-    }
-    
-    protected Connection obtenerConn(){
         return conn;
     } 
-    protected Connection CerrarConn() throws SQLException{
+    protected Connection CerrarConn(Connection conn) throws SQLException{
         conn.close();
         conn = null;
         return conn;

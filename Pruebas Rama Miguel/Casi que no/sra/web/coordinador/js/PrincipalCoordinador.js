@@ -1,53 +1,52 @@
-$(document).on('ready', function () {
+function cargaC(idRol, ti) {
+    var hilo = [], jso = [], data = [], datos = [];
     console.log("Vivo??coordinador");
     var casoUso = "Consultar estadisticas";
-    objeto = {url: "coordinador_Controller", Opcion: 1, name: 'cuerpo', vista: $("#vista").val()};
-    casoUso = "Habilitar Producto virtual";
-    obtenerP(objeto);
-
+    jso[0] = ['coordinador_Controller', '[{opcion:1,ti:' + idRol + '}]'];
+    datos[0] = {caso: "Habilitar Producto virtual"};
+    ajax(0);
     $(document).on('click', '.Notify', function (e) {
-        var objeto = {url: "coordinador_Controller", Opcion: 1, name: 'cuerpo'};
-        casoUso = "Habilitar Producto virtual";
-        obtenerP(objeto);
+        jso[0] = ['coordinador_Controller', '[{opcion:1,ti:' + idRol + '}]'];
+        datos[0] = {caso: "Habilitar Producto virtual"};
+        ajax(0);
     });
-
+    
     $('.menu li').click(function (e) {
-        objeto = {url: "coordinador_Controller", Opcion: this.value, name: 'cuerpo', vista: $("#vista").val()};
-        casoUso = "text" + this.value;
-        casoUso = $("#" + casoUso).text();
-        if (objeto.Opcion == 1) {
-            casoUso = "Habilitar Producto virtual";
-        }
-        obtenerP(objeto);
-    });
-    function obtenerP(datos) {
-        $.ajax({
-            url: datos.url,
-            type: 'POST',
-            async: true,
-            cache: false,
-            datatype: 'json',
-            data: datos,
-            success: function (json) {
-                res(json, datos.name, datos.vista);
-            },
-            error: function (jqXHR, textStatus, errorThrown) {
-                console.log("Disculpa, pero existe un error :/" + textStatus + errorThrown);
+        if (this.value == 5) {
+            jso[2] = ['sesion_controller', '[{opcion:2,se:' + ti + '}]'];
+            ajax(2);    
+        } else {
+            jso[1] = ['coordinador_Controller', '[{opcion:' + this.value + ',ti:' + idRol + '}]'];
+            casoUso = "text" + this.value;
+            casoUso = $("#" + casoUso).text();
+             datos[1] = {caso: casoUso, en: this.value};
+            if (this.value == 1) {
+                casoUso = "Habilitar Producto virtual";
+                datos[1] = {caso: casoUso};
             }
-        });
+            ajax(1);
+        }
+    });
+    function ajax(i) {
+        hilo[i] = new Worker("js/worker.js");
+        hilo[i].postMessage(jso[i]);
+        hilo[i].onmessage = function (event) {
+            data[i] = event.data;
+            hilo[i].terminate();
+            peticionCompleta(i);
+        };
     }
-    function res(body, select, vista) {
-        switch (select) {
-            case"cuerpo":
-                $("#CasoNombre").text(casoUso);
-                $("#cuerpo").empty();
-                $("#cuerpo").append(body);
-                var cabeza = ("<input id='equipo' value='" + vista + "' type='hidden'>");
-                $("#header").append(cabeza);
-                break;
+    function peticionCompleta(i) {
+        if ((i == 0) || (i == 1)) {
+            $("#CasoNombre").text(datos[i].caso);
+            $("#cuerpo").empty();
+            $("#cuerpo").append(data[i]);
+            if (datos[i].en == 4) {
+                $("#cssUsuario").attr("href", "assets/css/paper-dashboardCoordinador.css");
+            }
+        } else if (i == 2) {
+            $("#estru").empty();
+            $("#estru").append(data[i]);
         }
     }
-});
-
-
-
+}

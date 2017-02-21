@@ -84,9 +84,10 @@
         </section>
     </body>
     <script type="text/javascript" src="js/jquery.js"></script>
+    <script src="assets/js/bootstrap-notify.js"></script>
     <script type="text/javascript" src="/js/ConfirmarCon.js"></script>
     <script>
-         var fun = '<%= session.getAttribute("fun")%>';
+        var fun = '<%= session.getAttribute("fun")%>';
         confirmarCon(fun);
     </script>
 </html>

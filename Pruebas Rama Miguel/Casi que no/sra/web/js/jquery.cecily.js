@@ -11,28 +11,18 @@ jQuery.Luna = function (Datos, selector) {
         this.Nombre = dato;
     }
     ;
-    function setContador(n) {
-        this.contador = n;
-    }
-    ;
-
-    function getContador() {
-        return this.contador;
-    }
-    ;
     function setBus(n) {
         this.bus = [];
         console.log(this.bus);
         this.bus = n;
         console.log(this.bus);
     }
-    ;
-
     this.ObtenerBus = function () {
         return this.bus;
     };
     this.Vivo = function (mensaje) {
         console.log("Vivo??Cecily." + mensaje + " ");
+        //logger.disableLogger();
     };
     this.limpiarSelector = function (selector) {
         selector.empty().append('<option value="A0">selecione...</option>');
@@ -121,6 +111,9 @@ jQuery.Luna = function (Datos, selector) {
         try {
             var c = 1;
             switch (datos.nombre) {
+                case "MutiCategoria":
+                    //Lo mirare posee el mismo dilema que encontre con multiselect con la busqueda de quicksechars =0
+                    break;
                 case "correcionCo":
                     var jso = jQuery.parseJSON(json);
                     var jso1 = jQuery.parseJSON(jso.Items);
@@ -151,7 +144,7 @@ jQuery.Luna = function (Datos, selector) {
                         oAItem.find(".labelEstrella").addClass(jso[i].Id_Version);
                         oAItem.find(".RComentarios").attr('id', "RComentarios" + jso[i].Id_Version);
                         oAItem.find("#comment").addClass('Comment' + jso[i].Id_Version);
-                        oAItem.find("#Url_Version").attr('href','DescargaArchivo?archivo='+jso[i].Url_Version+'');
+                        oAItem.find("#Url_Version").attr('href', 'DescargaArchivo?archivo=' + jso[i].Url_Version + '');
                         oAItem.find("#btn_Comentar").val(jso[i].Id_Version);
                         oAItem.children().appendTo($("#resultados"));
                         var jsoComen = jQuery.parseJSON(jso[i].Comentarios);
@@ -174,21 +167,21 @@ jQuery.Luna = function (Datos, selector) {
                         oAComen.find("#BaseComment").val(jsoComen[j].Comentario);
                         oAComen.children().appendTo($("#RComentarios" + datos.id));
                     }
-                    break;
+                    break; 
                 case "MultiSelect":
                     if (datos.compuesto == true) {
                         var j = Object.keys(json[0]);
-                        var opcion = "";   
+                        var opcion = "";
                         for (var i = 0; i < json.length; i++) {
-                            if (json[i].tipo==true) {
+                            if (json[i].tipo == true) {
                                 opcion = "<option value=" + json[i][j[0]] + " disabled='disabled' selected>" + json[i][j[1]] + "</option>";
-                            } else {
+                            } else if (json[i].tipo == false) {
                                 opcion = "<option value=" + json[i][j[0]] + ">" + json[i][j[1]] + "</option>";
                             }
                             selector.append(opcion);
-                        } 
+                        }
                     } else {
-                        var jso = jQuery.parseJSON(json); 
+                        var jso = jQuery.parseJSON(json);
                         var j = Object.keys(jso[0]);
                         for (var i = 0; i < jso.length; i++) {
                             var opcion = "<option value=" + jso[i][j[0]] + ">" + jso[i][j[1]] + "</option>";
@@ -212,7 +205,7 @@ jQuery.Luna = function (Datos, selector) {
                         var opcion = "<option value=" + jso[i][j[0]] + ">" + jso[i][j[1]] + "</option>";
                         selector.append(opcion);
                     }
-                    $('.' + sele).multiSelect({ 
+                    $('.' + sele).multiSelect({
                         selectableHeader: tipo,
                         selectionHeader: tipo,
                         afterInit: function (ms) {
@@ -303,13 +296,13 @@ jQuery.Luna = function (Datos, selector) {
                     break;
                 case "calificar":
                     var jso = jQuery.parseJSON(json);
-                    var row="",cc=1;
+                    var row = "", cc = 1;
                     for (var i = 0; i < jso.length; i++) {
-                        row= ("<tr class='col-md-12'>\n\
-                                    <td class='col-md-1'><label>"+cc+"</label></td>\n\
-                                    <td class='col-md-6'><label>"+jso[i].Des_Item_Lista+"</label></td>\n\
-                                    <td class='col-md-1'><input type='checkbox' value="+jso[i].Id_Detalles_Lista+">Si</td>\n\
-                                    <td class='col-md-4'><textarea id="+jso[i].Id_Detalles_Lista+" class='form-control esac'></textarea></td>\n\
+                        row = ("<tr class='col-md-12'>\n\
+                                    <td class='col-md-1'><label>" + cc + "</label></td>\n\
+                                    <td class='col-md-6'><label>" + jso[i].Des_Item_Lista + "</label></td>\n\
+                                    <td class='col-md-1'><input type='checkbox' value=" + jso[i].Id_Detalles_Lista + ">Si</td>\n\
+                                    <td class='col-md-4'><textarea id=" + jso[i].Id_Detalles_Lista + " class='form-control esac'></textarea></td>\n\
                                 </tr>");
                         selector.append(row);
                         cc++;
@@ -371,7 +364,7 @@ jQuery.Luna = function (Datos, selector) {
                             jso[i].Producto,
                             jso[i].Conte_Notificacion,
                             jso[i].Fecha_Envio,
-                            "<a class='btn btn-info' href=DescargaArchivo?archivo="+jso[i].Url_Version+">Descargar P.V</a>",
+                            "<a class='btn btn-info' href=DescargaArchivo?archivo=" + jso[i].Url_Version + ">Descargar P.V</a>",
                             "<button  type='button' id='" + jso[i].Ides_Proceso + "' class='btn btn-info  btnEvaluar' value=" + jso[i].Id_Notificacion + ">Evaluar P.V</button>"
                         ]);
                         if ((i < 4) && (datos.dat == true)) {
@@ -387,15 +380,15 @@ jQuery.Luna = function (Datos, selector) {
                     break;
                 case "ConsultarLista":
                     var jso = jQuery.parseJSON(json);
-                    var dat=[];
+                    var dat = [];
                     for (var i = 0; i < jso.length; i++) {
-                        dat=[jso[i].Nom_Lista_Chequeo+"$$"+jso[i].Des_Lista_Chequeo+"$$"+jso[i].Fecha_Creacion.substring(0, 11)];
+                        dat = [jso[i].Nom_Lista_Chequeo + "$$" + jso[i].Des_Lista_Chequeo + "$$" + jso[i].Fecha_Creacion.substring(0, 11)];
                         table = selector.dataTable().fnAddData([
                             i + 1,
                             jso[i].Nom_Lista_Chequeo,
                             jso[i].Des_Lista_Chequeo,
                             jso[i].Fecha_Creacion.substring(0, 11),
-                            "<button id='"+dat+"' value='" + jso[i].Id_Lista_Chequeo + "' class='btnclickca btn btn-info'>Escojer </button>"
+                            "<button id='" + dat + "' value='" + jso[i].Id_Lista_Chequeo + "' class='btnclickca btn btn-info'>Escojer </button>"
                         ]);
                     }
                     break;
@@ -446,12 +439,12 @@ jQuery.Luna = function (Datos, selector) {
                 case "Area":
                     jsArea = jQuery.parseJSON(json);
                     for (var i = 0; i < jsArea.length; i++) {
-                        var data = (jsArea[i].Nom_Area + "$$" + jsArea[i].Lider_Area);
+                        var data = (jsArea[i].Id_Area + "$$" + jsArea[i].Nom_Area + "$$" + jsArea[i].Lider_Area);
                         table = selector.dataTable().fnAddData([
                             i + 1,
                             jsArea[i].Nom_Area,
                             jsArea[i].Lider_Area,
-                            "<button id='" + jsArea[i].Id_Area + "' class='btn btn-info botonArea'value='" + data + "' >modificar</button>"
+                            "<button  class='btn btn-info botonArea'value='" + data + "' >modificar</button>"
                         ]);
                     }
                     break;
@@ -481,12 +474,12 @@ jQuery.Luna = function (Datos, selector) {
                 case "Formato" :
                     jsFormato = jQuery.parseJSON(json);
                     for (var i = 0; i < jsFormato.length; i++) {
-                        var dat = (jsFormato[i].Nom_Formato + "$$" + jsFormato[i].Des_Formato);
+                        var dat = (jsFormato[i].Id_Formato + "$$" + jsFormato[i].Nom_Formato + "$$" + jsFormato[i].Des_Formato);
                         table = $("#tablaformato").dataTable().fnAddData([
                             i + 1,
                             jsFormato[i].Nom_Formato,
                             jsFormato[i].Des_Formato,
-                            "<button id='" + jsFormato[i].Id_Formato + "' class='btn btn-success botonformato'value='" + dat + "' >modificar</button>"
+                            "<button  class='btn btn-success botonformato'value='" + dat + "' >modificar</button>"
                         ]);
                     }
                     setNombre(i + 1);
@@ -512,4 +505,13 @@ jQuery.Luna = function (Datos, selector) {
             console.log(error.message);
         }
     }
+    var logger = function () {
+        var oldConsoleLog = null;
+        var pub = {};
+        pub.disableLogger = function disableLogger() {
+            oldConsoleLog = console.log;
+            window['console']['log'] = function () {};
+        };
+        return pub;
+    }();
 };

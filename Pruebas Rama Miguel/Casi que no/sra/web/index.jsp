@@ -13,7 +13,7 @@
     </head>
     <body id="total">
         <div id="estru">
-            
+
         </div>
         <div id="cuerpo"> 
             <div id="header">
@@ -29,18 +29,17 @@
 
                             <div class="form-group col-md-3">
                                 <label for="user">Usuario</label>
-                                <input type="number" class="form-control" placeholder="Usuario" id="user" >
+                                <input type="text" class="form-control" placeholder="Usuario" id="user" >
                             </div>
                             <div class="form-group col-md-3">
                                 <label for="pwd">Contraseña</label>
                                 <input type="password" class="form-control" placeholder="Contraseña" name="pwd" id="pwd" maxlength="16">
                             </div>
                             <button type="button" class="btn btn-default ubicacionLoginBoton" id="btnLogin">Iniciar sesión</button>
-
-                            <form class="col-md-12" action="Instrutor_Controller" method="post" class="form-control"> 
+                            <form class="col-md-12" action="controleJs" method="post" class="form-control"> 
                                 <select name="Opcion" value="0" >
-                                    <option value="1">seleciona</option> 
-                                    <option value="8">Imagenes12</option>
+                                    <option value="0">seleciona</option> 
+                                    <option value="5">Imagenes12</option>
                                 </select>        
                                 <input type="submit" name="btnenviar" value="Aceptar">
                             </form>    

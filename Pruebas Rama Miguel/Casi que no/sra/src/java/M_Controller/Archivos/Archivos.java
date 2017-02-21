@@ -23,9 +23,9 @@ public class Archivos {
 
     
     public String getBase() {
-        String macc = "C:\\Users\\migue\\Desktop\\LppConsola\\Casi que no\\sra\\web\\Archivos\\";
-        String juan = "C:\\Users\\JudiniBezarius\\Documents\\Proyectos\\LppConsola\\Casi que no\\sra\\web\\Archivos\\";
-        return (macc);
+        String macc = "C:\\Users\\migue\\Desktop\\Añadiduras\\sra\\web\\Archivos\\";
+        String juan = "C:\\Users\\JudiniBezarius\\Documents\\Proyectos\\LppConsola\\PruebasJuan\\sra\\web\\Archivos\\";
+        return (juan);
     }
 
     public void setBase(String base) {

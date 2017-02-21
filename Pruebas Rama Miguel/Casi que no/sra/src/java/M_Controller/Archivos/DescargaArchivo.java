@@ -22,8 +22,9 @@ public class DescargaArchivo extends HttpServlet {
         try {
             String nombre = "archivo";
             String tipo = "pdf";
-            String archivo = "C:\\Users\\JudiniBezarius\\Documents\\Proyectos\\LppConsola\\Casi que no\\sra\\web\\Archivos\\";
-            archivo = archivo + request.getParameter("archivo");
+            Archivos archivo1 = new Archivos();
+            String archivos1 = archivo1.getBase();
+            String archivo = archivos1 + request.getParameter("archivo");
             String[] parts = archivo.split("\\.");
             nombre =request.getParameter("archivo");
             int i = parts.length - 1;

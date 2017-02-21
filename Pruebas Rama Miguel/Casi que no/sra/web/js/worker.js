@@ -9,17 +9,22 @@ this.addEventListener('message', function (e) {
                 respuesta(xhr.responseText)
             } else {
                 console.error(xhr.statusText);
+                xhr.responseText = null;
+                xhr.abort();
             }
         }
     };
     xhr.onerror = function (e) {
         console.log(e);
         console.error(xhr.statusText);
+        xhr.responseText = null;
+        xhr.abort();
     };
     xhr.send();
     function respuesta(obj) {
         this.postMessage(obj);
         obj = null;
+        xhr.abort();
     }
 }, false);
 

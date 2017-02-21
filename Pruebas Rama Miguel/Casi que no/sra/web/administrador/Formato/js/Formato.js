@@ -1,19 +1,20 @@
 $(document).on('ready', function () {
-    var selector = [], hilo = [], jso = [], data = [], datos = [], estado = "", campo = [];
+    var selector = [], hilo = [], jso = [], data = [], datos = [], estado = "", campo = [], idFormato;
     var ob = new $.Luna("Formato", $("#tablaformato"));
-    ob.Vivo("Formato1");
-
+    ob.Vivo("Formato"); 
     jso[0] = ['Crud_Controller', '[{opcion:3,tabla2:17,tipo:1,delimitador:[],elegir:[0,1,2],id:0,opSelect:4}]'];
     selector[0] = $("#tablaformato");
-    datos[0] = {nombre: "Formato", worker: true};
-    ob.TablaEspa(selector[0]); 
+    datos[0] = {nombre: "Formato"};
+    ob.TablaEspa(selector[0]);
     ajax(0, datos[0]);
     $(document).on('click', '.botonformato', function (e) {
         campo = this.value;
         var ca = campo.split("$$");
-        $("#btnformato").val("Modificar formato");
-        $("#formato").val(ca[0]);
-        $("#descripcion").val(ca[1]);
+        alert(ca);
+        idFormato = (ca[0]);
+        $("#formato").val(ca[1]);
+        $("#descripcion").val(ca[2]);
+        $("#btnformato").html("Modificar formato"); 
     });
     var men = "";
     $("#btnformato").click(function () {
@@ -35,17 +36,15 @@ $(document).on('ready', function () {
     });
 
     function Btnformato() {
-        var Nom = $("#btnformato").val();
+        var Nom = $("#btnformato").html();
         if (Nom == "Guardar formato") {
-            console.log("Guarda formato");
             jso[1] = ['Crud_Controller', '[{opcion:1,tabla1:17,tabla2:17,tipo:1,delimitador:[],datos:["",' + $("#formato").val() + ',' + $("#descripcion").val() + '],elegir:[0,1,2],id:0,opSelect:4}]'];
         } else if (Nom == "Modificar formato") {
             $("#btnformato").val("Guardar formato");
-            console.log("Modificar");
-            jso[1] = ['Crud_Controller', '[{opcion:1,tabla1:17,tabla2:17,tipo:1,delimitador:[],datos:["",' + $("#formato").val() + ',' + $("#descripcion").val() + '],elegir:[0,1,2],id:0,opSelect:4}]'];
+            jso[1] = ['Crud_Controller', '[{opcion:2,tabla1:17,tabla2:17,tipo:1,delimitador:[],actualizar:[' + idFormato + ',' + $("#formato").val() + ',' + $("#descripcion").val() + '],elegir:[0,1,2],id:0,opSelect:4}]'];
         }
         selector[1] = $("#tablaformato");
-        datos[1] = {nombre: "Formato", worker: true};
+        datos[1] = {nombre: "Formato"};
         ob.limpiarTabla(selector[1]);
         men = $("#formato").val();
         ajax(1, datos[1]);
@@ -62,14 +61,21 @@ $(document).on('ready', function () {
     }
     function peticionCompleta(i) {
         if (i == 1) {
-            if (data[0].length == data[i].length) {
-                men = "El formato" + men + " no se ingreso.";
-                estado = ("error");
-            } else if (data[0].length < data[i].length) {
-                men = "El formato " + men + " se ingreso correctamente";
+            jso[2] = ['Crud_Controller', '[{opcion:3,tabla2:17,tipo:1,delimitador:[],elegir:[0,1,2],id:0,opSelect:4}]'];
+            selector[2] = $("#tablaformato");
+            datos[2] = {nombre: "Formato"};
+            ob.limpiarTabla(selector[2]);
+            ajax(2, datos[2]);
+        } else if (i == 2) {
+            if (data[2].length > data[0].length) {
                 estado = ("success");
+                men = "El formato " + men + " se agrego correctamente";
+            } else {
+                estado = ("error");
+                men = "El formato " + men + " no se agrego";
             }
             $.notify(men, estado);
+
         }
     }
 });

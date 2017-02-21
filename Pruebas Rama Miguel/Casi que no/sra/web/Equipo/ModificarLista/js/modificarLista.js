@@ -1,4 +1,5 @@
 function modificar(idTipoItem) {
+    //axn ;)
     var jso = [], selector = [], hilo = [], data = [], ww = "", multi = [], arraySelecion = [], Lista = -8, men = "", men1 = "", estado = "";
     $(".EspacioItems").hide();
     $("#tablaItems").hide();
@@ -134,21 +135,38 @@ function modificar(idTipoItem) {
     }
     function peticionCompleta(i) {
         var arrItemsC = [{Id_Item_Lista: "1000000", Des_Item_Lista: "ñññññññññññññññññññññññ", tipo: true}];
+        var arrItems = [];
         if (i == 0) {
-            var js = data[i];
-            for (var f = 0; f < data[i].length; f++) {
+            var js = data[0];
+            for (var f = 0; f < js.length; f++) {
                 arrItemsC.push({Id_Item_Lista: js[f].Id_Item_Lista, Des_Item_Lista: js[f].Des_Item_Lista, tipo: true});
+                arrItems.push({Id_Item_Lista: js[f].Id_Item_Lista});
             }
             jso[3] = ['Crud_Controller', '[{opcion: 3,tabla2:19,tipo:1,elegir: [0,1],delimitador:"[{colum:0,operador:7,valor1:' + ww + ',añadir:0},{colum:2,operador:0,valor1:' + idTipoItem + '}]", id:0,opSelect:6}]'];
-            selector[3] = $("#SelectItem");
             datos[3] = {nombre: "btn"};
-            selector[3].multiSelect();
             ajax(3, datos[3]);
         } else if (i == 3) {
-            var js = data[i];
-            for (var f = 0; f < data[i].length; f++) {
-                arrItemsC.push({Id_Item_Lista: js[f].Id_Item_Lista, Des_Item_Lista: js[f].Des_Item_Lista, tipo: false});
+            var js = data[3];
+            var conunt = 0;
+            for (var f = 0; f < js.length; f++) {
+                for (var o = 0; o < arrItems.length; o++) {
+                    if (js[f].Id_Item_Lista == arrItems[o].Id_Item_Lista) {
+                        conunt++;
+                    }
+                }
+                if (conunt == 0) {
+                    arrItemsC.push({Id_Item_Lista: js[f].Id_Item_Lista, Des_Item_Lista: js[f].Des_Item_Lista, tipo: false});
+                }
+                conunt = 0;
             }
+            alert("=)=////");
+            for (var u = 0; u < arrItemsC.length; u++) {
+                alert("Fianel");
+                alert(arrItemsC[u].Id_Item_Lista);
+                alert(arrItemsC[u].Des_Item_Lista);
+                alert(arrItemsC[u].tipo);
+            }
+            $("#SelectItem").empty();
             datos[3] = {nombre: "MultiSelect", compuesto: true};
             ob.cargarTabla(arrItemsC, $("#SelectItem"), datos[3]);
         } else if (i == 1) {
@@ -157,17 +175,8 @@ function modificar(idTipoItem) {
                 estado = ("error");
             } else if (data[0].length < data[i].length) {
                 var uu = data[i].length;
-                alert(uu);
-                alert(data[i]);
-                
                 var jsoData = jQuery.parseJSON(data[i]);
                 var jj = Object.keys(jsoData[0]);
-                
-                alert(jsoData);
-                alert(jsoData[uu]);
-                alert(jsoData[uu].Des_Item_Lista);
-
-
                 var opcion = "<option value=" + jsoData[uu].Des_Item_Lista + ">" + jsoData[uu].Id_Item_Lista + "</option>";
                 $("#SelectItem").append(opcion);
                 $("#SelectItem").multiSelect('refresh');

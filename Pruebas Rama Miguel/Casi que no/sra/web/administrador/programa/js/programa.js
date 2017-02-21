@@ -5,37 +5,97 @@ $(document).on('ready', function () {
     ob.Vivo("Programa");
     jso[0] = ['Crud_Controller', '[{opcion:3,tabla2:5,tipo:1,elegir:[0,2],delimitador:[],id:0,opSelect:4}]'];
     selector[0] = $("#SelecCentro");
-    datos[0] = {nombre: "Select", worker: true};
+    datos[0] = {nombre: "Select"};
     ajax(0, datos[0]);
     $("#SelecCentro").change(function () {
         $(".Mult").show();
-        if ($("#SelecCentro").val() != "A0") { 
+        $("#MultAreas").empty();
+        if ($("#SelecCentro").val() != "A0") {
             jso[1] = ['Crud_Controller', '[{opcion:3,tabla2:10,tipo:2,elegir:[0,1],\n\
                 delimitador:"[{colum:2,operador:0,valor1:' + $("#SelecCentro").val() + '}]",id:0,opSelect:6}]'];
             selector[1] = $("#MultAreas");
-            datos[1] = {nombre: "MultiSelect", worker: true};
+            datos[1] = {nombre: "MultiSelect"};
             ajax(1, datos[1]);
         }
     });
+    $('.MultAreas').multiSelect({
+        selectableHeader: "<input type='text' class='search-input form-control' autocomplete='off' placeholder='Busca una area...'>",
+        selectionHeader: "<input type='text' class='search-input form-control' autocomplete='off' placeholder='Busca una area...'>",
+        afterInit: function (ms) {
+            var that = this,
+                    $selectableSearch = that.$selectableUl.prev(),
+                    $selectionSearch = that.$selectionUl.prev(),
+                    selectableSearchString = '#' + that.$container.attr('id') + ' .ms-elem-selectable:not(.ms-selected)',
+                    selectionSearchString = '#' + that.$container.attr('id') + ' .ms-elem-selection.ms-selected';
 
-    $("#MultAreas").multiSelect({
-        afterSelect: function (valor) {
-            arrayAreas.push(valor);
+            that.qs1 = $selectableSearch.quicksearch(selectableSearchString)
+                    .on('keydown', function (e) {
+                        if (e.which === 40) {
+                            that.$selectableUl.focus();
+                            return false;
+                        }
+                    });
+
+            that.qs2 = $selectionSearch.quicksearch(selectionSearchString)
+                    .on('keydown', function (e) {
+                        if (e.which == 40) {
+                            that.$selectionUl.focus();
+                            return false;
+                        }
+                    });
+        },
+        afterSelect: function (val) {
+            this.qs1.cache();
+            this.qs2.cache();
+            arrayAreas.push(val);
         },
         afterDeselect: function (val) {
-            var buscando = $.inArray(val, arrayTemas);
-            arrayAreas.splice(buscando, 1);
+            this.qs1.cache();
+            this.qs2.cache();
+            var busqueda = $.inArray(val, arrayAreas);
+            arrayAreas.splice(busqueda, 1);
         }
     });
-    $("#MultTemas").multiSelect({
-        afterSelect: function (valor) {
-            arrayTemas.push(valor);
+
+    $('.MultTemasFormacion').multiSelect({
+        selectableHeader: "<input type='text' class='search-input form-control' autocomplete='off' placeholder='Busca un tema...'>",
+        selectionHeader: "<input type='text' class='search-input form-control' autocomplete='off' placeholder='Busca un tema...'>",
+        afterInit: function (ms) {
+            var that = this,
+                    $selectableSearch = that.$selectableUl.prev(),
+                    $selectionSearch = that.$selectionUl.prev(),
+                    selectableSearchString = '#' + that.$container.attr('id') + ' .ms-elem-selectable:not(.ms-selected)',
+                    selectionSearchString = '#' + that.$container.attr('id') + ' .ms-elem-selection.ms-selected';
+
+            that.qs1 = $selectableSearch.quicksearch(selectableSearchString)
+                    .on('keydown', function (e) {
+                        if (e.which === 40) {
+                            that.$selectableUl.focus();
+                            return false;
+                        }
+                    });
+
+            that.qs2 = $selectionSearch.quicksearch(selectionSearchString)
+                    .on('keydown', function (e) {
+                        if (e.which == 40) {
+                            that.$selectionUl.focus();
+                            return false;
+                        }
+                    });
+        },
+        afterSelect: function (val) {
+            this.qs1.cache();
+            this.qs2.cache();
+            arrayTemas.push(val);
         },
         afterDeselect: function (val) {
-            var buscando = $.inArray(val, arrayTemas);
-            arrayTemas.splice(buscando, 1);
+            this.qs1.cache();
+            this.qs2.cache();
+            var busqueda = $.inArray(val, arrayTemas);
+            arrayTemas.splice(busqueda, 1);
         }
     });
+
 
     $("#btnPrograma").click(function () {
         $(".remove").remove();
@@ -67,7 +127,7 @@ $(document).on('ready', function () {
     function BtnPrograma() {
         men = $("#nomPro").val();
         jso[3] = ['FormacionPro_Controller', '[{opcion:1,datos:["","' + $("#nomPro").val() + '","' + $("#nivel").val() + '"],areas:[' + arrayAreas + '],temas:[' + arrayTemas + ']}]'];
-        datos[3] = {nombre: "btn", worker: true};
+        datos[3] = {nombre: "btn"};
         ajax(3, datos[3]);
     }
 
@@ -86,8 +146,9 @@ $(document).on('ready', function () {
             $(".Mult").show();
         } else if (i == 0) {
             jso[2] = ['Crud_Controller', '[{opcion:3,tabla2:27,tipo:1,elegir:[0,1],delimitador:[],id:0,opSelect:4}]'];
-            selector[2] = $("#MultTemas");
-            datos[2] = {nombre: "MultiSelect", worker: true};
+            selector[2] = $("#MultTemasFormacion");
+            $("#MultTemasFormacion").empty();
+            datos[2] = {nombre: "MultiSelect"};
             ajax(2, datos[2]);
         } else if (i == 3) {
             var daMen = data[i].split("$$");

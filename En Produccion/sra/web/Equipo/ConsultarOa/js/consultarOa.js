@@ -6,7 +6,7 @@ var ob = new $.Luna("Producto virtual", $("#tablaListaChequeo"));
 ob.Vivo("Producto virtualess");
 
 $("#divLista").hide();
-jso[0] = ['Crud_Controller', '[{opcion:3,tabla2:24,tipo:2,elegir:[4,5,6,7,12,13],delimitador:"[{colum:2,operador:0,valor1:' + idRol + ',añadir:0},{colum:9,operador:0,valor1:0,añadir:0},{colum:10,operador:0,valor1:' + idCentro + ',añadir:0},{colum:0,operador:0,valor1:' + idUser + '}]",id:0,opSelect:6}]'];
+jso[0] = ['EvaluacionGeneral_Controller','[{opcion:3,elegir:[4,5,6,7,11],delimitador:"[{colum:2,operador:0,valor1:' + idRol + ',añadir:0},{colum:10,operador:0,valor1:' + idCentro + ',añadir:0},{colum:0,operador:0,valor1:' + idUser + ',añadir:0},{colum:9,operador:0,valor1:0}]"}]'];
 selector[0] = $("#tablaConsultarOa");
 datos[0] = {nombre: "consutarOa", dat: true};
 ajax(0, datos[0]);

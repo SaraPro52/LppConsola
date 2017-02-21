@@ -1,13 +1,9 @@
 package M_Util;
-
 import java.sql.CallableStatement;
 import java.sql.ResultSet;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
-
 public class M_Procedure extends M_Connection{
-    
             private     CallableStatement cst = null;
             protected   ResultSet rs    = null;
             private     final String[] procedure = {"{Call SARA_CRUD(?,?,?,?)}",
@@ -24,14 +20,14 @@ public class M_Procedure extends M_Connection{
                                                   
             public boolean listo = false;
             protected String json;
-            
+
         public M_Procedure(){
             super();
         }
         
         protected  ResultSet saraCrud(String sentencia,String tabla,String contenido1, String contenido2){
             try {
-                 cst = this.obtenerConn().prepareCall(procedure[0]);
+                 cst = obtenerConn().prepareCall(procedure[0]);
                  cst.setString(1, sentencia);
                  cst.setString(2, tabla);
                  cst.setString(3, contenido1);
@@ -47,7 +43,7 @@ public class M_Procedure extends M_Connection{
         }  
         protected void Prueba(int valor){
             try {
-                cst = this.obtenerConn().prepareCall("{call Pruebita(?,?)}");
+                cst = obtenerConn().prepareCall("{call Pruebita(?,?)}");
                 cst.setInt(1,valor);
                 cst.registerOutParameter(2, java.sql.Types.VARCHAR);
                 cst.execute();
@@ -71,16 +67,15 @@ public class M_Procedure extends M_Connection{
                 case 8 : p = procedure[8];break;
                 case 9 : p = procedure[9];break;
             }
-            try { 
-            cst = this.obtenerConn().prepareCall(p);
+            try {
+            cst = obtenerConn().prepareCall(p);
             cst.setString(1,todo);
             cst.execute();
             if(val == 4)return cst.getResultSet();
+            
             listo = true;
             } catch (Exception p2) {
-                String error = "Error Grave :" + p2.getMessage();
                 Logger.getLogger(M_Procedure.class.getName()).log(Level.SEVERE,null,p2);
-                
             }
             return listo;
         }
@@ -93,13 +88,4 @@ public class M_Procedure extends M_Connection{
             }
             return group;
         }
-}    
-        
-
-        
-       
-
-
-
-
-
+} 

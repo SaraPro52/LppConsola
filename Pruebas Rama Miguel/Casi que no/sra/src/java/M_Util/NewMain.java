@@ -1314,9 +1314,10 @@ public class NewMain {
 //        for (int i = 0; i < parts.length; i++) {
 //            System.out.println(parts[i]);
 //        }
-        String contraseña = DigestUtils.md5Hex("1234");
-        System.out.println(contraseña);
-
+ String delimitador = "[{colum:2,operador:0,valor1:1019,añadir:0},{colum:8,operador:0,valor1:'\"e10adc3949ba59abbe56e057f20f883e\"'}]";
+ String[] num = {"0","5"};
+ 
+        System.out.println(new Elomac(18,1).Select(num, delimitador));
 
     }
 }

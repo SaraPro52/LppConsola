@@ -13,7 +13,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <section class="col-md-12">
-                            <article class="col-md-8">
+                            <article class="col-md-10 col-md-offset-1">
                                 <table class="table table-striped" id="tablaNotificacion">
                                     <thead>
                                         <tr>

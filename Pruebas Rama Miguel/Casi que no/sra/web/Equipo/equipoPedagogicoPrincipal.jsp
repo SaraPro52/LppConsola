@@ -32,10 +32,11 @@
                     <li class="activado" value="1"><a><i class="icono izquierda  fa fa-book" aria-hidden="true"></i><label style='cursor:pointer;' id="text1">Crear lista de chequeo</label </a></li>
                     <li class="activado" value="3"><a><i class="icono izquierda  fa fa-edit" aria-hidden="true"></i><label style='cursor:pointer;' id="text3">Editar Lista de chequeo</label></a></li>
                     <li class="activado" value="2"><a><i class="icono izquierda  fa fa-eye" aria-hidden="true"></i><label  style='cursor:pointer;' id="text2">Consultar objetos</label></a></li>
+                    <li class="activado" value="5"><a><i class="glyphicon glyphicon-off" aria-hidden="true"></i><label style='cursor:pointer;' id="text2">Cerrar Sesion</label></a></li>
                 </ul>
             </div>
+            <p id="tis" style="display: none;"></p>
         </div>
-
         <div class="main-panel">
             <nav class="navbar navbar-default">
                 <div class="container-fluid">
@@ -120,12 +121,11 @@
     var idCentro = '<%= session.getAttribute("idCentro")%>';
     var idTipoItem = 1;
 
-    if (idUser != null && idRol != null && nomUser != null && idCentro != null) {
-        $("#menus").append("<li><a href='index.jsp'><i class='icono izquierda  fa fa-upload' aria-hidden='true'></i>Cerrar Sesion</a></li>");
-    } else {
+    if (idUser == null || idRol == null || nomUser == null || idCentro == null) {
         location.replace('index.jsp');
     }
-
+    var tem = '[{nomUser:' + nomUser + ',idUser:' + idUser + ',idRol:' + idRol + ',idCentro:' + idCentro + '}]';
+    carga(tem, idRol);
     $.notify({
         icon: 'ti-gift',
         message: "Bienvenido a <b>Sara Pro</b> - Lider de equipo pedagogico " + nomUser + "."

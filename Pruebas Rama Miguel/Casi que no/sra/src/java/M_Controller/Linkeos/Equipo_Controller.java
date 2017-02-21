@@ -20,30 +20,33 @@ public class Equipo_Controller extends HttpServlet {
             throws ServletException, IOException, JSONException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            
             String data = request.getParameter("data");
             JSONObject jData = new JSONArray(data).getJSONObject(0);
-            int opcion = jData.getInt("opcion");
-
-            switch (opcion) {
-                case 0:
-                    request.getRequestDispatcher("perfil/perfilUsuario.jsp").forward(request, response);
-                    break;
-                case 1:
-                    request.getRequestDispatcher("Equipo/ListaChequeo/listaChequeo.jsp").forward(request, response);
-                    break;
-                case 2:
-                    request.getRequestDispatcher("Equipo/ConsultarOa/consultarOa.jsp").forward(request, response);
-                    break;
-                case 3:
-                    request.getRequestDispatcher("Equipo/ModificarLista/modificarLista.jsp").forward(request, response);
-                    break;
-                case 4:
-                    request.getRequestDispatcher("Equipo/CalificarOa/calificarOa.jsp").forward(request, response);
-                    break;
+            int tip = jData.getInt("ti");
+            if ((tip == 2) || (tip == 3)) {
+                int opcion = jData.getInt("opcion");
+                switch (opcion) {
+                    case 0:
+                        request.getRequestDispatcher("perfil/perfilUsuario.jsp").forward(request, response);
+                        break;
+                    case 1:
+                        request.getRequestDispatcher("Equipo/ListaChequeo/listaChequeo.jsp").forward(request, response);
+                        break;
+                    case 2:
+                        request.getRequestDispatcher("Equipo/ConsultarOa/consultarOa.jsp").forward(request, response);
+                        break;
+                    case 3:
+                        request.getRequestDispatcher("Equipo/ModificarLista/modificarLista.jsp").forward(request, response);
+                        break;
+                    case 4:
+                        request.getRequestDispatcher("Equipo/CalificarOa/calificarOa.jsp").forward(request, response);
+                        break;
+                }
+            } else {
+                request.getRequestDispatcher("index.jsp").forward(request, response);
             }
-        }catch(Exception e){
-            System.out.println(e.getMessage()); 
+        } catch (Exception e) {
+            request.getRequestDispatcher("index.jsp").forward(request, response);
         }
     }
 

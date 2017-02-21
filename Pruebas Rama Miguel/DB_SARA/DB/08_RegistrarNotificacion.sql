@@ -19,13 +19,16 @@ DELIMITER ;;
 	CALL SARA_CRUD("INSERT","Notificacion",CONCAT("Conte_Notificacion~",@contenido,"|Id_Tipo_Notificacion~",@idTipo,"|Id_Funcionario~",@idFun,"|Ides_Proceso~",@Ides,""),"");
     CALL SARA_CRUD("SELECT","Notificacion","Id_Notificacion INTO @idNoti","Conte_Notificacion = @contenido AND Id_Tipo_Notificacion = @idTipo AND Id_Funcionario = @idFun AND Ides_Proceso = @Ides ORDER BY Id_Notificacion DESC LIMIT 1");
        
-       SELECT @idNoti;
+       
         SET @i = 0;
 		SET @num = M_LENGTH(@ArrayFun,",");
 		WHILE(@i < @num)DO
 			SET @valor = SUBSTRING_INDEX(@ArrayFun,",",1);
 			SET @cant = CHAR_LENGTH(@ArrayFun) - CHAR_LENGTH(@valor);
 			SET @ArrayFun = RIGHT(@ArrayFun,@cant -1);
+            
+				SELECT  @valor;
+                SELECT  @idNoti;
 				CALL SARA_CRUD("INSERT","Detalles_Notificacion",CONCAT("Id_Notificacion~",@idNoti,"|Id_Funcionario~",@valor,""),"");
 			SET @i = @i + 1;
 		END WHILE;

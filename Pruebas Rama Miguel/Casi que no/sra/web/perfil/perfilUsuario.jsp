@@ -9,7 +9,7 @@
 
     </head>
     <body>
-        
+
         <div class="content" id="formulario1">
             <div class="container-fluid">
                 <div class="row">
@@ -53,7 +53,8 @@
                                     <div class="col-md-5">
                                         <div class="form-group">
                                             <label>Numero De Identificación</label>
-                                            <input required id="IdentificacionFun"  type="text" class="form-control border-input inputs" placeholder="Ej:11195673412" maxlength="1000" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;">
+                                            <input required id="IdentificacionFun"  type="text" class="form-control border-input inputs" placeholder="Ej:11195673412" maxlength="1000" onKeypress="if (event.keyCode < 45 || event.keyCode > 57)
+                                                        event.returnValue = false;">
                                         </div>
                                     </div>
                                 </div>
@@ -61,62 +62,69 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <h4 style="font-size:25px;"class="title" >Datos SENA</h4>
-                                        
-                                </div>
 
-                                <div style="margin-left:5%;" class="row">
-                                    
-                                    <div class="col-md-5">
-                                        <div class="form-group">
-                                            <label>Ip SENA</label>
-                                            <input required id="IdSenaFun" type="text" class="form-control border-input inputs" placeholder="Ej:54587093" value="" maxlength="1000" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;">
+                                    </div>
+
+                                    <div style="margin-left:5%;" class="row">
+
+                                        <div class="col-md-5">
+                                            <div class="form-group">
+                                                <label>Ip SENA</label>
+                                                <input required id="IdSenaFun" type="text" class="form-control border-input inputs" placeholder="Ej:54587093" value="" maxlength="1000" onKeypress="if (event.keyCode < 45 || event.keyCode > 57)
+                                                            event.returnValue = false;">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-5">
+                                            <div class="form-group">
+                                                <label>Cargo</label>
+                                                <input required id="CaargoFun" type="text" maxlength="12"  class="form-control border-input inputs" placeholder="Ej:Instructor">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Correo Eléctronico</label>
+                                                <input required id="CorreoFun" type="email" class="form-control border-input" placeholder="Ej:ejemplo@ejemplo.com">
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-5">
-                                        <div class="form-group">
-                                            <label>Cargo</label>
-                                            <input required id="CaargoFun" type="text" maxlength="12"  class="form-control border-input inputs" placeholder="Ej:Instructor">
+                                    <form id="coambiarContra">
+                                        <div style="margin-left:5%;" class="col-md-4">
+                                            <label>Usuario:</label>
+                                            <input required id="user" type="text" class="form-control border-input inputsC" placeholder="" >
+                                        </div> 
+                                        <div style="margin-left:5%;" class="col-md-4">
+                                            <label>Contraseña Actual</label>
+                                            <input required id="ConActual" type="password" class="form-control border-input inputsC" placeholder="" >
+                                        </div> 
+                                        <div style="margin-left:5%;" class="col-md-4">
+                                            <label>Nueva Contraseña</label>
+                                            <input required id="ConNueva" type="password" class="form-control border-input inputsC" placeholder="">
                                         </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label>Correo Eléctronico</label>
-                                            <input required id="CorreoFun" type="email" class="form-control border-input" placeholder="Ej:ejemplo@ejemplo.com">
+                                        <div style="margin-left:5%;" class="col-md-4">
+                                            <label for="exampleInputEmail1">Confirmar nueva contraseña</label>
+                                            <input required id="ConNuevaF"  type="password" class="form-control border-input inputsC" placeholder="">
                                         </div>
-                                    </div>
+                                    </form>
                                 </div>
-                                <div style="margin-left:5%;" class="col-md-4">
-                                    <label>Contraseña Actual</label>
-                                    <input required id="ConActual" type="password" class="form-control border-input inputsC" placeholder="" >
-                                </div> 
-                                <div style="margin-left:5%;" class="col-md-4">
-                                    <label>Nueva Contraseña</label>
-                                    <input required id="ConNueva" type="password" class="form-control border-input inputsC" placeholder="">
-                                </div>
-                                <div style="margin-left:5%;" class="col-md-4">
-                                    <label for="exampleInputEmail1">Confirmar nueva contraseña</label>
-                                    <input required id="ConNuevaF"  type="password" class="form-control border-input inputsC" placeholder="">
+                                <div class="text-center" style="margin-bottom:3%; ">
+                                    <button id="BtnModificar" type="button" class="btn btn-info btn-fill btn-wd ">Modificar perfil</button>
+                                    <button id="BtnModificar1" type="button" class="btn btn-info btn-fill btn-wd ">Modificar Contraseña</button>
+
                                 </div>
                         </div>
-                        <div class="text-center" style="margin-bottom:3%; ">
-                            <button id="BtnModificar" type="button" class="btn btn-info btn-fill btn-wd ">Modificar perfil</button>
-                            <button id="BtnModificar1" type="button" class="btn btn-info btn-fill btn-wd ">Modificar Contraseña</button>
-                            
-                        </div>
+
+                        <div class="clearfix"></div>
+                        <form/>
                     </div>
-
-                    <div class="clearfix"></div>
-                    <form/>
                 </div>
             </div>
         </div>
-    </div>
-</body>
+    </body>
 
-<script type="text/javascript" src="assets/js/jquery-1.10.2.js" ></script>
-<script type="text/javascript" src="js/bootstrap.js" ></script>
-<script type="text/javascript" src="js/notify.js"></script> 
-<script type="text/javascript" src="js/jquery.cecily.js"></script>
-<script type="text/javascript" src="perfil/js/perfilUsuario.js"></script>
+    <script type="text/javascript" src="assets/js/jquery-1.10.2.js" ></script>
+    <script type="text/javascript" src="js/bootstrap.js" ></script>
+    <script type="text/javascript" src="js/notify.js"></script> 
+    <script type="text/javascript" src="js/jquery.cecily.js"></script>
+    <script type="text/javascript" src="perfil/js/perfilUsuario.js"></script>
 </html>
 
