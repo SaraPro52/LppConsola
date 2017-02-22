@@ -58,6 +58,13 @@ public class ListaChequeo_Controller extends HttpServlet {
                         respuesta.println(e.getMessage());
                     }
                     break;
+                case 3:
+                    try {//Editar Lista Chequeo-Listar todos los items
+                        respuesta.println(new Lista_Chequeo().ListaItems(jData.getInt("lista"), jData.getInt("tipoItem")));
+                    } catch (Exception e) {
+                        respuesta.println(e.getMessage());
+                    }
+                    break;
             }
         }catch(Exception e){
             System.out.println(e.getMessage());

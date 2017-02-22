@@ -74,7 +74,7 @@ function modificar(idTipoItem) {
 //        for (var i = 0; i < inputs.length; i++) {
 //            if (inputs[i].value == "") {
 //                input = $(inputs[i]);
-//                input.focus().after("<div class='remove'><font color='red'>Rellene este campo</font><div>");       
+//                input.focus().after("<div class='remove'><font color='red'>Rellene este campo</font><div>");       
 //            } else {
 //                boo++;
 //            }
@@ -99,7 +99,7 @@ function modificar(idTipoItem) {
         for (var i = 0; i < inputs.length; i++) {
             if (inputs[i].value == "") {
                 input = $(inputs[i]);
-                input.focus().after("<div class='remove'><font color='red'>Rellene este campo</font><div>");       
+                input.focus().after("<div class='remove'><font color='red'>Rellene este campo</font><div>");       
             } else {
                 boo++;
             }
@@ -135,14 +135,23 @@ function modificar(idTipoItem) {
     }
     function peticionCompleta(i) {
         var arrItemsC = [{Id_Item_Lista: "1000000", Des_Item_Lista: "ñññññññññññññññññññññññ", tipo: true}];
+        
         var arrItems = [];
         if (i == 0) {
+            var ww = "";
             var js = data[0];
             for (var f = 0; f < js.length; f++) {
+                alert("DATA: " + data[0][f].Id_Item_Lista+ " VAL: " +js.length);
                 arrItemsC.push({Id_Item_Lista: js[f].Id_Item_Lista, Des_Item_Lista: js[f].Des_Item_Lista, tipo: true});
                 arrItems.push({Id_Item_Lista: js[f].Id_Item_Lista});
+                
+                if(f == 0){//Solucion Momentanea
+                    ww += js[f].Id_Item_Lista;
+                }else {
+                    ww +=  "," + js[f].Id_Item_Lista;
+                }
             }
-            jso[3] = ['Crud_Controller', '[{opcion: 3,tabla2:19,tipo:1,elegir: [0,1],delimitador:"[{colum:0,operador:7,valor1:' + ww + ',añadir:0},{colum:2,operador:0,valor1:' + idTipoItem + '}]", id:0,opSelect:6}]'];
+            jso[3] = ['Crud_Controller', '[{opcion: 3,tabla2:19,tipo:1,elegir: [0,1],delimitador:"[{colum:0,operador:7,valor1:\'' + ww + '\',añadir:0},{colum:2,operador:0,valor1:' + idTipoItem + '}]", id:0,opSelect:6}]'];
             datos[3] = {nombre: "btn"};
             ajax(3, datos[3]);
         } else if (i == 3) {
@@ -199,3 +208,5 @@ function modificar(idTipoItem) {
         }
     }
 }
+
+jso[0] = ['ListaChequeo_Controller','[{opcion:3,lista:1,tipoItem:0}]'];

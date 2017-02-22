@@ -1,6 +1,8 @@
 package M_Modelo;
 
 import M_Util.Elomac;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class Lista_Chequeo extends Elomac{
 	public  Lista_Chequeo ( ){ 
@@ -38,5 +40,39 @@ public class Lista_Chequeo extends Elomac{
             }
             
             
+        }
+        
+        
+        public Object ListaItems(int idLista,int tipoLista){//Editar lista chequeo
+            String[] numT = {"0","1"};
+            String delimitador = "[{colum:3,operador:0,valor1:" + idLista + ",añadir:0},{colum:2,operador:0,valor1:" + tipoLista + "}]";
+            String items = new Elomac(15,2).Select(numT, delimitador);
+            String itemsTiene = "";
+            JSONArray arrayItems = new JSONArray();
+            
+            try {
+                for (int i = 0; i < new JSONArray(items).length(); i++) {
+                    JSONObject jItem = new JSONArray(items).getJSONObject(i);
+                    jItem.put("tipo", 1);
+                    if(i == 0){
+                        itemsTiene += jItem.getString("Id_Item_Lista");
+                    }else{
+                        itemsTiene += "," + jItem.getString("Id_Item_Lista");
+                    }
+                    arrayItems.put(jItem);
+                }
+                delimitador = "[{colum:0,operador:7,valor1:\'" + itemsTiene + "\',añadir:0},{colum:2,operador:0,valor1:" + tipoLista + "}]";
+                items = new Elomac(19,1).Select(numT, delimitador);
+                for (int i = 0; i < new JSONArray(items).length(); i++) {
+                    JSONObject jItem1 = new JSONArray(items).getJSONObject(i);
+                    jItem1.put("tipo", 0);
+                    arrayItems.put(jItem1);
+                }
+                
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+                return "false";
+            }
+            return arrayItems;
         }
 }
