@@ -63,10 +63,12 @@ public class Lista_Chequeo extends Elomac{
                 }
                 delimitador = "[{colum:0,operador:7,valor1:\'" + itemsTiene + "\',añadir:0},{colum:2,operador:0,valor1:" + tipoLista + "}]";
                 items = new Elomac(19,1).Select(numT, delimitador);
-                for (int i = 0; i < new JSONArray(items).length(); i++) {
-                    JSONObject jItem1 = new JSONArray(items).getJSONObject(i);
-                    jItem1.put("tipo", 0);
-                    arrayItems.put(jItem1);
+                if(items != "false"){
+                    for (int i = 0; i < new JSONArray(items).length(); i++) {
+                        JSONObject jItem1 = new JSONArray(items).getJSONObject(i);
+                        jItem1.put("tipo", 0);
+                        arrayItems.put(jItem1);
+                    }
                 }
                 
             } catch (Exception e) {

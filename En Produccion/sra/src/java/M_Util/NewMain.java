@@ -1339,7 +1339,7 @@ public class NewMain {
 
             
             Lista_Chequeo list = new Lista_Chequeo();
-            System.out.println(list.ListaItems(1, 0));
+            System.out.println(list.ListaItems(2, 1));
 
     }
 }
