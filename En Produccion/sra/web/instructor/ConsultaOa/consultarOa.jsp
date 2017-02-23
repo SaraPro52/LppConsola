@@ -10,42 +10,62 @@
     <article class="col-md-12">
         <div id="Tituloss">
             <div class="col-md-6">
-                <label for="txtBuscarTitle">Buscar producto virtual por titulo:</label>
-                <input required type="text" id="txtBuscarTitle" value="" class="form-control inputs">
+                <label for="txtBuscarTitle" class="col-md-12">Buscar producto virtual por titulo:</label>
+                <div class="col-md-10">
+                    <input required type="text" id="txtBuscarTitle" value="" class="form-control inputs">
+                </div>
             </div>
             <div class="col-md-6">
-                <label for="Autores">Autor: </label>
-                <input required type="text" id="Autores" value="" class="form-control inputs">
+                <label for="Autores" class="col-md-12">Autor: </label>
+                <div class="col-md-10">
+                    <input required type="text" id="Autores" value="" class="form-control inputs">
+                </div>
             </div>
 
-            <div class="col-md-7">
-                <label><a id="BusquedaAvanzada">Busqueda Avanzada</a></label>
+            <div class="col-md-12
+                 ">
+                <div class="col-md-12">
+                    <label><a id="BusquedaAvanzada">Busqueda Avanzada</a></label>    
+                </div>
 
-                <div id="Avando" style="display: none;">
+                <div id="Avando" style="display: none;" class="col-md-10">
                     <div class="col-md-12">
-                        <label><input type="checkbox" id="Programas">Programa de formacion</label>    
-                        <label><input type="checkbox" id="Categoria">Categoria</label>
+                        <label class="col-md-12">Buscar por:</label>
+                        <label class="col-md-6">Programa de formacion<input type="checkbox" id="Programas"></label>    
+                        <label class="col-md-6">Categoria<input type="checkbox" id="Categoria"></label>
 
-                        <div id="ElementoFormacion" style="display: none;">
-                            <label for="CiudadFormacion">Ciudad</label>
-                            <select id="CiudadFormacion">
-                                <option value="A0">Seleciona...</option>
-                            </select>
-                            <label>centro de formacion</label>
-                            <select  id="CentroF">
-                                <option value="A0">Seleciona...</option>
-                            </select>
-                            <label>Area de formacion</label>
-                            <select  id="Area">
-                                <option value="A0">Seleciona...</option>
-                            </select>
-                            <label>Programa de formacion</label>
-                            <select  id="Programa"></select>
+                        <div id="ElementoFormacion" style="display: none;" class="col-md-12">
+                            <div class="col-md-6">
+                                <label for="CiudadFormacion" class="col-md-12">Ciudad</label>
+                                <select id="CiudadFormacion" class="form-control">
+                                    <option value="A0">Seleciona...</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="CentroF" class="col-md-12">centro de formacion</label>
+                                <select  id="CentroF" class="form-control">
+                                    <option value="A0">Seleciona...</option>
+                                </select>    
+                            </div>
+                            <div class="col-md-6">
+                                <label for="Area" class="col-md-12">Area de formacion</label>
+                                <select  id="Area" class="form-control">
+                                    <option value="A0">Seleciona...</option>
+                                </select>                                
+                            </div>
+                            <div id="ElementoPrograma" style="display: none;" class="col-md-12">
+                                <label class="col-md-12">Programa de formacion</label>
+                                <select id="Programa" class="Programa" multiple="multiple">
+                                    <option>null</option>
+                                </select>
+                            </div>
+
                         </div>
                         <div id="ElementoCategoria" style="display: none;">
                             <div  id="CategoriaTem" >
-                                <label>categoria</label>
-                                <select class="" id="SelectCategoria">
+                                <label>Categorias de los productos virtuales</label>
+                                <select id="SelectCategoria" class="SelectCategoria" multiple="multiple">
+                                    <option>null</option>
                                 </select>
                             </div>
                         </div>
@@ -63,12 +83,13 @@
                         </div>
                     </div>
                     <div class="col-md-12">
-                        <label for="Formato">Formato:</label>
-                        <select class="form-control select" id="Formato">
-                            <option value="AF">Selecione...</option>
-                        </select>
+                        <label for="Formato" class="col-md-12">Formato:</label>
+                        <div class="col-md-6">
+                            <select class="form-control select" id="Formato">
+                                <option value="AF">Selecione...</option>
+                            </select>                            
+                        </div>
                     </div>
-
                     <!--label for="Palabras">Palabras clave: </label>
                     <input type="text" id="Palabras" value=""-->
                 </div>
@@ -77,10 +98,8 @@
     </article>
 </p>
 <div class="col-md-offset-1 col-md-3">
-    <button id="btnBuscar" type="button" class="btn btn-block">Buscar producto virtual...</button>
+    <button id="btnBuscar" type="button" class="btn btn-block">Buscar producto virtual</button>
 </div>
-
-
 <div id="formulario1" style="display: none;">
     <section class="col col-md-10" id="Contenedora">
         <article class="col-md-3">
@@ -107,22 +126,18 @@
     </section>
 </div>
 </div>
-<div id="resultadosProductos"></div>
-<div class="center-block">
-    <ul class="pagination col-md-12" id="paginador">
+<div id="resultadosProductos" class="col-md-10 col-md-offset-1 "></div>
+<div class="col-md-12 col-md-offset-1">
+    <ul class="pagination col-md-8 col-md-offset-2" id="paginador">
         <li id="pag0" class='pagination'><a><lavel>0</label></a></li>
     </ul>
 </div>  
 <input value="pag0" id="pagActual" style="display: none;">
 <script type="text/javascript" src="js/jquery.js"></script>
 <script type="text/javascript" src="js/jqueryUi.js"></script>    
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script src="js/jquery.multi-select.js"></script></script>
-<script type="text/javascript" src="js/bootstrap-modal.js"></script><script type="text/javascript" src="js/jquery.cecily.js"></script>
+<script src="js/jquery.quicksearch.js"></script></script>
+<script type="text/javascript" src="js/jquery.cecily.js"></script>    
 <script type="text/javascript" src="instructor/ConsultaOa/js/consultarOa.js"></script>
-<script>
-    var idProducto = 0;
-    var Titulo = "";
-</script>
 </body>
 </html>

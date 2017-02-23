@@ -134,8 +134,7 @@ function modificar(idTipoItem) {
         }
     }
     function peticionCompleta(i) {
-        var arrItemsC = [{Id_Item_Lista: "1000000", Des_Item_Lista: "ñññññññññññññññññññññññ", tipo: true}];
-        
+        var arrItemsC = [];
         var arrItems = [];
         if (i == 0) {
             var ww = "";
@@ -144,7 +143,6 @@ function modificar(idTipoItem) {
                 alert("DATA: " + data[0][f].Id_Item_Lista+ " VAL: " +js.length);
                 arrItemsC.push({Id_Item_Lista: js[f].Id_Item_Lista, Des_Item_Lista: js[f].Des_Item_Lista, tipo: true});
                 arrItems.push({Id_Item_Lista: js[f].Id_Item_Lista});
-                
                 if(f == 0){//Solucion Momentanea
                     ww += js[f].Id_Item_Lista;
                 }else {
@@ -167,13 +165,6 @@ function modificar(idTipoItem) {
                     arrItemsC.push({Id_Item_Lista: js[f].Id_Item_Lista, Des_Item_Lista: js[f].Des_Item_Lista, tipo: false});
                 }
                 conunt = 0;
-            }
-            alert("=)=////");
-            for (var u = 0; u < arrItemsC.length; u++) {
-                alert("Fianel");
-                alert(arrItemsC[u].Id_Item_Lista);
-                alert(arrItemsC[u].Des_Item_Lista);
-                alert(arrItemsC[u].tipo);
             }
             $("#SelectItem").empty();
             datos[3] = {nombre: "MultiSelect", compuesto: true};

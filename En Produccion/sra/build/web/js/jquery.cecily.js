@@ -82,6 +82,7 @@ jQuery.Luna = function (Datos, selector) {
             }
         });
     };
+
     this.mostrarVentana = function (selector) {
         selector.show();
     };
@@ -130,11 +131,11 @@ jQuery.Luna = function (Datos, selector) {
 
                 case "DetallesOaC":
                     var jso = jQuery.parseJSON(json);
-                    var oAItem, oAComen;
+                    var oAItem, oAComen, cc = 1;
                     for (var i = 0; i < jso.length; i++) {
                         oAItem = selector.clone();
                         oAItem.find("#consul").addClass("consul" + jso[i].Id_Version);
-                        oAItem.find("#NumVersion").text("Version: " + datos.nom + " " + jso[i].Id_Version);
+                        oAItem.find("#NumVersion").text("Version " + cc + ": " + datos.nom);
                         oAItem.find("#NumVersion").addClass(jso[i].Id_Version);
                         oAItem.find("#PvAutores").text(jso[i].Autores);
                         oAItem.find("#PvPublicacion").text(jso[i].Fecha_Publicacion);
@@ -155,6 +156,7 @@ jQuery.Luna = function (Datos, selector) {
                             oAComen.find("#BaseComment").val(jsoComen[j].Comentario);
                             oAComen.children().appendTo($("#RComentarios" + jso[i].Id_Version));
                         }
+                        cc++;
                     }
                     break;
                 case "Comentario":
@@ -167,7 +169,7 @@ jQuery.Luna = function (Datos, selector) {
                         oAComen.find("#BaseComment").val(jsoComen[j].Comentario);
                         oAComen.children().appendTo($("#RComentarios" + datos.id));
                     }
-                    break; 
+                    break;
                 case "MultiSelect":
                     if (datos.compuesto == true) {
                         var j = Object.keys(json[0]);
@@ -259,31 +261,41 @@ jQuery.Luna = function (Datos, selector) {
                     }
                     break;
                 case "ConsOaP":
+                    var arryImagen = [
+                        {nombre: "TextoPlano", arrayExt: ["txt", "log"]},
+                        {nombre: "Word", arrayExt: ["dot", "doc"]},
+                        {nombre: "Excel", arrayExt: ["xls", "xlm", "xlt", "xlv"]},
+                        {nombre: "Acces", arrayExt: ["mdb"]},
+                        {nombre: "PowePoint", arrayExt: ["ppt", "pps", "pot"]},
+                        {nombre: "PDF", arrayExt: ["pdf"]},
+                        {nombre: "Imagen", arrayExt: ["gif", "dib", "jpg", "png", "tga", "tiff", "pcx", "plic", "emf", "ico", "htm", "html"]},
+                        {nombre: "BaseDatos", arrayExt: ["sql"]},
+                        {nombre: "Net", arrayExt: ["asp","aspx"]},
+                        {nombre: "Java", arrayExt: ["jar"]},
+                        {nombre: "Php", arrayExt: ["php"]},
+                        {nombre: "Css", arrayExt: ["css"]},
+                        {nombre: "Js", arrayExt: ["js"]},
+                        {nombre: "Compress", arrayExt: ["arj","zip","iso","lha","izh","img","bin"]}
+                    ];
                     var pag = 0;
-                    var q = 3;
-                    console.log(json);
+                    var q = 2;
                     var jso = jQuery.parseJSON(json);
-                    if (jso == "false") {
-
-                        var di = ("<label>NO existe ningun producto virtual</label>");
-                        $("#resultadosProductos").append(di);
-                    } else {
-
+                    if (jso != null) {
                         var oAItem;
-
                         for (var i = 0; i < jso.length; i++) {
                             if (q == i) {
                                 pag++;
                                 s = "<li id=pag" + pag + " class='pagination'><a><lavel>" + pag + "</label></a></li>";
                                 $("#paginador").append(s);
-                                q = q + 3;
+                                q = q + 2;
                             }
+                            var comple = jso[i].Id_P_Virtual + "$$" + jso[i].Nom_P_Virtual + "$$" + jso[i].Des_P_Virtual;
                             oAItem = selector.clone();
                             oAItem.find("#TituloOa").text(jso[i].Nom_P_Virtual);
                             oAItem.find("#AutoresOa").text(jso[i].Autores);
                             oAItem.find("#FechaPublicacionOa").text(jso[i].Fecha_Publicacion);
                             oAItem.find("#DescripcionOa").text(jso[i].Des_P_Virtual);
-                            oAItem.find("#BtnDescargar").val(jso[i].Id_P_Virtual);
+                            oAItem.find("#BtnDescargar").val(comple);
                             oAItem.find("#BtnDescargar").addClass('mom');
                             oAItem.find("#Contenedora").addClass(jso[i].Id_P_Virtual);
                             oAItem.find("#Contenedora").addClass('pag' + pag);
@@ -292,6 +304,9 @@ jQuery.Luna = function (Datos, selector) {
                                 $(".pag" + pag).hide();
                             }
                         }
+                    } else {
+                        var di = ("<label>No existe ningun producto virtual.</label>");
+                        $("#resultadosProductos").append(di);
                     }
                     break;
                 case "calificar":
@@ -426,7 +441,7 @@ jQuery.Luna = function (Datos, selector) {
                             i + 1,
                             jsSelect[i].Nom_P_Virtual,
                             jsSelect[i].Num_Version,
-                            "<button id='" + jsSelect[i].Id_Version + "'class='btnclick btn btn-info'>Habilitar</button>"
+                            "<button id='" + jsSelect[i].Id_Version + "'class='btnclickHabilitar btn btn-info'>Habilitar</button>"
                         ]);
                         if (i < 4) {
                             $(selecNo).append('<li><a><label class="Notify" id=' + jsSelect[i].Id_Version + '>Producto virtual ' + jsSelect[i].Nom_P_Virtual + '</label></a></li>');

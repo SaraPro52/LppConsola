@@ -2,8 +2,10 @@ $(document).ready(function () {
     $("#total").css("background-color", "");
     var hilo = [], jso = [], data = [];
     console.log("Vivo??OlvidoContraseña?");
-    jso[0] = ['Instrutor_Controller', '[{opcion:6,correo:' + $("#camCorreo").val() + '}]'];
-    ajax(0);
+    $("#BtnCorreo").click(function () {
+        jso[0] = ['Instrutor_Controller', '[{opcion:6,correo:' + $("#camCorreo").val() + '}]'];
+        ajax(0);
+    });
 
     function ajax(i) {
         hilo[i] = new Worker("js/worker.js");
