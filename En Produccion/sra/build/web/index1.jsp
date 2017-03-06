@@ -11,9 +11,8 @@
         <link href="css/saraestilo.css" rel="stylesheet" type="text/css"/>
         <title>Sara Pro</title>
     </head>
-    <body id="total" style="background-color: #218276">
+    <body id="total">
         <div id="estru">
-
         </div>
         <div id="cuerpo"> 
             <div id="header">
@@ -34,7 +33,7 @@
                             <div class="form-group col-md-3">
                                 <label for="pwd">Contraseña</label>
                                 <input type="password" class="form-control" placeholder="Contraseña" name="pwd" id="pwd" maxlength="16">
-                                  <div class="col-md-12"><p style="color:#FF0000";>Usuario o contraseña erronea intente nuevamente</p></div>    
+                                <div class="col-md-12"><p style="color:#FF0000";>Usuario o contraseña erronea intente nuevamente</p></div>    
                                 <a id="olvidoPa" class="col-md-12">¿Olvido su cuenta?</a> 
                             </div>
                             <button type="button" class="btn btn-default ubicacionLoginBoton" id="btnLogin">Iniciar sesión</button>
@@ -93,12 +92,11 @@
 
             <div  class="col-md-12 quienesEstilo">
                 <img src="imagenes/quienes3.png" class="queimagen">
-                <h2 class="titleSARA">¿Quienes somos?</h2>
+                <h2 class="titleSARA">Un poco de historia</h2>
                 <div class="lineaHorizontal"></div>
 
                 <div id="cajon2" class="col-md-6 col-md-offset-3   seccionHistoria" >
 
-                    <h3>Un poco de historia</h3>
                     <h5>
                         Este aplicativo tuvo sus inicios en el año 2016 como proyecto productivo de grado
                         del programa que actualmente el equipo de desarrollo de SARApro cursa en el
@@ -112,9 +110,6 @@
 
                 </div>
             </div>
-            <!--FIN EQUIPO-->
-
-
         </div>
         <div class="col-md-12 footerPrincipal" id="footerPrin">
             <footer  class="text-center">

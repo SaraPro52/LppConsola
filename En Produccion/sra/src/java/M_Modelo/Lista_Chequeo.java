@@ -5,7 +5,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class Lista_Chequeo extends Elomac{
-	public  Lista_Chequeo ( ){ 
+public  Lista_Chequeo ( ){ 
 		super("Lista_Chequeo",1);
 	}
         

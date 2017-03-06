@@ -21,7 +21,7 @@
     </head>
     <body >
         <div class="wrapper">
-             <div class="sidebar" data-background-color="white" data-active-color="danger">
+            <div class="sidebar" data-background-color="white" data-active-color="danger">
                 <div class="sidebar-wrapper">
                     <div class="logo">
                         <a class="simple-text">
@@ -124,18 +124,20 @@
         var idUser = '<%= session.getAttribute("idUser")%>';
         var idRol = '<%= session.getAttribute("idRol")%>';
         var idCentro = '<%= session.getAttribute("idCentro")%>';
-        var tem ='[{nomUser:'+nomUser+',idUser:'+idUser+',idRol:'+idRol+',idCentro:'+idCentro+'}]';
+        var tem = '[{nomUser:' + nomUser + ',idUser:' + idUser + ',idRol:' + idRol + ',idCentro:' + idCentro + '}]';
         if (idUser == null && idRol == null && nomUser == null && idCentro == null) {
             location.replace('index.jsp');
-        }
-        cargaC(idRol,tem);
-        $.notify({
-            icon: 'ti-gift',
-            message: "Bienvenido a <b>Sara Pro</b> - Coordinador " + nomUser + "."
+        } else {
+            cargaC(idRol, tem);
+            $.notify({
+                icon: 'ti-gift',
+                message: "Bienvenido a <b>Sara Pro</b> - Coordinador " + nomUser + "."
 
-        }, {
-            type: 'success',
-            timer: 4000
-        });
+            }, {
+                type: 'success',
+                timer: 4000
+            });
+        }
+
     </script>
 </html>

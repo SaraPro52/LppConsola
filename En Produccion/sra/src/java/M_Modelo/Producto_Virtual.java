@@ -49,9 +49,7 @@ public class Producto_Virtual extends Elomac {
         Object[] delimitador = null;
         String consulta = "";
         try {
-            
             if (caso == 27 || caso == 28) {
-                
                 if (!filtros[0].equals("")) {
                     delimitadorA.add("{colum:1,operador:0,valor1: '\"" + filtros[0] + "\"'");
                 }

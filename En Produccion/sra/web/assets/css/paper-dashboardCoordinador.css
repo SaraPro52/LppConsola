@@ -3248,4 +3248,10 @@ textarea.form-control {
     color:#60B359;
 }
 
+.espacioVacio{
+    margin: 5px;
+}
+.espacioTi{
+    margin-top: 3px;
+}
 /*# sourceMappingURL=paper-dashboard.css.map */

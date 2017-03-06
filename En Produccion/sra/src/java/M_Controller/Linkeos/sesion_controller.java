@@ -26,7 +26,7 @@ public class sesion_controller extends HttpServlet {
             response.setContentType("application/json;charset=UTF-8");
             HttpSession sesion = request.getSession();
             String data = request.getParameter("data");
-             JSONObject jData = new JSONArray(data).getJSONObject(0);
+            JSONObject jData = new JSONArray(data).getJSONObject(0);
             int opcion = jData.getInt("opcion");
             switch (opcion) {
                 case 1:
@@ -38,7 +38,6 @@ public class sesion_controller extends HttpServlet {
                     if (fun != "false") {
                         JSONObject funJ = new JSONArray(fun).getJSONObject(0);
                         int rol = funJ.getInt("Id_Rol");
-                        sesion.setMaxInactiveInterval(600000);
                         sesion.setAttribute("idUser", funJ.getInt("Id_Funcionario"));
                         sesion.setAttribute("nomUser", funJ.getString("Nom_Funcionario"));
                         sesion.setAttribute("idRol", rol);
@@ -68,14 +67,7 @@ public class sesion_controller extends HttpServlet {
                     break;
                 case 2:
                     try {
-                        String da = jData.getString("se");
-                        JSONObject jsesion = new JSONArray(da).getJSONObject(0);
-                        HttpSession sesioC = request.getSession();
-                        sesioC.setAttribute("idUser", jsesion.getInt("idUser"));
-                        sesioC.setAttribute("nomUser", jsesion.getString("nomUser"));
-                        sesioC.setAttribute("idRol", jsesion.getInt("idRol"));
-                        sesioC.setAttribute("idCentro", jsesion.getInt("idCentro"));
-                        sesioC.invalidate();
+                        sesion.invalidate();
                         request.getRequestDispatcher("index.jsp").forward(request, response);
                     } catch (Exception e) {
                         request.getRequestDispatcher("index.jsp").forward(request, response);

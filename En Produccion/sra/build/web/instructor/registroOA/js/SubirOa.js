@@ -8,7 +8,7 @@ $(document).ready(function () {
     selector[0] = $("#Titulo_Publicacion");
     datos[0] = {nombre: "AutoComplet", worker: true};
     ajax(0, datos[0]);
-    
+
 
     $('.autoresMultiselect').multiSelect({
         selectableHeader: "<input type='text' class='search-input form-control' autocomplete='off' placeholder='Busca un autor...'>",
@@ -321,6 +321,19 @@ $(document).ready(function () {
     $("#UploadForm").ajaxForm(options);
 
     $('.input-file').change(function () {
+        var nomArh = $(this).val();
+        var ex = nomArh.split(".");
+        nomArh = ex[ex.length - 1];
+        var arrayNo = ["exe", "com", "bat", "drv", "dll", "fon", "hlp", "sys", "tmp", "scr"];
+        for (var i = 0; i < arrayNo.length; i++) {
+            if (arrayNo[i].trim() == nomArh.trim()) {
+                $(".inputNotifi").notify(
+                        "No se acepta ninguno de estos archivos: (exe,com,bat,drv,dll,fon,hlp,sys,tmp,scr) ", 'warn',
+                        {position: "right"}
+                );
+                $(this).val('');
+            }
+        }
         var sizeByte = this.files[0].size;
         var siezekiloByte = parseInt(sizeByte / 1024);
         if (siezekiloByte > $(this).attr('size')) {

@@ -1,14 +1,16 @@
 $(document).on('ready', function () {
     console.log('%c ¡Las consola del navegador a sido bloqueada; es por la seguridad de nuestros clientes! :)', 'color: green; font-weight: bold;');
     //logger.disableLogger();
+    $("#btnLogin").prop('disabled', false);
     $("#total").addClass("backgroundBody");
     var hilo = [], jso = [], data = [];
     $('#btnLogin').click(function () {
         jso[0] = ['sesion_controller', '[{user:' + $("#user").val() + ',pwd:' + $("#pwd").val() + ',opcion:1}]'];
-        ajax(0);
+        ajax(0); 
+        $("#total").removeClass("modal-open");
         $("#btnLogin").prop('disabled', true);
     });
-
+  
     $("#olvidoPa").click(function () {
         jso[1] = ['sesion_controller', '[{opcion:3}]'];
         ajax(1);
@@ -25,10 +27,9 @@ $(document).on('ready', function () {
     }
     function peticionCompleta(i) {
         if ((i == 0) || (i == 1)) {
-            $("#btnLogin").prop('disabled', false);
             $("#total").removeClass("backgroundBody");
             if (data[i] == "false") {
-                alert("Error al conectarse con el servidor ;)");
+                alert("Error al conectarse con el servidor.");
             } else if (i == 0) {
                 $("#footerPrin").empty();
                 $("#footerPrin1").empty();
@@ -36,6 +37,7 @@ $(document).on('ready', function () {
                 $("#cuerpo").empty();
                 $("#estru").append(data[i]);
             } else {
+                $(".modal-backdrop").remove();
                 $("#estru").empty();
                 $("#cuerpo").empty();
                 $("#estru").append(data[i]);

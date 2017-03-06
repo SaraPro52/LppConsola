@@ -89,6 +89,9 @@ $(document).on('ready', function () {
             selector[2] = $("#tablaarea");
             datos[2] = {nombre: "Area"};
             ob.limpiarTabla(selector[2]);
+            $("#areaC").val();
+            $("#areaL").val();
+            $("#CentroFormacion option[text='A0']").attr("selected","selected");
             ajax(2, datos[2]);
         }
     }

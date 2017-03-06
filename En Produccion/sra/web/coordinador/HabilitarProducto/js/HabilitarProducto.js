@@ -9,7 +9,7 @@ $(document).on('ready', function () {
     ob.TablaEspa(selector[0]);
     datos[0] = {nombre: "Habilitar"};
     ajax(0, datos[0]);
-    $(document).on('click', '.btnclick', function (e) {
+    $(document).on('click', '.btnclickHabilitar', function (e) {
         jso[1] = ['ProductoVirtual_Controller', '[{opcion: 4,info:[],arrayFun:[],arrayTemas:[],archivoNom:[],aprobacion:[' + idUser + ',' + this.id + ']}]'];
         selector[1] = $("#tablaAprobar");
         ob.limpiarTabla(selector[1]);

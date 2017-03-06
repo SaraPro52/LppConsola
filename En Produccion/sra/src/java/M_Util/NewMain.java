@@ -1322,24 +1322,13 @@ public class NewMain {
 //
 //        System.out.println(new Elomac(37, 2).Select(num, delimitador));
         
+        String usuario = "1019";
+        String contraseña ="81dc9bdb52d04dc20036dbd8313ed055";
+        String delimitador = "[{colum:2,operador:0,valor1:" + usuario + " ,añadir:0},{colum:8,operador:0,valor1:'\"" + contraseña + "\"'}]";
 
-//        String delimitador = "[{colum:5,operador:0,valor1:2}]";
-//        String[] num = {"0","1","2","3"};
-//        System.out.println(new Elomac(12, 2).Select(num, delimitador));
-        
-//        String delimitador = "[{colum:3,operador:0,valor1:1,añadir:0},{colum:2,operador:0,valor1:0}]";
-//        String[] num = {"0","1"};
-//        System.out.println(new Elomac(15, 2).Select(num, delimitador));
-        
-
-//          String delimitador = "[{colum:0,operador:7,valor1:'3,4',añadir:0},{colum:2,operador:0,valor1:0}]";
-//          String[] num = {"0","1"};
-//          System.out.println(new Elomac(19,1).Select(num, delimitador));
-        
-
-            
-            Lista_Chequeo list = new Lista_Chequeo();
-            System.out.println(list.ListaItems(2, 1));
+        //String delimitador = "[{colum:2,operador:0,valor1:1019,añadir:0},{colum:8,operador:0,valor1:'\"81dc9bdb52d04dc20036dbd8313ed055\"'}]";
+        String[] num = {"0", "5"};
+        System.out.println(new Elomac(18, 1).Select(num, delimitador));
 
     }
 }

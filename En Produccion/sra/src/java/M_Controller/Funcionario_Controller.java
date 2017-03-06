@@ -29,12 +29,12 @@ public class Funcionario_Controller extends HttpServlet {
             1. Agregar funcionario
             3. actualizar contraseña
             4. nn
-                        5. Actualizar
+            5. Actualizar
             6. olvidoContraseña*/
             String data = request.getParameter("data");
             JSONObject jData = new JSONArray(data).getJSONObject(0);
             int opcion = jData.getInt("opcion");
-                response.setContentType("application/json;charset=UTF-8");
+            response.setContentType("application/json;charset=UTF-8");
             PrintWriter respuesta = response.getWriter();
             switch (opcion) {
                 case 1:
@@ -90,7 +90,6 @@ public class Funcionario_Controller extends HttpServlet {
                     Elomac funAsignar = new Elomac(26, 1, datos);
                     System.out.println(new Funcionario().Select(27));//OBTENER EL ID DEL FUNCIONARIO
                     String funSelect = new Funcionario().Select(27);
-
                     if (funAsignar.Insert() == true && funSelect != null) {
                         Elomac fu = new Elomac(18, 1);
                         fu.load(funSelect);
@@ -112,7 +111,13 @@ public class Funcionario_Controller extends HttpServlet {
                     }
                     break;
                 case 6:
-                    
+                    String correo = jData.getString("correo");
+
+                    //DJCorreoHTML correoHTML = new DJCorreoHTML();
+                    //correoHTML.mandarCorreo(correo, "Confirmacion de Cuenta SARA PRO1", fun2[2], fun2[8]);
+                    break;
+                case 7:
+                    //modificar perfil de usuarioz
                     break;
             }
         }

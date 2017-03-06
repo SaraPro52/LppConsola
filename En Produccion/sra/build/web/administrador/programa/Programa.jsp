@@ -41,7 +41,7 @@
                                         <option>Null</option>
                                     </select>
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-md-6" id="multiselectAreas" style="display: none;">
                                     <label>Áreas</label>
                                     <select  id="MultAreas" class="MultAreas"  multiple='multiple' title="Busca una area..">
                                     </select>

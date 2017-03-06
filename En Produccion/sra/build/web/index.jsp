@@ -11,7 +11,7 @@
         <link href="css/saraestilo.css" rel="stylesheet" type="text/css"/>
         <title>Sara Pro</title>
     </head>
-    <body id="total" style="background-color: #218276">
+    <body id="total">
         <div id="estru">
 
         </div>
@@ -92,19 +92,17 @@
 
             <div  class="col-md-12 quienesEstilo">
                 <img src="imagenes/quienes3.png" class="queimagen">
-                <h2 class="titleSARA">¿Quienes somos?</h2>
+                <h2 class="titleSARA">Un poco de historia.</h2>
                 <div class="lineaHorizontal"></div>
 
                 <div id="cajon2" class="col-md-6 col-md-offset-3   seccionHistoria" >
-
-                    <h3>Un poco de historia</h3>
                     <h5>
-                        Este aplicativo tuvo sus inicios en el año 2016 como proyecto productivo de grado
-                        del programa que actualmente el equipo de desarrollo de SARApro cursa en el
+                        Este aplicativo inicio en el año 2016 como proyecto formativo. 
+                        el equipo de desarrollo de SARA Pro cursa en el
                         servicio nacional de aprendizaje SENA.
                     </h5>
                     <p>
-                        Este aplicativo nace a parti de la necesidad del sena de organizar y controlar
+                        Este aplicativo nace a partir de la necesidad del sena de organizar y controlar
                         los objetos de aprendizaje, los cuales, dan a sus aprendices para su proceso
                         academico
                     </p>    
@@ -155,8 +153,9 @@
             </div>
         </div>
     </div>
-    <script type="text/javascript" src="js/jquery.js"></script>
-    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/jquery.js"></script>    
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+
     <script type="text/javascript" src="js/sesion.js"></script>
 </body>
 </html>

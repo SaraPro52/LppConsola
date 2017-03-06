@@ -68,6 +68,7 @@
     <script type="text/javascript" src="js/jquery.js"></script>
     <script type="text/javascript" src="js/jquery.cecily.js"></script>
     <script type="text/javascript" src="assets/js/bootstrap-notify.js"></script>
+        <script type="text/javascript" src="js/jqueryUi.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script type="text/javascript" src="instructor/DetallesConsultaP/js/DetallesConsultaP.js"></script>
 </html>

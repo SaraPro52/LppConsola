@@ -7,6 +7,7 @@ $(document).on('ready', function () {
     selector[0] = $("#SelecCentro");
     datos[0] = {nombre: "Select"};
     ajax(0, datos[0]);
+    $("#multiselectAreas").show();
     $("#SelecCentro").change(function () {
         $(".Mult").show();
         $("#MultAreas").empty();
@@ -16,6 +17,8 @@ $(document).on('ready', function () {
             selector[1] = $("#MultAreas");
             datos[1] = {nombre: "MultiSelect"};
             ajax(1, datos[1]);
+        }else{
+            $("#multiselectAreas").hide();
         }
     });
     $('.MultAreas').multiSelect({
@@ -160,6 +163,9 @@ $(document).on('ready', function () {
                 men = daMen[1];
             }
             $.notify(men, estado);
+            $("#nomPro").val();
+            $("#SelecCentro option:contains('YourTextHere')").val();
+            $("#nivel option:contains('YourTextHere')").val();
         }
     }
 });

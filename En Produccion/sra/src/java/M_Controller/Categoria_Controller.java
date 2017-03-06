@@ -23,29 +23,24 @@ public class Categoria_Controller extends HttpServlet {
             throws ServletException, Exception {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            
+            PrintWriter respuesta = response.getWriter();
             String data = request.getParameter("data");
             JSONObject jData = new JSONArray(data).getJSONObject(0);
-            
             int opcion = jData.getInt("opcion");
             String[] categoria = Elomac.M_toArray(jData.getString("catego"));
-            String temas = M_Procedure.Group(Elomac.M_toArray(jData.getString("temas")),',');
-            
-            response.setContentType("application/json;charset=UTF-8");
-            PrintWriter respuesta = response.getWriter();
-            
+            String temas = M_Procedure.Group(Elomac.M_toArray(jData.getString("temas")), ',');
             Categoria cate = new Categoria();
-            switch(opcion){
-                case 1: 
-                    try {
-                        if(cate.RegistrarCategoria(categoria, temas))
-                             respuesta.println("true$$se registro correctamente");
-                        else respuesta.println("false$$no se registro");
-                    } catch (Exception e) {
-                        respuesta.println("false$$"+e.getMessage()+"");
+            switch (opcion) {
+                case 1:
+                    if (cate.RegistrarCategoria(categoria, temas)) {
+                        respuesta.print("true$$se registro correctamente");
+                    } else {
+                        respuesta.print("false$$no se registro");
                     }
+
                     break;
             }
+
         }
     }
 

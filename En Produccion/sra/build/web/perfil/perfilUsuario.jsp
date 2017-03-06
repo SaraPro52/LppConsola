@@ -87,6 +87,12 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="col-md-12">
+                                        <div class="col-md-12 col-md-offset-4" style="margin-bottom:3%; ">
+                                            <button id="BtnModificar" type="button" class="btn btn-info btn-fill btn-wd ">Modificar perfil</button>
+                                        </div>    
+                                    </div>
+
                                     <form id="coambiarContra">
                                         <div style="margin-left:5%;" class="col-md-4">
                                             <label>Usuario:</label>
@@ -106,8 +112,7 @@
                                         </div>
                                     </form>
                                 </div>
-                                <div class="text-center" style="margin-bottom:3%; ">
-                                    <button id="BtnModificar" type="button" class="btn btn-info btn-fill btn-wd ">Modificar perfil</button>
+                                <div class="col-md-12 col-md-offset-4" style="margin-bottom:3%; ">
                                     <button id="BtnModificar1" type="button" class="btn btn-info btn-fill btn-wd ">Modificar Contraseña</button>
                                 </div>
                         </div>

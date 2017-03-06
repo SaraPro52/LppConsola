@@ -1,7 +1,9 @@
 function calificarPV(idLista, idRol, idNotifi) {
-    var selector = [], hilo = [], jso = [], data = [], nombre = "funcionario", datos = [], men = "", estado = "";
-    $("#iFecha").datepicker();
-    $("#clone").hide(); 
+    var selector = [], hilo = [], jso = [], data = [], datos = [], men = "", estado = "";
+    $("#iFecha").datepicker({
+        minDate: 'today'
+    });
+    $("#clone").hide();
     var ob = new $.Luna("Producto virtual", $("#divContainer"));
     ob.Vivo("CalificarOA2");
     jso[0] = ['Crud_Controller', '[{opcion:3,tabla2:15,tipo:2,elegir:[0,1,4],delimitador:"[{colum:3,operador:0,valor1:' + idLista + '}]",id:0,opSelect:6}]'];
@@ -27,14 +29,14 @@ function calificarPV(idLista, idRol, idNotifi) {
     });
     $("#btnEvaluar").click(function () {
         var campo = "";
-        var observacionIndi=[];
+        var observacionIndi = [];
         var infoItems = [];
         var cc = 0;
         $("input:checkbox:checked").each(function () {
             campo = $(this).val();
             if (campo !== "on") {
                 infoItems.push("1¤" + $("#" + campo).val() + "¤" + campo);
-                
+
             }
         });
         $("input:checkbox:not(:checked)").each(function () {
@@ -57,7 +59,7 @@ function calificarPV(idLista, idRol, idNotifi) {
         }
         jso[1] = ['EvaluacionGeneral_Controller', '[{opcion:1,idNoti:' + idNotifi + ',infoEva:["' + $("#areaObservacion").val() + '","' + resultado + '","' + idVersion + '","' + idLista + '","' + idUser + '","' + fecha + '"],infoItem:[' + infoItems + ']}]'];
         selector[1] = null;
-        datos[1] = {nombre: "btn", worker: true};
+        datos[1] = {nombre: "btn"};
         ajax(1, datos[1]);
     });
     function ajax(i, datos) {
@@ -74,7 +76,7 @@ function calificarPV(idLista, idRol, idNotifi) {
         if (i == 0) {
             $("#clone").show();
         } else if (i == 1) {
-            jso[2] = ['Equipo_Controller', '[{opcion:2,ti:'+$("#tis").text()+'}]'];
+            jso[2] = ['Equipo_Controller', '[{opcion:2,ti:' + $("#tis").text() + '}]'];
             datos[2] = {caso: "Consultar productos virtuales"};
             ajax(2);
             var daMen = data[i].split("$$");

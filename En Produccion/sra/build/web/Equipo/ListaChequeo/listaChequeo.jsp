@@ -21,7 +21,6 @@
                             <div id="SelectItemDiv">
                                 <label>Items</label>
                                 <select id="SelectItem" class="itemSelect" multiple="multiple">
-
                                 </select>
                             </div>
                         </article> 

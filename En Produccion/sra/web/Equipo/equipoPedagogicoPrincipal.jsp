@@ -123,16 +123,18 @@
 
     if (idUser == null || idRol == null || nomUser == null || idCentro == null) {
         location.replace('index.jsp');
-    }
-    var tem = '[{nomUser:' + nomUser + ',idUser:' + idUser + ',idRol:' + idRol + ',idCentro:' + idCentro + '}]';
-    carga(tem, idRol);
-    $.notify({
-        icon: 'ti-gift',
-        message: "Bienvenido a <b>Sara Pro</b> - Lider de equipo pedagogico " + nomUser + "."
+    } else {
+        var tem = '[{nomUser:' + nomUser + ',idUser:' + idUser + ',idRol:' + idRol + ',idCentro:' + idCentro + '}]';
+        carga(tem, idRol);
+        $.notify({
+            icon: 'ti-gift',
+            message: "Bienvenido a <b>Sara Pro</b> - Lider de equipo pedagogico " + nomUser + "."
 
-    }, {
-        type: 'success',
-        timer: 4000
-    });
+        }, {
+            type: 'success',
+            timer: 4000
+        });
+    }
+
 </script>
 </html>

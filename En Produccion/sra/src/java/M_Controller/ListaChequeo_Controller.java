@@ -21,7 +21,7 @@ public class ListaChequeo_Controller extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, Exception {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
+         try (PrintWriter out = response.getWriter()) {
             /*Menu de opciones crud
             1.Agregar lista de chequeo
             2.actualizar

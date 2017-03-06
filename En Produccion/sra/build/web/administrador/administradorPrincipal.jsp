@@ -126,16 +126,18 @@
         var idCentro = '<%= session.getAttribute("idCentro")%>';
         if (idUser == null || idRol == null || nomUser == null || idCentro == null) {
             location.replace('index.jsp');
-        }
-        var tem = '[{nomUser:' + nomUser + ',idUser:' + idUser + ',idRol:' + idRol + ',idCentro:' + idCentro + '}]';
-        cargaF(tem, idRol);
-        $.notify({
-            icon: 'ti-gift',
-            message: "Bienvenido a <b>Sara Pro</b> - Administrador " + nomUser + "."
+        } else {
+            var tem = '[{nomUser:' + nomUser + ',idUser:' + idUser + ',idRol:' + idRol + ',idCentro:' + idCentro + '}]';
+            cargaF(tem, idRol);
+            $.notify({
+                icon: 'ti-gift',
+                message: "Bienvenido a <b>Sara Pro</b> - Administrador " + nomUser + "."
 
-        }, {
-            type: 'success',
-            timer: 4000
-        });
+            }, {
+                type: 'success',
+                timer: 4000
+            });
+        }
+
     </script>
 </html>

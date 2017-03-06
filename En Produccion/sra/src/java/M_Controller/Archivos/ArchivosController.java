@@ -92,7 +92,6 @@ public class ArchivosController extends HttpServlet {
 
         }
     }
-
     /**
      * Metodo CambiarNombre este metodo realiza el cambio de nombre de un
      * archivo.

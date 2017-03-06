@@ -2,6 +2,8 @@ $(document).on('ready', function () {
     var selector = [], hilo = [], jso = [], data = [], datos = [], constan = true, arraySelecionPrograma = [], arraySelectCategoria = [];
     $("#dataInicialA").datepicker({defaultDate: "+1w", changeMonth: true, numberOfMonths: 2});
     $("#dataFinalA").datepicker({defaultDate: "+1w", changeMonth: true, numberOfMonths: 2});
+    $("#dataInicialA").datepicker( "option", "maxDate", new Date() );
+    $("#dataFinalA").datepicker( "option", "maxDate", new Date() );
     $("#dataInicialA").change(function () {
         $("#dataFinalA").datepicker("option", "minDate", $("#dataInicialA").val());
     });
@@ -16,6 +18,12 @@ $(document).on('ready', function () {
     ob.Vivo("ConsultarPV1");
     var tipoPet = 3;
     $("#Programas").change(function () {
+        $("#SelectCategoria").empty();
+        $("#ElementoCategoria").hide();
+        $("#ElementoFormacion").show();
+        $("#ElementoPrograma").hide();
+        $("#Programa").hide();
+        $("#programa").empty();
         tipoPet = 1;
         if ($("#Categoria").prop('checked')) {
             $("#Categoria").prop('checked', false);
@@ -24,14 +32,7 @@ $(document).on('ready', function () {
             $("#Programas").prop('checked');
 
         }
-        $("#SelectCategoria").empty();
-        $("#ElementoCategoria").hide();
-        $("#ElementoFormacion").show();
-        $("#ElementoPrograma").hide();
-        $("#Programa").hide();
-        $("#programa").empty();
         if ($("#Programas").prop('checked')) {
-            $("#ElementoPrograma").show();
             ob.limpiarSelector($("#CentroF"));
             ob.limpiarSelector($("#Area"));
             jso[4] = ['Crud_Controller', '[{opcion:3,tabla2:6,tipo:1,elegir:[0,1],delimitador:[],id:0,opSelect:4}]'];
@@ -79,11 +80,12 @@ $(document).on('ready', function () {
     });
     $("#CentroF").change(function () {
         var option = $("#CentroF").val();
+        $("#ElementoPrograma").hide();
+        ob.limpiarSelector($("#Area"));
         if (option != "A0") {
             jso[10] = ['Crud_Controller', '[{opcion:3,tabla2:1,tipo:2,elegir:[7,8],delimitador:"[{colum:5,operador:0,valor1:' + $("#CiudadFormacion").val() + ',añadir:0},{colum:1,operador:0,valor1:' + $("#CentroF").val() + '}]",id:0,opSelect:6}]'];
             selector[10] = $("#Area");
             datos[10] = {nombre: "Select"};
-            $("#ElementoPrograma").hide();
             ob.limpiarSelector(selector[10]);
             ajax(10, datos[10]);
         }
@@ -97,6 +99,8 @@ $(document).on('ready', function () {
             selector[9] = $("#Programa");
             datos[9] = {nombre: "MultiSelect"};
             ajax(9, datos[9]);
+        } else if (option == "A0") {
+            $("#ElementoPrograma").hide();
         }
     });
 
@@ -293,6 +297,7 @@ $(document).on('ready', function () {
             $("#idPro").text(datos[i].idProducto);
             $("#tituloPro").text(datos[i].titulo);
             $("#DescripcionProducto").text("Descripcion del producto: " + datos[i].descripcion);
+            $(".ui-datepicker-group").remove();
         } else if (i == 11) {
             jso[12] = ['Crud_Controller', '[{opcion:3,tabla2:26,tipo:2,elegir:[0,1],delimitador:[],id:0,opSelect:4}]'];
             selector[12] = $("#Autores");

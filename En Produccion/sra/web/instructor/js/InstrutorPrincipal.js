@@ -21,6 +21,8 @@ function cargaI(idRol, ti,js) {
                 datos[1] = {caso: "Notificaciones de los  productos virtuales",tipo:3};
             }else if (this.value==1){
                 datos[1] = {caso: "Subir producto virtual",tipo:1};
+            }else if (this.value==0){
+                datos[1] = {caso: "Consultar productos virtuales",tipo:1};
             }
             ajax(1);
         }

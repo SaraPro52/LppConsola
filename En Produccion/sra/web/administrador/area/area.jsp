@@ -28,7 +28,7 @@
                             <div class="col-md-6">
                                 <label>Centro de Formación</label>
                                 <select required class="form-control select" id="CentroFormacion">
-                                    <option value="A0"> Seleccione</option>
+                                    <option value="A0"> Seleccione...</option>
                                 </select>
 
                             </div>

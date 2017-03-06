@@ -129,14 +129,16 @@
 
         if (idUser == null || idRol == null || nomUser == null || idCentro == null) {
             location.replace('index.jsp');
+        } else {
+            cargaI(idRol, tem, js);
+            $.notify({
+                icon: 'ti-gift',
+                message: "Bienvenido a <b>Sara Pro</b> - Instructor " + nomUser + "."
+            }, {
+                type: 'success',
+                timer: 4000
+            });
         }
-        cargaI(idRol, tem, js);
-        $.notify({
-            icon: 'ti-gift',
-            message: "Bienvenido a <b>Sara Pro</b> - Instructor " + nomUser + "."
-        }, {
-            type: 'success',
-            timer: 4000
-        });
+
     </script>
 </html>

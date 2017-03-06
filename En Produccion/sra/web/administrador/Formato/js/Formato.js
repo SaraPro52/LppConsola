@@ -10,7 +10,6 @@ $(document).on('ready', function () {
     $(document).on('click', '.botonformato', function (e) {
         campo = this.value;
         var ca = campo.split("$$");
-        alert(ca);
         idFormato = (ca[0]);
         $("#formato").val(ca[1]);
         $("#descripcion").val(ca[2]);
@@ -78,7 +77,8 @@ $(document).on('ready', function () {
                 men = "El formato " + men + " no se agrego";
             }
             $.notify(men, estado);
-
+            $("#formato").val();
+            $("#descripcion").val();
         } else if (i == 3) {
             var daMen = data[i].split("$$");
             if (daMen[0] == "true") {
@@ -89,6 +89,8 @@ $(document).on('ready', function () {
                 men = "El formtao" + men + " " + daMen[1];
             }
             $.notify(men, estado);
+            $("#formato").val();
+            $("#descripcion").val();
         }
     }
 });
