@@ -6,11 +6,10 @@ $(document).on('ready', function () {
     var hilo = [], jso = [], data = [];
     $('#btnLogin').click(function () {
         jso[0] = ['sesion_controller', '[{user:' + $("#user").val() + ',pwd:' + $("#pwd").val() + ',opcion:1}]'];
-        ajax(0); 
-        $("#total").removeClass("modal-open");
+        ajax(0);
         $("#btnLogin").prop('disabled', true);
     });
-  
+
     $("#olvidoPa").click(function () {
         jso[1] = ['sesion_controller', '[{opcion:3}]'];
         ajax(1);
@@ -25,9 +24,17 @@ $(document).on('ready', function () {
             peticionCompleta(i);
         };
     }
+    
+    
+    $("#btnModales").click(function (){
+        $('#myModal').modal('show');
+    }); 
+    
     function peticionCompleta(i) {
         if ((i == 0) || (i == 1)) {
-            $("#total").removeClass("backgroundBody");
+            $('#myModal').modal('hide');
+            $("div").removeClass("modal-backdrop");
+            $("div").removeClass("");
             if (data[i] == "false") {
                 alert("Error al conectarse con el servidor.");
             } else if (i == 0) {
@@ -35,14 +42,13 @@ $(document).on('ready', function () {
                 $("#footerPrin1").empty();
                 $("#estru").empty();
                 $("#cuerpo").empty();
+                $("#footerPrincip").empty();    
                 $("#estru").append(data[i]);
-            } else {
-                $(".modal-backdrop").remove();
+            } else {                
                 $("#estru").empty();
                 $("#cuerpo").empty();
                 $("#estru").append(data[i]);
             }
-
         }
     }
 });

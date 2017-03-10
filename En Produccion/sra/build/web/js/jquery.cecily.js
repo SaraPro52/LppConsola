@@ -128,12 +128,11 @@ jQuery.Luna = function (Datos, selector) {
                     }
                     $("#ObservacionGeneral").val(jso.Observacion_General);
                     break;
-
                 case "DetallesOaC":
                     var jso = jQuery.parseJSON(json);
                     var oAItem, oAComen, cc = 1;
                     for (var i = 0; i < jso.length; i++) {
-                        oAItem = selector.clone();
+                        oAItem = $("#midiv").clone();
                         oAItem.find("#consul").addClass("consul" + jso[i].Id_Version);
                         oAItem.find("#NumVersion").text("Version " + cc + ": " + datos.nom);
                         oAItem.find("#NumVersion").addClass(jso[i].Id_Version);

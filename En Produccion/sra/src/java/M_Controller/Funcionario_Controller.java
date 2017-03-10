@@ -70,12 +70,16 @@ public class Funcionario_Controller extends HttpServlet {
                         String DatFun = new Elomac(18, 1).Select(num, delimitador);
                         JSONObject funJ = new JSONArray(DatFun).getJSONObject(0);
                         if (jData.getInt("id") == funJ.getInt("Id_Funcionario")) {
-                            if (fun1.Update(fun1.Select(jData.getInt("id")), "[{'8':'" + DigestUtils.md5Hex(jData.getString("con")) + "','9':'1'}]")) {
+
+                            String tabla1 = "18";
+                            String actualizar = DigestUtils.md5Hex(jData.getString("conNueva"));
+                            Elomac elo = new Elomac(tabla1,1);
+                            if (elo.Update("8","nul",actualizar)) {
                                 DJCorreoHTML correoHTML = new DJCorreoHTML();
                                 correoHTML.mensajeContrasena(funJ.getString("Correo"), "SARA PRO/Cambio de contraseña");
-                                respuesta.println("true$$la contraseña  se actualizo correctamente");
+                                respuesta.println("true$$se actualizo correctamente");
                             } else {
-                                respuesta.println("false$$la contraseña  no se actualizo");
+                                respuesta.println("false$$no actualizo");
                             }
                         } else {
                             respuesta.println("false$$Usuario y/o contraseña incorrectos");
@@ -112,12 +116,8 @@ public class Funcionario_Controller extends HttpServlet {
                     break;
                 case 6:
                     String correo = jData.getString("correo");
-
                     //DJCorreoHTML correoHTML = new DJCorreoHTML();
                     //correoHTML.mandarCorreo(correo, "Confirmacion de Cuenta SARA PRO1", fun2[2], fun2[8]);
-                    break;
-                case 7:
-                    //modificar perfil de usuarioz
                     break;
             }
         }
@@ -157,6 +157,7 @@ public class Funcionario_Controller extends HttpServlet {
             processRequest(request, response);
         } catch (Exception ex) {
             Logger.getLogger(Funcionario_Controller.class.getName()).log(Level.SEVERE, null, ex);
+
         }
     }
 

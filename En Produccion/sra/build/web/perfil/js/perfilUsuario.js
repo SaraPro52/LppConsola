@@ -34,20 +34,12 @@ $(document).on('ready', function () {
             $("#CorreoFun").focus().after("<div style='font-size:15px;' class='remove'><font color='red'>Ingrese un email correcto</font></div>");
             boo = boo - 1;
         }
-        if (boo == 10) {
+        if (boo == 6) {
             BtnPerfil();
         }
     });
     function BtnPerfil() {
-
-        $("#ApellidoFun").val();
-        $("#IdentificacionFunTipo").val();
-        $("#IdentificacionFun").val();
-        $("#IdSenaFun").val();
-        $("#CaargoFun").val();
-        $("#CorreoFun").val();
-
-        jso[2] = ['Funcionario_Controller', '[{opcion:3,id:' + idUser + ',datos:[]}]'];
+        jso[2] = ['Crud_Controller', '[{opcion:2,id:' + idUser + ',tabla1:18,actualizar:[' + $("#IdentificacionFunTipo").val() + ',' + $("#IdentificacionFun").val() + ',' + $("#NombreFun").val() + ',' + $("#ApellidoFun").val() +',' + $("#CorreoFun").val() + ',' + $("#CaargoFun").val() + ',' + $("#IdSenaFun").val() + ']}]'];
         datos[2] = {nombre: "btn"};
         ajax(2, datos[2]);
     }
@@ -74,7 +66,7 @@ $(document).on('ready', function () {
         ccT = 0;
     });
     function BtnCon() {
-        jso[1] = ['Funcionario_Controller', '[{opcion:3,id:' + idUser + ',con:' + $("#ConNuevaF").val() + ',conA:' + $("#ConActual").val() + ',user:' + $("#user").val() + ',pwd:' + $("#ConActual").val() + '}]'];
+        jso[1] = ['Funcionario_Controller', '[{opcion:7,:' + idUser + ',conNueva:' + $("#ConNuevaF").val() + ',conA:' + $("#ConActual").val() + ',user:' + $("#user").val() + ',pwd:' + $("#ConActual").val() + '}]'];
         datos[1] = {nombre: "btn"};
         ajax(1, datos[1]);
     }
@@ -110,6 +102,16 @@ $(document).on('ready', function () {
             }
             $.notify(men, estado);
             $("#coambiarContra")[0].reset();
+        } else if (i == 2) {
+            var daMen = data[i].split("$$");
+            if (daMen[0] == "true") {
+                estado = ("success");
+                men = "El perfil  " + daMen[1];
+            } else {
+                estado = ("error");
+                men = "El perfil " + daMen[1];
+            }
+            $.notify(men, estado);
         }
     }
 });
