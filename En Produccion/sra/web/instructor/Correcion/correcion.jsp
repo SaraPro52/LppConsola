@@ -48,9 +48,11 @@
                                     <thead>
                                         <tr>
                                             <th>#</th>
+                                            <th>Nombre Producto Virtual</th>
+                                            <th>No Version</th>
                                             <th>Contenido</th>
                                             <th>Fecha de envio</th>
-                                            <th>¿Correguir?</th>
+                                            <th>¿Corregir?</th>
                                         </tr>
                                     </thead>
                                     <tbody>

@@ -5,14 +5,25 @@ $("#percent").hide();
 $("#contenedor").hide();
 $("#Clona").hide();
 $("#formularioss").hide();
-jso[0] = ['Crud_Controller', '[{opcion:3,tabla2:17,tipo:2,elegir:[4,5,6,7],delimitador:"[{colum:2,operador:0,valor1:' + idRol + ',añadir:0},{colum:10,operador:0,valor1:' + idCentro + ',añadir:0},{colum:0,operador:0,valor1:' + idUser + ',añadir:0},{colum:11,operador:0,valor1:2,añadir:0},{colum:9,operador:0,valor1:0}]",id:0,opSelect:6}]'];
+
+//cambio--------------
+jso[0] = ['EvaluacionGeneral_Controller','[{opcion:3,elegir:[4,5,6,7,11],delimitador:"[{colum:2,operador:0,valor1:' + idRol + ',añadir:0},{colum:10,operador:0,valor1:' + idCentro + ',añadir:0},{colum:0,operador:0,valor1:' + idUser + ',añadir:0},{colum:11,operador:0,valor1:2,añadir:0},{colum:9,operador:0,valor1:0}]",opt:2}]'];
+ //-------CAMBIADO
+ 
 selector[0] = $("#tablaNotificacion");
 datos[0] = {nombre: "correcion"};
 ob.TablaEspa(selector[0]);
 ajax(0, datos[0]);
+
 $(document).on('click', '.btnCorrecion', function (e) {
+     //-------CAMBIADO
+    var valors = this.id.split("$$");
+    idver = valors[1];
+    nomPV = valors[2];
+    idNot = valors[3];
     ob.limpiarTablaI($("#tablaNotificacion"));
-    jso[1] = ['EvaluacionGeneral_Controller', '[{opcion:2,idEvalua:' + this.id + ',resultado:0}]'];
+    jso[1] = ['EvaluacionGeneral_Controller', '[{opcion:2,idEvalua:' + valors[0] + ',resultado:0}]'];
+     //-------CAMBIADO
     selector[1] = $("#Respuestaitem");
     datos[1] = {nombre: "correcionCo"};
     ajax(1, datos[1]);

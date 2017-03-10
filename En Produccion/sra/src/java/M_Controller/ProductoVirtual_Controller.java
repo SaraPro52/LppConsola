@@ -1,6 +1,7 @@
 package M_Controller;
 
 import M_Controller.Archivos.ArchivosController;
+import M_Modelo.Notificacion;
 import M_Modelo.Producto_Virtual;
 import M_Modelo.Version;
 import M_Util.Elomac;
@@ -84,14 +85,26 @@ public class ProductoVirtual_Controller extends HttpServlet {
                     }
                     break;
                 case 3:
-                    String[] correccion = Elomac.M_toArray(jData.getString("correccion"));
-
-                    correccion[2] = null;
-                    if (ver.CorreccionVersion(correccion)) {
-                        respuesta.println("[{valor:true,mensaje:'Si Registro'}]");
-                    } else {
-                        respuesta.println("[{valor:false,mensaje:'No Registro'}]");
+                    //-------CAMBIADO
+                    try {
+                        String[] correccion = Elomac.M_toArray(jData.getString("correccion"));
+                        correccion[2] = arch.CambiarNombre(correccion[2],jData.getString("nomPV"));
+                        if (ver.CorreccionVersion(correccion)) {
+                            respuesta.println("true$$ fue Corregido");
+                            arch.MoverArchivo(correccion[2]);
+                            int idNoti = Integer.parseInt(jData.getString("idNot"));
+                            Notificacion noti = new Notificacion();
+                            noti.load(noti.Select(idNoti));
+                            noti.atributos.replace("Estado", 1);
+                            noti.Update();
+                        } else {
+                            respuesta.println("false$$ no fue Corregido");
+                            arch.EliminarArchivo(correccion[2]);
+                        }
+                    } catch (Exception e) {
+                        respuesta.println(e.getMessage());
                     }
+                    //-------CAMBIADO
                     break;
                 case 4:
                     try {

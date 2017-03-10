@@ -16,11 +16,7 @@ public class Version extends Elomac{
         }
         
         public boolean CorreccionVersion(String[] correccion){
-             
-             if((boolean)this.Registar(Group(correccion, '~'), 8)){
-                 
-             }
-             return false;
+             return (boolean)this.Registar(Group(correccion, '~'), 8);//-------CAMBIADO 
         }
         
         public boolean AprobarPV(String[] publicar){

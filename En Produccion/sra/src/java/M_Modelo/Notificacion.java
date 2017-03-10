@@ -1,6 +1,7 @@
 package M_Modelo;
 
 import M_Util.Elomac;
+import com.google.gson.Gson;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -29,11 +30,12 @@ public class Notificacion extends Elomac {
                     jNot1.remove("Id_Tipo_Notificacion");
                     jNot2.put(jNot1);
                 } else if (tipo == 2) {
-                    String[] numT = {"1", "2"};
+                    String[] numT = {"1", "2", "3"}; //-------CAMBIADO 3-> ID VERSION
                     String delimi = "[{colum:0,operador:0,valor1:" + jNot1.get("Ides_Proceso") + "}]";
                     JSONObject jEva = new JSONArray(new Elomac(39, 2).Select(numT, delimi)).getJSONObject(0);
                     jNot1.put("Nom_P_Virtual", jEva.get("Nom_P_Virtual"));
                     jNot1.put("Num_Version", jEva.get("Num_Version"));
+                    jNot1.put("Id_Version", jEva.get("Id_Version"));//-------CAMBIADO 3-> ID VERSION
                     jNot1.remove("Id_Tipo_Notificacion");
                     jNot2.put(jNot1);
                 } else if (tipo == 1) {
@@ -47,9 +49,37 @@ public class Notificacion extends Elomac {
                 }
 
             }
+            return "" + jNot2;//SOLUCION AL MAYOR PROBLEMA (OBJECT -> STRING)
         } catch (Exception e) {
             return e.getMessage();
         }
-        return jNot2;
     }
+    //------------------ CAMBIO CORRECCION ------------------------------------
+
+    public Object NotificacionCorreccion(String[] elegir, String delimitador) {
+
+        String[] numColum = {"0"};
+        String notiAntigua = (String) this.NotificacionAR(elegir, delimitador);
+        String verCance = new Elomac("Version", 1).Select(numColum, "[{colum:10,operador:0,valor1:8}]");
+        try {
+            JSONArray jNotAhoraA = new JSONArray(notiAntigua);
+            JSONArray jVerCanceA = new JSONArray(verCance);
+
+            for (int i = 0; i < jVerCanceA.length(); i++) {
+                for (int j = 0; j < jNotAhoraA.length(); j++) {
+                    if ((jNotAhoraA.getJSONObject(j).getInt("Id_Version") == jVerCanceA.getJSONObject(i).getInt("Id_Version"))) {
+                        jNotAhoraA.remove(j);
+                        i--;
+                        break;
+                    }
+                }
+            }
+            return jNotAhoraA;
+        } catch (Exception e) {
+            return e.getMessage();
+        }
+    }
+    //------------------ CAMBIO CORRECCION ------------------------------------
+
+
 }

@@ -1,7 +1,10 @@
 var ob = new $.Luna("producto", $("#tablaNotificacion"));
 ob.Vivo("NotifiacionesInstrutor1");
 var jso = [], selector = [], datos = [], hilo = [], data = [];
-jso[0] = ['EvaluacionGeneral_Controller','[{opcion:3,elegir:[4,5,6,7,11],delimitador:"[{colum:2,operador:0,valor1:' + idRol + ',añadir:0},{colum:10,operador:0,valor1:' + idCentro + ',añadir:0},{colum:0,operador:0,valor1:' + idUser + ',añadir:0},{colum:9,operador:0,valor1:0}]"}]'];
+
+//-------cambio
+jso[0] = ['EvaluacionGeneral_Controller','[{opcion:3,elegir:[4,5,6,7,11],delimitador:"[{colum:2,operador:0,valor1:' + idRol + ',añadir:0},{colum:10,operador:0,valor1:' + idCentro + ',añadir:0},{colum:0,operador:0,valor1:' + idUser + ',añadir:0},{colum:9,operador:6,valor1:\'0,1\'}]",opt:1}]'];
+//-------cambio
 selector[0] = $("#tablaNotificacion");
 datos[0] = {nombre: "Notificacion"};
 ob.TablaEspa(selector[0]);
