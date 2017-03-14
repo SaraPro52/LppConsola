@@ -17,16 +17,28 @@ BEGIN
             WHEN 5 THEN SET @fechaVigencia  = @valor;
 			WHEN 6 THEN SET @ArrayEvaItems 	= @valor;
 		END CASE;");
-	CALL SARA_CRUD("INSERT","Evaluacion_General",CONCAT("Observacion~",@observacionG,"|Resultado~",@resultado,"|Id_Version~",@idVersion,"|Id_Lista_Chequeo~",@idLista,"|Id_Funcionario~",@idFuncionario,""),"");
-    CALL SARA_CRUD("SELECT","Evaluacion_General","Id_Evaluacion_General INTO @idEvaluacion","Id_Evaluacion_General > 0 ORDER BY Id_Evaluacion_General DESC LIMIT 1");
+        
+	SELECT  COUNT(*) INTO @contRepro
+    FROM Evaluacion_General
+    WHERE Id_Version = @idVersion AND Resultado = 0 AND Id_Funcionario = @idFuncionario; 
     
-    -- -----------------------------------------------------------------------------------------------------------
+    SELECT Id_Estado INTO @idEstado
+    FROM Version 
+    WHERE Id_Version = @idVersion;
+    
+    
+    IF(@contRepro < 3 AND @idEstado in (3,4))THEN
+    
+		CALL SARA_CRUD("INSERT","Evaluacion_General",CONCAT("Observacion~",@observacionG,"|Resultado~",@resultado,"|Id_Version~",@idVersion,"|Id_Lista_Chequeo~",@idLista,"|Id_Funcionario~",@idFuncionario,""),"");
+		CALL SARA_CRUD("SELECT","Evaluacion_General","Id_Evaluacion_General INTO @idEvaluacion","Id_Evaluacion_General > 0 ORDER BY Id_Evaluacion_General DESC LIMIT 1");
+    
+    -- ------------------------------------ VALIDACION SOLUCION FECHA-----------------------------------------------------------------------
 
  
-    CALL SARA_CRUD("SELECT","08_V_Funcionario","Id_Rol INTO @rol",
-    CONCAT("Id_Funcionario = ",@idFuncionario," AND Id_Rol IN (2,3)"));
+		CALL SARA_CRUD("SELECT","08_V_Funcionario","Id_Rol INTO @rol",
+		CONCAT("Id_Funcionario = ",@idFuncionario," AND Id_Rol IN (2,3)"));
     
-    IF(@rol = 2 AND @resultado = 1)THEN
+		IF(@rol = 2 AND @resultado = 1)THEN
     
 		IF(@fechaVigencia = "null")THEN 
 			SET @fechaVigencia = CONCAT(DATE_ADD(CURDATE(), INTERVAL 3 MONTH)," 18:00:00");	
@@ -90,6 +102,16 @@ BEGIN
     FROM Funcionario v1 INNER JOIN Area_Centro v2 ON v1.Id_Area_Centro = v2.Id_Area_Centro
     WHERE Id_Funcionario = @idFuncionario;
     
+    SELECT  COUNT(*) INTO @contRepro
+    FROM Evaluacion_General
+    WHERE Id_Version = @idVersion AND Resultado = 0 AND Id_Funcionario = @idFuncionario;
+    
+    SELECT v3.Nom_Rol INTO @nomRol
+    FROM Funcionario v1 
+	INNER JOIN Rol_Funcionario v2 ON v1.Id_Funcionario = v2.Id_Funcionario
+	INNER JOIN Rol v3 ON v2.Id_Rol = v3.Id_Rol
+	WHERE v2.Id_Funcionario = @idFuncionario;
+    
     IF(@resultado = 1 AND @estado1 = 4)THEN
 		
         SELECT v1.Id_Funcionario INTO @idEval
@@ -104,25 +126,48 @@ BEGIN
         
         ELSE IF(@resultado = 1 AND @estado1 = 5) THEN
         
-            SELECT v1.Id_Funcionario INTO @idCoor
+            SELECT v1.Id_Funcionario  INTO @idCoor
 			FROM Funcionario v1 INNER JOIN Area_Centro v2 ON v1.Id_Area_Centro = v2.Id_Area_Centro 
 			INNER JOIN Rol_Funcionario v3 ON v1.Id_Funcionario = v3.Id_Funcionario
 			WHERE Id_Centro = @idCentro AND Id_Rol = 4;
             
 			CALL RegistarNotificaion(CONCAT("Nuevo Producto Virtual ha aprobar CO~3~",@idFuncionario,"~",@idCoor,"~",@idVersion,""));	
 
-				ELSE IF(@resultado = 0 AND @estado1 = 3 OR @estado1 = 4)THEN
+				ELSE IF(@resultado = 0 AND (@estado1 = 3 OR @estado1 = 4) AND @contRepro < 3)THEN
+                
 					CALL ALL_AUTOR(@idVersion,@autores);
+                    SELECT "ENTRO";
                     SELECT @autores as Autores_1; -- Verificacion del datos de autores por si lo pasa bien
-					CALL RegistarNotificaion(CONCAT("El Producto Virtual Fue reprovado INS~2~",@idFuncionario,"~",@autores,"~",@idEvaluacion,""));						
+                    
+					CALL RegistarNotificaion(CONCAT("El Producto Virtual Fue reprovado por el ",@nomRol,"~2~",@idFuncionario,"~",@autores,"~",@idEvaluacion,""));	
+                    
+                    -- --------------------------------------TRES INTENTOS ERRADOS------------------------------------------------- CAMBIO
+                    ELSE IF(@contRepro = 3) THEN
+                    
+						CALL ALL_AUTOR(@idVersion,@autores);
+                        
+						SELECT @autores as Autores_1; -- Verificacion del datos de autores por si lo pasa bien
+                        
+                        CALL RegistarNotificaion(CONCAT("El Producto Virtual Fue reprovado INS~2~",@idFuncionario,"~",@autores,"~",@idEvaluacion,""));	
+                    
+						CALL RegistarNotificaion(CONCAT("El Producto Virtual, Fue reprobado 3 veses por el ",@nomRol,", dejando esta version cancelada~3~",@idFuncionario,"~",@autores,"~",@idVersion,""));
+                        
+						UPDATE Version 
+                        SET Id_Estado = 8 -- cancelado
+                        WHERE Id_Version  = @idVersion;
+                        
+                    END IF;
+					-- ------------------------------------------------------------------------------------- CAMBIO
 				END IF;
 		END IF;
     END IF;
-    
+    ELSE SIGNAL SQLSTATE "45000" SET MESSAGE_TEXT = "La version se encuentra anulada";
+    END IF;
+        
 END;;
 DELIMITER ;
 
-DROP PROCEDURE IF EXISTS ALL_AUTOR;
+DROP PROCEDURE IF EXISTS ALL_AUTOR;	
 DELIMITER ;;
 CREATE PROCEDURE ALL_AUTOR(IN idVersion INTEGER, OUT salida VARCHAR(50))
 BEGIN
@@ -161,25 +206,20 @@ DELIMITER ;
 -- WHEN 5 THEN SET @fechaVigencia  = @valor;
 -- WHEN 6 THEN SET @ArrayEvaItems 	= @valor;
 
- -- CALL RegistrarEvaluacion("Evaluacion Prueba 333~1~8~3~4~2017-03-26~    1¤si cumple con el item¤1|1¤si cumple con el item¤2");
+ /*CALL RegistrarEvaluacion("Evaluacion Prueba v5~0~1~2~3~2017-03-26~    1¤si cumple con el item¤1|1¤si cumple con el item¤2");
  
-  -- SELECT *
-  -- FROM Evaluacion_General
- --  WHERE Id_Version = 5 -- LA VALIDACION DE LOS TRES INTENTOS SE DA EN ESTA CONSULTA
+ SELECT * FROM Evaluacion_General WHERE Id_Version = 1;-- LA VALIDACION DE LOS TRES INTENTOS SE DA EN ESTA CONSULTA
+ SELECT * FROM Detalles_Evaluacion;
+
+ SELECT * FROM 07_v_Version WHERE Id_Estado = 8 AND Id_Version = 1;
  
--- SELECT *
- --  FROM 07_v_Version 
--- WHERE Id_Estado = 6 AND Id_Version = 5
- 
- -- SELECT *
-  -- FROM 09_v_autor
-  -- WHERE Id_Estado = 3
+ SELECT * FROM 09_v_autor WHERE Id_Estado = 3;
   
---  SELECT *
---   FROM  18_v_notificaciones
+ SELECT * FROM Tipo_Notificacion;
+ SELECT * FROM  18_v_notificaciones WHERE Id_Funcionario IN (1,5)*/
  
- -- SELECT *
- -- FROM 25_v_evaluarproductosv
+ 
+ -- SELECT * FROM 25_v_evaluarproductosv
  
  --  UPDATE Version 
   -- SET Fecha_Vigencia = (SELECT Fecha_Publicacion FROM Version WHERE Id_Version = @idVersion)
