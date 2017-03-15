@@ -68,12 +68,16 @@ public class ArchivosController extends HttpServlet {
      *
      * @param nombre Nombre del archivo que se desea eliminar.
      */
-    public void EliminarArchivo(String nombre) {
+    //---------- Cambio
+    public void EliminarArchivo(String nombre,int val) { //1:rutaTem 2: getbase
         Archivos a = new Archivos();
-        String ruta = a.rutaTem() + nombre;
+        String ruta;
+        if(val == 1) ruta = a.rutaTem() + nombre;
+        else ruta = a.getBase() + nombre;
         File archivo = new File(ruta);
         archivo.delete();
     }
+    //---------- Cambio
 
     public void MoverArchivo(String nomArchivo) {
         try {

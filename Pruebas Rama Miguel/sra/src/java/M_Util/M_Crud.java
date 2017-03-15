@@ -89,23 +89,27 @@ public class M_Crud extends M_Procedure {
     }
 
     public static String[] M_toArray(Map<String, Object> mapa, int vector) {
-        String[] array = new String[mapa.size()];                          
-        Object[] array1 = new String[mapa.size()];                          
+        String[] array = new String[mapa.size()];                          //A
+        Object[] array1 = new String[mapa.size()];                          //B
         int i = 0;
-        String[] retorno = null;                                            
-        for (Entry<String, Object> enti : mapa.entrySet()) {                
-            array[i] = enti.getKey();                                       
-            array1[i] = enti.getValue();                                    
-            i++;                                                            
-        }          
-        if (vector == 1) retorno = array;                                                   
-        else {
-            if (vector == 2) retorno = (String[]) array1; 
+        String[] retorno = null;                                            //C
+        for (Entry<String, Object> enti : mapa.entrySet()) {                //D
+            array[i] = enti.getKey();                                       //E
+            array1[i] = enti.getValue();                                    //F
+            i++;                                                            //G
+        }                                                                   //H
+
+        if (vector == 1) {                                                    //I
+            retorno = array;                                                   //J
+        } else {
+            if (vector == 2) {                                               //K
+                retorno = (String[]) array1;                                    //L
+            }
         }
-        return retorno;                                                        
+        return retorno;                                                        //M
     }
 
-    public static String M_Format(String fecha){
+    public static String M_Format(String fecha) {
         Date d = new Date(fecha);
         SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd");
         fecha = f.format(d);

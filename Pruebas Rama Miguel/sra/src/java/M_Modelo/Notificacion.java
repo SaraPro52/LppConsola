@@ -30,12 +30,13 @@ public class Notificacion extends Elomac {
                     jNot1.remove("Id_Tipo_Notificacion");
                     jNot2.put(jNot1);
                 } else if (tipo == 2) {
-                    String[] numT = {"1", "2", "3"}; //-------CAMBIADO 3-> ID VERSION
+                    String[] numT = {"1", "2", "3","4"}; //-------CAMBIADO 3-> ID VERSION, url
                     String delimi = "[{colum:0,operador:0,valor1:" + jNot1.get("Ides_Proceso") + "}]";
                     JSONObject jEva = new JSONArray(new Elomac(39, 2).Select(numT, delimi)).getJSONObject(0);
                     jNot1.put("Nom_P_Virtual", jEva.get("Nom_P_Virtual"));
                     jNot1.put("Num_Version", jEva.get("Num_Version"));
                     jNot1.put("Id_Version", jEva.get("Id_Version"));//-------CAMBIADO 3-> ID VERSION
+                    jNot1.put("Url_Version", jEva.get("Url_Version"));//-------CAMBIADO 4-> url
                     jNot1.remove("Id_Tipo_Notificacion");
                     jNot2.put(jNot1);
                 } else if (tipo == 1) {

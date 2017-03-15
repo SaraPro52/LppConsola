@@ -431,7 +431,7 @@ CREATE VIEW 39_v_listacategoria AS (
 -- //-------CAMBIADO idversion
 DROP VIEW IF EXISTS 40_V_EvaluaVersion;
 CREATE VIEW 40_V_EvaluaVersion AS (
-	SELECT Id_Evaluacion_General,v1.Nom_P_Virtual,v1.Num_Version,v1.Id_Version
+	SELECT Id_Evaluacion_General,v1.Nom_P_Virtual,v1.Num_Version,v1.Id_Version,Url_Version
 	FROM 07_v_version v1 INNER JOIN Evaluacion_General v2 ON v1.Id_Version = v2.Id_Version
 );
 --  ----------------------------------------------

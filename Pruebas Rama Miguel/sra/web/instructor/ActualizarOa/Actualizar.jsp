@@ -101,7 +101,4 @@
     <script type="text/javascript"  src="js/jquery.form.js"></script> 
     <script type="text/javascript" src="js/jquery.cecily.js"></script>
     <script type="text/javascript" charset="utf8" src="instructor/ActualizarOa/js/Actualizar.js" type="text/javascript"></script>
-    <script>
-        Actualizar(this.id);
-    </script>
 </html>

@@ -5,9 +5,7 @@
  */
 package M_Controller;
 
-import M_Modelo.Programa;
 import M_Modelo.Version;
-import M_Util.Elomac;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -20,7 +18,7 @@ import org.json.JSONObject;
 
 /**
  *
- * @author migue
+ * @author Judini Cambell
  */
 @WebServlet(name = "Version_Controller", urlPatterns = {"/Version_Controller"})
 public class Version_Controller extends HttpServlet {
@@ -36,7 +34,7 @@ public class Version_Controller extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
+             response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             
             /*
@@ -45,10 +43,8 @@ public class Version_Controller extends HttpServlet {
             String data = request.getParameter("data");
             JSONObject jData = new JSONArray(data).getJSONObject(0);
             int opcion = jData.getInt("opcion");
-            
             Version  ver = new Version();
-            
-           response.setContentType("application/json;charset=UTF-8");
+            response.setContentType("application/json;charset=UTF-8");
            PrintWriter respuesta = response.getWriter();
            switch(opcion){
                case 1:

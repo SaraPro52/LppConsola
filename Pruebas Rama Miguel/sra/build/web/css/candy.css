@@ -212,70 +212,31 @@ table{
 }
 
 
-/*.developer1{
-  background-color:#009E8E;
-}
-
 .developer1:hover{
-  background-color:#00675c;
+color: #ffffff;
 
 }
 
-.developer2{
+/*.developer2{
   background-color: #1047a9;
-}
-
-.developer2:hover{
-  background-color: #29477f;
-}
-
-.developer3{
-  background-color: #ffa500;
-}
-
-.developer3:hover{
-  background-color: #ffbc40;
-}
-
-.developer4{
-  background-color: #ff6c00;
-}
-
-.developer4:hover{
-  background-color: #ff9140;
 }*/
 
-/*.developer1{
-  background-color:#00AA72;
-}
-
-.developer1:hover{
-  background-color:#207f60;
-
-}
-
-.developer2{
-  background-color: #0d58a6;
-}
-
 .developer2:hover{
-  background-color: #4188d2;
+  color: #ffffff;
 }
 
-.developer3{
-  background-color: #ff9900;
-}
+/*.developer3{
+  background-color: #ffa500;
+}*/
 
 .developer3:hover{
-  background-color: #ffb240;
+  color: #ffffff;
 }
 
-.developer4{
-  background-color: #ff5600;
-}
+
 
 .developer4:hover{
-  background-color: #ff8040;
+  color: #ffffff;
 }
 /* END CODE CSS DEVELOPER TEAM */
 /*input[type=number]::-webkit-outer-spin-button,

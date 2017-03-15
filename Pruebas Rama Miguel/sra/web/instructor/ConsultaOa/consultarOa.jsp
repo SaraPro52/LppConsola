@@ -97,9 +97,15 @@
         </div>
     </article>
 </p>
-<div class="col-md-offset-1 col-md-3">
-    <button id="btnBuscar" type="button" class="btn btn-block">Buscar producto virtual</button>
+<div class="col-md-offset-1 col-md-6">
+    <div class="col-md-6">
+        <button id="btnBuscar" type="button" class="btn btn-block">Buscar producto virtual</button>        
+    </div>
+    <div class="col-md-6">
+        <button id="btnActu" type="button" class="btn btn-block">Actualizar lista</button>        
+    </div>
 </div>
+
 <div id="formulario1" style="display: none;">
     <section class="col col-md-10" id="Contenedora">
         <article class="col-md-3">

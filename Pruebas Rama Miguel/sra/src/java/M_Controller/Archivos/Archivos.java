@@ -20,13 +20,13 @@ public class Archivos {
     }
 
     public String getBase() {
-        String macc = "C:\\Users\\migue\\Desktop\\LppConsola\\En Produccion\\sra\\web\\Archivos\\ArchivosA\\";
+        String macc = "C:\\Users\\migue\\Desktop\\LppConsola\\Pruebas Rama Miguel\\sra\\web\\Archivos\\ArchivosA\\";
         String juan = "C:\\Users\\JudiniBezarius\\Documents\\Proyectos\\LppConsola\\En Produccion\\sra\\web\\Archivos\\ArchivosA\\";
         return (macc);
     }
 
     public String rutaTem() {
-        String macc = "C:\\Users\\migue\\Desktop\\LppConsola\\En Produccion\\sra\\web\\Archivos\\TemArchivos\\";
+        String macc = "C:\\Users\\migue\\Desktop\\LppConsola\\Pruebas Rama Miguel\\sra\\web\\Archivos\\TemArchivos\\";
         String juan = "C:\\Users\\JudiniBezarius\\Documents\\Proyectos\\LppConsola\\En Produccion\\sra\\web\\Archivos\\TemArchivos\\";
         return (macc);
     }

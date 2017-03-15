@@ -82,7 +82,6 @@ jQuery.Luna = function (Datos, selector) {
             }
         });
     };
-
     this.mostrarVentana = function (selector) {
         selector.show();
     };
@@ -128,35 +127,39 @@ jQuery.Luna = function (Datos, selector) {
                     }
                     $("#ObservacionGeneral").val(jso.Observacion_General);
                     break;
-
                 case "DetallesOaC":
-                    var jso = jQuery.parseJSON(json);
-                    var oAItem, oAComen, cc = 1;
-                    for (var i = 0; i < jso.length; i++) {
-                        oAItem = selector.clone();
-                        oAItem.find("#consul").addClass("consul" + jso[i].Id_Version);
-                        oAItem.find("#NumVersion").text("Version " + cc + ": " + datos.nom);
-                        oAItem.find("#NumVersion").addClass(jso[i].Id_Version);
-                        oAItem.find("#PvAutores").text(jso[i].Autores);
-                        oAItem.find("#PvPublicacion").text(jso[i].Fecha_Publicacion);
-                        oAItem.find("#PvFechaVigencia").text(jso[i].Fecha_Vigencia);
-                        oAItem.find("#PvRequisitos").val(jso[i].Reqst_Instalacion);
-                        oAItem.find("#PvInstalacion").val(jso[i].Inst_Instalacion);
-                        oAItem.find(".labelEstrella").addClass(jso[i].Id_Version);
-                        oAItem.find(".RComentarios").attr('id', "RComentarios" + jso[i].Id_Version);
-                        oAItem.find("#comment").addClass('Comment' + jso[i].Id_Version);
-                        oAItem.find("#Url_Version").attr('href', 'DescargaArchivo?archivo=' + jso[i].Url_Version + '');
-                        oAItem.find("#btn_Comentar").val(jso[i].Id_Version);
-                        oAItem.children().appendTo($("#resultados"));
-                        var jsoComen = jQuery.parseJSON(jso[i].Comentarios);
-                        for (var j = 0; j < jsoComen.length; j++) {
-                            oAComen = $("#BaseComentario").clone();
-                            oAComen.find(".contenidoCome").attr('id', "Comentario" + jsoComen[j].Id_Comentario);
-                            oAComen.find("#NombreAComen").text(jsoComen[j].Nombre_Completo);
-                            oAComen.find("#BaseComment").val(jsoComen[j].Comentario);
-                            oAComen.children().appendTo($("#RComentarios" + jso[i].Id_Version));
+                    try {
+                        var jso = jQuery.parseJSON(json);
+                        var oAItem, oAComen, cc = 1;
+                        for (var i = 0; i < jso.length; i++) {
+                            oAItem = selector.clone();
+                            oAItem.find("#consul").addClass("consul" + jso[i].Id_Version);
+                            oAItem.find("#NumVersion").text("Version " + cc + ": " + datos.nom);
+                            oAItem.find("#NumVersion").addClass(jso[i].Id_Version);
+                            oAItem.find("#PvAutores").text(jso[i].Autores);
+                            oAItem.find("#PvPublicacion").text(jso[i].Fecha_Publicacion);
+                            oAItem.find("#PvFechaVigencia").text(jso[i].Fecha_Vigencia);
+                            oAItem.find("#PvRequisitos").val(jso[i].Reqst_Instalacion);
+                            oAItem.find("#PvInstalacion").val(jso[i].Inst_Instalacion);
+                            oAItem.find(".labelEstrella").addClass(jso[i].Id_Version);
+                            oAItem.find(".RComentarios").attr('id', "RComentarios" + jso[i].Id_Version);
+                            oAItem.find("#comment").addClass('Comment' + jso[i].Id_Version);
+                            oAItem.find("#Url_Version").attr('href', 'DescargaArchivo?archivo=' + jso[i].Url_Version + '');
+                            oAItem.find("#btn_Comentar").val(jso[i].Id_Version);
+                            oAItem.children().appendTo($("#resultados"));
+                            console.log(jso);
+                            var jsoComen = jQuery.parseJSON(jso[i].Comentarios);
+                            for (var j = 0; j < jsoComen.length; j++) {
+                                oAComen = $("#BaseComentario").clone();
+                                oAComen.find(".contenidoCome").attr('id', "Comentario" + jsoComen[j].Id_Comentario);
+                                oAComen.find("#NombreAComen").text(jsoComen[j].Nombre_Completo);
+                                oAComen.find("#BaseComment").val(jsoComen[j].Comentario);
+                                oAComen.children().appendTo($("#RComentarios" + jso[i].Id_Version));
+                            }
+                            cc++;
                         }
-                        cc++;
+                    } catch (error) {
+                        console.log(error.message);
                     }
                     break;
                 case "Comentario":
@@ -216,7 +219,6 @@ jQuery.Luna = function (Datos, selector) {
                                     $selectionSearch = that.$selectionUl.prev(),
                                     selectableSearchString = '#' + that.$container.attr('id') + ' .ms-elem-selectable:not(.ms-selected)',
                                     selectionSearchString = '#' + that.$container.attr('id') + ' .ms-elem-selection.ms-selected';
-
                             that.qs1 = $selectableSearch.quicksearch(selectableSearchString)
                                     .on('keydown', function (e) {
                                         if (e.which === 40) {
@@ -224,7 +226,6 @@ jQuery.Luna = function (Datos, selector) {
                                             return false;
                                         }
                                     });
-
                             that.qs2 = $selectionSearch.quicksearch(selectionSearchString)
                                     .on('keydown', function (e) {
                                         if (e.which == 40) {
@@ -249,7 +250,6 @@ jQuery.Luna = function (Datos, selector) {
                         }
                     });
                     break;
-
                 case "Select":
                     var jso = jQuery.parseJSON(json);
                     var j = Object.keys(jso[0]);
@@ -270,12 +270,12 @@ jQuery.Luna = function (Datos, selector) {
                         {nombre: "PDF", arrayExt: ["pdf"]},
                         {nombre: "Imagen", arrayExt: ["gif", "dib", "jpg", "png", "tga", "tiff", "pcx", "plic", "emf", "ico", "htm", "html"]},
                         {nombre: "BaseDatos", arrayExt: ["sql"]},
-                        {nombre: "Net", arrayExt: ["asp","aspx"]},
+                        {nombre: "Net", arrayExt: ["asp", "aspx"]},
                         {nombre: "Java", arrayExt: ["jar"]},
                         {nombre: "Php", arrayExt: ["php"]},
                         {nombre: "Css", arrayExt: ["css"]},
                         {nombre: "Js", arrayExt: ["js"]},
-                        {nombre: "Compress", arrayExt: ["arj","zip","iso","lha","izh","img","bin"]}
+                        {nombre: "Compress", arrayExt: ["arj", "zip", "iso", "lha", "izh", "img", "bin"]}
                     ];
                     var pag = 0;
                     var q = 2;
@@ -354,7 +354,6 @@ jQuery.Luna = function (Datos, selector) {
                             $(selecNo).append('<li><a><label class="Notify" id=verMasNotificaciones>Ver mas notificaciones</label></a></li>');
                         }
                     }
-                    
                     $("#ccNoti").append(i);
                     break;
                 case "correcion":
@@ -367,7 +366,8 @@ jQuery.Luna = function (Datos, selector) {
                             jsoCorre[i].Num_Version,
                             jsoCorre[i].Conte_Notificacion,
                             jsoCorre[i].Fecha_Envio,
-                            "<button  type='button' id='" + jsoCorre[i].Ides_Proceso + "$$"+ jsoCorre[i].Id_Version +"$$"+ jsoCorre[i].Nom_P_Virtual +"$$"+jsoCorre[i].Id_Notificacion+"' class='btn btn-info btnCorrecion'>Correguir P.V</button>"
+                            "<button  type='button' id='" + jsoCorre[i].Ides_Proceso + "$$" + jsoCorre[i].Id_Version + "$$" + jsoCorre[i].Nom_P_Virtual + "$$" + jsoCorre[i].Id_Notificacion + "$$"+jsoCorre[i].Url_Version+"' class='btn btn-info btnCorrecion'>Correguir P.V</button>"
+                            //---url añadido
                         ]);
                     }
                     //---------

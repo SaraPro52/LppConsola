@@ -21,6 +21,8 @@ $(document).on('click', '.btnCorrecion', function (e) {
     idver = valors[1];
     nomPV = valors[2];
     idNot = valors[3];
+    url = valors[4];//--------URL VERSION
+    
     ob.limpiarTablaI($("#tablaNotificacion"));
     jso[1] = ['EvaluacionGeneral_Controller', '[{opcion:2,idEvalua:' + valors[0] + ',resultado:0}]'];
      //-------CAMBIADO
@@ -47,7 +49,11 @@ var options = {
     success: function () {
         $("#contenedor").show();
         $("#formularioss").hide();
-        jso[5] = ['ProductoVirtual_Controller', '[{opcion:1,info:[' + $("#Titulo_Publicacion").val() + ',' + $("#descripcion_oa").val() + ',' + $("#palabras_claves").val() + ',' + $("#formato").val() + ',0,0,archivoNom:' + $("#myfile").val() + '}]'];
+        alert('[{opcion:3,correccion:[',idUser,',',idver,',',$("#myfile").val(),'],nomPV:',nomPV,',idNot:',idNot,'}]');
+        //-------- Cambio 2
+        jso[5] = ['ProductoVirtual_Controller', '[{opcion:3,correccion:['+idUser+','+ idver+',\"' + $("#myfile").val() + '\"],nomPV:\"'+nomPV+'\",idNot:'+idNot+',url:',url,'}]'];
+        //-------- Cambio 2
+        
         selector[5] = null;
         datos[5] = {nombre: "btn"};
         console.log(jso[5]);
