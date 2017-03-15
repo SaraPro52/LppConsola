@@ -154,13 +154,13 @@ BEGIN
 
 	SELECT Id_Funcionario INTO @idFun
     FROM Version v1 INNER JOIN Autor v2 ON v1.Id_Version = v2.Id_Version
-    WHERE v1.Id_Version = @idVersion AND Principal = 1;
+    WHERE v1.Id_Version = 4 AND Principal = 1;
     
     CALL SARA_CRUD("SELECT","Version","Id_Estado INTO @oldEstado","Id_Version = @idVersion");
     CALL SARA_CRUD("SELECT","Version","Url_Version INTO @oldUrl","Id_Version = @idVersion");
     
     
-    IF(@oldUrl != @urlVersion  AND @idFuncionario = @idFun)THEN 
+    IF(@idFuncionario = @idFun)THEN -- Cambio en la validacion ------------------------
     
 		SELECT Id_Centro INTO @idCentro
 		FROM Funcionario v1 INNER JOIN Area_Centro v2 ON v1.Id_Area_Centro = v2.Id_Area_Centro

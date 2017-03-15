@@ -50,6 +50,7 @@ CALL SARA_CRUD("INSERT","Estado","Nom_Estado~Evaluando Equipo Pedagogico		|Id_Ti
 CALL SARA_CRUD("INSERT","Estado","Nom_Estado~Pendiente							|Id_Tipo_Estado~2","");
 CALL SARA_CRUD("INSERT","Estado","Nom_Estado~Habilitado							|Id_Tipo_Estado~2","");
 CALL SARA_CRUD("INSERT","Estado","Nom_Estado~Inhabilitado						|Id_Tipo_Estado~2","");
+CALL SARA_CRUD("INSERT","Estado","Nom_Estado~Cancelado							|Id_Tipo_Estado~2","");-- CAMBIO-----------------------------------------
 --
 CALL SARA_CRUD("INSERT","Rol","Nom_Rol~Instructor							|Des_Rol~Suprincipal participacion es el envio de los oa","");
 CALL SARA_CRUD("INSERT","Rol","Nom_Rol~Lider Equipo Tecnico					|Des_Rol~Evaluara los oa tecnicamente","");
