@@ -1,6 +1,6 @@
 $(document).on('ready', function () {
     console.log('%c ¡Las consola del navegador a sido bloqueada; es por la seguridad de nuestros clientes! :)', 'color: green; font-weight: bold;');
-    logger.disableLogger();
+    //logger.disableLogger();
     $("#btnLogin").prop('disabled', false);
     $("#total").addClass("backgroundBody");
     var hilo = [], jso = [], data = [];

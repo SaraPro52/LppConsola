@@ -139,7 +139,7 @@ BEGIN
                     SELECT "ENTRO";
                     SELECT @autores as Autores_1; -- Verificacion del datos de autores por si lo pasa bien
                     
-					CALL RegistarNotificaion(CONCAT("El Producto Virtual Fue reprovado por el ",nomRol,"~2~",@idFuncionario,"~",@autores,"~",@idEvaluacion,""));	
+                    CALL RegistarNotificaion(CONCAT("El Producto Virtual Fue reprovado por el ",@nomRol,"~2~",@idFuncionario,"~",@autores,"~",@idEvaluacion,""));
                     
                     -- --------------------------------------TRES INTENTOS ERRADOS------------------------------------------------- CAMBIO
                     ELSE IF(@contRepro = 3) THEN

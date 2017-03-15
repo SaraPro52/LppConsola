@@ -348,4 +348,29 @@ public class Elomac extends M_Crud {
         }
         return arrayVerdad;
     }
+
+    public static Object M_ResultSet(String datos, int procedure) {
+        M_Procedure mp = new M_Procedure();
+        JSONObject jo = null;
+        JSONArray ja = new JSONArray();
+        try {
+            mp.rs = (ResultSet) mp.Registar(datos, procedure);
+
+            while (mp.rs.next()) {
+                jo = new JSONObject();
+                System.out.println(mp.rs.getMetaData().getColumnCount());
+                for (int i = 0; i < mp.rs.getMetaData().getColumnCount(); i++) {
+                    System.out.println(mp.rs.getMetaData().getColumnName(i + 1));
+                    System.out.println(mp.rs.getString(i + 1));
+                    jo.append(mp.rs.getMetaData().getColumnName(i + 1), mp.rs.getString(i + 1));
+                    System.out.println(i);
+                }
+                System.out.println("" + jo);
+                ja.put(jo);
+            }
+            return "" + ja;
+        } catch (Exception e) {
+            return e.getMessage();
+        }
+    }
 }

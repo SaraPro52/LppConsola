@@ -22,7 +22,7 @@ jQuery.Luna = function (Datos, selector) {
     };
     this.Vivo = function (mensaje) {
         console.log("Vivo??Cecily." + mensaje + " ");
-        logger.disableLogger();
+        //logger.disableLogger();
     };
     this.limpiarSelector = function (selector) {
         selector.empty().append('<option value="A0">selecione...</option>');

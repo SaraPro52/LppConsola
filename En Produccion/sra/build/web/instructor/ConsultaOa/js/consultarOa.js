@@ -17,6 +17,10 @@ $(document).on('ready', function () {
     var ob = new $.Luna("Consultar PV", $("#formulario1"));
     ob.Vivo("ConsultarPV1");
     var tipoPet = 3;
+    $("#btnActu").click(function(){
+        $("#resultadosProductos").empty();
+        ajax(0, datos[0]);
+    });
     $("#Programas").change(function () {
         $("#SelectCategoria").empty();
         $("#ElementoCategoria").hide();

@@ -22,4 +22,10 @@ public class Version extends Elomac{
         public boolean AprobarPV(String[] publicar){
             return (boolean)this.Registar(Group(publicar, '~'), 9);
         }
+        
+        //-----------CAMBIO 2
+        public Object ConsultaActualizar(int idFun){
+            return Elomac.M_ResultSet(""+idFun, 10);
+        }
+        //-----------CAMBIO 2
 }

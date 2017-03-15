@@ -47,7 +47,9 @@ var options = {
     success: function () {
         $("#contenedor").show();
         $("#formularioss").hide();
-        jso[5] = ['ProductoVirtual_Controller', '[{opcion:1,info:[' + $("#Titulo_Publicacion").val() + ',' + $("#descripcion_oa").val() + ',' + $("#palabras_claves").val() + ',' + $("#formato").val() + ',0,0,archivoNom:' + $("#myfile").val() + '}]'];
+        jso[5]=['ProductoVirtual_Controller','[{opcion:3,nomPV:}]'];
+    
+        jso[5] = ['ProductoVirtual_Controller', '[{opcion:3,info:[' + $("#Titulo_Publicacion").val() + ',' + $("#descripcion_oa").val() + ',' + $("#palabras_claves").val() + ',' + $("#formato").val() + ',0,0,archivoNom:' + $("#myfile").val() + '}]'];
         selector[5] = null;
         datos[5] = {nombre: "btn"};
         console.log(jso[5]);
