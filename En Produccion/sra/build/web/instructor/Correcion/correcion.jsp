@@ -25,11 +25,10 @@
                         <div class="col-md-8 col-md-offset-1">
                             <textarea id="ObservacionGeneral" class="form-control" cols="60" rows="8" readonly="true"></textarea>
                         </div>                         
-                        <div class="form-group">
+                        <div class="col-md-12">
                             <label for="" class="col-md-10 col-md-offset-1">Adjuntar correcion de producto virtual</label>
                             <form id="UploadForm" action="archivos" method="post" enctype="multipart/form-data">
-                                <input required type="file" class="form-control-file inputs col-md-offset-1" id="myfile" name="myfile" aria-describedby="fileHelp">
-                                <input type="submit" class=" btn btn-info  col-md-4 col-md-offset-1"  value="Correguir produto virtual" id="correguir_oa">
+                                <input type="file" size="26120" id="myfile" class="inputs input-file" name="myfile">                                 <input type="submit" class=" btn btn-info  col-md-4 col-md-offset-1"  value="Correguir produto virtual" id="correguir_oa">
                                 <div id="progressbox" class="col-md-12 col-md-offset-1">
                                     <div id="progressbar"></div>
                                     <div id="percent">0%</div>
@@ -40,7 +39,6 @@
                             </form>
                         </div>
                     </article>
-
                     <div class="col-md-12">
                         <div class="contenedor">
                             <article style="margin-top: 3%;" class="col-md-8 col-md-offset-1" id="tabla">

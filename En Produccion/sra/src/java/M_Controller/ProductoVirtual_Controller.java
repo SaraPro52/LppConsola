@@ -72,7 +72,7 @@ public class ProductoVirtual_Controller extends HttpServlet {
                         arch.MoverArchivo(infoVersion[4]);
                     } else {
                         respuesta.println("false$$ no fue registrado");
-                        arch.EliminarArchivo(infoVersion[4]);
+                        arch.EliminarArchivo(infoVersion[4],1);
                     }
                     break;
                 case 2:
@@ -91,6 +91,10 @@ public class ProductoVirtual_Controller extends HttpServlet {
                         correccion[2] = arch.CambiarNombre(correccion[2],jData.getString("nomPV"));
                         if (ver.CorreccionVersion(correccion)) {
                             respuesta.println("true$$ fue Corregido");
+                            
+                            //---CAMBIO 2 Elimina el archivo que se encontraba subido (Antiguo)
+                            arch.EliminarArchivo(jData.getString("url"),2);
+                            //---Cambio
                             arch.MoverArchivo(correccion[2]);
                             int idNoti = Integer.parseInt(jData.getString("idNot"));
                             Notificacion noti = new Notificacion();
@@ -99,7 +103,7 @@ public class ProductoVirtual_Controller extends HttpServlet {
                             noti.Update();
                         } else {
                             respuesta.println("false$$ no fue Corregido");
-                            arch.EliminarArchivo(correccion[2]);
+                            arch.EliminarArchivo(correccion[2],1);
                         }
                     } catch (Exception e) {
                         respuesta.println(e.getMessage());

@@ -16,10 +16,6 @@ import javax.servlet.http.HttpServletResponse;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-/**
- *
- * @author Judini Cambell
- */
 @WebServlet(name = "Version_Controller", urlPatterns = {"/Version_Controller"})
 public class Version_Controller extends HttpServlet {
 
@@ -60,7 +56,6 @@ public class Version_Controller extends HttpServlet {
             response.getWriter().print(ex.getMessage());
         }
     }
-
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.

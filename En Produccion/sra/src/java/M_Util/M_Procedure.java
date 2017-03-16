@@ -15,7 +15,8 @@ public class M_Procedure extends M_Connection{
                                                   "{call RegistrarCategoria(?)}",
                                                   "{call RegistrarVersion(?)}",
                                                   "{call CorreccionVersion(?)}",
-                                                  "{call AprobarPV(?)}"
+                                                  "{call AprobarPV(?)}",
+                                                  "{call ConsultaActualizar(?)}"
                                                   };    
                                                   
             public boolean listo = false;
@@ -66,12 +67,13 @@ public class M_Procedure extends M_Connection{
                 case 7 : p = procedure[7];break;
                 case 8 : p = procedure[8];break;
                 case 9 : p = procedure[9];break;
+                case 10 : p = procedure[10];break;
             }
             try {
             cst = this.obtenerConn().prepareCall(p);
             cst.setString(1,todo);
             cst.execute();
-            if(val == 4)return cst.getResultSet();
+            if(val == 4 || val == 10)return cst.getResultSet();
             listo = true;
             } catch (Exception p2) {
                 Logger.getLogger(M_Procedure.class.getName()).log(Level.SEVERE,null,p2);

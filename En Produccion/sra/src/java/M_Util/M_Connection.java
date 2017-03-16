@@ -1,6 +1,4 @@
-
 package M_Util;
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLDataException;
@@ -38,7 +36,6 @@ public class M_Connection{
         conn.close();
         conn = null;
         return conn;
-    }
-    
+    }    
 }
 

@@ -16,7 +16,7 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <link rel="stylesheet" href="css/candy.css">
         <link rel="shotrcut icon" href="img/flavicon.ico">
-        <title>Inicio</title>
+        <title>Sara Pro</title>
     </head>
     <body id="total">
         <div id="estru">
