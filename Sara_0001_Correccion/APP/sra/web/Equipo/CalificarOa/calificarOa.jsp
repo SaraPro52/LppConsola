@@ -34,7 +34,8 @@
                             </div>
                             </div>
                             <div class="col-md-12 col-md-offset-2" id="TipodeFecha" style="display: none;">
-                                <label id="TextFecha"></label> <input type="text" id="iFecha">    
+                                <label id="TextFecha"></label> 
+                                <input type="text" id="iFecha" placeholder="D/M/A" class="ui-datepicker">    
                             </div>
                             <div class="col-md-8 col-md-offset-1">
                                 <label class="col-md-5" for="areaObservacion">Observaciones</label>

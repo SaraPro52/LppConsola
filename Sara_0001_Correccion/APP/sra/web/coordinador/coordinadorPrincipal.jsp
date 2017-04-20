@@ -130,14 +130,11 @@
         } else {
             cargaC(idRol, tem);
             $.notify({
-                icon: 'ti-gift',
                 message: "Bienvenido a <b>Sara Pro</b> - Coordinador " + nomUser + "."
-
             }, {
                 type: 'success',
                 timer: 4000
             });
         }
-
     </script>
 </html>

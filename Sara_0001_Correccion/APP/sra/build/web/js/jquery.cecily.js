@@ -163,7 +163,7 @@ jQuery.Luna = function (Datos, selector) {
                     }
                     break;
                 case "Comentario":
-                    $("#RComentarios" + datos.id).empty();
+                    //$("#RComentarios" + datos.id).empty();
                     var jsoComen = jQuery.parseJSON(json);
                     for (var j = 0; j < jsoComen.length; j++) {
                         oAComen = $("#BaseComentario").clone();
@@ -182,6 +182,8 @@ jQuery.Luna = function (Datos, selector) {
                                 opcion = "<option value=" + json[i][j[0]] + " disabled='disabled' selected>" + json[i][j[1]] + "</option>";
                             } else if (json[i].tipo == false) {
                                 opcion = "<option value=" + json[i][j[0]] + ">" + json[i][j[1]] + "</option>";
+                            }else{
+                                opcion = "<option value=" + json[i][j[0]] + " selected>" + json[i][j[1]] + "</option>";                                
                             }
                             selector.append(opcion);
                         }
@@ -262,19 +264,20 @@ jQuery.Luna = function (Datos, selector) {
                     break;
                 case "ConsOaP":
                     var arryImagen = [
-                        {nombre: "TextoPlano", arrayExt: ["txt", "log"]},
-                        {nombre: "Word", arrayExt: ["dot", "doc"]},
-                        {nombre: "Excel", arrayExt: ["xls", "xlm", "xlt", "xlv"]},
-                        {nombre: "Acces", arrayExt: ["mdb"]},
-                        {nombre: "PowePoint", arrayExt: ["ppt", "pps", "pot"]},
+                        {nombre: "texto Plano", arrayExt: ["txt", "log"]},
+                        {nombre: "word", arrayExt: ["dot", "doc"]},
+                        {nombre: "excel", arrayExt: ["xls", "xlm", "xlt", "xlv"]},
+                        {nombre: "acces", arrayExt: ["mdb"]},
+                        {nombre: "powerpoint", arrayExt: ["ppt", "pps", "pot"]},
                         {nombre: "PDF", arrayExt: ["pdf"]},
-                        {nombre: "Imagen", arrayExt: ["gif", "dib", "jpg", "png", "tga", "tiff", "pcx", "plic", "emf", "ico", "htm", "html"]},
+                        {nombre: "imagen", arrayExt: ["gif", "dib", "jpg", "png", "tga","tif","tiff", "pcx", "plic", "emf", "ico"]},
+                        {nombre: "html", arrayExt:["htm","html"]},
                         {nombre: "BaseDatos", arrayExt: ["sql"]},
-                        {nombre: "Net", arrayExt: ["asp", "aspx"]},
+                        {nombre: ".Net", arrayExt: ["asp", "aspx"]},
                         {nombre: "Java", arrayExt: ["jar"]},
                         {nombre: "Php", arrayExt: ["php"]},
-                        {nombre: "Css", arrayExt: ["css"]},
-                        {nombre: "Js", arrayExt: ["js"]},
+                        {nombre: "css", arrayExt: ["css"]},
+                        {nombre: "js", arrayExt: ["js"]},
                         {nombre: "Compress", arrayExt: ["arj", "zip", "iso", "lha", "izh", "img", "bin"]}
                     ];
                     var pag = 0;
@@ -358,7 +361,6 @@ jQuery.Luna = function (Datos, selector) {
                     break;
                 case "correcion":
                     var jsoCorre = jQuery.parseJSON(json);
-                    //---------CAMBIO
                     for (var i = 0; i < jsoCorre.length; i++) {
                         table = selector.dataTable().fnAddData([
                             i + 1,
@@ -366,11 +368,21 @@ jQuery.Luna = function (Datos, selector) {
                             jsoCorre[i].Num_Version,
                             jsoCorre[i].Conte_Notificacion,
                             jsoCorre[i].Fecha_Envio,
+                            "<a class='btn btn-info' href=DescargaArchivo?archivo=" + jsoCorre[i].Url_Version + ">Descargar P.V</a>",
                             "<button  type='button' id='" + jsoCorre[i].Ides_Proceso + "$$" + jsoCorre[i].Id_Version + "$$" + jsoCorre[i].Nom_P_Virtual + "$$" + jsoCorre[i].Id_Notificacion + "$$" + jsoCorre[i].Url_Version + "' class='btn btn-info btnCorrecion'>Correguir P.V</button>"
-                                    //---url añadido
                         ]);
                     }
-                    //---------
+                    break;
+                case "actualizacionVersion":
+                    var jsItem = jQuery.parseJSON(json);
+                    for (var i = 0; i < jsItem.length; i++) {
+                        table = selector.dataTable().fnAddData([
+                            i + 1,
+                            jsItem[i].Nom_P_Virtual,
+                            jsItem[i].Fecha_Vigencia,
+                            "<button  type='button' id='" + jsItem[i].Id_Version + "$$" + jsItem[i].Id_P_Virtual + "' class='btn btn-info btnAñadirVersion'>Actualizar P.V</button>"
+                        ]);
+                    }
                     break;
                 case "consutarOa":
                     var selecNo = selector.selector + "P";
@@ -498,10 +510,10 @@ jQuery.Luna = function (Datos, selector) {
                         table = $("#tablaformato").dataTable().fnAddData([
                             i + 1,
                             jsFormato[i].Nom_Formato,
-                            jsFormato[i].Des_Formato,
-                            "<button  class='btn btn-success botonformato'value='" + dat + "' >modificar</button>"
+                            jsFormato[i].Des_Formato
                         ]);
                     }
+                    //,"<button  class='btn btn-success botonformato'value='" + dat + "' >modificar</button>"
                     setNombre(i + 1);
                     break;
                 case "AsignarRol":

@@ -3,7 +3,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <link href="assets/css/paper-dashboard.css" rel="stylesheet"/>
         <link rel="stylesheet" href= "//code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css">
         <link rel="stylesheet" type="text/css" href="css/multi-select.css">
         <link rel="stylesheet" href="assets/css/estilo_1.css"/>
@@ -31,7 +31,7 @@
                                             <label> Descripción del Producto</label>
                                             <input required class="form-control inputs" type="text"  name="palabras_claves" id="descripcion_oa" placeholder="Descripcion del P.V" required data-validation-required-message="Ingresa la descripcion del producto virtual.">
                                         </div>
-                                        <div class="form-group col-md-12">
+                                        <div class="col-md-12">
                                             <label for="requisitos_instalacion"> Requisitos de Instalación</label>
                                             <textarea required class="form-control inputs" id="requisitos_instalacion" type="textarea " maxlength="200" name="palabras_claves" placeholder="Digite requisitos  de instalación"  rows="9"></textarea>
                                         </div>

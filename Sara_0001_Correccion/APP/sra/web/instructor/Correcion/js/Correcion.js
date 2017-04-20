@@ -1,4 +1,4 @@
-var selector = [], hilo = [], jso = [], data = [], datos = [], constan = true, url = "",nomPV="";
+var selector = [], hilo = [], jso = [], data = [], datos = [], constan = true, url = "", nomPV = "";
 var ob = new $.Luna("producto", $("#tablaNotificacion"));
 ob.Vivo("CorrecionInstrutor");
 $("#percent").hide();
@@ -6,7 +6,7 @@ $("#contenedor").hide();
 $("#Clona").hide();
 $("#formularioss").hide();
 // CAMBIO 14/04/2017
-jso[0] = ['EvaluacionGeneral_Controller', '[{opcion:3,elegir:["'+idUser+'","'+idRol+'","'+idCentro+'","2","9,10"],opt:2}]'];
+jso[0] = ['EvaluacionGeneral_Controller', '[{opcion:3,elegir:["' + idUser + '","' + idRol + '","' + idCentro + '","2","9,10"],opt:2}]'];
 //-----
 selector[0] = $("#tablaNotificacion");
 datos[0] = {nombre: "correcion"};
@@ -58,6 +58,22 @@ var options = {
 };
 $("#UploadForm").ajaxForm(options);
 
+$('.input-file').change(function () {
+    var nomArh = $(this).val();
+    var ex = nomArh.split(".");
+    nomArh = ex[ex.length - 1];
+   
+    var sizeByte = this.files[0].size;
+    var siezekiloByte = parseInt(sizeByte / 1024);
+    if (siezekiloByte > $(this).attr('size')) {
+        $(this).val('');
+        $(".inputNotifi").notify(
+                "El archivo supera el limite de 25 mb", 'warn',
+                {position: "right"}
+        );
+    }
+});
+
 function ajax(i, datos) {
     hilo[i] = new Worker("js/worker.js");
     hilo[i].postMessage(jso[i]);
@@ -82,7 +98,13 @@ function peticionCompleta(i) {
             estado = ("error");
             men = "El producto " + nomPV + " " + daMen[1];
         }
+        jso[6] = ['Instrutor_Controller', '[{opcion:3,ti:' + idRol + '}]'];
+        datos[6] = {caso: "Notificaciones productos virtuales"};
         $.notify(men, estado);
-        
+        ajax(6)
+    } else if (i == 6) {
+        $("#CasoNombre").text(datos[i].caso);
+        $("#cuerpo").empty();
+        $("#cuerpo").append(data[i]);
     }
 }

@@ -10,6 +10,10 @@ $(document).ready(function () {
     ajax(0, datos[0]);
 
 
+    $("#formato").change(function () {
+        $("#myfile").val("");
+    });
+
     $('.autoresMultiselect').multiSelect({
         selectableHeader: "<input type='text' class='search-input form-control' autocomplete='off' placeholder='Busca un autor...'>",
         selectionHeader: "<input type='text' class='search-input form-control' autocomplete='off' placeholder='Busca un autor...'>",
@@ -227,7 +231,6 @@ $(document).ready(function () {
             dd.push(jso[q][j[0]]);
             campS.push(jso[q][j[1]]);
         }
-
         for (var i = 0; i < dd.length; i++) {
             for (var y = 0; y < arraySelecionCate.length; y++) {
                 if (dd[i] == arraySelecionCate[y]) {
@@ -324,15 +327,20 @@ $(document).ready(function () {
         var nomArh = $(this).val();
         var ex = nomArh.split(".");
         nomArh = ex[ex.length - 1];
-        var arrayNo = ["exe", "com", "bat", "drv", "dll", "fon", "hlp", "sys", "tmp", "scr"];
-        for (var i = 0; i < arrayNo.length; i++) {
-            if (arrayNo[i].trim() == nomArh.trim()) {
-                $(".inputNotifi").notify(
-                        "No se acepta ninguno de estos archivos: (exe,com,bat,drv,dll,fon,hlp,sys,tmp,scr) ", 'warn',
-                        {position: "right"}
-                );
-                $(this).val('');
-            }
+        console.log($("#formato option:selected").text() +"  ex  "+ ex[1]);
+        if ($("#formato").val() == "A0") {
+            $(".inputNotifi").notify(
+                    "Selecione un formato de archivo", 'warn',
+                    {position: "right"}
+            );
+            $(this).val('');
+        } else if ($("#formato option:selected").text() != ex[1]) {
+            var no = $("#formato option:selected").text();
+            $(".inputNotifi").notify(
+                    "Selecione un archivo de formato " + no, 'warn',
+                    {position: "right"}
+            );
+            $(this).val('');
         }
         var sizeByte = this.files[0].size;
         var siezekiloByte = parseInt(sizeByte / 1024);

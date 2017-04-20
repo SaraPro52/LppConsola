@@ -18,38 +18,38 @@
                                 <section class="col col-md-6">
                                     <p><h3>Datos personales</h3></p>
                                     <label  class="col-md-12"  for="Centro">Tipo de usuario</label>
-                                    <select class="form-control" id="tipoUsuario" name="tipoUsuario">
+                                    <select class="form-control select" id="tipoUsuario" name="tipoUsuario">
                                         <option value="A0">selecciona...</option>
                                     </select>
                                     <label>Nombre</label>
-                                    <input type="text" class="form-control" placeholder="Digite Nombre" id="nombre" maxlength="20">
+                                    <input type="text" class="form-control input" placeholder="Digite Nombre" id="nombre" maxlength="45">
                                     <label>Apellido</label>
-                                    <input type="text" class="form-control" placeholder=" Digite Apellido" id="apellido" maxlength="20">
+                                    <input type="text" class="form-control input" placeholder=" Digite Apellido" id="apellido" maxlength="100">
                                     <label>Tipo Identificacion</label>
-                                    <select class="form-control"  name="tipoIdenti" id="tipoIdenti">
+                                    <select class="form-control select"  name="tipoIdenti" id="tipoIdenti">
                                         <option value="A0" selected="selected">Selecciona...</option>
                                     </select>
                                     <label>Numero Identificación</label>
-                                    <input type="text" class="form-control" placeholder="Digite Numero de Identificación" id="numeroIdentificacion" maxlength="10">
+                                    <input type="text" class="form-control input" placeholder="Digite Numero de Identificación" id="numeroIdentificacion" maxlength="20">
                                     <label>Correo Eléctronico</label>
-                                    <input type="text" class="form-control" placeholder=" Digite Correo Eléctronico" id="email" maxlength="70">
+                                    <input type="text" class="form-control input" placeholder=" Digite Correo Eléctronico" id="email" maxlength="125">
                                 </section>
                                 <section class="col col-md-6">
                                     <p><h3>Datos SENA</h3> </p>
                                     <label>Centro de Formación</label>
                                     <div class="form-group">
-                                        <select class="form-control"  id="centroFormacion">
+                                        <select class="form-control select"  id="centroFormacion">
                                             <option value="A0" selected="selected">Selecciona...</option>
                                         </select>
                                     </div>
                                     <label  class="col-md-12"  for="area">Área</label>
-                                    <select class="form-control" id="area">
+                                    <select class="form-control select" id="area">
                                         <option value="A0" selected="selected">selecciona...</option>
                                     </select>
                                     <label>Ip SENA</label>
-                                    <input type="text" class="form-control" placeholder=" Digite Ip SENA" id="ipSena" maxlength="10">
+                                    <input type="text" class="form-control input" placeholder=" Digite Ip SENA" id="ipSena" maxlength="6">
                                     <label  for="cargo">Cargo</label>
-                                    <input type="text" class="form-control" placeholder=" Digite Cargo" id="cargo" maxlength="15">
+                                    <input type="text" class="form-control input" placeholder=" Digite Cargo" id="cargo" maxlength="45">
                                     <center>
                                         <br/>
                                         <div id="AnimacionCargando" class="col-md-12">

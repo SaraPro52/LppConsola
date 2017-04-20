@@ -39,29 +39,29 @@ $(document).on('ready', function () {
         }
     });
     function BtnPerfil() {
-        jso[2] = ['Crud_Controller', '[{opcion:2,id:' + idUser + ',tabla1:18,actualizar:[' + $("#IdentificacionFunTipo").val() + ',' + $("#IdentificacionFun").val() + ',' + $("#NombreFun").val() + ',' + $("#ApellidoFun").val() +',' + $("#CorreoFun").val() + ',' + $("#CaargoFun").val() + ',' + $("#IdSenaFun").val() + ']}]'];
+        jso[2] = ['Crud_Controller', '[{opcion:2,id:' + idUser + ',tabla1:18,actualizar:[' + $("#IdentificacionFunTipo").val() + ',' + $("#IdentificacionFun").val() + ',' + $("#NombreFun").val() + ',' + $("#ApellidoFun").val() + ',' + $("#CorreoFun").val() + ',' + $("#CaargoFun").val() + ',' + $("#IdSenaFun").val() + ']}]'];
         datos[2] = {nombre: "btn"};
         ajax(2, datos[2]);
     }
     $("#BtnModificar1").click(function () {
         $(".remove").remove();
-        var inputs = $(".inputsC");
-        var ccT = 0;
+        var inputs = $(".inputsC"), ccT = 0, input;
         for (var i = 0; i < inputs.length; i++) {
-            if (inputs.value == "") {
-                inputs.focus().after("<div  style='font-size:15px;' class='remove'><font color='red'>Rellene este campo</font><div>");       
+            if (inputs[i].value == "") {
+                input = $(inputs[i]);
+                input.focus().after("<div  style='font-size:15px;' class='remove'><font color='red'>Rellene este campo</font><div>");       
             } else {
                 ccT++;
             }
         }
-        if ($("#ConNueva").val() == $("#ConNuevaF").val()) {
+        if ($("#ConNueva").val().trim() === $("#ConNuevaF").val().trim()) {
             if (ccT == 4) {
                 BtnCon();
             }
         } else {
             $("#ConNueva").val();
             $("#ConNuevaF").val();
-            $.notify("error", "Las contraseña no son iguales");
+            $("#ConNueva").focus().after("<div  style='font-size:15px;' class='remove'><font color='red'>Las contraseña no son iguales</font><div>");       
         }
         ccT = 0;
     });
@@ -101,7 +101,10 @@ $(document).on('ready', function () {
                 men = "La contraseña  " + daMen[1];
             }
             $.notify(men, estado);
-            $("#coambiarContra")[0].reset();
+            $("#user").val("");
+            $("#ConActual").val("");
+            $("#ConNueva").val("");
+            $("#ConNuevaF").val("");
         } else if (i == 2) {
             var daMen = data[i].split("$$");
             if (daMen[0] == "true") {

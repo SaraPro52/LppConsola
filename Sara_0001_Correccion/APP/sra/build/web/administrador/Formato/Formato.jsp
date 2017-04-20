@@ -38,7 +38,6 @@
                                 <td>Numero </td>
                                 <td>Nombre formato</td>
                                 <td>Descripcion del formato</td>
-                                <td></td>
                             </tr>
                         </thead>
                         <tbody id="tablabody">

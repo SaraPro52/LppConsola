@@ -21,13 +21,13 @@ public class Archivos {
 
     public String getBase() {
         String macc = "C:\\Users\\migue\\Desktop\\Proyectos\\SARA_Pro\\Versiones_Sara\\Sara_0001_Correccion\\APP\\sra\\web\\Archivos\\ArchivosA\\";
-        String juan = "C:\\Users\\JudiniBezarius\\Documents\\Proyectos\\LppConsola\\En Produccion\\sra\\web\\Archivos\\ArchivosA\\";
-        return (macc);
+        String juan = "C:\\Users\\JudiniBezarius\\Documents\\Proyectos\\LppConsola\\Sara_0001_Correccion\\APP\\sra\\web\\Archivos\\ArchivosA\\";
+        return (juan);
     }
 
     public String rutaTem() {
         String macc = "C:\\Users\\migue\\Desktop\\Proyectos\\SARA_Pro\\Versiones_Sara\\Sara_0001_Correccion\\APP\\sra\\web\\Archivos\\TemArchivos\\";
-        String juan = "C:\\Users\\JudiniBezarius\\Documents\\Proyectos\\LppConsola\\En Produccion\\sra\\web\\Archivos\\TemArchivos\\";
-        return (macc);
+        String juan = "C:\\Users\\JudiniBezarius\\Documents\\Proyectos\\LppConsola\\Sara_0001_Correccion\\APP\\sra\\web\\Archivos\\TemArchivos\\";
+        return (juan);
     }
 }

@@ -35,7 +35,7 @@
                         <li class="btntt" value="0"><a><i class="ti-eye"></i><label style='cursor:pointer;' id="text0">Consultar P.V.</label></a></li>
                         <li class="btntt" value="3"><a><i class="ti-bell"></i><label style='cursor:pointer;' id="text3">Notificaciones P.V</label></a></li>
                         <li class="btntt" value="2"><a><i class="ti-pencil-alt"></i><label style='cursor:pointer;' id="text2">Correguir P.V</label></a></li>
-                        <li class="btntt" value="6"><a><i class="ti-cloud-up"></i><label style='cursor:pointer;' id="text6">Actualizar P.V</label></a></li>
+                        <li class="btntt" value="6"><a><i class="ti-cloud-up"></i><label style='cursor:pointer;' id="text6">Version P.V</label></a></li>
                         <li class="btntt" value="7"><a><i class="glyphicon glyphicon-off" aria-hidden="true"></i><label style='cursor:pointer;' id="text3">Cerrar Sesion</label></a></li>
                     </ul>
                 </div>
@@ -132,7 +132,6 @@
         } else {
             cargaI(idRol, tem, js);
             $.notify({
-                icon: 'ti-gift',
                 message: "Bienvenido a <b>Sara Pro</b> - Instructor " + nomUser + "."
             }, {
                 type: 'success',

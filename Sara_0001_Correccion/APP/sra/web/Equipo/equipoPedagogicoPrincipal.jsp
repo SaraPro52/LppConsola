@@ -127,7 +127,6 @@
         var tem = '[{nomUser:' + nomUser + ',idUser:' + idUser + ',idRol:' + idRol + ',idCentro:' + idCentro + '}]';
         carga(tem, idRol);
         $.notify({
-            icon: 'ti-gift',
             message: "Bienvenido a <b>Sara Pro</b> - Lider de equipo pedagogico " + nomUser + "."
 
         }, {

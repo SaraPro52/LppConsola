@@ -65,21 +65,21 @@ function modificar(idTipoItem) {
     });
 
     $("#btnItem").click(function () {
-//        $(".remove").remove();
-//        var boo = 0; 
-//        var inputs = $(".inputs");
-//        var input, selet;
-//        for (var i = 0; i < inputs.length; i++) {
-//            if (inputs[i].value == "") {
-//                input = $(inputs[i]);
-//                input.focus().after("<div class='remove'><font color='red'>Rellene este campo</font><div>");       
-//            } else {
-//                boo++;
-//            }
-//        }
-//        if (boo == 1) {
+        $(".remove").remove();
+        var boo = 0; 
+        var inputs = $(".inputs");
+        var input, selet;
+        for (var i = 0; i < inputs.length; i++) {
+            if (inputs[i].value == "") {
+                input = $(inputs[i]);
+                input.focus().after("<div class='remove'><font color='red'>Rellene este campo</font><div>");       
+            } else {
+                boo++;
+            }
+        }
+        if (boo == 1) {
         BtnItem();
-        //   }
+           }
     });
 
     function  BtnItem() {

@@ -128,7 +128,6 @@ public class Crud_Controller extends HttpServlet {
                     respuesta.println("Default");
                     break;
             }
-
         } catch (Exception e) {
             respuesta.println("[{valor:false,mensaje:'Falla: " + e.getMessage() + "'}]");
         }

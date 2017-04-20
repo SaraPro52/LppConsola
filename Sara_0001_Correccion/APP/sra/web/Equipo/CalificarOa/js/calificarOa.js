@@ -1,7 +1,12 @@
 function calificarPV(idLista, idRol, idNotifi) {
     var selector = [], hilo = [], jso = [], data = [], datos = [], men = "", estado = "";
     $("#iFecha").datepicker({
-        minDate: 'today'
+        minDate: 'today',
+        beforeShow: function () {
+            setTimeout(function () {
+                $('.ui-datepicker').css('z-index', 99999999999999);
+            }, 0);
+        }
     });
     $("#clone").hide();
     var ob = new $.Luna("Producto virtual", $("#divContainer"));
@@ -22,6 +27,7 @@ function calificarPV(idLista, idRol, idNotifi) {
             $("#TextFecha").text("");
         }
     });
+
     $("#noAprueba").change(function () {
         document.getElementById('Aprueba').checked = false;
         $("#TipodeFecha").show();
@@ -39,6 +45,7 @@ function calificarPV(idLista, idRol, idNotifi) {
 
             }
         });
+
         $("input:checkbox:not(:checked)").each(function () {
             campo = $(this).val();
             if (campo !== "on") {
@@ -62,6 +69,7 @@ function calificarPV(idLista, idRol, idNotifi) {
         datos[1] = {nombre: "btn"};
         ajax(1, datos[1]);
     });
+
     function ajax(i, datos) {
         hilo[i] = new Worker("js/worker.js");
         hilo[i].postMessage(jso[i]);
@@ -72,6 +80,7 @@ function calificarPV(idLista, idRol, idNotifi) {
             peticionCompleta(i);
         };
     }
+
     function peticionCompleta(i) {
         if (i == 0) {
             $("#clone").show();

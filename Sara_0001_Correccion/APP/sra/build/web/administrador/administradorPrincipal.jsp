@@ -130,7 +130,6 @@
             var tem = '[{nomUser:' + nomUser + ',idUser:' + idUser + ',idRol:' + idRol + ',idCentro:' + idCentro + '}]';
             cargaF(tem, idRol);
             $.notify({
-                icon: 'ti-gift',
                 message: "Bienvenido a <b>Sara Pro</b> - Administrador " + nomUser + "."
 
             }, {

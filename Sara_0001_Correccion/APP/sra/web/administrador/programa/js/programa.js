@@ -2,7 +2,7 @@ $(document).on('ready', function () {
     var selector = [], hilo = [], jso = [], data = [], datos = [], arrayAreas = [], arrayTemas = [], men = "", estado = "";
     var ob = new $.Luna("Select", $("#SelecCentro"));
     $(".Mult").hide();
-    ob.Vivo("Programa");
+    ob.Vivo("Programas");
     jso[0] = ['Crud_Controller', '[{opcion:3,tabla2:5,tipo:1,elegir:[0,2],delimitador:[],id:0,opSelect:4}]'];
     selector[0] = $("#SelecCentro");
     datos[0] = {nombre: "Select"};
@@ -17,7 +17,7 @@ $(document).on('ready', function () {
             selector[1] = $("#MultAreas");
             datos[1] = {nombre: "MultiSelect"};
             ajax(1, datos[1]);
-        }else{
+        } else {
             $("#multiselectAreas").hide();
         }
     });
@@ -115,15 +115,23 @@ $(document).on('ready', function () {
             }
         }
         for (var i = 0; i < selec.length; i++) {
-            console.log(selec[i]);
-            if (selec[i].value == "AD") {
+            if (selec[i].value === "A0") {
                 selet = $(selec[i]);
                 selet.focus().after("<div class='remove'><font color='red'>seleccione una opcion</font><div>");
             } else {
                 boo++;
             }
         }
-        if (boo == 3) {
+        if (arrayTemas.length == 0) {
+            selet = $("#MultTemasFormacion");
+            selet.focus().after("<div class='remove'><font color='red'>seleccione almenos un tema</font><div>");
+        }
+        if (arrayAreas.length == 0) {
+            selet = $("#MultAreas");
+            selet.focus().after("<div class='remove'><font color='red'>seleccione almenos una area</font><div>");
+        }
+
+        if ((boo == 3) && (arrayAreas.length > 0) && (arrayTemas.length > 0)) {
             BtnPrograma();
         }
     });

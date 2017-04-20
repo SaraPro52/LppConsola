@@ -51,10 +51,6 @@ $(document).ready(function () {
     }
 
     function peticionCompleta(i) {
-        if (i == 0) {
-
-
-        }
 
     }
 });

@@ -52,7 +52,7 @@ $(document).ready(function () {
         $(".remove").remove();
         var boo = 0;
         var inputs = $(".inputs");
-        var input, selet;
+        var input;
         for (var i = 0; i < inputs.length; i++) {
             if (inputs[i].value == "") {
                 input = $(inputs[i]);
@@ -61,7 +61,11 @@ $(document).ready(function () {
                 boo++;
             }
         }
-        if (boo == 2) {
+        if (arraySelecion.length <1) {
+            input = $("#itemCategoria");
+            input.focus().after("<div class='remove'><font color='red'>Selecione almenos un tema</font><div>");   
+        }
+        if ((boo == 2) && (arraySelecion.length > 0)) {
             BtnTema();
         }
     });
@@ -76,12 +80,11 @@ $(document).ready(function () {
 
     }
 
-
     $("#btnCategoria").click(function () {
         $(".remove").remove();
         var coo = 0;
         var inputs = $(".inputsC");
-        var input, selet;
+        var input;
         for (var i = 0; i < inputs.length; i++) {
             if (inputs[i].value == "") {
                 input = $(inputs[i]);

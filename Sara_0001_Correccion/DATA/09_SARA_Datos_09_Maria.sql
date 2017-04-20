@@ -73,6 +73,7 @@ CALL SARA_CRUD("INSERT","Formato","Nom_Formato~	izh		|Des_Formato~	compress	",""
 CALL SARA_CRUD("INSERT","Formato","Nom_Formato~	rar		|Des_Formato~	compress	","");
 CALL SARA_CRUD("INSERT","Formato","Nom_Formato~	img		|Des_Formato~	compress	","");
 CALL SARA_CRUD("INSERT","Formato","Nom_Formato~	bin		|Des_Formato~	compress	","");
+CALL SARA_CRUD("INSERT","Formato","Nom_Formato~	sql		|Des_Formato~	BaseDatos	","");
 --
 
 --
