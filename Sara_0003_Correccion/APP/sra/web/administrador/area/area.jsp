@@ -17,31 +17,29 @@
                         <div class="contenedorFormulario col-md-10">
 
                             <div class="col-md-6">
-                                <label>Líder de Área</label>
+                                <label>Líder del área</label>
                                 <input required placeholder="Lider del Área" type="text" class="form-control inputs"  name="areaL" id="areaL" >
-
                             </div>
                             <div class="col-md-6">
-                                <label>Nombre Área</label>
+                                <label>Nombre del área</label>
                                 <input required  placeholder="Nombre del Área"type="text" class="form-control inputs"  name="areac" id="areaC">
                             </div>
                             <div class="col-md-6">
-                                <label>Centro de Formación</label>
+                                <label>Centro de formación</label>
                                 <select required class="form-control select" id="CentroFormacion">
-                                    <option value="A0"> Seleccione...</option>
+                                    <option value="A0">Seleccionar...</option>
                                 </select>
-
                             </div>
                             <div class="col-md-6"> 
-                                <button type="button" class="btn btn-info" id="btnArea" style="margin-bottom:2%" name="button">Guardar Área</button>    
+                                <button type="button" class="btn btn-info" id="btnArea" style="margin-bottom:2%" name="button">Guardar área</button>    
                             </div>
                             <div class="col-md-10 col-md-offset-1">
                                 <table id="tablaarea" class="table table-hover">
                                     <thead>
                                         <tr class="active">
-                                            <td>#</td>
-                                            <td >Nombre area</td>
-                                            <td>Lider de area</td>
+                                            <td>N°</td>
+                                            <td >Nombre área</td>
+                                            <td>Lider de área</td>
                                             <td>Modificar lider</td>
                                         </tr>
                                     </thead>
@@ -54,7 +52,6 @@
                 </div>
             </div>
         </div>
-
     </body>
     <script type="text/javascript" charset="utf8" src="js/jquery.js"></script>
     <script type="text/javascript" charset="utf8" src="js/notify.js"></script>

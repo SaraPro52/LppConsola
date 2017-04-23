@@ -14,13 +14,11 @@
                                 <div class="col-md-6">
                                     <div class="col-md-12">
                                         <label> Titulo de Publicación</label>
-                                        <input required class="form-control inputs" type="text"  name="Titulo_Publicacion" id="Titulo_Publicacion" placeholder="Titulo de la publicacion" required data-validation-required-message="Ingresa el titulo de la publicacion.">
-                                        <p class="help-block text-danger"></p>
-                                        <label>Palabras Claves</label>
-                                        <input required class="form-control inputs" type="text"  name="palabras_claves" id="palabras_claves" placeholder="Palabras claves " required data-validation-required-message="Ingresa las palabras clave de la publicacion.">
-                                        <p class="help-block text-danger"></p>
+                                        <input required class="form-control inputs" type="text"  name="Titulo_Publicacion" id="Titulo_Publicacion" disabled>
+                                        <label>Palabras Clave</label>
+                                        <input required class="form-control inputs" type="text"  name="palabras_claves" id="palabras_claves" disabled>
                                         <label> Descripción del Producto</label>
-                                        <input required class="form-control inputs" type="text"  name="palabras_claves" id="descripcion_oa" placeholder="Descripcion del P.V" required data-validation-required-message="Ingresa la descripcion del producto virtual.">
+                                        <input required class="form-control inputs" type="text"  name="palabras_claves" id="descripcion_oa" disabled>
                                     </div>
                                     <div class="col-md-12">
                                         <label for="requisitos_instalacion"> Requisitos de Instalación</label>
@@ -29,7 +27,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <label>Formato del archivo</label>
-                                    <select  required class="form-control col-xs-12 floating-label-form-group controls select" id="formato" value="Valueblanco">
+                                    <select  required class="form-control col-xs-12 floating-label-form-group controls select" id="formato" value="Valueblanco" disabled>
                                         <option value="A0" selected="selected">Selecciona...</option>
                                     </select>
                                     <div class="form-group">
@@ -43,7 +41,7 @@
                                     </div>
                                 </div>
                                 <div class="col-md-6">
-                                    <label class="col-md-12">Busqueda de temas por categorias  del Producto Virtual</label>
+                                    <label class="col-md-12">Busqueda de temas por categorías  del producto virtual</label>
                                     <div id="Cloncategoria" style="display: none;">
                                         <div class="contenCate col-md-12" >
                                             <label id="labelCate" class="col-md-12"></label>
@@ -55,19 +53,19 @@
                                         </div>
                                     </div>
                                     <div class="col-md-12">
-                                        <label class="col-md-12">Buscar por categoria.</label>
+                                        <label class="col-md-12">Buscar por categoría.</label>
                                         <select class="form-control" id="SelectCategoria" > 
-                                            <option value="A0">Seleciona categoria</option>
+                                            <option value="A0">Seleciona categoría</option>
                                         </select>
                                     </div>
                                     <div id="SelectCategoriaDiv" class="col-md-12"  style="display: none;">
-                                        <label class="col-md-12">Temas de la categoria</label>
+                                        <label class="col-md-12">Temas de la categoría</label>
                                         <select required id="MultiCategoria" class="categoriaMultiselect"  multiple='multiple' title="Busca una categoria..">
                                             <option value="A0">Null</option>
                                         </select>
                                     </div>
                                     <div class="col-md-10 col-md-offset-2 " id="divBtnaCate" style="display: none;" >
-                                        <button id="btnACategoria" class="btn btn-info" >Agregar temas de la categoria</button>
+                                        <button id="btnACategoria" class="btn btn-info" >Agregar temas de la categoría</button>
                                     </div>
                                     <div id="ECategoriaSelect" style="width: 100%; height: 100px; overflow-y: scroll;"></div>
                                 </div>
@@ -84,19 +82,18 @@
                                         </div>
                                     </div>
                                     <div class="col-md-12">
-                                        <label class="col-md-12" for="SelectArea">Buscar area de formacion.</label>
+                                        <label class="col-md-12" for="SelectArea">Buscar area de formacíon.</label>
                                         <select id="SelectArea" class="form-control">
                                             <option value="A0">Seleciona...</option>
                                         </select>
-                                        <label class="col-md-12" for="selectProgramaF">Buscar programa de formacion.</label>
+                                        <label class="col-md-12" for="selectProgramaF">Buscar programa de formacíon.</label>
                                         <select id="selectProgramaF" class="form-control">
                                             <option value="A0">Seleciona...</option>
                                         </select>
                                     </div>
                                     <br>
-
                                     <div id="SelectEstruturaDiv"  class="col-md-12 espacio" style="display: none;">
-                                        <label class="col-md-12">Temas del programa de formacion</label>
+                                        <label class="col-md-12">Temas del programa de formacíon</label>
                                         <select required  id="SelectEstrutura" class="programaFormacionMultiSelect"  multiple='multiple' title="Busca un programa.." >
                                             <option value="A0">Null</option>
                                         </select>
@@ -111,7 +108,7 @@
                                     <form id="UploadFormula" action="archivos" method="post" enctype="multipart/form-data">
                                         <input type="file" size="26120" id="myfile" class="inputs input-file" name="myfile"> 
                                         <div class="inputNotifi"></div>   
-                                        <input type="submit" class=" btn btn-info  col-md-4"  value="Subir Produto virtual" id="subir_oa">
+                                        <input type="submit" class=" btn btn-info  col-md-4"  value="Subir Producto virtual" id="subir_oa">
                                         <div id="progressbox">
                                             <div id="progressbar"></div>
                                             <div id="percent">0%</div>
@@ -130,10 +127,10 @@
                             <table class="table table-striped" id="tablaActualizacion">
                                 <thead>
                                     <tr>
-                                        <th>#</th>
-                                        <th>Titulo</th>
+                                        <th>N°</th>
+                                        <th>Título</th>
                                         <th>Fecha vigencia</th>
-                                        <th>Añadir version</th>
+                                        <th>Añadir versión</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -149,6 +146,7 @@
     <script type="text/javascript"  src="js/jquery.form.js"></script> 
     <script type="text/javascript" src="js/jquery.cecily.js"></script>
     <script type="text/javascript" src="js/jqueryUi.js"></script>
+    <script type="text/javascript" src="js/notify.js"></script>
     <script type="text/javascript" src="js/jquery.multi-select.js"></script>
     <script type="text/javascript" src="js/jquery.quicksearch.js"></script>
     <script type="text/javascript" src="instructor/ActualizarOa/js/Actualizar.js"></script>

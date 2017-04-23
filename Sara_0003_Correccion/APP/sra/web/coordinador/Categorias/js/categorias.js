@@ -2,7 +2,7 @@ $(document).ready(function () {
     var selector = [], hilo = [], jso = [], data = [], datos = [], estado = "", men = "";
     var arraySelecion = [];
     var ob = new $.Luna("MultiSelect", "null");
-    ob.Vivo("Categorias");
+    ob.Vivo("Categoria");
     jso[0] = ['Crud_Controller', '[{opcion:3,tabla2:27,tipo:1,elegir:[0,1],delimitador:[],id:0,opSelect:4}]'];
     selector[0] = $("#itemCategoria");
     $("#itemCategoria").empty();
@@ -61,13 +61,7 @@ $(document).ready(function () {
                 boo++;
             }
         }
-        alert("Entro");
-        BtnTema();
-//        if (arraySelecion.length <1) {
-//            input = $("#itemCategoria");
-//            input.focus().after("<div class='remove'><font color='red'>Selecione almenos un tema</font><div>");   
-//        }
-        if ((boo == 2) && (arraySelecion.length > 0)) {
+        if (boo == 2)  {
             BtnTema();
         }
     });
@@ -76,12 +70,10 @@ $(document).ready(function () {
         men = $("#NombreTema").val();
         //jso[1] = ['Crud_Controller', '[{opcion:1,tabla1:27,tabla2:27,tipo:1,datos:["",' + $("#NombreTema").val() + ',' + $("#DescripcionTema").val() + ',1],elegir:[0,1],delimitador:[],id:0,opSelect:4}]'];
         //20/04/2017
-        jso[1] = ['Categoria_Controller','[{opcion:2,datosTema:[' + $("#NombreTema").val() + ',' + $("#DescripcionTema").val() + ']}]'];
+        jso[1] = ['Categoria_Controller', '[{opcion:2,datosTema:[' + $("#NombreTema").val() + ',' + $("#DescripcionTema").val() + ']}]'];
         selector[1] = $("#itemCategoria");
-        $("#itemCategoria").empty();
-        datos[1] = {nombre: "MultiSelect"};
+        datos[1] = {nombre: "btn"};
         ajax(1, datos[1]);
-
     }
 
     $("#btnCategoria").click(function () {
@@ -97,7 +89,11 @@ $(document).ready(function () {
                 coo++;
             }
         }
-        if (coo == 2) {
+        if (arraySelecion.length < 1) {
+            input = $("#itemCategoria");
+            input.focus().after("<div class='remove'><font color='red'>Selecione al menos un tema</font><div>");   
+        }
+        if ( (coo == 2) && (arraySelecion.length > 0) ) {
             BtnCate();
         }
     });
@@ -115,7 +111,6 @@ $(document).ready(function () {
         hilo[i].postMessage(jso[i]);
         hilo[i].onmessage = function (event) {
             data[i] = event.data;
-            alert(data[i]);
             ob.cargarTabla(data[i], selector[i], datos);
             hilo[i].terminate();
             peticionCompleta(i);
@@ -123,11 +118,17 @@ $(document).ready(function () {
     }
     function peticionCompleta(i) {
         if (i == 1) {
-            if (data[0].length < data[1].length) {
-                men = "El tema: " + men + " fue agregado exitosamente";
+            console.log(data[1]);
+            var daMen = data[1].split("$$");
+            if (daMen[0] == "true") {
+                men = "El item " + men + " fue agregado exitosamente";
                 estado = ("success");
+                var items = jQuery.parseJSON(daMen[2]);
+                var j = items.length - 1;
+                console.log(items);
+                $('#itemCategoria').multiSelect('addOption', {value: items[j].Id_Tema, text: items[j].Nom_Tema, index: 0});
             } else if (data[0].length == data[1].length) {
-                men = "El tema: " + men + " no fue agregado exitosamente";
+                men = "El item: " + men+ " no fue agregado exitosamente";
                 estado = ("error");
             }
             $("#agregarTema")[0].reset();

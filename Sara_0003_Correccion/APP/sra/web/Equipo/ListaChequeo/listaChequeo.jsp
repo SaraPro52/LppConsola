@@ -28,12 +28,12 @@
                         <article class="col-md-8 " id="tabla">
                             <form class="col-md-10" id="formAgregaItem">
                                 <div class="col-md-12">
-                                    <label style="color: #E48D15;" id="lista" >Crear Item</label>    
+                                    <label style="color: #E48D15;" id="lista" >Crear Item:</label>    
                                 </div>
                                 <div class="col-md-12">
-                                    <label for="Descripcion">Descripción de item</label>
+                                    <label for="Descripcion">Descripción del item:</label>
                                 </div>
-                                <textarea required class="form-control inputs" placeholder="Describa una descripción para el item" rows="1" id="Descripcion"></textarea>
+                                <textarea required class="form-control inputs" placeholder="Describa el item" rows="1" id="Descripcion"></textarea>
                             </form>
                         </article>
                         <div class="col-md-10">
@@ -44,8 +44,6 @@
             </div>
         </div>
     </div>
-
-
 </section>
 <script type="text/javascript" src="js/jquery.js"></script>
 <script type="text/javascript" src="js/jquery.multi-select.js"></script>

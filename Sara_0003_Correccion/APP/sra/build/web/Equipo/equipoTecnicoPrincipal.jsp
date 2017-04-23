@@ -32,9 +32,9 @@
                         <li class="active"   value="2"><a><i class="ti-home"></i><label style='cursor:pointer;' id="text2">Equipo tecnico</label></a></li>
                         <li class="activado" value="0"><a><i class="ti-user"></i><p><label style='cursor:pointer;' id="text0" >Perfil de usuario</label></p></a></li>
                         <li class="activado" value="1"><a><i class="icono izquierda  fa fa-book" aria-hidden="true"></i><label  style='cursor:pointer;' id="text1">Crear lista de chequeo</label></a></li>
-                        <li class="activado" value="3"><a><i class="icono izquierda  fa fa-edit" aria-hidden="true"></i><label style='cursor:pointer;' id="text3">Editar Lista chequeo</label></a></li>
+                        <li class="activado" value="3"><a><i class="icono izquierda  fa fa-edit" aria-hidden="true"></i><label style='cursor:pointer;' id="text3">Editar lista chequeo</label></a></li>
                         <li class="activado" value="2"><a><i class="icono izquierda  fa fa-eye" aria-hidden="true"></i><label style='cursor:pointer;' id="text2">Consultar P.V</label></a></li>
-                        <li class="activado" value="5"><a><i class="glyphicon glyphicon-off" aria-hidden="true"></i><label style='cursor:pointer;' id="text2">Cerrar Sesion</label></a></li>
+                        <li class="activado" value="5"><a><i class="glyphicon glyphicon-off" aria-hidden="true"></i><label style='cursor:pointer;' id="text2">Cerrar Sesión</label></a></li>
                     </ul>
                 </div>
                 <p id="tis" style="display: none;"></p>
@@ -129,6 +129,5 @@
                 timer: 4000
             });
         }
-
     </script>
 </html>

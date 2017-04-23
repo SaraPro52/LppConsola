@@ -12,24 +12,22 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-12">
-
                         <div class="contenedorFormulario col-md-10">
                             <div class="form-group contenedorInsert">
                                 <div class="col-md-12">
-                                    <label>Programa de Formación</label>
+                                    <label>Programa de formación</label>
                                     <input required type="text" id="nomPro" class="form-control inputs" placeholder="Digite el programa de formacion">
                                 </div>
-
                                 <div class="col-md-12" style="margin-top:3%;">
-                                    <label>Centro de Formación</label>
+                                    <label>Centro de formación</label>
                                     <select class="form-control select" id="SelecCentro">
-                                        <option value="A0">Seleciona...</option>
+                                        <option value="A0">Seleccionar...</option>
                                     </select>
                                 </div>
                                 <div class="col-md-12" style="margin-top:3%;">
-                                    <label>Nivel de Formación</label>
+                                    <label>Nivel de formación</label>
                                     <select class="form-control select" id="nivel">
-                                        <option value="A0">seleccione.....</option>>
+                                        <option value="A0">Seleccionar...</option>>
                                         <option value="Tecnico">Técnico</option>
                                         <option value="Tecnologo">Tecnólogo</option>
                                         <option value="Especialidad">Especialidad</option>
@@ -46,7 +44,7 @@
                                     <select  id="MultAreas" class="MultAreas"  multiple='multiple' title="Busca una area..">
                                     </select>
                                 </div>
-                                <button id="btnPrograma" type="button" class="btn btn-primary">Guardar Programa</button>
+                                <button id="btnPrograma" type="button" class="btn btn-primary">Guardar programa</button>
                             </div>
                         </div>
                     </div>

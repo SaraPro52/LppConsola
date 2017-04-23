@@ -7,14 +7,13 @@
                 <div class="col-md-12">
                     <div class="content" style="margin-top: 3%;">
                         <section >
-                            <article  id="divLista" class="col-md-10 col-md-offset-1" >
-                                
+                            <article  id="divLista" class="col-md-10 col-md-offset-1" >         
                                 <table class="table table-striped" id="tablaListaChequeo">
                                     <thead>
                                         <tr>
-                                            <th>#</th>
-                                            <th>Nombre lista</th>
-                                            <th>Descripcion lista</th>
+                                            <th>N°</th>
+                                            <th>Nombre de la lista</th>
+                                            <th>Descripción de la lista</th>
                                             <th>Fecha vigencia</th>
                                             <th></th>
                                         </tr>
@@ -27,9 +26,9 @@
                                 <table class="table table-striped" id="tablaConsultarOa" >
                                     <thead>
                                         <tr>
-                                            <th>#</th>
+                                            <th>N°</th>
                                             <th>Nombre producto</th>
-                                            <th>Nombre notificacion</th>
+                                            <th>Nombre notificación</th>
                                             <th>Fecha del producto</th>
                                             <th>Descargar</th>
                                             <th>Evaluar</th>

@@ -10,7 +10,7 @@
     <article class="col-md-12">
         <div id="Tituloss">
             <div class="col-md-6">
-                <label for="txtBuscarTitle" class="col-md-12">Buscar producto virtual por titulo:</label>
+                <label for="txtBuscarTitle" class="col-md-12">Buscar producto virtual por título:</label>
                 <div class="col-md-10">
                     <input required type="text" id="txtBuscarTitle" value="" class="form-control inputs">
                 </div>
@@ -25,45 +25,44 @@
             <div class="col-md-12
                  ">
                 <div class="col-md-12">
-                    <label><a id="BusquedaAvanzada">Busqueda Avanzada</a></label>    
+                    <label><a id="BusquedaAvanzada">Busqueda avanzada</a></label>    
                 </div>
 
                 <div id="Avando" style="display: none;" class="col-md-10">
                     <div class="col-md-12">
                         <label class="col-md-12">Buscar por:</label>
-                        <label class="col-md-6">Programa de formacion<input type="checkbox" id="Programas"></label>    
-                        <label class="col-md-6">Categoria<input type="checkbox" id="Categoria"></label>
+                        <label class="col-md-6">Programa de formación<input type="checkbox" id="Programas"></label>    
+                        <label class="col-md-6">Categoría<input type="checkbox" id="Categoria"></label>
 
                         <div id="ElementoFormacion" style="display: none;" class="col-md-12">
                             <div class="col-md-6">
-                                <label for="CiudadFormacion" class="col-md-12">Ciudad</label>
+                                <label for="CiudadFormacion" class="col-md-12">Cíudad</label>
                                 <select id="CiudadFormacion" class="form-control">
-                                    <option value="A0">Seleciona...</option>
+                                    <option value="A0">Seleccionar...</option>
                                 </select>
                             </div>
                             <div class="col-md-6">
-                                <label for="CentroF" class="col-md-12">centro de formacion</label>
+                                <label for="CentroF" class="col-md-12">Centro de formación</label>
                                 <select  id="CentroF" class="form-control">
-                                    <option value="A0">Seleciona...</option>
+                                    <option value="A0">Seleccionar...</option>
                                 </select>    
                             </div>
                             <div class="col-md-6">
-                                <label for="Area" class="col-md-12">Area de formacion</label>
+                                <label for="Area" class="col-md-12">Area de formación:</label>
                                 <select  id="Area" class="form-control">
-                                    <option value="A0">Seleciona...</option>
+                                    <option value="A0">Seleccionar...</option>
                                 </select>                                
                             </div>
                             <div id="ElementoPrograma" style="display: none;" class="col-md-12">
-                                <label class="col-md-12">Programa de formacion</label>
+                                <label class="col-md-12">Programa de formacion:</label>
                                 <select id="Programa" class="Programa" multiple="multiple">
                                     <option>null</option>
                                 </select>
                             </div>
-
                         </div>
                         <div id="ElementoCategoria" style="display: none;">
                             <div  id="CategoriaTem" >
-                                <label>Categorias de los productos virtuales</label>
+                                <label>Categorías de los productos virtuales</label>
                                 <select id="SelectCategoria" class="SelectCategoria" multiple="multiple">
                                     <option>null</option>
                                 </select>
@@ -86,7 +85,7 @@
                         <label for="Formato" class="col-md-12">Formato:</label>
                         <div class="col-md-6">
                             <select class="form-control select" id="Formato">
-                                <option value="AF">Selecione...</option>
+                                <option value="AF">Seleccionar...</option>
                             </select>                            
                         </div>
                     </div>
@@ -99,7 +98,7 @@
 </p>
 <div class="col-md-offset-1 col-md-6">
     <div class="col-md-6">
-        <button id="btnBuscar" type="button" class="btn btn-block">Buscar producto virtual</button>        
+        <button id="btnBuscar" type="button" class="btn btn-block">Buscar productos virtuales</button>        
     </div>
     <div class="col-md-6">
         <button id="btnActu" type="button" class="btn btn-block">Actualizar lista</button>        
@@ -113,16 +112,16 @@
         </article>
         <article class="col-md-9">
             <div class="col-md-6">
-                <label>Titulo publicacion</label>
+                <label>Titulo de la publicación</label>
                 <p id="TituloOa"></p>
 
                 <label>Autor(es)</label>
                 <p id="AutoresOa"></p>
-                <label>fecha de publicacion</label>
+                <label>Fecha de publicación</label>
                 <p id="FechaPublicacionOa"></p>
             </div>
             <div class="col-md-6">
-                <label>Decripcion</label>
+                <label>Descripción</label>
                 <p id="DescripcionOa"></p>
                 <div class="col-md-8">
                     <button type="button" class="btn btn-block" id="BtnDescargar">Detalles P.V</button>

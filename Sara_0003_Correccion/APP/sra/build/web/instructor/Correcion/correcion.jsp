@@ -11,23 +11,23 @@
                     <label  id="textitem" class="col-md-12"></label>
                     <textarea class="form-control" id="observacionItem" readonly="true"></textarea>
                 </div>
-                <article id="formularioss"  style="display: none;"  >
+                <article id="formularioss"  style="display: none;">
                     <br/>
                     <p id="NomLista" class="col-md-12 col-md-offset-1"></p>
                     <p id="FechaEvaluacion" class="col-md-12 col-md-offset-1"></p>
-                    <label class="col-md-12 col-md-offset-1">Items de lista de chequeo</label>
+                    <label class="col-md-12 col-md-offset-1">Items de lista de chequeo:</label>
                     <div id="Respuestaitem" class="col-md-8 col-md-offset-1"></div>
-                    <label class="col-md-8 col-md-offset-1">Observacion general del producto</label>
+                    <label class="col-md-8 col-md-offset-1">Observación general del producto virtual:</label>
                     <div class="col-md-8 col-md-offset-1">
                         <textarea id="ObservacionGeneral" class="form-control" cols="60" rows="8" readonly="true"></textarea>
                     </div>
                     <div class="col-md-12 col-md-offset-1" >
-                        <label for="" class="col-md-10">Adjuntar correcion de producto virtual</label>
+                        <label for="" class="col-md-10">Adjuntar correción de producto virtual</label>
                         <form id="UploadForm" action="archivos" method="post" enctype="multipart/form-data">
                             <div class="col-md-offset-1">
                                 <input type="file" size="26120" id="myfile" class="inputs input-file" name="myfile">
                             </div>
-                            <input type="submit" class=" btn btn-info  col-md-4 col-md-offset-1"  value="Correguir produto virtual" id="correguir_oa">
+                            <input type="submit" class=" btn btn-info  col-md-4 col-md-offset-1"  value="Correguir producto virtual" id="correguir_oa">
                             <div id="progressbox" class="col-md-12 col-md-offset-1">
                                 <div id="progressbar"></div>
                                 <div id="percent">0%</div>
@@ -44,11 +44,11 @@
                             <table class="table table-striped" id="tablaNotificacion">
                                 <thead>
                                     <tr>
-                                        <th>#</th>
-                                        <th>Nombre Producto Virtual</th>
-                                        <th>No Version</th>
+                                        <th>N°</th>
+                                        <th>Nombre del producto virtual</th>
+                                        <th>N° version</th>
                                         <th>Contenido</th>
-                                        <th>Fecha de envio</th>
+                                        <th>Fecha de envío</th>
                                         <th>Descargar pv</th>
                                         <th>¿Corregir?</th>
                                     </tr>

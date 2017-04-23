@@ -36,7 +36,7 @@
                             <div class="modal-content formularioLogin">
                                 <div class="modal-header">
                                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                    <h4 class="modal-title" style="text-align:center; font-size:50px;">Inicio de sesion</h4>
+                                    <h4 class="modal-title" style="text-align:center; font-size:50px;">Inicio de sesión</h4>
                                 </div>
                                 <div class="modal-body">
                                     <form name="FormEntrar">
@@ -74,7 +74,7 @@
             </div>
             <div class="queEsBenefic" >
                 <div>
-                    <p class="code">¿Por que SARApro?</p>
+                    <p class="code">¿Por qué SARApro?</p>
                     <p class="lineaHorizontal"></p>
                     <p class="codeSmile">SARA pro es una aplicación que te permite compartir tus conocimientos con la comunidad del SENA y así
                         Mejorar la calidad de la educación en nuestro país.</p>
@@ -224,7 +224,7 @@
                             <img src="img/SENA1.png">
                         </div>
                         <div class="footer-col col-md-4">
-                            <h3>Siguemos en</h3>
+                            <h3>Síguenos en</h3>
                             <ul class="list-inline">
                                 <li>
                                     <a href="https://plus.google.com/u/0/101782866518065902776" class="btn-social btn-outline"><i class="fa fa-fw fa-google-plus"></i></a>

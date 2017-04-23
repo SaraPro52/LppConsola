@@ -1,7 +1,7 @@
 function listaChequeo(idTipoItem, idUser) {
     var selector = [], hilo = [], jso = [], data = [], datos = [], men = "", estado = "";
     var ob = new $.Luna("MultiItems", $("#SelectItem"));
-    ob.Vivo("ListaDeChequeos");
+    ob.Vivo("ListaDeChequeo");
     jso[0] = ['Crud_Controller', '[{opcion:3,tabla2:19,tipo:1,elegir:[0,1],delimitador:"[{colum: 2,operador: 0,valor1:' + idTipoItem + '}]",id:0,opSelect:6}]'];
     selector[0] = $("#SelectItem");
     datos[0] = {nombre: "MultiSelect", opt: "NN"};
@@ -105,10 +105,9 @@ function listaChequeo(idTipoItem, idUser) {
     function  BtnItem() {
         //jso[1] = ['Crud_Controller', '[{opcion:1,tabla1:19,tabla2:19,tipo:1,datos:["",' + $("#Descripcion").val() + ',' + idTipoItem + '],elegir:[0,1],delimitador:"[{colum:2,operador:0,valor1:' + idTipoItem + '}]",id:0,opSelect:6}]'];
         //20/04/2017
-        jso[1] = ['ListaChequeo_Controller','[{opcion:4,datosItem:[' + $("#Descripcion").val() + ',' + idTipoItem + ']}]'];
+        jso[1] = ['ListaChequeo_Controller', '[{opcion:4,datosItem:[' + $("#Descripcion").val() + ',' + idTipoItem + ']}]'];
         selector[1] = $("#SelectItem");
-        $("#SelectItem").empty();
-        datos[1] = {nombre: "MultiSelect"};
+        datos[1] = {nombre: "btn", compuesto: false};
         ajax(1, datos[1]);
     }
 
@@ -117,18 +116,22 @@ function listaChequeo(idTipoItem, idUser) {
         hilo[i].postMessage(jso[i]);
         hilo[i].onmessage = function (event) {
             data[i] = event.data;
-            alert(data[i]);
             ob.cargarTabla(data[i], selector[i], datos);
             hilo[i].terminate();
             peticionCompleta(i);
         };
     }
+
     function peticionCompleta(i) {
         if ((i == 1) || (i == 2)) {
             if (i == 1) {
-                if (data[0].length < data[1].length) {
+                var daMen = data[1].split("$$");
+                if (daMen[0] == "true") {
                     men = "El item " + $("#Descripcion").val() + " fue agregado exitosamente";
                     estado = ("success");
+                    var items = jQuery.parseJSON(daMen[2]);
+                    var j = items.length - 1;
+                    $('#SelectItem').multiSelect('addOption', {value: items[j].Id_Item_Lista, text: items[j].Des_Item_Lista, index: 0});
                 } else if (data[0].length == data[1].length) {
                     men = "El item: " + $("#Descripcion").val() + " no fue agregado exitosamente";
                     estado = ("error");
@@ -146,7 +149,6 @@ function listaChequeo(idTipoItem, idUser) {
                     men = daMen[1];
                 }
             }
-
             $.notify(men, estado);
         }
     }

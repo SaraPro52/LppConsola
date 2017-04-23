@@ -9,11 +9,11 @@
                         <article class="col-md-12">
                             <br/>
                             <div class="col-md-10">
-                                <label class="col-lg-6 col-md-6">Nombre de la lista de chequeo: </label>
+                                <label class="col-lg-6 col-md-6">Nombre de la lista de chequeo:</label>
                                 <label class="col-lg-6 col-md-6" id="Nombrelista"></label> 
-                                <label class="col-lg-6 col-md-6">Descripcion de la lista de chequeo: </label>
+                                <label class="col-lg-6 col-md-6">Descripción de la lista de chequeo:</label>
                                 <label class="col-lg-6 col-md-6" id="DesLista"></label>
-                                <label class="col-lg-6 col-md-6">Fecha de creacion lista de chequeo: </label>
+                                <label class="col-lg-6 col-md-6">Fecha de creación lista de chequeo:</label>
                                 <label class="col-lg-6 col-md-6" id="FechaLista"></label>
                             </div>     
                             <table class="col-md-12 table">
@@ -34,8 +34,10 @@
                             </div>
                             </div>
                             <div class="col-md-12 col-md-offset-2" id="TipodeFecha" style="display: none;">
-                                <label id="TextFecha"></label> 
-                                <input type="text" id="iFecha" placeholder="D/M/A" class="ui-datepicker">    
+                                <label id="TextFecha" class="col-md-12"></label> 
+                                <div class="col-md-5">
+                                    <input type="text" id="iFecha" placeholder="D/M/A"  class="form-control">    
+                                </div>
                             </div>
                             <div class="col-md-8 col-md-offset-1">
                                 <label class="col-md-5" for="areaObservacion">Observaciones</label>

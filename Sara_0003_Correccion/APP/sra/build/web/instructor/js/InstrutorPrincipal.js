@@ -26,7 +26,7 @@ function cargaI(idRol, ti, js) {
             } else if (this.value == 2) {
                 datos[1] = {caso: "Correguir los producto virtual", tipo: 1};
             } else if (this.value == 6) {
-                datos[1] = {caso: "agregar una version del producto virtual", tipo: 1};
+                datos[1] = {caso: "Agregar una version del producto virtual", tipo: 1};
             }
             ajax(1);
         }

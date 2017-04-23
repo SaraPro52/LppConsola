@@ -2,11 +2,7 @@ function calificarPV(idLista, idRol, idNotifi) {
     var selector = [], hilo = [], jso = [], data = [], datos = [], men = "", estado = "";
     $("#iFecha").datepicker({
         minDate: 'today',
-        beforeShow: function () {
-            setTimeout(function () {
-                $('.ui-datepicker').css('z-index', 99999999999999);
-            }, 0);
-        }
+     
     });
     $("#clone").hide();
     var ob = new $.Luna("Producto virtual", $("#divContainer"));

@@ -16,7 +16,7 @@
                             <article class="col-md-10 col-md-offset-1">
                                 <table id="tablaAdmi" class="table table-hover ">
                                     <thead>
-                                    <th>#</th>
+                                    <th>N°</th>
                                     <th>Nombre</th>
                                     <th>Cargo</th>
                                     <th>Area</th>
@@ -24,7 +24,6 @@
                                     <th>Deshabilitar</th>
                                     </thead>
                                     <tbody>
-
                                     </tbody>
                                 </table>
                             </article>

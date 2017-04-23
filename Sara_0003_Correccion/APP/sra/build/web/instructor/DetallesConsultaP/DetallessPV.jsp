@@ -1,7 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-
 <!DOCTYPE html>
-
 <html>
     <head>
         <link rel="stylesheet" type="text/css" href="assets/css/estilo.css"> 
@@ -22,19 +20,19 @@
                         <div class="col-md-16" id="consul">
                             <label >Autores:</label>
                             <p id="PvAutores"></p>
-                            <label>Fecha de publicacion</label>
+                            <label>Fecha de publicación:</label>
                             <p id="PvPublicacion"></p>
-                            <label >Fecha de Vigencia</label>
+                            <label >Fecha de vigencia:</label>
                             <p id="PvFechaVigencia"></p>
                             <div class="col-md-8">
-                                <label for="PvRequisitos">Requisitos de instalacion</label>
+                                <label for="PvRequisitos">Requisitos de instalación:</label>
                                 <textarea id="PvRequisitos"  class="form-control" cols="60"  rows="6"  readonly="true"></textarea>
                             </div>
                             <div class="col-md-8">
-                                <label for="PvInstalacion">Instruciones de instalacion</label>
+                                <label for="PvInstalacion">Instruciones de instalación:</label>
                                 <textarea id="PvInstalacion" class="form-control" cols="60" rows="6" readonly="true"></textarea>
                             </div>
-                            <label class="col-md-12">Valora Este objeto de aprendizaje</label>
+                            <label class="col-md-12">Valorar este objeto de aprendízaje</label>
                             <form>
                                 <p class="clasificacion" id="Clasificacion">
                                     <label id="4" for="4l" class="labelEstrella">★</label><input id="4l" type="radio">
@@ -47,7 +45,7 @@
                             <div class="RComentarios">
                             </div>
 
-                            <h4 class="dark-grey">Cuentanos tu opinion</h4>
+                            <h4 class="dark-grey">Cuentanos tu opinión</h4>
                             <label>Cometarios</label>
                             <textarea class="form-control" placeholder="Comentarios" rows="3" id="comment"></textarea> 
                             <button type="button" class="btn btn-default Comentar" id="btn_Comentar">Comentar P.V</button>
@@ -68,7 +66,6 @@
     <script type="text/javascript" src="js/jquery.js"></script>
     <script type="text/javascript" src="js/jquery.cecily.js"></script>
     <script type="text/javascript" src="assets/js/bootstrap-notify.js"></script>
-        <script type="text/javascript" src="js/jqueryUi.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script type="text/javascript" src="js/jqueryUi.js"></script>
     <script type="text/javascript" src="instructor/DetallesConsultaP/js/DetallesConsultaP.js"></script>
 </html>

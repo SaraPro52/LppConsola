@@ -17,11 +17,11 @@
                                 <table class="table table-striped" id="tablaNotificacion">
                                     <thead>
                                         <tr>
-                                            <th>#</th>
-                                            <th>Nombre Producto Virtual</th>
-                                            <th>No Version</th>
+                                            <th>N°</th>
+                                            <th>Nombre del producto virtual</th>
+                                            <th>N° Versión</th>
                                             <th>Contenido</th>
-                                            <th>Fecha de envio</th>
+                                            <th>Fecha de envío</th>
                                         </tr>
                                     </thead>
                                     <tbody>

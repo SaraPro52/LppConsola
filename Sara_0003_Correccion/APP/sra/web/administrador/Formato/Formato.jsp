@@ -3,7 +3,6 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>formato</title>
         <link rel="stylesheet" href="css/bootstrap.css" media="screen" title="no title" charset="utf-8">
         <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.12/css/jquery.dataTables.css">
         <link href="assets/css/paper-dashboard.css" rel="stylesheet"/>
@@ -17,11 +16,11 @@
                         <div class="contenedorFormulario col-md-10">
                             <div class="form-group contenedorInsert">
                                 <div class="col-md-6">
-                                    <label for="formato">Nombre del Formato</label>
+                                    <label for="formato">Nombre del formato:</label>
                                     <input required placeholder="Nombre del Formato" type="text" class="form-control inputs" name="formato" id="formato" required="true">
                                 </div>
                                 <div class="col-md-6">
-                                    <label for="descripcion">Descripción Formato</label>
+                                    <label for="descripcion">Descripción del formato:</label>
                                     <input required type="text" placeholder="Descripción Formato"  class="form-control inputs" id="descripcion" name="descripcion" required="true">
                                 </div> 
                                 <div class="col-md-12 col-md-offset-1 espacio">
@@ -35,8 +34,8 @@
                     <table id="tablaformato" class="table table-hover">
                         <thead>
                             <tr class="active">
-                                <td>Numero </td>
-                                <td>Nombre formato</td>
+                                <td>N°</td>
+                                <td>Nombre del formato</td>
                                 <td>Descripcion del formato</td>
                             </tr>
                         </thead>

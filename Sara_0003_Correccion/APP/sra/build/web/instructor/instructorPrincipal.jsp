@@ -29,14 +29,14 @@
                         </a>
                     </div>
                     <ul class="nav menu" id="menus">
-                        <li class="active"><a><i class="ti-home"></i><p>Instrutor</p></a></li>
+                        <li class="active"><a><i class="ti-home"></i><p>Instructor</p></a></li>
                         <li class="btntt" value="4"><a><i class="ti-user"></i><p><label style='cursor:pointer;' id="text4">Perfil de usuario</label></p></a></li>
                         <li class="btntt" value="1"><a><i class="ti-cloud-up"></i><label style='cursor:pointer;' id="text1">Subir P.V.</label></a></li>
                         <li class="btntt" value="0"><a><i class="ti-eye"></i><label style='cursor:pointer;' id="text0">Consultar P.V.</label></a></li>
                         <li class="btntt" value="3"><a><i class="ti-bell"></i><label style='cursor:pointer;' id="text3">Notificaciones P.V</label></a></li>
                         <li class="btntt" value="2"><a><i class="ti-pencil-alt"></i><label style='cursor:pointer;' id="text2">Correguir P.V</label></a></li>
-                        <li class="btntt" value="6"><a><i class="ti-cloud-up"></i><label style='cursor:pointer;' id="text6">Version P.V</label></a></li>
-                        <li class="btntt" value="7"><a><i class="glyphicon glyphicon-off" aria-hidden="true"></i><label style='cursor:pointer;' id="text3">Cerrar Sesion</label></a></li>
+                        <li class="btntt" value="6"><a><i class="ti-cloud-up"></i><label style='cursor:pointer;' id="text6">Versión P.V</label></a></li>
+                        <li class="btntt" value="7"><a><i class="glyphicon glyphicon-off" aria-hidden="true"></i><label style='cursor:pointer;' id="text3">Cerrar Sesión</label></a></li>
                     </ul>
                 </div>
             </div>
@@ -63,7 +63,7 @@
                                         <b class="caret"></b>
                                     </a>
                                     <ul class="dropdown-menu" id="tablaNotificacionP">
-                                        <li><a><label class="Notify">No hay notificaciones de productos</label></a></li>
+                                        <li><a><label class="Notify">No hay notificaciones de productos virtuales</label></a></li>
                                     </ul>
                                 </li>
                             </ul>
@@ -71,28 +71,19 @@
                     </div>
                 </nav>
                 <div id="cuerpo" >
-
-
                 </div>
                 <footer>
                     <div class="container-fluid">
                         <nav class="pull-left">
                             <ul>
-
                                 <li>
                                     <img src="assets/img/sena.png">
-
-
                                     <img src="assets/img/saraBlanco.png">
                                 </li>
-
-
                             </ul>
                         </nav>
                         <div class="copyright pull-right">
-
                             <li>
-
                                 <h3>Síguenos en:</h3>
                                 <ul class="list-inline">
                                     <li>
@@ -102,9 +93,7 @@
                                         <a href="https://github.com/SaraPro52/LppConsola" class="btn-social btn-outline"><i class="fa fa-fw fa-github"></i></a>
                                     </li>
                                 </ul>
-
                             </li>
-
                         </div>
                     </div>
                 </footer>
@@ -138,6 +127,5 @@
                 timer: 4000
             });
         }
-
     </script>
 </html>

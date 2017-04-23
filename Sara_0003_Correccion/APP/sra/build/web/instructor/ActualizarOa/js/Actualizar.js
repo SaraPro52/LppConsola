@@ -329,9 +329,9 @@ $(document).ready(function () {
             }
             men = $("#Titulo_Publicacion").val();
             //jso[12] = ['Version_Controller', '[{opcion:3,info:[' + idPv + ',' + $("#instrucciones").val() + ',' + $("#requisitos_instalacion").val() + '],arrayFun:[' + arrayAutor + '],arrayTemas:[' + arrayTemas + '],archivoNom:' + $("#myfile").val() + '}]'];
-            
+
             //20/04/2017
-            jso[12] = ['Version_Controller', '[{opcion:3,info:[' + idPv + ','+$("#myfile").val()+',0,' + $("#instrucciones").val() + ',' + $("#requisitos_instalacion").val() + '],arrayFun:[' + arrayAutor + '],arrayTemas:[' + arrayTemas + ']}]'];
+            jso[12] = ['Version_Controller', '[{opcion:3,info:[' + idPv + ',' + $("#myfile").val() + ',0,' + $("#instrucciones").val() + ',' + $("#requisitos_instalacion").val() + '],arrayFun:[' + arrayAutor + '],arrayTemas:[' + arrayTemas + ']}]'];
             selector[12] = null;
             datos[12] = {nombre: "btn"};
             console.log("Listo para enviar");
@@ -416,13 +416,13 @@ $(document).ready(function () {
         } else if (i == 3) {
             var peticion1 = jstotal.Peticion_1;
             peticion1.forEach(function (val) {
-                $("#palabras_claves").val(val.Palabras_Clave);
-                $("#descripcion_oa").val(val.Des_P_Virtual);
                 $("#Titulo_Publicacion").val(val.Nom_P_Virtual);
                 $("select#formato option")
                         .each(function () {
                             this.selected = (this.text == val.Nom_Formato);
                         });
+                $("#palabras_claves").val(val.Palabras_Clave);
+                $("#descripcion_oa").val(val.Des_P_Virtual);
             });
             jso[4] = ['Crud_Controller', '[{opcion:3,tabla2:38,tipo:2,elegir:[0,1],delimitador:"[{colum:4,operador:0,valor1:' + idCentro + '})",id:0,opSelect:6}]'];
             selector[4] = $("#SelectCategoria");
@@ -470,21 +470,25 @@ $(document).ready(function () {
                 estado = ("error");
                 men = "El producto " + men + " " + daMen[1];
             }
-        } else if (i == 12) {
-            selector[12] = null;
-            datos[12] = {nombre: "btn"};
-            alert("aqui2");
-            jso[12] = ['Version_Controller', '[{opcion:3,info:[10,'+$("#myfile").val()+',0,' + $("#instrucciones").val() + ',' + $("#requisitos_instalacion").val() + '],arrayFun:[' + arrayAutor + '],arrayTemas:[' + arrayTemas + ']}]'];
-            ajax(16, datos[12]);
-        } else if (i == 11) {
-            $("#CasoNombre").text(datos[i].caso);
-            $("#cuerpo").empty();
-            $("#cuerpo").append(data[i]);
-        } else if (i == 16) {
             jso[11] = ['Instrutor_Controller', '[{opcion:3,ti:' + idRol + '}]'];
             datos[11] = {caso: "Notificaciones productos virtuales"};
             $.notify(men, estado);
             ajax(11);
+        } else if (i == 122) {
+            selector[12] = null;
+            datos[12] = {nombre: "btn"};
+            //alert("aqui2");
+            //jso[12] = ['Version_Controller', '[{opcion:3,info:[10,' + $("#myfile").val() + ',0,' + $("#instrucciones").val() + ',' + $("#requisitos_instalacion").val() + '],arrayFun:[' + arrayAutor + '],arrayTemas:[' + arrayTemas + ']}]'];
+            //ajax(16, datos[12]);
+        } else if (i == 11) {
+            $("#CasoNombre").text(datos[i].caso);
+            $("#cuerpo").empty();
+            $("#cuerpo").append(data[i]);
+        } else if (i == 166) {
+//            jso[11] = ['Instrutor_Controller', '[{opcion:3,ti:' + idRol + '}]'];
+//            datos[11] = {caso: "Notificaciones productos virtuales"};
+//            $.notify(men, estado);
+//            ajax(11);
         }
     }
 });
