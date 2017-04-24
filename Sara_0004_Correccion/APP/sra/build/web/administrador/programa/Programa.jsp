@@ -15,17 +15,17 @@
                         <div class="contenedorFormulario col-md-10">
                             <div class="form-group contenedorInsert">
                                 <div class="col-md-12">
-                                    <label>Programa de formación</label>
+                                    <label>Programa de Formación</label>
                                     <input required type="text" id="nomPro" class="form-control inputs" placeholder="Digite el programa de formacion">
                                 </div>
                                 <div class="col-md-12" style="margin-top:3%;">
-                                    <label>Centro de formación</label>
+                                    <label>Centro de Formación</label>
                                     <select class="form-control select" id="SelecCentro">
                                         <option value="A0">Seleccionar...</option>
                                     </select>
                                 </div>
                                 <div class="col-md-12" style="margin-top:3%;">
-                                    <label>Nivel de formación</label>
+                                    <label>Nivel de Formación</label>
                                     <select class="form-control select" id="nivel">
                                         <option value="A0">Seleccionar...</option>>
                                         <option value="Tecnico">Técnico</option>
@@ -44,7 +44,7 @@
                                     <select  id="MultAreas" class="MultAreas"  multiple='multiple' title="Busca una area..">
                                     </select>
                                 </div>
-                                <button id="btnPrograma" type="button" class="btn btn-primary">Guardar programa</button>
+                                <button id="btnPrograma" type="button" class="btn btn-primary">Guardar Programa</button>
                             </div>
                         </div>
                     </div>

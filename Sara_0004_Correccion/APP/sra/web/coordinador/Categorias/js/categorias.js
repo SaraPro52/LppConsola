@@ -2,7 +2,7 @@ $(document).ready(function () {
     var selector = [], hilo = [], jso = [], data = [], datos = [], estado = "", men = "";
     var arraySelecion = [];
     var ob = new $.Luna("MultiSelect", "null");
-    ob.Vivo("Categoria");
+    ob.Vivo("Categorias");
     jso[0] = ['Crud_Controller', '[{opcion:3,tabla2:27,tipo:1,elegir:[0,1],delimitador:[],id:0,opSelect:4}]'];
     selector[0] = $("#itemCategoria");
     $("#itemCategoria").empty();
@@ -61,7 +61,7 @@ $(document).ready(function () {
                 boo++;
             }
         }
-        if (boo == 2)  {
+        if (boo == 2) {
             BtnTema();
         }
     });
@@ -93,7 +93,7 @@ $(document).ready(function () {
             input = $("#itemCategoria");
             input.focus().after("<div class='remove'><font color='red'>Selecione al menos un tema</font><div>");   
         }
-        if ( (coo == 2) && (arraySelecion.length > 0) ) {
+        if ((coo == 2) && (arraySelecion.length > 0)) {
             BtnCate();
         }
     });
@@ -126,10 +126,9 @@ $(document).ready(function () {
                 estado = ("success");
                 var items = jQuery.parseJSON(daMen[2]);
                 var j = items.length - 1;
-                console.log(items);
                 $('#itemCategoria').multiSelect('addOption', {value: items[j].Id_Tema, text: items[j].Nom_Tema, index: 0});
             } else if (data[0].length == data[1].length) {
-                men = "El item: " + men+ " no fue agregado exitosamente";
+                men = "El item: " + men + " no fue agregado exitosamente";
                 estado = ("error");
             }
             $("#agregarTema")[0].reset();

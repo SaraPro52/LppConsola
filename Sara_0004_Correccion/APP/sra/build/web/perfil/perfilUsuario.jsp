@@ -41,7 +41,7 @@
                                 <div style="margin-left:5%;" class="row">
                                     <div class="col-md-5">
                                         <div class="form-group">
-                                            <label>Tipo De Identificación</label>
+                                            <label>Tipo de Identificación</label>
                                             <select required id="IdentificacionFunTipo" class="form-control border-input select">
                                                 <option value="A0">Seleciona...</option>
                                                 <option value="1">Cedula de Ciudadania</option>
@@ -52,7 +52,7 @@
                                     </div>
                                     <div class="col-md-5">
                                         <div class="form-group">
-                                            <label>Numero De Identificación</label>
+                                            <label>Número de Identificación</label>
                                             <input required id="IdentificacionFun"  type="text" class="form-control border-input inputs" placeholder="Ej:11195673412" maxlength="1000" onKeypress="if (event.keyCode < 45 || event.keyCode > 57)
                                                         event.returnValue = false;">
                                         </div>
@@ -89,13 +89,13 @@
                                     </div>
                                     <div class="col-md-12">
                                         <div class="col-md-12 col-md-offset-4" style="margin-bottom:3%; ">
-                                            <button id="BtnModificar" type="button" class="btn btn-info btn-fill btn-wd ">Modificar perfil</button>
+                                            <button id="BtnModificar" type="button" class="btn btn-info btn-fill btn-wd ">Modificar Perfil</button>
                                         </div>    
                                     </div>
 
                                     <form id="coambiarContra">
                                         <div style="margin-left:5%;" class="col-md-4">
-                                            <label>Usuario:</label>
+                                            <label>Usuario</label>
                                             <input required id="user" type="text" class="form-control border-input inputsC" placeholder="" >
                                         </div> 
                                         <div style="margin-left:5%;" class="col-md-4">
@@ -107,7 +107,7 @@
                                             <input required id="ConNueva" type="password" class="form-control border-input inputsC" placeholder="">
                                         </div>
                                         <div style="margin-left:5%;" class="col-md-4">
-                                            <label for="exampleInputEmail1">Confirmar nueva contraseña</label>
+                                            <label for="exampleInputEmail1">Confirmar Nueva Contraseña</label>
                                             <input required id="ConNuevaF"  type="password" class="form-control border-input inputsC" placeholder="">
                                         </div>
                                     </form>
@@ -123,7 +123,6 @@
             </div>
         </div>
     </body>
-
     <script type="text/javascript" src="assets/js/jquery-1.10.2.js" ></script>
     <script type="text/javascript" src="js/bootstrap.js" ></script>
     <script type="text/javascript" src="js/notify.js"></script> 

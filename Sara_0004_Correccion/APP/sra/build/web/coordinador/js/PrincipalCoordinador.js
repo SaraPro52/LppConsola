@@ -3,14 +3,13 @@ function cargaC(idRol, ti) {
     console.log("Vivo??coordinador");
     var casoUso = "Consultar estadisticas";
     jso[0] = ['coordinador_Controller', '[{opcion:1,ti:' + idRol + '}]'];
-    datos[0] = {caso: "Habilitar Producto virtual"};
+    datos[0] = {caso: "Habilitar Producto Virtual"};
     ajax(0);
     $(document).on('click', '.Notify', function (e) {
         jso[0] = ['coordinador_Controller', '[{opcion:1,ti:' + idRol + '}]'];
-        datos[0] = {caso: "Habilitar Producto virtual"};
+        datos[0] = {caso: "Habilitar Producto Virtual"};
         ajax(0);
     });
-    
     $('.menu li').click(function (e) {
         if (this.value == 5) {
             jso[2] = ['sesion_controller', '[{opcion:2,se:' + ti + '}]'];
@@ -21,7 +20,7 @@ function cargaC(idRol, ti) {
             casoUso = $("#" + casoUso).text();
              datos[1] = {caso: casoUso, en: this.value};
             if (this.value == 1) {
-                casoUso = "Habilitar Producto virtual";
+                casoUso = "Habilitar producto virtual";
                 datos[1] = {caso: casoUso};
             }
             ajax(1);

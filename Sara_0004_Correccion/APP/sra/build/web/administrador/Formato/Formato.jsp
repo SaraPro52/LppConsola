@@ -16,11 +16,11 @@
                         <div class="contenedorFormulario col-md-10">
                             <div class="form-group contenedorInsert">
                                 <div class="col-md-6">
-                                    <label for="formato">Nombre del formato:</label>
+                                    <label for="formato">Nombre del Formato:</label>
                                     <input required placeholder="Nombre del Formato" type="text" class="form-control inputs" name="formato" id="formato" required="true">
                                 </div>
                                 <div class="col-md-6">
-                                    <label for="descripcion">Descripción del formato:</label>
+                                    <label for="descripcion">Descripción del Formato:</label>
                                     <input required type="text" placeholder="Descripción Formato"  class="form-control inputs" id="descripcion" name="descripcion" required="true">
                                 </div> 
                                 <div class="col-md-12 col-md-offset-1 espacio">

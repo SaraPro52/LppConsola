@@ -53,7 +53,7 @@
                                         <div id="contentss">   </div>
                                         <br>
                                         <div class="col-md-12">
-                                            <!--a id="olvidoPa" class="col-md-12">¿Olvido su cuenta?</a--> 
+                                            <a id="olvidoPa" class="col-md-12">¿Olvido su cuenta?</a> 
                                         </div>
                                         <br>
                                     </form>

@@ -1,8 +1,7 @@
 $(document).on('ready', function () {
     var selector = [], hilo = [], jso = [], data = [], datos = [], estado = "";
-    var ob = new $.Luna("Producto virtual", selector);
+    var ob = new $.Luna("Producto(s) Virtual(es)", selector);
     ob.Vivo("Habilitar Producto");
-    console.log($("#ccNoti"));
     $("#ccNoti").empty();
     jso[0] = ['Crud_Controller', '[{opcion:3,tabla2:9,tipo:2,elegir:[0,1,2],delimitador:"[{colum:4,operador:0,valor1:' + idCentro + '}]",id:0,opSelect:6}]'];
     selector[0] = $("#tablaAprobar");

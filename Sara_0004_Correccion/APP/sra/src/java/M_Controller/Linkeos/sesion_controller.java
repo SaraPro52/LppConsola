@@ -23,7 +23,6 @@ public class sesion_controller extends HttpServlet {
             throws ServletException, IOException, JSONException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            response.setContentType("application/json;charset=UTF-8");
             HttpSession sesion = request.getSession();
             String data = request.getParameter("data");
             JSONObject jData = new JSONArray(data).getJSONObject(0);
@@ -35,7 +34,11 @@ public class sesion_controller extends HttpServlet {
                     String delimitador = "[{colum:4,operador:0,valor1:'\"" + usuario + "\"',añadir:0},{colum:5,operador:0,valor1:'\"" + contraseña + "\"'}]";
                     Elomac elo = new Elomac(19, 2);
                     String fun = elo.Select(delimitador);
-                    if (fun != "false") {
+                    if (fun.equals("{}")) {
+                        response.setContentType("application/json;charset=UTF-8");
+                        PrintWriter respuesta = response.getWriter();
+                        respuesta.println("0");
+                    } else {
                         JSONObject funJ = new JSONArray(fun).getJSONObject(0);
                         int rol = funJ.getInt("Id_Rol");
                         sesion.setAttribute("idUser", funJ.getInt("Id_Funcionario"));
@@ -59,10 +62,10 @@ public class sesion_controller extends HttpServlet {
                                 request.getRequestDispatcher("administrador/administradorPrincipal.jsp").forward(request, response);
                                 break;
                             default:
-                                request.getRequestDispatcher("index1.jsp").forward(request, response);
+                                response.setContentType("application/json;charset=UTF-8");
+                                PrintWriter respuesta = response.getWriter();
+                                respuesta.println("0");
                         }
-                    } else {
-                        request.getRequestDispatcher("index1.jsp").forward(request, response);
                     }
                     break;
                 case 2:
@@ -81,7 +84,9 @@ public class sesion_controller extends HttpServlet {
                     break;
             }
         } catch (Exception e) {
-            request.getRequestDispatcher("index1.jsp").forward(request, response);
+            response.setContentType("application/json;charset=UTF-8");
+            PrintWriter respuesta = response.getWriter();
+            respuesta.println("0");
         }
     }
 

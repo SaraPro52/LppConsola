@@ -16,18 +16,15 @@
                 </div>
             </div>
             <div class="col-md-6">
-                <label for="Autores" class="col-md-12">Autor: </label>
+                <label for="Autores" class="col-md-12">Autor:</label>
                 <div class="col-md-10">
                     <input required type="text" id="Autores" value="" class="form-control inputs">
                 </div>
             </div>
-
-            <div class="col-md-12
-                 ">
+            <div class="col-md-12">
                 <div class="col-md-12">
                     <label><a id="BusquedaAvanzada">Busqueda avanzada</a></label>    
                 </div>
-
                 <div id="Avando" style="display: none;" class="col-md-10">
                     <div class="col-md-12">
                         <label class="col-md-12">Buscar por:</label>

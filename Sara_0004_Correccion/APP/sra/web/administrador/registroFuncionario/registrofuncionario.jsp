@@ -14,8 +14,8 @@
                         <div class="contenedor">
                             <div id="formulario1">
                                 <section class="col col-md-6">
-                                    <p><h3>Datos personales</h3></p>
-                                    <label  class="col-md-12"  for="Centro">Tipo de usuario</label>
+                                    <p><h3>Datos Personales</h3></p>
+                                    <label  class="col-md-12"  for="Centro">Tipo de Usuario</label>
                                     <select class="form-control select" id="tipoUsuario" name="tipoUsuario">
                                         <option value="A0">Seleccionar...</option>
                                     </select>
@@ -23,18 +23,18 @@
                                     <input type="text" class="form-control input" placeholder="Digite Nombre" id="nombre" maxlength="45">
                                     <label>Apellido:</label>
                                     <input type="text" class="form-control input" placeholder=" Digite Apellido" id="apellido" maxlength="100">
-                                    <label>Tipo identificación:</label>
+                                    <label>Tipo Identificación:</label>
                                     <select class="form-control select"  name="tipoIdenti" id="tipoIdenti">
                                         <option value="A0" selected="selected">Selecciona...</option>
                                     </select>
-                                    <label>Numero identificación:</label>
+                                    <label>Número Identificación:</label>
                                     <input type="text" class="form-control input" placeholder="Digite Numero de Identificación" id="numeroIdentificacion" maxlength="20">
-                                    <label>Correo eléctronico:</label>
+                                    <label>Correo Eléctronico:</label>
                                     <input type="text" class="form-control input" placeholder=" Digite Correo Eléctronico" id="email" maxlength="125">
                                 </section>
                                 <section class="col col-md-6">
                                     <p><h3>Datos SENA:</h3> </p>
-                                    <label>Centro de formación:</label>
+                                    <label>Centro de Formación:</label>
                                     <div class="form-group">
                                         <select class="form-control select"  id="centroFormacion">
                                             <option value="A0" selected="selected">Seleccionar...</option>
@@ -70,7 +70,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <button type="button" id="boton1" class="btn btn-info">Registrar funcionario</button>
+                                        <button type="button" id="boton1" class="btn btn-info">Registrar Funcionario</button>
                                     </center>
                                 </section>
                             </div>

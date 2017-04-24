@@ -1,10 +1,10 @@
 function modificar(idTipoItem) {
-    var jso = [], selector = [], hilo = [], data = [], ww = "",arraySelecion = [], Lista = -8, men = "", men1 = "", estado = "", arrItemsC = [], arrItems = [];
+    var jso = [], selector = [], hilo = [], data = [], ww = "", arraySelecion = [], Lista = -8, men = "", men1 = "", estado = "", arrItemsC = [], arrItems = [];
     $(".EspacioItems").hide();
     $("#tablaItems").hide();
-    var ob = new $.Luna("Lista", $("#tablalista"));
+    var ob = new $.Luna("Lista(s)", $("#tablalista"));
     ob.Vivo("ModificarListaDeChequeo3");
-    
+
     //23/04/2017
     jso[2] = ['Crud_Controller', '[{opcion:3,tabla2:12,tipo:2,elegir:[0,1,2,3],delimitador: "[{colum:4,operador:0,valor1:' + idUser + ',añadir:0},{colum:5,operador:0,valor1:' + idRol + '}]",id:0,opSelect:6}]'];
     var datos = {nombre: "Lista", worker: true};
@@ -59,15 +59,14 @@ function modificar(idTipoItem) {
         s = dat.split("$$$");
         $("#NombreL").val(s[0]);
         $("#DescripcionL").val(s[1]);
-        
         //Retorna 
         //"Des_Item_Lista": 
         //"tipo": 1 o 0 -> 1: items relacionados con la lista. 0: Items no relacionados con la lista
-        //(todos estan en un solo array de objetos, para que se separen por el valor de tipo, lledo cada conjunto a una columna diferente del
-        //multiselect)
+        //(todos estan en un solo array de objetos, para que se separen por el valor de tipo, 
+        //lledo cada conjunto a una columna diferente del multiselect)
         //"Id_Item_Lista": 
         //23/04/2017
-        jso[0] = ['ListaChequeo_Controller','[{opcion:3,lista:'+this.id +',tipoItem:'+idTipoItem+'}]'];
+        jso[0] = ['ListaChequeo_Controller', '[{opcion:3,lista:' + this.id + ',tipoItem:' + idTipoItem + '}]'];
         //jso[0] = ['Crud_Controller', '[{opcion:3, tabla2: 15,tipo:2, elegir:[0,1],delimitador: "[{colum:3,operador:0,valor1:' + this.id + ',añadir:0},{colum:2,operador:0,valor1:' + idTipoItem + '}]", id: 0, opSelect: 6}]'];
         var datos = {nombre: "btn"};
         selector[0] = "null";
@@ -77,7 +76,7 @@ function modificar(idTipoItem) {
 
     $("#btnItem").click(function () {
         $(".remove").remove();
-        var boo = 0; 
+        var boo = 0;
         var inputs = $(".inputs");
         var input, selet;
         for (var i = 0; i < inputs.length; i++) {
@@ -89,14 +88,14 @@ function modificar(idTipoItem) {
             }
         }
         if (boo == 1) {
-        BtnItem();
-           }
+            BtnItem();
+        }
     });
 
     function  BtnItem() {
         //jso[1] = ['Crud_Controller', '[{opcion:1,tabla1:19,tabla2:19,tipo:1,datos:["",' + $("#Descripcion").val() + ',' + idTipoItem + '],elegir:[0,1],delimitador:"[{colum:2,operador:0,valor1:' + idTipoItem + '}]",id:0,opSelect:6}]'];
         //20/04/2017
-        jso[1] = ['ListaChequeo_Controller','[{opcion:4,datosItem:[' + $("#Descripcion").val() + ',' + idTipoItem + ']}]'];
+        jso[1] = ['ListaChequeo_Controller', '[{opcion:4,datosItem:[' + $("#Descripcion").val() + ',' + idTipoItem + ']}]'];
         selector[1] = $("#SelectItem");
         datos[1] = {nombre: "btn"};
         ajax(1, datos[1]);
@@ -134,7 +133,7 @@ function modificar(idTipoItem) {
             hilo[i].onmessage = function (event) {
                 data[i] = event.data;
                 ob.cargarTabla(data[i], selector[i], datos);
-                if (i != 5) {
+                if ( (i != 5)&& (i!=1 )) {
                     data[i] = jQuery.parseJSON(event.data);
                 }
                 hilo[i].terminate();
@@ -147,46 +146,24 @@ function modificar(idTipoItem) {
     function peticionCompleta(i) {
         if (i == 0) {
             var js = data[i];
-            for (var f = 0; f < js.length; f++) {
-                arrItemsC.push({Id_Item_Lista: js[f].Id_Item_Lista, Des_Item_Lista: js[f].Des_Item_Lista, tipo: true});
-                arrItems.push({Id_Item_Lista: js[f].Id_Item_Lista});
-            }
-            //Ya no se usara yaque la otra peticion tambien trae los que no estan relacionados con la lista
-            jso[3] = ['Crud_Controller', '[{opcion: 3,tabla2:19,tipo:1,elegir: [0,1],delimitador:"[{colum:0,operador:7,valor1:' + ww + ',añadir:0},{colum:2,operador:0,valor1:' + idTipoItem + '}]", id:0,opSelect:6}]'];
-            datos[3] = {nombre: "btn"};
-            ajax(3, datos[3]);
-        } else if (i == 3) {
-            var js = data[i];
-            var conunt = 0;
-            for (var f = 0; f < js.length; f++) {
-                for (var o = 0; o < arrItems.length; o++) {
-                    if (js[f].Id_Item_Lista == arrItems[o].Id_Item_Lista) {
-                        conunt++;
-                    }
-                }
-                if (conunt == 0) {
-                    arrItemsC.push({Id_Item_Lista: js[f].Id_Item_Lista, Des_Item_Lista: js[f].Des_Item_Lista, tipo: false});
-                }
-                conunt = 0;
-            }
             $("#SelectItem").empty();
-            datos[3] = {nombre: "MultiSelect", compuesto: true};
-            ob.cargarTabla(arrItemsC, $("#SelectItem"), datos[3]);
+            datos[3] = {nombre: "MultiselectLista"};
+            ob.cargarTabla(js, $("#SelectItem"), datos[3]);
             arrItemsC = [];
         } else if (i == 1) {
-            if (data[0].length == data[i].length) {
-                men = "El item " + men + " no se ingreso.";
-                estado = ("error");
-            } else if (data[0].length < data[i].length) {
-                var uu = data[i].length;
-                var jsoData = jQuery.parseJSON(data[i]);
-                var opcion = "<option value=" + jsoData[uu].Des_Item_Lista + ">" + jsoData[uu].Id_Item_Lista + "</option>";
-                $("#SelectItem").append(opcion);
-                $("#SelectItem").multiSelect('refresh');
-                men = "El item " + data[uu].Des_Item_Lista + " se ingreso correctamente";
+            var daMen = data[1].split("$$");
+            if (daMen[0] === "true") {
+                men = "El item " + $("#Descripcion").val() + " fue agregado exitosamente";
                 estado = ("success");
+                var items = jQuery.parseJSON(daMen[2]);
+                var j = items.length - 1;
+                $('#SelectItem').multiSelect('addOption', {value: items[j].Id_Item_Lista, text: items[j].Des_Item_Lista, index: 0});
+            } else if (data[0].length == data[1].length) {
+                men = "El item: " + $("#Descripcion").val() + " no fue agregado exitosamente";
+                estado = ("error");
             }
             $.notify(men, estado);
+            $("#Descripcion").val("");
         } else if (i == 5) {
             $(".EspacioItems").hide();
             $("#CompoLista").show();

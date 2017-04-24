@@ -1,6 +1,6 @@
 $(document).on('ready', function () {
     var selector = [], hilo = [], jso = [], data = [], datos = [], estado = "", campo = [], idFormato;
-    var ob = new $.Luna("Formato", $("#tablaformato"));
+    var ob = new $.Luna("Formato(s)", $("#tablaformato"));
     ob.Vivo("Formato");
     jso[0] = ['Crud_Controller', '[{opcion:3,tabla2:17,tipo:1,delimitador:[],elegir:[0,1,2],id:0,opSelect:4}]'];
     selector[0] = $("#tablaformato");

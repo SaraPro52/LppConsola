@@ -1,6 +1,6 @@
 $(document).on('ready', function () {
-    var selector = [], hilo = [], jso = [], data = [], nombre = "funcionario", datos = [],estado="";
-    var ob = new $.Luna("funcionario", selector);
+    var selector = [], hilo = [], jso = [], data = [],datos = [],estado="";
+    var ob = new $.Luna("funcionario(s)", selector);
     ob.Vivo("DesabilitarFuncionario");
 
     jso[0] = ['Crud_Controller', '[{opcion:3,tabla2:11,tipo:2,elegir:[0,1,3,5,6],delimitador:[],id:0,opSelect:4}]'];

@@ -1,5 +1,5 @@
 var selector = [], hilo = [], jso = [], data = [], datos = [], constan = true, url = "", nomPV = "";
-var ob = new $.Luna("producto", $("#tablaNotificacion"));
+var ob = new $.Luna("productos", $("#tablaNotificacion"));
 ob.Vivo("CorrecionInstrutor");
 $("#percent").hide();
 $("#contenedor").hide();

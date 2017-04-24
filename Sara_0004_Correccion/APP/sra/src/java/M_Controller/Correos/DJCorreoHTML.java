@@ -52,11 +52,10 @@ public class DJCorreoHTML {
             // Crear el multipart para agregar la parte del mensaje anterior
             Multipart multipart = new MimeMultipart();
             // Leer la plantilla
-
             StringBuffer msjHTML = new StringBuffer("<html>\n"
                     + "    <body>\n"
                     + "        <div align=\"center\">\n"
-                    + "            <img src=\"ConfirmacionCon/img/saraBlue.png\">              \n"
+                    + "            <img src=\"inicio/ConfirmacionCon/img/saraBlue.png\">              \n"
                     + "        </div>\n"
                     + "        <div align=\"center\">\n"
                     + "            <font size=\"6\" face=\"Candara\">     \n"
@@ -76,7 +75,7 @@ public class DJCorreoHTML {
                     + "</html>");
 
             // Url del directorio donde estan las imagenes
-            String urlImagenes = "ConfirmacionCon/img";
+            String urlImagenes = "inicio/ConfirmacionCon/img";
             File directorio = new File(urlImagenes);
             // Obtener los nombres de las imagenes en el directorio
             String[] imagenesDirectorio = directorio.list();

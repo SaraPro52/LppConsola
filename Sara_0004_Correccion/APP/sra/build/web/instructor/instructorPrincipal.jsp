@@ -51,7 +51,7 @@
                                 <span class="icon-bar bar2"></span>
                                 <span class="icon-bar bar3"></span>
                             </button>
-                            <h3 style="color:#218276;">  <label id="CasoNombre">Notificaciones producto virtual</label></h3>
+                            <h3 style="color:#218276;">  <label id="CasoNombre">Notificaciones del producto virtual</label></h3>
                         </div>
                         <div class="collapse navbar-collapse">
                             <ul class="nav navbar-nav navbar-right">

@@ -17,21 +17,21 @@
                         <div class="contenedorFormulario col-md-10">
 
                             <div class="col-md-6">
-                                <label>Líder del área</label>
+                                <label>Líder del Área</label>
                                 <input required placeholder="Lider del Área" type="text" class="form-control inputs"  name="areaL" id="areaL" >
                             </div>
                             <div class="col-md-6">
-                                <label>Nombre del área</label>
+                                <label>Nombre del Área</label>
                                 <input required  placeholder="Nombre del Área"type="text" class="form-control inputs"  name="areac" id="areaC">
                             </div>
                             <div class="col-md-6">
-                                <label>Centro de formación</label>
+                                <label>Centro de Formación</label>
                                 <select required class="form-control select" id="CentroFormacion">
                                     <option value="A0">Seleccionar...</option>
                                 </select>
                             </div>
                             <div class="col-md-6"> 
-                                <button type="button" class="btn btn-info" id="btnArea" style="margin-bottom:2%" name="button">Guardar área</button>    
+                                <button type="button" class="btn btn-info" id="btnArea" style="margin-bottom:2%" name="button">Guardar Área</button>    
                             </div>
                             <div class="col-md-10 col-md-offset-1">
                                 <table id="tablaarea" class="table table-hover">

@@ -27,10 +27,10 @@
                     </a>
                 </div>
                 <ul class="nav menu" id="menus">
-                    <li class="active"   value="2"><a><i class="ti-home"></i><label style='cursor:pointer;' id="text2">Equipo pedagogico</label></a></li>
-                    <li class="activado" value="0"><a><i class="ti-user"></i><p><label style='cursor:pointer;' id="text0">Perfil de usuario</label></p></a></li>
-                    <li class="activado" value="1"><a><i class="icono izquierda  fa fa-book" aria-hidden="true"></i><label style='cursor:pointer;' id="text1">Crear lista de chequeo</label </a></li>
-                    <li class="activado" value="3"><a><i class="icono izquierda  fa fa-edit" aria-hidden="true"></i><label style='cursor:pointer;' id="text3">Editar lista de chequeo</label></a></li>
+                    <li class="active"   value="2"><a><i class="ti-home"></i><label style='cursor:pointer;' id="text2">Equipo Pedagógico</label></a></li>
+                    <li class="activado" value="0"><a><i class="ti-user"></i><p><label style='cursor:pointer;' id="text0">Perfil de Usuario</label></p></a></li>
+                    <li class="activado" value="1"><a><i class="icono izquierda  fa fa-book" aria-hidden="true"></i><label style='cursor:pointer;' id="text1">Crear Lista de Chequeo</label </a></li>
+                    <li class="activado" value="3"><a><i class="icono izquierda  fa fa-edit" aria-hidden="true"></i><label style='cursor:pointer;' id="text3">Editar Lista de Chequeo</label></a></li>
                     <li class="activado" value="2"><a><i class="icono izquierda  fa fa-eye" aria-hidden="true"></i><label  style='cursor:pointer;' id="text2">Consultar P.V</label></a></li>
                     <li class="activado" value="5"><a><i class="glyphicon glyphicon-off" aria-hidden="true"></i><label style='cursor:pointer;' id="text2">Cerrar Sesión</label></a></li>
                 </ul>
@@ -55,7 +55,7 @@
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                     <i class="ti-bell"></i>
                                     <p class="notification"><label id="ccNoti">0</label></p>
-                                    <p>Productos virtuales</p>
+                                    <p>Productos Virtuales</p>
                                     <b class="caret"></b>
                                 </a>
                                 <ul class="dropdown-menu" id="tablaConsultarOaP">    

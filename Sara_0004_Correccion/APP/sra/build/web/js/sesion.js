@@ -24,31 +24,41 @@ $(document).on('ready', function () {
             peticionCompleta(i);
         };
     }
-    
-    
-    $("#btnModales").click(function (){
+
+
+    $("#btnModales").click(function () {
         $('#myModal').modal('show');
-    }); 
-    
+    });
+
     function peticionCompleta(i) {
         if ((i == 0) || (i == 1)) {
-            $('#myModal').modal('hide');
-            $("div").removeClass("modal-backdrop");
-            $("div").removeClass("");
+            $("#contentss").html("");
             if (data[i] == "false") {
                 alert("Error al conectarse con el servidor.");
             } else if (i == 0) {
-                $("#footerPrin").empty();
-                $("#footerPrin1").empty();
-                $("#estru").empty();
-                $("#cuerpo").empty();
-                $("#footerPrincip").empty();    
-                $("#estru").append(data[i]);
-            } else {                
+                if (data[i] == 0) {
+                    var error = "<p><font color='red'>Usuario o contraseña incorrecta; intente nuevamente</font></p>";
+                    $("#contentss").append(error);
+                } else {
+                    $('#myModal').modal('hide');
+                    $("div").removeClass("modal-backdrop");
+                    $("div").removeClass("");
+                    $("#footerPrin").empty();
+                    $("#footerPrin1").empty();
+                    $("#estru").empty();
+                    $("#cuerpo").empty();
+                    $("#footerPrincip").empty();
+                    $("#estru").append(data[i]);
+                }
+            } else if (i == 1){
+                $('#myModal').modal('hide');
+                $("div").removeClass("modal-backdrop");
+                $("div").removeClass("");
                 $("#estru").empty();
                 $("#cuerpo").empty();
                 $("#estru").append(data[i]);
             }
+            $("#btnLogin").prop('disabled', false);
         }
     }
 });

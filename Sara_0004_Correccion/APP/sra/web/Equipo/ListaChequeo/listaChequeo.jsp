@@ -11,7 +11,7 @@
                         <form id="formAgreLista">
                             <article class="col-md-6" id="item" id="formulario">
                                 <input type="hidden" value="1" id="tipoLis">
-                                <label>Nombre Lista</label>
+                                <label>Nombre de la Lista</label>
                                 <input required="" type="text" class="form-control inputs1" id="NombreL"  placeholder=" Digite un  nombre para la lista">
                                 <label>Descripción</label>
                                 <textarea required class="form-control inputs1"  id="DescripcionL" placeholder="Describa una descripción para la lista" rows="5" id="comment"></textarea>
@@ -24,7 +24,7 @@
                                 </select>
                             </div>
                         </article> 
-                        <button class="btn btn-info col-md-6" style=" margin-left:30%; margin-right:1%;" id="BtnLista"> Crear lista</button>
+                        <button class="btn btn-info col-md-6" style=" margin-left:30%; margin-right:1%;" id="BtnLista"> Crear Lista</button>
                         <article class="col-md-8 " id="tabla">
                             <form class="col-md-10" id="formAgregaItem">
                                 <div class="col-md-12">

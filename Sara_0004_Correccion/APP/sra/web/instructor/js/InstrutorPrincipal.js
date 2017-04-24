@@ -22,9 +22,9 @@ function cargaI(idRol, ti, js) {
             } else if (this.value == 1) {
                 datos[1] = {caso: "Subir un producto virtual", tipo: 1};
             } else if (this.value == 0) {
-                datos[1] = {caso: "Consultar los productos virtuales", tipo: 1};
+                datos[1] = {caso: "Consultar productos virtuales", tipo: 1};
             } else if (this.value == 2) {
-                datos[1] = {caso: "Correguir los producto virtual", tipo: 1};
+                datos[1] = {caso: "Correguir productos virtuales", tipo: 1};
             } else if (this.value == 6) {
                 datos[1] = {caso: "Agregar una version del producto virtual", tipo: 1};
             }

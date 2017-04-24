@@ -12,9 +12,9 @@
                         <div class="EspacioItems">
                             <article class="col-md-6" id="item">
                                 <input type="hidden" value="1" id="tipoLis">
-                                <label>Nombre lista de chequeo:</label>
+                                <label>Nombre Lista de Chequeo:</label>
                                 <input  requiredtype="text" class="form-control inputs1" value="GH" id="NombreL"  placeholder="Nombre de lista">
-                                <label>Decripción de la lista de chequeo:</label>
+                                <label>Decripción de la Lista de Chequeo:</label>
                                 <textarea required class="form-control inputs1" value="AS" id="DescripcionL" placeholder="Descripcion lista" rows="1" id="comment"></textarea>
                             </article>
                             <article class="col-md-6" id="items">
@@ -51,7 +51,7 @@
                                 <option>null</option>
                             </select>
                             <div>
-                                <button class="btn btn-info col-md-6" id="BtnLista" >Modificar lista</button>
+                                <button class="btn btn-info col-md-6" id="BtnLista" >Modificar Lista</button>
                             </div>
                         </div>
                     </article>

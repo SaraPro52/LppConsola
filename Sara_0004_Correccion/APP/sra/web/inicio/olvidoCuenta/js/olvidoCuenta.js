@@ -17,7 +17,15 @@ $(document).ready(function () {
     }
     function peticionCompleta(i) {
         if (i == 0) {
-
+            var daMen = data[i].split("$$");
+            if (daMen[0] == "true") {
+                estado = ("success");
+                men = "La categoria " + men + " " + daMen[1];
+            } else {
+                estado = ("error");
+                men = "La categoria " + men + " " + daMen[1];
+            }
+            $.notify(men, estado);
         }
     }
 });

@@ -1,6 +1,6 @@
 $(document).on('ready', function () {
     var selector = [], hilo = [], jso = [], data = [], datos = [], nombre = "";
-    var ob = new $.Luna("usuario", selector[0]);
+    var ob = new $.Luna("usuarios", selector[0]);
     ob.Vivo("Asignar Roles");
 
     jso[0] = ['Funcionario_Controller', '[{opcion:2,centro:' + idCentro + '}]'];

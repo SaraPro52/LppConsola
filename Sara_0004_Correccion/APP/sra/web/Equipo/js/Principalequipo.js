@@ -21,7 +21,7 @@ function carga(ti, rol) {
             jso[1] = ['Equipo_Controller', '[{opcion:' + this.value + ',ti:' + rol + '}]'];
             datos[1] = {caso: casoUso, en: this.value};
             if (this.value == 2) {
-                casoUso = "Consultar productos virtuales";
+                casoUso = "Consultar Productos Virtuales";
             }
             ajax(1);
         }

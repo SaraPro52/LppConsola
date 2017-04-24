@@ -19,7 +19,7 @@
                                     <th>N°</th>
                                     <th>Nombre</th>
                                     <th>Cargo</th>
-                                    <th>Area</th>
+                                    <th>Área</th>
                                     <th>Estado</th>
                                     <th>Deshabilitar</th>
                                     </thead>

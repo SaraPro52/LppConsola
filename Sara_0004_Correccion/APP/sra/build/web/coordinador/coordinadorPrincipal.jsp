@@ -30,16 +30,15 @@
                     </div>
                     <ul class="nav menu" id="menus">
                         <li class="active" value="1"><a><i class="ti-home"></i><label style='cursor:pointer;' id="text1">Coordinador</label></a></li>
-                        <li class="btntt" value="4"><a><i class="ti-user"></i><p><label style='cursor:pointer;' id="text4">Perfil de Usuario</label></p></a></li>
-                        <li class="btntt" value="0"><a><i class=" icono izquierda fa fa-area-chart" aria-hidden="true"></i><label style='cursor:pointer;' id="text0">Consultar Estadísticas</label></a></li>
-                        <li class="btntt" value="1"><a><i class=" icono izquierda fa fa-check" aria-hidden="true"></i><label style='cursor:pointer;' id="text1">Habilitar Producto V.</label></a></li>
-                        <li class="btntt" value="2"><a><i class=" icono izquierda fa fa-credit-card-alt" aria-hidden="true"></i><label style='cursor:pointer;' id="text2">Asignar Roles</label></a></li>
-                        <li class="btntt" value="3"><a><i class=" icono izquierda fa fa-edit" aria-hidden="true"></i><label style='cursor:pointer;' id="text3">Crear Categorías</label></a></li>
-                        <li class="btntt" value="5"><a><i class="glyphicon glyphicon-off" aria-hidden="true"></i><label style='cursor:pointer;' id="text3">Cerrar Sesion</label></a></li>
+                        <li class="btntt" value="4"><a><i class="ti-user" aria-hidden="true"></i><p><label style='cursor:pointer;' id="text4">Perfil de usuario</label></p></a></li>
+                        <li class="btntt" value="0"><a><i class=" icono izquierda fa fa-area-chart" aria-hidden="true"></i><label style='cursor:pointer;' id="text0">Consultar estadísticas</label></a></li>
+                        <li class="btntt" value="1"><a><i class=" icono izquierda fa fa-check" aria-hidden="true"></i><label style='cursor:pointer;' id="text1">Habilitar producto V.</label></a></li>
+                        <li class="btntt" value="2"><a><i class=" icono izquierda fa fa-credit-card-alt" aria-hidden="true"></i><label style='cursor:pointer;' id="text2">Asignar roles</label></a></li>
+                        <li class="btntt" value="3"><a><i class=" icono izquierda fa fa-edit" aria-hidden="true"></i><label style='cursor:pointer;' id="text3">Crear categorías</label></a></li>
+                        <li class="btntt" value="5"><a><i class="glyphicon glyphicon-off" aria-hidden="true"></i><label style='cursor:pointer;' id="text3">Cerrar sesion</label></a></li>
                     </ul>
                 </div>
             </div>
-
             <div class="main-panel">
                 <nav class="navbar navbar-default">
                     <div class="container-fluid">
@@ -54,7 +53,6 @@
                         </div>
                         <div class="collapse navbar-collapse">
                             <ul class="nav navbar-nav navbar-right">
-
                                 <li class="dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                         <i class="ti-bell"></i>
@@ -69,30 +67,20 @@
                         </div>
                     </div>
                 </nav>
-
-
                 <div id="cuerpo" >
-
                 </div>
                 <footer class="footer footerPrincipal">
                     <div class="container-fluid">
                         <nav class="pull-left">
                             <ul>
-
                                 <li>
                                     <img src="assets/img/sena.png">
-
-
                                     <img src="assets/img/saraBlanco.png">
                                 </li>
-
-
                             </ul>
                         </nav>
                         <div class="copyright pull-right">
-
                             <li>
-
                                 <h3>Síguenos en:</h3>
                                 <ul class="list-inline">
                                     <li>
@@ -102,13 +90,10 @@
                                         <a href="https://github.com/SaraPro52/LppConsola" class="btn-social btn-outline"><i class="fa fa-fw fa-github"></i></a>
                                     </li>
                                 </ul>
-
                             </li>
-
                         </div>
                     </div>
                 </footer>
-
             </div>
         </div>
     </body>

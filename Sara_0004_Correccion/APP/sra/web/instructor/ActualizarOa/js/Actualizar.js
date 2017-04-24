@@ -1,6 +1,6 @@
 $(document).ready(function () {
     var selector = [], hilo = [], idPv = 0, jso = [], data = [], datos = [], estado = "", men = "", arraySelecionAutor = [], arraySelecionEstr = [], arraySelecionCate = [], arrayselecT = [], arrayselecTF = [], arrFuciona = [];
-    var ob = new $.Luna("producto", $("#tablaActualizacion"));
+    var ob = new $.Luna("productos", $("#tablaActualizacion"));
     ob.Vivo("Actualizar");
     $("#contenedorass").show();
     $("#formularioss").hide();

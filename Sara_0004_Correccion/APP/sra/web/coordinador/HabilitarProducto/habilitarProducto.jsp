@@ -6,7 +6,6 @@
         <link rel="stylesheet" href="css/bootstrap.css" media="screen" title="no title" charset="utf-8">
         <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.12/css/jquery.dataTables.css">
          <link href="assets/css/paper-dashboardCoordinador.css" rel="stylesheet"/>
-        <title>Habilitar Producto</title>
     </head>
     <body>
         <div class="content">
@@ -18,9 +17,9 @@
                                 <table class="table table-striped" id="tablaAprobar">
                                     <thead>
                                         <tr>
-                                            <th> # </th>
+                                            <th>N°</th>
                                             <th>Nombre producto</th>
-                                            <th>Numero version</th>
+                                            <th>Número versión</th>
                                             <th></th>   
                                         </tr>
                                     </thead>

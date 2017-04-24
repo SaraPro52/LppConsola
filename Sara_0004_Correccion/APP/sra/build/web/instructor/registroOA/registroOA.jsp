@@ -19,24 +19,24 @@
                                 <article>
                                     <div class="col-md-6">
                                         <div class="col-md-12">
-                                            <label> Titulo de Publicación:</label>
+                                            <label> Titulo de publicación</label>
                                             <input required class="form-control inputs" type="text"  name="Titulo_Publicacion" id="Titulo_Publicacion" placeholder="Titulo de la publicacion" required data-validation-required-message="Ingresa el titulo de la publicacion.">
                                             <p class="help-block text-danger"></p>
 
-                                            <label>Palabras Clave:</label>
+                                            <label>Palabras clave</label>
                                             <input required class="form-control inputs" type="text"  name="palabras_claves" id="palabras_claves" placeholder="Palabras claves " required data-validation-required-message="Ingresa las palabras clave de la publicacion.">
                                             <p class="help-block text-danger"></p>
 
-                                            <label>Descripción del producto:</label>
+                                            <label>Descripción del producto</label>
                                             <input required class="form-control inputs" type="text"  name="palabras_claves" id="descripcion_oa" placeholder="Descripcion del P.V" required data-validation-required-message="Ingresa la descripcion del producto virtual.">
                                         </div>
                                         <div class="col-md-12">
-                                            <label for="requisitos_instalacion">Requisitos de instalación:</label>
+                                            <label for="requisitos_instalacion">Requisitos de instalación</label>
                                             <textarea required class="form-control inputs" id="requisitos_instalacion" type="textarea " maxlength="200" name="palabras_claves" placeholder="Digite requisitos  de instalación"  rows="9"></textarea>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
-                                        <label>Formato del archivo:</label>
+                                        <label>Formato del archivo</label>
                                         <select  required class="form-control col-xs-12 floating-label-form-group controls select" id="formato" value="Valueblanco">
                                             <option value="A0" selected="selected">Seleccionar...</option>
                                         </select>
@@ -66,7 +66,7 @@
                                         <div class="col-md-12">
                                             <label class="col-md-12">Buscar por categoría.</label>
                                             <select class="form-control" id="SelectCategoria" > 
-                                                <option value="A0">Seleciona categoría</option>
+                                                <option value="A0">Seleccionar...</option>
                                             </select>
                                         </div>
                                         <div id="SelectCategoriaDiv" class="col-md-12"  style="display: none;">
@@ -76,12 +76,12 @@
                                             </select>
                                         </div>
                                         <div class="col-md-10 col-md-offset-2 " id="divBtnaCate" style="display: none;" >
-                                            <button id="btnACategoria" class="btn btn-info" >Agregar temas de la categoría</button>
+                                            <button id="btnACategoria" class="btn btn-info" >Agregar temas</button>
                                         </div>
                                         <div id="ECategoriaSelect" style="width: 100%; height: 100px; overflow-y: scroll;"></div>
 
                                         <div class="col-md-12">
-                                            <label for="Documento" class="col-md-12">Ádjuntar OA</label>
+                                            <label for="Documento" class="col-md-12">Ádjuntar P.V</label>
                                             <form id="UploadForm" action="archivos" method="post" enctype="multipart/form-data">
                                                 <input type="file" size="26120" id="myfile" class="inputs input-file" name="myfile"> 
                                                 <div class="inputNotifi"></div>   
@@ -96,8 +96,7 @@
                                         </div>
                                     </div>
                                     <div class="col-md-6">
-                                        <label class="espacio">Busqueda de temas por programa de Formación:</label>
-
+                                        <label class="espacio">Busqueda de temas por programa de formación</label>
                                         <div id="ClonPrograma" style="display: none;">
                                             <div class="contenPro">
                                                 <label id="labelPro" class="col-md-12"></label>
@@ -111,12 +110,12 @@
                                         </div>
 
                                         <div class="col-md-12">
-                                            <label class="col-md-12" for="SelectArea">Buscar area de formación.</label>
+                                            <label class="col-md-12" for="SelectArea">Buscar por area de formación</label>
                                             <select id="SelectArea" class="form-control">
                                                 <option value="A0">Seleccionar...</option>
                                             </select>
 
-                                            <label class="col-md-12" for="selectProgramaF">Buscar programa de formación.</label>
+                                            <label class="col-md-12" for="selectProgramaF">Buscar programa de formación</label>
                                             <select id="selectProgramaF" class="form-control">
                                                 <option value="A0">Seleccionar...</option>
                                             </select>

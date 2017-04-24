@@ -70,14 +70,14 @@ jQuery.Luna = function (Datos, selector) {
                     last: "Anterior"
                 },
                 processing: "Cargando datos...",
-                lengthMenu: "Mostrar _MENU_ " + this.Cons + "s",
-                info: "Se encontaron _TOTAL_ " + this.Cons + "s",
+                lengthMenu: "Mostrar _MENU_ " + this.Cons,
+                info: "Se encontaron _TOTAL_ " + this.Cons,
                 infoEmpty: "Mostradas 0 de _MAX_ entradas",
                 "infoFiltered": "(filtrada a partir de  _MAX_ registro)",
                 infoPostFix: "",
                 loadingRecords: "Cargando...",
-                "zeroRecords": "Ningun@ " + this.Cons + " encontrada - Disculpa :/",
-                emptyTable: "No hay ningun@ " + this.Cons,
+                "zeroRecords": "Ningun " + this.Cons + " encontrada - Disculpa :/",
+                emptyTable: "No hay ningun " + this.Cons,
                 search: "Buscar:"
             }
         });
@@ -173,6 +173,21 @@ jQuery.Luna = function (Datos, selector) {
                         oAComen.children().appendTo($("#RComentarios" + datos.id));
                     }
                     break;
+                case "MultiselectLista":
+                    var j = Object.keys(json[0]);
+                    var opcion = "";
+                    for (var i = 0; i < json.length; i++) {
+                        if (json[i].tipo === 1) {
+                            opcion = "<option value=" + json[i][j[2]] + " disabled='disabled' selected>" + json[i][j[0]] + "</option>";
+                        } else if (json[i].tipo === 0) {
+                            opcion = "<option value=" + json[i][j[2]] + ">" + json[i][j[0]] + "</option>";
+                        } else {
+                            opcion = "<option value=" + json[i][j[2]] + " selected>" + json[i][j[0]] + "</option>";
+                        }
+                        selector.append(opcion);
+                    }
+                    selector.multiSelect('refresh');
+                    break;
                 case "MultiSelect":
                     if (datos.compuesto == true) {
                         var j = Object.keys(json[0]);
@@ -182,8 +197,8 @@ jQuery.Luna = function (Datos, selector) {
                                 opcion = "<option value=" + json[i][j[0]] + " disabled='disabled' selected>" + json[i][j[1]] + "</option>";
                             } else if (json[i].tipo == false) {
                                 opcion = "<option value=" + json[i][j[0]] + ">" + json[i][j[1]] + "</option>";
-                            }else{
-                                opcion = "<option value=" + json[i][j[0]] + " selected>" + json[i][j[1]] + "</option>";                                
+                            } else {
+                                opcion = "<option value=" + json[i][j[0]] + " selected>" + json[i][j[1]] + "</option>";
                             }
                             selector.append(opcion);
                         }
@@ -270,8 +285,8 @@ jQuery.Luna = function (Datos, selector) {
                         {nombre: "acces", arrayExt: ["mdb"]},
                         {nombre: "powerpoint", arrayExt: ["ppt", "pps", "pot"]},
                         {nombre: "PDF", arrayExt: ["pdf"]},
-                        {nombre: "imagen", arrayExt: ["gif", "dib", "jpg", "png", "tga","tif","tiff", "pcx", "plic", "emf", "ico"]},
-                        {nombre: "html", arrayExt:["htm","html"]},
+                        {nombre: "imagen", arrayExt: ["gif", "dib", "jpg", "png", "tga", "tif", "tiff", "pcx", "plic", "emf", "ico"]},
+                        {nombre: "html", arrayExt: ["htm", "html"]},
                         {nombre: "BaseDatos", arrayExt: ["sql"]},
                         {nombre: ".Net", arrayExt: ["asp", "aspx"]},
                         {nombre: "Java", arrayExt: ["jar"]},
@@ -476,7 +491,7 @@ jQuery.Luna = function (Datos, selector) {
                             i + 1,
                             jsArea[i].Nom_Area,
                             jsArea[i].Lider_Area,
-                            "<button  class='btn btn-info botonArea'value='" + data + "' >modificar</button>"
+                            "<button  class='btn btn-info botonArea'value='" + data + "' >Modificar</button>"
                         ]);
                     }
                     break;
