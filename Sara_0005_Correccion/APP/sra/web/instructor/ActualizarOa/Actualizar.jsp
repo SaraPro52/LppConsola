@@ -4,6 +4,7 @@
     <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.12/css/jquery.dataTables.css">
     <link rel="stylesheet" type="text/css" href="css/multi-select.css">
     <link rel="stylesheet" href="assets/css/estilo_1.css"/>
+    <link href="assets/css/paper-dashboard.css" rel="stylesheet"/>
     <div class="content">
         <div class="container-fluid">
             <div class="row">
@@ -123,17 +124,17 @@
                 </div>
                 <div class="col-md-12">
                     <div id="contenedorass">
-                        <article style="margin-top: 3%;" class="col-md-8 col-md-offset-1" id="tabla">
+                        <article style="margin-top: 3%;" class="col-md-12" id="tabla">
                             <table class="table table-striped" id="tablaActualizacion">
                                 <thead>
                                     <tr>
                                         <th>N°</th>
                                         <th>Título</th>
-                                        <th>N° Version</th>
+                                        <th>N° Versión</th>
                                         <th>Formato</th>
-                                        <th>Fecha vigencia</th>
+                                        <th>Fecha Vigencia</th>
                                         <th>Descargar</th>
-                                        <th>Añadir versión</th>
+                                        <th>Añadir Versión</th>
                                     </tr>
                                 </thead>
                                 <tbody>

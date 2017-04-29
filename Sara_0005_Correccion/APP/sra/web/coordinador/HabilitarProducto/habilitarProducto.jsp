@@ -13,7 +13,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <section>
-                            <article class="col-md-8 col-md-offset-1" id="tabla">
+                            <article class="col-md-8 col-md-offset-1" id="tabla" style="margin-top: 3%;">
                                 <table class="table table-striped" id="tablaAprobar">
                                     <thead>
                                         <tr>

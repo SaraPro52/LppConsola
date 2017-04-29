@@ -14,7 +14,7 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-12">
-                        <div class="contenedorFormulario col-md-10">
+                        <div class="contenedorFormulario col-md-10" style="margin-top: 3%;">
 
                             <div class="col-md-6">
                                 <label>Líder del Área</label>

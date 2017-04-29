@@ -18,10 +18,10 @@
                                     <label   style="color:#60B359;">Crear Categoría </label>
                                 </div>
                                 <div class="col-md-12">
-                                    <label for="NombreCategoria" >Nombre de la categoria:</label>
+                                    <label for="NombreCategoria" >Nombre de la Categoría:</label>
                                 </div>
                                 <div class="col-md-12"><input type="text" class="form-control inputsC" id="NombreCategoria" placeholder=" Digite Nombre de la categoría"></div>
-                                <label for="DescripcionCategoria" class="col-md-12">Descripción de la categoria:</label>
+                                <label for="DescripcionCategoria" class="col-md-12">Descripción de la Categoría:</label>
                                 <div class="col-md-12"><input type="text" class="form-control inputsC" id="DescripcionCategoria" placeholder="Digite Nombre de la descripción"></div>
                             </form>
                         </article>
@@ -32,19 +32,22 @@
                                 </div>
                                 <label for="NombreTema" class="col-md-12">Nombre del tema:</label>
                                 <input type="text" class="form-control inputs" id="NombreTema" placeholder="Digite Nombre del Tema">
-                                <label for="DescripcionCategoria" class="col-md-12">Descripción del tema:</label>
+                                <label for="DescripcionCategoria" class="col-md-12">Descripción del Tema:</label>
                                 <input type="text" class="form-control inputs" id="DescripcionTema" placeholder="Digite Descripción del Tema">
                                 <button type="button" id="btnTema" class="btn btn-info">Guardar Tema</button>
                             </form>
                         </article>
                         <article class="col-md-6">
                             <div id="SelectTemasDiv" class="col-md-12">
-                                <select required  id="itemCategoria" class="itemCategorias"  multiple='multiple' title="Busca una categoria.." >
-                                    <option value="A0">Null</option>
-                                </select>
+                                <label for="itemCategoria">Temas de la Categoría</label>
+                                <div>
+                                    <select required  id="itemCategoria" class="itemCategorias"  multiple='multiple' title="Busca una categoria.." >
+                                        <option value="A0">Null</option>
+                                    </select>                                    
+                                </div>
                             </div>
                             <div class="col-md-12">
-                                <button type="button" id="btnCategoria" class="btn btn-info">Guardar categoria</button>
+                                <button type="button" id="btnCategoria" class="btn btn-info">Guardar categoría</button>
                             </div>
                         </article>
                     </section>	

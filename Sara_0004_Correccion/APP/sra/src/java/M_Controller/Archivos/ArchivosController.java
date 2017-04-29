@@ -2,8 +2,6 @@ package M_Controller.Archivos;
 
 import java.io.File;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.text.Normalizer;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -14,8 +12,6 @@ import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.FileItemFactory;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
-
-import org.apache.commons.io.FilenameUtils;
 
 /**
  * La clase ArchivosController se encarga de gestionar los archivos de los

@@ -30,12 +30,12 @@
                     </div>
                     <ul class="nav menu" id="menus">
                         <li class="active" value="1"><a><i class="ti-home"></i><label style='cursor:pointer;' id="text1">Coordinador</label></a></li>
-                        <li class="btntt" value="4"><a><i class="ti-user" aria-hidden="true"></i><p><label style='cursor:pointer;' id="text4">Perfil de usuario</label></p></a></li>
-                        <li class="btntt" value="0"><a><i class=" icono izquierda fa fa-area-chart" aria-hidden="true"></i><label style='cursor:pointer;' id="text0">Consultar estadísticas</label></a></li>
+                        <li class="btntt" value="4"><a><i class="ti-user" aria-hidden="true"></i><p><label style='cursor:pointer;' id="text4">Perfil de Usuario</label></p></a></li>
+                        <li class="btntt" value="0"><a><i class=" icono izquierda fa fa-area-chart" aria-hidden="true"></i><label style='cursor:pointer;' id="text0">Consultar Estadísticas</label></a></li>
                         <li class="btntt" value="1"><a><i class=" icono izquierda fa fa-check" aria-hidden="true"></i><label style='cursor:pointer;' id="text1">Habilitar producto V.</label></a></li>
-                        <li class="btntt" value="2"><a><i class=" icono izquierda fa fa-credit-card-alt" aria-hidden="true"></i><label style='cursor:pointer;' id="text2">Asignar roles</label></a></li>
-                        <li class="btntt" value="3"><a><i class=" icono izquierda fa fa-edit" aria-hidden="true"></i><label style='cursor:pointer;' id="text3">Crear categorías</label></a></li>
-                        <li class="btntt" value="5"><a><i class="glyphicon glyphicon-off" aria-hidden="true"></i><label style='cursor:pointer;' id="text3">Cerrar sesion</label></a></li>
+                        <li class="btntt" value="2"><a><i class=" icono izquierda fa fa-credit-card-alt" aria-hidden="true"></i><label style='cursor:pointer;' id="text2">Asignar Roles</label></a></li>
+                        <li class="btntt" value="3"><a><i class=" icono izquierda fa fa-edit" aria-hidden="true"></i><label style='cursor:pointer;' id="text3">Crear Categorías</label></a></li>
+                        <li class="btntt" value="5"><a><i class="glyphicon glyphicon-off" aria-hidden="true"></i><label style='cursor:pointer;' id="text3">Cerrar Sesión</label></a></li>
                     </ul>
                 </div>
             </div>
@@ -57,11 +57,11 @@
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                         <i class="ti-bell"></i>
                                         <p class="notification"><label id="ccNoti">0</label></p>
-                                        <p>Productos virtuales a habilitar</p>
+                                        <p>Productos Virtuales a Habilitar</p>
                                         <b class="caret"></b>
                                     </a>
                                     <ul class="dropdown-menu" id="tablaAprobarP">
-                                        <li><a><label class="Notify">No hay productos a habilitar</label></a></li>
+                                        <li><a><label class="Notify">No hay Productos a Habilitar</label></a></li>
                                     </ul>
                             </ul>
                         </div>
@@ -69,28 +69,32 @@
                 </nav>
                 <div id="cuerpo" >
                 </div>
-                <footer class="footer footerPrincipal">
-                    <div class="container-fluid">
-                        <nav class="pull-left">
-                            <ul>
-                                <li>
-                                    <img src="assets/img/sena.png">
-                                    <img src="assets/img/saraBlanco.png">
-                                </li>
-                            </ul>
-                        </nav>
-                        <div class="copyright pull-right">
-                            <li>
-                                <h3>Síguenos en:</h3>
-                                <ul class="list-inline">
+                <footer class="text-center footerDown">
+                    <div class="container">
+                        <div class="row">
+                            <div class="footer col-md-4 img-responsive" style="margin-top:-10px;">
+                                <img src="assets/img/saranegro.png">
+                            </div>
+                            <div class="footer-col col-md-4">
+                                <h3 style="color:black; font-size:20px; margin-top:12px;">Siguenos en:</h3>
+                                <ol class="list-inline" style="margin-top:-5px;">
+
+                                    
+
                                     <li>
-                                        <a href="https://plus.google.com/u/0/101782866518065902776" class="btn-social btn-outline"><i class="fa fa-fw fa-google-plus"></i></a>
+                                        <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-google-plus"></i></a>
                                     </li>
+                                    
+
                                     <li>
-                                        <a href="https://github.com/SaraPro52/LppConsola" class="btn-social btn-outline"><i class="fa fa-fw fa-github"></i></a>
+                                        <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-github"></i></a>
                                     </li>
-                                </ul>
-                            </li>
+                                </ol>
+                            </div>
+                            <div class="footer-col col-md-4">
+
+                                <img src="assets/img/senanegro.png">
+                            </div>
                         </div>
                     </div>
                 </footer>

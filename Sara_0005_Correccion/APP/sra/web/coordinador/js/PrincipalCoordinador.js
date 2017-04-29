@@ -1,7 +1,7 @@
 function cargaC(idRol, ti) {
     var hilo = [], jso = [], data = [], datos = [];
     console.log("Vivo??coordinador");
-    var casoUso = "Consultar estadisticas";
+    var casoUso = "Consultar Estadisticas";
     jso[0] = ['coordinador_Controller', '[{opcion:1,ti:' + idRol + '}]'];
     datos[0] = {caso: "Habilitar Producto Virtual"};
     ajax(0);
@@ -20,7 +20,7 @@ function cargaC(idRol, ti) {
             casoUso = $("#" + casoUso).text();
              datos[1] = {caso: casoUso, en: this.value};
             if (this.value == 1) {
-                casoUso = "Habilitar producto virtual";
+                casoUso = "Habilitar Producto Virtual";
                 datos[1] = {caso: casoUso};
             }
             ajax(1);

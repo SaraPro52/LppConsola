@@ -6,7 +6,6 @@
         <link rel="stylesheet" href="css/bootstrap.css" media="screen" title="no title" charset="utf-8">
         <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.12/css/jquery.dataTables.css">
          <link href="assets/css/paper-dashboardCoordinador.css" rel="stylesheet"/>
-        <title>Asignar roles</title>
     </head>
     <body>
         <div class="content">
@@ -14,13 +13,12 @@
                 <div class="row">
                     <div class="col-md-12">
                         <section class="col-md-12">
-
                             <br>
                             <article class="col-md-8 col-md-offset-1" id="tabla">
                                 <table class="table table-striped" id="tablaARoles">
                                     <thead>
                                         <tr>
-                                            <th> # </th>
+                                            <th>N°</th>
                                             <th>Nombre Funcionario</th>
                                             <th>Cargo</th>
                                             <th>Area</th>  
@@ -39,8 +37,6 @@
                     </div>
                 </div>
             </div>
-
-
     </body>
     <script type="text/javascript" src="js/jquery.js"></script>
     <script type="text/javascript" charset="utf8" src="js/jquery.dataTables.js"></script>

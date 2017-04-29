@@ -30,13 +30,13 @@
 
                     <ul class="nav menu" id="menus">
                         <li class="active" value="1" ><a><i class="ti-home"></i><p><label style='cursor:pointer;' id="text1">Administrador</label></p></a></li>
-                        <li class="btntt" value="0"><a><i class="ti-marker-alt"></i><p><label style='cursor:pointer;' id="text0">Registrar usuario</label></p></a></li>
-                        <li class="btntt" value="1"><a><i class="ti-close"></i><p><label style='cursor:pointer;' id="text1">Deshabilitar usuario</label></p></a></li>
+                        <li class="btntt" value="0"><a><i class="ti-marker-alt"></i><p><label style='cursor:pointer;' id="text0">Registrar Usuario</label></p></a></li>
+                        <li class="btntt" value="1"><a><i class="ti-close"></i><p><label style='cursor:pointer;' id="text1">Deshabilitar Usuario</label></p></a></li>
                         <li class="btntt" value="2"><a><i class="ti-file"></i><p><label style='cursor:pointer;' id="text2">Formato</label></p></a></li>
                         <li class="btntt" value="3"><a><i class="ti-ruler-alt-2"></i><p><label style='cursor:pointer;' id="text3">Área</label></p></a></li>
                         <li class="btntt" value="5"><a><i class="ti-blackboard"></i><p><label style='cursor:pointer;' id="text5">Programa</label></p></a></li>
-                        <li class="btntt" value="4"><a><i class="ti-layout-width-default"></i><p><label style='cursor:pointer;' id="text4">Carga masiva</label></p></a></li>
-                        <li class="activado" value="7"><a><i class="glyphicon glyphicon-off" aria-hidden="true"></i><label style='cursor:pointer;' id="text2">Cerrar Sesion</label></a></li>
+                        <li class="btntt" value="4"><a><i class="ti-layout-width-default"></i><p><label style='cursor:pointer;' id="text4">Carga Masiva</label></p></a></li>
+                        <li class="btntt" value="7"><a><i class="glyphicon glyphicon-off" aria-hidden="true"></i><label style='cursor:pointer;' id="text2">Cerrar Sesión</label></a></li>
                     </ul>
                 </div>
             </div>
@@ -72,37 +72,32 @@
                     </div>
                 </nav>
                 <div id="cuerpo" ></div>
-                <footer class="footer footerPrincipal">
-                    <div class="container-fluid">
-                        <nav class="pull-left">
-                            <ul>
+                <footer class="text-center footerDown">
+                    <div class="container">
+                        <div class="row">
+                            <div class="footer col-md-4 img-responsive" style="margin-top:-10px;">
+                                <img src="assets/img/saranegro.png">
+                            </div>
+                            <div class="footer-col col-md-4">
+                                <h3 style="color:black; font-size:20px; margin-top:12px;">Siguenos en:</h3>
+                                <ol class="list-inline" style="margin-top:-5px;">
 
-                                <li>
-                                    <img src="assets/img/sena.png">
+                                    
 
-
-                                    <img src="assets/img/saraBlanco.png">
-                                </li>
-
-
-                            </ul>
-                        </nav>
-                        <div class="copyright pull-right">
-
-                            <li>
-
-                                <h3>Síguenos en:</h3>
-                                <ul class="list-inline">
                                     <li>
-                                        <a href="https://plus.google.com/u/0/101782866518065902776" class="btn-social btn-outline"><i class="fa fa-fw fa-google-plus"></i></a>
+                                        <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-google-plus"></i></a>
                                     </li>
+                                    
+
                                     <li>
-                                        <a href="https://github.com/SaraPro52/LppConsola" class="btn-social btn-outline"><i class="fa fa-fw fa-github"></i></a>
+                                        <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-github"></i></a>
                                     </li>
-                                </ul>
+                                </ol>
+                            </div>
+                            <div class="footer-col col-md-4">
 
-                            </li>
-
+                                <img src="assets/img/senanegro.png">
+                            </div>
                         </div>
                     </div>
                 </footer>

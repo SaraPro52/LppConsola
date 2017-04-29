@@ -1,9 +1,9 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <div>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <link href="assets/css/paper-dashboard.css" rel="stylesheet"/>
     <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.12/css/jquery.dataTables.css">
     <link rel="stylesheet" href="assets/css/estilo_1.css"/>
+    <link href="assets/css/paper-dashboard.css" rel="stylesheet"/>
     <div class="content">
         <div class="container-fluid">
             <div class="row">
@@ -40,17 +40,17 @@
                 </article>
                 <div class="col-md-12">
                     <div class="contenedor">
-                        <article style="margin-top: 3%;" class="col-md-8 col-md-offset-1" id="tabla">
+                        <article  class="col-md-12 " id="tabla">
                             <table class="table table-striped" id="tablaNotificacion">
-                                <thead>
-                                    <tr>
-                                        <th>N°</th>
-                                        <th>Nombre del producto virtual</th>
-                                        <th>N° version</th>
-                                        <th>Contenido</th>
-                                        <th>Fecha de envío</th>
-                                        <th>Descargar pv</th>
-                                        <th>¿Corregir?</th>
+                                <thead >
+                                    <tr >
+                                        <th >N°</th>
+                                        <th >Nombre del producto</th>
+                                        <th >N° versión</th>
+                                        <th >Contenido</th>
+                                        <th >Fecha de envío</th>
+                                        <th >Descargar</th>
+                                        <th >Corregir</th>
                                     </tr>
                                 </thead>
                                 <tbody>

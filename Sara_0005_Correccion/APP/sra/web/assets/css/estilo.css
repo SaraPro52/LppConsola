@@ -207,40 +207,48 @@ background-color:#F0EFEB;
 }
 
 
+
 .btn-social {
-  display: inline-block;
-  color:#757574;
-  background-color:#757574;
-  height: 50px;
-  width: 50px;
-  border: 2px solid white;
-  border-radius: 100%;
-  text-align: center;
-  font-size: 20px;
-  line-height: 45px;
+display: inline-block;
+height: 40px;
+width: 40px;
+border: 2px solid black;
+border-radius: 100%;
+text-align: center;
+font-size: 16px;
+line-height: 38px;
 }
 
 .btn-outline {
-  color:#757574;
-  font-size: 20px;
-  border: solid 2px white;
-  background: #ECEBE7;
-  transition: all 0.3s ease-in-out;
-  margin-top: 15px;
+color: black;
+font-size: 20px;
+border: solid 2px black;
+background: transparent;
+transition: all 0.3s ease-in-out;
+margin-top: 15px;
 }
 .btn-outline:hover,
 .btn-outline:focus,
 .btn-outline:active,
 .btn-outline.active {
-  color:#ffffff;
-  background:#b2b2ac;
-  border: solid 2px white;
+color: white;
+background: black;
+border: solid 2px white;
 }
 
 .footerSecundario{
     background-color:#CEC5BB;
     color: #FFFFFF;
     text-align:center;
+}
+
+.footerDown{
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 40px;
+  color: white;
+ 
 }
 button.accordion {
     background-color: #eee;

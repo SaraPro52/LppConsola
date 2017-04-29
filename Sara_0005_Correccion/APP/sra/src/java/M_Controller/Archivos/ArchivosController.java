@@ -30,16 +30,6 @@ import org.apache.commons.io.FilenameUtils;
 public class ArchivosController extends HttpServlet {
 
     private static final long serialVersionID = 1L;
-
-    /**
-     * El metodo processRequest crear el archivo dentro de una carpeta
-     * especifica del servidor.
-     *
-     * @param Archivo request Este parametro tiene contenido el archivo o los
-     * archivos que se quieren ingresar.
-     * @param String response Este parametro devuelve un valor para saber si se
-     * creo el archivo correctamente o no.
-     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         boolean isMultipart = ServletFileUpload.isMultipartContent(request);

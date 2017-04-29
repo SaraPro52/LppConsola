@@ -70,30 +70,34 @@
                         </div>
                     </div>
                 </nav>
-                <div id="cuerpo" >
+                <div id="cuerpo" > 
                 </div>
-                <footer>
-                    <div class="container-fluid">
-                        <nav class="pull-left">
-                            <ul>
-                                <li>
-                                    <img src="assets/img/sena.png">
-                                    <img src="assets/img/saraBlanco.png">
-                                </li>
-                            </ul>
-                        </nav>
-                        <div class="copyright pull-right">
-                            <li>
-                                <h3>Síguenos en:</h3>
-                                <ul class="list-inline">
+                 <footer class="text-center footerDown">
+                    <div class="container">
+                        <div class="row">
+                            <div class="footer col-md-4 img-responsive" style="margin-top:-10px;">
+                                <img src="assets/img/saranegro.png">
+                            </div>
+                            <div class="footer-col col-md-4">
+                                <h3 style="color:black; font-size:20px; margin-top:12px;">Siguenos en:</h3>
+                                <ol class="list-inline" style="margin-top:-5px;">
+
+                                    
+
                                     <li>
-                                        <a href="https://plus.google.com/u/0/101782866518065902776" class="btn-social btn-outline"><i class="fa fa-fw fa-google-plus"></i></a>
+                                        <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-google-plus"></i></a>
                                     </li>
+                                    
+
                                     <li>
-                                        <a href="https://github.com/SaraPro52/LppConsola" class="btn-social btn-outline"><i class="fa fa-fw fa-github"></i></a>
+                                        <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-github"></i></a>
                                     </li>
-                                </ul>
-                            </li>
+                                </ol>
+                            </div>
+                            <div class="footer-col col-md-4">
+
+                                <img src="assets/img/senanegro.png">
+                            </div>
                         </div>
                     </div>
                 </footer>

@@ -1,6 +1,6 @@
 $(document).ready(function () {
     var selector = [], hilo = [], idPv = 0, jso = [], data = [], datos = [], estado = "", men = "", arraySelecionAutor = [], arraySelecionEstr = [], arraySelecionCate = [], arrayselecT = [], arrayselecTF = [], arrFuciona = [];
-    var ob = new $.Luna("productos", $("#tablaActualizacion"));
+    var ob = new $.Luna("Productos virtuales", $("#tablaActualizacion"));
     ob.Vivo("Actualizar");
     $("#contenedorass").show();
     $("#formularioss").hide();
@@ -282,7 +282,6 @@ $(document).ready(function () {
         hilo[i].postMessage(jso[i]);
         hilo[i].onmessage = function (event) {
             data[i] = event.data;
-            alert(data[i]);
             ob.cargarTabla(data[i], selector[i], datos);
             hilo[i].terminate();
             peticionCompleta(i);

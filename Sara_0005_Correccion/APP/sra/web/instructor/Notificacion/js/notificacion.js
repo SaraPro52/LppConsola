@@ -1,4 +1,4 @@
-var ob = new $.Luna("productos", $("#tablaNotificacion"));
+var ob = new $.Luna("Productos virtuales", $("#tablaNotificacion"));
 ob.Vivo("NotifiacionesInstrutor1");
 var jso = [], selector = [], datos = [], hilo = [], data = [];
 //-------cambio

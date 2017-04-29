@@ -224,9 +224,6 @@ $(document).on('ready', function () {
             arraySelecionPrograma.splice(busqueda, 1);
         }
     });
-
-
-
     function btnbuscar() {
         var formato = "";
         //Array de programa selecionados variable arraySelecionPrograma 
@@ -291,7 +288,6 @@ $(document).on('ready', function () {
             hilo[i].terminate();
             peticionCompleta(i);
         };
-
     }
     function peticionCompleta(i) {
         if (i == 0) {

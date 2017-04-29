@@ -50,10 +50,10 @@ public class sesion_controller extends HttpServlet {
                                 request.getRequestDispatcher("instructor/instructorPrincipal.jsp").forward(request, response);
                                 break;
                             case 2:
-                                request.getRequestDispatcher("Equipo/equipoTecnicoPrincipal.jsp").forward(request, response);
+                                request.getRequestDispatcher("Equipo/equipoPrincipal.jsp").forward(request, response);
                                 break;
                             case 3:
-                                request.getRequestDispatcher("Equipo/equipoPedagogicoPrincipal.jsp").forward(request, response);
+                                request.getRequestDispatcher("Equipo/equipoPrincipal.jsp").forward(request, response);
                                 break;
                             case 4:
                                 request.getRequestDispatcher("coordinador/coordinadorPrincipal.jsp").forward(request, response);

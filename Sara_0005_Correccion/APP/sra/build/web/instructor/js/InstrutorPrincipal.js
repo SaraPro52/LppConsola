@@ -2,11 +2,11 @@ function cargaI(idRol, ti, js) {
     var hilo = [], jso = [], data = [], datos = [], casoUso = "";
     console.log("Vivo??Instrutor");
     jso[0] = ['Instrutor_Controller', '[{opcion:3,ti:' + idRol + '}]'];
-    datos[0] = {caso: "Notificaciones de los  productos virtuales"};
+    datos[0] = {caso: "Notificaciones de los Productos Virtuales"};
     ajax(0);
     $(document).on('click', '.Notify', function (e) {
         jso[0] = ['Instrutor_Controller', '[{opcion:3,ti:' + idRol + '}]'];
-        datos[0] = {caso: "Notificaciones productos virtuales", tipo: 2};
+        datos[0] = {caso: "Notificaciones de los Productos Virtuales", tipo: 2};
         ajax(0);
     });
     $('.menu li').click(function (e) {
@@ -18,15 +18,15 @@ function cargaI(idRol, ti, js) {
             casoUso = "text" + this.value;
             datos[1] = {caso: $("#" + casoUso).text(), tipo: 4};
             if (this.value == 3) {
-                datos[1] = {caso: "Notificaciones de los  productos virtuales", tipo: 3};
+                datos[1] = {caso: "Notificaciones de los Productos Virtuales", tipo: 3};
             } else if (this.value == 1) {
-                datos[1] = {caso: "Subir un producto virtual", tipo: 1};
+                datos[1] = {caso: "Subir un Producto Virtual", tipo: 1};
             } else if (this.value == 0) {
-                datos[1] = {caso: "Consultar productos virtuales", tipo: 1};
+                datos[1] = {caso: "Consultar Productos Virtuales", tipo: 1};
             } else if (this.value == 2) {
-                datos[1] = {caso: "Correguir productos virtuales", tipo: 1};
+                datos[1] = {caso: "Correguir Productos Virtuales", tipo: 1};
             } else if (this.value == 6) {
-                datos[1] = {caso: "Agregar una version del producto virtual", tipo: 1};
+                datos[1] = {caso: "Agregar una Version al Producto Virtual", tipo: 1};
             }
             ajax(1);
         }

@@ -3,13 +3,10 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>formato</title>
         <link rel="stylesheet" href="css/bootstrap.css" media="screen" title="no title" charset="utf-8">
         <link href="assets/css/paper-dashboard.css" rel="stylesheet" id="cssUsuario"/>
-
     </head>
     <body>
-
         <div class="content" id="formulario1">
             <div class="container-fluid">
                 <div class="row">
@@ -116,12 +113,14 @@
                                     <button id="BtnModificar1" type="button" class="btn btn-info btn-fill btn-wd ">Modificar Contraseña</button>
                                 </div>
                         </div>
+                        
                         <div class="clearfix"></div>
-                        <form/>
                     </div>
                 </div>
+                
             </div>
         </div>
+        
     </body>
     <script type="text/javascript" src="assets/js/jquery-1.10.2.js" ></script>
     <script type="text/javascript" src="js/bootstrap.js" ></script>

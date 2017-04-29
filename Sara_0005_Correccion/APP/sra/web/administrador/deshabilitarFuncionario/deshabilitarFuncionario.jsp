@@ -13,7 +13,7 @@
                 <div class="col-md-12">
                     <div class="contenedor">
                         <section>
-                            <article class="col-md-10 col-md-offset-1">
+                            <article class="col-md-10 col-md-offset-1" style="margin-top: 3%;">
                                 <table id="tablaAdmi" class="table table-hover ">
                                     <thead>
                                     <th>N°</th>

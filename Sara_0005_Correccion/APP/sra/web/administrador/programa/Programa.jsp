@@ -12,7 +12,7 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-12">
-                        <div class="contenedorFormulario col-md-10">
+                        <div class="contenedorFormulario col-md-10"style="margin-top: 3%;">
                             <div class="form-group contenedorInsert">
                                 <div class="col-md-12">
                                     <label>Programa de Formación</label>

@@ -25,7 +25,7 @@ jQuery.Luna = function (Datos, selector) {
         //logger.disableLogger();
     };
     this.limpiarSelector = function (selector) {
-        selector.empty().append('<option value="A0">selecione...</option>');
+        selector.empty().append('<option value="A0">Seleccionar...</option>');
     };
     this.tablaEm = function (selector) {
         selector.empty();
@@ -72,11 +72,11 @@ jQuery.Luna = function (Datos, selector) {
                 processing: "Cargando datos...",
                 lengthMenu: "Mostrar _MENU_ " + this.Cons,
                 info: "Se encontaron _TOTAL_ " + this.Cons,
-                infoEmpty: "Mostradas 0 de _MAX_ entradas",
-                "infoFiltered": "(filtrada a partir de  _MAX_ registro)",
+                infoEmpty: "0 Resultados de _MAX_ entradas",
+                "infoFiltered": "(filtrada a partir de  _MAX_ registros)",
                 infoPostFix: "",
                 loadingRecords: "Cargando...",
-                "zeroRecords": "Ningun " + this.Cons + " encontrada - Disculpa :/",
+                "zeroRecords": "Ningun " + this.Cons + " encontrada",
                 emptyTable: "No hay ningun " + this.Cons,
                 search: "Buscar:"
             }

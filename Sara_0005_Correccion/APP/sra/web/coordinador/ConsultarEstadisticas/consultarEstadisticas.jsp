@@ -11,8 +11,8 @@
             <div class="col-md-10 col-md-offset-1 card">
                 <div>
                     <div class="header col-md-offset-1">
-                        <h4 class="title">Tipo de Producto virtual</h4>
-                        <p class="category">Producto virtual</p>
+                        <h4 class="title">Tipo de Producto Virtual</h4>
+                        <p class="category">Producto Virtual</p>
                     </div>
                     <div class="content col-md-offset-2">
                         <div id="ProductoirtualE" class="ct-chart"></div>
@@ -23,18 +23,18 @@
                     </div>
                     <div class="col-md-12 col-md-offset-1">
                         <div class="col-md-12">
-                            <label id="TiempoEstaProduc" class="col-md-12"> Estadistica mensual</label>                            
+                            <label id="TiempoEstaProduc" class="col-md-12"> Estadistica Mensual</label>                            
                         </div>
                         <div class="col-md-4">
-                            <p class="col-md-12">Fecha inicial: </p>
-                            <input class="form-control" style="border:1px solid #C0BEBE;" type="text" id="dataInicialP">
+                            <p class="col-md-12">Fecha Inicial: </p>
+                            <input class="form-control" style="border:1px solid #C0BEBE;" type="text" id="dataInicialP" placeholder="D/M/A">
                         </div>
                         <div class="col-md-4">
-                            <p class="col-md-12">Fecha final:</p>
-                            <input class="form-control"style="border:1px solid #C0BEBE;" type="text" id="dataFinalP">
+                            <p class="col-md-12">Fecha Final:</p>
+                            <input class="form-control"style="border:1px solid #C0BEBE;" type="text" id="dataFinalP" placeholder="D/M/A">
                         </div>
                         <div class="col-md-12 col-md-offset-3 espacioTi">
-                            <button id="btnProductoE" style="margin-bottom:5% ;" class="btn btn-info">General estadistica</button>
+                            <button id="btnProductoE" style="margin-bottom:5% ;" class="btn btn-info">General Estadistica</button>
                         </div>
                     </div>
                 </div>   
@@ -43,7 +43,7 @@
                 <div>
                     <div class="header col-md-offset-1">
                         <h4 class="title">Categoria</h4>
-                        <p class="category">Producto virtual</p>
+                        <p class="category">Producto Virtual</p>
                     </div>
                     <div class="content col-md-offset-2">
                         <div id="chartCategoria" class="ct-chart"></div>
@@ -54,18 +54,18 @@
                     </div>
                     <div class="col-md-12 col-md-offset-1">
                         <div class="col-md-12">
-                            <label id="TiempoEstaProducto" class="col-md-12"> Estadistica mensual</label></i>
+                            <label id="TiempoEstaProducto" class="col-md-12">Estadistica Mensual</label></i>
                         </div>
                         <div class="col-md-4">
-                            <p class="col-md-12">Fecha inicial: </p>
-                            <input class="form-control" style="border:1px solid #C0BEBE;"  type="text" id="dataInicialC">
+                            <p class="col-md-12">Fecha Inicial</p>
+                            <input class="form-control" style="border:1px solid #C0BEBE;"  type="text" id="dataInicialC" placeholder="D/M/A">
                         </div>
                         <div class="col-md-4">
-                            <p class="col-md-10">Fecha final:</p>
-                            <input  class="form-control" style="border:1px solid #C0BEBE;" type="text" id="dataFinalC">
+                            <p class="col-md-10">Fecha Final</p>
+                            <input  class="form-control" style="border:1px solid #C0BEBE;" type="text" id="dataFinalC" placeholder="D/M/A">
                         </div>
                         <div class="col-md-12 col-md-offset-2 espacioTi">
-                            <button id="btnCategoriaE" style="margin-bottom:5% ;" class="btn btn-info">General estadistica</button>
+                            <button id="btnCategoriaE" style="margin-bottom:5% ;" class="btn btn-info">General Estadistica</button>
                         </div>
                     </div>
                 </div>
@@ -74,7 +74,7 @@
                 <div>
                     <div class="header col-md-offset-1">
                         <h4 class="title">Areas</h4>
-                        <p class="category">Productos virtuales</p>
+                        <p class="category">Productos Virtuales</p>
                     </div>
                     <div class="content col-md-offset-2">
                         <div id="chartArea" class="ct-chart"></div>
@@ -85,18 +85,18 @@
                     </div>
                     <div class="col-md-12 col-md-offset-1">
                         <div class="col-md-12">
-                            <label id="TiempoEstadArea"> Estadisticas mensuales</label></i>
+                            <label id="TiempoEstadArea"> Estadisticas Mensuales</label></i>
                         </div>
                         <div class="col-md-4">
-                            <p class="col-md-12">Fecha inicial:</p>
-                            <input class="form-control"  style="border:1px solid #C0BEBE;" type="text" id="dataInicialA">
+                            <p class="col-md-12">Fecha Inicial:</p>
+                            <input class="form-control"  style="border:1px solid #C0BEBE;" type="text" id="dataInicialA" placeholder="D/M/A">
                         </div>
                         <div class="col-md-4">
-                            <p class="col-md-12">Fecha final:</p>
-                            <input class="form-control"style="border:1px solid #C0BEBE;" type="text" id="dataFinalA">
+                            <p class="col-md-12">Fecha Final:</p>
+                            <input class="form-control"style="border:1px solid #C0BEBE;" type="text" id="dataFinalA" placeholder="D/M/A">
                         </div>
                         <div class="col-md-12 col-md-offset-2 espacioTi">
-                            <button id="btnAreaE"style="margin-bottom:5% ;" class="btn btn-info">General estadistica</button>
+                            <button id="btnAreaE"style="margin-bottom:5% ;" class="btn btn-info">General Estadistica</button>
                         </div>
                     </div>
                 </div>

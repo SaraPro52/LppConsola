@@ -14,16 +14,15 @@
                 <div class="row">
                     <div class="col-md-12">
                         <section class="col-md-12">
-
                             <br>
-                            <article class="col-md-8 col-md-offset-1" id="tabla">
+                            <article class="col-md-10 col-md-offset-1" id="tabla">
                                 <table class="table table-striped" id="tablaARoles">
                                     <thead>
                                         <tr>
-                                            <th> # </th>
+                                            <th>N°</th>
                                             <th>Nombre Funcionario</th>
                                             <th>Cargo</th>
-                                            <th>Area</th>  
+                                            <th>Área</th>  
                                             <th>Centro</th>
                                             <th>Ciudad</th>
                                             <th>Rol</th>
@@ -39,8 +38,6 @@
                     </div>
                 </div>
             </div>
-
-
     </body>
     <script type="text/javascript" src="js/jquery.js"></script>
     <script type="text/javascript" charset="utf8" src="js/jquery.dataTables.js"></script>

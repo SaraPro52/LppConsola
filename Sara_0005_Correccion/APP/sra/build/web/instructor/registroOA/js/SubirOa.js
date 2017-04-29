@@ -313,7 +313,7 @@ $(document).ready(function () {
             }
             men = $("#Titulo_Publicacion").val();
             jso[5] = ['ProductoVirtual_Controller', '[{opcion:1,info:[' + $("#Titulo_Publicacion").val() + ',' + $("#descripcion_oa").val() + ',' + $("#palabras_claves").val() + ',' + $("#formato").val() + ',0,0,' + $("#instrucciones").val() + ',' + $("#requisitos_instalacion").val() + '],arrayFun:[' + arrayAutor + '],arrayTemas:[' + arrayTemas + '],archivoNom:' + $("#myfile").val() + '}]'];
-            selector[5] = null;
+            selector[5] = null;x
             datos[5] = {nombre: "btn"};
             ajax(5, datos[5]);
         },

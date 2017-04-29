@@ -3,22 +3,22 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css">
     <link rel="stylesheet" type="text/css" href="css/multi-select.css"> 
-    <link href="assets/css/paper-dashboard.css" rel="stylesheet"/>
     <link rel="stylesheet" href="assets/css/estilo_1.css"/>
+    <link href="assets/css/paper-dashboard.css" rel="stylesheet"/>
 </head>
 <body>
     <article class="col-md-12">
         <div id="Tituloss">
             <div class="col-md-6">
-                <label for="txtBuscarTitle" class="col-md-12">Buscar producto virtual por título:</label>
+                <label for="txtBuscarTitle" class="col-md-12">Buscar producto virtual por título</label>
                 <div class="col-md-10">
-                    <input required type="text" id="txtBuscarTitle" value="" class="form-control inputs">
+                    <input required type="text" id="txtBuscarTitle" value="" class="form-control inputs" placeholder="Titulo del producto virtual">
                 </div>
             </div>
             <div class="col-md-6">
-                <label for="Autores" class="col-md-12">Autor:</label>
+                <label for="Autores" class="col-md-12">Autor</label>
                 <div class="col-md-10">
-                    <input required type="text" id="Autores" value="" class="form-control inputs">
+                    <input required type="text" id="Autores" value="" class="form-control inputs" placeholder="Autores del producto virtual">
                 </div>
             </div>
             <div class="col-md-12">
@@ -28,9 +28,8 @@
                 <div id="Avando" style="display: none;" class="col-md-10">
                     <div class="col-md-12">
                         <label class="col-md-12">Buscar por:</label>
-                        <label class="col-md-6">Programa de formación<input type="checkbox" id="Programas"></label>    
-                        <label class="col-md-6">Categoría<input type="checkbox" id="Categoria"></label>
-
+                        <label class="col-md-6">Programa de formación <input type="checkbox" id="Programas"></label>    
+                        <label class="col-md-6">Categoría <input type="checkbox" id="Categoria"></label>
                         <div id="ElementoFormacion" style="display: none;" class="col-md-12">
                             <div class="col-md-6">
                                 <label for="CiudadFormacion" class="col-md-12">Cíudad</label>
@@ -39,13 +38,13 @@
                                 </select>
                             </div>
                             <div class="col-md-6">
-                                <label for="CentroF" class="col-md-12">Centro de formación</label>
+                                <label for="CentroF" class="col-md-12">Centro de Formación</label>
                                 <select  id="CentroF" class="form-control">
                                     <option value="A0">Seleccionar...</option>
                                 </select>    
                             </div>
                             <div class="col-md-6">
-                                <label for="Area" class="col-md-12">Area de formación:</label>
+                                <label for="Area" class="col-md-12">Area de Formación:</label>
                                 <select  id="Area" class="form-control">
                                     <option value="A0">Seleccionar...</option>
                                 </select>                                
@@ -68,26 +67,28 @@
                     </div>
                     <div class="col-md-12">
                         <div class="col-md-6">
-                            <label for="dataInicialA">Fecha inicial:</label>  
+                            <label for="dataInicialA">Fecha Inicial</label>  
                             <br>
-                            <input required class="form-control inputs" type="text" id="dataInicialA">
+                            <input required class="form-control inputs" type="text" id="dataInicialA" placeholder="D/M/A">
                         </div>
                         <div class="col-md-6">
-                            <label for="dataFinalA">Fecha final:</label>
+                            <label for="dataFinalA">Fecha Final:</label>
                             <br> 
-                            <input required class="form-control inputs" type="text" id="dataFinalA">
+                            <input required class="form-control inputs" type="text" id="dataFinalA" placeholder="D/M/A">
                         </div>
                     </div>
                     <div class="col-md-12">
-                        <label for="Formato" class="col-md-12">Formato:</label>
                         <div class="col-md-6">
-                            <select class="form-control select" id="Formato">
-                                <option value="AF">Seleccionar...</option>
-                            </select>                            
+                            <label for="Formato" class="col-md-12">Formato</label>
+                                <select class="form-control select" id="Formato">
+                                    <option value="AF">Seleccionar...</option>
+                                </select>                            
+                        </div>
+                        <div class="col-md-6">
+                            <label for="Palabras">Palabras Clave</label>
+                            <input type="text" id="Palabras" value="" placeholder="Palabras clave" class="form-control inputs">
                         </div>
                     </div>
-                    <!--label for="Palabras">Palabras clave: </label>
-                    <input type="text" id="Palabras" value=""-->
                 </div>
             </div>
         </div>
@@ -95,10 +96,12 @@
 </p>
 <div class="col-md-offset-1 col-md-6">
     <div class="col-md-6">
-        <button id="btnBuscar" type="button" class="btn btn-block">Buscar productos virtuales</button>        
+        <br>    
+        <button id="btnBuscar" type="button" class="btn btn-block">Buscar Productos Virtuales</button>        
     </div>
     <div class="col-md-6">
-        <button id="btnActu" type="button" class="btn btn-block">Actualizar lista</button>        
+        <br>   
+        <button id="btnActu" type="button" class="btn btn-block">Actualizar Lista</button>        
     </div>
 </div>
 
