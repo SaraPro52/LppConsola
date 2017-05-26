@@ -1405,11 +1405,11 @@ public class NewMain {
 //        String[] di = {"2","litolina1","listolono1"};
 //        String[] di1 = {"17","18"};
 //        System.out.println(li.ModificarLista(di,di1));
-          String[] columnas = {"0","1","2","3"};
-          String delimitador = "[{colum:4,operador:0,valor1:2,añadir:0},{colum:5,operador:0,valor1:2}]";
-          _13_V_listas_Chequeo listaV = new _13_V_listas_Chequeo();
-          System.out.println(listaV.Select(columnas, delimitador));
-                    
+//          String[] columnas = {"0","1","2","3"};
+//          String delimitador = "[{colum:4,operador:0,valor1:2,añadir:0},{colum:5,operador:0,valor1:2}]";
+//          _13_V_listas_Chequeo listaV = new _13_V_listas_Chequeo();
+//          System.out.println(listaV.Select(columnas, delimitador));
+//                    
 //
     }
 }

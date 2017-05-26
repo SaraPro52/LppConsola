@@ -16,7 +16,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-@WebServlet(name = "Pagina_Principal", urlPatterns = {"/sesion_controller"})
+@WebServlet(name = "principal", urlPatterns = {"/principal"})
 public class sesion_controller extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
@@ -24,20 +24,22 @@ public class sesion_controller extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             HttpSession sesion = request.getSession();
-            String data = request.getParameter("data");
-            JSONObject jData = new JSONArray(data).getJSONObject(0);
-            int opcion = jData.getInt("opcion");
+            int opcion =2;
+            try {
+               opcion = Integer.parseInt(request.getParameter("op"));
+            } catch (Exception e) {
+                System.out.println(opcion);
+                System.out.println("Cerrar sesion");
+            }
             switch (opcion) {
                 case 1:
-                    String usuario = jData.getString("user");
-                    String contraseña = DigestUtils.md5Hex(jData.getString("pwd"));
+                    String usuario = request.getParameter("user");
+                    String contraseña = DigestUtils.md5Hex(request.getParameter("pwd"));
                     String delimitador = "[{colum:4,operador:0,valor1:'\"" + usuario + "\"',añadir:0},{colum:5,operador:0,valor1:'\"" + contraseña + "\"'}]";
                     Elomac elo = new Elomac(19, 2);
                     String fun = elo.Select(delimitador);
                     if (fun.equals("{}")) {
-                        response.setContentType("application/json;charset=UTF-8");
-                        PrintWriter respuesta = response.getWriter();
-                        respuesta.println("0");
+                        request.getRequestDispatcher("index.jsp").forward(request, response);
                     } else {
                         JSONObject funJ = new JSONArray(fun).getJSONObject(0);
                         int rol = funJ.getInt("Id_Rol");
@@ -62,9 +64,7 @@ public class sesion_controller extends HttpServlet {
                                 request.getRequestDispatcher("administrador/administradorPrincipal.jsp").forward(request, response);
                                 break;
                             default:
-                                response.setContentType("application/json;charset=UTF-8");
-                                PrintWriter respuesta = response.getWriter();
-                                respuesta.println("0");
+                                request.getRequestDispatcher("index.jsp").forward(request, response);
                         }
                     }
                     break;
@@ -84,9 +84,7 @@ public class sesion_controller extends HttpServlet {
                     break;
             }
         } catch (Exception e) {
-            response.setContentType("application/json;charset=UTF-8");
-            PrintWriter respuesta = response.getWriter();
-            respuesta.println("0");
+            request.getRequestDispatcher("index.jsp").forward(request, response);
         }
     }
 

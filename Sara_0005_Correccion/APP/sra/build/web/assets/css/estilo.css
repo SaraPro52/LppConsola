@@ -243,13 +243,12 @@ border: solid 2px white;
 }
 
 .footerDown{
-  position: absolute;
   bottom: 0;
   width: 100%;
   height: 40px;
   color: white;
- 
 }
+
 button.accordion {
     background-color: #eee;
     color: #444;

@@ -1,7 +1,7 @@
 <%@page session = "true" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!doctype html>
-<html lang="en">
+<html lang="es" id="estru">
     <head>
         <meta charset="utf-8" />
         <link rel="apple-touch-icon" sizes="76x76" href="assets/img/apple-icon.png">
@@ -15,7 +15,6 @@
         <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
         <link href='https://fonts.googleapis.com/css?family=Muli:400,300' rel='stylesheet' type='text/css'>
         <link href="assets/css/themify-icons.css" rel="stylesheet">
-        <link href="css/modal.css" rel="stylesheet"/>
         <link href="assets/css/estilo.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
@@ -72,7 +71,7 @@
                     </div>
                 </nav>
                 <div id="cuerpo" ></div>
-                <footer class="text-center footerDown">
+                <footer class="text-center footerDow" style="margin-top: 3%;">
                     <div class="container">
                         <div class="row">
                             <div class="footer col-md-4 img-responsive" style="margin-top:-10px;">
@@ -81,8 +80,6 @@
                             <div class="footer-col col-md-4">
                                 <h3 style="color:black; font-size:20px; margin-top:12px;">Siguenos en:</h3>
                                 <ol class="list-inline" style="margin-top:-5px;">
-
-                                    
 
                                     <li>
                                         <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-google-plus"></i></a>

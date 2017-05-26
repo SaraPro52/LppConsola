@@ -1,5 +1,6 @@
 $(document).on('ready', function () {
-    var selector = [], hilo = [], jso = [], data = [], datos = [], nombre = "";
+    alert("Ready");
+    var selector = [], hilo = [], jso = [], data = [], datos = [];
     var ob = new $.Luna("usuario", selector[0]);
     ob.Vivo("Asignar Roles");
 

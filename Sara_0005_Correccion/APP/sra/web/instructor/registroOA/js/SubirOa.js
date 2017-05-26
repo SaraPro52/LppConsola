@@ -3,7 +3,7 @@ $(document).ready(function () {
     $("#ECategoriaSelect").hide();
     $("#EProgramaFSelect").hide();
     var ob = new $.Luna("AutoComplet", "Null");
-    ob.Vivo("SubirProductosVirtuales");
+    ob.Vivo("SubirProductoVirtual");
     jso[0] = ['Crud_Controller', '[{opcion:3,tabla2:13,tipo:2,elegir:[0,1],delimitador:[],id:0,opSelect:4}]'];
     selector[0] = $("#Titulo_Publicacion");
     datos[0] = {nombre: "AutoComplet", worker: true};
@@ -299,23 +299,7 @@ $(document).ready(function () {
             }
         },
         success: function () {
-            $("#message").html("");
-            var arrayAutor = idUser;
-            var arrayTemas = [];
-            for (var a = 0; a < arraySelecionAutor.length; a++) {
-                arrayAutor = arrayAutor + "," + (arraySelecionAutor[a]);
-            }
-            for (var i = 0; i < arrayselecTF.length; i++) {
-                arrayTemas.push(arrayselecTF[i] + "-0");
-            }
-            for (var p = 0; p < arrayselecT.length; p++) {
-                arrayTemas.push(arrayselecT[p] + "-1");
-            }
-            men = $("#Titulo_Publicacion").val();
-            jso[5] = ['ProductoVirtual_Controller', '[{opcion:1,info:[' + $("#Titulo_Publicacion").val() + ',' + $("#descripcion_oa").val() + ',' + $("#palabras_claves").val() + ',' + $("#formato").val() + ',0,0,' + $("#instrucciones").val() + ',' + $("#requisitos_instalacion").val() + '],arrayFun:[' + arrayAutor + '],arrayTemas:[' + arrayTemas + '],archivoNom:' + $("#myfile").val() + '}]'];
-            selector[5] = null;x
-            datos[5] = {nombre: "btn"};
-            ajax(5, datos[5]);
+            peticionCompleta(5);
         },
         error: function () {
             $("#message").html("<font color='red'>Error: al subir el archivo</font>");
@@ -327,7 +311,6 @@ $(document).ready(function () {
         var nomArh = $(this).val();
         var ex = nomArh.split(".");
         nomArh = ex[ex.length - 1];
-        console.log($("#formato option:selected").text() +"  ex  "+ ex[1]);
         if ($("#formato").val() == "A0") {
             $(".inputNotifi").notify(
                     "Selecione un formato de archivo", 'warn',
@@ -356,6 +339,7 @@ $(document).ready(function () {
         if (i == 0) {
             jso[1] = ['Crud_Controller', '[{arr:0,opcion:3,tabla2:7,tipo:2,elegir:[4,8],delimitador:"[{colum:16,operador:0,valor1:' + idCentro + ',añadir:0},{colum:4,operador:7,valor1:' + idUser + ',añadir:0},{colum:1,operador:0,valor1:1}]",id:0,opSelect:6}]",id:0,opSelect:4}]'];
             selector[1] = $("#SelectAutores");
+
             datos[1] = {nombre: "btn"};
             ajax(1, datos[1]);
         } else if (i == 1) {
@@ -382,19 +366,38 @@ $(document).ready(function () {
             datos[4] = {nombre: "Select"};
             ajax(4, datos[4]);
         } else if (i == 5) {
+            $("#message").html("");
+            var arrayAutor = idUser;
+            var arrayTemas = [];
+            for (var a = 0; a < arraySelecionAutor.length; a++) {
+                arrayAutor = arrayAutor + "," + (arraySelecionAutor[a]);
+            }
+            for (var i = 0; i < arrayselecTF.length; i++) {
+                arrayTemas.push(arrayselecTF[i] + "-0");
+            }
+            for (var p = 0; p < arrayselecT.length; p++) {
+                arrayTemas.push(arrayselecT[p] + "-1");
+            }
+            men = $("#Titulo_Publicacion").val();            
+            var nomArchivo = document.getElementById('myfile').files[0].name;
+            jso[11] = ['ProductoVirtual_Controller', '[{opcion:1,info:[' + $("#Titulo_Publicacion").val() + ',' + $("#descripcion_oa").val() + ',' + $("#palabras_claves").val() + ',' + $("#formato").val() + ',0,0,' + $("#instrucciones").val() + ',' + $("#requisitos_instalacion").val() + '],arrayFun:[' + arrayAutor + '],arrayTemas:[' + arrayTemas + '],archivoNom:' + nomArchivo+ '}]'];
+            selector[11] = null;
+            datos[11] = {nombre: "btn"};
+            ajax(11, datos[11]);
+        } else if (i == 11) {
             var daMen = data[i].split("$$");
-            if (daMen[0] == "true") {
+            if (daMen[0] === "true") {
                 estado = ("success");
                 men = "El producto  " + men + " " + daMen[1];
             } else {
                 estado = ("error");
                 men = "El producto " + men + " " + daMen[1];
             }
-            jso[11] = ['Instrutor_Controller', '[{opcion:3,ti:' + idRol + '}]'];
-            datos[11] = {caso: "Notificaciones productos virtuales"};
+            jso[22] = ['Instrutor_Controller', '[{opcion:3,ti:' + idRol + '}]'];
+            datos[22] = {caso: "Notificaciones productos virtuales"};
             $.notify(men, estado);
-            ajax(11);
-        } else if (i == 11) {
+            ajax(22);
+        } else if (i == 22) {
             $("#CasoNombre").text(datos[i].caso);
             $("#cuerpo").empty();
             $("#cuerpo").append(data[i]);

@@ -11,7 +11,7 @@
             <div class="container-fluid">
                 <div class="row">
                 </div>
-                <div class="col-lg-8 col-md-7" style="width:100%; ">
+                <div class="col-lg-8 col-md-7" style="width:100%;">
                     <div class="card">
                         <div class="header">
                             <h4 style="font-size:25px;"class="title">Editar Perfil</h4>
@@ -120,7 +120,7 @@
                 
             </div>
         </div>
-        
+
     </body>
     <script type="text/javascript" src="assets/js/jquery-1.10.2.js" ></script>
     <script type="text/javascript" src="js/bootstrap.js" ></script>

@@ -13,7 +13,7 @@ function carga(ti, rol) {
 
     $('.menu li').click(function (e) {
         if (this.value == 5) {
-            jso[2] = ['sesion_controller', '[{opcion:2,se:' + ti + '}]'];
+            jso[2] = ['principal', '[{opcion:2,se:' + ti + '}]'];
             ajax(2);
         } else {
             casoUso = "text" + this.value;
