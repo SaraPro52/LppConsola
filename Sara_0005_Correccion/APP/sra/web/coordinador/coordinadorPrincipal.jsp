@@ -1,4 +1,4 @@
-<%@page session = "true" %> 
+<%@page session = "true" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!doctype html>
 <html lang="en" id="estru">
@@ -68,6 +68,8 @@
                     </div>
                 </nav>
                 <div id="cuerpo" >
+
+                  
                 </div>
                 <footer class="text-center footerDown" style="margin-top: 3%;">
                     <div class="container">
@@ -81,7 +83,7 @@
                                     <li>
                                         <a href="https://plus.google.com/u/0/101782866518065902776" class="btn-social btn-outline"><i class="fa fa-fw fa-google-plus"></i></a>
                                     </li>
-                                    
+
 
                                     <li>
                                         <a href="https://github.com/SaraPro52/LppConsola" class="btn-social btn-outline"><i class="fa fa-fw fa-github"></i></a>

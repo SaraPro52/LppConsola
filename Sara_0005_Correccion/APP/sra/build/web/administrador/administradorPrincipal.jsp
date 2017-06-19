@@ -70,7 +70,10 @@
                         </div>
                     </div>
                 </nav>
-                <div id="cuerpo" ></div>
+                <div id="cuerpo" >
+                    
+                    
+                </div>
                 <footer class="text-center footerDow" style="margin-top: 3%;">
                     <div class="container">
                         <div class="row">
@@ -128,6 +131,5 @@
                 timer: 4000
             });
         }
-
     </script>
 </html>

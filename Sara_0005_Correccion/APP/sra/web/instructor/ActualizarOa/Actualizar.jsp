@@ -1,11 +1,8 @@
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<div>
-    <link href="assets/css/paper-dashboard.css" rel="stylesheet"/>
-    <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.12/css/jquery.dataTables.css">
-    <link rel="stylesheet" type="text/css" href="css/multi-select.css">
-    <link rel="stylesheet" href="assets/css/estilo_1.css"/>
-    <link href="assets/css/paper-dashboard.css" rel="stylesheet"/>
     <div class="content">
+      <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.12/css/jquery.dataTables.css">
+      <link rel="stylesheet" type="text/css" href="css/multi-select.css">
+      <link rel="stylesheet" href="assets/css/estilo_1.css"/>
+
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
@@ -55,7 +52,7 @@
                                     </div>
                                     <div class="col-md-12">
                                         <label class="col-md-12">Buscar por categoría.</label>
-                                        <select class="form-control" id="SelectCategoria" > 
+                                        <select class="form-control" id="SelectCategoria" >
                                             <option value="A0">Seleciona categoría</option>
                                         </select>
                                     </div>
@@ -98,7 +95,7 @@
                                         <select required  id="SelectEstrutura" class="programaFormacionMultiSelect"  multiple='multiple' title="Busca un programa.." >
                                             <option value="A0">Null</option>
                                         </select>
-                                        <div class="col-md-10 col-md-offset-2"  id="divBtPro"> 
+                                        <div class="col-md-10 col-md-offset-2"  id="divBtPro">
                                             <button id="btnACategoriaF" class="btn btn-info">Agregar temas de programa</button>
                                         </div>
                                     </div>
@@ -107,8 +104,8 @@
                                 <div class="col-md-12">
                                     <label for="Documento" class="col-md-12">Adjuntar OA</label>
                                     <form id="UploadFormula" action="archivos" method="post" enctype="multipart/form-data">
-                                        <input type="file" size="26120" id="myfile" class="inputs input-file" name="myfile"> 
-                                        <div class="inputNotifi"></div>   
+                                        <input type="file" size="26120" id="myfile" class="inputs input-file" name="myfile">
+                                        <div class="inputNotifi"></div>
                                         <input type="submit" class=" btn btn-info  col-md-4"  value="Subir Producto virtual" id="subir_oa">
                                         <div id="progressbox">
                                             <div id="progressbar"></div>
@@ -144,14 +141,12 @@
                     </div>
                 </div>
             </div>
+
         </div>
+        <script type="text/javascript" charset="utf8" src="js/jquery.dataTables.js"></script>
+        <script type="text/javascript"  src="js/jquery.form.js"></script>
+        <script type="text/javascript" src="js/notify.js"></script>
+        <script type="text/javascript" src="js/jquery.multi-select.js"></script>
+        <script type="text/javascript" src="js/jquery.quicksearch.js"></script>
+        <script type="text/javascript" src="instructor/ActualizarOa/js/Actualizar.js"></script>
     </div>
-    <script type="text/javascript" charset="utf8" src="js/jquery.dataTables.js"></script>
-    <script type="text/javascript"  src="js/jquery.form.js"></script> 
-    <script type="text/javascript" src="js/jquery.cecily.js"></script>
-    <script type="text/javascript" src="js/jqueryUi.js"></script>
-    <script type="text/javascript" src="js/notify.js"></script>
-    <script type="text/javascript" src="js/jquery.multi-select.js"></script>
-    <script type="text/javascript" src="js/jquery.quicksearch.js"></script>
-    <script type="text/javascript" src="instructor/ActualizarOa/js/Actualizar.js"></script>
-</div>

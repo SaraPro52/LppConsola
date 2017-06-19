@@ -1,13 +1,5 @@
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-    <head>
-        <link href="assets/css/paper-dashboardCoordinador.css" rel="stylesheet"/>
-        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    </head>
-    <body>
         <div class="row">
+          <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
             <div class="col-md-10 col-md-offset-1 card">
                 <div>
                     <div class="header col-md-offset-1">
@@ -23,7 +15,7 @@
                     </div>
                     <div class="col-md-12 col-md-offset-1">
                         <div class="col-md-12">
-                            <label id="TiempoEstaProduc" class="col-md-12"> Estadistica Mensual</label>                            
+                            <label id="TiempoEstaProduc" class="col-md-12"> Estadistica Mensual</label>
                         </div>
                         <div class="col-md-4">
                             <p class="col-md-12">Fecha Inicial: </p>
@@ -37,7 +29,7 @@
                             <button id="btnProductoE" style="margin-bottom:5% ;" class="btn btn-info">General Estadistica</button>
                         </div>
                     </div>
-                </div>   
+                </div>
             </div>
             <div class="col-md-10 col-md-offset-1 card">
                 <div>
@@ -101,11 +93,7 @@
                     </div>
                 </div>
             </div>
+            <script src="js/jqueryUi.js" type="text/javascript"></script>
+            <script type="text/javascript" src="js/fusioncharts.js"></script>
+            <script src="coordinador/ConsultarEstadisticas/js/Estadisticas.js" type="text/javascript"></script>
         </div>
-    </body>
-    <script src="js/jquery.js" type="text/javascript"></script>
-    <script src="js/jqueryUi.js" type="text/javascript"></script>
-    <script type="text/javascript" src="js/fusioncharts.js"></script>
-    <script type="text/javascript" src="js/jquery.cecily.js"></script>
-    <script src="coordinador/ConsultarEstadisticas/js/Estadisticas.js" type="text/javascript"></script>
-</html>
