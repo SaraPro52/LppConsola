@@ -14,7 +14,7 @@ function cargaF(ti, rol) {
     $('.menu li').click(function (e) {
         if (this.value == 7) {
             jso[2] = ['principal', '[{opcion:2,se:' + ti + '}]'];
-            ajax(2);
+           // ajax(2);
         } else {
             casoUso = "text" + this.value;
             casoUso = $("#" + casoUso).text();

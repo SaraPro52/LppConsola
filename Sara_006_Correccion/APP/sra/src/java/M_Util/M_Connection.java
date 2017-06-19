@@ -10,7 +10,7 @@ public class M_Connection{
     
     protected Connection obtenerConn(){
         String driver = "com.mysql.jdbc.Driver";
-        String url =  "jdbc:mysql://localhost:3303/SARA006";     
+        String url =  "jdbc:mysql://localhost:3306/SARA006";     
         String usuario = "root";
         String contraseña = "";
         Connection conn =  null;

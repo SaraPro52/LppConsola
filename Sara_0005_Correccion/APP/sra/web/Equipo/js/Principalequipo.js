@@ -1,7 +1,7 @@
 function carga(ti, rol) {
     var hilo = [], jso = [], data = [], datos = [];
     var ob = new $.Luna("equipo", "");
-    ob.Vivo("PricipalEquipo");
+    ob.Vivo("PricipalEquipos");
     jso[0] = ['Equipo_Controller', '[{opcion:2,ti:' + rol + '}]'];
     datos[0] = {caso: "Consultar productos virtuales"};
     ajax(0);
@@ -14,7 +14,7 @@ function carga(ti, rol) {
     $('.menu li').click(function (e) {
         if (this.value == 5) {
             jso[2] = ['principal', '[{opcion:2,se:' + ti + '}]'];
-            ajax(2);
+            //ajax(2);
         } else {
             casoUso = "text" + this.value;
             casoUso = $("#" + casoUso).text();

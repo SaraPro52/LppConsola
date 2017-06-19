@@ -1,7 +1,7 @@
 $(document).ready(function () {
     var selector = [], hilo = [], idPv = 0, jso = [], data = [], datos = [], estado = "", men = "", arraySelecionAutor = [], arraySelecionEstr = [], arraySelecionCate = [], arrayselecT = [], arrayselecTF = [], arrFuciona = [];
     var ob = new $.Luna("Productos virtuales", $("#tablaActualizacion"));
-    ob.Vivo("Actualizar");
+    ob.Vivo("Actualizar");  
     $("#contenedorass").show();
     $("#formularioss").hide();
     selector[0] = $("#tablaActualizacion");

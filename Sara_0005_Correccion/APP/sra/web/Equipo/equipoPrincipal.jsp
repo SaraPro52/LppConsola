@@ -34,7 +34,7 @@
                         <li class="activado" value="1"><a><i class="icono izquierda  fa fa-book" aria-hidden="true"></i><label style='cursor:pointer;' id="text1">Crear Lista de Chequeo</label </a></li>
                         <li class="activado" value="3"><a><i class="icono izquierda  fa fa-edit" aria-hidden="true"></i><label style='cursor:pointer;' id="text3">Editar Lista de Chequeo</label></a></li>
                         <li class="activado" value="2"><a><i class="icono izquierda  fa fa-eye" aria-hidden="true"></i><label  style='cursor:pointer;' id="text2">Consultar P.V</label></a></li>
-                        <li class="activado" value="5"><a><i class="glyphicon glyphicon-off" aria-hidden="true"></i><label style='cursor:pointer;' id="text2">Cerrar Sesión</label></a></li>
+                        <li class="activado" value="5"><a href="principal?opcion=2"><i class="glyphicon glyphicon-off" aria-hidden="true"></i><label style='cursor:pointer;' id="text2">Cerrar Sesión</label></a></li>
                     </ul>
                 </div>
                 <p id="tis" style="display: none;"></p>

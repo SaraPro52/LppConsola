@@ -36,7 +36,7 @@
                         <li class="btntt" value="3"><a><i class="ti-bell"></i><label style='cursor:pointer;' id="text3">Notificaciones P.V</label></a></li>
                         <li class="btntt" value="2"><a><i class="ti-pencil-alt"></i><label style='cursor:pointer;' id="text2">Correguir P.V</label></a></li>
                         <li class="btntt" value="6"><a><i class="ti-cloud-up"></i><label style='cursor:pointer;' id="text6">Versión P.V</label></a></li>
-                        <li class="btntt" value="7"><a><i class="glyphicon glyphicon-off" aria-hidden="true"></i><label style='cursor:pointer;' id="text3">Cerrar Sesión</label></a></li>
+                        <li class="btntt" value=""><a href="principal?opcion=2"><i class="glyphicon glyphicon-off" aria-hidden="true"></i><label style='cursor:pointer;' id="text3">Cerrar Sesión</label></a></li>
                         <!--form method="POST" action="principal">
                         </form-->
                     </ul>

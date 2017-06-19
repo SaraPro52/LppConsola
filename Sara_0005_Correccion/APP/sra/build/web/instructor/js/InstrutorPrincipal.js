@@ -12,7 +12,7 @@ function cargaI(idRol, ti, js) {
     $('.menu li').click(function (e) {
         if (this.value == 7) {
             jso[2] = ['principal', '[{opcion:2,se:' + ti + '}]'];
-            ajax(2);
+        //    ajax(2);
         } else {
             jso[1] = ['Instrutor_Controller', '[{opcion:' + this.value + ',ti:' + idRol + '}]'];
             casoUso = "text" + this.value;
