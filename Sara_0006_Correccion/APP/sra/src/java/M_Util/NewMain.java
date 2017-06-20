@@ -4,6 +4,7 @@ import M_Controller.Archivos.Archivos;
 import M_Modelo.Categoria;
 import M_Modelo.Estadisticas;
 import M_Modelo.Evaluacion_General;
+import M_Modelo.Formato;
 import M_Modelo.Funcionario;
 import M_Modelo.Lista_Chequeo;
 import M_Modelo.Notificacion;
@@ -1321,7 +1322,7 @@ public class NewMain {
 //        for (int i = 0; i < parts.length; i++) {
 //            System.out.println(parts[i]);
 //        }
-        String contraseña = DigestUtils.md5Hex("123456");
+        String contraseña = DigestUtils.md5Hex("123");
         System.out.println(contraseña);
 //        String delimitador = "[{colum:2,operador:0,valor1:1,añadir:0},{colum:12,operador:0,valor1:1,añadir:0},{colum:0,operador:0,valor1:1,añadir:0},{colum:13,operador:6,valor1:\'2,3\',añadir:0},{colum:11,operador:0,valor1:0}]";
 //        String[] num = {"4", "5", "6", "7", "8", "9"};
@@ -1420,10 +1421,23 @@ public class NewMain {
 //Notificacion n = new Notificacion();
 //        System.out.println(n.ConsultarNotificacion_M(para));
 
-        String[] reportes = {"4","1","0","2017"};
-        System.out.println(new Estadisticas().ConsultaReportes(reportes));
+//        String[] reportes = {"4","1","0","2017"};
+//        System.out.println(new Estadisticas().ConsultaReportes(reportes));
 
 //        String[] graficas = {"1","1","0","0"};
 //        System.out.println(new Version().ConsultaGraficas(graficas));
+
+//        String[] arrayF = {"2","3"};
+//        Formato f = new Formato();
+//        System.out.println(f.consultaTipoFormato(arrayF));
+
+        //System.out.println(new EstructuraDB().ListaTablas());
+        
+//        String[] parametrosModi = {"1","1019133595","e10adc3949ba59abbe56e057f20f883e1","e10adc3949ba59abbe56e057f20f883e"};
+//        System.out.println(new Funcionario().ModificarContraseña(parametrosModi));
+
+        //String[] para = {"1019","1019"};
+        String[] para = {"1019133595","fcea920f7412b5da7be0cf42b8c93759"};
+        System.out.println(new Funcionario().Logueo(para));
     }
 }

@@ -1,8 +1,7 @@
+
 package M_Controller;
 
-import M_Modelo.Formato;
 import M_Util.CargaDatos;
-import M_Util.Elomac;
 import M_Util.EstructuraDB;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -20,38 +19,38 @@ public class CargueMasivo_Controller extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-
+        try (PrintWriter out = response.getWriter()) { 
+            
             PrintWriter respuesta = response.getWriter();
             String data = request.getParameter("data");
             JSONObject jData = new JSONArray(data).getJSONObject(0);
             int opcion = jData.getInt("opcion");
-
-            switch (opcion) {
+            
+            switch(opcion){
                 case 1: //REALIZA EL CARGUE DE LA INFORMACION
-                    //jso[0] = ['CargueMasivo_Controller','[{opcion:1,archivo:'+archivoCSV+',tabla:'+tabla+'}]'];
+                        //jso[0] = ['CargueMasivo_Controller','[{opcion:1,archivo:'+archivoCSV+',tabla:'+tabla+'}]'];
                     try {
-                        if (new CargaDatos().cargaMasiva(jData.getString("archivo"), jData.getString("tabla"))) {
+                        if(new CargaDatos().cargaMasiva(jData.getString("archivo"), jData.getString("tabla"))){
                             respuesta.println("Cargue Exitoso");
-                        } else {
+                        }else{
                             respuesta.println("Cargue Fallido");
                         }
                     } catch (Exception e) {
                         respuesta.println(e.getMessage());
                     }
-                    break;
+                break;
                 case 2://CONSULTA TODAS LAS TABLAS
-                    //jso[0] = ['CargueMasivo_Controller','[{opcion:2}]'];
-                    try {
+                       //jso[0] = ['CargueMasivo_Controller','[{opcion:2}]'];
+                    try{
                         respuesta.println(new EstructuraDB().ListaTablas());
-                    } catch (Exception e) {
+                    }catch(Exception e){
                         respuesta.println(e.getMessage());
                     }
-
-                    break;
+                    
+                break;
             }
-
-        } catch (Exception falla) {
+            
+        }catch (Exception falla) {
             response.getWriter().println("Falla: " + falla.getMessage());
         }
     }

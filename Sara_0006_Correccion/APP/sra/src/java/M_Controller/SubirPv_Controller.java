@@ -1,3 +1,8 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package M_Controller;
 
 import M_Modelo.Formato;
@@ -20,23 +25,23 @@ public class SubirPv_Controller extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-
+            
             PrintWriter respuesta = response.getWriter();
             String data = request.getParameter("data");
             JSONObject jData = new JSONArray(data).getJSONObject(0);
             int opcion = jData.getInt("opcion");
-
-            switch (opcion) {
+            
+            switch(opcion){
                 case 1:
                     try {
                         respuesta.println(new Formato().consultaTipoFormato(Elomac.M_toArray(jData.getString("tipoFormato"))));
                     } catch (Exception e) {
                         respuesta.println(e.getMessage());
                     }
-                    break;
+                break;
             }
-
-        } catch (Exception falla) {
+            
+        }catch (Exception falla) {
             response.getWriter().println("Falla: " + falla.getMessage());
         }
     }

@@ -1,5 +1,6 @@
 package M_Controller.Linkeos;
 
+import M_Modelo.Funcionario;
 import M_Util.Elomac;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -15,6 +16,7 @@ import org.apache.commons.codec.digest.DigestUtils;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.omg.CORBA.INTERNAL;
 
 @WebServlet(name = "principal", urlPatterns = {"/principal"})
 public class sesion_controller extends HttpServlet {
@@ -33,20 +35,27 @@ public class sesion_controller extends HttpServlet {
             }
             switch (opcion) {
                 case 1:
-                    String usuario = request.getParameter("user");
-                    String contraseña = DigestUtils.md5Hex(request.getParameter("pwd"));
-                    String delimitador = "[{colum:4,operador:0,valor1:'\"" + usuario + "\"',añadir:0},{colum:5,operador:0,valor1:'\"" + contraseña + "\"'}]";
-                    Elomac elo = new Elomac(19, 2);
-                    String fun = elo.Select(delimitador);
-                    if (fun.equals("{}")) {
+                    String[] loguinUser = {request.getParameter("user"),DigestUtils.md5Hex(request.getParameter("pwd"))};
+                    
+//                    String delimitador = "[{colum:4,operador:0,valor1:'\"" + usuario + "\"',añadir:0},{colum:5,operador:0,valor1:'\"" + contraseña + "\"'}]";
+//                    Elomac elo = new Elomac(19, 2);
+//                    String fun = elo.Select(delimitador);
+                    String resultado = new Funcionario().Logueo(loguinUser);
+                    if (resultado.equals("{}")) {
                         request.getRequestDispatcher("index.jsp").forward(request, response);
                     } else {
-                        JSONObject funJ = new JSONArray(fun).getJSONObject(0);
-                        int rol = funJ.getInt("Id_Rol");
-                        sesion.setAttribute("idUser", funJ.getInt("Id_Funcionario"));
-                        sesion.setAttribute("nomUser", funJ.getString("Nom_Funcionario"));
-                        sesion.setAttribute("idRol", rol);
-                        sesion.setAttribute("idCentro", funJ.getInt("Id_Centro"));
+                        JSONObject funJ = new JSONArray(resultado).getJSONObject(0);
+                        int rol = funJ.getJSONArray("Id_Rol").getInt(0);
+                        
+                        if(rol != 5){
+                            sesion.setAttribute("idUser", funJ.getJSONArray("Id_Funcionario").getInt(0));
+                            sesion.setAttribute("nomUser",funJ.getJSONArray("Nom_Funcionario").getString(0));
+                            sesion.setAttribute("idRol", rol);
+                            sesion.setAttribute("idCentro", funJ.getJSONArray("Id_Centro").getInt(0));
+                        }else{
+                            sesion.setAttribute("idRol", rol);
+                        }
+                        
                         switch (rol) {
                             case 1:
                                 request.getRequestDispatcher("instructor/instructorPrincipal.jsp").forward(request, response);

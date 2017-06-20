@@ -116,17 +116,15 @@
     <script src="assets/js/demo.js"></script>
     <script type="text/javascript" src="administrador/js/admi.js"></script>
     <script>
-        var nomUser = '<%= session.getAttribute("nomUser")%>';
-        var idUser = '<%= session.getAttribute("idUser")%>';
+
         var idRol = '<%= session.getAttribute("idRol")%>';
-        var idCentro = '<%= session.getAttribute("idCentro")%>';
-        if (idUser == null || idRol == null || nomUser == null || idCentro == null) {
+        if (idRol == null ) {
             location.replace('index.jsp');
         } else {
-            var tem = '[{nomUser:' + nomUser + ',idUser:' + idUser + ',idRol:' + idRol + ',idCentro:' + idCentro + '}]';
+            var tem = 'idRol:' + idRol + '}]';
             cargaF(tem, idRol);
             $.notify({
-                message: "Bienvenido a <b>Sara Pro</b> - Administrador " + nomUser + "."
+                message: "Bienvenido a <b>Sara Pro</b> - Administrador."
 
             }, {
                 type: 'success',

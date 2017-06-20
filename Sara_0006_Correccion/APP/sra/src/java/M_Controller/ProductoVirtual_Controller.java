@@ -73,7 +73,7 @@ public class ProductoVirtual_Controller extends HttpServlet {
                         arch.MoverArchivo(nomUrl);
                     } else {
                         respuesta.println("false$$ no fue registrado");
-                        arch.EliminarArchivo(archivoNom, 1);
+                        arch.EliminarArchivo(archivoNom,1);
                     }
                     break;
                 case 2:
@@ -87,7 +87,7 @@ public class ProductoVirtual_Controller extends HttpServlet {
                         arch.MoverArchivo(nomUrl);
                     } else {
                         respuesta.println("false$$ no fue registrado");
-                        arch.EliminarArchivo(archivoNom1, 1);
+                        arch.EliminarArchivo(archivoNom1,1);
                     }
                     break;
                 case 3:
@@ -99,9 +99,9 @@ public class ProductoVirtual_Controller extends HttpServlet {
                         if (nomUrl != "null") {
                             arch.CambiarNombre(archivoNom2, nomUrl);
                             respuesta.println("true$$ fue Corregido");
-
+                            
                             //---CAMBIO 2 Elimina el archivo que se encontraba subido (Antiguo)
-                            arch.EliminarArchivo(jData.getString("url"), 2);
+                            arch.EliminarArchivo(jData.getString("url"),2);
                             //---Cambio
                             arch.MoverArchivo(nomUrl);
                             int idNoti = jData.getInt("idNot");
@@ -111,7 +111,7 @@ public class ProductoVirtual_Controller extends HttpServlet {
                             noti.Update();
                         } else {
                             respuesta.println("false$$ no fue Corregido");
-                            arch.EliminarArchivo(archivoNom2, 1);
+                            arch.EliminarArchivo(archivoNom2,1);
                         }
                     } catch (Exception e) {
                         respuesta.println(e.getMessage());
@@ -121,8 +121,7 @@ public class ProductoVirtual_Controller extends HttpServlet {
                 case 4:
                     try {
                         String[] aprobacion = Elomac.M_toArray(jData.getString("aprobacion"));
-                        String[] aT = {"5"};
-                        String delimi = "[{colum:0,operador:0,valor1:" + aprobacion[1] + "}]";
+                        String[] aT = {"5"};String delimi = "[{colum:0,operador:0,valor1:"+aprobacion[1]+"}]";
                         String nomUrlOld = new JSONArray(new Version().Select(aT, delimi)).getJSONObject(0).getString("Url_Version");
                         nomUrl = ver.AprobarPV(aprobacion);//16/04/2017
                         if (nomUrl != "null") {
@@ -139,7 +138,7 @@ public class ProductoVirtual_Controller extends HttpServlet {
                     String[] filtrar = Elomac.M_toArray(jData.getString("filtrar"));
                     int caso = jData.getInt("caso");
                     String consulta = new Producto_Virtual().ConsultarProducto(filtrar, caso);
-                    if (consulta != "null") {
+                    if(consulta != "null"){
                         respuesta.println(consulta);
                     } else {
                         respuesta.println("false$$No se Encuentran Registros");
@@ -191,7 +190,7 @@ public class ProductoVirtual_Controller extends HttpServlet {
         } catch (Exception ex) {
             Logger.getLogger(ProductoVirtual_Controller.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }
+        }
 
     /**
      * Returns a short description of the servlet.

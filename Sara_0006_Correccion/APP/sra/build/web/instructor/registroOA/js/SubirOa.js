@@ -7,7 +7,7 @@ $(document).ready(function () {
     jso[0] = ['Crud_Controller', '[{opcion:3,tabla2:13,tipo:2,elegir:[0,1],delimitador:[],id:0,opSelect:4}]'];
     selector[0] = $("#Titulo_Publicacion");
     datos[0] = {nombre: "AutoComplet"};
-    ajax(0, datos[0]);
+    ajax(0, datos[0]); 
 
     //TIPO FORMATO (IMAGEN, VIDEO, DOCUMENTO)
     //jso[0] = ['SubirPv_Controller','[{opcion:1,tipoFormato:[1,0]}]'];
