@@ -25,7 +25,8 @@ public class M_Procedure extends M_Connection{
                                                   "{call RegistrarItem_Tema(?)}",//20/04/2017
                                                   "{call ModificarLista(?)}",//23/04/2017
                                                   "{call ConsultarReporte(?)}",
-                                                  "{call ConsultarGrafica(?)}"
+                                                  "{call ConsultarGrafica(?)}",
+                                                  "{call ConsultaVistaSubirPV(?)}"
                                                   };    
                                                   
             public boolean listo = false;
@@ -77,7 +78,7 @@ public class M_Procedure extends M_Connection{
                 CallableStatement cst3 = co.prepareCall(procedure[val]);
                 cst3.setString(1,todo);
                 cst3.execute();
-                if(val == 4 || val == 10 || val == 11 || val == 12 || val == 13 || val == 15 || val == 17 || val == 18){//20/04/2017
+                if(val == 4 || val == 10 || val == 11 || val == 12 || val == 13 || val == 15 || val == 17 || val == 18 || val == 19){//20/04/2017
                     return cst3.getResultSet();
                 }
                 listo = true;
