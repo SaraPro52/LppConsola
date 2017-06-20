@@ -1,17 +1,28 @@
 $(document).ready(function () {
-    var selector = [], hilo = [], jso = [], data = [], datos = [], estado = "", men = "", arraySelecionAutor = [], arraySelecionEstr = [], arraySelecionCate = [], arrayselecT = [], arrayselecTF = [], arrFuciona = [];
+    var selector = [], hilo = [], jso = [], data = [], datos = [], estado = "", men = "", arraySelecionAutor = [], arraySelecionEstr = [], arraySelecionCate = [], arrayselecT = [], arrayselecTF = [], arrFuciona = [], extenFormat = [];
     $("#ECategoriaSelect").hide();
     $("#EProgramaFSelect").hide();
     var ob = new $.Luna("AutoComplet", "Null");
-    ob.Vivo("SubirProductoVirtual");
+    ob.Vivo("SubirProductoVirtual1");
     jso[0] = ['Crud_Controller', '[{opcion:3,tabla2:13,tipo:2,elegir:[0,1],delimitador:[],id:0,opSelect:4}]'];
     selector[0] = $("#Titulo_Publicacion");
-    datos[0] = {nombre: "AutoComplet", worker: true};
+    datos[0] = {nombre: "AutoComplet"};
     ajax(0, datos[0]);
 
+    //TIPO FORMATO (IMAGEN, VIDEO, DOCUMENTO)
+    //jso[0] = ['SubirPv_Controller','[{opcion:1,tipoFormato:[1,0]}]'];
 
+    //EXTENCION DE ACUERDO AL IDFORMATO SELECCIONADO (JPJ ETC)
+    ///jso[0] = ['SubirPv_Controller','[{opcion:1,tipoFormato:[2,'+idTipoFormato+']}]'];
     $("#formato").change(function () {
         $("#myfile").val("");
+        $("#extPermitidas").html("");
+        if ($("#formato").val() != "A0") {
+            jso[23] = ['SubirPv_Controller', '[{opcion:1,tipoFormato:[2,' + $("#formato").val() + ']}]'];
+            selector[0] = $("#Titulo_Publicacion");
+            datos[23] = {nombre: "btn"};
+            ajax(23, datos[23]);
+        }
     });
 
     $('.autoresMultiselect').multiSelect({
@@ -307,37 +318,10 @@ $(document).ready(function () {
     };
     $("#UploadForm").ajaxForm(options);
 
-    $('.input-file').change(function () {
-        var nomArh = $(this).val();
-        var ex = nomArh.split(".");
-        nomArh = ex[ex.length - 1];
-        if ($("#formato").val() == "A0") {
-            $(".inputNotifi").notify(
-                    "Selecione un formato de archivo", 'warn',
-                    {position: "right"}
-            );
-            $(this).val('');
-        } else if ($("#formato option:selected").text() != ex[1]) {
-            var no = $("#formato option:selected").text();
-            $(".inputNotifi").notify(
-                    "Selecione un archivo de formato " + no, 'warn',
-                    {position: "right"}
-            );
-            $(this).val('');
-        }
-        var sizeByte = this.files[0].size;
-        var siezekiloByte = parseInt(sizeByte / 1024);
-        if (siezekiloByte > $(this).attr('size')) {
-            $(this).val('');
-            $(".inputNotifi").notify(
-                    "El archivo supera el limite de 25 mb", 'warn',
-                    {position: "right"}
-            );
-        }
-    });
     function peticionCompleta(i) {
         if (i == 0) {
             jso[1] = ['Crud_Controller', '[{arr:0,opcion:3,tabla2:7,tipo:2,elegir:[4,8],delimitador:"[{colum:16,operador:0,valor1:' + idCentro + ',añadir:0},{colum:4,operador:7,valor1:' + idUser + ',añadir:0},{colum:1,operador:0,valor1:1}]",id:0,opSelect:6}]",id:0,opSelect:4}]'];
+
             selector[1] = $("#SelectAutores");
 
             datos[1] = {nombre: "btn"};
@@ -351,7 +335,7 @@ $(document).ready(function () {
             selector[1] = $("#SelectAutores");
             datos[1] = {nombre: "MultiSelect", compuesto: true};
             ob.cargarTabla(arrFuciona, selector[1], datos[1]);
-            jso[2] = ['Crud_Controller', '[{opcion:3,tabla2:17,tipo:1,elegir:[0,1],delimitador:[],id:0,opSelect:4}]'];
+            jso[2] = ['SubirPv_Controller', '[{opcion:1,tipoFormato:[1,0]}]'];
             selector[2] = $("#formato");
             datos[2] = {nombre: "Select"};
             ajax(2, datos[2]);
@@ -378,9 +362,10 @@ $(document).ready(function () {
             for (var p = 0; p < arrayselecT.length; p++) {
                 arrayTemas.push(arrayselecT[p] + "-1");
             }
-            men = $("#Titulo_Publicacion").val();            
-            var nomArchivo = document.getElementById('myfile').files[0].name;
-            jso[11] = ['ProductoVirtual_Controller', '[{opcion:1,info:[' + $("#Titulo_Publicacion").val() + ',' + $("#descripcion_oa").val() + ',' + $("#palabras_claves").val() + ',' + $("#formato").val() + ',0,0,' + $("#instrucciones").val() + ',' + $("#requisitos_instalacion").val() + '],arrayFun:[' + arrayAutor + '],arrayTemas:[' + arrayTemas + '],archivoNom:' + nomArchivo+ '}]'];
+            men = $("#Titulo_Publicacion").val();
+            var path = $("#myfile").val();
+            var nomArchivo = path.replace(/C:\\fakepath\\/, '');
+            jso[11] = ['ProductoVirtual_Controller', '[{opcion:1,info:[' + $("#Titulo_Publicacion").val() + ',' + $("#descripcion_oa").val() + ',' + $("#palabras_claves").val() + ',' + $("#formato").val() + ',0,0,' + $("#instrucciones").val() + ',' + $("#requisitos_instalacion").val() + '],arrayFun:[' + arrayAutor + '],arrayTemas:[' + arrayTemas + '],archivoNom:' + nomArchivo + '}]'];
             selector[11] = null;
             datos[11] = {nombre: "btn"};
             ajax(11, datos[11]);
@@ -401,6 +386,43 @@ $(document).ready(function () {
             $("#CasoNombre").text(datos[i].caso);
             $("#cuerpo").empty();
             $("#cuerpo").append(data[i]);
+        } else if (i == 23) {
+            var jsonExten = jQuery.parseJSON(data[i]);
+            for (var i = 0; i < jsonExten.length; i++) {
+                extenFormat.push(jsonExten[i].Nom_Formato);
+            }
         }
     }
+    $('.input-file').change(function () {
+        var nomArh = $(this).val();
+        var ex = nomArh.split(".");
+        nomArh = ex[ex.length - 1];
+        var countExten = 0;
+        for (var i = 0; i < extenFormat.length; i++) {
+            if (extenFormat[i] == nomArh) {
+                countExten++;
+            }
+        }
+        var sizeByte = this.files[0].size;
+        var siezekiloByte = parseInt(sizeByte / 1024);
+
+        if (siezekiloByte > $(this).attr('size')) {
+            $(this).val('');
+            $(".inputNotifi").notify(
+                    "El archivo supera el limite de 25 mb", 'warn',
+                    {position: "right"}
+            );
+        }
+
+        if (countExten <= 0) {
+            var menexten = "Selecione un archivo de formato " + extenFormat;
+            $(".inputNotifi").notify(
+                    menexten, 'warn',
+                    {position: "right"}
+            );
+            $(this).val('');
+        }
+
+
+    });
 });

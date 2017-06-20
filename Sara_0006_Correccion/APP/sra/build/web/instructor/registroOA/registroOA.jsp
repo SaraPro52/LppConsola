@@ -82,6 +82,7 @@
                                         <div class="col-md-12">
                                             <label for="Documento" class="col-md-12">Ádjuntar P.V</label>
                                             <form id="UploadForm" action="archivos" method="post" enctype="multipart/form-data">
+                                                <div id="extPermitidas"></div>
                                                 <input type="file" size="26120" id="myfile" class="inputs input-file" name="myfile"> 
                                                 <div class="inputNotifi"></div>   
                                                 <input type="submit" class=" btn btn-info  col-md-8"  value="Subir Producto Virtual" id="subir_oa">

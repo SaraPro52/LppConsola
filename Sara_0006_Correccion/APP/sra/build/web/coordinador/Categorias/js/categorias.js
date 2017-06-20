@@ -2,8 +2,8 @@ $(document).ready(function () {
     var selector = [], hilo = [], jso = [], data = [], datos = [], estado = "", men = "";
     var arraySelecion = [];
     var ob = new $.Luna("MultiSelect", "null");
-    ob.Vivo("Categorias");
-    jso[0] = ['Crud_Controller', '[{opcion:3,tabla2:27,tipo:1,elegir:[0,1],delimitador:[],id:0,opSelect:4}]'];
+    ob.Vivo("Categorias1");
+    jso[0] = ['Crud_Controller', '[{opcion:3,tabla2:53,tipo:1,elegir:[0,1],delimitador:[],id:0,opSelect:4}]'];
     selector[0] = $("#itemCategoria");
     $("#itemCategoria").empty();
     datos[0] = {nombre: "MultiSelect", compuesto: false};

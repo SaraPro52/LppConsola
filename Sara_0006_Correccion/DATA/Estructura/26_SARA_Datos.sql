@@ -1,4 +1,4 @@
-USE SARA005;
+USE SARA006;
 
 CALL SARA_CRUD("INSERT","Ciudad","Nom_Ciudad~Bogotá ","");
 CALL SARA_CRUD("INSERT","Ciudad","Nom_Ciudad~Bucaramanga ","");

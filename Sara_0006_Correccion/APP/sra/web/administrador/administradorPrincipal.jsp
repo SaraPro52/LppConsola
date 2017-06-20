@@ -7,10 +7,12 @@
         <link rel="apple-touch-icon" sizes="76x76" href="assets/img/apple-icon.png">
         <link rel="shotrcut icon" href="recursos/flavicon.ico">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+        <title>Sara-Administrador</title>
         <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
         <meta name="viewport" content="width=device-width" />
         <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
         <link href="assets/css/animate.min.css" rel="stylesheet"/>
+        <link href="assets/css/paper-dashboard.css" rel="stylesheet"/>
         <link href="assets/css/demo.css" rel="stylesheet" />
         <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
         <link href='https://fonts.googleapis.com/css?family=Muli:400,300' rel='stylesheet' type='text/css'>
@@ -71,8 +73,8 @@
                     </div>
                 </nav>
                 <div id="cuerpo" >
-                    
-                    
+
+
                 </div>
                 <footer class="text-center footerDow" style="margin-top: 3%;">
                     <div class="container">
@@ -87,7 +89,7 @@
                                     <li>
                                         <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-google-plus"></i></a>
                                     </li>
-                                    
+
 
                                     <li>
                                         <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-github"></i></a>

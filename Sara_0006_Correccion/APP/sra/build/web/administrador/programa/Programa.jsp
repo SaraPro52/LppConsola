@@ -40,7 +40,9 @@
                 </div>
             </div>
         </div>
-        <script type="text/javascript" charset="utf8" src="js/notify.js"></script>
+        <script type="text/javascript" charset="utf8" type="text/javascript" src="js/jquery.js"></script>
+        <script type="text/javascript" src="js/notify.js"></script>
+        <script type="text/javascript" charset="utf8" src="js/jquery.dataTables.js"></script>
         <script type="text/javascript" src="js/jquery.multi-select.js"></script>
         <script type="text/javascript" src="js/jquery.quicksearch.js"></script>
         <script type="text/javascript" charset="utf8" src="administrador/programa/js/programa.js"></script>

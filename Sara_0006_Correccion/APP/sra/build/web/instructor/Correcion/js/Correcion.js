@@ -1,4 +1,4 @@
-var selector = [], hilo = [], jso = [], data = [], datos = [], constan = true, url = "", nomPV = "";
+var selector = [], hilo = [], jso = [], data = [], datos = [], constan = true, url = "", nomPV = "",idver="0";
 var ob = new $.Luna("Productos virtuales", $("#tablaNotificacion"));
 ob.Vivo("CorrecionInstrutor");
 $("#percent").hide();
@@ -9,7 +9,7 @@ $("#formularioss").hide();
 //jso[0] = ['EvaluacionGeneral_Controller', '[{opcion:3,elegir:["' + idUser + '","' + idRol + '","' + idCentro + '","2","9,10"],opt:2}]'];
 //-----
 //-------Consulta Notificaciones
-  jso[0] = ['Notificaciones_Controller','[{opcion:2,parametros:['+ idUser + ',' + idRol + ',0]}]'];
+jso[0] = ['Notificaciones_Controller', '[{opcion:2,parametros:[' + idUser + ',' + idRol + ',0]}]'];
 //----------
 selector[0] = $("#tablaNotificacion");
 datos[0] = {nombre: "correcion"};
@@ -26,7 +26,10 @@ $(document).on('click', '.btnCorrecion', function (e) {
     jso[1] = ['EvaluacionGeneral_Controller', '[{opcion:2,idEvalua:' + valors[0] + ',resultado:0}]'];
     selector[1] = $("#Respuestaitem");
     datos[1] = {nombre: "correcionCo"};
+    alert(idver);
+    alert(valors);
     ajax(1, datos[1]);
+    
 });
 
 var options = {
@@ -49,7 +52,9 @@ var options = {
     success: function () {
         $("#contenedor").show();
         $("#formularioss").hide();
-        jso[5] = ['ProductoVirtual_Controller', '[{opcion:3,correccion:[' + idUser + ',' + idver + '],archivoNom:\"' + $("#myfile").val() + '\",idNot:' + idNot + ',url:' + url + '}]'];
+        var path = $("#myfile").val();
+        var filename = path.replace(/C:\\fakepath\\/, '');
+        jso[5] = ['ProductoVirtual_Controller', '[{opcion:3,correccion:[' + idUser + ',' + idver + '],archivoNom:\"' + filename + '\",idNot:' + idNot + ',url:' + url + '}]'];
         selector[5] = null;
         datos[5] = {nombre: "btn"};
         $("#formularioss").show();
@@ -65,7 +70,7 @@ $('.input-file').change(function () {
     var nomArh = $(this).val();
     var ex = nomArh.split(".");
     nomArh = ex[ex.length - 1];
-   
+
     var sizeByte = this.files[0].size;
     var siezekiloByte = parseInt(sizeByte / 1024);
     if (siezekiloByte > $(this).attr('size')) {

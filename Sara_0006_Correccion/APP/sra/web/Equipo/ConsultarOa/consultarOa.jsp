@@ -28,8 +28,8 @@
                                         <tr>
                                             <th>N°</th>
                                             <th>Nombre producto</th>
-                                            <th>Nombre notificación</th>
-                                            <th>Fecha del producto</th>
+                                            <th>Notificación</th>
+                                            <th>Fecha de envio</th>
                                             <th>Descargar</th>
                                             <th>Evaluar</th>
                                         </tr>

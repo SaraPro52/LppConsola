@@ -1,41 +1,47 @@
 package M_Util;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLDataException;
 import java.sql.SQLException;
 
-public class M_Connection{
-    
-    public M_Connection(){}
-    
-    protected Connection obtenerConn(){
+public class M_Connection {
+
+    public M_Connection() {
+    }
+    private static String db = "SARA006";
+
+    protected Connection obtenerConn() {
         String driver = "com.mysql.jdbc.Driver";
-        String url =  "jdbc:mysql://localhost:3303/SARA006";     
+        String url = "jdbc:mysql://localhost:3306/" + db;
         String usuario = "root";
         String contraseña = "";
-        Connection conn =  null;
-        try{
+        Connection conn = null;
+        try {
             Class.forName(driver).newInstance();
-            conn = DriverManager.getConnection(url,usuario,contraseña);
+            conn = DriverManager.getConnection(url, usuario, contraseña);
             System.out.println("Conexion Exitosa");
-        }catch(ClassNotFoundException ex){
+        } catch (ClassNotFoundException ex) {
             System.out.println("Conexion Fallida" + ex.getMessage());
-        }catch(SQLDataException ex){
+        } catch (SQLDataException ex) {
             System.out.println("Conexion Fallida" + ex.getMessage());
-        }catch(SQLException ex){
+        } catch (SQLException ex) {
             System.out.println("Conexion Fallida" + ex.getMessage());
-        }catch(Exception ex){
+        } catch (Exception ex) {
             System.out.println("Conexion Fallida" + ex.getMessage());
-        }
-        finally{
-            
+        } finally {
+
         }
         return conn;
-    } 
-    protected Connection CerrarConn(Connection conn) throws SQLException{
+    }
+
+    protected Connection CerrarConn(Connection conn) throws SQLException {
         conn.close();
         conn = null;
         return conn;
-    }    
-}
+    }
 
+    public String getDb() {
+        return db;
+    }
+}

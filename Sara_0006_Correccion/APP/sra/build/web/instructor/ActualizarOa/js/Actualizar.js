@@ -1,13 +1,13 @@
 $(document).ready(function () {
     var selector = [], hilo = [], idPv = 0, jso = [], data = [], datos = [], estado = "", men = "", arraySelecionAutor = [], arraySelecionEstr = [], arraySelecionCate = [], arrayselecT = [], arrayselecTF = [], arrFuciona = [];
     var ob = new $.Luna("Productos virtuales", $("#tablaActualizacion"));
-    ob.Vivo("Actualizar");  
+    ob.Vivo("Actualizar");
     $("#contenedorass").show();
     $("#formularioss").hide();
     selector[0] = $("#tablaActualizacion");
     //jso[0] = ['Version_Controller', '[{opcion:1,idFun:' + idUser + '}]'];
     //-------Consulta Notificaciones
-        jso[0] = ['Notificaciones_Controller','[{opcion:5,parametros:['+ idUser + ',' + idRol + ',0]}]'];
+    jso[0] = ['Notificaciones_Controller', '[{opcion:5,parametros:[' + idUser + ',' + idRol + ',0]}]'];
     //----------
     datos[0] = {nombre: "actualizacionVersion"};
     ob.TablaEspa(selector[0]);
@@ -334,7 +334,10 @@ $(document).ready(function () {
             //jso[12] = ['Version_Controller', '[{opcion:3,info:[' + idPv + ',' + $("#instrucciones").val() + ',' + $("#requisitos_instalacion").val() + '],arrayFun:[' + arrayAutor + '],arrayTemas:[' + arrayTemas + '],archivoNom:' + $("#myfile").val() + '}]'];
 
             //20/04/2017
-            jso[12] = ['Version_Controller', '[{opcion:3,info:[' + idPv + ',' + $("#myfile").val() + ',0,' + $("#instrucciones").val() + ',' + $("#requisitos_instalacion").val() + '],arrayFun:[' + arrayAutor + '],arrayTemas:[' + arrayTemas + ']}]'];
+            var path = $("#myfile").val();
+            var filename = path.replace(/C:\\fakepath\\/, '');
+
+            jso[12] = ['Version_Controller', '[{opcion:3,info:[' + idPv + ',' + filename + ',0,' + $("#instrucciones").val() + ',' + $("#requisitos_instalacion").val() + '],arrayFun:[' + arrayAutor + '],arrayTemas:[' + arrayTemas + ']}]'];
             selector[12] = null;
             datos[12] = {nombre: "btn"};
             console.log("Listo para enviar");
@@ -350,14 +353,10 @@ $(document).ready(function () {
         var nomArh = $(this).val();
         var ex = nomArh.split(".");
         nomArh = ex[ex.length - 1];
-        if ($("#formato").val() == "A0") {
-            $(".inputNotifi").notify(
-                    "Selecione un formato de archivo", 'warn',
-                    {position: "right"}
-            );
-        } else if ($("#formato").text().trim() == nomArh.trim()) {
-            $(".inputNotifi").notify(
-                    "Selecione un archivo de formato " + No, 'warn',
+        var menAlert="Selecione un archivo de formato " + $("#formato").val();
+        if ($("#formato").val() !== nomArh) {
+            $("#myfile").notify(
+                    menAlert, 'warn',
                     {position: "right"}
             );
             $(this).val('');
@@ -366,7 +365,7 @@ $(document).ready(function () {
         var siezekiloByte = parseInt(sizeByte / 1024);
         if (siezekiloByte > $(this).attr('size')) {
             $(this).val('');
-            $(".inputNotifi").notify(
+            $("#myfile").notify(
                     "El archivo supera el limite de 25 mb", 'warn',
                     {position: "right"}
             );
@@ -411,6 +410,7 @@ $(document).ready(function () {
             }
             selector[1] = $("#SelectAutores");
             datos[1] = {nombre: "MultiSelect", compuesto: true};
+
             ob.cargarTabla(arrFuciona, selector[1], datos[1]);
             jso[3] = ['Crud_Controller', '[{opcion:3,tabla2:17,tipo:1,elegir:[0,1],delimitador:[],id:0,opSelect:4}]'];
             selector[3] = $("#formato");
@@ -420,10 +420,7 @@ $(document).ready(function () {
             var peticion1 = jstotal.Peticion_1;
             peticion1.forEach(function (val) {
                 $("#Titulo_Publicacion").val(val.Nom_P_Virtual);
-                $("select#formato option")
-                        .each(function () {
-                            this.selected = (this.text == val.Nom_Formato);
-                        });
+                $("#formato").val(val.Nom_Formato);
                 $("#palabras_claves").val(val.Palabras_Clave);
                 $("#descripcion_oa").val(val.Des_P_Virtual);
             });

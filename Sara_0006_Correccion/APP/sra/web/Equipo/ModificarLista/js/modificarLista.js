@@ -135,7 +135,6 @@ function modificar(idTipoItem) {
             hilo[i].postMessage(jso[i]);
             hilo[i].onmessage = function (event) {
                 data[i] = event.data;
-                alert(data[i]);
                 ob.cargarTabla(data[i], selector[i], datos);
                 if ( (i != 5)&& (i!=1 )) {
                     data[i] = jQuery.parseJSON(event.data);

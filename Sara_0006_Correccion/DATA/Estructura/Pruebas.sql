@@ -1,9 +1,10 @@
 USE SARA006;
 
-CALL ConsultarNotificaciones("1~1~1");
-CALL ConsultarNotificaciones("6~1~2");
+CALL ConsultarNotificaciones("4~1~1");
+CALL ConsultarNotificaciones("1~1~2");
 
-SET @valore = "16";
+
+SET @valore = "22";
 SET @NomPVirtual 			= CONCAT("Producto Numero Version_",@valore);
 SET @DesPVirtual 			= CONCAT("Producto Numero Version_",@valore);
 SET @PalabrasClave 			= CONCAT("Producto Numero Version_",@valore);
@@ -32,7 +33,7 @@ CALL ConsultarNotificaciones("2~2~3");
 
 SET @observacionG_1 	= "Observacion_1";
 SET @resultado_1 	  	= "1";
-SET @idVersion_1 	  	= "6";
+SET @idVersion_1 	  	= "2";
 SET @idLista_1 	  		= "1";
 SET @idFuncionario_1 	= "2";
 SET @fechaVigencia_1  	= "null";

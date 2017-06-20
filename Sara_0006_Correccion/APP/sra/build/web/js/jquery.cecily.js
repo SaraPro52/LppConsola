@@ -384,7 +384,7 @@ jQuery.Luna = function (Datos, selector) {
                             jsoCorre[i].Conte_Notificacion,
                             jsoCorre[i].Fecha_Envio,
                             "<a class='btn btn-info' href=DescargaArchivo?archivo=" + jsoCorre[i].Url_Version + ">Descargar P.V</a>",
-                            "<button  type='button' id='" + jsoCorre[i].Ides_Proceso + "$$" + jsoCorre[i].Id_Version + "$$" + jsoCorre[i].Nom_P_Virtual + "$$" + jsoCorre[i].Id_Notificacion + "$$" + jsoCorre[i].Url_Version + "' class='btn btn-info btnCorrecion'>Correguir P.V</button>"
+                            "<button  type='button' id='" +  jsoCorre[i].Ides_Proceso + "$$" + jsoCorre[i].Id_Version + "$$" + jsoCorre[i].Nom_P_Virtual + "$$" + jsoCorre[i].Id_Notificacion + "$$" + jsoCorre[i].Url_Version + "' class='btn btn-info btnCorrecion'>Correguir P.V</button>"
                         ]);
                     }
                     break;
@@ -394,7 +394,10 @@ jQuery.Luna = function (Datos, selector) {
                         table = selector.dataTable().fnAddData([
                             i + 1,
                             jsItem[i].Nom_P_Virtual,
+                            jsItem[i].Num_Version,
+                            jsItem[i].Nom_Formato,
                             jsItem[i].Fecha_Vigencia,
+                            "<a class='btn btn-info' href=DescargaArchivo?archivo=" + jsItem[i].Url_Version + ">Descargar P.V</a>",        
                             "<button  type='button' id='" + jsItem[i].Id_Version + "$$" + jsItem[i].Id_P_Virtual + "' class='btn btn-info btnAñadirVersion'>Actualizar P.V</button>"
                         ]);
                     }
@@ -408,7 +411,7 @@ jQuery.Luna = function (Datos, selector) {
                     for (var i = 0; i < jso.length; i++) {
                         table = selector.dataTable().fnAddData([
                             i + 1,
-                            jso[i].Producto,
+                            jso[i].Nom_P_Virtual,
                             jso[i].Conte_Notificacion,
                             jso[i].Fecha_Envio,
                             "<a class='btn btn-info' href=DescargaArchivo?archivo=" + jso[i].Url_Version + ">Descargar P.V</a>",
@@ -471,12 +474,14 @@ jQuery.Luna = function (Datos, selector) {
                     for (var i = 0; i < jsSelect.length; i++) {
                         table = selector.dataTable().fnAddData([
                             i + 1,
+                            jsSelect[i].Conte_Notificacion,
                             jsSelect[i].Nom_P_Virtual,
                             jsSelect[i].Num_Version,
-                            "<button id='" + jsSelect[i].Id_Version + "'class='btnclickHabilitar btn btn-info'>Habilitar</button>"
+                            "<a class='btn btn-info' href=DescargaArchivo?archivo=" + jsSelect[i].Url_Version + ">Descargar P.V</a>",
+                            "<button id='" + jsSelect[i].Ides_Proceso + "'class='btnclickHabilitar btn btn-info'>Habilitar</button>"
                         ]);
                         if (i < 4) {
-                            $(selecNo).append('<li><a><label class="Notify" id=' + jsSelect[i].Id_Version + '>Producto virtual ' + jsSelect[i].Nom_P_Virtual + '</label></a></li>');
+                            $(selecNo).append('<li><a><label class="Notify" id=' + jsSelect[i].Ides_Proceso + '>Producto virtual ' + jsSelect[i].Nom_P_Virtual + '</label></a></li>');
                         } else if (i == 4) {
                             $(selecNo).append('<li><a><label class="Notify" id=verMasNotificaciones>Ver mas productos</label></a></li>');
                         }

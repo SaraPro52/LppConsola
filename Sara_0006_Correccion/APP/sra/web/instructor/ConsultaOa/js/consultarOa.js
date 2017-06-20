@@ -2,16 +2,16 @@ $(document).on('ready', function () {
     var selector = [], hilo = [], jso = [], data = [], datos = [], constan = true, arraySelecionPrograma = [], arraySelectCategoria = [];
     $("#dataInicialA").datepicker({defaultDate: "+1w", changeMonth: true, numberOfMonths: 2});
     $("#dataFinalA").datepicker({defaultDate: "+1w", changeMonth: true, numberOfMonths: 2});
-    $("#dataInicialA").datepicker( "option", "maxDate", new Date() );
-    $("#dataFinalA").datepicker( "option", "maxDate", new Date() );
+    $("#dataInicialA").datepicker("option", "maxDate", new Date());
+    $("#dataFinalA").datepicker("option", "maxDate", new Date());
     $("#dataInicialA").change(function () {
         $("#dataFinalA").datepicker("option", "minDate", $("#dataInicialA").val());
     });
     $("#dataFinalA").change(function () {
         $("#dataInicialA").datepicker("option", "maxDate", $("#dataFinalA").val());
     });
-    
-    
+
+
     //    filtros[0]="0";//id Producto virtual
 //    filtros[1]="";//Id Formato
 //    filtros[2]="2017/04/15";//Fecha Inicial o Fecha unica
@@ -22,7 +22,7 @@ $(document).on('ready', function () {
 
 //    caso = 0 o 1 = 0 Cuando consulta inical sin ningun filtro, 1 consulta por los filtros
     jso[0] = ['ProductoVirtual_Controller', '[{opcion:5,filtrar:["","","","","","",""],caso:1}]'];//--->17/04/2017
-    
+
     //jso[0] = ['ProductoVirtual_Controller', '[{opcion:5,filtrar:[],caso:29}]'];
     selector[0] = $("#formulario1");
     datos[0] = {nombre: "ConsOaP"};
@@ -30,7 +30,7 @@ $(document).on('ready', function () {
     var ob = new $.Luna("Consultar PV", $("#formulario1"));
     ob.Vivo("ConsultarPV1");
     var tipoPet = 3;
-    $("#btnActu").click(function(){
+    $("#btnActu").click(function () {
         $("#resultadosProductos").empty();
         ajax(0, datos[0]);
     });
@@ -231,16 +231,7 @@ $(document).on('ready', function () {
         if ($("#Formato").val() != "AF") {
             formato = $("#Formato").val();
         }
-        console.log(tipoPet);
-        if (tipoPet == 0) {
-            jso[6] = ['ProductoVirtual_Controller', '[{opcion:5,filtrar:["' + $("#txtBuscarTitle").val() + '","' + formato + '","' + $("#dataInicialA").val() + '","' + $("#dataFinalA").val() + '","' + $("#Autores").val() + '","' + arraySelectCategoria + '"],caso:27}]'];
-            console.log("Tipoca");
-        } else if (tipoPet == 1) {
-            jso[6] = ['ProductoVirtual_Controller', '[{opcion:5,filtrar:["' + $("#txtBuscarTitle").val() + '","' + formato + '","' + $("#dataInicialA").val() + '","' + $("#dataFinalA").val() + '","' + $("#Autores").val() + '","' + arraySelecionPrograma + '"],caso:28}]'];
-            console.log("Tipotem");
-        } else {
-            jso[6] = ['ProductoVirtual_Controller', '[{opcion:5,filtrar:["' + $("#txtBuscarTitle").val() + '","' + formato + '","' + $("#dataInicialA").val() + '","' + $("#dataFinalA").val() + '","' + $("#Autores").val() + '","' + arraySelectCategoria + '"],caso:27}]'];
-        }
+        jso[6] = ['ProductoVirtual_Controller', '[{opcion:5,filtrar:["' + $("#txtBuscarTitle").val() + '","' + formato + '","' + $("#dataInicialA").val() + '","' + $("#dataFinalA").val() + '","' + $("#Autores").val() + '","' + arraySelecionPrograma + '"],caso:1}]'];
         selector[6] = $("#formulario1");
         datos[6] = {nombre: "ConsOaP"};
         $("#resultadosProductos").empty();
