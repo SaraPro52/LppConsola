@@ -34,5 +34,18 @@ public class Funcionario extends Elomac{
             }
         }
         
+        public boolean ModificarContraseña(String[] parametrosModifContr){
+            return (boolean)this.Registar(Group(parametrosModifContr,'~'), 20);
+        }
+        
+        public String Logueo(String[] paramUser){
+            try {
+                JSONArray arrayConsulta = new JSONArray(Elomac.M_ResultSet(Group(paramUser, '~'), 21));
+                return arrayConsulta.toString();
+            } catch (Exception e) {
+                return e.getMessage();
+            }
+        }
+        
        
 }

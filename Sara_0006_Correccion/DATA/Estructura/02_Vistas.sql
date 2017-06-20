@@ -384,7 +384,7 @@ CREATE VIEW 35_V_EstadisticaCategoria1 AS (
 			 INNER JOIN Version v6 ON v1.Id_P_Virtual = v6.Id_P_Virtual 
 			 INNER JOIN Autor v7 ON v6.Id_Version = v7.Id_Version
 			 INNER JOIN 08_V_Funcionario v8 ON v7.Id_Funcionario = v8.Id_Funcionario
-	WHERE v6.Id_Estado = 6,7
+	WHERE v6.Id_Estado IN  (6,7)
 );
 
 DROP VIEW IF EXISTS 36_V_EstadisticaCategoria2;

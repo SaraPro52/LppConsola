@@ -35,7 +35,7 @@ BEGIN
     WHEN 2 THEN -- CONSULTA CORRECCION
       BEGIN
 		SELECT Id_Notificacion,Conte_Notificacion,v1.Fecha_Envio,Ides_Proceso,
-		Nom_P_Virtual,Num_Version,Url_Version
+		Nom_P_Virtual,v3.Id_Version,Num_Version,Url_Version
 		FROM 43_V_ConsultaTodoNotificacion v1 
 		INNER JOIN Evaluacion_General v2 ON v1.Ides_Proceso = v2.Id_Evaluacion_General
 		INNER JOIN Version v3 ON v2.Id_Version = v3.Id_Version

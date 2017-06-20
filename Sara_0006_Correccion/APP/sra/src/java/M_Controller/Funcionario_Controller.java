@@ -60,30 +60,19 @@ public class Funcionario_Controller extends HttpServlet {
                         respuesta.println("[{valor:false,mensaje:'" + e.getMessage() + "'}]");
                     }
                     break;
-                case 3:
+                case 3://MODIFICAR CONTRASEÑA
+                       //jso[1] = ['Funcionario_Controller','[{opcion:3,modificarContra:['+idUser+','+$("#user").val()+','+$("#ConActual").val()+','+$("#ConNueva").val+']}]'];
+                        
                     try {
-                        Elomac fun1 = new Elomac(18, 1);
-                        String usuario = jData.getString("user");
-                        String contraseña = DigestUtils.md5Hex(jData.getString("pwd"));
-                        String delimitador = "[{colum:2,operador:0,valor1:" + usuario + " ,añadir:0},{colum:8,operador:0,valor1:'\"" + contraseña + "\"'}]";
-                        String[] num = {"0", "5"};
-                        String DatFun = new Elomac(18, 1).Select(num, delimitador);
-                        JSONObject funJ = new JSONArray(DatFun).getJSONObject(0);
-                        if (jData.getInt("id") == funJ.getInt("Id_Funcionario")) {
-
-                            String tabla1 = "18";
-                            String actualizar = DigestUtils.md5Hex(jData.getString("conNueva"));
-                            Elomac elo = new Elomac(tabla1,1);
-                            if (elo.Update("8","nul",actualizar)) {
-                                DJCorreoHTML correoHTML = new DJCorreoHTML();
-                                correoHTML.mensajeContrasena(funJ.getString("Correo"), "SARA PRO/Cambio de contraseña");
-                                respuesta.println("true$$se actualizo correctamente");
-                            } else {
-                                respuesta.println("false$$no actualizo");
-                            }
+                        String[] paramModiContr = Elomac.M_toArray(jData.getString("modificarContra"));
+                        paramModiContr[2] = DigestUtils.md5Hex(paramModiContr[2]);
+                        paramModiContr[3] = DigestUtils.md5Hex(paramModiContr[3]);
+                        if(new Funcionario().ModificarContraseña(paramModiContr)){
+                            respuesta.println("true$$se actualizo correctamente");
                         } else {
-                            respuesta.println("false$$Usuario y/o contraseña incorrectos");
+                            respuesta.println("false$$no actualizo");
                         }
+                        
                     } catch (Exception e) {
                         System.out.println(e.getMessage());
                         respuesta.println("false$$la contraseña  no se actualizo");

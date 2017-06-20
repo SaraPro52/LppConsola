@@ -66,7 +66,10 @@ $(document).on('ready', function () {
         ccT = 0;
     });
     function BtnCon() {
-        jso[1] = ['Funcionario_Controller', '[{opcion:7,:' + idUser + ',conNueva:' + $("#ConNuevaF").val() + ',conA:' + $("#ConActual").val() + ',user:' + $("#user").val() + ',pwd:' + $("#ConActual").val() + '}]'];
+        //jso[1] = ['Funcionario_Controller', '[{opcion:7,:' + idUser + ',conNueva:' + $("#ConNuevaF").val() + ',conA:' + $("#ConActual").val() + ',user:' + $("#user").val() + ',pwd:' + $("#ConActual").val() + '}]'];
+        jso[1] = ['Funcionario_Controller','[{opcion:3,modificarContra:['+idUser+','+$("#user").val()+','+$("#ConActual").val()+','+$("#ConNueva").val+']}]'];
+       
+        //jso[1] = ['Funcionario_Controller','[{opcion:3,modificarContra:[1,1019133595,123456,1234567]}]'];
         datos[1] = {nombre: "btn"};
         ajax(1, datos[1]);
     }

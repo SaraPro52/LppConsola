@@ -1431,6 +1431,13 @@ public class NewMain {
 //        Formato f = new Formato();
 //        System.out.println(f.consultaTipoFormato(arrayF));
 
-        System.out.println(new EstructuraDB().ListaTablas());
+        //System.out.println(new EstructuraDB().ListaTablas());
+        
+//        String[] parametrosModi = {"1","1019133595","e10adc3949ba59abbe56e057f20f883e1","e10adc3949ba59abbe56e057f20f883e"};
+//        System.out.println(new Funcionario().ModificarContraseña(parametrosModi));
+
+        //String[] para = {"1019","1019"};
+        String[] para = {"1019133595","fcea920f7412b5da7be0cf42b8c93759"};
+        System.out.println(new Funcionario().Logueo(para));
     }
 }
