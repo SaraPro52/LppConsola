@@ -7,10 +7,11 @@ import java.sql.SQLException;
 public class M_Connection{
     
     public M_Connection(){}
+    private static String db = "SARA006";
     
     protected Connection obtenerConn(){
         String driver = "com.mysql.jdbc.Driver";
-        String url =  "jdbc:mysql://localhost:3303/SARA006";     
+        String url =  "jdbc:mysql://localhost:3303/"+db;     
         String usuario = "root";
         String contraseña = "";
         Connection conn =  null;
@@ -36,6 +37,10 @@ public class M_Connection{
         conn.close();
         conn = null;
         return conn;
-    }    
+    }   
+    
+    public String getDb(){
+        return db;
+    }
 }
 

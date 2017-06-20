@@ -15,7 +15,7 @@ public class CargaDatos {
     public CargaDatos(){}
  
     
-    public String cargaMasiva(String nomArchivo,String nomTabla){
+    public boolean cargaMasiva(String nomArchivo,String nomTabla){
         contenidoInsert1 = "INSERT INTO "+nomTabla+" ";
         
         String ruta =  "..\\sra\\web\\Archivos\\CarguesMasivos\\"+nomArchivo;
@@ -49,12 +49,11 @@ public class CargaDatos {
                    else contenidoInsert1 += " , ("+datosInsert+") ";
                    cont++;
                 }
-                
             }
             new M_Procedure().Registar(contenidoInsert1, 4);
-            return "Exito";
+            return true;
         } catch (Exception e) {
-            return "falllaaa"+e.getMessage();
+            return false;
         }
     }
     

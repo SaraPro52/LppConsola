@@ -30,7 +30,13 @@ BEGIN
 					SELECT COLUMN_NAME AS Columnas, @cont := @cont + 1 AS PosicionColum
                     FROM information_schema.COLUMNS iC
                     WHERE iC.TABLE_SCHEMA = @valDB AND TABLE_NAME = @valTabla;
+		WHEN 3 THEN 
+					SELECT DISTINCT iT.TABLE_NAME AS tablas
+					FROM  information_schema.TABLES iT
+					WHERE iT.TABLE_SCHEMA = @valDB AND TABLE_TYPE = "BASE TABLE" AND iT.TABLE_NAME NOT LIKE '%_Log';
     END CASE;
  
 END;;
 DELIMITER ;
+
+-- CALL InfoDB("SARA006~3~0");

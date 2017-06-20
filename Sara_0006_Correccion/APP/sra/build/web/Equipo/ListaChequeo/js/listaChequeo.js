@@ -2,7 +2,7 @@ function listaChequeo(idTipoItem, idUser) {
     var selector = [], hilo = [], jso = [], data = [], datos = [], men = "", estado = "";
     var ob = new $.Luna("MultiItems", $("#SelectItem"));
     ob.Vivo("ListaDeChequeo");
-    jso[0] = ['Crud_Controller', '[{opcion:3,tabla2:19,tipo:1,elegir:[0,1],delimitador:"[{colum: 2,operador: 0,valor1:' + idTipoItem + '}]",id:0,opSelect:6}]'];
+    jso[0] = ['Crud_Controller', '[{opcion:3,tabla2:37,tipo:1,elegir:[0,1],delimitador:"[{colum: 2,operador: 0,valor1:' + idTipoItem + '}]",id:0,opSelect:6}]'];
     selector[0] = $("#SelectItem");
     datos[0] = {nombre: "MultiSelect", opt: "NN"};
     ajax(0, datos[0]);
@@ -116,6 +116,7 @@ function listaChequeo(idTipoItem, idUser) {
         hilo[i].postMessage(jso[i]);
         hilo[i].onmessage = function (event) {
             data[i] = event.data;
+            alert(data[i]);
             ob.cargarTabla(data[i], selector[i], datos);
             hilo[i].terminate();
             peticionCompleta(i);

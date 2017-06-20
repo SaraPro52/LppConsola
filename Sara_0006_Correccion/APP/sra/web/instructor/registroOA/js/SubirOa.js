@@ -8,6 +8,12 @@ $(document).ready(function () {
     selector[0] = $("#Titulo_Publicacion");
     datos[0] = {nombre: "AutoComplet", worker: true};
     ajax(0, datos[0]);
+    
+    //TIPO FORMATO (IMAGEN, VIDEO, DOCUMENTO)
+    //jso[0] = ['SubirPv_Controller','[{opcion:1,tipoFormato:[1,0]}]'];
+    
+    //EXTENCION DE ACUERDO AL IDFORMATO SELECCIONADO (JPJ ETC)
+    ///jso[0] = ['SubirPv_Controller','[{opcion:1,tipoFormato:[2,'+idTipoFormato+']}]'];
 
 
     $("#formato").change(function () {
@@ -275,6 +281,7 @@ $(document).ready(function () {
         hilo[i].postMessage(jso[i]);
         hilo[i].onmessage = function (event) {
             data[i] = event.data;
+            alert(data[i]);
             ob.cargarTabla(data[i], selector[i], datos);
             hilo[i].terminate();
             peticionCompleta(i);
@@ -338,6 +345,7 @@ $(document).ready(function () {
     function peticionCompleta(i) {
         if (i == 0) {
             jso[1] = ['Crud_Controller', '[{arr:0,opcion:3,tabla2:7,tipo:2,elegir:[4,8],delimitador:"[{colum:16,operador:0,valor1:' + idCentro + ',añadir:0},{colum:4,operador:7,valor1:' + idUser + ',añadir:0},{colum:1,operador:0,valor1:1}]",id:0,opSelect:6}]",id:0,opSelect:4}]'];
+            
             selector[1] = $("#SelectAutores");
 
             datos[1] = {nombre: "btn"};

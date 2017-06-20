@@ -1,5 +1,5 @@
 
--- CALL ConsultaVistaSubirPV("2~2");
+-- CALL ConsultaVistaSubirPV("1~0");
 
 
 DROP PROCEDURE IF EXISTS ConsultaVistaSubirPV;

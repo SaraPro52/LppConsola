@@ -4,6 +4,7 @@ import M_Controller.Archivos.Archivos;
 import M_Modelo.Categoria;
 import M_Modelo.Estadisticas;
 import M_Modelo.Evaluacion_General;
+import M_Modelo.Formato;
 import M_Modelo.Funcionario;
 import M_Modelo.Lista_Chequeo;
 import M_Modelo.Notificacion;
@@ -1420,10 +1421,16 @@ public class NewMain {
 //Notificacion n = new Notificacion();
 //        System.out.println(n.ConsultarNotificacion_M(para));
 
-        String[] reportes = {"4","1","0","2017"};
-        System.out.println(new Estadisticas().ConsultaReportes(reportes));
+//        String[] reportes = {"4","1","0","2017"};
+//        System.out.println(new Estadisticas().ConsultaReportes(reportes));
 
 //        String[] graficas = {"1","1","0","0"};
 //        System.out.println(new Version().ConsultaGraficas(graficas));
+
+//        String[] arrayF = {"2","3"};
+//        Formato f = new Formato();
+//        System.out.println(f.consultaTipoFormato(arrayF));
+
+        System.out.println(new EstructuraDB().ListaTablas());
     }
 }

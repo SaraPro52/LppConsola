@@ -10,11 +10,11 @@ public class Formato extends Elomac{
 	}
         
         public String consultaTipoFormato(String[] parametrosTipoFormato){
-            
             try {
-                JSONArray arrayConsulta = new JSONArray(Elomac.M_ResultSet(Group(parametrosTipoFormato, '~'), 17));
+                JSONArray arrayConsulta = new JSONArray(Elomac.M_ResultSet(Group(parametrosTipoFormato, '~'), 19));
+                return arrayConsulta.toString();
             } catch (Exception e) {
+                return e.getMessage();
             }
-            return null;
         }
 }
