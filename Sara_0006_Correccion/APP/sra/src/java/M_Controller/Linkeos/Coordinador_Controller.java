@@ -41,6 +41,9 @@ public class Coordinador_Controller extends HttpServlet {
                     case 4:
                         request.getRequestDispatcher("perfil/perfilUsuario.jsp").forward(request, response);
                         break;
+                    case 6:
+                        request.getRequestDispatcher("coordinador/consultarReportes/consultarReportes.jsp").forward(request, response);
+                        break;
                 }
             } else {
                 request.getRequestDispatcher("index.jsp").forward(request, response);

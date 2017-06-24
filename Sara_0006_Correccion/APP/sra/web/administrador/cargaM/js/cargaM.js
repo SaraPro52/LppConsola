@@ -1,11 +1,11 @@
 $(document).on('ready', function () {
-    var selector = [], hilo = [], jso = [], data = [], datos = [], estado = "";
+    var selector = [], hilo = [], jso = [], data = [], datos = [], estado = "", men = "";
     var ob = new $.Luna("Carga masiva", null);
     ob.Vivo("Carga masiva");
     //peticon
-    jso[0] = ['Crud_Controller', '[{opcion:3,tabla2:6,tipo:1,elegir:[0,1],delimitador:[],id:0,opSelect:4}]'];
+    jso[0] = ['CargueMasivo_Controller', '[{opcion:2}]'];
     selector[0] = $("#selectTable");
-    datos[0] = {nombre: "Select"};
+    datos[0] = {nombre: "SelectArray"};
     ajax(0, datos[0]);
 
     var options = {
@@ -25,21 +25,18 @@ $(document).on('ready', function () {
             }
         },
         success: function () {
-
             var path = $("#myfile").val();
             var filename = path.replace(/C:\\fakepath\\/, '');
-            $("#selectTable").val();
-            
-            jso[5] = ['ProductoVirtual_Controller', '[{opcion:3,correccion:[' + idUser + ',' + idver + '],archivoNom:\"' + $("#myfile").val() + '\",idNot:' + idNot + ',url:' + url + '}]'];
+            jso[5] = ['CargueMasivo_Controller', '[{opcion:1,archivo:' + filename + ',tabla:' +  $("#selectTable option:selected").text() + '}]'];
             selector[5] = null;
             datos[5] = {nombre: "btn"};
-            //ajax(5, datos[5]);
+            ajax(5, datos[5]);
         },
         error: function () {
             $("#message").html("<font color='red'>Error: al subir el archivo</font>");
         }
     };
-    $("#UploadForm").ajaxForm(options);
+    $("#formCargaM").ajaxForm(options);
 
     $('.input-file').change(function () {
         var nomArh = document.getElementById("myfile").files[0].name;
@@ -75,13 +72,15 @@ $(document).on('ready', function () {
         };
     }
     function peticionCompleta(i) {
-        if (i == 1) {
-            if (data[0].length == data[i].length) {
-                men = "La tabla " + men + " No se le ingresaron los datos.";
-                estado = ("error");
-            } else if (data[0].length < data[i].length) {
-                men = "La tabla " + men + " se le ingresaron correctamente los datos";
+        if (i == 5) {
+            var daMen = data[i].split("$$");
+            men = $("#selectTable option:selected").text();
+            if (daMen[0] == "true") {
                 estado = ("success");
+                men = "La carga de datos en la tabla " + men + " a sido " + daMen[1];
+            } else {
+                estado = ("error");
+                men = "La carga de datos en la tabla " + men + " a sido " + daMen[1];
             }
             $.notify(men, estado);
         }

@@ -1,6 +1,7 @@
 
 package M_Util;
 
+import M_Controller.Archivos.Archivos;
 import com.opencsv.CSVReader;
 import java.io.BufferedReader;
 import java.io.File;
@@ -17,8 +18,8 @@ public class CargaDatos {
     
     public boolean cargaMasiva(String nomArchivo,String nomTabla){
         contenidoInsert1 = "INSERT INTO "+nomTabla+" ";
-        
-        String ruta =  "..\\sra\\web\\Archivos\\CarguesMasivos\\"+nomArchivo;
+        Archivos a = new Archivos();
+        String ruta =  a.cargaMasiva()+nomArchivo;
         try {
             File archivoCSV = new File(ruta);
             String[] nextLine;
@@ -50,8 +51,14 @@ public class CargaDatos {
                    cont++;
                 }
             }
-            new M_Procedure().Registar(contenidoInsert1, 4);
-            return true;
+            System.out.println(contenidoInsert1);
+            
+            if((boolean) new M_Procedure().Registar(contenidoInsert1, 4)){
+                return true;
+            }else{
+                return false;
+            }
+            
         } catch (Exception e) {
             return false;
         }

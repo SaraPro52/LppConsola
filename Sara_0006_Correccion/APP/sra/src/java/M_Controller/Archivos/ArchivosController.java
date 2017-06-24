@@ -68,7 +68,6 @@ public class ArchivosController extends HttpServlet {
      *
      * @param nombre Nombre del archivo que se desea eliminar.
      */
-
     public void EliminarArchivo(String nombre, int val) { //1:rutaTem 2: getbase
         Archivos a = new Archivos();
         String ruta;
@@ -79,6 +78,24 @@ public class ArchivosController extends HttpServlet {
         }
         File archivo = new File(ruta);
         archivo.delete();
+    }
+
+    public void MoverArchivoCsv(String nomArchivo) {
+        try {
+            Archivos bs = new Archivos();
+            File archivo = new File(bs.rutaTem() + nomArchivo);
+            File NuNombre = new File(bs.cargaMasiva() + nomArchivo);
+
+            if (archivo.renameTo(NuNombre)) {
+                System.out.println("Si");
+            } else {
+                System.out.println(archivo.renameTo(NuNombre));
+            }
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+
+        }
     }
 
     public void MoverArchivo(String nomArchivo) {
@@ -113,7 +130,6 @@ public class ArchivosController extends HttpServlet {
 
         //String cadenaNormalize = Normalizer.normalize(NuevoNombre, Normalizer.Form.NFD);
         //String cadenaSinAcentos = cadenaNormalize.replaceAll("[^\\p{ASCII}]", "");
-
         //NuevoNombre = cadenaSinAcentos;
         try {
             Archivos bs = new Archivos();

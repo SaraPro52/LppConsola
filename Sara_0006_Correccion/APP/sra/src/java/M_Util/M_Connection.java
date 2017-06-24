@@ -13,7 +13,7 @@ public class M_Connection{
         String driver = "com.mysql.jdbc.Driver";
         String url =  "jdbc:mysql://localhost:3306/"+db;     
         String usuario = "root";
-        String contraseña = "";
+        String contraseña = "5753494judinI";
         Connection conn =  null;
         try{
             Class.forName(driver).newInstance();

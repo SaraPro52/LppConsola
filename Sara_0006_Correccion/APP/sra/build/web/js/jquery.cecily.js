@@ -277,6 +277,17 @@ jQuery.Luna = function (Datos, selector) {
                         }));
                     }
                     break;
+                case "SelectArray":
+                    var jso = jQuery.parseJSON(json);
+                    var j = Object.keys(jso[0]);
+                    for (var i = 0; i < jso.length; i++) {
+                        var ar = jso[i].TABLE_NAME;
+                        selector.append($('<option>', {
+                            value: 0,
+                            text: ar
+                        }));
+                    }
+                    break;
                 case "ConsOaP":
                     var arryImagen = [
                         {nombre: "texto Plano", arrayExt: ["txt", "log"]},
@@ -384,7 +395,7 @@ jQuery.Luna = function (Datos, selector) {
                             jsoCorre[i].Conte_Notificacion,
                             jsoCorre[i].Fecha_Envio,
                             "<a class='btn btn-info' href=DescargaArchivo?archivo=" + jsoCorre[i].Url_Version + ">Descargar P.V</a>",
-                            "<button  type='button' id='" +  jsoCorre[i].Ides_Proceso + "$$" + jsoCorre[i].Id_Version + "$$" + jsoCorre[i].Nom_P_Virtual + "$$" + jsoCorre[i].Id_Notificacion + "$$" + jsoCorre[i].Url_Version + "' class='btn btn-info btnCorrecion'>Correguir P.V</button>"
+                            "<button  type='button' id='" + jsoCorre[i].Ides_Proceso + "$$" + jsoCorre[i].Id_Version + "$$" + jsoCorre[i].Nom_P_Virtual + "$$" + jsoCorre[i].Id_Notificacion + "$$" + jsoCorre[i].Url_Version + "' class='btn btn-info btnCorrecion'>Correguir P.V</button>"
                         ]);
                     }
                     break;
@@ -397,7 +408,7 @@ jQuery.Luna = function (Datos, selector) {
                             jsItem[i].Num_Version,
                             jsItem[i].Nom_Formato,
                             jsItem[i].Fecha_Vigencia,
-                            "<a class='btn btn-info' href=DescargaArchivo?archivo=" + jsItem[i].Url_Version + ">Descargar P.V</a>",        
+                            "<a class='btn btn-info' href=DescargaArchivo?archivo=" + jsItem[i].Url_Version + ">Descargar P.V</a>",
                             "<button  type='button' id='" + jsItem[i].Id_Version + "$$" + jsItem[i].Id_P_Virtual + "' class='btn btn-info btnAñadirVersion'>Actualizar P.V</button>"
                         ]);
                     }
