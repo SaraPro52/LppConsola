@@ -37,6 +37,8 @@
                         <li class="btntt" value="3"><a><i class="ti-ruler-alt-2"></i><p><label style='cursor:pointer;' id="text3">Área</label></p></a></li>
                         <li class="btntt" value="5"><a><i class="ti-blackboard"></i><p><label style='cursor:pointer;' id="text5">Programa</label></p></a></li>
                         <li class="btntt" value="4"><a><i class="ti-layout-width-default"></i><p><label style='cursor:pointer;' id="text4">Carga Masiva</label></p></a></li>
+                        <li class="btntt" value="8"><a><i class="ti-file"></i><p><label style='cursor:pointer;' id="text8">Tipo de formato</label></p></a></li>
+                        <li class="btntt" value="9"><a><i class="ti-blackboard"></i><p><label style='cursor:pointer;' id="text9">Centro de formacion</label></p></a></li>
                         <li class="btntt" value=""><a href="principal?opcion=2"><i class="glyphicon glyphicon-off" aria-hidden="true"></i><label style='cursor:pointer;' id="text2">Cerrar Sesión</label></a></li>
                     </ul>
                 </div>
@@ -118,7 +120,7 @@
     <script>
 
         var idRol = '<%= session.getAttribute("idRol")%>';
-        if (idRol == null ) {
+        if (idRol == null) {
             location.replace('index.jsp');
         } else {
             var tem = 'idRol:' + idRol + '}]';

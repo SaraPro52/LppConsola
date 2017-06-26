@@ -1,7 +1,7 @@
 $(document).on('ready', function () {
     var selector = [], hilo = [], jso = [], data = [], datos = [], arrayTemas = [], men = "", estado = "", idPrograma = 0;
-    var ob = new $.Luna("Select", $("#SelecCentro"));
-    $(".Mult").hide();
+    var ob = new $.Luna("Select", null);
+
     ob.Vivo("Programas");
     jso[0] = ['Modificar_Controller', '[{opcion:2,ProgramaAdmin:[0,0,0,0,0]}]'];
     selector[0] = $("#tablaPrograma");
@@ -22,7 +22,6 @@ $(document).on('ready', function () {
         ajax(2, datos[2]);
 
     });
-
 
     $('.MultTemasFormacion').multiSelect({
         selectableHeader: "<input type='text' class='search-input form-control' autocomplete='off' placeholder='Busca un tema...'>",

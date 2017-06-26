@@ -47,6 +47,8 @@ public class Administrador_Controller extends HttpServlet {
                     case 6:
                         request.getRequestDispatcher("perfil/perfilUsuario.jsp").forward(request, response);
                         break;
+                        
+                        
                 }
             } else {
                 request.getRequestDispatcher("index.jsp").forward(request, response);
