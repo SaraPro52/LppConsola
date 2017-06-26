@@ -1,64 +1,28 @@
 $(document).on('ready', function () {
-    var selector = [], hilo = [], jso = [], data = [], datos = [], arrayAreas = [], arrayTemas = [], men = "", estado = "";
+    var selector = [], hilo = [], jso = [], data = [], datos = [], arrayTemas = [], men = "", estado = "", idPrograma = 0;
     var ob = new $.Luna("Select", $("#SelecCentro"));
     $(".Mult").hide();
     ob.Vivo("Programas");
-    jso[0] = ['Crud_Controller', '[{opcion:3,tabla2:5,tipo:1,elegir:[0,2],delimitador:[],id:0,opSelect:4}]'];
-    selector[0] = $("#SelecCentro");
-    datos[0] = {nombre: "Select"};
+    jso[0] = ['Modificar_Controller', '[{opcion:2,ProgramaAdmin:[0,0,0,0,0]}]'];
+    selector[0] = $("#tablaPrograma");
+    ob.TablaEspa(selector[0]);
+    datos[0] = {nombre: "ConsultaPrograma"};
     ajax(0, datos[0]);
-    $("#multiselectAreas").show();
-    $("#SelecCentro").change(function () {
-        $(".Mult").show();
-        $("#MultAreas").empty();
-        if ($("#SelecCentro").val() != "A0") {
-            jso[1] = ['Crud_Controller', '[{opcion:3,tabla2:10,tipo:2,elegir:[0,1],\n\
-                delimitador:"[{colum:2,operador:0,valor1:' + $("#SelecCentro").val() + '}]",id:0,opSelect:6}]'];
-            selector[1] = $("#MultAreas");
-            datos[1] = {nombre: "MultiSelect"};
-            ajax(1, datos[1]);
-        } else {
-            $("#multiselectAreas").hide();
-        }
-    });
-    $('.MultAreas').multiSelect({
-        selectableHeader: "<input type='text' class='search-input form-control' autocomplete='off' placeholder='Busca una area...'>",
-        selectionHeader: "<input type='text' class='search-input form-control' autocomplete='off' placeholder='Busca una area...'>",
-        afterInit: function (ms) {
-            var that = this,
-                    $selectableSearch = that.$selectableUl.prev(),
-                    $selectionSearch = that.$selectionUl.prev(),
-                    selectableSearchString = '#' + that.$container.attr('id') + ' .ms-elem-selectable:not(.ms-selected)',
-                    selectionSearchString = '#' + that.$container.attr('id') + ' .ms-elem-selection.ms-selected';
 
-            that.qs1 = $selectableSearch.quicksearch(selectableSearchString)
-                    .on('keydown', function (e) {
-                        if (e.which === 40) {
-                            that.$selectableUl.focus();
-                            return false;
-                        }
-                    });
+    $(document).on('click', '.btnModificarPrograma', function (e) {
+        var valors = this.id.split("$$");
+        idPrograma = valors[0];
+        $("#nomPro").val(valors[1]);
+        $("#nivel option[value=" + valors[2] + "]").attr("selected", true);
+        $("#btnPrograma").html("Modificar programa");
+        jso[2] = ['Modificar_Controller', '[{opcion:2,ProgramaAdmin:[3,' + idPrograma + ',0,0,0]}]']
+        selector[2] = $("#MultTemasFormacion");
+        $("#MultTemasFormacion").empty();
+        datos[2] = {nombre: "MultiSelectArrayPrograma", compuesto: true};
+        ajax(2, datos[2]);
 
-            that.qs2 = $selectionSearch.quicksearch(selectionSearchString)
-                    .on('keydown', function (e) {
-                        if (e.which == 40) {
-                            that.$selectionUl.focus();
-                            return false;
-                        }
-                    });
-        },
-        afterSelect: function (val) {
-            this.qs1.cache();
-            this.qs2.cache();
-            arrayAreas.push(val);
-        },
-        afterDeselect: function (val) {
-            this.qs1.cache();
-            this.qs2.cache();
-            var busqueda = $.inArray(val, arrayAreas);
-            arrayAreas.splice(busqueda, 1);
-        }
     });
+
 
     $('.MultTemasFormacion').multiSelect({
         selectableHeader: "<input type='text' class='search-input form-control' autocomplete='off' placeholder='Busca un tema...'>",
@@ -126,20 +90,30 @@ $(document).on('ready', function () {
             selet = $("#MultTemasFormacion");
             selet.focus().after("<div class='remove'><font color='red'>seleccione almenos un tema</font><div>");
         }
-        if (arrayAreas.length == 0) {
-            selet = $("#MultAreas");
-            selet.focus().after("<div class='remove'><font color='red'>seleccione almenos una area</font><div>");
-        }
-
-        if ((boo == 3) && (arrayAreas.length > 0) && (arrayTemas.length > 0)) {
+        if ((boo == 2) && (arrayTemas.length > 0)) {
             BtnPrograma();
         }
     });
     function BtnPrograma() {
+        var aTemas = [];
+        for (var a = 0; a < arrayTemas.length; a++) {
+            aTemas = aTemas + "," + (arrayTemas[a]);
+        }
         men = $("#nomPro").val();
-        jso[3] = ['FormacionPro_Controller', '[{opcion:1,datos:["","' + $("#nomPro").val() + '","' + $("#nivel").val() + '"],areas:[' + arrayAreas + '],temas:[' + arrayTemas + ']}]'];
-        datos[3] = {nombre: "btn"};
-        ajax(3, datos[3]);
+        if ($("#btnPrograma").html() == "Modificar programa") {
+            men = $("#nomPro").val();
+            jso[3] = ['Modificar_Controller', '[{opcion:2,ProgramaAdmin:[2,' + idPrograma + ',' + $("#nomPro").val() + ',' + $("#nivel").val() + ',\"' + arrayTemas + '\"]}]'];
+            datos[3] = {nombre: "btn"};
+            ajax(3, datos[3]);
+        } else {
+            men = $("#nomPro").val();
+            jso[4] = ['Modificar_Controller', '[{opcion:2,ProgramaAdmin:[1,0,' + $("#nomPro").val() + ',' + $("#nivel").val() + ',\"' + arrayTemas + '\"]}]'];
+            datos[4] = {nombre: "btn"};
+            ajax(4, datos[4]);
+        }
+        $("#btnPrograma").html("Guardar Programa");
+        $("#nomPro").val("");
+        $("#nivel option[value='A0']").attr("selected", true);
     }
 
     function ajax(i, datos) {
@@ -156,24 +130,44 @@ $(document).on('ready', function () {
         if (i == 1) {
             $(".Mult").show();
         } else if (i == 0) {
-            jso[2] = ['Crud_Controller', '[{opcion:3,tabla2:27,tipo:1,elegir:[0,1],delimitador:[],id:0,opSelect:4}]'];
+            jso[2] = ['Crud_Controller', '[{opcion:3,tabla2:53,tipo:1,elegir:[0,1],delimitador:[],id:0,opSelect:4}]'];
             selector[2] = $("#MultTemasFormacion");
             $("#MultTemasFormacion").empty();
             datos[2] = {nombre: "MultiSelect"};
             ajax(2, datos[2]);
-        } else if (i == 3) {
-            var daMen = data[i].split("$$");
-            if (daMen[0] == "true") {
-                estado = ("success");
-                men = "El programa " + men + " " + daMen[1];
-            } else {
+        } else if (i == 3) {//Modificar
+            try {
+                var response = jQuery.parseJSON(data[i]);
+                if (typeof response == 'object') {
+                    selector[1] = $("#tablaPrograma");
+                    datos[7] = {nombre: "ConsultaPrograma"};
+                    ob.cargarTabla(data[i], selector[1], datos[7]);
+                    estado = ("success");
+                    men = "El programa " + men + " se a modificado correctamente";
+                }
+            } catch (e) {
                 estado = ("error");
-                men = daMen[1];
+                men = "El programa " + men + " no se a modificado";
             }
             $.notify(men, estado);
-            $("#nomPro").val();
-            $("#SelecCentro option:contains('YourTextHere')").val();
-            $("#nivel option:contains('YourTextHere')").val();
+            datos[2] = {nombre: "MultiSelect"};
+            peticionCompleta(0, datos[2]);
+        } else if (i == 4) {//Agregar elemento
+            if (data[4].length > data[0].length) {
+                selector[1] = $("#tablaPrograma");
+                datos[7] = {nombre: "ConsultaPrograma"};
+                ob.cargarTabla(data[i], selector[1], datos[7]);
+                estado = ("success");
+                men = "El programa " + men + "  correctamente";
+
+            } else {
+                estado = ("error");
+                men = "El programa  " + men + " no se a agregado";
+            }
+            $.notify(men, estado);
+            datos[2] = {nombre: "MultiSelect"};
+            peticionCompleta(0, datos[2]);
         }
     }
-});
+}
+);

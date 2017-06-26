@@ -1,6 +1,7 @@
 package M_Util;
 
 import M_Controller.Archivos.Archivos;
+import M_Controller.vasos;
 import M_Modelo.Area;
 import M_Modelo.Categoria;
 import M_Modelo.Centro;
@@ -1332,7 +1333,6 @@ public class NewMain {
 //        String[] num = {"4", "5", "6", "7", "8", "9"};
 //
 //        System.out.println(new Elomac(37, 2).Select(num, delimitador));
-        
 //        String usuario = "1019";
 //        String contraseña ="81dc9bdb52d04dc20036dbd8313ed055";
 //        String delimitador = "[{colum:2,operador:0,valor1:" + usuario + " ,añadir:0},{colum:8,operador:0,valor1:'\"" + contraseña + "\"'}]";
@@ -1340,30 +1340,20 @@ public class NewMain {
 //        //String delimitador = "[{colum:2,operador:0,valor1:1019,añadir:0},{colum:8,operador:0,valor1:'\"81dc9bdb52d04dc20036dbd8313ed055\"'}]";
 //        String[] num = {"0", "5"};
 //        System.out.println(new Elomac(18, 1).Select(num, delimitador));
-
-
-          //M_EstructuraJSON mj = new M_EstructuraJSON();
-          //mj.Creacion(); 
-          
+        //M_EstructuraJSON mj = new M_EstructuraJSON();
+        //mj.Creacion(); 
 //          System.out.println(mj.TablaDB(1,0));
-
-
 //            String[] param = {"1","1","1","2","9"};
 //            Notificacion n = new Notificacion();
 //            System.out.println(n.ConsultaNotificacion(param));
-
 //              Elomac e = new Elomac(1,1);
 //              System.out.println(e.Select());
-
 //          Version v = new Version();
 //          System.out.println(v.ConsultaActualizar(5));
-
 //            M_Procedure mp = new M_Procedure();
 //            mp.Prueba(0);
-
 //           Version v1 = new Version();
 //           System.out.println(v1.VistaActualizar(1,1));
-           
 //           String[] aT = {"5"};String delimi = "[{colum:0,operador:0,valor1:1}]";
 //                        String nomUrlOld = new JSONArray(new Version().Select(aT, delimi)).getJSONObject(0).getString("Url_Version");
 //                        System.out.println(nomUrlOld);
@@ -1385,7 +1375,6 @@ public class NewMain {
 //          Producto_Virtual pv = new Producto_Virtual();
 //          String val = pv.ConsultarProducto(filtros, caso);
 //          System.out.println(val);
-
 //        Date d = new Date("2018/04/30");
 //        d.setDate(31);
 //        //d.setYear(2017);
@@ -1395,17 +1384,12 @@ public class NewMain {
 //        d.setYear(Integer.parseInt(anio));
 //        System.out.println(d.getYear());//dia mes
 //        System.out.println(d.getMonth());//mdia mes
-        
 //        Lista_Chequeo li = new Lista_Chequeo();
 //        String[] di = {"Item pruebita2","0"};
 //        System.out.println(li.RegistrarItemLista(di));
-        
-        
 //        Categoria ca = new Categoria();
 //        String[] da = {"Tema de Mucha pRUEBA","0"};
 //        System.out.println(ca.RegistrarTemaCategoria(da));
-    
-          
 //        Lista_Chequeo li = new Lista_Chequeo();
 //        String[] di = {"2","litolina1","listolono1"};
 //        String[] di1 = {"17","18"};
@@ -1418,109 +1402,80 @@ public class NewMain {
 //    String[] array1 = new String[3];
 //    masiva m = new masiva();
 //    System.out.println(m.cargaMasiva("Ciudades.csv","Ciudad"));
-                    
 //
-
 //String[] para = {"2","2","1"};
 //Notificacion n = new Notificacion();
 //        System.out.println(n.ConsultarNotificacion_M(para));
-
 //        String[] reportes = {"7","1","0","2017"};
 //        System.out.println(new Estadisticas().ConsultaReportes(reportes));
-
 //        String[] graficas = {"1","1","0","0"};
 //        System.out.println(new Version().ConsultaGraficas(graficas));
-
 //        String[] arrayF = {"2","3"};
 //        Formato f = new Formato();
 //        System.out.println(f.consultaTipoFormato(arrayF));
-
         //System.out.println(new EstructuraDB().ListaTablas());
-        
 //        String[] parametrosModi = {"1","1019133595","e10adc3949ba59abbe56e057f20f883e1","e10adc3949ba59abbe56e057f20f883e"};
 //        System.out.println(new Funcionario().ModificarContraseña(parametrosModi));
-
         //String[] para = {"1019","1019"};
 //        String[] para = {"1019133595","fcea920f7412b5da7be0cf42b8c93759"};
 //        System.out.println(new Funcionario().Logueo(para));
-
 //        String[] paraModificasr = {"2","3","0","0"};
 //        Rankin ra = new Rankin();
 //        System.out.println(ra.RegistrarRankin(paraModificasr));
-
-
 // ----------------------------- ADMIN-------------------------------
-
 //-------- Tema-------
 //        String[] para1 = {"1","0","Tema001","Tema001"};
 //        System.out.println(new Tema().TemaAdmin(para1));
-        
 //        String[] para2 = {"2","6","Tema002","Tema001"};
 //        System.out.println(new Tema().TemaAdmin(para2));
-    
 //        String[] para3 = {"0","0","0","0"};
 //        System.out.println(new Tema().TemaAdmin(para3));
-
-
 //-------- Programa------
-
 //        String[] para1 = {"1","0","Programa001","Programa001","1,2,3"};
 //        System.out.println(new Programa().ProgramaAdmin(para1));
-        
 //        String[] para2 = {"2","6","Programa002","Programa002","4,6"};
 //        System.out.println(new Programa().ProgramaAdmin(para2));
 //    
 //        String[] para3 = {"3","6","0","0","0"};
 //        System.out.println(new Programa().ProgramaAdmin(para3));
-
 //        String[] para4 = {"0","0","0","0","0"};
 //        System.out.println(new Programa().ProgramaAdmin(para4));
-
-
 //--------- Area--------
-
 //        String[] para1 = {"1","0","Area001","Area001","1,2,3"};
 //        System.out.println(new Area().AreaAdmin(para1));
-        
 //        String[] para2 = {"2","6","Area003","Area002","0"};
 //        System.out.println(new Area().AreaAdmin(para2));
-    
 //        String[] para3 = {"3","6","0","0","0"};
 //        System.out.println(new Area().AreaAdmin(para3));
-
 //        String[] para4 = {"0","0","0","0","0"};
 //        System.out.println(new Area().AreaAdmin(para4));
-
-
 //-------- Centro-------
-
 //        String[] para1 = {"1","0","Centro001","1001","Centro001","1","1,2"};
 //        System.out.println(new Centro().CentroAdmin(para1));
-        
 //        String[] para2 = {"2","5","Centro003","1001","Centro001","1","0"};
 //        System.out.println(new Centro().CentroAdmin(para2));
-    
 //        String[] para3 = {"3","5","0","0","0"};
 //        System.out.println(new Centro().CentroAdmin(para3));
-
 //        String[] para4 = {"0","0","0","0","0"};
 //        System.out.println(new Centro().CentroAdmin(para4));
-
-
 //--------- Formato---------
-
-
 //        String[] para1 = {"1","0","Formato001","Formato001","1"};
 //        System.out.println(new Formato().FormatoAdmin(para1));
-        
+
+
+
+
 //        String[] para2 = {"2","42","Formato002","Formato002","2"};
 //        System.out.println(new Formato().FormatoAdmin(para2));
-    
 //         String[] para3 = {"0","0","0","0","0"};
 //        System.out.println(new Formato().FormatoAdmin(para3));
 
-          
 
+
+//        System.out.println(new vasos().getVaso());
+//        System.out.println(new vasos().getVaso());
+//        System.out.println(new vasos().getVaso());
+//        System.out.println(new vasos().getVaso());
 
     }
 }

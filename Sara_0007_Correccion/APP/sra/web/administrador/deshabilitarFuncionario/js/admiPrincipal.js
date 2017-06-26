@@ -9,7 +9,7 @@ $(document).on('ready', function () {
     ajax(0, datos[0]);
     ob.TablaEspa(selector[0]);
     $(document).on('click', '.botonclick', function (e) {
-        jso[1] = ['Crud_Controller', '[{opcion:2,tabla1:18,tabla2:11,tipo:2,elegir:[0,1,3,5,6],delimitador:[],actualizar:"[{9:2}]",id:' + this.id + ',opSelect:4}]'];
+        jso[1] = ['Crud_Controller', '[{opcion:2,tabla1:35,tabla2:11,tipo:2,elegir:[0,1,3,5,6],delimitador:[],actualizar:"[{9:2}]",id:' + this.id + ',opSelect:4}]'];
         selector[1] = $("#tablaAdmi");
         ob.limpiarTabla(selector[1]);
         $("#ccNoti").empty();
