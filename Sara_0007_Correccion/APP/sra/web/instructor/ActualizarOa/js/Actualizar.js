@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    var selector = [], hilo = [], idPv = 0, jso = [], data = [], datos = [], estado = "", men = "", arraySelecionAutor = [], arraySelecionEstr = [], arraySelecionCate = [], arrayselecT = [], arrayselecTF = [], arrFuciona = [];
+    var selector = [], hilo = [], idPv = 0, jso = [], data = [], datos = [], estado = "", men = "", arraySelecionAutor = [], arraySelecionEstr = [], arraySelecionCate = [], arrayselecT = [], arrayselecTF = [], arrFuciona = [],extPermitida="";
     var ob = new $.Luna("Productos virtuales", $("#tablaActualizacion"));
     ob.Vivo("Actualizar");
     $("#contenedorass").show();
@@ -353,8 +353,8 @@ $(document).ready(function () {
         var nomArh = $(this).val();
         var ex = nomArh.split(".");
         nomArh = ex[ex.length - 1];
-        var menAlert="Selecione un archivo de formato " + $("#formato").val();
-        if ($("#formato").val() !== nomArh) {
+        var menAlert="Selecione un archivo de formato " + extPermitida;
+        if (extPermitida != nomArh) {
             $("#myfile").notify(
                     menAlert, 'warn',
                     {position: "right"}
@@ -421,6 +421,7 @@ $(document).ready(function () {
             peticion1.forEach(function (val) {
                 $("#Titulo_Publicacion").val(val.Nom_P_Virtual);
                 $("#formato").val(val.Nom_Formato);
+                extPermitida=val.Nom_Formato;
                 $("#palabras_claves").val(val.Palabras_Clave);
                 $("#descripcion_oa").val(val.Des_P_Virtual);
             });

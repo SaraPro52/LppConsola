@@ -67,7 +67,6 @@ function modificar(idTipoItem) {
         //lledo cada conjunto a una columna diferente del multiselect)
         //"Id_Item_Lista": 
         //23/04/2017
-        alert(idTipoItem);
         jso[0] = ['ListaChequeo_Controller', '[{opcion:3,lista:' + this.id + ',tipoItem:' + idTipoItem + '}]'];
         //jso[0] = ['Crud_Controller', '[{opcion:3, tabla2: 15,tipo:2, elegir:[0,1],delimitador: "[{colum:3,operador:0,valor1:' + this.id + ',añadir:0},{colum:2,operador:0,valor1:' + idTipoItem + '}]", id: 0, opSelect: 6}]'];
         var datos = {nombre: "btn"};

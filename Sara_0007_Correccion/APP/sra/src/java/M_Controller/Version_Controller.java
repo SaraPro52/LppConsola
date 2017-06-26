@@ -74,7 +74,7 @@ public class Version_Controller extends HttpServlet {
                     String[] arrayTemas = Elomac.M_toArray(jData.getString("arrayTemas"));
                     String nomUrl = ver.RegistrarActualizacion(infoVersion, arrayFun,arrayTemas);//16/04/2017
                     if (nomUrl != "null") {
-                        arch.CambiarNombre(infoVersion[1], nomUrl);
+                        arch.CambiarNombre(infoVersion[1], nomUrl,0,1);
                         respuesta.println("true$$ fue registrado");
                         arch.MoverArchivo(nomUrl);
                     } else {

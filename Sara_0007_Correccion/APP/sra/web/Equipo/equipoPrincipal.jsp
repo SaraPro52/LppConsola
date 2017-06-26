@@ -17,7 +17,9 @@
         <link href='https://fonts.googleapis.com/css?family=Muli:400,300' rel='stylesheet' type='text/css'>
         <link href="assets/css/themify-icons.css" rel="stylesheet">
         <link href="css/modal.css" rel="stylesheet"/>
+
         <link href="assets/css/estilo.css" rel="stylesheet" type="text/css"/>
+        <link href="assets/css/paper-dashboard.css"/>
     </head>
     <body>
         <div class="wrapper">
@@ -72,7 +74,7 @@
                 </nav>
                 <div id="cuerpo" >
 
-                  
+
                 </div>
                 <footer class="text-center footerDown" style="margin-top: 3%;">
                     <div class="container">

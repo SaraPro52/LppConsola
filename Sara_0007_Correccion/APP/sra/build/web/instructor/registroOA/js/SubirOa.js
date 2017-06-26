@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    var selector = [], hilo = [], jso = [], data = [], datos = [], estado = "", men = "", arraySelecionAutor = [], arraySelecionEstr = [], arraySelecionCate = [], arrayselecT = [], arrayselecTF = [], arrFuciona = [], extenFormat = [];
+    var selector = [], hilo = [], jso = [], data = [], datos = [], estado = "", men = "", arraySelecionAutor = [], arraySelecionEstr = [], arraySelecionCate = [], arrayselecT = [], arrayselecTF = [], arrFuciona = [], extenFormat = [], extFrom = "";
     $("#ECategoriaSelect").hide();
     $("#EProgramaFSelect").hide();
     var ob = new $.Luna("AutoComplet", "Null");
@@ -7,7 +7,7 @@ $(document).ready(function () {
     jso[0] = ['Crud_Controller', '[{opcion:3,tabla2:13,tipo:2,elegir:[0,1],delimitador:[],id:0,opSelect:4}]'];
     selector[0] = $("#Titulo_Publicacion");
     datos[0] = {nombre: "AutoComplet"};
-    ajax(0, datos[0]); 
+    ajax(0, datos[0]);
 
     //TIPO FORMATO (IMAGEN, VIDEO, DOCUMENTO)
     //jso[0] = ['SubirPv_Controller','[{opcion:1,tipoFormato:[1,0]}]'];
@@ -365,7 +365,7 @@ $(document).ready(function () {
             men = $("#Titulo_Publicacion").val();
             var path = $("#myfile").val();
             var nomArchivo = path.replace(/C:\\fakepath\\/, '');
-            jso[11] = ['ProductoVirtual_Controller', '[{opcion:1,info:[' + $("#Titulo_Publicacion").val() + ',' + $("#descripcion_oa").val() + ',' + $("#palabras_claves").val() + ',' + $("#formato").val() + ',0,0,' + $("#instrucciones").val() + ',' + $("#requisitos_instalacion").val() + '],arrayFun:[' + arrayAutor + '],arrayTemas:[' + arrayTemas + '],archivoNom:' + nomArchivo + '}]'];
+            jso[11] = ['ProductoVirtual_Controller', '[{opcion:1,info:[' + $("#Titulo_Publicacion").val() + ',' + $("#descripcion_oa").val() + ',' + $("#palabras_claves").val() + ',' + extFrom + ',0,0,' + $("#instrucciones").val() + ',' + $("#requisitos_instalacion").val() + '],arrayFun:[' + arrayAutor + '],arrayTemas:[' + arrayTemas + '],archivoNom:' + nomArchivo + '}]'];
             selector[11] = null;
             datos[11] = {nombre: "btn"};
             ajax(11, datos[11]);
@@ -387,25 +387,30 @@ $(document).ready(function () {
             $("#cuerpo").empty();
             $("#cuerpo").append(data[i]);
         } else if (i == 23) {
+            extenFormat = [];
             var jsonExten = jQuery.parseJSON(data[i]);
             for (var i = 0; i < jsonExten.length; i++) {
-                extenFormat.push(jsonExten[i].Nom_Formato);
+                var idFormato = jsonExten[i].Id_Formato;
+                var nomFormato = jsonExten[i].Nom_Formato;
+                extenFormat.push({formato: idFormato[0], nombre: nomFormato[0]});
             }
         }
     }
     $('.input-file').change(function () {
         var nomArh = $(this).val();
+        var arrexte = [];
         var ex = nomArh.split(".");
         nomArh = ex[ex.length - 1];
         var countExten = 0;
         for (var i = 0; i < extenFormat.length; i++) {
-            if (extenFormat[i] == nomArh) {
+            arrexte.push(extenFormat[i].nombre);
+            if (extenFormat[i].nombre == nomArh) {
                 countExten++;
+                extFrom = extenFormat[i].formato;
             }
         }
         var sizeByte = this.files[0].size;
         var siezekiloByte = parseInt(sizeByte / 1024);
-
         if (siezekiloByte > $(this).attr('size')) {
             $(this).val('');
             $(".inputNotifi").notify(
@@ -413,16 +418,13 @@ $(document).ready(function () {
                     {position: "right"}
             );
         }
-
         if (countExten <= 0) {
-            var menexten = "Selecione un archivo de formato " + extenFormat;
+            var menexten = "Selecione un archivo de formato " + arrexte;
             $(".inputNotifi").notify(
                     menexten, 'warn',
                     {position: "right"}
             );
             $(this).val('');
         }
-
-
     });
 });

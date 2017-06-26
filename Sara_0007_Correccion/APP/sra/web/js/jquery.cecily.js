@@ -267,8 +267,14 @@ jQuery.Luna = function (Datos, selector) {
                         }
                     });
                     break;
+
                 case "Select":
-                    var jso = jQuery.parseJSON(json);
+                    if (datos.tipo == true) {
+                        var jso = json;
+                    } else {
+                        var jso = jQuery.parseJSON(json);
+
+                    }
                     var j = Object.keys(jso[0]);
                     for (var i = 0; i < jso.length; i++) {
                         selector.append($('<option>', {
@@ -388,6 +394,9 @@ jQuery.Luna = function (Datos, selector) {
                 case "correcion":
                     var jsoCorre = jQuery.parseJSON(json);
                     for (var i = 0; i < jsoCorre.length; i++) {
+                        var extencion = jsoCorre[i].Url_Version;
+                        var arrExtencion = extencion.toString().split(".");
+                        extencion = arrExtencion[arrExtencion.length - 1];
                         table = selector.dataTable().fnAddData([
                             i + 1,
                             jsoCorre[i].Nom_P_Virtual,
@@ -395,7 +404,7 @@ jQuery.Luna = function (Datos, selector) {
                             jsoCorre[i].Conte_Notificacion,
                             jsoCorre[i].Fecha_Envio,
                             "<a class='btn btn-info' href=DescargaArchivo?archivo=" + jsoCorre[i].Url_Version + ">Descargar P.V</a>",
-                            "<button  type='button' id='" + jsoCorre[i].Ides_Proceso + "$$" + jsoCorre[i].Id_Version + "$$" + jsoCorre[i].Nom_P_Virtual + "$$" + jsoCorre[i].Id_Notificacion + "$$" + jsoCorre[i].Url_Version + "' class='btn btn-info btnCorrecion'>Correguir P.V</button>"
+                            "<button  type='button' id='" + jsoCorre[i].Ides_Proceso + "$$" + jsoCorre[i].Id_Version + "$$" + jsoCorre[i].Nom_P_Virtual + "$$" + jsoCorre[i].Id_Notificacion + "$$" + jsoCorre[i].Url_Version + "$$" + extencion + "' class='btn btn-info btnCorrecion'>Correguir P.V</button>"
                         ]);
                     }
                     break;

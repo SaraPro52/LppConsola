@@ -1,5 +1,6 @@
 $(document).on('ready', function () {
     var selector = [], hilo = [], jso = [], data = [], datos = [], constan = true, arraySelecionPrograma = [], arraySelectCategoria = [];
+      var pagina = "<li id='pag0' class='pagination'><a><lavel>0</label></a></li>";
     $("#dataInicialA").datepicker({defaultDate: "+1w", changeMonth: true, numberOfMonths: 2});
     $("#dataFinalA").datepicker({defaultDate: "+1w", changeMonth: true, numberOfMonths: 2});
     $("#dataInicialA").datepicker("option", "maxDate", new Date());
@@ -29,9 +30,11 @@ $(document).on('ready', function () {
     ajax(0, datos[0]);
     var ob = new $.Luna("Consultar PV", $("#formulario1"));
     ob.Vivo("ConsultarPV1");
-    var tipoPet = 3;
+
     $("#btnActu").click(function () {
+        $("#paginador").empty().append(pagina);
         $("#resultadosProductos").empty();
+        datos[0] = {nombre: "ConsOaP", op: true};
         ajax(0, datos[0]);
     });
     $("#Programas").change(function () {
@@ -235,6 +238,7 @@ $(document).on('ready', function () {
         selector[6] = $("#formulario1");
         datos[6] = {nombre: "ConsOaP"};
         $("#resultadosProductos").empty();
+        $("#paginador").empty().append(pagina);
         ajax(6, datos[6]);
     }
     $("#programa").click(function () {
@@ -288,7 +292,9 @@ $(document).on('ready', function () {
             selector[1] = $("#txtBuscarTitle");
             datos[1] = {nombre: "AutoComplet"};
             $("#pagActual").val("pag0");
-            ajax(1, datos[1]);
+            if (datos[i].op != true) {
+                ajax(1, datos[1]);
+            }
         } else if (i == 1) {
             jso[11] = ['Crud_Controller', '[{opcion:3,tabla2:17,tipo:1,elegir:[0,1],delimitador:[],id:0,opSelect:4}]'];
             selector[11] = $("#Formato");

@@ -1,68 +1,68 @@
 $(document).ready(function () {
-    var selector = [], hilo = [], jso = [], data = [], datos = [];
+   
+    var selector = [], hilo = [], jso = [], data = [], datos = [], arrAnios = [];
     var ob = new $.Luna("usuario", selector[0]);
     ob.Vivo("Estadistica1");
 
-    //jso[0] = ['Crud_Controller', '[{opcion:3,tabla2:31,tipo:2,elegir:[0,1,2],delimitador:"[{colum:3,operador:0,valor1:' + idCentro + '}]",id:0,opSelect:6}]'];
-    
-    jso[0] = ['Estadisticas_Controller','[{opcion:2,graficas:[1,'+ idCentro + ',0,0]}]'];
+    var jsonMes = [
+        {id: "01", mes: "Enero"},
+        {id: "02", mes: "Febrero"},
+        {id: "03", mes: "Marzo"},
+        {id: "04", mes: "Abril"},
+        {id: "05", mes: "Mayo"},
+        {id: "06", mes: "Junio"},
+        {id: "07", mes: "Julio"},
+        {id: "08", mes: "Agosto"},
+        {id: "09", mes: "Septiembre"},
+        {id: "10", mes: "Octubre"},
+        {id: "11", mes: "Noviembre"},
+        {id: "12", mes: "Diciembre"}];
+
+    var hoy = new Date();
+    var anio = hoy.getFullYear();
+    for (var i = 2012; i <= anio; i++) {
+        arrAnios.push({id: i, nombre: i});
+    }
+    datos[11] = {nombre: "Select", tipo: true};
+    ob.cargarTabla(jsonMes, $(".mes"), datos[11]);
+    datos[11] = {nombre: "Select", tipo: true};
+    ob.cargarTabla(arrAnios, $(".anio"), datos[11]);
+
+    jso[0] = ['Estadisticas_Controller', '[{opcion:2,graficas:[1,' + idCentro + ',0,0]}]'];
     selector[0] = "ProductoirtualE";
     datos[0] = {nombre: "btn", btn: false};
     ajax(0, datos[0]);
 
-    $("#dataInicialA").datepicker({defaultDate: "+1w", changeMonth: true, numberOfMonths: 2,maxDate: 'today'});
-    $("#dataFinalA").datepicker({defaultDate: "+1w", changeMonth: true, numberOfMonths: 2,maxDate: 'today'});
-    $("#dataInicialA").change(function () {
-        $("#dataFinalA").datepicker("option", "minDate", $("#dataInicialA").val());
-    });
-    $("#dataFinalA").change(function () {
-        $("#dataInicialA").datepicker("option", "maxDate", $("#dataFinalA").val());
-    });
+
     $("#btnAreaE").click(function () {
-        //jso[1] = ['Estadisticas_Controller', '[{opcion:1,fechas:["' + $("#dataInicialA").val() + '","' + $("#dataFinalA").val() + '"],diagrama:2}]'];
-        jso[1] = ['Estadisticas_Controller','[{opcion:2,graficas:[2,'+ idCentro + ','+mes+','+anio+']}]'];
+        jso[1] = ['Estadisticas_Controller', '[{opcion:2,graficas:[2,' + idCentro + ',' + $("#mesArea").val() + ',' + $("#anioArea").val() + ']}]'];
         // mes : valor 01,02,03 etc de acuerdo a los meses del año
         // anio : valor 2016,2017 etc de acuerdo al año
         selector[1] = "ProductoirtualE";
         datos[1] = {nombre: "btn", btn: true};
         ajax(1, datos[1]);
     });
-    $("#dataInicialP").datepicker({defaultDate: "+1w", changeMonth: true, numberOfMonths: 2,maxDate: 'today'});
-    $("#dataFinalP").datepicker({defaultDate: "+1w", changeMonth: true, numberOfMonths: 2,maxDate: 'today'});
-    $("#dataInicialP").change(function () {
-        $("#dataFinalP").datepicker("option", "minDate", $("#dataInicialP").val());
-    });
-    $("#dataFinalP").change(function () {
-        $("#dataInicialP").datepicker("option", "maxDate", $("#dataFinalP").val());
-    });
-
 
     $("#btnProductoE").click(function () {
         //jso[0] = ['Estadisticas_Controller', '[{opcion:1,fechas:["' + $("#dataInicialP").val() + '","' + $("#dataFinalP").val() + '"],diagrama:1}]'];
-        jso[0] = ['Estadisticas_Controller','[{opcion:2,graficas:[1,'+ idCentro + ','+mes+','+anio+']}]'];
+        jso[0] = ['Estadisticas_Controller', '[{opcion:2,graficas:[1,' + idCentro + ',' + $("#mesTipo").val() + ',' + $("#anioTipo").val() + ']}]'];
         // mes : valor 01,02,03 etc de acuerdo a los meses del año
         // anio : valor 2016,2017 etc de acuerdo al año
         selector[0] = "ProductoirtualE";
         datos[0] = {nombre: "btn", btn: true};
         ajax(0, datos[0]);
     });
-    $("#dataInicialC").datepicker({defaultDate: "+1w", changeMonth: true, numberOfMonths: 2,maxDate: 'today'});
-    $("#dataFinalC").datepicker({defaultDate: "+1w", changeMonth: true, numberOfMonths: 2,maxDate: 'today'});
-    $("#dataInicialC").change(function () {
-        $("#dataFinalC").datepicker("option", "minDate", $("#dataInicialC").val());
-    });
-    $("#dataFinalC").change(function () {
-        $("#dataInicialC").datepicker("option", "maxDate", $("#dataFinalC").val());
-    });
+
+  
     $("#btnCategoriaE").click(function () {
         $("#dataInicialC").val();
         $("#dataFinalC").val();
         //jso[2] = ['Estadisticas_Controller', '[{opcion:1,fechas:["' + $("#dataInicialC").val() + '","' + $("#dataFinalC").val() + '"],diagrama:3}]'];
-        
-        jso[2] = ['Estadisticas_Controller','[{opcion:2,graficas:[3,'+ idCentro + ','+mes+','+anio+']}]'];
+
+        jso[2] = ['Estadisticas_Controller', '[{opcion:2,graficas:[3,' + idCentro + ',' + $("#mesCategoria").val() + ',' + $("#anioCategoria").val() + ']}]'];
         // mes : valor 01,02,03 etc de acuerdo a los meses del año
         // anio : valor 2016,2017 etc de acuerdo al año
-        
+
         selector[2] = "ProductoirtualE";
         datos[2] = {nombre: "btn", btn: true};
         ajax(2, datos[2]);
@@ -84,7 +84,9 @@ $(document).ready(function () {
                 var js = jQuery.parseJSON(data);
                 var datas = [];
                 for (var i = 0; i < js.length; i++) {
-                    datas.push({"label": js[i].Nom_Formato, "value": js[i].Cantidad});
+                    var nombre = js[i].Nom_Tipo_Formato;
+                    var publicaciones = js[i].Publicaciones;
+                    datas.push({label: nombre[0], value: publicaciones[0]});
                 }
                 var ageGroupChart = new FusionCharts({
                     type: 'pie2d',
@@ -126,8 +128,8 @@ $(document).ready(function () {
                 }).render();
                 if (datos[0].btn == false) {
                     //jso[1] = ['Crud_Controller', '[{opcion:3,tabla2:33,tipo:2,elegir:[0,1,2],delimitador:"[{colum:3,operador:0,valor1:' + idCentro + '}]",id:0,opSelect:6}]'];
-                    
-                    jso[1] = ['Estadisticas_Controller','[{opcion:2,graficas:[2,'+ idCentro + ',0,0]}]'];
+
+                    jso[1] = ['Estadisticas_Controller', '[{opcion:2,graficas:[2,' + idCentro + ',0,0]}]'];
                     selector[1] = "chartArea";
                     datos[1] = {nombre: "btn", btn: false};
                     ajax(1, datos[1]);
@@ -136,7 +138,9 @@ $(document).ready(function () {
                 var js = jQuery.parseJSON(data);
                 var datas = [];
                 for (var i = 0; i < js.length; i++) {
-                    datas.push({"label": js[i].Nom_Area, "value": js[i].Cantidad});
+                    var nombre = js[i].Nom_Area;
+                    var publicacion = js[i].Publicaciones;
+                    datas.push({label: nombre[0], value: publicacion[0]});
                 }
                 var revenueChart = new FusionCharts({
                     type: 'pie3d',
@@ -178,9 +182,9 @@ $(document).ready(function () {
                 }).render();
                 if (datos[1].btn == false) {
                     //jso[2] = ['Crud_Controller', '[{opcion:3,tabla2:35,tipo:2,elegir:[0,1,2],delimitador:"[{colum:3,operador:0,valor1:' + idCentro + '}]",id:0,opSelect:6}]'];
-                    
-                    jso[2] = ['Estadisticas_Controller','[{opcion:2,graficas:[3,'+ idCentro + ',0,0]}]'];
-                    
+
+                    jso[2] = ['Estadisticas_Controller', '[{opcion:2,graficas:[3,' + idCentro + ',0,0]}]'];
+
                     selector[2] = "chartCategoria";
                     datos[2] = {nombre: "btn", btn: false};
                     ajax(2, datos[2]);
@@ -189,7 +193,9 @@ $(document).ready(function () {
                 var js = jQuery.parseJSON(data);
                 var datas = [];
                 for (var i = 0; i < js.length; i++) {
-                    datas.push({"label": js[i].Nom_Categoria, "value": js[i].Canti});
+                    var nombre = js[i].Nom_Categoria;
+                    var publicaciones = js[i].Publicaciones;
+                    datas.push({label: nombre[0], value: publicaciones[0]});
                 }
                 var revenueChart = new FusionCharts({
                     type: 'doughnut3d',

@@ -41,7 +41,7 @@ public class sesion_controller extends HttpServlet {
 //                    Elomac elo = new Elomac(19, 2);
 //                    String fun = elo.Select(delimitador);
                     String resultado = new Funcionario().Logueo(loguinUser);
-                    if (resultado.equals("{}")) {
+                    if (resultado==null) {
                         request.getRequestDispatcher("index.jsp").forward(request, response);
                     } else {
                         JSONObject funJ = new JSONArray(resultado).getJSONObject(0);

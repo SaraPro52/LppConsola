@@ -32,9 +32,9 @@ public class Rankin_Controller extends HttpServlet {
                     paramRankin = Elomac.M_toArray(jData.getString("paramRankin"));
                     paramRankin[0] = "1";
                     if(new Rankin().RegistrarRankin(paramRankin)){
-                        respuesta.println("Exito");
+                        System.out.println("Exito");
                     }else{
-                        respuesta.println("Fallo");
+                        System.out.println("Fallo");
                     }
                 break;
                 case 2: //Aumenta una unidad a la cantidad de Descargas que tiene la version
@@ -52,9 +52,9 @@ public class Rankin_Controller extends HttpServlet {
                     paramRankin = Elomac.M_toArray(jData.getString("paramRankin"));
                     paramRankin[0] = "3";
                     if(new Rankin().RegistrarRankin(paramRankin)){
-                        respuesta.println("Exito");
+                        respuesta.println("true$$");
                     }else{
-                        respuesta.println("Fallo");
+                        respuesta.println("false$$");
                     }
                 break;
             }

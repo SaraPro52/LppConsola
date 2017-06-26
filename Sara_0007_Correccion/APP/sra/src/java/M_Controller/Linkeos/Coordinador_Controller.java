@@ -25,7 +25,7 @@ public class Coordinador_Controller extends HttpServlet {
             int tip = jData.getInt("ti");
             if (tip == 4) {
                 int opcion = jData.getInt("opcion");
-                switch (opcion) {
+                 switch (opcion) {
                     case 0:
                         request.getRequestDispatcher("coordinador/ConsultarEstadisticas/consultarEstadisticas.jsp").forward(request, response);
                         break;
@@ -40,6 +40,9 @@ public class Coordinador_Controller extends HttpServlet {
                         break;
                     case 4:
                         request.getRequestDispatcher("perfil/perfilUsuario.jsp").forward(request, response);
+                        break;
+                    case 6:
+                        request.getRequestDispatcher("coordinador/consultarReportes/consultarReportes.jsp").forward(request, response);
                         break;
                 }
             } else {

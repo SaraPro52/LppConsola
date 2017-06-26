@@ -21,18 +21,18 @@ public class Archivos {
 
     public String getBase() {
         String macc = "C:\\Users\\migue\\Desktop\\Proyectos\\SARA_Pro\\Versiones_Sara\\V1_SARA\\Sara_0007_Correccion\\APP\\sra\\web\\Archivos\\ArchivosA\\";
-        String juan = "C:\\Users\\JudiniCambell\\Documents\\proyectos\\LppConsola\\Sara_0006_Correccion\\APP\\sra\\web\\Archivos\\ArchivosA\\";
-        return (macc);
+        String juan = "C:\\Users\\JudiniCambell\\Documents\\proyectos\\LppConsola\\Sara_0007_Correccion\\APP\\sra\\web\\Archivos\\ArchivosA\\";
+        return (juan);
     }
 
     public String rutaTem() {
         String macc = "C:\\Users\\migue\\Desktop\\Proyectos\\SARA_Pro\\Versiones_Sara\\V1_SARA\\Sara_0007_Correccion\\APP\\sra\\web\\Archivos\\TemArchivos\\";
-        String juan = "C:\\Users\\JudiniCambell\\Documents\\proyectos\\LppConsola\\Sara_0006_Correccion\\APP\\sra\\web\\Archivos\\TemArchivos\\";
-        return (macc);
+        String juan = "C:\\Users\\JudiniCambell\\Documents\\proyectos\\LppConsola\\Sara_0007_Correccion\\APP\\sra\\web\\Archivos\\TemArchivos\\";
+        return (juan);
     }
     public String cargaMasiva() {
         String macc = "C:\\Users\\migue\\Desktop\\Proyectos\\SARA_Pro\\Versiones_Sara\\V1_SARA\\Sara_0007_Correccion\\APP\\sra\\web\\Archivos\\CarguesMasivos\\";
-        String juan = "C:\\Users\\JudiniCambell\\Documents\\proyectos\\LppConsola\\Sara_0006_Correccion\\APP\\sra\\web\\Archivos\\CarguesMasivos\\";
-        return (macc);
+        String juan = "C:\\Users\\JudiniCambell\\Documents\\proyectos\\LppConsola\\Sara_0007_Correccion\\APP\\sra\\web\\Archivos\\CarguesMasivos\\";
+        return (juan);
     }
 }

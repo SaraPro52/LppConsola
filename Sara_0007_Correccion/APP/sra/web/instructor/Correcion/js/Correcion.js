@@ -1,4 +1,4 @@
-var selector = [], hilo = [], jso = [], data = [], datos = [], constan = true, url = "", nomPV = "",idver="0";
+var selector = [], hilo = [], jso = [], data = [], datos = [], constan = true, url = "", nomPV = "", idver = "0", extPermitida = "";
 var ob = new $.Luna("Productos virtuales", $("#tablaNotificacion"));
 ob.Vivo("CorrecionInstrutor");
 $("#percent").hide();
@@ -22,14 +22,13 @@ $(document).on('click', '.btnCorrecion', function (e) {
     nomPV = valors[2];
     idNot = valors[3];
     url = valors[4];
+    extPermitida = valors[5];
     ob.limpiarTablaI($("#tablaNotificacion"));
     jso[1] = ['EvaluacionGeneral_Controller', '[{opcion:2,idEvalua:' + valors[0] + ',resultado:0}]'];
     selector[1] = $("#Respuestaitem");
     datos[1] = {nombre: "correcionCo"};
-    alert(idver);
-    alert(valors);
     ajax(1, datos[1]);
-    
+
 });
 
 var options = {
@@ -70,7 +69,14 @@ $('.input-file').change(function () {
     var nomArh = $(this).val();
     var ex = nomArh.split(".");
     nomArh = ex[ex.length - 1];
-
+    var menAlert = "Selecione un archivo de extencion " + extPermitida;
+    if (extPermitida != nomArh) {
+        $("#myfile").notify(
+                menAlert, 'warn',
+                {position: "right"}
+        );
+        $(this).val('');
+    }
     var sizeByte = this.files[0].size;
     var siezekiloByte = parseInt(sizeByte / 1024);
     if (siezekiloByte > $(this).attr('size')) {

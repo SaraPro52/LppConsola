@@ -20,7 +20,7 @@ $(document).ready(function () {
     ajax(1, datos[1]);
 
     $(document).on('click', '.Comentar', function (e) {
-        jso[0] = ['Crud_Controller', '[{opcion:1,tabla1:7,tabla2:25,tipo:2,datos:["",' + $(".Comment" + this.value).val() + ',' + idUser + ',' + this.value + '],elegir:[0,1,2,3,4],delimitador:[{colum:4,operador:0,valor1:' + this.value + '}],id:0,opSelect:6}]'];
+        jso[0] = ['Crud_Controller', '[{opcion:1,tabla1:13,tabla2:25,tipo:2,datos:["",' + $(".Comment" + this.value).val() + ',' + idUser + ',' + this.value + '],elegir:[0,1,2,3,4],delimitador:[{colum:4,operador:0,valor1:' + this.value + '}],id:0,opSelect:6}]'];
         selector[0] = $("#BaseComentario");
         datos[0] = {nombre: "Comentario", id: this.value};
         ajax(0, datos[0]);
@@ -30,13 +30,19 @@ $(document).ready(function () {
         console.log(this.id);
         var myClass = [];
         var s = $(this);
-        console.log(s);
         myClass = s.attr("class");
         var res = myClass.substr(14, myClass.length);
-        jso[2] = ['Rankin_Controller', '[{opcion:1,idVer:' + res + ',campRa:' + this.id + '}]'];
-        selector[2] = "null";
+        jso[2] = ['Rankin_Controller', '[{opcion:3,paramRankin:[0,' + res + ',' + idUser + ',' + this.id + ']}]'];
+        selector[2] = $(this);
         datos[2] = {nombre: "btn"};
         ajax(2, datos[2]);
+    });
+
+    $(document).on('click', '.Descargar', function (e) {
+        jso[4] = ['Rankin_Controller', '[{opcion:2,paramRankin:[0,' + idVersion + ',0,0]}]'];
+        selector[4] = "null";
+        datos[4] = {nombre: "btn"};
+        ajax(4, datos[4]);
     });
 
     function ajax(i, datos) {
@@ -51,7 +57,21 @@ $(document).ready(function () {
     }
 
     function peticionCompleta(i) {
-
+        if (i == 1) {
+            jso[3] = ['Rankin_Controller', '[{opcion:1,paramRankin:[0,' + Producto + ',0,0]}]'];
+            datos[3] = {nombre: "btn"};
+            ajax(3, datos[3]);
+        } else if (i == 2) {
+            var daMen = data[i].split("$$");
+            if (daMen[0] == "true") {
+                estado = ("success");
+                men = "Se agrego la calificacion  ";
+            } else {
+                estado = ("error");
+                men = "No se a podido ingresar la calificacion";
+            }
+            $.notify(men, estado);
+        }
     }
 });
 

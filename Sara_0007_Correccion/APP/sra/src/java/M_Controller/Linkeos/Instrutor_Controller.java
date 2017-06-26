@@ -1,5 +1,7 @@
 package M_Controller.Linkeos;
 
+import M_Modelo.Rankin;
+import M_Util.Elomac;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;

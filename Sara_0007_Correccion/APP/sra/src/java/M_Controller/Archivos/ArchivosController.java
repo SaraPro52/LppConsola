@@ -124,7 +124,7 @@ public class ArchivosController extends HttpServlet {
      * @param NuevoNombre Nuevo nombre del archivo
      * @return String devuelve del nombre del archivo.
      */
-    public String CambiarNombre(String AnNombre, String NuevoNombre) {
+    public String CambiarNombre(String AnNombre, String NuevoNombre, int rutaAnterior, int rutaNueva) {
         String nombre = "";
         //NuevoNombre = NuevoNombre.replace(' ', '_');
 
@@ -133,9 +133,33 @@ public class ArchivosController extends HttpServlet {
         //NuevoNombre = cadenaSinAcentos;
         try {
             Archivos bs = new Archivos();
+            String rutaAn = "";
+            String rutaNu = "";
+            switch (rutaAnterior) {
+                case 0:
+                    rutaAn = bs.rutaTem();
+                    break;
+                case 1:
+                    rutaAn = bs.getBase();
+                    break;
+                case 2:
+                    rutaAn = bs.cargaMasiva();
+                    break;
+            }
+            switch (rutaNueva) {
+                case 0:
+                    rutaNu = bs.rutaTem();
+                    break;
+                case 1:
+                    rutaNu = bs.getBase();
+                    break;
+                case 2:
+                    rutaNu = bs.cargaMasiva();
+                    break;
+            }
             //String ext2 = FilenameUtils.getExtension(AnNombre);
-            File archivo = new File(bs.rutaTem() + AnNombre);
-            File NuNombre = new File(bs.rutaTem() + NuevoNombre);
+            File archivo = new File(rutaAn + AnNombre);
+            File NuNombre = new File(rutaNu + NuevoNombre);
             if (archivo.renameTo(NuNombre)) {
                 nombre = NuevoNombre;
             } else {

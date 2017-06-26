@@ -68,7 +68,7 @@ public class ProductoVirtual_Controller extends HttpServlet {
                     infoVersion[4] = archivoNom;
                     nomUrl = ver.RegistrarPV(infoVersion, arrayFun, arrayTemas);//16/04/2017
                     if (nomUrl != "null") {
-                        arch.CambiarNombre(archivoNom, nomUrl);
+                        arch.CambiarNombre(archivoNom, nomUrl,0,1);
                         respuesta.println("true$$ fue registrado");
                         arch.MoverArchivo(nomUrl);
                     } else {
@@ -82,7 +82,7 @@ public class ProductoVirtual_Controller extends HttpServlet {
                     String archivoNom1 = jData.getString("archivoNom");
                     nomUrl = ver.RegistrarVersion(infoVersion, arrayFun);//16/04/2017
                     if (nomUrl != "null") {
-                        arch.CambiarNombre(archivoNom1, nomUrl);
+                        arch.CambiarNombre(archivoNom1, nomUrl,0,1);
                         respuesta.println("true$$ fue registrado");
                         arch.MoverArchivo(nomUrl);
                     } else {
@@ -97,7 +97,7 @@ public class ProductoVirtual_Controller extends HttpServlet {
                         String archivoNom2 = jData.getString("archivoNom");
                         nomUrl = ver.CorreccionVersion(correccion);//16/04/2017
                         if (nomUrl != "null") {
-                            arch.CambiarNombre(archivoNom2, nomUrl);
+                            arch.CambiarNombre(archivoNom2, nomUrl,0,1);
                             respuesta.println("true$$ fue Corregido");
                             
                             //---CAMBIO 2 Elimina el archivo que se encontraba subido (Antiguo)
@@ -125,7 +125,7 @@ public class ProductoVirtual_Controller extends HttpServlet {
                         String nomUrlOld = new JSONArray(new Version().Select(aT, delimi)).getJSONObject(0).getString("Url_Version");
                         nomUrl = ver.AprobarPV(aprobacion);//16/04/2017
                         if (nomUrl != "null") {
-                            arch.CambiarNombre(nomUrlOld, nomUrl);
+                            arch.CambiarNombre(nomUrlOld, nomUrl,1,1);
                             respuesta.println("true$$Habilitado");
                         } else {
                             respuesta.println("false$$no pudo ser habilitado");
