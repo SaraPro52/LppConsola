@@ -144,7 +144,7 @@ jQuery.Luna = function (Datos, selector) {
                             oAItem.find(".labelEstrella").addClass(jso[i].Id_Version);
                             oAItem.find(".RComentarios").attr('id', "RComentarios" + jso[i].Id_Version);
                             oAItem.find("#comment").addClass('Comment' + jso[i].Id_Version);
-                            oAItem.find("#Url_Version").attr('href', 'DescargaArchivo?archivo=' + jso[i].Url_Version + '');
+                            oAItem.find("#Url_Version").attr('href', 'DescargaArchivo?archivo=' + jso[i].Url_Version + '&version='+jso[i].Id_Version+'' );
                             oAItem.find("#btn_Comentar").val(jso[i].Id_Version);
                             oAItem.children().appendTo($("#resultados"));
                             console.log(jso);
@@ -570,6 +570,27 @@ jQuery.Luna = function (Datos, selector) {
                             "<select id='Select" + jsSelect[i].Id_Funcionario + "'value='0'" + select,
                             "<button id='" + jsSelect[i].Id_Funcionario + "' class='btnclick btn btn-success botonclick'value='b' >Asignar</button>"
                         ]);
+                    }
+                    break;
+                case "Reporte":
+                    var colum = [];
+                    var ths = "";
+                    var obj = jQuery.parseJSON(json);
+                    if (obj.length>0) {
+                        for (var i = 0; i < Object.keys(obj[0]).length; i++) {
+                            colum.push({"data": Object.keys(obj[0])[i]})
+                            ths += "<th>" + Object.keys(obj[0])[i] + "</th>";
+                        }
+
+                        $('#' + selector).html("<thead><tr>" + ths + "</tr></thead>");
+                        var tabla = $('#' + selector).DataTable({
+                            data: obj,
+                            columns: colum,
+                            destroy: true
+                        });
+                        $("#" + selector + "_filter").hide();
+                    }else{
+                        alert("No se encontaron registros");
                     }
                     break;
             }

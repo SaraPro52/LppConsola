@@ -1,5 +1,6 @@
 <div class="content">
     <link href="assets/css/jquery-uitab.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.12/css/jquery.dataTables.css">
     <div class="">
         <div class="">
             <div class="col-md-12">
@@ -17,197 +18,166 @@
                                 <li><a href="#tabs-8">Puestos de los productos virtuales</a></li>
                             </ul>
                             <div id="tabs-1" >
+
                                 <div>
                                     <div class="col-md-6">
-                                        <label for="dataPicker1Mes" class="col-md-12">Mes</label>
-                                        <input type="text" id="dataPicker1Mes" value="" class="form-control">
+                                        <p class="col-md-12">Año: </p>
+                                        <select class="anio form-control" id="anio1" style="border:1px solid #C0BEBE;">
+                                            <option value="A0">Selecione...</option>
+                                        </select>
                                     </div>
                                     <div class="col-md-6">
-                                        <label for="dataPicke1rAño" class="col-md-12">Año</label>
-                                        <input type="text" id="dataPicke1rAño" value="" class="form-control">
+                                        <p class="col-md-12">Mes:</p>
+                                        <select class="mes form-control" id="mes1" style="border:1px solid #C0BEBE;">
+                                            <option value="A0">Selecione...</option>
+                                        </select>
                                     </div>
                                     <div class="col-md-6 col-md-offset-5">
-                                        <button type="button" class="btn btn-info" id="btnArea">Consultar</button>
+                                        <button type="button" class="btn btn-info btnReporte" id="1">Consultar</button>
                                     </div>
-                                    <table id="tableArea" class="table-hover">
-                                        <thead>
-                                        <th>Mes</th>
-                                        <th>Ciudad</th>
-                                        <th>Centro</th>
-                                        <th>Producto virtual</th>
-                                        <th>Visitas</th>
-                                        </thead>
-                                        <tbody>
-                                        </tbody>
+                                    <table id="tablaReporte1" class="table-hover" style="width: 120px">
+
                                     </table>
                                 </div>
                             </div>
                             <div id="tabs-2">
                                 <div>
                                     <div class="col-md-6">
-                                        <label for="dataPicker1Mes" class="col-md-12">Mes</label>
-                                        <input type="text" id="dataPicker1Mes" value="" class="form-control">
+                                        <p class="col-md-12">Año: </p>
+                                        <select class="anio form-control" id="anio2" style="border:1px solid #C0BEBE;">
+                                            <option value="A0">Selecione...</option>
+                                        </select>
                                     </div>
                                     <div class="col-md-6">
-                                        <label for="dataPicke1rAño" class="col-md-12">Año</label>
-                                        <input type="text" id="dataPicke1rAño" value="" class="form-control">
+                                        <p class="col-md-12">Mes:</p>
+                                        <select class="mes form-control" id="mes2" style="border:1px solid #C0BEBE;">
+                                            <option value="A0">Selecione...</option>
+                                        </select>
                                     </div>
                                     <div class="col-md-6 col-md-offset-5">
-                                        <button type="button" class="btn btn-info" id="btnFormato">Consultar</button>
+                                        <button type="button" class="btn btn-info btnReporte" id="2">Consultar</button>
                                     </div>
-                                    <table id="tableArea" class="table-hover">
-                                        <thead>
-                                        <th>Mes</th>
-                                        <th>Ciudad</th>
-                                        <th>Centro</th>
-                                        <th>Producto virtual</th>
-                                        <th>Visitas</th>
-                                        </thead>
-                                        <tbody>
-                                        </tbody>
+                                    <table id="tablaReporte2" class="table-hover">
+
                                     </table>
                                 </div>                                
                             </div>
                             <div id="tabs-3">
                                 <div>
                                     <div class="col-md-6">
-                                        <label for="dataPicker1Mes" class="col-md-12">Mes</label>
-                                        <input type="text" id="dataPicker1Mes" value="" class="form-control">
+                                        <p class="col-md-12">Año: </p>
+                                        <select class="anio form-control" id="anio3" style="border:1px solid #C0BEBE;">
+                                            <option value="A0">Selecione...</option>
+                                        </select>
                                     </div>
                                     <div class="col-md-6">
-                                        <label for="dataPicke1rAño" class="col-md-12">Año</label>
-                                        <input type="text" id="dataPicke1rAño" value="" class="form-control">
+                                        <p class="col-md-12">Mes:</p>
+                                        <select class="mes form-control" id="mes3" style="border:1px solid #C0BEBE;">
+                                            <option value="A0">Selecione...</option>
+                                        </select>
                                     </div>
+
                                     <div class="col-md-6 col-md-offset-5">
-                                        <button type="button" class="btn btn-info" id="btnCategoria">Consultar</button>
+                                        <button type="button" class="btn btn-info btnReporte" id="3">Consultar</button>
                                     </div>
-                                    <table id="tableArea" class="table-hover">
-                                        <thead>
-                                        <th>Mes</th>
-                                        <th>Ciudad</th>
-                                        <th>Centro</th>
-                                        <th>Producto virtual</th>
-                                        <th>Visitas</th>
-                                        </thead>
-                                        <tbody>
-                                        </tbody>
+                                    <table id="tablaReporte3" class="table-hover">
+
                                     </table>
                                 </div>
                             </div>
                             <div id="tabs-4">
                                 <div>
                                     <div class="col-md-6">
-                                        <label for="dataPicker1Mes" class="col-md-12">Mes</label>
-                                        <input type="text" id="dataPicker1Mes" value="" class="form-control">
+                                        <p class="col-md-12">Año: </p>
+                                        <select class="anio form-control" id="anio4" style="border:1px solid #C0BEBE;">
+                                            <option value="A0">Selecione...</option>
+                                        </select>
                                     </div>
                                     <div class="col-md-6">
-                                        <label for="dataPicke1rAño" class="col-md-12">Año</label>
-                                        <input type="text" id="dataPicke1rAño" value="" class="form-control">
+                                        <p class="col-md-12">Mes:</p>
+                                        <select class="mes form-control" id="mes4" style="border:1px solid #C0BEBE;">
+                                            <option value="A0">Selecione...</option>
+                                        </select>
                                     </div>
+
                                     <div class="col-md-6 col-md-offset-5">
-                                        <button type="button" class="btn btn-info" id="btnVisitasProducto">Consultar</button>
+                                        <button type="button" class="btn btn-info btnReporte" id="4">Consultar</button>
                                     </div>
-                                    <table id="tableArea" class="table-hover">
-                                        <thead>
-                                        <th>Mes</th>
-                                        <th>Ciudad</th>
-                                        <th>Centro</th>
-                                        <th>Producto virtual</th>
-                                        <th>Visitas</th>
-                                        </thead>
-                                        <tbody>
-                                        </tbody>
+                                    <table id="tablaReporte4" class="table-hover">
+
                                     </table>
                                 </div>
                             </div>
                             <div id="tabs-5">
                                 <div>
                                     <div class="col-md-6">
-                                        <label for="dataPicker1Mes" class="col-md-12">Mes</label>
-                                        <input type="text" id="dataPicker1Mes" value="" class="form-control">
+                                        <p class="col-md-12">Año: </p>
+                                        <select class="anio form-control" id="anio5" style="border:1px solid #C0BEBE;">
+                                            <option value="A0">Selecione...</option>
+                                        </select>
                                     </div>
                                     <div class="col-md-6">
-                                        <label for="dataPicke1rAño" class="col-md-12">Año</label>
-                                        <input type="text" id="dataPicke1rAño" value="" class="form-control">
+                                        <p class="col-md-12">Mes:</p>
+                                        <select class="mes form-control" id="mes5" style="border:1px solid #C0BEBE;">
+                                            <option value="A0">Selecione...</option>
+                                        </select>
                                     </div>
+
                                     <div class="col-md-6 col-md-offset-5">
-                                        <button type="button" class="btn btn-info" id="btnProductoVirtual">Consultar</button>
+                                        <button type="button" class="btn btn-info btnReporte" id="5">Consultar</button>
                                     </div>
-                                    <table id="tableArea" class="table-hover">
-                                        <thead>
-                                        <th>Mes</th>
-                                        <th>Ciudad</th>
-                                        <th>Centro</th>
-                                        <th>Producto virtual</th>
-                                        <th>Visitas</th>
-                                        </thead>
-                                        <tbody>
-                                        </tbody>
+                                    <table id="tablaReporte5" class="table-hover">
+
                                     </table>
                                 </div>
                             </div>
                             <div id="tabs-6">
                                 <div>
                                     <div class="col-md-6">
-                                        <label for="dataPicker1Mes" class="col-md-12">Mes</label>
-                                        <input type="text" id="dataPicker1Mes" value="" class="form-control">
+                                        <p class="col-md-12">Año: </p>
+                                        <select class="anio form-control" id="anio6" style="border:1px solid #C0BEBE;">
+                                            <option value="A0">Selecione...</option>
+                                        </select>
                                     </div>
                                     <div class="col-md-6">
-                                        <label for="dataPicke1rAño" class="col-md-12">Año</label>
-                                        <input type="text" id="dataPicke1rAño" value="" class="form-control">
+                                        <p class="col-md-12">Mes:</p>
+                                        <select class="mes form-control" id="mes6" style="border:1px solid #C0BEBE;">
+                                            <option value="A0">Selecione...</option>
+                                        </select>
                                     </div>
                                     <div class="col-md-6 col-md-offset-5">
-                                        <button type="button" class="btn btn-info" id="btnProductoInhabilitado">Consultar</button>
+                                        <button type="button" class="btn btn-info btnReporte" id="6">Consultar</button>
                                     </div>
-                                    <table id="tableArea" class="table-hover">
-                                        <thead>
-                                        <th>Mes</th>
-                                        <th>Ciudad</th>
-                                        <th>Centro</th>
-                                        <th>Producto virtual</th>
-                                        <th>Visitas</th>
-                                        </thead>
-                                        <tbody>
-                                        </tbody>
+                                    <table id="tablaReporte6" class="table-hover">
+
                                     </table>
                                 </div>
                             </div>
                             <div id="tabs-7">
                                 <div>
                                     <div class="col-md-6">
-                                        <label for="dataPicker1Mes" class="col-md-12">Mes</label>
-                                        <input type="text" id="dataPicker1Mes" value="" class="form-control">
+                                        <p class="col-md-12">Año: </p>
+                                        <select class="anio form-control" id="anio7" style="border:1px solid #C0BEBE;">
+                                            <option value="A0">Selecione...</option>
+                                        </select>
                                     </div>
                                     <div class="col-md-6">
-                                        <label for="dataPicke1rAño" class="col-md-12">Año</label>
-                                        <input type="text" id="dataPicke1rAño" value="" class="form-control">
+                                        <p class="col-md-12">Mes:</p>
+                                        <select class="mes form-control" id="mes7" style="border:1px solid #C0BEBE;">
+                                            <option value="A0">Selecione...</option>
+                                        </select>
                                     </div>
+
                                     <div class="col-md-6 col-md-offset-5">
-                                        <button type="button" class="btn btn-info" id="btnPublicacioneFunciones">Consultar</button>
+                                        <button type="button" class="btn btn-info btnReporte" id="7">Consultar</button>
                                     </div>
-                                    <table id="tableArea" class="table-hover">
-                                        <thead>
-                                        <th>Mes</th>
-                                        <th>Ciudad</th>
-                                        <th>Centro</th>
-                                        <th>Producto virtual</th>
-                                        <th>Visitas</th>
-                                        </thead>
-                                        <tbody>
-                                        </tbody>
+                                    <table id="tablaReporte7" class="table-hover">
+
                                     </table>
                                 </div>
                             </div>
                             <div id="tabs-8">
-                                <div>
-                                    <div class="col-md-6">
-                                        <label for="dataPicker1Mes" class="col-md-12">Mes</label>
-                                        <input type="text" id="dataPicker1Mes" value="" class="form-control">
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label for="dataPicke1rAño" class="col-md-12">Año</label>
-                                        <input type="text" id="dataPicke1rAño" value="" class="form-control">
-                                    </div>
+                                <div>                                  
                                     <div class="col-md-6 col-md-offset-5">
                                         <button type="button" class="btn btn-info" id="btnPublicacioneFunciones">Consultar</button>
                                     </div>
@@ -232,6 +202,7 @@
     </div>
     <script type="text/javascript" charset="utf8" src="js/jquery.js"></script>
     <script type="text/javascript" charset="utf8" src="js/jqueryUi.js"></script>
+    <script type="text/javascript" charset="utf8" src="js/jquery.dataTables.js"></script>
     <script type="text/javascript" charset="utf8" src="js/jquery.cecily.js"></script>
     <script type="text/javascript" charset="utf8" src="coordinador/consultarReportes/js/ConsultarReportes.js"></script>
 </div>

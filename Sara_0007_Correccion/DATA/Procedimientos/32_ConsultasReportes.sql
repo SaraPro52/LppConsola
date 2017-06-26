@@ -1,4 +1,4 @@
--- CALL ConsultarReporte("7~0~0~0");
+-- CALL ConsultarReporte("5~0~0~0");
 
 DROP PROCEDURE IF EXISTS ConsultarReporte;
 DELIMITER ;;
@@ -31,7 +31,7 @@ WHEN 1 THEN
 	BEGIN
 		-- Cantidad de Publicaciones de PV por Área
 		SET contenido = "
-		SELECT DATE_FORMAT(v1.Fecha_Publicacion,'%M %Y') AS Mes,v14.Nom_Ciudad AS Ciudad,ce.Nom_Centro AS Centro,v8.Nom_Area AS Area,COUNT(*) AS Publicaciones
+		SELECT DATE_FORMAT(v1.Fecha_Publicacion,'%M %Y') AS Mes,CONCAT(v14.Nom_Ciudad) AS Ciudad,CONCAT(ce.Nom_Centro) AS Centro,CONCAT(v8.Nom_Area) AS Area,COUNT(*) AS Publicaciones
 		FROM version v1 
 		INNER JOIN producto_virtual v2 ON v1.Id_P_Virtual = v2.Id_P_Virtual
 		INNER JOIN detalles_tema v3 ON v2.Id_P_Virtual = v3.Id_P_Virtual AND v3.Tipo_Tema = 0
@@ -54,7 +54,7 @@ WHEN 2 THEN
 	BEGIN
 		-- Cantidad de Publicaciones de PV por Tipo Objeto
 		SET contenido = "
-		SELECT DATE_FORMAT(v1.Fecha_Publicacion,'%M %Y') AS Mes,v6.Nom_Ciudad AS Ciudad,ce.Nom_Centro AS Centro,v9.Nom_Tipo_Formato AS Formato,v8.Nom_Formato AS Extencion,COUNT(*) AS Publicaciones
+		SELECT DATE_FORMAT(v1.Fecha_Publicacion,'%M %Y') AS Mes,CONCAT(v6.Nom_Ciudad) AS Ciudad,CONCAT(ce.Nom_Centro) AS Centro,CONCAT(v9.Nom_Tipo_Formato) AS Formato,CONCAT(v8.Nom_Formato) AS Extencion,COUNT(*) AS Publicaciones
 		FROM version v1 INNER JOIN autor v2 ON v1.Id_Version = v2.Id_Version
 		INNER JOIN funcionario v3 ON v2.Id_Funcionario = v3.Id_Funcionario
 		INNER JOIN area_centro v4 ON v3.Id_Area_Centro = v4.Id_Area_Centro
@@ -72,7 +72,7 @@ WHEN 3 THEN
 	BEGIN
 		-- Cantidad de Publicaciones de PV por Categoria
 		SET contenido = "
-		SELECT DATE_FORMAT(v1.Fecha_Publicacion,'%M %Y') AS Mes,v6.Nom_Ciudad AS Ciudad,ce.Nom_Centro AS Centro, v10.Nom_Categoria AS Categoria,COUNT(*) AS Publicaciones
+		SELECT DATE_FORMAT(v1.Fecha_Publicacion,'%M %Y') AS Mes,CONCAT(v6.Nom_Ciudad) AS Ciudad,CONCAT(ce.Nom_Centro) AS Centro, CONCAT(v10.Nom_Categoria) AS Categoria,COUNT(*) AS Publicaciones
 		FROM version v1 INNER JOIN autor v2 ON v1.Id_Version = v2.Id_Version
 		INNER JOIN funcionario v3 ON v2.Id_Funcionario = v3.Id_Funcionario
 		INNER JOIN area_centro v4 ON v3.Id_Area_Centro = v4.Id_Area_Centro
@@ -91,14 +91,14 @@ WHEN 4 THEN
 	BEGIN
 		-- Cantidad de Publicaciones Visitadas
 		SET contenido = "
-		SELECT DATE_FORMAT(v1.Fecha_Publicacion,'%M %Y') AS Mes,v6.Nom_Ciudad AS Ciudad,ce.Nom_Centro AS Centro,v7.Nom_P_Virtual AS ""Producto Virtual"", v8.Cant_Visitas AS Visitas
+		SELECT DATE_FORMAT(v1.Fecha_Publicacion,'%M %Y') AS Mes,CONCAT(v6.Nom_Ciudad) AS Ciudad,CONCAT(ce.Nom_Centro) AS Centro,CONCAT(v7.Nom_P_Virtual) AS ""Producto Virtual"", CONCAT(v8.Cant_Visitas) AS Visitas
 		FROM version v1 INNER JOIN autor v2 ON v1.Id_Version = v2.Id_Version
 		INNER JOIN funcionario v3 ON v2.Id_Funcionario = v3.Id_Funcionario
 		INNER JOIN area_centro v4 ON v3.Id_Area_Centro = v4.Id_Area_Centro
 		INNER JOIN centro ce ON v4.Id_Centro = ce.Id_Centro
 		INNER JOIN ciudad v6 ON ce.Id_Ciudad = v6.Id_Ciudad
 		INNER JOIN producto_virtual v7 ON v1.Id_P_Virtual = v7.Id_P_Virtual
-		INNER JOIN rankin_Log v8 ON v1.Id_Version = v8.Id_Version 
+		INNER JOIN rankin v8 ON v1.Id_Version = v8.Id_Version 
         WHERE 1 = 1";
         
         SET contenido2 = "
@@ -108,14 +108,14 @@ WHEN 5 THEN
 	BEGIN
 		-- Cantidad de Publicaciones Descargadas
 		SET contenido = "
-		SELECT DATE_FORMAT(v1.Fecha_Publicacion,'%M %Y') AS Mes,v6.Nom_Ciudad AS Ciudad,ce.Nom_Centro AS Centro,v7.Nom_P_Virtual AS ""Producto Virtual"",v1.Num_Version AS Version,v8.Cant_Descargas AS Descargas
+		SELECT DATE_FORMAT(v1.Fecha_Publicacion,'%M %Y') AS Mes,CONCAT(v6.Nom_Ciudad) AS Ciudad,CONCAT(ce.Nom_Centro) AS Centro,CONCAT(v7.Nom_P_Virtual) AS ""Producto Virtual"",CONCAT(v1.Num_Version) AS Version,CONCAT(v8.Cant_Descargas) AS Descargas
 		FROM version v1 INNER JOIN autor v2 ON v1.Id_Version = v2.Id_Version
 		INNER JOIN funcionario v3 ON v2.Id_Funcionario = v3.Id_Funcionario
 		INNER JOIN area_centro v4 ON v3.Id_Area_Centro = v4.Id_Area_Centro
 		INNER JOIN centro ce ON v4.Id_Centro = ce.Id_Centro
 		INNER JOIN ciudad v6 ON ce.Id_Ciudad = v6.Id_Ciudad
 		INNER JOIN producto_virtual v7 ON v1.Id_P_Virtual = v7.Id_P_Virtual
-		INNER JOIN rankin_Log v8 ON v1.Id_Version = v8.Id_Version 
+		INNER JOIN rankin v8 ON v1.Id_Version = v8.Id_Version 
         WHERE 1 = 1";
         
         SET contenido2 = "
@@ -125,7 +125,7 @@ WHEN 6 THEN
 	BEGIN
 		-- Cantidad de Publicaciones de PV publicados e inhabilitados
 		SET contenido = "
-		SELECT DATE_FORMAT(v1.Fecha_Publicacion,'%M %Y') AS Mes,v6.Nom_Ciudad AS Ciudad,ce.Nom_Centro AS Centro,COUNT(*) AS Publicados,
+		SELECT DATE_FORMAT(v1.Fecha_Publicacion,'%M %Y') AS Mes,CONCAT(v6.Nom_Ciudad) AS Ciudad,CONCAT(ce.Nom_Centro) AS Centro,COUNT(*) AS Publicados,
 		(
 			SELECT COUNT(*)
 			FROM version v11 INNER JOIN autor v22 ON v11.Id_Version = v22.Id_Version
@@ -151,7 +151,7 @@ WHEN 7 THEN
 	BEGIN
 		-- Cantidad de Pv Creados o actualizaciones por cada Funcionario
 		SET contenido = "
-        SELECT DATE_FORMAT(v1.Fecha_Publicacion,'%M') AS Mes,v6.Nom_Ciudad AS Ciudad,ce.Nom_Centro AS Centro,v7.Nom_Area AS Area,CONCAT(v3.Nom_Funcionario,"" "",v3.Apellidos) AS Funcionario,COUNT(*) AS Publicaciones
+        SELECT DATE_FORMAT(v1.Fecha_Publicacion,'%M') AS Mes,CONCAT(v6.Nom_Ciudad) AS Ciudad,CONCAT(ce.Nom_Centro) AS Centro,CONCAT(v7.Nom_Area) AS Area,CONCAT(v3.Nom_Funcionario,"" "",v3.Apellidos) AS Funcionario,COUNT(*) AS Publicaciones
 		FROM version v1 INNER JOIN autor v2 ON v1.Id_Version = v2.Id_Version
 		INNER JOIN funcionario v3 ON v2.Id_Funcionario = v3.Id_Funcionario 
 		INNER JOIN area_centro v4 ON v3.Id_Area_Centro = v4.Id_Area_Centro

@@ -57,7 +57,7 @@ public class Estadisticas_Controller extends HttpServlet {
                         //jso[0] = ['Estadisticas_Controller','[{opcion:1,reportes:[6,'+ idCentro + ',0,0]}]']; INICIAL
                         //jso[0] = ['Estadisticas_Controller','[{opcion:1,reportes:[7,'+ idCentro + ',0,0]}]']; INICIAL
                         
-                        //jso[0] = ['Estadisticas_Controller','[{opcion:1,reportes:[1,'+ idCentro + ','+mes+','+anio+']}]'];
+                      
                         //jso[0] = ['Estadisticas_Controller','[{opcion:1,reportes:[2,'+ idCentro + ','+mes+','+anio+']}]'];
                         //jso[0] = ['Estadisticas_Controller','[{opcion:1,reportes:[3,'+ idCentro + ','+mes+','+anio+']}]']; 
                         //jso[0] = ['Estadisticas_Controller','[{opcion:1,reportes:[4,'+ idCentro + ','+mes+','+anio+']}]'];
