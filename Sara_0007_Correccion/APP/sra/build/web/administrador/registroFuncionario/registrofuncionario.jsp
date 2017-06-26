@@ -42,7 +42,7 @@
                             <input type="text" class="form-control input" placeholder=" Digite cargo" id="cargo" maxlength="45">
                             <center>
                                 <br/>
-                                <div id="AnimacionCargando" class="col-md-12" style="display: none;">
+                                <div id="AnimacionCargando" class="col-md-12">
                                     <p class="col-md-8" ALIGN=right>Creando usuario:</p>
                                     <div class="windows8 col-md-4">
                                         <div class="wBall" id="wBall_1">
@@ -62,9 +62,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div id="divBtn">
-                                    <button type="button" id="boton1" class="btn btn-info">Registrar Funcionario</button>
-                                </div>
+                                <button type="button" id="boton1" class="btn btn-info">Registrar Funcionario</button>
                             </center>
                         </section>
                     </div>
@@ -73,6 +71,6 @@
         </div>
     </div>
     <script type="text/javascript" src="js/notify.js"></script>
-    <script type="text/javascript" src="js/jquery.cecily.js"></script>
+    <script type="text/javascript" charset="utf8" src="js/jquery.dataTables.js"></script>
     <script type="text/javascript" src="administrador/registroFuncionario/js/registroCoordinador.js"></script>
 </div>

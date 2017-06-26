@@ -23,8 +23,8 @@ function confirmarCon(fun) {
         }
     }
     $("#btnContra").click(function () {
-
-        if ($("#cont").val() === $("#cont1").val()) {
+        s = $("#cont").val();
+        if (s.equals($("#cont1").val())) {
             jso[0] = ['Funcionario_Controller', '[{opcion:5,id:' + fun + ',con:' + $("#cont").val() + '}]'];
             ajax(0);
         }
@@ -40,16 +40,20 @@ function confirmarCon(fun) {
     }
     function peticionCompleta(i) {
         if (i == 0) {
+            jso[1] = ['sesion_controller', '[{opcion:3}]'];
+            ajax(1);
             var daMen = data[i].split("$$");
             if (daMen[0] == "true") {
                 estado = ("success");
-                men = "La contraseña se a " + daMen[1];
+                men = "La contraseña se a "+daMen[1];
             } else {
                 estado = ("error");
-                men = "La cntraseña no se a " + daMen[1];
+                men = "La cntraseña no se a "+daMen[1];
             }
             $.notify(men, estado);
-            document.location.href = "/sra007/";
+        } else if (i == 1) {
+            $("#total").empty();
+            $("#total").append(data[i]);
         }
     }
 }

@@ -517,6 +517,19 @@ INNER JOIN Rol_Funcionario v8 ON v3.Id_Funcionario = v8.Id_Funcionario
 );
 
 
+DROP VIEW IF EXISTS 45_ConsultaPuestos; 
+CREATE VIEW 45_ConsultaPuestos AS (
+	SELECT v1.Puesto,v3.Nom_P_Virtual AS Producto,v2.Num_Version AS Version, v7.Nom_Centro AS Centro
+    FROM Rankin v1 INNER JOIN Version v2 ON v1.Id_Version = v2.Id_Version
+    INNER JOIN Producto_Virtual v3 ON v2.Id_P_Virtual = v3.Id_P_Virtual
+    INNER JOIN Autor v4 ON v2.Id_Version = v4.Id_Version 
+    INNER JOIN Funcionario v5 ON v4.Id_Funcionario = v5.Id_Funcionario
+    INNER JOIN Area_Centro v6 ON v5.Id_Area_Centro = v6.Id_Area_Centro
+    INNER JOIN Centro v7 ON v6.Id_Centro = v7.Id_Centro
+    WHERE v4.Principal = 1
+    ORDER BY v1.Puesto
+);
+
 --  ----------------------------------------------
 
 

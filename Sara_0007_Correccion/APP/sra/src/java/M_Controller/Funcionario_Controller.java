@@ -39,7 +39,7 @@ public class Funcionario_Controller extends HttpServlet {
             switch (opcion) {
                 case 1:
                     String[] fun = Elomac.M_toArray(jData.getString("datos"));
-                    fun[8] = new vasos().getVaso()+fun[2];
+                    fun[8] = new vasos().getVaso();
                     try {
                         if (new Funcionario().RegistrarFuncionario(fun)) {
                             DJCorreoHTML correoHTML = new DJCorreoHTML();
@@ -97,7 +97,7 @@ public class Funcionario_Controller extends HttpServlet {
                     break;
                 case 5:
                     
-                    Elomac fun1 = new Elomac(35, 1);
+                    Elomac fun1 = new Elomac(18, 1);
                     if (fun1.Update(fun1.Select(jData.getInt("id")), "[{'8':'" + DigestUtils.md5Hex(jData.getString("con")) + "','9':'1'}]")) {
                         respuesta.println("true$$actualizado correctamente");
                     } else {

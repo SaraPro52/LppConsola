@@ -106,7 +106,7 @@ BEGIN
         SET @a = 0;
         
         WHILE(@a < 3 )DO
-			SET @val = SUBSTRING_INDEX(@arrayE,"¤",1);
+			SET @val = SUBSTRING_INDEX(@arrayE,"Â¤",1);
 			SET @cant = CHAR_LENGTH(@arrayE) - CHAR_LENGTH(@val);
 			SET @arrayE = RIGHT(@arrayE,@cant -1);
 				

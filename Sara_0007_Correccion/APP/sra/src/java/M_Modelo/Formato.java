@@ -26,4 +26,14 @@ public class Formato extends Elomac{
                 return e.getMessage();
             }
         }
+        
+        public String TipoFormatoAdmin(String[] parametrosTipoFormatoAdmin){
+            try {
+                JSONArray arrayConsulta = new JSONArray(Elomac.M_ResultSet(Group(parametrosTipoFormatoAdmin, '~'), 28));
+                return arrayConsulta.toString();
+            } catch (Exception e) {
+                return e.getMessage();
+            }
+        }
+        
 }

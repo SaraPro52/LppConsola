@@ -6,6 +6,7 @@ var jso = [], selector = [], datos = [], hilo = [], data = [];
 //-------cambio
 //-------Consulta Notificaciones
   jso[0] = ['Notificaciones_Controller','[{opcion:1,parametros:['+ idUser + ',' + idRol + ',0]}]'];
+  
 //----------
 selector[0] = $("#tablaNotificacion");
 datos[0] = {nombre: "Notificacion"};

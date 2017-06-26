@@ -1,6 +1,5 @@
 <div class="content">
     <link rel="stylesheet" type="text/css" href="css/multi-select.css">
-    <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.12/css/jquery.dataTables.css">
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
@@ -10,13 +9,18 @@
                             <label>Programa de Formación</label>
                             <input required type="text" id="nomPro" class="form-control inputs" placeholder="Digite el programa de formacion">
                         </div>
-
+                        <div class="col-md-12" style="margin-top:3%;">
+                            <label>Centro de Formación</label>
+                            <select class="form-control select" id="SelecCentro">
+                                <option value="A0">Seleccionar...</option>
+                            </select>
+                        </div>
                         <div class="col-md-12" style="margin-top:3%;">
                             <label>Nivel de Formación</label>
                             <select class="form-control select" id="nivel">
                                 <option value="A0">Seleccionar...</option>>
-                                <option value="Técnico">Técnico</option>
-                                <option value="Tecnólogo">Tecnólogo</option>
+                                <option value="Tecnico">Técnico</option>
+                                <option value="Tecnologo">Tecnólogo</option>
                                 <option value="Especialidad">Especialidad</option>
                             </select>
                         </div>
@@ -26,24 +30,12 @@
                                 <option>Null</option>
                             </select>
                         </div>
-                        <div class="col-md-7">
-                            <button id="btnPrograma" type="button" class="btn btn-primary">Guardar Programa</button>
+                        <div class="col-md-6" id="multiselectAreas" style="display: none;">
+                            <label>Áreas</label>
+                            <select  id="MultAreas" class="MultAreas"  multiple='multiple' title="Busca una area..">
+                            </select>
                         </div>
-
-                        <div class="col-md-10 col-md-offset-1">
-                            <table id="tablaPrograma" class="table table-hover">
-                                <thead>
-                                    <tr class="active">
-                                        <td>N°</td>
-                                        <td>Nombre del programa</td>
-                                        <td>Nivel de formacion</td>
-                                        <td>Modificar programa</td>
-                                    </tr>
-                                </thead>
-                                <tbody id="tablabody">
-                                </tbody>
-                            </table>                                
-                        </div>
+                        <button id="btnPrograma" type="button" class="btn btn-primary">Guardar Programa</button>
                     </div>
                 </div>
             </div>
@@ -53,7 +45,6 @@
         <script type="text/javascript" charset="utf8" src="js/jquery.dataTables.js"></script>
         <script type="text/javascript" src="js/jquery.multi-select.js"></script>
         <script type="text/javascript" src="js/jquery.quicksearch.js"></script>
-        <script type="text/javascript" charset="utf8" src="js/jquery.cecily.js"></script>
         <script type="text/javascript" charset="utf8" src="administrador/programa/js/programa.js"></script>
     </div>
 </div>

@@ -91,9 +91,19 @@ public class Modificar_Controller extends HttpServlet {
                         respuesta.println(e.getMessage());
                     }
                 break;
+                case 6: //MODIFICAR TIPO FORMATO
+                    //jso[0] = ['Modificar_Controller','[{opcion:6,TipoFormatoAdmin:[1,0,'+nomTipoFormato+','+urlTipoFormato+']}]']--- Crear Tipo Formato
+                    //jso[0] = ['Modificar_Controller','[{opcion:6,TipoFormatoAdmin:[2,'+idTipoFormato+','+nomTipoFormato+','+urlTipoFormato+']}]']--- Modificar Tipo Formato
+                    //jso[0] = ['Modificar_Controller','[{opcion:6,TipoFormatoAdmin:[0,0,0,0]}]']--- Retorna todos los Tipos Formatos
+                    try {
+                        String[] parametrosTipoFormatoAdmin = Elomac.M_toArray(jData.getString("TipoFormatoAdmin"));
+                        respuesta.println(new Formato().TipoFormatoAdmin(parametrosTipoFormatoAdmin));
+                    } catch (Exception e) {
+                        respuesta.println(e.getMessage());
+                    }
+                break;
             
             }
-            
             
         }catch (Exception falla) {
             response.getWriter().println("Falla: " + falla.getMessage());
@@ -127,7 +137,7 @@ public class Modificar_Controller extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
-            }
+    }
 
     /**
      * Returns a short description of the servlet.

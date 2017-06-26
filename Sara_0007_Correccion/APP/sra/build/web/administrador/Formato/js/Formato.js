@@ -1,20 +1,18 @@
 $(document).on('ready', function () {
-    var selector = [], hilo = [], jso = [], data = [], datos = [], estado = "", campo = [], idFormato = 0, idTipoFormato = 0;
-    var ob = new $.Luna("Formato(s)", null);
-    ob.Vivo("Formato1");
-    jso[0] = ['Modificar_Controller', '[{opcion:5,FormatoAdmin:[0,0,0,0]}]'];
+    var selector = [], hilo = [], jso = [], data = [], datos = [], estado = "", campo = [], idFormato;
+    var ob = new $.Luna("Formato(s)", $("#tablaformato"));
+    ob.Vivo("Formato");
+    jso[0] = ['Crud_Controller', '[{opcion:3,tabla2:17,tipo:1,delimitador:[],elegir:[0,1,2],id:0,opSelect:4}]'];
     selector[0] = $("#tablaformato");
     datos[0] = {nombre: "Formato"};
     ob.TablaEspa(selector[0]);
     ajax(0, datos[0]);
-
     $(document).on('click', '.botonformato', function (e) {
         campo = this.value;
         var ca = campo.split("$$");
-        idFormato = ca[0];
-        $("#tipoFormato option[value=" + ca[1] + "]").attr("selected", true);
-        $("#formato").val(ca[2]);
-        $("#descripcion").val(ca[3]);
+        idFormato = (ca[0]);
+        $("#formato").val(ca[1]);
+        $("#descripcion").val(ca[2]);
         $("#btnformato").html("Modificar formato");
     });
     var men = "";
@@ -38,73 +36,61 @@ $(document).on('ready', function () {
 
     function Btnformato() {
         var Nom = $("#btnformato").html();
-
+        men = $("#formato").val();
+        ob.limpiarTabla($("#tablaformato"));
         if (Nom == "Guardar formato") {
-            jso[2] = ['Modificar_Controller', '[{opcion:5,FormatoAdmin:[1,0,' + $("#formato").val() + ',' + $("#descripcion").val() + ',' + $("#tipoFormato").val() + ']}]']
-            datos[2] = {nombre: "btn"};
-            men = $("#formato").val();
-            ajax(2, datos[2]);
-        } else if (Nom == "Modificar formato") {
-            jso[1] = ['Modificar_Controller', '[{opcion:5,FormatoAdmin:[2,' + idFormato + ',' + $("#formato").val() + ',' + $("#descripcion").val() + ',' + $("#tipoFormato").val() + ']}]']
-            datos[1] = {nombre: "btn"};
-            men = $("#formato").val();
+            jso[1] = ['Crud_Controller', '[{opcion:1,tabla1:17,tabla2:17,tipo:1,delimitador:[],datos:["",' + $("#formato").val() + ',' + $("#descripcion").val() + '],elegir:[0,1,2],id:0,opSelect:4}]'];
+            selector[1] = $("#tablaformato");
+            datos[1] = {nombre: "Formato"};
             ajax(1, datos[1]);
+        } else if (Nom == "Modificar formato") {
+            $("#btnformato").val("Guardar formato");
+            jso[3] = ['Crud_Controller', '[{opcion:2,tabla1:17,tabla2:17,tipo:1,delimitador:[],actualizar:[' + idFormato + ',' + $("#formato").val() + ',' + $("#descripcion").val() + '],elegir:[0,1,2],id:0,opSelect:4}]'];
+            selector[3] = $("#tablaformato");
+            datos[3] = {nombre: "Formato"};
+            ajax(3, datos[3]);
         }
-        selector[1] = $("#tablaformato");
-        $("#btnformato").html("Guardar formato");
     }
-
     function ajax(i, datos) {
         hilo[i] = new Worker("js/worker.js");
         hilo[i].postMessage(jso[i]);
         hilo[i].onmessage = function (event) {
             data[i] = event.data;
-            peticionCompleta(i);
             ob.cargarTabla(data[i], selector[i], datos);
+            peticionCompleta(i);
             hilo[i].terminate();
         };
     }
     function peticionCompleta(i) {
-        if (i == 0) {
-            jso[5] = ['Crud_Controller', '[{opcion:3,tabla2:59,tipo:1,elegir:[0,1],delimitador:[],id:0,opSelect:4}]'];
-            selector[5] = $("#tipoFormato");
-            datos[5] = {nombre: "Select"};
-            ajax(5, datos[5]);
-        } else if (i == 1) {//Modificar
-
-            try {
-                var response = jQuery.parseJSON(data[i]);
-                if (typeof response == 'object') {
-                    ob.limpiarTabla($("#tablaformato"));
-                    datos[7] = {nombre: "Formato"};
-                    ob.cargarTabla(data[i], selector[1], datos[7]);
-                    estado = ("success");
-                    men = "El formato " + men + " se a modificado correctamente";
-                }
-            } catch (e) {
-                estado = ("error");
-                men = "El formato " + men + " no se a modificado";
-            }
-            $.notify(men, estado);
-            $("#formato").val("");
-            $("#descripcion").val("");
-            $("#tipoFormato option[value='A0']").attr("selected", true);
-        } else if (i == 2) {//agregar lista
+        if (i == 1) {
+            jso[2] = ['Crud_Controller', '[{opcion:3,tabla2:17,tipo:1,delimitador:[],elegir:[0,1,2],id:0,opSelect:4}]'];
+            selector[2] = $("#tablaformato");
+            datos[2] = {nombre: "Formato"};
+            ob.limpiarTabla(selector[2]);
+            ajax(2, datos[2]);
+        } else if (i == 2) {
             if (data[2].length > data[0].length) {
-                ob.limpiarTabla($("#tablaformato"));
-                datos[7] = {nombre: "Formato"};
-                ob.cargarTabla(data[i], selector[1], datos[7]);
                 estado = ("success");
-                men = "El formato " + men + " se aagregado correctamente";
-
+                men = "El formato " + men + " se agrego correctamente";
             } else {
                 estado = ("error");
-                men = "El formato " + men + " no se a agregado";
+                men = "El formato " + men + " no se agrego";
             }
             $.notify(men, estado);
-            $("#formato").val("");
-            $("#descripcion").val("");
-            $("#tipoFormato option[value='A0']").attr("selected", true);
+            $("#formato").val();
+            $("#descripcion").val();
+        } else if (i == 3) {
+            var daMen = data[i].split("$$");
+            if (daMen[0] == "true") {
+                estado = ("success");
+                men = "El formato " + men + " " + daMen[1];
+            } else {
+                estado = ("error");
+                men = "El formtao" + men + " " + daMen[1];
+            }
+            $.notify(men, estado);
+            $("#formato").val();
+            $("#descripcion").val();
         }
     }
 });

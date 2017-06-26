@@ -144,7 +144,7 @@ jQuery.Luna = function (Datos, selector) {
                             oAItem.find(".labelEstrella").addClass(jso[i].Id_Version);
                             oAItem.find(".RComentarios").attr('id', "RComentarios" + jso[i].Id_Version);
                             oAItem.find("#comment").addClass('Comment' + jso[i].Id_Version);
-                            oAItem.find("#Url_Version").attr('href', 'DescargaArchivo?archivo=' + jso[i].Url_Version + '&version=' + jso[i].Id_Version + '');
+                            oAItem.find("#Url_Version").attr('href', 'DescargaArchivo?archivo=' + jso[i].Url_Version + '&version='+jso[i].Id_Version+'' );
                             oAItem.find("#btn_Comentar").val(jso[i].Id_Version);
                             oAItem.children().appendTo($("#resultados"));
                             console.log(jso);
@@ -188,77 +188,6 @@ jQuery.Luna = function (Datos, selector) {
                     }
                     selector.multiSelect('refresh');
                     break;
-
-
-                case "MultiSelectArrayPrograma":
-                    if (datos.compuesto == true) {
-                        var jso = jQuery.parseJSON(json);
-                        var j = Object.keys(json[0]);
-                        var opcion = "", id = "", nombre = "", tipo = 3;
-                        for (var i = 0; i < jso.length; i++) {
-                            tipo = jso[i].Tipo;
-                            id = jso[i].Id_Tema;
-                            nombre = jso[i].Nom_Tema;
-                            if (tipo == "1") {
-                                opcion = "<option value=" + id + " disabled='disabled' selected>" + nombre + "</option>";
-                            } else if (tipo == "0") {
-                                opcion = "<option value=" + id + ">" + nombre + "</option>";
-                            } else {
-                                opcion = "<option value=" + id + " selected>" + nombre + "</option>";
-                            }
-                            selector.append(opcion);
-                        }
-                    } else {
-                        var jso = jQuery.parseJSON(json);
-                        var j = Object.keys(jso[0]);
-                        for (var i = 0; i < jso.length; i++) {
-                            id = jso[i].Id_Tema;
-                            nombre = jso[i].Nom_Tema;
-                            var opcion = "<option value=" + id[0] + ">" + nombre[0] + "</option>";
-                            selector.append(opcion);
-                        }
-                    }
-                    selector.multiSelect('refresh');
-                    if (datos.opt == "Div") {
-                        selector.multiSelect('deselect_all');
-                    }
-                    break;
-
-                case "MultiSelectArray":
-                    if (datos.compuesto == true) {
-                        var jso = jQuery.parseJSON(json);
-                        var j = Object.keys(json[0]);
-                        var opcion = "", id = "", nombre = "", tipo = 3;
-                        console.log(jso);
-                        for (var i = 0; i < jso.length; i++) {
-                            tipo = jso[i].Tipo;
-                            id = jso[i].Id_Programa;
-                            nombre = jso[i].Nom_Programa;
-                            if (tipo == "1") {
-                                opcion = "<option value=" + id + " disabled='disabled' selected>" + nombre + "</option>";
-                            } else if (tipo == "0") {
-                                opcion = "<option value=" + id + ">" + nombre + "</option>";
-                            } else {
-                                opcion = "<option value=" + id + " selected>" + nombre + "</option>";
-                            }
-                            selector.append(opcion);
-                        }
-                    } else {
-                        var jso = jQuery.parseJSON(json);
-                        var j = Object.keys(jso[0]);
-                        for (var i = 0; i < jso.length; i++) {
-                            id = jso[i].Id_Programa;
-                            nombre = jso[i].Nom_Programa;
-                            var opcion = "<option value=" + id[0] + ">" + nombre[0] + "</option>";
-                            selector.append(opcion);
-                        }
-                    }
-                    selector.multiSelect('refresh');
-                    if (datos.opt == "Div") {
-                        selector.multiSelect('deselect_all');
-                    }
-                    break;
-
                 case "MultiSelect":
                     if (datos.compuesto == true) {
                         var j = Object.keys(json[0]);
@@ -533,21 +462,6 @@ jQuery.Luna = function (Datos, selector) {
                         ]);
                     }
                     break;
-                case "ConsultaPrograma":
-                    var jso = jQuery.parseJSON(json);
-                    var dat = [];
-                    selector.dataTable().fnClearTable();
-                    for (var i = 0; i < jso.length; i++) {
-                        dat = jso[i].Id_Programa + "$$" + jso[i].Nom_Programa + "$$" + jso[i].Nivel_Formacion;
-                        table = selector.dataTable().fnAddData([
-                            i + 1,
-                            jso[i].Nom_Programa,
-                            jso[i].Nivel_Formacion,
-                            "<button id='" + dat + "'  class='btnModificarPrograma btn btn-info'>Modificar</button>"
-                        ]);
-                    }
-                    break;
-
                 case "Lista":
                     var jso = jQuery.parseJSON(json);
                     for (var i = 0; i < jso.length; i++) {
@@ -632,14 +546,15 @@ jQuery.Luna = function (Datos, selector) {
                 case "Formato" :
                     jsFormato = jQuery.parseJSON(json);
                     for (var i = 0; i < jsFormato.length; i++) {
-                        var dat = (jsFormato[i].Id_Formato + "$$" + jsFormato[i].Id_Tipo_Formato + "$$" + jsFormato[i].Nom_Formato + "$$" + jsFormato[i].Des_Formato);
+                        var dat = (jsFormato[i].Id_Formato + "$$" + jsFormato[i].Nom_Formato + "$$" + jsFormato[i].Des_Formato);
                         table = $("#tablaformato").dataTable().fnAddData([
                             i + 1,
                             jsFormato[i].Nom_Formato,
-                            jsFormato[i].Des_Formato,
-                            "<button  class='btn btn-success botonformato'value='" + dat + "' >modificar</button>"
+                            jsFormato[i].Des_Formato
                         ]);
                     }
+                    //,"<button  class='btn btn-success botonformato'value='" + dat + "' >modificar</button>"
+                    setNombre(i + 1);
                     break;
                 case "AsignarRol":
                     var jsSelect = jQuery.parseJSON(json);
@@ -661,7 +576,7 @@ jQuery.Luna = function (Datos, selector) {
                     var colum = [];
                     var ths = "";
                     var obj = jQuery.parseJSON(json);
-                    if (obj.length > 0) {
+                    if (obj.length>0) {
                         for (var i = 0; i < Object.keys(obj[0]).length; i++) {
                             colum.push({"data": Object.keys(obj[0])[i]})
                             ths += "<th>" + Object.keys(obj[0])[i] + "</th>";
@@ -674,7 +589,7 @@ jQuery.Luna = function (Datos, selector) {
                             destroy: true
                         });
                         $("#" + selector + "_filter").hide();
-                    } else {
+                    }else{
                         alert("No se encontaron registros");
                     }
                     break;

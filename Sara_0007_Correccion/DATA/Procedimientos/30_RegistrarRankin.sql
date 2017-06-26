@@ -75,9 +75,9 @@ END;;
 DELIMITER ;
 
 /*
-CALL RegistrarRankin("1~1~0~0");
-CALL RegistrarRankin("2~1~0~0");
-CALL RegistrarRankin("3~1~3~5");
+CALL RegistrarRankin("1~12~0~0");
+CALL RegistrarRankin("2~12~0~0");
+CALL RegistrarRankin("3~12~5~5");
 
 SELECT * FROM rankin;
 SELECT * FROM Voto;
@@ -88,7 +88,7 @@ DROP PROCEDURE IF EXISTS ActualizarPuestoRankin;
 DELIMITER ;;
 CREATE PROCEDURE ActualizarPuestoRankin()
 BEGIN
-  
+  SET SQL_SAFE_UPDATES = 0;
   DROP TEMPORARY TABLE IF EXISTS ActualizarPuesto1;
   CREATE TEMPORARY TABLE ActualizarPuesto1 (
     IdRankin1  INTEGER NOT NULL,
@@ -113,7 +113,8 @@ DELIMITER ;
 
 DROP VIEW IF EXISTS vistapuesto;
 CREATE VIEW VistaPuesto AS (
-    SELECT v1.Id_Rankin, (SUM(Num_Voto) / v1.Cant_Votos) * 0.7 + v1.Cant_Descargas * 0.2 + v1.Cant_Visitas * 0.1 AS Val_Puesto, v1.Puesto
+    SELECT v1.Id_Rankin, 
+    LPAD((SUM(Num_Voto) / v1.Cant_Votos) * 0.7 + v1.Cant_Descargas * 0.2 + v1.Cant_Visitas * 0.1,3,"0") AS Val_Puesto, v1.Puesto
     FROM rankin v1 INNER JOIN voto v2 ON v1.Id_Rankin = v2.Id_Rankin
     GROUP BY v1.Id_Rankin
 );
@@ -124,7 +125,7 @@ SET GLOBAL event_scheduler = ON;
 DROP EVENT IF EXISTS Event_ActualizarPuesto;
 DELIMITER ;;
 CREATE EVENT Event_ActualizarPuesto 
-ON SCHEDULE EVERY 1 WEEK STARTS '2017/05/26 18:00:00' ENABLE
+ON SCHEDULE EVERY 5 MINUTE STARTS '2017/05/24 18:00:00' ENABLE
 COMMENT "ActualizarPuesto"
 DO
 BEGIN 

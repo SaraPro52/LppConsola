@@ -37,7 +37,7 @@ public class M_Crud extends M_Procedure {
             switch (sentencia) {
                 case "SELECT":
                     rs1 = saraCrud(sentencia, tabla, this.Group(M_toArray(contenido1, 1), '|'), contenido2);
-                    a = 0;  
+                    a = 0;
                     while (rs1.next()) {
                         item = new LinkedHashMap<String, Object>();
 

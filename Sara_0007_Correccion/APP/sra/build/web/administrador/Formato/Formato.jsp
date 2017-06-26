@@ -13,12 +13,6 @@
                             <label for="descripcion">Descripción del Formato:</label>
                             <input required type="text" placeholder="Descripción Formato"  class="form-control inputs" id="descripcion" name="descripcion" required="true">
                         </div> 
-                        <div class="col-md-6">
-                            <label for="descripcion">Tipo de Formato:</label>
-                            <select id="tipoFormato" class="form-control">
-                                <option value="A0">Selecionar...</option>
-                            </select>
-                        </div> 
                         <div class="col-md-12 col-md-offset-1 espacio">
                             <button type="button" class="btn btn-info espacio" id="btnformato"  name="button">Guardar formato</button>    
                         </div>
@@ -33,7 +27,6 @@
                         <td>N°</td>
                         <td>Nombre del formato</td>
                         <td>Descripcion del formato</td>
-                        <td></td>
                     </tr>
                 </thead>
                 <tbody id="tablabody">

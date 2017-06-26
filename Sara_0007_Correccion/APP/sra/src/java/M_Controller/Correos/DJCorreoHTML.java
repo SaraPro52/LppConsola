@@ -62,7 +62,7 @@ public class DJCorreoHTML {
                     + "            Estimado Funcionario, le informamos que su usuario es: " + user + "\n"
                     + "            <br>\n"
                     + "            Para confirmar la cuenta debe ingresar al link que se encuentra"
-                    + "a continuacion LINK: <a href='http://localhost:1437/sra007/ActivacionCuenta_Controller?t=" + toq + "&c=1'>link</a>. \n"
+                    + "a continuacion LINK: <a href='http://localhost:8080/sra/ActivacionCuenta_Controller?t=" + toq + "&c=1'>link</a>. \n"
                     + "            <br>\n"
                     + "            <br>\n"
                     + "            Gracias por su atencion.\n"

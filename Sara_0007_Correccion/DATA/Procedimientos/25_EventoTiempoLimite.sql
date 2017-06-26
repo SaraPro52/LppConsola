@@ -17,7 +17,6 @@ DELIMITER ;;
 CREATE PROCEDURE TIME_LIMIT()
 BEGIN
 
-
 	DECLARE done INTEGER DEFAULT FALSE;
     DECLARE idVer INTEGER;
     DECLARE fechaV TIMESTAMP;
@@ -29,7 +28,7 @@ BEGIN
     DECLARE CONTINUE HANDLER FOR NOT FOUND SET done = TRUE;
     
     SELECT Id_Version, DATE_FORMAT(Fecha_Vigencia,'%y-%m-%d') 
-    FROM Version WHERE Id_Estado = 6;-- Select
+    FROM Version WHERE Id_Estado IN (6,7);-- Select
     
     SET @fechaA  = DATE_FORMAT(CURRENT_TIMESTAMP,'%y-%m-%d');
     OPEN cur;

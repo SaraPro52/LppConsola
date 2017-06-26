@@ -27,10 +27,12 @@ CREATE TABLE Estado(
 CREATE TABLE Tipo_Formato (
 	Id_Tipo_Formato INTEGER NOT NULL AUTO_INCREMENT,
     Nom_Tipo_Formato VARCHAR(60) NOT NULL,
+    UrlImgTipoFormato VARCHAR(100), -- CAMBION CON LAS IMAGENES
 	
     CONSTRAINT PK_TipoFormato PRIMARY KEY (Id_Tipo_Formato),
     CONSTRAINT UN_TipoFormato UNIQUE(Nom_Tipo_Formato)
 );
+
 
 CREATE TABLE Formato(
 	

@@ -2,6 +2,7 @@
 package M_Controller;
 
 import M_Modelo.Estadisticas;
+import M_Modelo.Rankin;
 import M_Util.Elomac;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -76,6 +77,14 @@ public class Estadisticas_Controller extends HttpServlet {
                         String[] parametrosGraficas = Elomac.M_toArray(jData.getString("graficas"));
                         respuesta.println(new Estadisticas().ConsultaGraficas(parametrosGraficas));
                     } catch (Exception e) {
+                        respuesta.println(e.getMessage());
+                    }
+                break;
+                case 3://CONSULTA PUESTOS RANKIN
+                    //jso[0] = ['Estadisticas_Controller', '[{opcion:3}]'];
+                    try{
+                       respuesta.println(new Rankin().consultaPuestos());
+                    }catch (Exception e) {
                         respuesta.println(e.getMessage());
                     }
                 break;
