@@ -29,7 +29,12 @@ public class M_Procedure extends M_Connection{
                                                   "{call ConsultaVistaSubirPV(?)}",
                                                   "{call ModificarContraseña(?)}",
                                                   "{call Login(?)}",
-                                                  "{call RegistrarRankin(?)}"
+                                                  "{call RegistrarRankin(?)}",
+                                                  "{call Tema_Procedure(?)}",//23
+                                                  "{call Programa_Procedure(?)}",
+                                                  "{call Area_Procedure(?)}",
+                                                  "{call Centro_Procedure(?)}",
+                                                  "{call Formato_Procedure(?)}"
                                                   };    
                                                   
             public boolean listo = false;
@@ -82,7 +87,8 @@ public class M_Procedure extends M_Connection{
                 cst3.setString(1,todo);
                 cst3.execute();
                 if(val == 4 || val == 10 || val == 11 || val == 12 || val == 13 
-                   || val == 15 || val == 17 || val == 18 || val == 19 || val == 21){//20/04/2017
+                   || val == 15 || val == 17 || val == 18 || val == 19 || val == 21
+                   || val == 23 || val == 24 || val == 25 || val == 26 || val == 27){//20/04/2017
                     return cst3.getResultSet();
                 }
                 listo = true;

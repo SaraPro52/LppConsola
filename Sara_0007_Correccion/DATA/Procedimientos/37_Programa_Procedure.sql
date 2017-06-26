@@ -4,7 +4,7 @@
 /*
 	CALL Programa_Procedure("1~0~Programa_2.1~Basico2.2~1,2,3");
     CALL Programa_Procedure("2~4~Programa_1.1~Basico3~0");
-    CALL Programa_Procedure("3~5~0~0~0");
+    CALL Programa_Procedure("3~6~0~0~0");
     CALL Programa_Procedure("0~0~0~0~0");
 */
 
@@ -22,6 +22,11 @@ DECLARE arrayTemas_Var VARCHAR(100) DEFAULT "0";
 DECLARE i,num,cant INTEGER DEFAULT 0;
 DECLARE valor VARCHAR(400) DEFAULT "";
 
+SET @opcion = 0,
+	@idPrograma_Var = 0,
+    @nomPrograma_Var = "0",
+	@nivelFormacion_Var = "0",
+    @arrayTemas_Var = "0";
 
 CALL EXECUTE_ARRAY(
 		arrayPrograma,

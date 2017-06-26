@@ -1,6 +1,5 @@
 <div class="row">
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-        
     <div class="col-md-10 col-md-offset-1 card">
         <div>
             <div class="header col-md-offset-1">

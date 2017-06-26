@@ -38,7 +38,12 @@ $(document).ready(function () {
         ajax(2, datos[2]);
     });
 
- 
+    $(document).on('click', '.Descargar', function (e) {
+        jso[4] = ['Rankin_Controller', '[{opcion:2,paramRankin:[0,' + idVersion + ',0,0]}]'];
+        selector[4] = "null";
+        datos[4] = {nombre: "btn"};
+        ajax(4, datos[4]);
+    });
 
     function ajax(i, datos) {
         hilo[i] = new Worker("js/worker.js");

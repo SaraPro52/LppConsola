@@ -17,4 +17,13 @@ public class Formato extends Elomac{
                 return e.getMessage();
             }
         }
+        
+        public String FormatoAdmin(String[] parametrosFormatoAdmin){
+            try {
+                JSONArray arrayConsulta = new JSONArray(Elomac.M_ResultSet(Group(parametrosFormatoAdmin, '~'), 27));
+                return arrayConsulta.toString();
+            } catch (Exception e) {
+                return e.getMessage();
+            }
+        }
 }

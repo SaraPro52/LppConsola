@@ -1,6 +1,8 @@
 package M_Modelo;
 
 import M_Util.Elomac;
+import static M_Util.M_Procedure.Group;
+import org.json.JSONArray;
 
 public class Area extends Elomac {
 
@@ -30,6 +32,16 @@ public class Area extends Elomac {
             return true;
         } else {
             return false;
+        }
+    }
+    
+    
+    public String AreaAdmin(String[] parametrosAreaAdmin){
+        try {
+            JSONArray arrayConsulta = new JSONArray(Elomac.M_ResultSet(Group(parametrosAreaAdmin, '~'), 25));
+            return arrayConsulta.toString();
+        } catch (Exception e) {
+            return e.getMessage();
         }
     }
 }

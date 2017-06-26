@@ -18,7 +18,11 @@ DECLARE idTema_Var INTEGER DEFAULT 0;
 DECLARE	nomTema_Var VARCHAR(45);
 DECLARE	desTema_Var VARCHAR(100);
 
-
+SET @opcion = 0,
+	@idTema_Var = 0,
+    @nomTema_Var = "0",
+	@desTema_Var = "0";
+    
 CALL EXECUTE_ARRAY(
 		arrayTema,
         "~",
@@ -47,7 +51,7 @@ BEGIN -- MODIFICAR TEMA
 		Des_Tema = desTema_Var
 	WHERE Id_Tema = idTema_Var;
 END;
-ELSE SELECT 1;
+ELSE SELECT Id_Tema,Nom_Tema,Des_Tema FROM Tema;-- RETORNA ESTO
 END CASE;
 
 SELECT Id_Tema,Nom_Tema,Des_Tema FROM Tema;

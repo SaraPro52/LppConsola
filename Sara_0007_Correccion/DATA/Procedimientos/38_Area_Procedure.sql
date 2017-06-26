@@ -4,7 +4,7 @@
 /*
 	CALL Area_Procedure("1~0~Area_2.1~LiderArea2.1~1,2,3");
     CALL Area_Procedure("2~5~Area_2.2~LiderArea2.2~4");
-    CALL Area_Procedure("3~5~0~0~0");
+    CALL Area_Procedure("3~6~0~0~0");
     CALL Area_Procedure("0~0~0~0~0");
 */
 
@@ -22,6 +22,11 @@ DECLARE arrayProgramas_Var VARCHAR(100) DEFAULT "0";
 DECLARE i,num,cant INTEGER DEFAULT 0;
 DECLARE valor VARCHAR(400) DEFAULT "";
 
+SET @opcion = 0,
+	@idArea_Var = 0,
+    @nomArea_Var = "0",
+	@liderArea_Var = "0",
+    @arrayProgramas_Var = "0";
 
 CALL EXECUTE_ARRAY(
 		arrayArea,

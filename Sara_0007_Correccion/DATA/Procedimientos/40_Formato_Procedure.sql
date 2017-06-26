@@ -22,6 +22,12 @@ DECLARE i,num,cant INTEGER DEFAULT 0;
 DECLARE valor VARCHAR(400) DEFAULT "";
 
 
+SET @opcion = 0,
+	@idFormato_Var = 0,
+    @nomFormato_Var = "0",
+	@desFormato_Var = "0",
+    @idTipoFormato_Var = 0;
+
 CALL EXECUTE_ARRAY(
 		arrayFormato,
         "~",
@@ -52,7 +58,7 @@ BEGIN -- MODIFICAR AREA
     SET Nom_Formato = nomFormato_Var, Des_Formato = desFormato_Var, Id_Tipo_Formato = idTipoFormato_Var
     WHERE Id_Formato = idFormato_Var;
 END;
-ELSE SELECT 1;
+ELSE SELECT * FROM Formato;
 END CASE;
 SELECT * FROM Formato;
 END;;

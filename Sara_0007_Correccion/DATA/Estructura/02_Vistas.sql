@@ -448,7 +448,9 @@ CREATE VIEW 41_V_ConsultaTodo AS (
     v3.Id_P_Virtual, 
     v3.Nom_P_Virtual,
     v3.Des_P_Virtual,
-    Id_Formato,
+    v5.Id_Formato,
+    v6.Id_Tipo_Formato,
+    v6.Nom_Tipo_Formato,
     Fecha_Publicacion,
     v4.Id_Version,
     v4.Id_Funcionario,
@@ -460,13 +462,14 @@ CREATE VIEW 41_V_ConsultaTodo AS (
 	INNER JOIN  05_v_detalles_categoria v1_1 ON v1_1.Id_Tema = v2.Id_Tema
 	INNER JOIN 23_V_Consultar v3 ON v2.Id_P_Virtual = v3.Id_P_Virtual
 	INNER JOIN 22_V_Autor_Simple v4 ON v3.Id_Version = v4.Id_Version
+    INNER JOIN Formato v5 ON v2.Id_Formato = v5.Id_Formato
+    INNER JOIN Tipo_Formato v6 ON v5.Id_Tipo_Formato = v6.Id_Tipo_Formato
 	WHERE   v3.Num_Version = 
 		(	SELECT Num_Version 
 			FROM Producto_Virtual v11 INNER JOIN Version v22 ON v11.Id_P_Virtual = v22.Id_P_Virtual 
             WHERE v11.Id_P_Virtual = v3.Id_P_Virtual 
             AND v22.Id_Estado IN (6,7)
             ORDER BY Num_Version DESC LIMIT 1)
-
 ); 
 
 DROP VIEW IF EXISTS 42_V_ProductosActualizar;

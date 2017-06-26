@@ -84,7 +84,8 @@ public class M_Crud extends M_Procedure {
             if (sentencia == "SELECT" && muchos == false) {
                 return new JSONObject(item).toString();
             } else {
-                return ""+listo;
+                if(listo)return "true";
+                else return "false";
             }
         }
 

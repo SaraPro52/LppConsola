@@ -76,7 +76,7 @@ DELIMITER ;
 
 /*
 CALL RegistrarRankin("1~1~0~0");
-CALL RegistrarRankin("2~2~0~0");
+CALL RegistrarRankin("2~1~0~0");
 CALL RegistrarRankin("3~1~3~5");
 
 SELECT * FROM rankin;

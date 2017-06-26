@@ -243,7 +243,8 @@ public class Elomac extends M_Crud {
     //------------------------- INSERT -----------------------------
     public boolean Insert() {
         boolean bo = false;
-        if(this.SuperP("INSERT", this.tabla, atributos, "")== "true"){
+        String s = this.SuperP("INSERT", this.tabla, atributos, "");
+        if(s == "true"){
             bo = true;
         }
         this.load(this.Select(Integer.parseInt(this.ObtenerId())));

@@ -91,7 +91,8 @@ WHEN 4 THEN
 	BEGIN
 		-- Cantidad de Publicaciones Visitadas
 		SET contenido = "
-		SELECT DATE_FORMAT(v1.Fecha_Publicacion,'%M %Y') AS Mes,CONCAT(v6.Nom_Ciudad) AS Ciudad,CONCAT(ce.Nom_Centro) AS Centro,CONCAT(v7.Nom_P_Virtual) AS ""Producto Virtual"", CONCAT(v8.Cant_Visitas) AS Visitas
+		SELECT DATE_FORMAT(v1.Fecha_Publicacion,'%M %Y') AS Mes,CONCAT(v6.Nom_Ciudad) AS Ciudad,CONCAT(ce.Nom_Centro) AS Centro,
+        CONCAT(v7.Nom_P_Virtual) AS ""Producto Virtual"", CONCAT(v8.Cant_Visitas) AS Visitas
 		FROM version v1 INNER JOIN autor v2 ON v1.Id_Version = v2.Id_Version
 		INNER JOIN funcionario v3 ON v2.Id_Funcionario = v3.Id_Funcionario
 		INNER JOIN area_centro v4 ON v3.Id_Area_Centro = v4.Id_Area_Centro
@@ -115,7 +116,7 @@ WHEN 5 THEN
 		INNER JOIN centro ce ON v4.Id_Centro = ce.Id_Centro
 		INNER JOIN ciudad v6 ON ce.Id_Ciudad = v6.Id_Ciudad
 		INNER JOIN producto_virtual v7 ON v1.Id_P_Virtual = v7.Id_P_Virtual
-		INNER JOIN rankin v8 ON v1.Id_Version = v8.Id_Version 
+		INNER JOIN rankin v8 ON v1.Id_Version = v8.Id_Version
         WHERE 1 = 1";
         
         SET contenido2 = "

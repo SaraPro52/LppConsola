@@ -1,7 +1,9 @@
 package M_Util;
 
 import M_Controller.Archivos.Archivos;
+import M_Modelo.Area;
 import M_Modelo.Categoria;
+import M_Modelo.Centro;
 import M_Modelo.Estadisticas;
 import M_Modelo.Evaluacion_General;
 import M_Modelo.Formato;
@@ -11,6 +13,7 @@ import M_Modelo.Notificacion;
 import M_Modelo.Producto_Virtual;
 import M_Modelo.Programa;
 import M_Modelo.Rankin;
+import M_Modelo.Tema;
 import M_Modelo.Version;
 import static M_Util.M_Crud.M_Format;
 import M_Vistas._13_V_listas_Chequeo;
@@ -1323,8 +1326,8 @@ public class NewMain {
 //        for (int i = 0; i < parts.length; i++) {
 //            System.out.println(parts[i]);
 //        }
-        String contraseña = DigestUtils.md5Hex("123");
-        System.out.println(contraseña);
+//        String contraseña = DigestUtils.md5Hex("123");
+//        System.out.println(contraseña);
 //        String delimitador = "[{colum:2,operador:0,valor1:1,añadir:0},{colum:12,operador:0,valor1:1,añadir:0},{colum:0,operador:0,valor1:1,añadir:0},{colum:13,operador:6,valor1:\'2,3\',añadir:0},{colum:11,operador:0,valor1:0}]";
 //        String[] num = {"4", "5", "6", "7", "8", "9"};
 //
@@ -1422,7 +1425,7 @@ public class NewMain {
 //Notificacion n = new Notificacion();
 //        System.out.println(n.ConsultarNotificacion_M(para));
 
-//        String[] reportes = {"4","1","0","2017"};
+//        String[] reportes = {"7","1","0","2017"};
 //        System.out.println(new Estadisticas().ConsultaReportes(reportes));
 
 //        String[] graficas = {"1","1","0","0"};
@@ -1441,8 +1444,83 @@ public class NewMain {
 //        String[] para = {"1019133595","fcea920f7412b5da7be0cf42b8c93759"};
 //        System.out.println(new Funcionario().Logueo(para));
 
-        String[] paraModificasr = {"2","3","0","0"};
-        Rankin ra = new Rankin();
-        System.out.println(ra.RegistrarRankin(paraModificasr));
+//        String[] paraModificasr = {"2","3","0","0"};
+//        Rankin ra = new Rankin();
+//        System.out.println(ra.RegistrarRankin(paraModificasr));
+
+
+// ----------------------------- ADMIN-------------------------------
+
+//-------- Tema-------
+//        String[] para1 = {"1","0","Tema001","Tema001"};
+//        System.out.println(new Tema().TemaAdmin(para1));
+        
+//        String[] para2 = {"2","6","Tema002","Tema001"};
+//        System.out.println(new Tema().TemaAdmin(para2));
+    
+//        String[] para3 = {"0","0","0","0"};
+//        System.out.println(new Tema().TemaAdmin(para3));
+
+
+//-------- Programa------
+
+//        String[] para1 = {"1","0","Programa001","Programa001","1,2,3"};
+//        System.out.println(new Programa().ProgramaAdmin(para1));
+        
+//        String[] para2 = {"2","6","Programa002","Programa002","4,6"};
+//        System.out.println(new Programa().ProgramaAdmin(para2));
+//    
+//        String[] para3 = {"3","6","0","0","0"};
+//        System.out.println(new Programa().ProgramaAdmin(para3));
+
+//        String[] para4 = {"0","0","0","0","0"};
+//        System.out.println(new Programa().ProgramaAdmin(para4));
+
+
+//--------- Area--------
+
+//        String[] para1 = {"1","0","Area001","Area001","1,2,3"};
+//        System.out.println(new Area().AreaAdmin(para1));
+        
+//        String[] para2 = {"2","6","Area003","Area002","0"};
+//        System.out.println(new Area().AreaAdmin(para2));
+    
+//        String[] para3 = {"3","6","0","0","0"};
+//        System.out.println(new Area().AreaAdmin(para3));
+
+//        String[] para4 = {"0","0","0","0","0"};
+//        System.out.println(new Area().AreaAdmin(para4));
+
+
+//-------- Centro-------
+
+//        String[] para1 = {"1","0","Centro001","1001","Centro001","1","1,2"};
+//        System.out.println(new Centro().CentroAdmin(para1));
+        
+//        String[] para2 = {"2","5","Centro003","1001","Centro001","1","0"};
+//        System.out.println(new Centro().CentroAdmin(para2));
+    
+//        String[] para3 = {"3","5","0","0","0"};
+//        System.out.println(new Centro().CentroAdmin(para3));
+
+//        String[] para4 = {"0","0","0","0","0"};
+//        System.out.println(new Centro().CentroAdmin(para4));
+
+
+//--------- Formato---------
+
+
+//        String[] para1 = {"1","0","Formato001","Formato001","1"};
+//        System.out.println(new Formato().FormatoAdmin(para1));
+        
+//        String[] para2 = {"2","42","Formato002","Formato002","2"};
+//        System.out.println(new Formato().FormatoAdmin(para2));
+    
+//         String[] para3 = {"0","0","0","0","0"};
+//        System.out.println(new Formato().FormatoAdmin(para3));
+
+          
+
+
     }
 }
