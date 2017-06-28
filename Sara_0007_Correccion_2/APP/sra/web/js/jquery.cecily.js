@@ -163,7 +163,7 @@ jQuery.Luna = function (Datos, selector) {
                     }
                     break;
                 case "Comentario":
-                    //$("#RComentarios" + datos.id).empty();
+                    $("#RComentarios" + datos.id).empty();
                     var jsoComen = jQuery.parseJSON(json);
                     for (var j = 0; j < jsoComen.length; j++) {
                         oAComen = $("#BaseComentario").clone();
@@ -188,6 +188,41 @@ jQuery.Luna = function (Datos, selector) {
                     }
                     selector.multiSelect('refresh');
                     break;
+
+                case "MultiSelectArrayCentro":
+                    if (datos.compuesto == true) {
+                        var jso = jQuery.parseJSON(json);
+                        var j = Object.keys(jso[0]);
+                        var opcion = "", id = "", nombre = "", tipo = 3;
+                        for (var i = 0; i < jso.length; i++) {
+                            tipo = jso[i][j[0]];
+                            id = jso[i][j[1]];
+                            nombre = jso[i][j[2]];
+                            if (tipo == "1") {
+                                opcion = "<option value=" + id + " disabled='disabled' selected>" + nombre + "</option>";
+                            } else if (tipo == "0") {
+                                opcion = "<option value=" + id + ">" + nombre + "</option>";
+                            } else {
+                                opcion = "<option value=" + id + " selected>" + nombre + "</option>";
+                            }
+                            selector.append(opcion);
+                        }
+                    } else {
+                        var jso = jQuery.parseJSON(json);
+                        var j = Object.keys(jso[0]);
+                        for (var i = 0; i < jso.length; i++) {
+                            id = jso[i].Id_Programa;
+                            nombre = jso[i].Nom_Programa;
+                            var opcion = "<option value=" + id[0] + ">" + nombre[0] + "</option>";
+                            selector.append(opcion);
+                        }
+                    }
+                    selector.multiSelect('refresh');
+                    if (datos.opt == "Div") {
+                        selector.multiSelect('deselect_all');
+                    }
+                    break;
+
 
 
                 case "MultiSelectArrayPrograma":
@@ -654,6 +689,35 @@ jQuery.Luna = function (Datos, selector) {
                             jsSelect[i].Nom_Ciudad,
                             "<select id='Select" + jsSelect[i].Id_Funcionario + "'value='0'" + select,
                             "<button id='" + jsSelect[i].Id_Funcionario + "' class='btnclick btn btn-success botonclick'value='b' >Asignar</button>"
+                        ]);
+                    }
+                    break;
+                case "consultaTipoFormatos":
+                    var jsSelect = jQuery.parseJSON(json);
+                    var data = "";
+                    selector.dataTable().fnClearTable();
+                    for (var i = 0; i < jsSelect.length; i++) {
+                        data = jsSelect[i].Id_Tipo_Formato + "$$" + jsSelect[i].Nom_Tipo_Formato + "$$" + jsSelect[i].UrlImgTipoFormato;
+                        table = selector.dataTable().fnAddData([
+                            i + 1,
+                            jsSelect[i].Nom_Tipo_Formato,
+                            jsSelect[i].UrlImgTipoFormato,
+                            "<button id='" + data + "' class='btnModificarTipoFor btn btn-info'>Modificar</button>"
+                        ]);
+                    }
+                    break;
+                case "ConsultaCentros":
+                    var jsSelect = jQuery.parseJSON(json);
+                    selector.dataTable().fnClearTable();
+                    for (var i = 0; i < jsSelect.length; i++) {
+                        var data = jsSelect[i].Id_Centro + "$$" + jsSelect[i].Id_Ciudad + "$$" + jsSelect[i].Nom_Centro + "$$" + jsSelect[i].Num_Centro + "$$" + jsSelect[i].Direccion;
+                        table = selector.dataTable().fnAddData([
+                            i + 1,
+                            jsSelect[i].Nom_Centro,
+                            jsSelect[i].Nom_Centro,
+                            jsSelect[i].Direccion,
+                            jsSelect[i].Nom_Ciudad,
+                            "<button id='" + data + "' class='btnModificarCentros btn btn-success'  >Modificar</button>"
                         ]);
                     }
                     break;

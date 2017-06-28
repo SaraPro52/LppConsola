@@ -67,6 +67,7 @@ public class Version_Controller extends HttpServlet {
                    }
                    break;
                 case 3:
+                    String path = request.getRealPath("");
                     String[] infoVersion = null;
                     String arrayFun = null;
                     infoVersion = Elomac.M_toArray(jData.getString("info"));
@@ -74,12 +75,12 @@ public class Version_Controller extends HttpServlet {
                     String[] arrayTemas = Elomac.M_toArray(jData.getString("arrayTemas"));
                     String nomUrl = ver.RegistrarActualizacion(infoVersion, arrayFun,arrayTemas);//16/04/2017
                     if (nomUrl != "null") {
-                        arch.CambiarNombre(infoVersion[1], nomUrl,0,1);
+                        arch.CambiarNombre(path,infoVersion[1], nomUrl,0,1);
                         respuesta.println("true$$ fue registrado");
-                        arch.MoverArchivo(nomUrl);
+                        arch.MoverArchivo(path,nomUrl);
                     } else {
                         respuesta.println("false$$ no fue registrado");
-                        arch.EliminarArchivo(infoVersion[1],1);
+                        arch.EliminarArchivo(path,infoVersion[1],1);
                     }
                    break;
            }

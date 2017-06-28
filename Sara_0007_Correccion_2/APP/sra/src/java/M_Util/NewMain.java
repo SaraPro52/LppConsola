@@ -1537,9 +1537,14 @@ public class NewMain {
 
 //--------- Consulta Puestos
 
-        System.out.println(new Rankin().consultaPuestos());
+      //  System.out.println(new Rankin().consultaPuestos());
         
         //new EstructuraDB().Creacion();
 
+            Archivos a = new Archivos();
+            
+
+            System.out.println(a.rutaTem());
+        
     }
 }

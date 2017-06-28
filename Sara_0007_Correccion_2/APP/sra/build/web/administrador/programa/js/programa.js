@@ -1,6 +1,6 @@
 $(document).on('ready', function () {
     var selector = [], hilo = [], jso = [], data = [], datos = [], arrayTemas = [], men = "", estado = "", idPrograma = 0;
-    var ob = new $.Luna("Select", $("#SelecCentro"));
+    var ob = new $.Luna("programa", $("#SelecCentro"));
     $(".Mult").hide();
     ob.Vivo("Programas");
     jso[0] = ['Modificar_Controller', '[{opcion:2,ProgramaAdmin:[0,0,0,0,0]}]'];

@@ -1,12 +1,22 @@
 $(document).on('ready', function () {
-    var selector = [], hilo = [], jso = [], data = [], datos = [], estado = "", men = "";
-    var ob = new $.Luna("Carga masiva", null);
+    var selector = [], hilo = [], jso = [], data = [], datos = [], estado = "", men = "", idTipoFormato = 0;
+    var ob = new $.Luna("tipode formato", null);
     ob.Vivo("Tipo de formato");
-    //peticon
-    jso[0] = ['Modificar_Controller','[{opcion:5,FormatoAdmin:[0,0,0,0]}]'];
+    jso[0] = ['Modificar_Controller', '[{opcion:6,TipoFormatoAdmin:[0,0,0,0]}]'];
     selector[0] = $("#tablaTipoFormato");
+    ob.TablaEspa(selector[0]);
     datos[0] = {nombre: "consultaTipoFormatos"};
     ajax(0, datos[0]);
+
+
+    $(document).on('click', '.btnModificarTipoFor', function (e) {
+        var valors = this.id.split("$$");
+        idTipoFormato = valors[0];
+        $("#formato").val(valors[1]);
+        $("#desFormato").val(valors[2]);
+        $("#btnAccionFormato").val("Modificar formato");
+    });
+
 
     var options = {
         beforeSend: function () {
@@ -27,17 +37,23 @@ $(document).on('ready', function () {
         success: function () {
             var path = $("#myfile").val();
             var filename = path.replace(/C:\\fakepath\\/, '');
-            jso[5] = ['Modificar_Controller','[{opcion:5,FormatoAdmin:[1,0,'+$("#formato").val()+','+$("#desFormato").val()+','+idTipoFormato+']}]']
-            jso[5] = ['CargueMasivo_Controller', '[{opcion:1,archivo:' + filename + ',tabla:' + $("#selectTable option:selected").text() + '}]'];
-            selector[5] = null;
-            datos[5] = {nombre: "btn"};
-            ajax(5, datos[5]);
+            men = $("#formato").val();
+            if ($("#btnAccionFormato").val() == "Modificar formato") {
+                jso[4] = ['Modificar_Controller', '[{opcion:6,TipoFormatoAdmin:[2,' + idTipoFormato + ',' + $("#formato").val() + ',' + filename + ']}]']
+                datos[4] = {nombre: "btn"};
+                ajax(4, datos[4]);
+            } else {
+                jso[3] = ['Modificar_Controller', '[{opcion:6,TipoFormatoAdmin:[1,0,' + $("#formato").val() + ',' + filename + ']}]']
+                datos[3] = {nombre: "btn"};
+                ajax(3, datos[3]);
+            }
         },
         error: function () {
             $("#message").html("<font color='red'>Error: al subir el archivo</font>");
         }
     };
-    $("#formCargaM").ajaxForm(options);
+    $("#UploadForm").ajaxForm(options);
+
 
     $('.input-file').change(function () {
         var nomArh = document.getElementById("myfile").files[0].name;
@@ -46,10 +62,12 @@ $(document).on('ready', function () {
         nomArh = ex[ex.length - 1];
         var sizeByte = this.files[0].size;
         var siezekiloByte = parseInt(sizeByte / 1024);
-        if (nomArh != "csv") {
+        if ((nomArh == "jpg") || (nomArh == "png")) {
+
+        } else {
             $("#myfile").val('');
             $("#myfile").notify(
-                    "El archivo no es de tipo .csv", 'warn',
+                    "El archivo no es de tipo: jpg,png", 'warn',
                     {position: "right"}
             );
         }
@@ -73,16 +91,39 @@ $(document).on('ready', function () {
         };
     }
     function peticionCompleta(i) {
-        if (i == 5) {
-            var daMen = data[i].split("$$");
-            men = $("#selectTable option:selected").text();
-            if (daMen[0] == "true") {
+        if (i == 3) {//agregar tipo de formato
+            $("#formato").val("");
+            $("#myfile").val("");
+            $("#btnCentro").html("Agregar formato");
+            if (data[3].length > data[0].length) {
+                selector[1] = $("#tablaTipoFormato");
+                datos[7] = {nombre: "consultaTipoFormatos"};
+                ob.cargarTabla(data[i], selector[1], datos[7]);
                 estado = ("success");
-                men = "La carga de datos en la tabla " + men + " a sido " + daMen[1];
+                men = "Tipo de formato " + men + " se a guardado correctamente";
+
             } else {
                 estado = ("error");
-                men = "La carga de datos en la tabla " + men + " a sido " + daMen[1];
+                men = "Tipo de formato " + men + " no se a agregado";
             }
+            $.notify(men, estado);
+        } else if (i == 4) {//Modificar formato
+            try {
+                var response = jQuery.parseJSON(data[i]);
+                if (typeof response == 'object') {
+                    selector[1] = $("#tablaTipoFormato");
+                    datos[7] = {nombre: "consultaTipoFormatos"};
+                    ob.cargarTabla(data[i], selector[1], datos[7]);
+                    estado = ("success");
+                    men = "Tipo de formato " + men + " se a modificado correctamente";
+                }
+            } catch (e) {
+                estado = ("error");
+                men = "Tipo de formato " + men + " no se a modificado";
+            }
+            $("#formato").val("");
+            $("#myfile").val("");
+            $("#btnCentro").html("Agregar formato");
             $.notify(men, estado);
         }
     }

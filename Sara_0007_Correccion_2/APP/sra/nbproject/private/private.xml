@@ -12,10 +12,21 @@
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/JudiniCambell/Documents/proyectos/LppConsola/Sara_0007_Correccion/APP/sra/web/administrador/programa/Programa.jsp</file>
-            <file>file:/C:/Users/JudiniCambell/Documents/proyectos/LppConsola/Sara_0007_Correccion/APP/sra/src/java/M_Controller/Modificar_Controller.java</file>
-            <file>file:/C:/Users/JudiniCambell/Documents/proyectos/LppConsola/Sara_0007_Correccion/APP/sra/web/administrador/programa/js/programa.js</file>
-            <file>file:/C:/Users/JudiniCambell/Documents/proyectos/LppConsola/Sara_0007_Correccion/APP/sra/web/js/jquery.cecily.js</file>
+            <file>file:/C:/Users/JudiniCambell/Documents/proyectos/LppConsola/Sara_0007_Correccion_2/APP/sra/web/administrador/centroFormacion/js/centroFormacion.js</file>
+            <file>file:/C:/Users/JudiniCambell/Documents/proyectos/LppConsola/Sara_0007_Correccion_2/APP/sra/src/java/M_Controller/ProductoVirtual_Controller.java</file>
+            <file>file:/C:/Users/JudiniCambell/Documents/proyectos/LppConsola/Sara_0007_Correccion_2/APP/sra/src/java/M_Modelo/Formato.java</file>
+            <file>file:/C:/Users/JudiniCambell/Documents/proyectos/LppConsola/Sara_0007_Correccion_2/APP/sra/src/java/M_Controller/Version_Controller.java</file>
+            <file>file:/C:/Users/JudiniCambell/Documents/proyectos/LppConsola/Sara_0007_Correccion_2/APP/sra/src/java/M_Controller/CargueMasivo_Controller.java</file>
+            <file>file:/C:/Users/JudiniCambell/Documents/proyectos/LppConsola/Sara_0007_Correccion_2/APP/sra/src/java/M_Modelo/Version.java</file>
+            <file>file:/C:/Users/JudiniCambell/Documents/proyectos/LppConsola/Sara_0007_Correccion_2/APP/sra/web/administrador/tipoFormato/TipoFormato.jsp</file>
+            <file>file:/C:/Users/JudiniCambell/Documents/proyectos/LppConsola/Sara_0007_Correccion_2/APP/sra/web/administrador/cargaM/js/cargaM.js</file>
+            <file>file:/C:/Users/JudiniCambell/Documents/proyectos/LppConsola/Sara_0007_Correccion_2/APP/sra/web/js/jquery.cecily.js</file>
+            <file>file:/C:/Users/JudiniCambell/Documents/proyectos/LppConsola/Sara_0007_Correccion_2/APP/sra/src/java/M_Controller/Archivos/DescargaArchivo.java</file>
+            <file>file:/C:/Users/JudiniCambell/Documents/proyectos/LppConsola/Sara_0007_Correccion_2/APP/sra/src/java/M_Controller/Modificar_Controller.java</file>
+            <file>file:/C:/Users/JudiniCambell/Documents/proyectos/LppConsola/Sara_0007_Correccion_2/APP/sra/web/administrador/tipoFormato/js/tipoFormato.js</file>
+            <file>file:/C:/Users/JudiniCambell/Documents/proyectos/LppConsola/Sara_0007_Correccion_2/APP/sra/src/java/M_Util/CargaDatos.java</file>
+            <file>file:/C:/Users/JudiniCambell/Documents/proyectos/LppConsola/Sara_0007_Correccion_2/APP/sra/src/java/M_Controller/Archivos/Archivos.java</file>
+            <file>file:/C:/Users/JudiniCambell/Documents/proyectos/LppConsola/Sara_0007_Correccion_2/APP/sra/src/java/M_Controller/Archivos/ArchivosController.java</file>
         </group>
     </open-files>
 </project-private>

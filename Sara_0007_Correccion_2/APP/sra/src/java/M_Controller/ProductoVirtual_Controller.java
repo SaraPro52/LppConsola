@@ -59,6 +59,7 @@ public class ProductoVirtual_Controller extends HttpServlet {
             ArchivosController arch = new ArchivosController();
             respuesta = response.getWriter();
             Version ver = new Version();
+            String path = request.getRealPath("");
             switch (opcion) {
                 case 1:
                     infoVersion = Elomac.M_toArray(jData.getString("info"));
@@ -68,12 +69,12 @@ public class ProductoVirtual_Controller extends HttpServlet {
                     infoVersion[4] = archivoNom;
                     nomUrl = ver.RegistrarPV(infoVersion, arrayFun, arrayTemas);//16/04/2017
                     if (nomUrl != "null") {
-                        arch.CambiarNombre(archivoNom, nomUrl,0,1);
+                        arch.CambiarNombre(path,archivoNom, nomUrl, 0, 1);
                         respuesta.println("true$$ fue registrado");
-                        arch.MoverArchivo(nomUrl);
+                        arch.MoverArchivo(path,nomUrl);
                     } else {
                         respuesta.println("false$$ no fue registrado");
-                        arch.EliminarArchivo(archivoNom,1);
+                        arch.EliminarArchivo(path,archivoNom, 1);
                     }
                     break;
                 case 2:
@@ -82,12 +83,12 @@ public class ProductoVirtual_Controller extends HttpServlet {
                     String archivoNom1 = jData.getString("archivoNom");
                     nomUrl = ver.RegistrarVersion(infoVersion, arrayFun);//16/04/2017
                     if (nomUrl != "null") {
-                        arch.CambiarNombre(archivoNom1, nomUrl,0,1);
+                        arch.CambiarNombre(path,archivoNom1, nomUrl, 0, 1);
                         respuesta.println("true$$ fue registrado");
-                        arch.MoverArchivo(nomUrl);
+                        arch.MoverArchivo(path,nomUrl);
                     } else {
                         respuesta.println("false$$ no fue registrado");
-                        arch.EliminarArchivo(archivoNom1,1);
+                        arch.EliminarArchivo(path,archivoNom1, 1);
                     }
                     break;
                 case 3:
@@ -97,13 +98,13 @@ public class ProductoVirtual_Controller extends HttpServlet {
                         String archivoNom2 = jData.getString("archivoNom");
                         nomUrl = ver.CorreccionVersion(correccion);//16/04/2017
                         if (nomUrl != "null") {
-                            arch.CambiarNombre(archivoNom2, nomUrl,0,1);
+                            arch.CambiarNombre(path,archivoNom2, nomUrl, 0, 1);
                             respuesta.println("true$$ fue Corregido");
-                            
+
                             //---CAMBIO 2 Elimina el archivo que se encontraba subido (Antiguo)
-                            arch.EliminarArchivo(jData.getString("url"),2);
+                            arch.EliminarArchivo(path,jData.getString("url"), 2);
                             //---Cambio
-                            arch.MoverArchivo(nomUrl);
+                            arch.MoverArchivo(path,nomUrl);
                             int idNoti = jData.getInt("idNot");
                             Notificacion noti = new Notificacion();
                             noti.load(noti.Select(idNoti));
@@ -111,7 +112,7 @@ public class ProductoVirtual_Controller extends HttpServlet {
                             noti.Update();
                         } else {
                             respuesta.println("false$$ no fue Corregido");
-                            arch.EliminarArchivo(archivoNom2,1);
+                            arch.EliminarArchivo(path,archivoNom2, 1);
                         }
                     } catch (Exception e) {
                         respuesta.println(e.getMessage());
@@ -121,11 +122,12 @@ public class ProductoVirtual_Controller extends HttpServlet {
                 case 4:
                     try {
                         String[] aprobacion = Elomac.M_toArray(jData.getString("aprobacion"));
-                        String[] aT = {"5"};String delimi = "[{colum:0,operador:0,valor1:"+aprobacion[1]+"}]";
+                        String[] aT = {"5"};
+                        String delimi = "[{colum:0,operador:0,valor1:" + aprobacion[1] + "}]";
                         String nomUrlOld = new JSONArray(new Version().Select(aT, delimi)).getJSONObject(0).getString("Url_Version");
                         nomUrl = ver.AprobarPV(aprobacion);//16/04/2017
                         if (nomUrl != "null") {
-                            arch.CambiarNombre(nomUrlOld, nomUrl,1,1);
+                            arch.CambiarNombre(path,nomUrlOld, nomUrl, 1, 1);
                             respuesta.println("true$$Habilitado");
                         } else {
                             respuesta.println("false$$no pudo ser habilitado");
@@ -138,7 +140,7 @@ public class ProductoVirtual_Controller extends HttpServlet {
                     String[] filtrar = Elomac.M_toArray(jData.getString("filtrar"));
                     int caso = jData.getInt("caso");
                     String consulta = new Producto_Virtual().ConsultarProducto(filtrar, caso);
-                    if(consulta != "null"){
+                    if (consulta != "null") {
                         respuesta.println(consulta);
                     } else {
                         respuesta.println("false$$No se Encuentran Registros");
@@ -190,7 +192,7 @@ public class ProductoVirtual_Controller extends HttpServlet {
         } catch (Exception ex) {
             Logger.getLogger(ProductoVirtual_Controller.class.getName()).log(Level.SEVERE, null, ex);
         }
-        }
+    }
 
     /**
      * Returns a short description of the servlet.

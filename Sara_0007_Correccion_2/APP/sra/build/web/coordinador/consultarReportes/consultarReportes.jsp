@@ -167,10 +167,6 @@
                                             <option value="A0">Selecione...</option>
                                         </select>
                                     </div>
-
-                                    <div class="col-md-6 col-md-offset-5">
-                                        <button type="button" class="btn btn-info btnReporte" id="7">Consultar</button>
-                                    </div>
                                     <table id="tablaReporte7" class="table-hover">
 
                                     </table>
@@ -181,16 +177,7 @@
                                     <div class="col-md-6 col-md-offset-5">
                                         <button type="button" class="btn btn-info" id="btnPublicacioneFunciones">Consultar</button>
                                     </div>
-                                    <table id="tableArea" class="table-hover">
-                                        <thead>
-                                        <th>Mes</th>
-                                        <th>Ciudad</th>
-                                        <th>Centro</th>
-                                        <th>Producto virtual</th>
-                                        <th>Visitas</th>
-                                        </thead>
-                                        <tbody>
-                                        </tbody>
+                                    <table id="tablaReporte8" class="table-hover">
                                     </table>
                                 </div>
                             </div>

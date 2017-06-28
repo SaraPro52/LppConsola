@@ -99,5 +99,13 @@ $(document).ready(function () {
             //  ob.TablaEspa($("#tablaReporte1"));
             ajax(6, datos[6]);
         }
+        else if (i==6){
+            jso[7] = ['Estadisticas_Controller', '[{opcion:3}]'];
+            selector[7] = "tablaReporte8";
+            datos[7] = {nombre: "Reporte"};
+            ob.setCons("publicaciones de funcionarios");
+            //  ob.TablaEspa($("#tablaReporte1"));
+            ajax(7, datos[7]);
+        }
     }
 });

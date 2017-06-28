@@ -40,8 +40,9 @@ public class DescargaArchivo extends HttpServlet {
                     System.out.println("Fallo");
                 }
             }
+            String path = request.getRealPath("");
             Archivos archivo1 = new Archivos();
-            String archivos1 = archivo1.getBase();
+            String archivos1 = path+archivo1.getBase();
             String archivo = archivos1 + request.getParameter("archivo");
             String[] parts = archivo.split("\\.");
             nombre = request.getParameter("archivo");

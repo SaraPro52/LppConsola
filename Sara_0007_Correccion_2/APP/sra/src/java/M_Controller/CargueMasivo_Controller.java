@@ -30,12 +30,16 @@ public class CargueMasivo_Controller extends HttpServlet {
                 case 1: //REALIZA EL CARGUE DE LA INFORMACION
                     //jso[0] = ['CargueMasivo_Controller','[{opcion:1,archivo:'+archivoCSV+',tabla:'+tabla+'}]'];
                     try {
+                        String path = request.getRealPath("");
                         ArchivosController arch = new ArchivosController();
-                        arch.MoverArchivoCsv(jData.getString("archivo"));
-                        if (new CargaDatos().cargaMasiva(jData.getString("archivo"), jData.getString("tabla"))) {
-                            respuesta.println("true$$exitosa");
+                        if (arch.MoverArchivoCsv(path, jData.getString("archivo"))) {
+                            if (new CargaDatos().cargaMasiva(path,jData.getString("archivo"), jData.getString("tabla"))) {
+                                respuesta.println("true$$exitosa");
+                            } else {
+                                respuesta.println("true$$exitosa");
+                            }
                         } else {
-                            respuesta.println("true$$fallida");
+                            arch.EliminarArchivo(path, jData.getString("archivo"), 1);
                         }
                     } catch (Exception e) {
                         respuesta.println(e.getMessage());

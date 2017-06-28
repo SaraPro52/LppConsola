@@ -83,6 +83,7 @@ $(document).on('ready', function () {
                 men = "La carga de datos en la tabla " + men + " a sido " + daMen[1];
             }
             $.notify(men, estado);
+            $("#myfile").val("");
         }
     }
 });

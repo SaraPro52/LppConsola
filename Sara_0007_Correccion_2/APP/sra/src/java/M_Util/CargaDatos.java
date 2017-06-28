@@ -16,10 +16,10 @@ public class CargaDatos {
     public CargaDatos(){}
  
     
-    public boolean cargaMasiva(String nomArchivo,String nomTabla){
+    public boolean cargaMasiva(String path,String nomArchivo,String nomTabla){
         contenidoInsert1 = "INSERT INTO "+nomTabla+" ";
         Archivos a = new Archivos();
-        String ruta =  a.cargaMasiva()+nomArchivo;
+        String ruta =  path+a.cargaMasiva()+nomArchivo;
         try {
             File archivoCSV = new File(ruta);
             String[] nextLine;
@@ -52,13 +52,13 @@ public class CargaDatos {
                 }
             }
             System.out.println(contenidoInsert1);
-            
+            archivoCSV.delete();
             if((boolean) new M_Procedure().Registar(contenidoInsert1, 4)){
                 return true;
             }else{
                 return false;
             }
-            
+
         } catch (Exception e) {
             return false;
         }

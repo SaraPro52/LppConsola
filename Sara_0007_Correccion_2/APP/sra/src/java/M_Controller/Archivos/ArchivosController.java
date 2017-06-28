@@ -47,13 +47,14 @@ public class ArchivosController extends HttpServlet {
         if (isMultipart) {
             FileItemFactory factory = new DiskFileItemFactory();
             ServletFileUpload upload = new ServletFileUpload(factory);
+            String path = request.getRealPath("");
             try {
                 String nombreArchivo = "";
                 List<FileItem> multiparts = upload.parseRequest(request);
                 for (FileItem item : multiparts) {
                     if (!item.isFormField()) {
                         nombreArchivo = new File(item.getName()).getName();
-                        item.write(new File(a.rutaTem() + nombreArchivo));
+                        item.write(new File(path + a.rutaTem() + nombreArchivo));
                     }
                 }
             } catch (Exception e) {
@@ -68,41 +69,54 @@ public class ArchivosController extends HttpServlet {
      *
      * @param nombre Nombre del archivo que se desea eliminar.
      */
-    public void EliminarArchivo(String nombre, int val) { //1:rutaTem 2: getbase
-        Archivos a = new Archivos();
-        String ruta;
-        if (val == 1) {
-            ruta = a.rutaTem() + nombre;
-        } else {
-            ruta = a.getBase() + nombre;
-        }
-        File archivo = new File(ruta);
-        archivo.delete();
-    }
-
-    public void MoverArchivoCsv(String nomArchivo) {
+    public void EliminarArchivo(String path, String nombre, int val) { //1:rutaTem 2: getbase
         try {
-            Archivos bs = new Archivos();
-            File archivo = new File(bs.rutaTem() + nomArchivo);
-            File NuNombre = new File(bs.cargaMasiva() + nomArchivo);
-
-            if (archivo.renameTo(NuNombre)) {
-                System.out.println("Si");
-            } else {
-                System.out.println(archivo.renameTo(NuNombre));
+            Archivos a = new Archivos();
+            String ruta = path;
+            switch (val) {
+                case 1:
+                    ruta = ruta + a.rutaTem() + nombre;
+                    break;
+                case 2:
+                    ruta = ruta + a.getBase() + nombre;
+                    break;
+                case 3:
+                    ruta = ruta + a.cargaMasiva() + nombre;
+                    break;
+                case 4:
+                    ruta = ruta + a.formato() + nombre;
+                    break;
             }
+            File archivo = new File(ruta);
+            archivo.delete();
 
         } catch (Exception e) {
             System.out.println(e.getMessage());
-
         }
     }
 
-    public void MoverArchivo(String nomArchivo) {
+    public boolean MoverArchivoCsv(String path, String nomArchivo) {
         try {
             Archivos bs = new Archivos();
-            File archivo = new File(bs.rutaTem() + nomArchivo);
-            File NuNombre = new File(bs.getBase() + nomArchivo);
+            File archivo = new File(path + bs.rutaTem() + nomArchivo);
+            File NuNombre = new File(path + bs.cargaMasiva() + nomArchivo);
+
+            if (archivo.renameTo(NuNombre)) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return false;
+        }
+    }
+
+    public void MoverArchivo(String path, String nomArchivo) {
+        try {
+            Archivos bs = new Archivos();
+            File archivo = new File(path + bs.rutaTem() + nomArchivo);
+            File NuNombre = new File(path + bs.getBase() + nomArchivo);
 
             if (archivo.renameTo(NuNombre)) {
                 System.out.println("Si");
@@ -124,7 +138,7 @@ public class ArchivosController extends HttpServlet {
      * @param NuevoNombre Nuevo nombre del archivo
      * @return String devuelve del nombre del archivo.
      */
-    public String CambiarNombre(String AnNombre, String NuevoNombre, int rutaAnterior, int rutaNueva) {
+    public String CambiarNombre(String path, String AnNombre, String NuevoNombre, int rutaAnterior, int rutaNueva) {
         String nombre = "";
         //NuevoNombre = NuevoNombre.replace(' ', '_');
 
@@ -133,28 +147,28 @@ public class ArchivosController extends HttpServlet {
         //NuevoNombre = cadenaSinAcentos;
         try {
             Archivos bs = new Archivos();
-            String rutaAn = "";
-            String rutaNu = "";
+            String rutaAn = path;
+            String rutaNu = path;
             switch (rutaAnterior) {
                 case 0:
-                    rutaAn = bs.rutaTem();
+                    rutaAn = rutaAn + bs.rutaTem();
                     break;
                 case 1:
-                    rutaAn = bs.getBase();
+                    rutaAn = rutaAn + bs.getBase();
                     break;
                 case 2:
-                    rutaAn = bs.cargaMasiva();
+                    rutaAn = rutaAn + bs.cargaMasiva();
                     break;
             }
             switch (rutaNueva) {
                 case 0:
-                    rutaNu = bs.rutaTem();
+                    rutaNu = rutaNu + bs.rutaTem();
                     break;
                 case 1:
-                    rutaNu = bs.getBase();
+                    rutaNu = rutaNu + bs.getBase();
                     break;
                 case 2:
-                    rutaNu = bs.cargaMasiva();
+                    rutaNu = rutaNu + bs.cargaMasiva();
                     break;
             }
             //String ext2 = FilenameUtils.getExtension(AnNombre);
