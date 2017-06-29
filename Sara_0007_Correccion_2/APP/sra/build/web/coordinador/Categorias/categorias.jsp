@@ -9,14 +9,14 @@
                       <article class="col-md-6">
                           <form id="AgregarCate" class="col-md-12">
                               <div class="col-md-12">
-                                  <label   style="color:#60B359;">Crear Categorï¿½a </label>
+                                  <label   style="color:#60B359;">Crear Categoría </label>
                               </div>
                               <div class="col-md-12">
-                                  <label for="NombreCategoria" >Nombre de la Categorï¿½a:</label>
+                                  <label for="NombreCategoria" >Nombre de la Categoría:</label>
                               </div>
-                              <div class="col-md-12"><input type="text" class="form-control inputsC" id="NombreCategoria" placeholder=" Digite Nombre de la categorï¿½a"></div>
-                              <label for="DescripcionCategoria" class="col-md-12">Descripciï¿½n de la Categorï¿½a:</label>
-                              <div class="col-md-12"><input type="text" class="form-control inputsC" id="DescripcionCategoria" placeholder="Digite Nombre de la descripciï¿½n"></div>
+                              <div class="col-md-12"><input type="text" class="form-control inputsC" id="NombreCategoria" placeholder=" Digite Nombre de la categoría"></div>
+                              <label for="DescripcionCategoria" class="col-md-12">Descripciï¿½n de la Categoría:</label>
+                              <div class="col-md-12"><input type="text" class="form-control inputsC" id="DescripcionCategoria" placeholder="Digite Nombre de la descripción"></div>
                           </form>
                       </article>
                       <article class="col-md-6">
@@ -27,21 +27,21 @@
                               <label for="NombreTema" class="col-md-12">Nombre del tema:</label>
                               <input type="text" class="form-control inputs" id="NombreTema" placeholder="Digite Nombre del Tema">
                               <label for="DescripcionCategoria" class="col-md-12">Descripciï¿½n del Tema:</label>
-                              <input type="text" class="form-control inputs" id="DescripcionTema" placeholder="Digite Descripciï¿½n del Tema">
+                              <input type="text" class="form-control inputs" id="DescripcionTema" placeholder="Digite Descripción del Tema">
                               <button type="button" id="btnTema" class="btn btn-info">Guardar Tema</button>
                           </form>
                       </article>
                       <article class="col-md-6">
                           <div id="SelectTemasDiv" class="col-md-12">
-                              <label for="itemCategoria">Temas de la Categorï¿½a</label>
+                              <label for="itemCategoria">Temas de la Categoría</label>
                               <div>
-                                  <select required  id="itemCategoria" class="itemCategorias"  multiple='multiple' title="Busca una categoria.." >
+                                  <select required  id="itemCategoria" class="itemCategorias"  multiple='multiple' title="Busca una categoría.." >
                                       <option value="A0">Null</option>
                                   </select>
                               </div>
                           </div>
                           <div class="col-md-12">
-                              <button type="button" id="btnCategoria" class="btn btn-info">Guardar categorï¿½a</button>
+                              <button type="button" id="btnCategoria" class="btn btn-info">Guardar categoría</button>
                           </div>
                       </article>
                   </section>
