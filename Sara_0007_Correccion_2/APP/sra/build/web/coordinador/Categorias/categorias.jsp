@@ -15,7 +15,7 @@
                                   <label for="NombreCategoria" >Nombre de la Categoría:</label>
                               </div>
                               <div class="col-md-12"><input type="text" class="form-control inputsC" id="NombreCategoria" placeholder=" Digite Nombre de la categoría"></div>
-                              <label for="DescripcionCategoria" class="col-md-12">Descripciï¿½n de la Categoría:</label>
+                              <label for="DescripcionCategoria" class="col-md-12">Descripción de la Categoría:</label>
                               <div class="col-md-12"><input type="text" class="form-control inputsC" id="DescripcionCategoria" placeholder="Digite Nombre de la descripción"></div>
                           </form>
                       </article>
@@ -26,7 +26,7 @@
                               </div>
                               <label for="NombreTema" class="col-md-12">Nombre del tema:</label>
                               <input type="text" class="form-control inputs" id="NombreTema" placeholder="Digite Nombre del Tema">
-                              <label for="DescripcionCategoria" class="col-md-12">Descripciï¿½n del Tema:</label>
+                              <label for="DescripcionCategoria" class="col-md-12">Descripción del Tema:</label>
                               <input type="text" class="form-control inputs" id="DescripcionTema" placeholder="Digite Descripción del Tema">
                               <button type="button" id="btnTema" class="btn btn-info">Guardar Tema</button>
                           </form>

@@ -43,10 +43,10 @@ public class Producto_Virtual extends Elomac {
     }
 
     public String ConsultarProducto(String[] filtros, int caso) {
-        ArrayList<String> delimitadorA = new ArrayList<String>();
+          ArrayList<String> delimitadorA = new ArrayList<String>();
         String deli = "";
         String añada = "}";
-        String[] numC = {"0","1","2","3","4","5","7"};
+        String[] numC = {"0","1","2","3","4","5"};
         Object[] delimitador = null;
         String consulta = "";
         try {

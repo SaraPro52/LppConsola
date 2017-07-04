@@ -27,7 +27,6 @@
                             <label>Ciudad</label>
                             <select class="form-control select" id="ciudad">
                                 <option value="A0">Seleccionar...</option>
-                                <option value="1">...</option>
                             </select>
                         </div>
                         <div class="col-md-6">

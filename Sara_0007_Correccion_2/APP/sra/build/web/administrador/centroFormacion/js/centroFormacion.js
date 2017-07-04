@@ -2,7 +2,7 @@ $(document).on('ready', function () {
     var selector = [], hilo = [], jso = [], data = [], datos = [], arrayTemas = [], men = "", estado = "", idCentro = 0;
     var ob = new $.Luna("Select", null);
     $(".Mult").hide();
-    ob.Vivo("centro de formacionn");
+    ob.Vivo("centro de formacion");
     jso[0] = ['Modificar_Controller', '[{opcion:4,CentroAdmin:[0,0,0,0,0,0,0]}]'];
     selector[0] = $("#tablaCentro");
     ob.TablaEspa(selector[0]);
@@ -122,12 +122,21 @@ $(document).on('ready', function () {
     }
 
     function peticionCompleta(i, datos) {
-       if (i == 0) {
-            jso[2] = ['Crud_Controller', '[{opcion:3,tabla2:53,tipo:1,elegir:[0,1],delimitador:[],id:0,opSelect:4}]'];
+        if (i == 0) {
+            jso[2] = ['Crud_Controller', '[{opcion:3,tabla2:1,tipo:1,elegir:[0,1],delimitador:[],id:0,opSelect:4}]'];
+            //jso[2] = ['Crud_Controller', '[{opcion:3,tabla2:53,tipo:1,elegir:[0,1],delimitador:[],id:0,opSelect:4}]'];
             selector[2] = $("#MultTemasFormacion");
             $("#MultTemasFormacion").empty();
             datos[2] = {nombre: "MultiSelect"};
             ajax(2, datos[2]);
+        } else if (i == 2) {
+            jso[19] = ['Crud_Controller', '[{opcion:3,tabla2:11,tipo:1,elegir:[0,1],delimitador:[],id:0,opSelect:4}]'];
+            //jso[2] = ['Crud_Controller', '[{opcion:3,tabla2:1,tipo:1,elegir:[0,1],delimitador:[],id:0,opSelect:4}]'];
+            //jso[2] = ['Crud_Controller', '[{opcion:3,tabla2:53,tipo:1,elegir:[0,1],delimitador:[],id:0,opSelect:4}]'];
+            selector[19] = $("#ciudad");
+            $("#ciudad").empty().append("<option value='A0'>Seleccionar...</option>");
+            datos[19] = {nombre: "Select"};
+            ajax(19, datos[19]);
         } else if (i == 3) {//Modificar
             try {
                 var response = jQuery.parseJSON(data[i]);
