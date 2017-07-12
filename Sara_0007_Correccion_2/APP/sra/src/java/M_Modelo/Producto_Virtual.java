@@ -46,7 +46,7 @@ public class Producto_Virtual extends Elomac {
           ArrayList<String> delimitadorA = new ArrayList<String>();
         String deli = "";
         String añada = "}";
-        String[] numC = {"0","1","2","3","4","5"};
+        String[] numC = {"0","1","2","3","4","5","7"};
         Object[] delimitador = null;
         String consulta = "";
         try {

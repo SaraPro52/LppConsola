@@ -36,7 +36,6 @@ public class sesion_controller extends HttpServlet {
             switch (opcion) {
                 case 1:
                     String[] loguinUser = {request.getParameter("user"),DigestUtils.md5Hex(request.getParameter("pwd"))};
-                    
 //                    String delimitador = "[{colum:4,operador:0,valor1:'\"" + usuario + "\"',añadir:0},{colum:5,operador:0,valor1:'\"" + contraseña + "\"'}]";
 //                    Elomac elo = new Elomac(19, 2);
 //                    String fun = elo.Select(delimitador);

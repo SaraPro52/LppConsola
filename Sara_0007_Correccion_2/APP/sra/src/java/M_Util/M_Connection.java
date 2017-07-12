@@ -7,7 +7,7 @@ import java.sql.SQLException;
 public class M_Connection{
     
     public M_Connection(){}
-    private static String db = "SARA006";
+    private static String db = "sara006";
     
     protected Connection obtenerConn(){
         String driver = "com.mysql.jdbc.Driver";
