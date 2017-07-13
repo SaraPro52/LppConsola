@@ -1,0 +1,331 @@
+/**************************************
+* NATIONAL TRAINING SERVICIE:         *
+* CODE CSS MASTER #1 SARApro          *
+* CREATE BY: Ever Leonardo Franco     *
+* DATE: MARCH/2017                    *
+* VERSION:1.0                         *
+***************************************/
+/* START CODE CSS HEADER*/
+
+.headerIndex{
+    background-image: url(../img/imagen.jpg);
+    background-repeat: no-repeat;
+    width: 100%;
+    height:500px;
+    background-color: #e0e0e0;
+}
+.boton{
+    float: right;
+    padding: 3% 5%;
+
+}
+
+.logo{
+    float: left;
+}
+
+.degradadoHeader{
+    background: rgba(226,226,226,0.42);
+    background: -moz-linear-gradient(left, rgba(226,226,226,0.42) 0%, rgba(220,220,220,0.15) 43%, rgba(219,219,219,0.15) 50%, rgba(209,209,209,0.15) 51%, rgba(254,254,254,0.15) 100%);
+    background: -webkit-gradient(left top, right top, color-stop(0%, rgba(226,226,226,0.42)), color-stop(43%, rgba(220,220,220,0.15)), color-stop(50%, rgba(219,219,219,0.15)), color-stop(51%, rgba(209,209,209,0.15)), color-stop(100%, rgba(254,254,254,0.15)));
+    background: -webkit-linear-gradient(left, rgba(226,226,226,0.42) 0%, rgba(220,220,220,0.15) 43%, rgba(219,219,219,0.15) 50%, rgba(209,209,209,0.15) 51%, rgba(254,254,254,0.15) 100%);
+    background: -o-linear-gradient(left, rgba(226,226,226,0.42) 0%, rgba(220,220,220,0.15) 43%, rgba(219,219,219,0.15) 50%, rgba(209,209,209,0.15) 51%, rgba(254,254,254,0.15) 100%);
+    background: -ms-linear-gradient(left, rgba(226,226,226,0.42) 0%, rgba(220,220,220,0.15) 43%, rgba(219,219,219,0.15) 50%, rgba(209,209,209,0.15) 51%, rgba(254,254,254,0.15) 100%);
+    background: linear-gradient(to right, rgba(226,226,226,0.42) 0%, rgba(220,220,220,0.15) 43%, rgba(219,219,219,0.15) 50%, rgba(209,209,209,0.15) 51%, rgba(254,254,254,0.15) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e2e2e2', endColorstr='#fefefe', GradientType=1 );
+}
+.menu-fixed{
+    position: fixed;
+    z-index: 100;
+    top :0;
+    width: 100%;
+}
+.botonVerde{
+    height: 60px;
+    width: 150px;
+}
+
+
+.txtheader{
+    margin: 10% 0% 0% 5%;
+    color:#000000;
+    font-family: 'Raleway', sans-serif;
+    font-weight: bold;
+    font-size: 40px;
+
+}
+
+.lineaHorizontal{
+    border: none;
+    border-top: solid 5px black;
+    max-width: 30%;
+    margin-left: 35%;
+    margin-bottom: 2%;
+}
+/* END CODE CSS HEADER*/
+
+/* START CODE CSS WHY SARAPRO*/
+
+.flip3d{
+    width: 240px;
+    height: 200px;
+    margin: 10px;
+    float: left;
+    display: block;
+
+}
+.flip3d > .front{
+    position: absolute;
+    transform: perspective(300px) rotateY(0deg);
+    width: 240px;
+    height: 200px;
+    border-radius: 7px;
+    backface-visibility: hidden;
+    transition: transform .5s linear 0s;
+
+}
+
+.flip3d > .back{
+    position: absolute;
+    transform: perspective(100px) rotateY(180deg);
+
+    width: 240px;
+    height: 200px;
+    border-radius: 7px;
+    backface-visibility: hidden;
+    transition: transform .5s linear 0s;
+
+}
+.flip3d:hover > .front{
+    transform: perspective(600px) rotateY(-180deg);
+
+}
+
+.flip3d:hover > .back{
+    transform: perspective(600px) rotateY(0deg);
+
+}
+.color1{
+    background: #c3d500;
+}
+.color11{background-color: #ad47bc;}
+.color2{background-color: #d32f2f;}
+.color22{background-color: #673ab7;}
+.color3{background-color: #ad1457;}
+.color33{background-color: #e91e63;}
+.color4{background-color: #ffc107;}
+.color44{background-color: #2962ff;}
+.color5{background-color: #ff5722;}
+.color55{background-color: #b39ddb;}
+.color6{background-color: #a1887f;}
+.color66{background-color: #00bfa5;}
+.color7{background-color:#a1887f;}
+.color77{background-color:#c3d500;}
+
+
+.code{
+    font-family: 'Raleway', sans-serif;
+    font-size: 50px;
+    text-align: center;
+}
+
+.codeSmile{
+    font-family: 'Raleway', sans-serif;
+    font-size: 30px;
+    text-align: center;}
+
+.textBack{
+    margin-top: 30%;
+}
+
+.codeWhite{
+    color: #FFFFFF;
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    font-size: 20px;
+    text-align: center;
+}
+.fawhySARA{
+    margin-top: 15%;
+    color: #FFFFFF;
+    font-size: 70px;
+
+}
+.shadows{
+    font-family: 'Shadows Into Light', cursive;
+    font-size: 30px;
+    font-weight: 400;
+    text-align: center;
+    margin:5% 0% 5% 0%;
+}
+
+.element{
+    height:80%;
+    padding:50px 10px 30px 10px;
+    width: 80%;
+    margin-bottom:5%;
+    margin-left: 15%;
+    display: block;
+
+}
+
+.elementImg{
+    margin-left: 43%;
+    color: #FFFFFF;
+    font-size: 50px;
+}
+
+
+
+/* END CODE CSS WHY SARAPRO*/
+
+
+/* START CODE CSS DEVELOPER TEAM */
+
+.imgCentrar{
+    display: block;
+    margin: auto;
+    margin-bottom: 15%;
+    height: 100px;
+
+}
+
+
+.txtTeamName{
+    color: #FFFFFF;
+    font-size: 20px;
+}
+
+table{
+    margin-left: 8%;
+}
+
+.developer1{
+    background-color:#235c7a;
+}
+
+.developer2{
+    background-color: #206677;
+}
+
+.developer3{
+    background-color: #54a7bb;
+}
+
+.developer4{
+    background-color: #6fadbb;
+}
+
+
+.developer1:hover{
+    color: #ffffff;
+
+}
+
+/*.developer2{
+  background-color: #1047a9;
+}*/
+
+.developer2:hover{
+    color: #ffffff;
+}
+
+/*.developer3{
+  background-color: #ffa500;
+}*/
+
+.developer3:hover{
+    color: #ffffff;
+}
+
+
+
+.developer4:hover{
+    color: #ffffff;
+}
+/* END CODE CSS DEVELOPER TEAM */
+/*input[type=number]::-webkit-outer-spin-button,
+/input[type=number]::-webkit-inner-spin-button{
+  -webkit-appearance:none;
+  margin: 0;
+}
+
+input[type=number]{
+  -moz-appearance:textfield;
+}*/
+
+
+
+
+/* START CODE CSS MAIN FOOTER */
+.footerPrincipal{
+
+    background-color:#0d2753;
+    color: #FFFFFF;
+}
+
+.btn-social {
+    display: inline-block;
+    height: 50px;
+    width: 50px;
+    border: 2px solid white;
+    border-radius: 100%;
+    text-align: center;
+    font-size: 20px;
+    line-height: 45px;
+}
+
+.btn-outline {
+    color: white;
+    font-size: 20px;
+    border: solid 2px white;
+    background: transparent;
+    transition: all 0.3s ease-in-out;
+    margin-top: 15px;
+}
+.btn-outline:hover,
+.btn-outline:focus,
+.btn-outline:active,
+.btn-outline.active {
+    color: #18BC9C;
+    background: white;
+    border: solid 2px white;
+}
+/* END CODE CSS MAIN FOOTER*/
+
+/* START CODE CSS SECOND FOOTER */
+
+.footerSecundario{
+    background-color:#66615b;
+    color: #FFFFFF;
+    text-align:center;
+}
+/* END CODE CSS SECOND FOOTER */
+
+/* START CODE CSS LOGIN */
+.formularioLogin{
+    /*position:absolute;
+    margin-left: 95%;
+    margin-top: 10%;
+    height: 400px;
+    width: 400px;
+    border: thin solid #999;
+    border-radius: 10px;*/
+    background: rgba(226,226,226,1);
+    background: -moz-linear-gradient(top, rgba(226,226,226,1) 0%, rgba(209,209,209,0.68) 51%, rgba(219,219,219,0.4) 96%, rgba(254,254,254,0.37) 100%);
+    background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(226,226,226,1)), color-stop(51%, rgba(209,209,209,0.68)), color-stop(96%, rgba(219,219,219,0.4)), color-stop(100%, rgba(254,254,254,0.37)));
+    background: -webkit-linear-gradient(top, rgba(226,226,226,1) 0%, rgba(209,209,209,0.68) 51%, rgba(219,219,219,0.4) 96%, rgba(254,254,254,0.37) 100%);
+    background: -o-linear-gradient(top, rgba(226,226,226,1) 0%, rgba(209,209,209,0.68) 51%, rgba(219,219,219,0.4) 96%, rgba(254,254,254,0.37) 100%);
+    background: -ms-linear-gradient(top, rgba(226,226,226,1) 0%, rgba(209,209,209,0.68) 51%, rgba(219,219,219,0.4) 96%, rgba(254,254,254,0.37) 100%);
+    background: linear-gradient(to bottom, rgba(226,226,226,1) 0%, rgba(209,209,209,0.68) 51%, rgba(219,219,219,0.4) 96%, rgba(254,254,254,0.37) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e2e2e2', endColorstr='#fefefe', GradientType=0 );
+    /*padding: 2%;
+   -moz-border-radius: 10px;
+   -webkit-border-radius: 10px;
+   -ms-border-radius: 10px;
+   -khtml-border-radius:10px;
+   -o-border-radius: 10px;*/
+}
+/* END CODE CSS LOGIN */
+
+/* END CODE CSS */

@@ -1,0 +1,13 @@
+
+cd paraya41/bin/
+
+./asadmin start-domain
+./asadmin deploy .war...
+./asadmin list-applications
+./asadmin undeploy aplicacion
+
+url 172.16.255.255
+
+
+e10adc3949ba59abbe56e057f20f883e //123456	
+202cb962ac59075b964b07152d234b70 //123

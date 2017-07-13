@@ -1,0 +1,30 @@
+/*caso contrario, el color sera rojo*/
+div input:focus:invalid{
+    border:2px solid red;
+
+    /* otras propiedades */
+}   
+article input:focus:invalid{
+    border:2px solid red;
+    /* otras propiedades */
+}
+
+article textarea:focus:invalid{
+    border: 2px solid red;   
+}
+
+article select:focus:invalid{
+    border: 2px solid red;
+}
+
+article section:focus:invalid{
+    border: 2p solid red;
+}
+
+form{
+    font-size: medium;
+}
+
+.espacio{
+    margin: 5px;
+}

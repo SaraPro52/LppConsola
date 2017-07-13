@@ -1,0 +1,43 @@
+Subir producto virtual 
+ Titulo: Racionalidad Ambiental según Leff y ecoliteracy según Capra
+ Palabras clave: Racionalidad ambiental,Alfabetismo ecológico  
+ Descripcion: El trabajo de grado propone un criterio ambiental de valoración bioética basado en la sustentabilidad de la vida a partir de las teorías de Racionalidad Ambiental de Enrique Leff y de Ecoliteracy de Fritjof Capra.
+ Requisitos de instalacion: se requiere  una maquina con los siguiente programas: winrar,word
+ Instrucciones de instalacion: 	
+---------
+ Titulo: Intervención basada en mindfulness sobre los síntomas asociados al síndrome de burnout
+ Palabras clave Profesión docente,Síndrome de Burnout
+ Descripcion:La profesión docente está incluida como una de las profesiones más afectadas por el estrés laboral y el Síndrome de Bumout (Cornejo y Quiñonez, 2007, Ramírez y Zurita, 2010).
+ Requisitos de instalacion: se requiere  una maquina con los siguiente programas: winrar,word
+ Instrucciones de instalacion: descomprima el archivo que acaba de descargar y ejecute el documento. 
+---------Prod
+ Titulo: Modelo de alineación estática para prótesis transtibiales
+ Palabras clave: Alineación de prótesis transtibiales,Alineación estática
+ Descripcion:La falta de información objetiva en la alineación de prótesis es un fenómeno recurrente en el área de prótesis.
+ Requisitos de instalacion: se requiere  una maquina con los siguiente programas: winrar,word
+ Instrucciones de instalacion: descomprima el archivo que acaba de descargar y ejecute el documento. 
+
+Listas de chequeo tecnico
+ Nombre: Funcionalidad del producto virtual
+ Descripcion: se verifica la calidad tecnica del producto virtual
+
+
+Items lista de chequeo
+    El producto virtual se encuentra actualizado.
+
+Listas de chequeo pedagogico
+ Nombre: el producto virtual Cumple con las normas aprovada de redaccción
+ Descripcion: se verifica si cumple con las normas de redaccion.
+
+Items lista de chequeo
+    El producto virtual se cumple con las normas APA.
+
+Categoria
+ Nombre:Programacion avanzada
+ Descripcion: Se encuentra todos los lenguajes avanzados
+ 
+Caso error de evaluacion de producto Virtual
+ El producto virtual no cumple con lo estipulado en el item
+ 
+
+
