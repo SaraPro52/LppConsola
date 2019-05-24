@@ -22,15 +22,15 @@ public class Producto_Virtual extends Elomac {
             for (int i = 0; i < new JSONArray(consulta).length(); i++) {
                 String autores = "";
                 JSONObject conJ = new JSONArray(consulta).getJSONObject(i);
-                String delimitador = "[{colum:2,operador:0,valor1:" + conJ.getInt("Id_Version") + "}]";
+                String delimitador = "[{colum:2,operador:0,valor1:" + conJ.getInt("id_version") + "}]";
                 String consulta2 = new Elomac(21, 2).Select(delimitador);
 
                 for (int j = 0; j < new JSONArray(consulta2).length(); j++) {
                     JSONObject con2J = new JSONArray(consulta2).getJSONObject(j);
                     if (j == 0) {
-                        autores += con2J.getString("NombreCompleto");
+                        autores += con2J.getString("nombrecompleto");
                     } else {
-                        autores += "," + con2J.getString("NombreCompleto");
+                        autores += "," + con2J.getString("nombrecompleto");
                     }
                 }
                 conJ.put("Autores", autores);
@@ -148,9 +148,9 @@ public class Producto_Virtual extends Elomac {
                 for (int j = 0; j < new JSONArray(consulta2).length(); j++) {
                     JSONObject con2J = new JSONArray(consulta2).getJSONObject(j);
                     if (j == 0) {
-                        autores += con2J.getString("NombreCompleto");
+                        autores += con2J.getString("nombrecompleto");
                     } else {
-                        autores += "," + con2J.getString("NombreCompleto");
+                        autores += "," + con2J.getString("nombrecompleto");
                     }
                 }
 

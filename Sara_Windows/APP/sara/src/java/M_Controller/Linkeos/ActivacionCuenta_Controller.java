@@ -34,7 +34,7 @@ public class ActivacionCuenta_Controller extends HttpServlet {
             try {
                 if (datos != null) {
                     JSONObject toqJ = new JSONArray(datos).getJSONObject(0);
-                    sesion1.setAttribute("fun", toqJ.getString("Funcionario"));
+                    sesion1.setAttribute("fun", toqJ.getString("funcionario"));
                     request.getRequestDispatcher("inicio/ConfirmacionCon/ConfirmarCon.jsp").forward(request, response);
                 }
                 if (Integer.parseInt(request.getParameter("c")) != 1 || datos == null) {

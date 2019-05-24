@@ -116,15 +116,15 @@ jQuery.Luna = function (Datos, selector) {
                     var jso = jQuery.parseJSON(json);
                     var jso1 = jQuery.parseJSON(jso.Items);
                     $("#Respuestaitem").html("");
-                    $("#NomLista").text("Lista de chequeo: " + jso.Nom_Lista_Chequeo);
-                    $("#FechaEvaluacion").text("Fecha de evaluacion " + jso.Fecha_Evaluacion);
+                    $("#NomLista").text("Lista de chequeo: " + jso.nom_lista_chequeo);
+                    $("#FechaEvaluacion").text("Fecha de evaluacion " + jso.fecha_evaluacion);
                     for (var i = 0; i < jso1.length; i++) {
                         var oAItem = $("#Clona").clone();
-                        oAItem.find("#textitem").text('Item :' + jso1[i].Des_Item_Lista);
-                        oAItem.find("#observacionItem").val(jso1[i].Observacion);
+                        oAItem.find("#textitem").text('Item :' + jso1[i].des_item_lista);
+                        oAItem.find("#observacionItem").val(jso1[i].observacion);
                         oAItem.children().appendTo($("#Respuestaitem"));
                     }
-                    $("#ObservacionGeneral").val(jso.Observacion_General);
+                    $("#ObservacionGeneral").val(jso.observacion_general);
                     break;
                 case "DetallesOaC":
                     try {
@@ -135,7 +135,7 @@ jQuery.Luna = function (Datos, selector) {
                             oAItem.find("#consul").addClass("consul" + jso[i].id_version);
                             oAItem.find("#NumVersion").text("Version " + cc + ": " + datos.nom);
                             oAItem.find("#NumVersion").addClass(jso[i].id_version);
-                            oAItem.find("#PvAutores").text(jso[i].autores);
+                            oAItem.find("#PvAutores").text(jso[i].Autores);
                             oAItem.find("#PvPublicacion").text(jso[i].fecha_publicacion);
                             oAItem.find("#PvFechaVigencia").text(jso[i].fecha_vigencia);
                             oAItem.find("#PvRequisitos").val(jso[i].reqst_instalacion);
@@ -146,7 +146,7 @@ jQuery.Luna = function (Datos, selector) {
                             oAItem.find("#Url_Version").attr('href', 'DescargaArchivo?archivo=' + jso[i].url_version + '&version=' + jso[i].id_version + '');
                             oAItem.find("#btn_Comentar").val(jso[i].id_version);
                             oAItem.children().appendTo($("#resultados"));
-                            var jsoComen = jQuery.parseJSON(jso[i].comentarios);
+                            var jsoComen = jQuery.parseJSON(jso[i].Comentarios);
                             for (var j = 0; j < jsoComen.length; j++) {
                                 oAComen = $("#BaseComentario").clone();
                                 oAComen.find(".contenidoCome").attr('id', "Comentario" + jsoComen[j].id_comentario);
@@ -210,7 +210,7 @@ jQuery.Luna = function (Datos, selector) {
                         var j = Object.keys(jso[0]);
                         for (var i = 0; i < jso.length; i++) {
                             id = jso[i].Id_Programa;
-                            nombre = jso[i].Nom_Programa;
+                            nombre = jso[i].nom_Programa;
                             var opcion = "<option value=" + id[0] + ">" + nombre[0] + "</option>";
                             selector.append(opcion);
                         }
@@ -428,16 +428,16 @@ jQuery.Luna = function (Datos, selector) {
                                 $("#paginador").append(s);
                                 q = q + 2;
                             }
-                            var comple = jso[i].Id_Formato + "$$" + jso[i].Nom_P_Virtual + "$$" + jso[i].Des_P_Virtual;
+                            var comple = jso[i].id_p_virtual + "$$" + jso[i].nom_p_virtual + "$$" + jso[i].des_p_virtual;
                             oAItem = selector.clone();
-                            oAItem.find("#ImagenOA").attr('src', 'Archivos/Formatos/' + jso[i].Nom_Tipo_Formato + '.png');
-                            oAItem.find("#TituloOa").text(jso[i].Nom_P_Virtual);
+                            oAItem.find("#ImagenOA").attr('src', 'Archivos/Formatos/' + jso[i].nom_tipo_formato + '.png');
+                            oAItem.find("#TituloOa").text(jso[i].nom_p_virtual);
                             oAItem.find("#AutoresOa").text(jso[i].Autores);
-                            oAItem.find("#FechaPublicacionOa").text(jso[i].Fecha_Publicacion);
-                            oAItem.find("#DescripcionOa").text(jso[i].Des_P_Virtual);
+                            oAItem.find("#FechaPublicacionOa").text(jso[i].fecha_publicacion);
+                            oAItem.find("#DescripcionOa").text(jso[i].des_p_virtual);
                             oAItem.find("#BtnDescargar").val(comple);
                             oAItem.find("#BtnDescargar").addClass('mom');
-                            oAItem.find("#Contenedora").addClass(jso[i].Id_P_Virtual);
+                            oAItem.find("#Contenedora").addClass(jso[i].id_p_virtual);
                             oAItem.find("#Contenedora").addClass('pag' + pag);
                             oAItem.children().appendTo($("#resultadosProductos"));
                             if (pag > 0) {
@@ -455,9 +455,9 @@ jQuery.Luna = function (Datos, selector) {
                     for (var i = 0; i < jso.length; i++) {
                         row = ("<tr class='col-md-12'>\n\
                                     <td class='col-md-1'><label>" + cc + "</label></td>\n\
-                                    <td class='col-md-6'><label>" + jso[i].Des_Item_Lista + "</label></td>\n\
-                                    <td class='col-md-1'><input type='checkbox' value=" + jso[i].Id_Detalles_Lista + "></td>\n\
-                                    <td class='col-md-4'><textarea id=" + jso[i].Id_Detalles_Lista + " class='form-control esac'></textarea></td>\n\
+                                    <td class='col-md-6'><label>" + jso[i].des_item_lista + "</label></td>\n\
+                                    <td class='col-md-1'><input type='checkbox' value=" + jso[i].id_detalles_lista + "></td>\n\
+                                    <td class='col-md-4'><textarea id=" + jso[i].id_detalles_lista + " class='form-control esac'></textarea></td>\n\
                                 </tr>");
                         selector.append(row);
                         cc++;
@@ -571,13 +571,13 @@ jQuery.Luna = function (Datos, selector) {
                     var jso = jQuery.parseJSON(json);
                     var dat = [];
                     for (var i = 0; i < jso.length; i++) {
-                        dat = [jso[i].Nom_Lista_Chequeo + "$$" + jso[i].Des_Lista_Chequeo + "$$" + jso[i].Fecha_Creacion.substring(0, 11)];
+                        dat = [jso[i].nom_lista_chequeo + "$$" + jso[i].des_lista_chequeo + "$$" + jso[i].fecha_creacion.substring(0, 11)];
                         table = selector.dataTable().fnAddData([
                             i + 1,
-                            jso[i].Nom_Lista_Chequeo,
-                            jso[i].Des_Lista_Chequeo,
-                            jso[i].Fecha_Creacion.substring(0, 11),
-                            "<button id='" + dat + "' value='" + jso[i].Id_Lista_Chequeo + "' class='btnclickca btn btn-info'>Escojer </button>"
+                            jso[i].nom_lista_chequeo,
+                            jso[i].des_lista_chequeo,
+                            jso[i].fecha_creacion.substring(0, 11),
+                            "<button id='" + dat + "' value='" + jso[i].id_lista_chequeo + "' class='btnclickca btn btn-info'>Escojer </button>"
                         ]);
                     }
                     break;
@@ -599,13 +599,13 @@ jQuery.Luna = function (Datos, selector) {
                 case "Lista":
                     var jso = jQuery.parseJSON(json);
                     for (var i = 0; i < jso.length; i++) {
-                        yu = [jso[i].Nom_Lista_Chequeo + "$$$" + jso[i].Des_Lista_Chequeo];
+                        yu = [jso[i].nom_lista_chequeo + "$$$" + jso[i].des_lista_chequeo];
                         table = selector.dataTable().fnAddData([
                             i + 1,
-                            jso[i].Nom_Lista_Chequeo,
-                            jso[i].Des_Lista_Chequeo,
-                            jso[i].Fecha_Creacion.substring(0, 11),
-                            "<button id='" + jso[i].Id_Lista_Chequeo + "' value='" + yu + "' class='btnclick btn btn-info'>Modificar</button>"
+                            jso[i].nom_lista_chequeo,
+                            jso[i].des_lista_chequeo,
+                            jso[i].fecha_creacion.substring(0, 11),
+                            "<button id='" + jso[i].id_lista_chequeo + "' value='" + yu + "' class='btnclick btn btn-info'>Modificar</button>"
                         ]);
                     }
                     break;
@@ -663,14 +663,14 @@ jQuery.Luna = function (Datos, selector) {
                     for (var i = 0; i < jsFuncionario.length; i++) {
                         table = selector.dataTable().fnAddData([
                             i + 1,
-                            jsFuncionario[i].NombreCompleto,
-                            jsFuncionario[i].Cargo,
-                            jsFuncionario[i].Nom_Area,
-                            jsFuncionario[i].Nom_Estado,
-                            "<button id='" + jsFuncionario[i].Id_Funcionario + "' class='botonclick btn btn-danger'>Deshabilitar Usuario</button>"
+                            jsFuncionario[i].nombrecompleto,
+                            jsFuncionario[i].cargo,
+                            jsFuncionario[i].nom_area,
+                            jsFuncionario[i].nom_estado,
+                            "<button id='" + jsFuncionario[i].id_funcionario + "' class='botonclick btn btn-danger'>Deshabilitar Usuario</button>"
                         ]);
                         if (i < 4) {
-                            $(selecNo).append('<li><a><label class="Notify" id=' + i + '>Nuevo funcionario ' + jsFuncionario[i].Cargo + '</label></a></li>');
+                            $(selecNo).append('<li><a><label class="Notify" id=' + i + '>Nuevo funcionario ' + jsFuncionario[i].cargo + '</label></a></li>');
                         } else if (i == 4) {
                             $(selecNo).append('<li><a><label class="Notify" id=verMasNotificaciones>Ver mas funcionarios</label></a></li>');
                         }

@@ -124,7 +124,7 @@ public class ProductoVirtual_Controller extends HttpServlet {
                         String[] aprobacion = Elomac.M_toArray(jData.getString("aprobacion"));
                         String[] aT = {"5"};
                         String delimi = "[{colum:0,operador:0,valor1:" + aprobacion[1] + "}]";
-                        String nomUrlOld = new JSONArray(new Version().Select(aT, delimi)).getJSONObject(0).getString("Url_Version");
+                        String nomUrlOld = new JSONArray(new Version().Select(aT, delimi)).getJSONObject(0).getString("url_version");
                         nomUrl = ver.AprobarPV(aprobacion);//16/04/2017
                         if (nomUrl != "null") {
                             arch.CambiarNombre(path,nomUrlOld, nomUrl, 1, 1);
